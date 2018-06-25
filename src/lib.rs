@@ -4,9 +4,13 @@
 //! This project provides a register abstraction layer (RAL) for all STM32 microcontrollers.
 
 #![no_std]
-#![warn(missing_docs)]
 
 #[macro_use]
 mod register;
 
 pub use register::{RORegister, RWRegister};
+
+#[cfg(feature = "stm32f405")]
+mod stm32f4;
+#[cfg(feature = "stm32f405")]
+pub use stm32f4::stm32f405::*;

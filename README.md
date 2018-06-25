@@ -14,7 +14,7 @@ The underlying data is generated via the SVD files in
 ## Quick Example
 
 ```rust
-use stm32ral::stm32f405::{rcc, gpio};
+use stm32ral::{rcc, gpio};
 
 // Field-level read/modify/write, with either named values or just literals.
 modify_reg!(rcc, RCC.ahb1enr, GPIOAEN: Enabled);

@@ -8,3 +8,7 @@ readme = "README.md"
 keywords = ["stm32", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
+
+[features]
+default = []
+stm32f405 = []
