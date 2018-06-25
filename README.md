@@ -16,7 +16,7 @@ The underlying data is generated via the SVD files in
 ```rust
 use stm32ral::stm32f405::{rcc, gpio};
 
-// Field-level read/modify/write, with either named values or just literals
+// Field-level read/modify/write, with either named values or just literals.
 modify_reg!(rcc, RCC.ahb1enr, GPIOAEN: Enabled);
 modify_reg!(gpio, GPIOA.moder, MODER1: Input, MODER2: Output, MODER3: Input);
 while read_reg!(gpio, GPIOA.idr, IDR3 == High) {
@@ -24,17 +24,20 @@ while read_reg!(gpio, GPIOA.idr, IDR3 == High) {
     modify_reg!(gpio, GPIOA.odr, ODR2: pin);
 }
 
-// Whole-register read/modify/write
+// Whole-register read/modify/write.
 let port = read_reg!(gpio, GPIOA.idr);
 write_reg!(gpio, GPIOA.odr, 0x12345678);
 modify_reg!(gpio, GPIOA.moder, |r| r | (0b10 << 4));
 
-// Or forego the macros and just use the constants yourself
-let port = gpio::GPIOA.idr.read();
-gpio::GPIOA.odr.write(0x12345678);
+// Or forego the macros and just use the constants yourself.
+// The macros above just expand to these forms for you, nothing else
+// is going on.
+let pa1 = (gpio::GPIOA.idr.read() >> gpio::idr::IDR1::_offset)
+          & gpio::idr::IDR1::_mask;
+gpio::GPIOA.odr.write(gpio::odr::ODR2::Output << gpio::odr::ODR2::_offset);
 ```
 
-## Why Use stm32ral?
+## Why use stm32ral?
 
 * Small and lightweight
 * Simple
