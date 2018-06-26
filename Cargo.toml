@@ -11,4 +11,6 @@ license = "MIT/Apache-2.0"
 
 [features]
 default = []
+unsafe = []
+doc = []
 stm32f405 = []

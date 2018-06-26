@@ -1,15 +1,55 @@
 /// A read-write register of type T.
 ///
 /// Contains one value of type T and provides volatile read/write functions to it.
-///
-/// At present this presents a significant unsafety issue by essentially providing a safe
-/// wrapper to `read_volatile` and `write_volatile` without doing any other checking.
-/// To be considered further.
 pub struct RWRegister<T> {
     register: T,
 }
 
 impl<T> RWRegister<T> {
+    /// Reads the value of the register.
+    #[cfg(not(feature = "unsafe"))]
+    #[inline(always)]
+    pub unsafe fn read(&self) -> T {
+        ::core::ptr::read_volatile(&self.register as *const T)
+    }
+
+    /// Reads the value of the register.
+    /// Note that this would usually be unsafe, but with the `unsafe` feature, it is not.
+    #[cfg(feature = "unsafe")]
+    #[inline(always)]
+    pub fn read(&self) -> T {
+        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
+    }
+
+    /// Writes a new value to the register.
+    #[cfg(not(feature = "unsafe"))]
+    #[inline(always)]
+    pub unsafe fn write(&self, val: T) {
+        ::core::ptr::write_volatile(&self.register as *const T as *mut T, val)
+    }
+
+    /// Writes a new value to the register.
+    /// Note that this would usually be unsafe, but with the `unsafe` feature enabled, it is not.
+    #[cfg(feature = "unsafe")]
+    #[inline(always)]
+    pub fn write(&self, val: T) {
+        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
+    }
+}
+
+/// A read-write register of type T, where read/write access is always safe.
+///
+/// Contains one value of type T and provides volatile read/write functions to it.
+///
+/// # Safety
+/// This register should be used where reads and writes to this peripheral register do not
+/// lead to memory unsafety. For example, it is a poor choice for a DMA target, but less
+/// worrisome for a GPIO output data register.
+pub struct SafeRWRegister<T> {
+    register: T,
+}
+
+impl<T> SafeRWRegister<T> {
     /// Reads the value of the register.
     #[inline(always)]
     pub fn read(&self) -> T {
@@ -26,14 +66,39 @@ impl<T> RWRegister<T> {
 /// A read-only register of type T.
 ///
 /// Contains one value of type T and provides a volatile read function to it.
-///
-/// At present this presents a significant unsafety issue by essentially providing a safe
-/// wrapper to `read_volatile` without doing any other checking.  To be considered further.
 pub struct RORegister<T> {
     register: T,
 }
 
 impl<T> RORegister<T> {
+    /// Reads the value of the register.
+    #[cfg(not(feature = "unsafe"))]
+    #[inline(always)]
+    pub unsafe fn read(&self) -> T {
+        ::core::ptr::read_volatile(&self.register as *const T)
+    }
+
+    /// Reads the value of the register.
+    /// Note that this would usually be unsafe, but with the `unsafe` feature enabled, it is not.
+    #[cfg(feature = "unsafe")]
+    #[inline(always)]
+    pub fn read(&self) -> T {
+        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
+    }
+}
+
+/// A read-only register of type T, where read/write access is always safe.
+///
+/// Contains one value of type T and provides a volatile read function to it.
+///
+/// # Safety
+/// This register should be used where reads to this peripheral register do not lead to memory
+/// unsafety.
+pub struct SafeRORegister<T> {
+    register: T,
+}
+
+impl<T> SafeRORegister<T> {
     /// Reads the value of the register.
     #[inline(always)]
     pub fn read(&self) -> T {
@@ -41,9 +106,9 @@ impl<T> RORegister<T> {
     }
 }
 
-/// Write to a RWRegister.
+/// Write to a RWRegister or SafeRWRegister.
 ///
-/// Usage example:
+/// # Examples
 /// ```
 /// // Write some value to the register.
 /// write_reg!(stm32ral::gpio, GPIOA.odr, 1<<3);
@@ -51,6 +116,7 @@ impl<T> RORegister<T> {
 /// write_reg!(stm32ral::gpio, GPIOA.moder, MODER3: Output, MODER4: Analog);
 /// ```
 ///
+/// # Usage
 /// Like `modify_reg!`, this macro can be used in two ways, either with a single value to write to
 /// the whole register, or with multiple fields each with their own value.
 ///
@@ -97,6 +163,10 @@ impl<T> RORegister<T> {
 ///      << stm32ral::gpio::moder::MODER4::_offset)
 /// );
 /// ```
+///
+/// # Safety
+/// This macro will require an unsafe function or block when used with a RWRegister,
+/// but not if used with SafeRWRegister or with the "unsafe" feature enabled.
 #[macro_export]
 macro_rules! write_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
@@ -113,9 +183,9 @@ macro_rules! write_reg {
     }};
 }
 
-/// Modify a RWRegister.
+/// Modify a RWRegister or SafeRWRegister.
 ///
-/// Usage example:
+/// # Examples
 /// ```
 /// // Update the register to ensure bit 3 is set.
 /// modify_reg!(stm32ral::gpio, GPIOA.odr, |reg| reg | (1<<3));
@@ -123,6 +193,7 @@ macro_rules! write_reg {
 /// modify_reg!(stm32ral::gpio, GPIOA.moder, MODER3: Output, MODER4: Analog);
 /// ```
 ///
+/// # Usage
 /// Like `write_reg!`, this macro can be used in two ways, either with a modification of the entire
 /// register, or by specifying which fields to change and what value to change them to.
 ///
@@ -187,6 +258,10 @@ macro_rules! write_reg {
 ///          << stm32ral::gpio::moder::MODER3::_offset)
 /// );
 /// ```
+///
+/// # Safety
+/// This macro will require an unsafe function or block when used with a RWRegister,
+/// but not if used with SafeRWRegister or with the "unsafe" feature enabled.
 #[macro_export]
 macro_rules! modify_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
@@ -203,9 +278,9 @@ macro_rules! modify_reg {
     }};
 }
 
-/// Read the value from a register.
+/// Read the value from a RORegister, RWRegister, SafeRORegister, or SafeRWRegister.
 ///
-/// Usage example:
+/// # Examples
 /// ```
 /// // Read the whole register.
 /// let val = read_reg!(stm32ral::gpio, GPIOA.idr);
@@ -217,6 +292,7 @@ macro_rules! modify_reg {
 /// while read_reg!(stm32ral::gpio, GPIOA.idr, IDR2 == High) {}
 /// ```
 ///
+/// # Usage
 /// Like `write_reg!`, this macro can be used multiple ways, either reading the entire register or
 /// reading a single field from it and potentially performing a comparison with that field.
 ///
@@ -252,6 +328,10 @@ macro_rules! modify_reg {
 /// if ((stm32ral::rcc::RCC.cfgr.read() >> stm32ral::rcc::cfgr::SWS::_offset)
 ///     & stm32ral::rcc::cfgr::SYS::_mask) != stm32ral::rcc:cfgr::SYS::HSI { }
 /// ```
+///
+/// # Safety
+/// This macro will require an unsafe function or block when used with a RWRegister or RORegister,
+/// but not if used with SafeRWRegister, SafeRORegister, or with the "unsafe" feature enabled.
 #[macro_export]
 macro_rules! read_reg {
     ( $periph:path, $instance:ident . $reg:ident, $field:ident ) => {{
