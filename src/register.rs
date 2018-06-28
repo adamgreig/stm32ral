@@ -115,6 +115,53 @@ impl<T> UnsafeRORegister<T> {
     }
 }
 
+/// A write-only register of type T.
+///
+/// Contains one value of type T and provides a volatile write function to it.
+///
+/// # Safety
+/// This register should be used where writes to this peripheral register do not lead to memory
+/// unsafety.
+pub struct WORegister<T> {
+    register: T,
+}
+
+impl<T> WORegister<T> {
+    /// Writes a new value to the register.
+    #[inline(always)]
+    pub fn write(&self, val: T) {
+        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
+    }
+}
+
+/// A write-only register of type T, where write access is unsafe.
+///
+/// Contains one value of type T and provides a volatile write function to it.
+///
+/// # Safety
+/// This register should be used where reads and writes to this peripheral may invoke
+/// undefined behaviour or memory unsafety.
+pub struct UnsafeWORegister<T> {
+    register: T,
+}
+
+impl<T> UnsafeWORegister<T> {
+    /// Writes a new value to the register.
+    #[cfg(not(feature = "unsafe"))]
+    #[inline(always)]
+    pub unsafe fn write(&self, val: T) {
+        ::core::ptr::write_volatile(&self.register as *const T as *mut T, val)
+    }
+
+    /// Writes a new value to the register.
+    /// Note that this would usually be unsafe, but with the `unsafe` feature enabled, it is not.
+    #[cfg(feature = "unsafe")]
+    #[inline(always)]
+    pub fn write(&self, val: T) {
+        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
+    }
+}
+
 /// Write to a RWRegister or UnsafeRWRegister.
 ///
 /// # Examples
