@@ -1,11 +1,42 @@
 /// A read-write register of type T.
 ///
 /// Contains one value of type T and provides volatile read/write functions to it.
+///
+/// # Safety
+/// This register should be used where reads and writes to this peripheral register do not
+/// lead to memory unsafety. For example, it is a poor choice for a DMA target, but less
+/// worrisome for a GPIO output data register.
 pub struct RWRegister<T> {
     register: T,
 }
 
 impl<T> RWRegister<T> {
+    /// Reads the value of the register.
+    #[inline(always)]
+    pub fn read(&self) -> T {
+        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
+    }
+
+    /// Writes a new value to the register.
+    #[inline(always)]
+    pub fn write(&self, val: T) {
+        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
+    }
+}
+
+/// A read-write register of type T, where read/write access is unsafe.
+///
+/// Contains one value of type T and provides volatile read/write functions to it.
+///
+/// # Safety
+/// This register should be used where reads and writes to this peripheral may invoke
+/// undefined behaviour or memory unsafety. For example, any registers you write a memory
+/// address into.
+pub struct UnsafeRWRegister<T> {
+    register: T,
+}
+
+impl<T> UnsafeRWRegister<T> {
     /// Reads the value of the register.
     #[cfg(not(feature = "unsafe"))]
     #[inline(always)]
@@ -37,40 +68,37 @@ impl<T> RWRegister<T> {
     }
 }
 
-/// A read-write register of type T, where read/write access is always safe.
-///
-/// Contains one value of type T and provides volatile read/write functions to it.
-///
-/// # Safety
-/// This register should be used where reads and writes to this peripheral register do not
-/// lead to memory unsafety. For example, it is a poor choice for a DMA target, but less
-/// worrisome for a GPIO output data register.
-pub struct SafeRWRegister<T> {
-    register: T,
-}
-
-impl<T> SafeRWRegister<T> {
-    /// Reads the value of the register.
-    #[inline(always)]
-    pub fn read(&self) -> T {
-        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
-    }
-
-    /// Writes a new value to the register.
-    #[inline(always)]
-    pub fn write(&self, val: T) {
-        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
-    }
-}
-
 /// A read-only register of type T.
 ///
 /// Contains one value of type T and provides a volatile read function to it.
+///
+/// # Safety
+/// This register should be used where reads and writes to this peripheral register do not
+/// lead to memory unsafety.
 pub struct RORegister<T> {
     register: T,
 }
 
 impl<T> RORegister<T> {
+    /// Reads the value of the register.
+    #[inline(always)]
+    pub fn read(&self) -> T {
+        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
+    }
+}
+
+/// A read-only register of type T, where read/write access is unsafe.
+///
+/// Contains one value of type T and provides a volatile read function to it.
+///
+/// # Safety
+/// This register should be used where reads and writes to this peripheral may invoke
+/// undefined behaviour or memory unsafety.
+pub struct UnsafeRORegister<T> {
+    register: T,
+}
+
+impl<T> UnsafeRORegister<T> {
     /// Reads the value of the register.
     #[cfg(not(feature = "unsafe"))]
     #[inline(always)]
@@ -87,26 +115,7 @@ impl<T> RORegister<T> {
     }
 }
 
-/// A read-only register of type T, where read/write access is always safe.
-///
-/// Contains one value of type T and provides a volatile read function to it.
-///
-/// # Safety
-/// This register should be used where reads to this peripheral register do not lead to memory
-/// unsafety.
-pub struct SafeRORegister<T> {
-    register: T,
-}
-
-impl<T> SafeRORegister<T> {
-    /// Reads the value of the register.
-    #[inline(always)]
-    pub fn read(&self) -> T {
-        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
-    }
-}
-
-/// Write to a RWRegister or SafeRWRegister.
+/// Write to a RWRegister or UnsafeRWRegister.
 ///
 /// # Examples
 /// ```
@@ -165,8 +174,8 @@ impl<T> SafeRORegister<T> {
 /// ```
 ///
 /// # Safety
-/// This macro will require an unsafe function or block when used with a RWRegister,
-/// but not if used with SafeRWRegister or with the "unsafe" feature enabled.
+/// This macro will require an unsafe function or block when used with an UnsafeRWRegister,
+/// but not if used with RWRegister or with the "unsafe" feature enabled.
 #[macro_export]
 macro_rules! write_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
@@ -183,7 +192,7 @@ macro_rules! write_reg {
     }};
 }
 
-/// Modify a RWRegister or SafeRWRegister.
+/// Modify a RWRegister or UnsafeRWRegister.
 ///
 /// # Examples
 /// ```
@@ -260,8 +269,8 @@ macro_rules! write_reg {
 /// ```
 ///
 /// # Safety
-/// This macro will require an unsafe function or block when used with a RWRegister,
-/// but not if used with SafeRWRegister or with the "unsafe" feature enabled.
+/// This macro will require an unsafe function or block when used with an UnsafeRWRegister,
+/// but not if used with RWRegister or with the "unsafe" feature enabled.
 #[macro_export]
 macro_rules! modify_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
@@ -278,7 +287,7 @@ macro_rules! modify_reg {
     }};
 }
 
-/// Read the value from a RORegister, RWRegister, SafeRORegister, or SafeRWRegister.
+/// Read the value from a RORegister, RWRegister, UnsafeRORegister, or UnsafeRWRegister.
 ///
 /// # Examples
 /// ```
@@ -330,8 +339,9 @@ macro_rules! modify_reg {
 /// ```
 ///
 /// # Safety
-/// This macro will require an unsafe function or block when used with a RWRegister or RORegister,
-/// but not if used with SafeRWRegister, SafeRORegister, or with the "unsafe" feature enabled.
+/// This macro will require an unsafe function or block when used with an UnsafeRWRegister or
+/// UnsafeRORegister, but not if used with RWRegister, RORegister, or with the "unsafe" feature
+/// enabled.
 #[macro_export]
 macro_rules! read_reg {
     ( $periph:path, $instance:ident . $reg:ident, $field:ident ) => {{

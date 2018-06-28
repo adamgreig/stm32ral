@@ -8,7 +8,7 @@
 #[macro_use]
 mod register;
 
-pub use register::{RORegister, RWRegister, SafeRORegister, SafeRWRegister};
+pub use register::{RORegister, RWRegister, UnsafeRORegister, UnsafeRWRegister};
 
 #[cfg(any(feature = "stm32f405", feature = "doc"))]
 pub mod stm32f4;
