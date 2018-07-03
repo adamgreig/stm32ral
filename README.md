@@ -35,25 +35,25 @@ use stm32ral::{rcc, gpio};
 
 // Field-level read/modify/write, with either named values or just literals.
 // Most of your code should look like this.
-modify_reg!(rcc, RCC.ahb1enr, GPIOAEN: Enabled);
-modify_reg!(gpio, GPIOA.moder, MODER1: Input, MODER2: Output, MODER3: Input);
-while read_reg!(gpio, GPIOA.idr, IDR3 == High) {
-    let pa1 = read_reg!(gpio, GPIOA.idr, IDR1);
-    modify_reg!(gpio, GPIOA.odr, ODR2: pin);
+modify_reg!(rcc, RCC.AHB1ENR, GPIOAEN: Enabled);
+modify_reg!(gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+while read_reg!(gpio, GPIOA.IDR, IDR3 == High) {
+    let pa1 = read_reg!(gpio, GPIOA.IDR, IDR1);
+    modify_reg!(gpio, GPIOA.ODR, ODR2: pin);
 }
 
 // Whole-register read/modify/write.
 // Rarely used but nice to have the option.
-let port = read_reg!(gpio, GPIOA.idr);
-write_reg!(gpio, GPIOA.odr, 0x12345678);
-modify_reg!(gpio, GPIOA.moder, |r| r | (0b10 << 4));
+let port = read_reg!(gpio, GPIOA.IDR);
+write_reg!(gpio, GPIOA.ODR, 0x12345678);
+modify_reg!(gpio, GPIOA.MODER, |r| r | (0b10 << 4));
 
 // Or forego the macros and just use the constants yourself.
 // The macros above just expand to these forms for you, bringing
 // the relevant constants into scope. Nothing else is going on.
-let pa1 = (gpio::GPIOA.idr.read() >> gpio::idr::IDR1::_offset)
-          & gpio::idr::IDR1::_mask;
-gpio::GPIOA.odr.write(gpio::odr::ODR2::Output << gpio::odr::ODR2::_offset);
+let pa1 = (gpio::GPIOA.IDR.read() >> gpio::IDR::IDR1::_offset)
+          & gpio::IDR::IDR1::_mask;
+gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 ```
 
 ## Why use stm32ral?
@@ -98,7 +98,7 @@ Then, in your code:
 #[macro_use]
 extern crate stm32ral;
 
-modify_reg!(stm32ral::gpio, GPIOA.moder, MODER1: Input, MODER2: Output, MODER3: Input);
+modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: Input);
 ```
 
 ## Safety
