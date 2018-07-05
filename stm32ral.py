@@ -13,7 +13,7 @@ import multiprocessing
 import xml.etree.ElementTree as ET
 
 
-CRATE_LIB_PREAMBLE = """
+CRATE_LIB_PREAMBLE = """\
 // Copyright 2018 Adam Greig
 // See LICENSE-APACHE and LICENSE-MIT for license details.
 
@@ -28,10 +28,12 @@ mod register;
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
 
+pub mod peripherals;
+
 """
 
 
-CRATE_CARGO_TOML_PREAMBLE = """
+CRATE_CARGO_TOML_PREAMBLE = """\
 [package]
 name = "stm32ral"
 version = "0.1.0"
@@ -43,6 +45,9 @@ readme = "README.md"
 keywords = ["stm32", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
+
+[package.metadata.docs.rs]
+features = ["doc"]
 
 [features]
 default = []
@@ -160,7 +165,7 @@ class EnumeratedValuesLink(Node):
         return f"pub use ::super::{self.field.name}::{self.evs.name};"
 
     def __eq__(self, other):
-        return self.evs == other
+        return self.evs.__eq__(other)
 
     @property
     def name(self):
@@ -239,7 +244,6 @@ class Field(Node):
     def __eq__(self, other):
         return (
             self.name == other.name and
-            self.desc == other.desc and
             self.width == other.width and
             self.offset == other.offset and
             self.access == other.access)
@@ -264,6 +268,32 @@ class FieldLink(Node):
 
     def to_rust(self):
         return f"pub use {self.path}::{self.parent.name};"
+
+    def __lt__(self, other):
+        return self.parent.__lt__(other)
+
+    def __eq__(self, other):
+        return self.parent.__eq__(other)
+
+    @property
+    def name(self):
+        return self.parent.name
+
+    @property
+    def desc(self):
+        return self.parent.desc
+
+    @property
+    def width(self):
+        return self.parent.width
+
+    @property
+    def offset(self):
+        return self.parent.offset
+
+    @property
+    def access(self):
+        return self.parent.access
 
 
 class RegisterCtx:
@@ -427,7 +457,6 @@ class Register(Node):
         Adds any fields from other to self, and adjusts self's name to the
         common prefix of the two names, if such a prefix is at least
         2 letters long.
-        Sets self's access to the superset of self and other.
         """
         my_field_names = set(f.name for f in self.fields)
         for field in other.fields:
@@ -436,7 +465,7 @@ class Register(Node):
         self.desc = "\n/// ".join([
             f"{self.name} and {other.name}",
             f"{self.name}: {self.desc}",
-            f"{other.name:} {other.desc}",
+            f"{other.name}: {other.desc}",
         ])
         self.size = max(self.size, other.size)
         newname = os.path.commonprefix((self.name, other.name)).strip("_")
@@ -487,12 +516,17 @@ class PeripheralPrototype(Node):
     Has a name and description.
     Belongs to a parent Device.
     Contains child PeripheralInstances and Registers.
+
+    Also contains a list of device names which contain this peripheral,
+    used to ensure shared peripherals are only compiled when the crate
+    is built for a device which uses them.
     """
     def __init__(self, name, desc):
         self.name = name.lower()
         self.desc = desc
         self.registers = []
         self.instances = []
+        self.parent_device_names = []
 
     def to_dict(self):
         return {"name": self.name, "desc": self.desc,
@@ -549,6 +583,9 @@ class PeripheralPrototype(Node):
             use_registers.append("WORegister")
         use_registers = ", ".join(use_registers)
         desc = "\n//! ".join(self.desc.split("\n"))
+        if len(self.parent_device_names) > 1:
+            desc += "\n//!\n"
+            desc += "//! Used by: " + ', '.join(set(self.parent_device_names))
         preamble = "\n".join([
             "#![allow(non_snake_case, non_upper_case_globals)]",
             "#![allow(non_camel_case_types)]",
@@ -677,6 +714,7 @@ class PeripheralPrototypeLink(Node):
             f"//! {desc}",
             "",
             f"pub use {self.path}::RegisterBlock;",
+            "",
         ])
         registers = "\n".join(f"pub use {self.path}::{m.name};"
                               for m in self.prototype.registers)
@@ -685,6 +723,7 @@ class PeripheralPrototypeLink(Node):
         with open(fname, "w") as f:
             f.write(preamble)
             f.write(registers)
+            f.write("\n")
             f.write(instances)
         rustfmt(fname)
 
@@ -697,6 +736,10 @@ class PeripheralPrototypeLink(Node):
     @property
     def registers(self):
         return self.prototype.registers
+
+    @property
+    def desc(self):
+        return self.prototype.desc
 
     def __eq__(self, other):
         return self.prototype == other
@@ -777,6 +820,12 @@ class Device(Node):
         for peripheral in self.peripherals:
             peripheral.to_rust_file(devicepath)
         mod = "\n".join(f"pub mod {p.name};" for p in self.peripherals)
+        pnames = [p.name for p in self.peripherals]
+        dupnames = set(name for name in pnames if pnames.count(name) > 1)
+        if dupnames:
+            print(f"Device {self.name}: duplicate peripherals:")
+            print(dupnames)
+            print()
         fname = os.path.join(devicepath, "mod.rs")
         with open(fname, "w") as f:
             f.write(mod+"\n")
@@ -795,6 +844,8 @@ class Device(Node):
         for peripheral in svd.findall('.//peripheral'):
             device.peripherals.append(
                 PeripheralPrototype.from_svd(svd, peripheral, register_ctx))
+        for peripheral in device.peripherals:
+            peripheral.parent_device_names.append(device.name)
         return device
 
     @classmethod
@@ -847,6 +898,7 @@ class Family(Node):
     def __init__(self, name):
         self.name = name
         self.devices = []
+        self.peripherals = []
 
     def to_dict(self):
         return {"name": self.name,
@@ -855,16 +907,100 @@ class Family(Node):
     def to_files(self, path, pool):
         familypath = os.path.join(path, self.name)
         os.makedirs(familypath, exist_ok=True)
-        fname = os.path.join(familypath, "mod.rs")
+        periphpath = os.path.join(familypath, "peripherals")
+        os.makedirs(periphpath, exist_ok=True)
         pool_results = []
-        with open(fname, "w") as f:
+        with open(os.path.join(familypath, "mod.rs"), "w") as f:
+            f.write('pub mod peripherals;\n\n')
             for device in self.devices:
                 dname = device.name
                 result = pool.apply_async(device.to_files, (familypath,))
                 pool_results.append(result)
                 f.write(f'#[cfg(any(feature="{dname}", feature="doc"))]\n')
                 f.write(f'pub mod {dname};\n\n')
+        with open(os.path.join(periphpath, "mod.rs"), "w") as f:
+            for peripheral in self.peripherals:
+                r = pool.apply_async(peripheral.to_rust_file, (periphpath,))
+                pool_results.append(r)
+                features = ", ".join(
+                    f'feature="{d}"' for d in peripheral.parent_device_names)
+                f.write(f'#[cfg(any(feature="doc", {features}))]\n')
+                f.write(f'pub mod {peripheral.name};\n\n')
         return pool_results
+
+    def refactor_common_peripherals(self):
+        """
+        Find peripherals shared between devices which are identical and
+        refactor them into the family-level shared peripherals.
+        """
+        peripherals = []
+        to_link = set()
+        links = dict()
+
+        # First gather all peripherals
+        for didx, device in enumerate(self.devices):
+            for pidx, peripheral in enumerate(device.peripherals):
+                peripherals.append((didx, pidx, peripheral))
+
+        # Now go through all pairs and store matching peripherals
+        for pt1, pt2 in itertools.combinations(peripherals, 2):
+            didx1, pidx1, p1 = pt1
+            didx2, pidx2, p2 = pt2
+            idx1 = (didx1, pidx1)
+            idx2 = (didx2, pidx2)
+            if p1 is p2 or idx1 in to_link or idx2 in to_link:
+                continue
+            elif p1.registers == p2.registers:
+                to_link.add(idx2)
+                if idx1 not in links:
+                    links[idx1] = []
+                links[idx1].append(idx2)
+
+        # Determine which peripherals need versioned names
+        # (any with multiple peripherals that share the same name).
+        pnames = set()
+        dupnames = set()
+        for idx in links:
+            didx, pidx = idx
+            p = self.devices[didx].peripherals[pidx]
+            if p.name in pnames:
+                dupnames.add(p.name)
+            pnames.add(p.name)
+
+        # Now create new crate-level peripherals and replace the old ones
+        # with links to the new ones
+        versions = {}
+        for idx in links:
+            # Get the primary member of the link group
+            didx, pidx = idx
+            device = self.devices[didx]
+            p = device.peripherals[pidx]
+            # Modify the name to gpio_v1, gpio_v2, etc
+            name = p.name
+            if name in dupnames:
+                if name not in versions:
+                    versions[name] = 0
+                versions[name] += 1
+                name = f'{name}_v{versions[name]}'
+            # Make a new PeripheralPrototype for the family, with no instances
+            familyp = PeripheralPrototype(name, p.desc)
+            familyp.registers = p.registers
+            familyp.parent_device_names.append(device.name)
+            self.peripherals.append(familyp)
+            # Make a link for the primary member
+            path = f"{self.name}::peripherals::{name}"
+            linkp = PeripheralPrototypeLink(p.name, familyp, path)
+            linkp.instances = p.instances
+            self.devices[didx].peripherals[pidx] = linkp
+            # Make a link for each other member
+            for childidx in links[idx]:
+                cdidx, cpidx = childidx
+                childd = self.devices[cdidx]
+                childp = childd.peripherals[cpidx]
+                familyp.parent_device_names.append(childd.name)
+                linkp = PeripheralPrototypeLink(childp.name, familyp, path)
+                linkp.instances = childp.instances
+                childd.peripherals[cpidx] = linkp
 
 
 class Crate:
@@ -885,6 +1021,8 @@ class Crate:
         srcpath = os.path.join(path, 'src')
         if not os.path.isdir(srcpath):
             raise ValueError(f"{srcpath} does not exist")
+        periphpath = os.path.join(srcpath, "peripherals")
+        os.makedirs(periphpath, exist_ok=True)
 
         lib_f = open(os.path.join(srcpath, "lib.rs"), "w")
         lib_f.write(CRATE_LIB_PREAMBLE)
@@ -892,17 +1030,28 @@ class Crate:
         cargo_f = open(os.path.join(path, "Cargo.toml"), "w")
         cargo_f.write(CRATE_CARGO_TOML_PREAMBLE)
 
+        periph_f = open(os.path.join(periphpath, "mod.rs"), "w")
+
         pool_results = []
         for family in self.families:
+            fname = family.name
             pool_results += family.to_files(srcpath, pool)
+            lib_f.write(f'#[cfg(feature="doc")]\n')
+            lib_f.write(f'pub mod {fname};\n\n')
             for device in family.devices:
-                fname = family.name
                 dname = device.name
                 cargo_f.write(f"{dname} = []\n")
-                lib_f.write(f'#[cfg(any(feature="{dname}", feature="doc"))]\n')
+                lib_f.write(f'#[cfg(feature="{dname}")]\n')
                 lib_f.write(f'pub mod {fname};\n')
                 lib_f.write(f'#[cfg(feature="{dname}")]\n')
                 lib_f.write(f'pub use {fname}::{dname}::*;\n\n')
+        for peripheral in self.peripherals:
+            result = pool.apply_async(peripheral.to_rust_file, (periphpath,))
+            pool_results.append(result)
+            features = ", ".join(
+                f'feature="{d}"' for d in peripheral.parent_device_names)
+            periph_f.write(f'#[cfg(any(feature="doc", {features}))]\n')
+            periph_f.write(f'pub mod {peripheral.name};\n\n')
         return pool_results
 
 
@@ -967,6 +1116,9 @@ def main():
             peripheral.refactor_common_register_fields()
             for register in peripheral.registers:
                 register.refactor_common_field_values()
+
+    for family in crate.families:
+        family.refactor_common_peripherals()
 
     print("Outputting crate...")
     pool_results = []

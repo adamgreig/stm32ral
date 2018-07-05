@@ -132,6 +132,25 @@ in this crate.
 Changes to this crate are primarily concerned with how the RAL is generated
 from the SVD files.
 
+## Building stm32ral
+
+First set up the stm32-rs submodule:
+```
+$ git submodule update --init
+$ cd stm32-rs/svd
+$ ./extract.sh
+$ cd ../..
+```
+
+Now you should simply be able to run make, which will automatically run
+`make patch` inside the stm32-rs submodule to produce up-to-date patched SVDs.
+```
+$ make
+```
+
+Be sure to update the submodule (`git submodule update`) if it's been changed
+upstream to make sure you're using the latest available SVD patches.
+
 ## License
 
 Licensed under either of
