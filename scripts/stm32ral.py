@@ -76,7 +76,7 @@ class EnumeratedValue(Node):
     def to_rust(self, field_width):
         return f"""
         /// {self.desc}
-        {self.name} = 0b{self.value:0{field_width}b},"""
+        pub const {self.name}: u32 = 0b{self.value:0{field_width}b};"""
 
     @classmethod
     def from_svd(cls, svd, node):
@@ -115,7 +115,7 @@ class EnumeratedValues(Node):
     def to_rust(self, field_width):
         values = "\n".join(v.to_rust(field_width) for v in self.values)
         return f"""\
-        pub enum {self.name} {{
+        pub mod {self.name} {{
             {values}
         }}"""
 
