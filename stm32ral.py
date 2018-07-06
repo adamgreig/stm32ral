@@ -415,7 +415,6 @@ class Register(Node):
     def __eq__(self, other):
         return (
             self.name == other.name and
-            self.desc == other.desc and
             self.offset == other.offset and
             self.size == other.size and
             self.access == other.access and
@@ -452,7 +451,7 @@ class Register(Node):
             f2 = EnumeratedValuesLink(f1, evs1)
             self.fields[idx2].__dict__[name] = f2
 
-    def consume(self, other):
+    def consume(self, other, parent):
         """
         Adds any fields from other to self, and adjusts self's name to the
         common prefix of the two names, if such a prefix is at least
@@ -469,8 +468,12 @@ class Register(Node):
         ])
         self.size = max(self.size, other.size)
         newname = os.path.commonprefix((self.name, other.name)).strip("_")
-        if len(newname) >= 2:
-            self.name = newname
+        if newname != self.name and len(newname) >= 2:
+            if newname not in [r.name for r in parent.registers]:
+                self.name = newname
+            else:
+                print(f"Warning [{parent.name}]: {self.name}+{other.name} "
+                      "aliasing produces same name, not renaming")
         self.access = "read-write"
 
 
@@ -629,7 +632,7 @@ class PeripheralPrototype(Node):
         peripheral.instances.append(PeripheralInstance(name, addr))
         return peripheral
 
-    def consume(self, other):
+    def consume(self, other, parent):
         """
         Adds any PeripheralInstances from other to self, and adjusts self's
         name to the common prefix of the two names, if such a prefix is
@@ -637,8 +640,12 @@ class PeripheralPrototype(Node):
         """
         self.instances += other.instances
         newname = os.path.commonprefix((self.name, other.name))
-        if len(newname) >= 3:
-            self.name = newname
+        if newname != self.name and len(newname) >= 3:
+            if newname not in [p.name for p in parent.peripherals]:
+                self.name = newname
+            else:
+                print(f"Warning [{parent.name}]: {self.name}+{other.name}: "
+                      f"new name {newname} already exists, not renaming")
 
     def refactor_common_register_fields(self):
         """
@@ -673,10 +680,13 @@ class PeripheralPrototype(Node):
             if r1 is r2 or idx1 in to_delete or idx2 in to_delete:
                 continue
             if r1.offset == r2.offset:
-                r1.consume(r2)
+                r1.consume(r2, parent=self)
                 to_delete.add(idx2)
         for idx in sorted(to_delete, reverse=True):
             del self.registers[idx]
+
+    def __lt__(self, other):
+        return self.name < other.name
 
 
 class PeripheralPrototypeLink(Node):
@@ -749,6 +759,9 @@ class PeripheralPrototypeLink(Node):
 
     def refactor_aliased_registers(self):
         pass
+
+    def __lt__(self, other):
+        return self.name < other.name
 
 
 class CPU(Node):
@@ -876,7 +889,7 @@ class Device(Node):
                     to_link.add(idx2)
                 else:
                     # Other peripherals we just move instances together.
-                    p1.consume(p2)
+                    p1.consume(p2, parent=self)
                     to_delete.add(idx2)
         for idx1, idx2 in links:
             p1 = self.peripherals[idx1]
