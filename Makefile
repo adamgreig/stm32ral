@@ -7,4 +7,9 @@ stm32-rs:
 clean:
 	rm -rf src/peripherals src/stm32* src/lib.rs
 
+buildall:
+	for device in stm32-rs/devices/*.yaml; do\
+		cargo build --features `basename $$device .yaml`;\
+	done
+
 .PHONY: stm32-rs
