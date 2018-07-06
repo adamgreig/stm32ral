@@ -228,6 +228,7 @@ macro_rules! write_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
+        #[allow(unused_imports)]
         $instance.$reg.write(
             $({ use $periph::{$reg::$field::{_mask, _offset, W::*, RW::*}}; ($value & _mask) << _offset }) | *
         );
@@ -323,6 +324,7 @@ macro_rules! modify_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
+        #[allow(unused_imports)]
         $instance.$reg.write(
             ($instance.$reg.read() & !( $({ use $periph::{$reg::$field::{_mask, _offset}}; _mask << _offset }) | * ))
             | $({ use $periph::{$reg::$field::{_mask, _offset, W::*, RW::*}}; ($value & _mask) << _offset }) | *);
@@ -394,12 +396,14 @@ macro_rules! read_reg {
     ( $periph:path, $instance:ident . $reg:ident, $field:ident ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
+        #[allow(unused_imports)]
         use $periph::{$reg::$field::{_mask, _offset, R::*, RW::*}};
         ($instance.$reg.read() >> _offset) & _mask
     }};
     ( $periph:path, $instance:ident . $reg:ident, $field:ident $($cmp:tt)* ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
+        #[allow(unused_imports)]
         use $periph::{$reg::$field::{_mask, _offset, R::*, RW::*}};
         (($instance.$reg.read() >> _offset) & _mask) $($cmp)*
     }};
