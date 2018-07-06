@@ -9,6 +9,7 @@ clean:
 
 buildall:
 	for device in stm32-rs/devices/*.yaml; do\
+		echo $$device;\
 		cargo build --features `basename $$device .yaml`;\
 	done
 

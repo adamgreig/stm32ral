@@ -588,7 +588,8 @@ class PeripheralPrototype(Node):
         desc = "\n//! ".join(self.desc.split("\n"))
         if len(self.parent_device_names) > 1:
             desc += "\n//!\n"
-            desc += "//! Used by: " + ', '.join(set(self.parent_device_names))
+            desc += "//! Used by: " + ', '.join(
+                sorted(set(self.parent_device_names)))
         preamble = "\n".join([
             "#![allow(non_snake_case, non_upper_case_globals)]",
             "#![allow(non_camel_case_types)]",
@@ -624,7 +625,6 @@ class PeripheralPrototype(Node):
         register_ctx = register_ctx.inherit(node)
         peripheral = cls(name, desc)
         if registers is None:
-            print(df)
             raise ValueError(f"No registers found for peripheral {name}")
         ctx = register_ctx
         for register in registers.findall('register'):
