@@ -10,6 +10,8 @@ The underlying data is generated via the patched SVD files in
 
 [Repository](https://github.com/adamgreig/stm32ral)
 
+[Supported Devices](supported_devices.md)
+
 ## What is it?
 
 stm32ral is an experiment into a lightweight register access layer. It provides
@@ -62,7 +64,7 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 * Small and lightweight
 * Simple
 * Quick to compile
-* Covers all STM32 devices in one crate
+* Covers [all STM32 devices](supported_devices.md) in one crate
 * Supports `cortex-m-rt` via the `rt` feature, including interrupts
 * Doesn't get in your way
 * A bit like what you're used to from C header files
@@ -108,7 +110,7 @@ modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: 
 ### Runtime Support & Interrupts
 
 Use the `rt` feature to bring in `cortex-m-rt`, which provides a suitable
-`device.x` linker script and a default handler for the interrupt handlers.
+`device.x` linker script and interrupt support.
 
 You can then specify your own interrupt handler:
 ```rust
