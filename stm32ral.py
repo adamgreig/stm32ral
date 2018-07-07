@@ -19,16 +19,45 @@ CRATE_LIB_PREAMBLE = """\
 
 //! This project provides a register access layer (RAL) for all
 //! STM32 microcontrollers.
+//!
+//! When built, you must specify a device feature, such as `stm32f405`.
+//! This will cause all modules in that device's module to be re-exported
+//! from the top level, so that for example `stm32ral::gpio` will resolve to
+//! `stm32ral::stm32f4::stm32f405::gpio`.
+//!
+//! In the generated documentation, all devices are visible inside their family
+//! modules, but when built for a specific device, only that devices' constants
+//! will be available.
+//!
+//! See the [README](https://github.com/adamgreig/stm32ral) for example usage.
 
 #![no_std]
 
 #[macro_use]
 mod register;
 
+/// Set the interrupt handler for a specific interrupt.
+///
+/// Call with `interrupt!(NAME, my_handler);`, where `NAME` must be in
+/// `stm32ral::interrupts::Interrupt`, and `my_handler` must have type `fn()`.
+///
+/// This macro is only available with the `rt` feature.
+#[cfg(any(feature="doc", feature="rt"))]
+#[macro_export]
+macro_rules! interrupt {
+    ($name:ident, $handler:path) => {
+        #[no_mangle]
+        pub unsafe extern "C" fn $name() {
+            let _ = $crate::interrupts::Interrupt::$name;
+            let f: fn() = $handler;
+            f()
+        }
+    };
+}
+
+
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
-
-pub mod peripherals;
 
 """
 
@@ -49,10 +78,35 @@ license = "MIT/Apache-2.0"
 [package.metadata.docs.rs]
 features = ["doc"]
 
+[dependencies]
+bare-metal = "0.2.0"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.5.1"
+
 [features]
 default = []
 unsafe = []
+rt = ["cortex-m-rt/device"]
 doc = []
+"""
+
+
+BUILD_RS_TEMPLATE = """\
+use std::env;
+use std::fs;
+use std::path::PathBuf;
+fn main() {{
+    if env::var_os("CARGO_FEATURE_RT").is_some() {{
+        let out = &PathBuf::from(env::var_os("OUT_DIR").unwrap());
+        println!("cargo:rustc-link-search={{}}", out.display());
+        let device_file = {device_clauses};
+        fs::copy(device_file, out.join("device.x")).unwrap();
+        println!("cargo:rerun-if-changed={{}}", device_file);
+    }}
+    println!("cargo:rerun-if-changed=build.rs");
+}}
 """
 
 
@@ -246,7 +300,8 @@ class Field(Node):
             self.name == other.name and
             self.width == other.width and
             self.offset == other.offset and
-            self.access == other.access)
+            self.access == other.access and
+            self.r == other.r and self.w == other.w and self.rw == other.rw)
 
     def __lt__(self, other):
         return (self.offset, self.name) < (other.offset, other.name)
@@ -751,9 +806,6 @@ class PeripheralPrototypeLink(Node):
     def desc(self):
         return self.prototype.desc
 
-    def __eq__(self, other):
-        return self.prototype == other
-
     def refactor_common_register_fields(self):
         pass
 
@@ -804,9 +856,12 @@ class Interrupt(Node):
     @classmethod
     def from_svd(cls, svd, node):
         name = get_string(node, 'name')
-        desc = get_string(node, 'desc')
+        desc = get_string(node, 'description')
         value = get_int(node, 'value')
         return cls(name, desc, value)
+
+    def __lt__(self, other):
+        return self.value < other.value
 
 
 class Device(Node):
@@ -827,22 +882,86 @@ class Device(Node):
                 "peripherals": [x.to_dict() for x in self.peripherals],
                 "interrupts": [x.to_dict() for x in self.interrupts]}
 
+    def to_interrupt_file(self, familypath):
+        devicepath = os.path.join(familypath, self.name)
+        iname = os.path.join(devicepath, "interrupts.rs")
+        with open(iname, "w") as f:
+            f.write("extern crate bare_metal;\n")
+            f.write('#[cfg(feature="rt")]\nextern "C" {\n')
+            for interrupt in self.interrupts:
+                f.write(f'    fn {interrupt.name}();\n')
+            f.write('}\n\n')
+            vectors = []
+            offset = 0
+            for interrupt in self.interrupts:
+                while interrupt.value != offset:
+                    vectors.append("Vector { _reserved: 0 },")
+                    offset += 1
+                vectors.append(f"Vector {{ _handler: {interrupt.name} }},")
+                offset += 1
+            nvectors = len(vectors)
+            vectors = "\n".join(vectors)
+
+            f.write(f"""\
+                #[doc(hidden)]
+                pub union Vector {{
+                    _handler: unsafe extern "C" fn(),
+                    _reserved: u32,
+                }}
+
+                #[cfg(feature="rt")]
+                #[doc(hidden)]
+                #[link_section=".vector_table.interrupts"]
+                #[no_mangle]
+                pub static __INTERRUPTS: [Vector; {nvectors}] = [
+                {vectors}
+                ];
+
+                /// Available interrupts for this device
+                #[repr(u8)]
+                #[derive(Clone,Copy)]
+                #[allow(non_camel_case_types)]
+                pub enum Interrupt {{""")
+            for interrupt in self.interrupts:
+                f.write(f"/// {interrupt.value}: {interrupt.desc}\n")
+                f.write(f"{interrupt.name} = {interrupt.value},\n")
+            f.write("}\n")
+            f.write("""\
+                unsafe impl bare_metal::Nr for Interrupt {
+                    #[inline]
+                    fn nr(&self) -> u8 {
+                        *self as u8
+                    }
+                }\n""")
+        rustfmt(iname)
+
     def to_files(self, familypath):
         devicepath = os.path.join(familypath, self.name)
         os.makedirs(devicepath, exist_ok=True)
         for peripheral in self.peripherals:
             peripheral.to_rust_file(devicepath)
-        mod = "\n".join(f"pub mod {p.name};" for p in self.peripherals)
         pnames = [p.name for p in self.peripherals]
         dupnames = set(name for name in pnames if pnames.count(name) > 1)
         if dupnames:
-            print(f"Device {self.name}: duplicate peripherals:")
+            print(f"Warning [{self.name}]: duplicate peripherals: ", end='')
             print(dupnames)
-            print()
-        fname = os.path.join(devicepath, "mod.rs")
-        with open(fname, "w") as f:
-            f.write(mod+"\n")
-        rustfmt(fname)
+        self.to_interrupt_file(familypath)
+        mname = os.path.join(devicepath, "mod.rs")
+        with open(mname, "w") as f:
+            f.write(f"//! stm32ral module for {self.name}\n\n")
+            prio_bits = self.cpu.nvic_prio_bits
+            f.write("/// Number of priority bits implemented by the NVIC\n")
+            f.write(f"pub const NVIC_PRIO_BITS: u8 = {prio_bits};\n\n")
+            f.write("/// Interrupt-related magic for this device\n")
+            f.write("pub mod interrupts;\n")
+            f.write("pub use self::interrupts::Interrupt;\n\n")
+            for peripheral in self.peripherals:
+                f.write(f"pub mod {peripheral.name};\n")
+        rustfmt(mname)
+        dname = os.path.join(devicepath, "device.x")
+        with open(dname, "w") as f:
+            for interrupt in self.interrupts:
+                f.write(f"PROVIDE({interrupt.name} = DefaultHandler);\n")
 
     @classmethod
     def from_svd(cls, svd):
@@ -852,8 +971,15 @@ class Device(Node):
         device = cls(name, cpu)
         register_ctx = RegisterCtx.empty()
         register_ctx = register_ctx.inherit(svd)
+        interrupt_nums = set()
         for interrupt in svd.findall('.//interrupt'):
-            device.interrupts.append(Interrupt.from_svd(svd, interrupt))
+            interrupt = Interrupt.from_svd(svd, interrupt)
+            if interrupt.value in interrupt_nums:
+                # Many SVDs have duplicated interrupts. Skip them.
+                continue
+            device.interrupts.append(interrupt)
+            interrupt_nums.add(interrupt.value)
+        device.interrupts.sort()
         for peripheral in svd.findall('.//peripheral'):
             device.peripherals.append(
                 PeripheralPrototype.from_svd(svd, peripheral, register_ctx))
@@ -924,6 +1050,9 @@ class Family(Node):
         os.makedirs(periphpath, exist_ok=True)
         pool_results = []
         with open(os.path.join(familypath, "mod.rs"), "w") as f:
+            uname = self.name.upper()
+            f.write(f"//! Parent module for all {uname} devices.\n\n")
+            f.write("/// Peripherals shared by multiple devices\n")
             f.write('pub mod peripherals;\n\n')
             for device in self.devices:
                 dname = device.name
@@ -1030,6 +1159,21 @@ class Crate:
         return {"families": [x.to_dict() for x in self.families],
                 "peripherals": [x.to_dict() for x in self.peripherals]}
 
+    def write_build_script(self, path):
+        devices = []
+        for family in self.families:
+            for device in family.devices:
+                devices.append((family.name, device.name))
+        clauses = " else ".join("""\
+            if env::var_os("CARGO_FEATURE_{}").is_some() {{
+                "src/{}/{}/device.x"
+            }}""".format(d.upper(), f, d) for (f, d) in sorted(devices))
+        clauses += " else { panic!(\"No device features selected\"); }"
+        fname = os.path.join(path, "build.rs")
+        with open(fname, "w") as f:
+            f.write(BUILD_RS_TEMPLATE.format(device_clauses=clauses))
+        rustfmt(fname)
+
     def to_files(self, path, pool):
         srcpath = os.path.join(path, 'src')
         if not os.path.isdir(srcpath):
@@ -1042,6 +1186,8 @@ class Crate:
 
         cargo_f = open(os.path.join(path, "Cargo.toml"), "w")
         cargo_f.write(CRATE_CARGO_TOML_PREAMBLE)
+
+        self.write_build_script(path)
 
         periph_f = open(os.path.join(periphpath, "mod.rs"), "w")
 
@@ -1058,6 +1204,9 @@ class Crate:
                 lib_f.write(f'pub mod {fname};\n')
                 lib_f.write(f'#[cfg(feature="{dname}")]\n')
                 lib_f.write(f'pub use {fname}::{dname}::*;\n\n')
+        if self.peripherals:
+            lib_f.write("//! Peripherals shared between multiple families\n")
+            lib_f.write("pub mod peripherals;\n\n")
         for peripheral in self.peripherals:
             result = pool.apply_async(peripheral.to_rust_file, (periphpath,))
             pool_results.append(result)

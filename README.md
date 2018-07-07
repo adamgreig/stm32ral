@@ -3,7 +3,7 @@
 This project provides a Rust RAL (register access layer) for all STM32
 microcontrollers.
 
-The underlying data is generated via the SVD files in
+The underlying data is generated via the patched SVD files in
 [stm32-rs](https://github.com/adamgreig/stm32-rs).
 
 [Documentation](https://docs.rs/stm32ral)
@@ -24,7 +24,7 @@ structure that contains a struct for each peripheral comprising just its
 registers in order, and you get a lot of constants for field widths, positions,
 and possible values. There's not much else, so it takes little disk and builds
 very quickly. It covers all registers of all STM32 devices, and aims to
-include full enumerated values for each field as quickly as possible.
+include full enumerated values for each field as soon as possible.
 
 Please consider trying it out and contributing or leaving feedback!
 
@@ -34,7 +34,7 @@ Please consider trying it out and contributing or leaving feedback!
 use stm32ral::{rcc, gpio};
 
 // Field-level read/modify/write, with either named values or just literals.
-// Most of your code should look like this.
+// Most of your code will look like this.
 modify_reg!(rcc, RCC.AHB1ENR, GPIOAEN: Enabled);
 modify_reg!(gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: Input);
 while read_reg!(gpio, GPIOA.IDR, IDR3 == High) {
@@ -44,6 +44,7 @@ while read_reg!(gpio, GPIOA.IDR, IDR3 == High) {
 
 // Whole-register read/modify/write.
 // Rarely used but nice to have the option.
+// It's a bit shorter for single-field registers.
 let port = read_reg!(gpio, GPIOA.IDR);
 write_reg!(gpio, GPIOA.ODR, 0x12345678);
 modify_reg!(gpio, GPIOA.MODER, |r| r | (0b10 << 4));
@@ -62,22 +63,24 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 * Simple
 * Quick to compile
 * Covers all STM32 devices in one crate
+* Supports `cortex-m-rt` via the `rt` feature, including interrupts
 * Doesn't get in your way
 * A bit like what you're used to from C header files
 
 ## Why not use stm32ral?
 
 * Not nearly as much safety as leading competitors
-* You have too much disk space and need to fill it up somehow
+* Won't keep you warm burning CPU time
 * A bit like what you're used to from C header files
 
 ## Instead, consider using...
 
 * [svd2rust](https://github.com/japaric/svd2rust) is the obvious choice for
-  generating Cortex-M device crates from SVD files
+  generating Cortex-M device crates from SVD files, and provided inspiration
+  for this one
 * [stm32-rs](https://github.com/adamgreig/stm32-rs) provides `svd2rust` crates
   for all STM32 devices supported by this crate, and they use the same
-  underlying data
+  underlying patched SVD files
 * [TockOS](https://www.tockos.org/blog/2018/mmio-registers/) has a nice looking
   API for register access using their `svd2regs` tool.
 * [Bobbin](http://www.bobbin.io/) also has some good looking ideas for register
@@ -88,10 +91,11 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 In your `Cargo.toml`:
 ```toml
 [dependencies.stm32ral]
-features = ["stm32f405"]
+version = "0.1.0"
+features = ["stm32f405", "rt"]
 ```
-Replace `stm32f405` with the required chip name. Consider using the `unsafe`
-feature as well, which makes _all_ register access "safe".
+Replace `stm32f405` with the required chip name. See
+[Supported Devices](supported_devices.md) for the full list.
 
 Then, in your code:
 ```rust
@@ -99,6 +103,24 @@ Then, in your code:
 extern crate stm32ral;
 
 modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+```
+
+### Runtime Support & Interrupts
+
+Use the `rt` feature to bring in `cortex-m-rt`, which provides a suitable
+`device.x` linker script and a default handler for the interrupt handlers.
+
+You can then specify your own interrupt handler:
+```rust
+interrupt!(TIM2, my_tim2_handler);
+fn my_tim2_handler() {
+    write_reg!(stm32ral::tim2, TIM2.SR, UIF: 0);
+}
+```
+
+If you're using `cortex-m`, the `Interrupt` enum is compatible:
+```rust
+peripherals.NVIC.enable(stm32ral::Interrupt::TIM2);
 ```
 
 ## Safety
@@ -114,7 +136,7 @@ but otherwise nothing prevents safe code writing arbitrary values to registers
 not specifically marked unsafe. This is considered a usability trade-off;
 while some illegal values in some device registers will surely cause unexpected
 behaviour; so will many _legal_ values (Rust cannot prevent you setting an
-output high which is hardwired to the supply rail, for example). Aside from
+output low which is hardwired to the supply rail, for example). Aside from
 a few specific registers, writing those values should not cause undefined
 behaviour in Rust itself, so our tradeoff is to try and prevent UB while not
 trying to use the safety system to enforce that all register fields may only

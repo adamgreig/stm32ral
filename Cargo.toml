@@ -13,9 +13,17 @@ license = "MIT/Apache-2.0"
 [package.metadata.docs.rs]
 features = ["doc"]
 
+[dependencies]
+bare-metal = "0.2.0"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.5.1"
+
 [features]
 default = []
 unsafe = []
+rt = ["cortex-m-rt/device"]
 doc = []
 stm32f0x0 = []
 stm32f0x1 = []

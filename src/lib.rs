@@ -3,16 +3,45 @@
 
 //! This project provides a register access layer (RAL) for all
 //! STM32 microcontrollers.
+//!
+//! When built, you must specify a device feature, such as `stm32f405`.
+//! This will cause all modules in that device's module to be re-exported
+//! from the top level, so that for example `stm32ral::gpio` will resolve to
+//! `stm32ral::stm32f4::stm32f405::gpio`.
+//!
+//! In the generated documentation, all devices are visible inside their family
+//! modules, but when built for a specific device, only that devices' constants
+//! will be available.
+//!
+//! See the [README](https://github.com/adamgreig/stm32ral) for example usage.
 
 #![no_std]
 
 #[macro_use]
 mod register;
 
+/// This macro allows you to override the default interrupt handler for a
+/// specific named interrupt.
+/// Call with `interrupt!(NAME, my_handler);`, where `NAME` must be in
+/// `stm32ral::interrupts::Interrupt`, and `my_handler` must have type `fn()`.
+///
+/// This macro is only available with the `rt` feature.
+#[cfg(any(feature="doc", feature="rt"))]
+#[macro_export]
+macro_rules! interrupt {
+    ($name:ident, $handler:path) => {
+        #[no_mangle]
+        pub unsafe extern "C" fn $name() {
+            let _ = $crate::interrupts::Interrupt::$name;
+            let f: fn() = $handler;
+            f()
+        }
+    };
+}
+
+
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
-
-pub mod peripherals;
 
 #[cfg(feature="doc")]
 pub mod stm32f0;
