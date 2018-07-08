@@ -1,0 +1,18 @@
+language: rust
+
+rust:
+  - stable
+  - beta
+  - nightly
+
+install:
+  - pyenv shell 3.6
+  - pip install pyyaml
+  - cd stm32-rs/svd && ./extract.sh
+
+script:
+  - pyenv shell 3.6
+  - make
+  - git diff-files --quiet
+  - test -z "$(git ls-files --exclude-standard --others)"
+  - make buildall
