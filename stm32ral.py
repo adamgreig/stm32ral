@@ -126,6 +126,9 @@ UNSAFE_REGISTERS = [
 
     # Ethernet DMA descriptor list address register
     "DMARDLAR", "DMATDLAR",
+
+    # Cache operations
+    "ICIALLU", "?C?MVA?", "DC?SW", "DCCIMVAC", "DCCISW", "BPIALL",
 ]
 
 
@@ -848,6 +851,18 @@ class CPU(Node):
         self.name = name
         self.nvic_prio_bits = nvic_prio_bits
 
+    def get_architecture(self):
+        if self.name == "CM0":
+            return "ARMv6-M"
+        elif self.name == "CM0+":
+            return "ARMv6-M"
+        elif self.name == "CM3":
+            return "ARMv7-M"
+        elif self.name == "CM4":
+            return "ARMv7E-M"
+        elif self.name == "CM7":
+            return "ARMv7E-M"
+
     def to_dict(self):
         return {"name": self.name, "nvic_prio_bits": self.nvic_prio_bits}
 
@@ -893,10 +908,11 @@ class Device(Node):
     Contains a child CPU, PeripheralPrototypes, and Interrupts.
     """
     def __init__(self, name, cpu):
-        self.name = name.lower()
+        self.name = name.lower().replace("-", "_")
         self.cpu = cpu
         self.peripherals = []
         self.interrupts = []
+        self.special = False
 
     def to_dict(self):
         return {"name": self.name, "cpu": self.cpu.to_dict(),
@@ -966,23 +982,26 @@ class Device(Node):
         if dupnames:
             print(f"Warning [{self.name}]: duplicate peripherals: ", end='')
             print(dupnames)
-        self.to_interrupt_file(familypath)
+        if not self.special:
+            self.to_interrupt_file(familypath)
         mname = os.path.join(devicepath, "mod.rs")
         with open(mname, "w") as f:
             f.write(f"//! stm32ral module for {self.name}\n\n")
             prio_bits = self.cpu.nvic_prio_bits
-            f.write("/// Number of priority bits implemented by the NVIC\n")
-            f.write(f"pub const NVIC_PRIO_BITS: u8 = {prio_bits};\n\n")
-            f.write("/// Interrupt-related magic for this device\n")
-            f.write("pub mod interrupts;\n")
-            f.write("pub use self::interrupts::Interrupt;\n\n")
+            if not self.special:
+                f.write("/// Number of priority bits implemented by the NVIC")
+                f.write(f"\npub const NVIC_PRIO_BITS: u8 = {prio_bits};\n\n")
+                f.write("/// Interrupt-related magic for this device\n")
+                f.write("pub mod interrupts;\n")
+                f.write("pub use self::interrupts::Interrupt;\n\n")
             for peripheral in self.peripherals:
                 f.write(f"pub mod {peripheral.name};\n")
         rustfmt(mname)
-        dname = os.path.join(devicepath, "device.x")
-        with open(dname, "w") as f:
-            for interrupt in self.interrupts:
-                f.write(f"PROVIDE({interrupt.name} = DefaultHandler);\n")
+        if not self.special:
+            dname = os.path.join(devicepath, "device.x")
+            with open(dname, "w") as f:
+                for interrupt in self.interrupts:
+                    f.write(f"PROVIDE({interrupt.name} = DefaultHandler);\n")
 
     @classmethod
     def from_svd(cls, svd):
@@ -1194,7 +1213,8 @@ class Crate:
         devices = []
         for family in self.families:
             for device in family.devices:
-                devices.append((family.name, device.name))
+                if not device.special:
+                    devices.append((family.name, device.name))
         clauses = " else ".join("""\
             if env::var_os("CARGO_FEATURE_{}").is_some() {{
                 "src/{}/{}/device.x"
@@ -1231,13 +1251,16 @@ class Crate:
         for family in self.families:
             fname = family.name
             pool_results += family.to_files(srcpath, pool)
-            lib_f.write(f'#[cfg(feature="doc")]\n')
+            features = [f'feature="{d.name}"' for d in family.devices]
+            lib_f.write(f'#[cfg(any(feature="doc", {", ".join(features)}))]\n')
             lib_f.write(f'pub mod {fname};\n\n')
             for device in family.devices:
                 dname = device.name
-                cargo_f.write(f"{dname} = []\n")
-                lib_f.write(f'#[cfg(feature="{dname}")]\n')
-                lib_f.write(f'pub mod {fname};\n')
+                arch = device.cpu.get_architecture().lower().replace("-", "_")
+                if device.special:
+                    cargo_f.write(f'{dname} = []\n')
+                else:
+                    cargo_f.write(f'{dname} = ["{arch}"]\n')
                 lib_f.write(f'#[cfg(feature="{dname}")]\n')
                 lib_f.write(f'pub use {fname}::{dname}::*;\n\n')
         if self.peripherals:
@@ -1302,12 +1325,19 @@ def main():
         devices = p.map(Device.from_svdfile, args.svdfiles)
 
     print("Collating families...")
+    cortex_family = Family("cortex_m")
+    crate.families.append(cortex_family)
     for device in devices:
-        device_family = device.name[:7].lower()
-        if device_family not in [f.name for f in crate.families]:
-            crate.families.append(Family(device_family))
-        family = [f for f in crate.families if f.name == device_family][0]
-        family.devices.append(device)
+        # Special case the ARMv*-M SVDs
+        if device.name.startswith("armv"):
+            device.special = True
+            cortex_family.devices.append(device)
+        else:
+            device_family = device.name[:7].lower()
+            if device_family not in [f.name for f in crate.families]:
+                crate.families.append(Family(device_family))
+            family = [f for f in crate.families if f.name == device_family][0]
+            family.devices.append(device)
 
     print("Running refactors...")
     for device in devices:
