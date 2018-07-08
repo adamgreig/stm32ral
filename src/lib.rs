@@ -20,8 +20,8 @@
 #[macro_use]
 mod register;
 
-/// This macro allows you to override the default interrupt handler for a
-/// specific named interrupt.
+/// Set the interrupt handler for a specific interrupt.
+///
 /// Call with `interrupt!(NAME, my_handler);`, where `NAME` must be in
 /// `stm32ral::interrupts::Interrupt`, and `my_handler` must have type `fn()`.
 ///

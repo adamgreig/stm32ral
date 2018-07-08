@@ -61,9 +61,9 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 
 ## Why use stm32ral?
 
-* Small and lightweight
-* Simple
-* Quick to compile
+* Small and lightweight (~20MB total file size, <2MB compressed)
+* Simple (just 3 macros and a lot of constants)
+* Quick to compile (~2s build time)
 * Covers [all STM32 devices](supported_devices.md) in one crate
 * Supports `cortex-m-rt` via the `rt` feature, including interrupts
 * Doesn't get in your way
@@ -71,7 +71,9 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 
 ## Why not use stm32ral?
 
-* Not nearly as much safety as leading competitors
+* Still experimental, might have breaking changes to API design
+* Takes an assume-safe-by-default approach so edge cases may be missed
+  (but you'll probably notice when you start writing pointers to registers)
 * Won't keep you warm burning CPU time
 * A bit like what you're used to from C header files
 
@@ -79,7 +81,7 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::Output << gpio::ODR::ODR2::_offset);
 
 * [svd2rust](https://github.com/japaric/svd2rust) is the obvious choice for
   generating Cortex-M device crates from SVD files, and provided inspiration
-  for this one
+  for this project
 * [stm32-rs](https://github.com/adamgreig/stm32-rs) provides `svd2rust` crates
   for all STM32 devices supported by this crate, and they use the same
   underlying patched SVD files
@@ -109,8 +111,8 @@ modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: 
 
 ### Runtime Support & Interrupts
 
-Use the `rt` feature to bring in `cortex-m-rt`, which provides a suitable
-`device.x` linker script and interrupt support.
+Use the `rt` feature to bring in `cortex-m-rt` support, providing a suitable
+`device.x` linker script and interrupt definitions.
 
 You can then specify your own interrupt handler:
 ```rust
@@ -120,7 +122,8 @@ fn my_tim2_handler() {
 }
 ```
 
-If you're using `cortex-m`, the `Interrupt` enum is compatible:
+If you're using `cortex-m`, the `Interrupt` enum is compatible (it implements
+[`Nr`](https://docs.rs/bare-metal/0.2.0/bare_metal/trait.Nr.html)):
 ```rust
 peripherals.NVIC.enable(stm32ral::Interrupt::TIM2);
 ```

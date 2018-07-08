@@ -11,6 +11,7 @@ import itertools
 import subprocess
 import multiprocessing
 import xml.etree.ElementTree as ET
+from fnmatch import fnmatch
 
 
 CRATE_LIB_PREAMBLE = """\
@@ -108,6 +109,24 @@ fn main() {{
     println!("cargo:rerun-if-changed=build.rs");
 }}
 """
+
+
+UNSAFE_REGISTERS = [
+    # DMA peripheral and memory address registers
+    "S?PAR", "S?M?AR", "CPAR?", "CMAR?",
+
+    # DMA2D address registers
+    "FGMAR", "BGMAR", "FGCMAR", "BGCMAR", "OMAR",
+
+    # LTDC frame buffer address register
+    "L?CFBAR",
+
+    # USB OTG DMA address register
+    "DIEPDMA*", "DOEPDMA*", "HCDMA*",
+
+    # Ethernet DMA descriptor list address register
+    "DMARDLAR", "DMATDLAR",
+]
 
 
 class Node:
@@ -314,9 +333,9 @@ class FieldLink(Node):
     def __init__(self, parent, path):
         self.parent = parent
         self.path = path
-        self.r = EnumeratedValues.empty("R")
-        self.w = EnumeratedValues.empty("W")
-        self.rw = EnumeratedValues.empty("RW")
+        self.r = parent.r
+        self.w = parent.w
+        self.rw = parent.rw
 
     def to_dict(self):
         return {"parent": self.parent.name, "path": self.path}
@@ -434,10 +453,22 @@ class Register(Node):
             {fields}
         }}"""
 
-    def to_rust_struct_entry(self):
-        """Returns the RegisterBlock entry for this register."""
+    def to_regtype(self):
+        """
+        Return the type of register (RORegister, UnsafeWORegister, etc)
+        used for this Register.
+        """
         regtype = {"read-only": "RORegister", "write-only": "WORegister",
                    "read-write": "RWRegister"}[self.access]
+        for unsafe in UNSAFE_REGISTERS:
+            if fnmatch(self.name, unsafe):
+                regtype = "Unsafe" + regtype
+                break
+        return regtype
+
+    def to_rust_struct_entry(self):
+        """Returns the RegisterBlock entry for this register."""
+        regtype = self.to_regtype()
         return f"""
         /// {self.desc}
         pub {self.name}: {regtype}<u{self.size}>,
@@ -502,9 +533,9 @@ class Register(Node):
                 to_replace.add(idx2)
         for idx1, idx2, name in replace:
             f1 = self.fields[idx1]
-            evs1 = f1.__dict__[name]
+            evs1 = getattr(f1, name)
             f2 = EnumeratedValuesLink(f1, evs1)
-            self.fields[idx2].__dict__[name] = f2
+            setattr(self.fields[idx2], name, f2)
 
     def consume(self, other, parent):
         """
@@ -631,15 +662,8 @@ class PeripheralPrototype(Node):
         field modules, the register block, and any instances to that file.
         Finally runs rustfmt over the new file.
         """
-        register_accesses = [r.access for r in self.registers]
-        use_registers = []
-        if "read-write" in register_accesses:
-            use_registers.append("RWRegister")
-        if "read-only" in register_accesses:
-            use_registers.append("RORegister")
-        if "write-only" in register_accesses:
-            use_registers.append("WORegister")
-        use_registers = ", ".join(use_registers)
+        regtypes = set(r.to_regtype() for r in self.registers)
+        regtypes = ", ".join(regtypes)
         desc = "\n//! ".join(self.desc.split("\n"))
         if len(self.parent_device_names) > 1:
             desc += "\n//!\n"
@@ -649,7 +673,7 @@ class PeripheralPrototype(Node):
             "#![allow(non_snake_case, non_upper_case_globals)]",
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
-            f"use {{{use_registers}}};",
+            f"use {{{regtypes}}};",
             "",
         ])
         modules = "\n".join(r.to_rust_mod() for r in self.registers)
