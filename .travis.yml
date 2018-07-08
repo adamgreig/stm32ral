@@ -16,3 +16,4 @@ script:
   - git diff-files --quiet
   - test -z "$(git ls-files --exclude-standard --others)"
   - make buildall
+  - cargo test --doc --no-run --features stm32f405

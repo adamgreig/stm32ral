@@ -555,11 +555,15 @@ class Register(Node):
         self.size = max(self.size, other.size)
         newname = os.path.commonprefix((self.name, other.name)).strip("_")
         if newname != self.name and len(newname) >= 2:
+            prefix = "_".join(self.name.split("_")[:-1])
+            if newname != prefix:
+                print(f"Warning [{parent.name}]: suspected failure of name "
+                      f"compaction: {self.name}+{other.name}->{newname}")
             if newname not in [r.name for r in parent.registers]:
                 self.name = newname
             else:
                 print(f"Warning [{parent.name}]: {self.name}+{other.name} "
-                      "aliasing produces same name, not renaming")
+                      "aliasing produces name conflict, not renaming")
         self.access = "read-write"
 
 
@@ -572,27 +576,33 @@ class PeripheralInstance(Node):
     peripherals there is a single PeripheralPrototype containing
     a single PeripheralInstance.
 
-    Has a name  and base address.
+    Has a name and base address.
     Belongs to a parent PeripheralPrototype.
     """
-    def __init__(self, name, addr):
+    def __init__(self, name, addr, reset_values):
         self.name = name
         self.addr = addr
+        self.reset_values = reset_values
 
     def to_dict(self):
-        return {"name": self.name, "addr": self.addr}
+        return {"name": self.name, "addr": self.addr,
+                "reset_values": self.reset_values}
 
-    def to_rust(self):
+    def to_rust(self, registers):
         tname = self.name.title().replace("_", "")
+        registers = {r.offset: r.name for r in registers}
+        resets = ", ".join(
+            f"{registers[k]}: 0x{v:08X}" for k, v in self.reset_values.items())
         return f"""
-        pub struct {tname} {{}}
+        pub struct {tname} {{ pub reset: ResetValues }}
         impl ::core::ops::Deref for {tname} {{
             type Target = RegisterBlock;
             fn deref(&self) -> &RegisterBlock {{
                 unsafe {{ &*(0x{self.addr:08x} as *const _) }}
             }}
         }}
-        pub const {self.name.upper()}: {tname} = {tname} {{}};"""
+        pub const {self.name.upper()}: {tname} =
+            {tname} {{ reset: ResetValues {{ {resets} }} }};"""
 
     def __lt__(self, other):
         return self.name < other.name
@@ -629,8 +639,7 @@ class PeripheralPrototype(Node):
         reservedctr = 1
         for register in sorted(self.registers):
             if register.offset < address:
-                # Aliasing
-                continue
+                raise RuntimeError("Unexpected register aliasing")
             if register.offset != address:
                 gaps = []
                 u32s = (register.offset - address) // 4
@@ -656,6 +665,17 @@ class PeripheralPrototype(Node):
             {lines}
         }}"""
 
+    def to_rust_reset_values(self):
+        """Creates a ResetValues struct for this peripheral."""
+        lines = []
+        for register in sorted(self.registers):
+            lines.append(f"pub {register.name}: u{register.size},")
+        lines = "\n".join(lines)
+        return f"""
+        pub struct ResetValues {{
+            {lines}
+        }}"""
+
     def to_rust_file(self, path):
         """
         Creates {peripheral}.rs in path, and writes all register modules,
@@ -677,12 +697,14 @@ class PeripheralPrototype(Node):
             "",
         ])
         modules = "\n".join(r.to_rust_mod() for r in self.registers)
-        instances = "\n".join(i.to_rust() for i in sorted(self.instances))
+        instances = "\n".join(i.to_rust(self.registers)
+                              for i in sorted(self.instances))
         fname = os.path.join(path, f"{self.name}.rs")
         with open(fname, "w") as f:
             f.write(preamble)
             f.write(modules)
             f.write(self.to_rust_register_block())
+            f.write(self.to_rust_reset_values())
             f.write(instances)
         rustfmt(fname)
 
@@ -708,7 +730,8 @@ class PeripheralPrototype(Node):
         ctx = register_ctx
         for register in registers.findall('register'):
             peripheral.registers.append(Register.from_svd(svd, register, ctx))
-        peripheral.instances.append(PeripheralInstance(name, addr))
+        resets = {r.offset: r.reset_value for r in peripheral.registers}
+        peripheral.instances.append(PeripheralInstance(name, addr, resets))
         return peripheral
 
     def consume(self, other, parent):
@@ -718,8 +741,11 @@ class PeripheralPrototype(Node):
         at least 3 letters long.
         """
         self.instances += other.instances
-        newname = os.path.commonprefix((self.name, other.name))
+        newname = os.path.commonprefix((self.name, other.name)).strip("_")
         if newname != self.name and len(newname) >= 3:
+            if len(newname) < len(self.name) - 3:
+                print(f"Warning [{parent.name}]: suspected failure of name "
+                      f"compaction: {self.name}+{other.name}->{newname}")
             if newname not in [p.name for p in parent.peripherals]:
                 self.name = newname
             else:
@@ -803,11 +829,13 @@ class PeripheralPrototypeLink(Node):
             f"//! {desc}",
             "",
             f"pub use {self.path}::RegisterBlock;",
+            f"pub use {self.path}::ResetValues;",
             "",
         ])
         registers = "\n".join(f"pub use {self.path}::{m.name};"
                               for m in self.prototype.registers)
-        instances = "\n".join(i.to_rust() for i in sorted(self.instances))
+        instances = "\n".join(i.to_rust(self.registers)
+                              for i in sorted(self.instances))
         fname = os.path.join(path, f"{self.name}.rs")
         with open(fname, "w") as f:
             f.write(preamble)
