@@ -169,9 +169,6 @@ class EnumeratedValue(Node):
             self.value == other.value and
             self.desc == other.desc)
 
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
     def __lt__(self, other):
         return self.value < other.value
 
@@ -1094,21 +1091,18 @@ class Family(Node):
                 f.write(f'pub mod {peripheral.name};\n\n')
         return pool_results
 
-    def refactor_common_peripherals(self):
-        """
-        Find peripherals shared between devices which are identical and
-        refactor them into the family-level shared peripherals.
-        """
+    def _enumerate_peripherals(self):
         peripherals = []
-        to_link = set()
-        links = dict()
-
-        # First gather all peripherals
         for didx, device in enumerate(self.devices):
             for pidx, peripheral in enumerate(device.peripherals):
                 peripherals.append((didx, pidx, peripheral))
+        return peripherals
 
-        # Now go through all pairs and store matching peripherals
+    def _match_peripherals(self):
+        """Gather all pairs of matching peripherals in this family"""
+        to_link = set()
+        links = dict()
+        peripherals = self._enumerate_peripherals()
         for pt1, pt2 in itertools.combinations(peripherals, 2):
             didx1, pidx1, p1 = pt1
             didx2, pidx2, p2 = pt2
@@ -1121,6 +1115,15 @@ class Family(Node):
                 if idx1 not in links:
                     links[idx1] = []
                 links[idx1].append(idx2)
+        return links
+
+    def refactor_common_peripherals(self):
+        """
+        Find peripherals shared between devices which are identical and
+        refactor them into the family-level shared peripherals.
+        """
+        # Find all pairs of matching peripherals in the family
+        links = self._match_peripherals()
 
         # Determine which peripherals need versioned names
         # (any with multiple peripherals that share the same name).
@@ -1184,6 +1187,10 @@ class Crate:
                 "peripherals": [x.to_dict() for x in self.peripherals]}
 
     def write_build_script(self, path):
+        """
+        Generates build.rs which copies the relevant device.x into the build
+        path for the selected device.
+        """
         devices = []
         for family in self.families:
             for device in family.devices:
@@ -1199,6 +1206,11 @@ class Crate:
         rustfmt(fname)
 
     def to_files(self, path, pool):
+        """
+        Writes src/lib.rs, Cargo.toml, src/mod.rs, build.rs, writes out all
+        child peripherals, and triggers all child families to write their own
+        files out.
+        """
         srcpath = os.path.join(path, 'src')
         if not os.path.isdir(srcpath):
             raise ValueError(f"{srcpath} does not exist")
@@ -1242,6 +1254,7 @@ class Crate:
 
 
 def get_int(node, tag, default=None):
+    """Parses and returns an integer from the specified child tag in node."""
     text = get_string(node, tag, default=default)
     if text == default:
         return text
@@ -1261,6 +1274,7 @@ def get_int(node, tag, default=None):
 
 
 def get_string(node, tag, default=None):
+    """Finds and returns a string from the specified child tag in node."""
     text = node.findtext(tag, default=default)
     if text == default:
         return text
@@ -1268,6 +1282,7 @@ def get_string(node, tag, default=None):
 
 
 def rustfmt(fname):
+    """Runs rustfmt over the given filename."""
     subprocess.run(["rustfmt", fname])
 
 
