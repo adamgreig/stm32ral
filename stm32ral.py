@@ -30,7 +30,9 @@ CRATE_LIB_PREAMBLE = """\
 //! modules, but when built for a specific device, only that devices' constants
 //! will be available.
 //!
-//! See the [README](https://github.com/adamgreig/stm32ral) for example usage.
+//! See the
+//! [README](https://github.com/adamgreig/stm32ral/blob/master/README.md)
+//! for example usage.
 
 #![no_std]
 
@@ -39,10 +41,18 @@ mod register;
 
 /// Set the interrupt handler for a specific interrupt.
 ///
-/// Call with `interrupt!(NAME, my_handler);`, where `NAME` must be in
+/// Call with `interrupt!(NAME, my_handler);` where `NAME` must be in
 /// `stm32ral::interrupts::Interrupt`, and `my_handler` must have type `fn()`.
 ///
 /// This macro is only available with the `rt` feature.
+///
+/// # Examples
+/// ```rust
+/// interrupt!(TIM2, my_tim2_handler);
+/// fn my_tim2_handler() {
+///     write_reg!(stm32ral::tim2, TIM2.SR, UIF: 0);
+/// }
+/// ```
 #[cfg(any(feature="doc", feature="rt"))]
 #[macro_export]
 macro_rules! interrupt {
@@ -156,7 +166,7 @@ class EnumeratedValue(Node):
 
     def to_rust(self, field_width):
         return f"""
-        /// {self.desc}
+        /// {escape_desc(self.desc)}
         pub const {self.name}: u32 = 0b{self.value:0{field_width}b};"""
 
     @classmethod
@@ -277,7 +287,7 @@ class Field(Node):
     def to_rust(self):
         mask = 2**self.width - 1
         return f"""
-        /// {self.desc}
+        /// {escape_desc(self.desc)}
         pub mod {self.name} {{
             pub const offset: u32 = {self.offset};
             pub const mask: u32 = 0b{mask:b} << offset;
@@ -448,7 +458,7 @@ class Register(Node):
         """
         fields = "\n".join(f.to_rust() for f in self.fields)
         return f"""
-        /// {self.desc}
+        /// {escape_desc(self.desc)}
         pub mod {self.name} {{
             {fields}
         }}"""
@@ -470,7 +480,7 @@ class Register(Node):
         """Returns the RegisterBlock entry for this register."""
         regtype = self.to_regtype()
         return f"""
-        /// {self.desc}
+        /// {escape_desc(self.desc)}
         pub {self.name}: {regtype}<u{self.size}>,
         """
 
@@ -549,8 +559,8 @@ class Register(Node):
                 self.fields.append(field)
         self.desc = "\n/// ".join([
             f"{self.name} and {other.name}",
-            f"{self.name}: {self.desc}",
-            f"{other.name}: {other.desc}",
+            f"{self.name}: {escape_desc(self.desc)}",
+            f"{other.name}: {escape_desc(other.desc)}",
         ])
         self.size = max(self.size, other.size)
         newname = os.path.commonprefix((self.name, other.name)).strip("_")
@@ -684,7 +694,7 @@ class PeripheralPrototype(Node):
         """
         regtypes = set(r.to_regtype() for r in self.registers)
         regtypes = ", ".join(regtypes)
-        desc = "\n//! ".join(self.desc.split("\n"))
+        desc = "\n//! ".join(escape_desc(self.desc).split("\n"))
         if len(self.parent_device_names) > 1:
             desc += "\n//!\n"
             desc += "//! Used by: " + ', '.join(
@@ -988,7 +998,8 @@ class Device(Node):
                 #[allow(non_camel_case_types)]
                 pub enum Interrupt {{""")
             for interrupt in self.interrupts:
-                f.write(f"/// {interrupt.value}: {interrupt.desc}\n")
+                f.write(f"/// {interrupt.value}: ")
+                f.write(f"{escape_desc(interrupt.desc)}\n")
                 f.write(f"{interrupt.name} = {interrupt.value},\n")
             f.write("}\n")
             f.write("""\
@@ -1330,6 +1341,11 @@ def get_string(node, tag, default=None):
     if text == default:
         return text
     return " ".join(text.split())
+
+
+def escape_desc(desc):
+    """Escape `desc` suitable for a doc comment."""
+    return desc.replace("[", "\\[").replace("]", "\\]")
 
 
 def rustfmt(fname):

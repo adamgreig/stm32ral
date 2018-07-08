@@ -13,7 +13,9 @@
 //! modules, but when built for a specific device, only that devices' constants
 //! will be available.
 //!
-//! See the [README](https://github.com/adamgreig/stm32ral) for example usage.
+//! See the
+//! [README](https://github.com/adamgreig/stm32ral/blob/master/README.md)
+//! for example usage.
 
 #![no_std]
 
@@ -22,10 +24,18 @@ mod register;
 
 /// Set the interrupt handler for a specific interrupt.
 ///
-/// Call with `interrupt!(NAME, my_handler);`, where `NAME` must be in
+/// Call with `interrupt!(NAME, my_handler);` where `NAME` must be in
 /// `stm32ral::interrupts::Interrupt`, and `my_handler` must have type `fn()`.
 ///
 /// This macro is only available with the `rt` feature.
+///
+/// # Examples
+/// ```rust
+/// interrupt!(TIM2, my_tim2_handler);
+/// fn my_tim2_handler() {
+///     write_reg!(stm32ral::tim2, TIM2.SR, UIF: 0);
+/// }
+/// ```
 #[cfg(any(feature="doc", feature="rt"))]
 #[macro_export]
 macro_rules! interrupt {
