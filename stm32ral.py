@@ -279,8 +279,8 @@ class Field(Node):
         return f"""
         /// {self.desc}
         pub mod {self.name} {{
-            pub const _offset: u32 = {self.offset};
-            pub const _mask: u32 = 0b{mask:b};
+            pub const offset: u32 = {self.offset};
+            pub const mask: u32 = 0b{mask:b} << offset;
             {self.r.to_rust(self.width)}
             {self.w.to_rust(self.width)}
             {self.rw.to_rust(self.width)}

@@ -223,11 +223,11 @@ impl<T> UnsafeWORegister<T> {
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // As above, but expanded.
 /// stm32ral::gpio::GPIOA.MODER.write(
-///     ((stm32ral::gpio::MODER::MODER3::RW::Output & stm32ral::gpio::MODER::MODER3::_mask)
-///      << stm32ral::gpio::MODER::MODER3::_offset)
+///     ((stm32ral::gpio::MODER::MODER3::RW::Output << stm32ral::gpio::MODER::MODER3::offset)
+///      & stm32ral::gpio::MODER::MODER3::mask)
 ///     |
-///     ((stm32ral::gpio::MODER::MODER4::RW::Analog & stm32ral::gpio::MODER::MODER4::_mask)
-///      << stm32ral::gpio::MODER::MODER4::_offset)
+///     ((stm32ral::gpio::MODER::MODER4::RW::Analog << stm32ral::gpio::MODER::MODER4::offset)
+///      & stm32ral::gpio::MODER::MODER4::mask)
 /// );
 /// # }
 /// ```
@@ -242,7 +242,7 @@ macro_rules! write_reg {
         use $periph::{*};
         #[allow(unused_imports)]
         $instance.$reg.write(
-            $({ use $periph::{$reg::$field::{_mask, _offset, W::*, RW::*}}; ($value & _mask) << _offset }) | *
+            $({ use $periph::{$reg::$field::{mask, offset, W::*, RW::*}}; ($value << offset) & mask }) | *
         );
     }};
     ( $periph:path, $instance:ident . $reg:ident, $value:expr ) => {{
@@ -323,19 +323,15 @@ macro_rules! write_reg {
 ///         stm32ral::gpio::GPIOA.MODER.read()
 ///         // Then AND it with an appropriate mask...
 ///         &
-///         !(
-///             (stm32ral::gpio::MODER::MODER3::_mask << stm32ral::gpio::MODER::MODER3::_offset)
-///             |
-///             (stm32ral::gpio::MODER::MODER4::_mask << stm32ral::gpio::MODER::MODER4::_offset)
-///         )
+///         !( stm32ral::gpio::MODER::MODER3::mask | stm32ral::gpio::MODER::MODER4::mask )
 ///     )
 ///     // Then OR with each field value.
 ///     |
-///         ((stm32ral::gpio::MODER::MODER3::RW::Output & stm32ral::gpio::MODER::MODER3::_mask)
-///          << stm32ral::gpio::MODER::MODER3::_offset)
+///         ((stm32ral::gpio::MODER::MODER3::RW::Output << stm32ral::gpio::MODER::MODER3::offset)
+///          & stm32ral::gpio::MODER::MODER3::mask)
 ///     |
-///         ((stm32ral::gpio::MODER::MODER4::RW::Analog & stm32ral::gpio::MODER::MODER3::_mask)
-///          << stm32ral::gpio::MODER::MODER3::_offset)
+///         ((stm32ral::gpio::MODER::MODER4::RW::Analog << stm32ral::gpio::MODER::MODER3::offset)
+///          & stm32ral::gpio::MODER::MODER3::mask)
 /// );
 /// # }
 /// ```
@@ -350,8 +346,8 @@ macro_rules! modify_reg {
         use $periph::{*};
         #[allow(unused_imports)]
         $instance.$reg.write(
-            ($instance.$reg.read() & !( $({ use $periph::{$reg::$field::{_mask, _offset}}; _mask << _offset }) | * ))
-            | $({ use $periph::{$reg::$field::{_mask, _offset, W::*, RW::*}}; ($value & _mask) << _offset }) | *);
+            ($instance.$reg.read() & !( $({ use $periph::{$reg::$field::mask}; mask }) | * ))
+            | $({ use $periph::{$reg::$field::{mask, offset, W::*, RW::*}}; ($value << offset) & mask }) | *);
     }};
     ( $periph:path, $instance:ident . $reg:ident, $fn:expr ) => {{
         #[allow(unused_imports)]
@@ -399,8 +395,8 @@ macro_rules! modify_reg {
 /// let val = read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2);
 ///
 /// // As above, but expanded for exposition:
-/// let val = (stm32ral::gpio::GPIOA.IDR.read() >> stm32ral::gpio::IDR::IDR2::_offset)
-///           & stm32ral::gpio::IDR::IDR2::_mask;
+/// let val = (stm32ral::gpio::GPIOA.IDR.read() & stm32ral::gpio::IDR::IDR2::mask)
+///           >> stm32ral::gpio::IDR::IDR2::offset;
 /// # }
 /// ```
 ///
@@ -414,8 +410,8 @@ macro_rules! modify_reg {
 /// if read_reg!(stm32ral::rcc, RCC.CFGR, SWS != HSI) { }
 ///
 /// // Equivalent expansion:
-/// if ((stm32ral::rcc::RCC.CFGR.read() >> stm32ral::rcc::CFGR::SWS::_offset)
-///     & stm32ral::rcc::CFGR::SWS::_mask) != stm32ral::rcc::CFGR::SWS::R::HSI { }
+/// if ((stm32ral::rcc::RCC.CFGR.read() & stm32ral::rcc::CFGR::SWS::mask)
+///     >> stm32ral::rcc::CFGR::SWS::offset) != stm32ral::rcc::CFGR::SWS::R::HSI { }
 /// # }
 /// ```
 ///
@@ -429,15 +425,15 @@ macro_rules! read_reg {
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
-        use $periph::{$reg::$field::{_mask, _offset, R::*, RW::*}};
-        ($instance.$reg.read() >> _offset) & _mask
+        use $periph::{$reg::$field::{mask, offset, R::*, RW::*}};
+        ($instance.$reg.read() & mask) >> offset
     }};
     ( $periph:path, $instance:ident . $reg:ident, $field:ident $($cmp:tt)* ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
-        use $periph::{$reg::$field::{_mask, _offset, R::*, RW::*}};
-        (($instance.$reg.read() >> _offset) & _mask) $($cmp)*
+        use $periph::{$reg::$field::{mask, offset, R::*, RW::*}};
+        (($instance.$reg.read() & mask) >> offset) $($cmp)*
     }};
     ( $periph:path, $instance:ident . $reg:ident ) => {{
         #[allow(unused_imports)]
@@ -501,10 +497,10 @@ macro_rules! reset_reg {
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
-        $instance.$reg.write(
-            ($instance.$reg.read() & !( $({ use $periph::{$reg::$field::{_mask, _offset}}; _mask << _offset }) | * ))
-            | $({ use $periph::{$reg::$field::{_mask, _offset}}; $instance.reset.$reg & (_mask << _offset) }) | *
-        );
+        $instance.$reg.write({
+            let resetmask: u32 = $({ use $periph::{$reg::$field::mask}; mask }) | *;
+            ($instance.$reg.read() & !resetmask) | ($instance.reset.$reg & resetmask)
+        });
     }};
     ( $periph:path, $instance:ident . $reg:ident ) => {{
         #[allow(unused_imports)]
