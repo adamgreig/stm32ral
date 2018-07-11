@@ -338,9 +338,9 @@ peripherals.NVIC.enable(stm32ral::Interrupt::TIM2);
 
 ## Safety
 
-Safety is approached by marking some registers as unsafe; those require either
-unsafe blocks/functions to access, or that the `unsafe` feature of this crate
-is enabled. Unsafe registers are those where access could lead to [undefined
+Safety is approached by marking some registers as unsafe, which require unsafe
+blocks/functions to access.
+Unsafe registers are those where access could lead to [undefined
 behaviour](https://doc.rust-lang.org/reference/behavior-considered-undefined.html),
 such as DMA source and target registers, cache control registers, etc. Most
 registers will not be unsafe and can be directly accessed in safe code. The

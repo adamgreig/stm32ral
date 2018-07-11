@@ -98,7 +98,6 @@ version = "0.5.1"
 
 [features]
 default = []
-unsafe = []
 rt = ["cortex-m-rt/device"]
 doc = []
 """

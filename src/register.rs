@@ -38,33 +38,15 @@ pub struct UnsafeRWRegister<T> {
 
 impl<T> UnsafeRWRegister<T> {
     /// Reads the value of the register.
-    #[cfg(not(feature = "unsafe"))]
     #[inline(always)]
     pub unsafe fn read(&self) -> T {
         ::core::ptr::read_volatile(&self.register as *const T)
     }
 
-    /// Reads the value of the register.
-    /// Note that this would usually be unsafe, but with the `unsafe` feature, it is not.
-    #[cfg(feature = "unsafe")]
-    #[inline(always)]
-    pub fn read(&self) -> T {
-        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
-    }
-
     /// Writes a new value to the register.
-    #[cfg(not(feature = "unsafe"))]
     #[inline(always)]
     pub unsafe fn write(&self, val: T) {
         ::core::ptr::write_volatile(&self.register as *const T as *mut T, val)
-    }
-
-    /// Writes a new value to the register.
-    /// Note that this would usually be unsafe, but with the `unsafe` feature enabled, it is not.
-    #[cfg(feature = "unsafe")]
-    #[inline(always)]
-    pub fn write(&self, val: T) {
-        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
     }
 }
 
@@ -100,18 +82,9 @@ pub struct UnsafeRORegister<T> {
 
 impl<T> UnsafeRORegister<T> {
     /// Reads the value of the register.
-    #[cfg(not(feature = "unsafe"))]
     #[inline(always)]
     pub unsafe fn read(&self) -> T {
         ::core::ptr::read_volatile(&self.register as *const T)
-    }
-
-    /// Reads the value of the register.
-    /// Note that this would usually be unsafe, but with the `unsafe` feature enabled, it is not.
-    #[cfg(feature = "unsafe")]
-    #[inline(always)]
-    pub fn read(&self) -> T {
-        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
     }
 }
 
@@ -147,18 +120,9 @@ pub struct UnsafeWORegister<T> {
 
 impl<T> UnsafeWORegister<T> {
     /// Writes a new value to the register.
-    #[cfg(not(feature = "unsafe"))]
     #[inline(always)]
     pub unsafe fn write(&self, val: T) {
         ::core::ptr::write_volatile(&self.register as *const T as *mut T, val)
-    }
-
-    /// Writes a new value to the register.
-    /// Note that this would usually be unsafe, but with the `unsafe` feature enabled, it is not.
-    #[cfg(feature = "unsafe")]
-    #[inline(always)]
-    pub fn write(&self, val: T) {
-        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
     }
 }
 
@@ -234,7 +198,7 @@ impl<T> UnsafeWORegister<T> {
 ///
 /// # Safety
 /// This macro will require an unsafe function or block when used with an UnsafeRWRegister,
-/// but not if used with RWRegister or with the "unsafe" feature enabled.
+/// but not if used with RWRegister.
 #[macro_export]
 macro_rules! write_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
@@ -338,7 +302,7 @@ macro_rules! write_reg {
 ///
 /// # Safety
 /// This macro will require an unsafe function or block when used with an UnsafeRWRegister,
-/// but not if used with RWRegister or with the "unsafe" feature enabled.
+/// but not if used with RWRegister.
 #[macro_export]
 macro_rules! modify_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
@@ -417,8 +381,7 @@ macro_rules! modify_reg {
 ///
 /// # Safety
 /// This macro will require an unsafe function or block when used with an UnsafeRWRegister or
-/// UnsafeRORegister, but not if used with RWRegister, RORegister, or with the "unsafe" feature
-/// enabled.
+/// UnsafeRORegister, but not if used with RWRegister, or RORegister.
 #[macro_export]
 macro_rules! read_reg {
     ( $periph:path, $instance:ident . $reg:ident, $field:ident ) => {{
@@ -489,8 +452,7 @@ macro_rules! read_reg {
 ///
 /// # Safety
 /// This macro will require an unsafe function or block when used with an UnsafeRWRegister or
-/// UnsafeRORegister, but not if used with RWRegister or RORegister or with the "unsafe" feature
-/// enabled.
+/// UnsafeRORegister, but not if used with RWRegister or RORegister.
 #[macro_export]
 macro_rules! reset_reg {
     ( $periph:path, $instance:ident . $reg:ident, $( $field:ident ),+ ) => {{
