@@ -837,12 +837,11 @@ class PeripheralPrototypeLink(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
-            f"pub use {self.path}::RegisterBlock;",
-            f"pub use {self.path}::ResetValues;",
+            f"pub use {self.path}::{{RegisterBlock, ResetValues}};",
             "",
         ])
-        registers = "\n".join(f"pub use {self.path}::{m.name};"
-                              for m in self.prototype.registers)
+        registers = ", ".join(m.name for m in self.prototype.registers)
+        registers = f"pub use {self.path}::{{{registers}}};\n"
         instances = "\n".join(i.to_rust(self.registers)
                               for i in sorted(self.instances))
         fname = os.path.join(path, f"{self.name}.rs")
