@@ -132,9 +132,9 @@ impl<T> UnsafeWORegister<T> {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Write some value to the register.
-/// write_reg!(stm32ral::gpio, GPIOA.ODR, 1<<3);
+/// write_reg!(stm32ral::gpio, GPIOA, ODR, 1<<3);
 /// // Write values to specific fields. Unspecified fields are written to 0.
-/// write_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: Output, MODER4: Analog);
+/// write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog);
 /// # }
 /// ```
 ///
@@ -142,15 +142,16 @@ impl<T> UnsafeWORegister<T> {
 /// Like `modify_reg!`, this macro can be used in two ways, either with a single value to write to
 /// the whole register, or with multiple fields each with their own value.
 ///
-/// In both cases, the first argument is the path to the peripheral module, e.g.,
-/// `stm32ral::gpio`, and the second argument is the instance of that peripheral
-/// and register you wish you access, e.g., `GPIOA.MODER`.
+/// In both cases, the first arguments are:
+/// * the path to the peripheral module: `stm32ral::gpio`,
+/// * the instance of that peripheral: 'GPIOA',
+/// * the register you wish you access: `MODER`.
 ///
 /// In the single-value usage, the final argument is just the value to write:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Turn on PA3 (and turn everything else off).
-/// write_reg!(stm32ral::gpio, GPIOA.ODR, 1<<3);
+/// write_reg!(stm32ral::gpio, GPIOA, ODR, 1<<3);
 /// # }
 /// ```
 ///
@@ -158,14 +159,14 @@ impl<T> UnsafeWORegister<T> {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Set PA3 to Output, PA4 to Analog, and everything else to 0 (which is Input).
-/// write_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: 0b01, MODER4: 0b11);
+/// write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: 0b01, MODER4: 0b11);
 /// # }
 /// ```
 /// For fields with annotated values, you can also specify a named value:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // As above, but with named values.
-/// write_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: Output, MODER4: Analog);
+/// write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog);
 /// # }
 /// ```
 ///
@@ -177,7 +178,7 @@ impl<T> UnsafeWORegister<T> {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // As above, but being explicit about named values.
-/// write_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: stm32ral::gpio::MODER::MODER3::RW::Output,
+/// write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: stm32ral::gpio::MODER::MODER3::RW::Output,
 ///                                          MODER4: stm32ral::gpio::MODER::MODER4::RW::Analog);
 /// # }
 /// ```
@@ -201,7 +202,7 @@ impl<T> UnsafeWORegister<T> {
 /// but not if used with RWRegister.
 #[macro_export]
 macro_rules! write_reg {
-    ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
@@ -209,7 +210,7 @@ macro_rules! write_reg {
             $({ use $periph::{$reg::$field::{mask, offset, W::*, RW::*}}; ($value << offset) & mask }) | *
         );
     }};
-    ( $periph:path, $instance:ident . $reg:ident, $value:expr ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $value:expr ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         $instance.$reg.write($value);
@@ -222,9 +223,9 @@ macro_rules! write_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Update the register to ensure bit 3 is set.
-/// modify_reg!(stm32ral::gpio, GPIOA.ODR, |reg| reg | (1<<3));
+/// modify_reg!(stm32ral::gpio, GPIOA, ODR, |reg| reg | (1<<3));
 /// // Write values to specific fields. Unspecified fields are left unchanged.
-/// modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: Output, MODER4: Analog);
+/// modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog);
 /// # }
 /// ```
 ///
@@ -232,16 +233,17 @@ macro_rules! write_reg {
 /// Like `write_reg!`, this macro can be used in two ways, either with a modification of the entire
 /// register, or by specifying which fields to change and what value to change them to.
 ///
-/// In both cases, the first argument is the path to the peripheral module, e.g.,
-/// `stm32ral::gpio`, and the second argument is the instance of that peripheral
-/// and register you wish you access, e.g., `GPIOA.MODER`.
+/// In both cases, the first arguments are:
+/// * the path to the peripheral module: `stm32ral::gpio`,
+/// * the instance of that peripheral: `GPIOA`,
+/// * the register you wish you access: `MODER`.
 ///
 /// In the whole-register usage, the final argument is a closure that accepts the current value
 /// of the register and returns the new value to write:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Turn on PA3 without affecting anything else.
-/// modify_reg!(stm32ral::gpio, GPIOA.ODR, |reg| reg | (1<<3));
+/// modify_reg!(stm32ral::gpio, GPIOA, ODR, |reg| reg | (1<<3));
 /// # }
 /// ```
 ///
@@ -249,7 +251,7 @@ macro_rules! write_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Set PA3 to Output, PA4 to Analog, and leave everything else unchanged.
-/// modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: 0b01, MODER4: 0b11);
+/// modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: 0b01, MODER4: 0b11);
 /// # }
 /// ```
 ///
@@ -257,7 +259,7 @@ macro_rules! write_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // As above, but with named values.
-/// modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: Output, MODER4: Analog);
+/// modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog);
 /// # }
 /// ```
 ///
@@ -272,7 +274,7 @@ macro_rules! write_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // As above, but being explicit about named values.
-/// modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: stm32ral::gpio::MODER::MODER3::RW::Output,
+/// modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: stm32ral::gpio::MODER::MODER3::RW::Output,
 ///                                           MODER4: stm32ral::gpio::MODER::MODER4::RW::Analog);
 /// # }
 /// ```
@@ -305,7 +307,7 @@ macro_rules! write_reg {
 /// but not if used with RWRegister.
 #[macro_export]
 macro_rules! modify_reg {
-    ( $periph:path, $instance:ident . $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $( $field:ident : $value:expr ),+ ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
@@ -313,7 +315,7 @@ macro_rules! modify_reg {
             ($instance.$reg.read() & !( $({ use $periph::{$reg::$field::mask}; mask }) | * ))
             | $({ use $periph::{$reg::$field::{mask, offset, W::*, RW::*}}; ($value << offset) & mask }) | *);
     }};
-    ( $periph:path, $instance:ident . $reg:ident, $fn:expr ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $fn:expr ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         $instance.$reg.write($fn($instance.$reg.read()));
@@ -326,13 +328,13 @@ macro_rules! modify_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Read the whole register.
-/// let val = read_reg!(stm32ral::gpio, GPIOA.IDR);
+/// let val = read_reg!(stm32ral::gpio, GPIOA, IDR);
 ///
 /// // Read one field from the register.
-/// let val = read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2);
+/// let val = read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2);
 ///
 /// // Check if one field is equal to a specific value, with the field's named values in scope.
-/// while read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2 == High) {}
+/// while read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2 == High) {}
 /// # }
 /// ```
 ///
@@ -340,15 +342,16 @@ macro_rules! modify_reg {
 /// Like `write_reg!`, this macro can be used multiple ways, either reading the entire register or
 /// reading a single field from it and potentially performing a comparison with that field.
 ///
-/// In all cases, the first argument is the path to the peripheral module, e.g.,
-/// `stm32ral::gpio`, and the second argument is the instance of that peripheral and the register
-/// you wish to access, e.g., `GPIOA.IDR`.
+/// In all cases, the first arguments are:
+/// * the path to the peripheral module: `stm32ral::gpio`,
+/// * the instance of that peripheral: `GPIOA`,
+/// * the register you wish to access: `IDR`.
 ///
 /// In the whole-register usage, the macro simply returns the register's value:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Read the entire value of GPIOA.IDR into `val`.
-/// let val = read_reg!(stm32ral::gpio, GPIOA.IDR);
+/// let val = read_reg!(stm32ral::gpio, GPIOA, IDR);
 /// # }
 /// ```
 ///
@@ -356,7 +359,7 @@ macro_rules! modify_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Read just the value of the field GPIOA.IDR2 into `val`.
-/// let val = read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2);
+/// let val = read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2);
 ///
 /// // As above, but expanded for exposition:
 /// let val = (stm32ral::gpio::GPIOA.IDR.read() & stm32ral::gpio::IDR::IDR2::mask)
@@ -368,10 +371,10 @@ macro_rules! modify_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Loop while PA2 is High.
-/// while read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2 == High) {}
+/// while read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2 == High) {}
 ///
 /// // Only proceed if the clock is not the HSI.
-/// if read_reg!(stm32ral::rcc, RCC.CFGR, SWS != HSI) { }
+/// if read_reg!(stm32ral::rcc, RCC, CFGR, SWS != HSI) { }
 ///
 /// // Equivalent expansion:
 /// if ((stm32ral::rcc::RCC.CFGR.read() & stm32ral::rcc::CFGR::SWS::mask)
@@ -384,21 +387,21 @@ macro_rules! modify_reg {
 /// UnsafeRORegister, but not if used with RWRegister, or RORegister.
 #[macro_export]
 macro_rules! read_reg {
-    ( $periph:path, $instance:ident . $reg:ident, $field:ident ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $field:ident ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
         use $periph::{$reg::$field::{mask, offset, R::*, RW::*}};
         ($instance.$reg.read() & mask) >> offset
     }};
-    ( $periph:path, $instance:ident . $reg:ident, $field:ident $($cmp:tt)* ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $field:ident $($cmp:tt)* ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
         use $periph::{$reg::$field::{mask, offset, R::*, RW::*}};
         (($instance.$reg.read() & mask) >> offset) $($cmp)*
     }};
-    ( $periph:path, $instance:ident . $reg:ident ) => {{
+    ( $periph:path, $instance:expr, $reg:ident ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         ($instance.$reg.read())
@@ -411,9 +414,9 @@ macro_rules! read_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Reset PA15 to its reset state
-/// reset_reg!(stm32ral::gpio, GPIOA.MODER, MODER15);
+/// reset_reg!(stm32ral::gpio, GPIOA, MODER, MODER15);
 /// // Reset the entire GPIOA.MODER to its reset state
-/// reset_reg!(stm32ral::gpio, GPIOA.MODER);
+/// reset_reg!(stm32ral::gpio, GPIOA, MODER);
 /// # }
 /// ```
 ///
@@ -422,15 +425,16 @@ macro_rules! read_reg {
 /// or just resetting specific fields within in. The register or fields are written with their
 /// reset values.
 ///
-/// In both cases, the first argument is the path to the peripheral module, e.g.,
-/// `stm32ral::gpio`, and the second argument is the instance of that peripheral and register
-/// you wish to access, e.g., `GPIOA.MODER`.
+/// In both cases, the first arguments are:
+/// * the path to the peripheral module: `stm32ral::gpio`,
+/// * the instance of that peripheral: `GPIOA`,
+/// * the register you wish to access: `MODER`.
 ///
 /// In the whole-register usage, that's it:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Reset the entire GPIOA.MODER
-/// reset_reg!(stm32ral::gpio, GPIOA.MODER);
+/// reset_reg!(stm32ral::gpio, GPIOA, MODER);
 /// # }
 /// ```
 ///
@@ -438,8 +442,8 @@ macro_rules! read_reg {
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// // Reset the JTAG pins
-/// reset_reg!(stm32ral::gpio, GPIOA.MODER, MODER13, MODER14, MODER15);
-/// reset_reg!(stm32ral::gpio, GPIOB.MODER, MODER3, MODER4);
+/// reset_reg!(stm32ral::gpio, GPIOA, MODER, MODER13, MODER14, MODER15);
+/// reset_reg!(stm32ral::gpio, GPIOB, MODER, MODER3, MODER4);
 /// # }
 /// ```
 ///
@@ -455,7 +459,7 @@ macro_rules! read_reg {
 /// UnsafeRORegister, but not if used with RWRegister or RORegister.
 #[macro_export]
 macro_rules! reset_reg {
-    ( $periph:path, $instance:ident . $reg:ident, $( $field:ident ),+ ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $( $field:ident ),+ ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         #[allow(unused_imports)]
@@ -464,7 +468,7 @@ macro_rules! reset_reg {
             ($instance.$reg.read() & !resetmask) | ($instance.reset.$reg & resetmask)
         });
     }};
-    ( $periph:path, $instance:ident . $reg:ident ) => {{
+    ( $periph:path, $instance:expr, $reg:ident ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
         $instance.$reg.write($instance.reset.$reg);

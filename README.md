@@ -38,23 +38,23 @@ use stm32ral::{rcc, gpio};
 
 // Field-level read/modify/write, with either named values or just literals.
 // Most of your code will look like this.
-modify_reg!(rcc, RCC.AHB1ENR, GPIOAEN: Enabled);
-modify_reg!(gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: Input);
-while read_reg!(gpio, GPIOA.IDR, IDR3 == High) {
-    let pa1 = read_reg!(gpio, GPIOA.IDR, IDR1);
-    modify_reg!(gpio, GPIOA.ODR, ODR2: pa1);
+modify_reg!(rcc, RCC, AHB1ENR, GPIOAEN: Enabled);
+modify_reg!(gpio, GPIOA, MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+while read_reg!(gpio, GPIOA, IDR, IDR3 == High) {
+    let pa1 = read_reg!(gpio, GPIOA, IDR, IDR1);
+    modify_reg!(gpio, GPIOA, ODR, ODR2: pa1);
 }
 
 // You can also reset whole registers or specific fields
-reset_reg!(gpio, GPIOA.MODER, MODER13, MODER14, MODER15);
-reset_reg!(gpio, GPIOB.MODER);
+reset_reg!(gpio, GPIOA, MODER, MODER13, MODER14, MODER15);
+reset_reg!(gpio, GPIOB, MODER);
 
 // Whole-register read/modify/write.
 // Rarely used but nice to have the option.
 // It's a bit shorter for single-field registers.
-let port = read_reg!(gpio, GPIOA.IDR);
-write_reg!(gpio, GPIOA.ODR, 0x12345678);
-modify_reg!(gpio, GPIOA.MODER, |r| r | (0b10 << 4));
+let port = read_reg!(gpio, GPIOA, IDR);
+write_reg!(gpio, GPIOA, ODR, 0x12345678);
+modify_reg!(gpio, GPIOA, MODER, |r| r | (0b10 << 4));
 
 // Or forego the macros and just use the constants yourself.
 // The macros above just expand to these forms for you, bringing
@@ -111,7 +111,7 @@ Then, in your code:
 #[macro_use]
 extern crate stm32ral;
 
-modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER1: Input, MODER2: Output, MODER3: Input);
 ```
 
 ### Register Definitions
@@ -185,8 +185,8 @@ pub const GPIOC //...
 These constants are what permit access to the relevant registers:
 
 ```rust
-// In reality, you'd use write_reg!(gpio, GPIOA.MODER, 0x1234)
-// and read_reg!(gpio, GPIOA.MODER)
+// In reality, you'd use write_reg!(gpio, GPIOA, MODER, 0x1234)
+// and read_reg!(gpio, GPIOA, MODER)
 gpio::GPIOA.MODER.write(0x1234);
 let _ = gpio::GPIOA.MODER.read();
 ```
@@ -196,7 +196,7 @@ integer constant reset value for each register. These structs live inside
 the same `GPIOA` instance consts, so you can:
 
 ```rust
-// In reality, you'd use reset_reg!(gpio, GPIOA.MODER);
+// In reality, you'd use reset_reg!(gpio, GPIOA, MODER);
 gpio::GPIOA.MODER.write(GPIOA.reset.MODER);
 ```
 
@@ -211,16 +211,16 @@ To simplify using all the constants and registers, four macros are provided.
 For full details please check out
 [the documentation](https://docs.rs/stm32ral).
 
-#### `write_reg!(peripheral, INSTANCE.REGISTER, value)`
+#### `write_reg!(peripheral, INSTANCE, REGISTER, value)`
 
 * Directly writes `value` to `INSTANCE.REGISTER`.
 
 ```rust
 // Set PA3 high (and all other GPIOA pins low).
-write_reg!(stm32ral::gpio, GPIOA.ODR, 1<<3);
+write_reg!(stm32ral::gpio, GPIOA, ODR, 1<<3);
 ```
 
-#### `write_reg!(peripheral, INSTANCE.REGISTER, FIELD1: value1, FIELD2: value2, ...)`
+#### `write_reg!(peripheral, INSTANCE, REGISTER, FIELD1: value1, FIELD2: value2, ...)`
 
 * Writes `value`s to `FIELD`s and all other fields to 0 (for one or more `FIELD`s)
 * You can use any `FIELD` which is a submodule of `REGISTER`.
@@ -233,28 +233,28 @@ write_reg!(stm32ral::gpio, GPIOA.ODR, 1<<3);
 // (In reality, be careful, as this operation will change the state of the
 //  JTAG/SWD pins PA13-15, possibly breaking debugger access.
 //  Use modify_reg!() instead.)
-write_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: Output, MODER4: Analog, MODER5: 0b01);
+write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog, MODER5: 0b01);
 ```
 
-#### `read_reg!(peripheral, INSTANCE.REGISTER)`
+#### `read_reg!(peripheral, INSTANCE, REGISTER)`
 
 * Reads and returns the current value of `INSTANCE.REGISTER`
 
 ```rust
 // Get the value of the whole register IDR
-let val = read_reg!(stm32ral::gpio, GPIOA.IDR);
+let val = read_reg!(stm32ral::gpio, GPIOA, IDR);
 ```
 
-#### `read_reg!(peripheral, INSTANCE.REGISTER, FIELD)`
+#### `read_reg!(peripheral, INSTANCE, REGISTER, FIELD)`
 
 * Reads and returns the current value of `FIELD` inside `INSTANCE.REGISTER`
 
 ```rust
 // Get the value of IDR2 (masked and shifted down to the LSbits)
-let val = read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2);
+let val = read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2);
 ```
 
-#### `read_reg!(peripheral, INSTANCE.REGISTER, FIELD EXPRESSION)`
+#### `read_reg!(peripheral, INSTANCE, REGISTER, FIELD EXPRESSION)`
 
 * Reads the current value of `FIELD` and returns the value of
   `FIELD EXPRESSION`
@@ -265,10 +265,10 @@ let val = read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2);
 
 ```rust
 // Busy wait while PA2 is high
-while read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2 == High) {}
+while read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2 == High) {}
 ```
 
-#### `modify_reg!(peripheral, INSTANCE.REGISTER, |r| fn(r))`
+#### `modify_reg!(peripheral, INSTANCE, REGISTER, |r| fn(r))`
 
 * Reads `INSTANCE.REGISTER` as `r`, then writes `fn(r)` to it
 * Any lambda or function taking the register's type is acceptable
@@ -276,10 +276,10 @@ while read_reg!(stm32ral::gpio, GPIOA.IDR, IDR2 == High) {}
 ```rust
 // Set PA3 high without affecting any other bits
 // (in reality, use the BSRR register for this).
-modify_reg!(stm32ral::gpio, GPIOA.ODR, |reg| reg | (1<<3));
+modify_reg!(stm32ral::gpio, GPIOA, ODR, |reg| reg | (1<<3));
 ```
 
-#### `modify_reg!(peripheral, INSTANCE.REGISTER, FIELD1: VALUE1, FIELD2: VALUE2, ...)`
+#### `modify_reg!(peripheral, INSTANCE, REGISTER, FIELD1: VALUE1, FIELD2: VALUE2, ...)`
 
 * Updates only the specified `FIELD`s to the new `VALUE`s, without changing
   any other fields
@@ -291,19 +291,19 @@ modify_reg!(stm32ral::gpio, GPIOA.ODR, |reg| reg | (1<<3));
 
 ```rust
 // Set PA3 to Output and PA4 to Analog, but without affecting any other pins.
-modify_reg!(stm32ral::gpio, GPIOA.MODER, MODER3: Output, MODER4: Analog);
+modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog);
 ```
 
-#### `reset_reg!(peripheral, INSTANCE.REGISTER)`
+#### `reset_reg!(peripheral, INSTANCE, REGISTER)`
 
 * Writes the reset value to `INSTANCE.REGISTER`
 
 ```rust
 // Reset GPIOA back to reset state, with JTAG/SWD pins on PA13, PA14, PA15.
-reset_reg!(stm32ral::gpio, GPIOA.MODER);
+reset_reg!(stm32ral::gpio, GPIOA, MODER);
 ```
 
-#### `reset_reg!(peripheral, INSTANCE.REGISTER, FIELD1, FIELD2)`
+#### `reset_reg!(peripheral, INSTANCE, REGISTER, FIELD1, FIELD2)`
 
 * Writes the reset value to the specified `FIELD`s without changing the
   other fields
@@ -312,7 +312,7 @@ reset_reg!(stm32ral::gpio, GPIOA.MODER);
 
 ```rust
 // Reset PA13, PA14, PA15 to their reset state.
-reset_reg!(stm32ral::gpio, GPIOA.MODER, MODER13, MODER14, MODER15);
+reset_reg!(stm32ral::gpio, GPIOA, MODER, MODER13, MODER14, MODER15);
 ```
 
 ### Runtime Support & Interrupts
@@ -325,7 +325,7 @@ You can then specify your own interrupt handler:
 ```rust
 interrupt!(TIM2, my_tim2_handler);
 fn my_tim2_handler() {
-    write_reg!(stm32ral::tim2, TIM2.SR, UIF: 0);
+    write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0);
 }
 ```
 
