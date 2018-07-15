@@ -165,8 +165,7 @@ pub use stm32f4::stm32f405::*;
 Next there is the `RegisterBlock`, a struct which contains the registers
 for all instances of this peripheral. Each register is one of `RWRegister`,
 `RORegister`, `WORegister`, or the `Unsafe*` variants thereof. These provide
-`.read()` and `.write(value)` methods. For each instance of the peripheral,
-there is a const which implements `Deref` to the relevant RegisterBlock:
+`.read()` and `.write(value)` methods.
 
 ```rust
 // Inside a peripheral module such as `stm32ral::stm32f4::stm32f405::gpio`
@@ -176,8 +175,22 @@ pub struct RegisterBlock {
     pub OTYPER: RWRegister<u32>,
     // ...
 }
+```
 
-pub const GPIOA //...
+Then there is the `Instance` struct, one of which is created for each instance
+of this peripheral. It has a `ptr` member which is a raw pointer to the
+`RegisterBlock`, and implements `Deref` to `&RegisterBlock`.
+It also contains a `ResetValues` (see below).
+
+```rust
+// Inside a peripheral module such as `stm32ral::stm32f4::stm32f405::gpio`
+
+pub struct Instance {
+    pub ptr: *const RegisterBlock,
+    pub reset: ResetValues, // described below
+}
+
+pub const GPIOA: Instance = Instance { ptr = 0x40020000 as *const _ };
 pub const GPIOB //...
 pub const GPIOC //...
 ```
