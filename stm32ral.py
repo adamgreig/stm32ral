@@ -597,20 +597,14 @@ class PeripheralInstance(Node):
                 "reset_values": self.reset_values}
 
     def to_rust(self, registers):
-        tname = self.name.title().replace("_", "")
         registers = {r.offset: r.name for r in registers}
         resets = ", ".join(
             f"{registers[k]}: 0x{v:08X}" for k, v in self.reset_values.items())
         return f"""
-        pub struct {tname} {{ pub reset: ResetValues }}
-        impl ::core::ops::Deref for {tname} {{
-            type Target = RegisterBlock;
-            fn deref(&self) -> &RegisterBlock {{
-                unsafe {{ &*(0x{self.addr:08x} as *const _) }}
-            }}
-        }}
-        pub const {self.name.upper()}: {tname} =
-            {tname} {{ reset: ResetValues {{ {resets} }} }};"""
+        pub const {self.name.upper()}: Instance = Instance {{
+            ptr: 0x{self.addr:08x} as *const RegisterBlock,
+            reset: ResetValues {{ {resets} }},
+        }};"""
 
     def __lt__(self, other):
         return self.name < other.name
@@ -684,6 +678,20 @@ class PeripheralPrototype(Node):
             {lines}
         }}"""
 
+    def to_rust_instance_struct(self):
+        """Creates an Instance struct for this peripheral."""
+        return """
+        pub struct Instance {
+            pub ptr: *const RegisterBlock,
+            pub reset: ResetValues,
+        }
+        impl ::core::ops::Deref for Instance {
+            type Target = RegisterBlock;
+            fn deref(&self) -> &RegisterBlock {
+                unsafe { &*(self.ptr) }
+            }
+        }"""
+
     def to_rust_file(self, path):
         """
         Creates {peripheral}.rs in path, and writes all register modules,
@@ -713,6 +721,7 @@ class PeripheralPrototype(Node):
             f.write(modules)
             f.write(self.to_rust_register_block())
             f.write(self.to_rust_reset_values())
+            f.write(self.to_rust_instance_struct())
             f.write(instances)
         rustfmt(fname)
 
@@ -833,7 +842,7 @@ class PeripheralPrototypeLink(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
-            f"pub use {self.path}::{{RegisterBlock, ResetValues}};",
+            f"pub use {self.path}::{{RegisterBlock, ResetValues, Instance}};",
             "",
         ])
         registers = ", ".join(m.name for m in self.prototype.registers)
