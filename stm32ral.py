@@ -50,7 +50,7 @@ mod register;
 /// ```rust
 /// interrupt!(TIM2, my_tim2_handler);
 /// fn my_tim2_handler() {
-///     write_reg!(stm32ral::tim2, TIM2.SR, UIF: 0);
+///     write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0);
 /// }
 /// ```
 #[cfg(any(feature="doc", feature="rt"))]
@@ -562,18 +562,17 @@ class Register(Node):
             f"{other.name}: {escape_desc(other.desc)}",
         ])
         self.size = max(self.size, other.size)
-        newname = os.path.commonprefix((self.name, other.name)).strip("_")
-        if newname != self.name and len(newname) >= 2:
-            prefix = "_".join(self.name.split("_")[:-1])
-            if newname != prefix:
-                print(f"Warning [{parent.name}]: suspected failure of name "
-                      f"compaction: {self.name}+{other.name}->{newname}")
+        self.access = "read-write"
+        newname = common_name(self.name, other.name, parent.name)
+        if newname != self.name[:len(newname)]:
+            print(f"Warning [{parent.name}]: {self.name}+{other.name} "
+                  f"-> {newname}: suspected name compaction failure")
+        if newname != self.name:
             if newname not in [r.name for r in parent.registers]:
                 self.name = newname
             else:
-                print(f"Warning [{parent.name}]: {self.name}+{other.name} "
-                      "aliasing produces name conflict, not renaming")
-        self.access = "read-write"
+                print(f"Warning [{parent.name}]: {self.name} + {other.name} "
+                      f"-> {newname}: name already exists, using {self.name}")
 
 
 class PeripheralInstance(Node):
@@ -750,16 +749,13 @@ class PeripheralPrototype(Node):
         at least 3 letters long.
         """
         self.instances += other.instances
-        newname = os.path.commonprefix((self.name, other.name)).strip("_")
-        if newname != self.name and len(newname) >= 3:
-            if len(newname) < len(self.name) - 3:
-                print(f"Warning [{parent.name}]: suspected failure of name "
-                      f"compaction: {self.name}+{other.name}->{newname}")
+        newname = common_name(self.name, other.name, parent.name)
+        if newname != self.name:
             if newname not in [p.name for p in parent.peripherals]:
                 self.name = newname
             else:
-                print(f"Warning [{parent.name}]: {self.name}+{other.name}: "
-                      f"new name {newname} already exists, not renaming")
+                print(f"Warning [{parent.name}]: {self.name} + {other.name} "
+                      f"-> {newname}: name already exists, using {self.name}")
 
     def refactor_common_register_fields(self):
         """
@@ -1349,6 +1345,109 @@ def escape_desc(desc):
 def rustfmt(fname):
     """Runs rustfmt over the given filename."""
     subprocess.run(["rustfmt", fname])
+
+
+def common_name(a, b, ctx=""):
+    """
+    Returns the best common name between `a` and `b`.
+
+    Ideally finds a single character different between `a` and `b` which
+    is then removed, e.g., GPIOA + GPIOB = GPIO, TIM1 + TIM2 = TIM,
+    I2S2EXT + I2S3EXT = I2SEXT. `a` may have already been merged into
+    such a form, so GPIO + GPIOB = GPIO, etc, as well.
+
+    If that does not succeed, the next best guess is a common prefix,
+    e.g., CCMR1_Input + CCMR1_Output = CCMR1.
+
+    Failing a common prefix, a warning is printed and `a` is returned.
+
+    Special cases:
+    * `spi?` and `i2s?ext` will produce `spi`
+    * `usart?` and `uart?` will produce `usart`
+    * `adc1_2` and `adc3_4` wil produce `adc_common`
+    * `adc3_common` and `adc12_common` will produce `adc_common`
+    * `delay_block_*` and `delay_block_*` will produce `dlyb`
+
+    `ctx` is optional and printed in any warnings emitted.
+
+    >>> common_name("gpioa", "gpiob")
+    'gpio'
+    >>> common_name("gpio", "gpiob")
+    'gpio'
+    >>> common_name("ccmr1_input", "ccmr1_output")
+    'ccmr1'
+    >>> common_name("i2s2ext", "i2s3ext")
+    'i2sext'
+    >>> common_name("i2sext", "i2s3ext")
+    'i2sext'
+    >>> common_name("spi2", "i2s2ext")
+    'spi'
+    >>> common_name("i2sext", "spi3")
+    'spi'
+    >>> common_name("usart3", "uart4")
+    'usart'
+    >>> common_name("usart", "uart7")
+    'usart'
+    >>> common_name("adc1_2", "adc3_4")
+    'adc_common'
+    >>> common_name("adc3_common", "adc12_common")
+    'adc_common'
+    >>> common_name("delay_block_quadspi", "delay_block_sdmmc1")
+    'dlyb'
+    """
+    # Find position of all differences up to the end of the shortest name
+    diffpos = [i for i in range(min(len(a), len(b))) if a[i] != b[i]]
+
+    # Special cases
+    for x, y in ((a, b), (b, a)):
+        if x.startswith("i2s") and x.endswith("ext") and y.startswith("spi"):
+            return "spi"
+        if x.startswith("usart") and y.startswith("uart"):
+            return "usart"
+        if x == "adc1_2" and y == "adc3_4":
+            return "adc_common"
+        if x == "adc12_common" and y == "adc3_common":
+            return "adc_common"
+        if x.startswith("delay_block_") and y.startswith("delay_block_"):
+            return "dlyb"
+
+    if len(diffpos) == 0:
+        # Either names are the same or one name is the prefix of the other
+        if a == b:
+            print(f"Warning [{ctx}]: {a} and {b} are identical")
+            return a
+        elif b[:len(a)] == a:
+            return a
+        elif a[:len(b)] == b:
+            return b
+    elif len(diffpos) == 1:
+        # Names have a single character difference which we can try removing
+        p = diffpos[0]
+        an = a[:p] + a[p+1:]
+        bn = b[:p] + b[p+1:]
+        if an == bn:
+            return an
+        else:
+            print(f"Warning [{ctx}]: {a}->{an} and {b}->{bn} failed")
+            return a
+    else:
+        p = diffpos[0]
+        # First check if removing the first difference makes the names align,
+        # as will be the case for e.g. I2SEXT + I2S3EXT.
+        if a == b[:p] + b[p+1:]:
+            return a
+        # Names might at least have a common prefix
+        ap = a[:p]
+        bp = b[:p]
+        # Strip trailing underscore from suffix
+        if ap.endswith("_"):
+            ap = ap[:-1]
+            bp = bp[:-1]
+        if len(ap) > 0 and ap == bp:
+            return ap
+        else:
+            print(f"Warning [{ctx}]: {a}->{ap} and {b}->{bp} failed")
+            return a
 
 
 def parse_args():

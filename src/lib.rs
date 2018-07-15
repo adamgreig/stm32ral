@@ -33,7 +33,7 @@ mod register;
 /// ```rust
 /// interrupt!(TIM2, my_tim2_handler);
 /// fn my_tim2_handler() {
-///     write_reg!(stm32ral::tim2, TIM2.SR, UIF: 0);
+///     write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0);
 /// }
 /// ```
 #[cfg(any(feature="doc", feature="rt"))]
