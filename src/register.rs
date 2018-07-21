@@ -1,3 +1,5 @@
+use core::cell::UnsafeCell;
+
 /// A read-write register of type T.
 ///
 /// Contains one value of type T and provides volatile read/write functions to it.
@@ -7,20 +9,20 @@
 /// lead to memory unsafety. For example, it is a poor choice for a DMA target, but less
 /// worrisome for a GPIO output data register.
 pub struct RWRegister<T> {
-    register: T,
+    register: UnsafeCell<T>,
 }
 
-impl<T> RWRegister<T> {
+impl<T: Copy> RWRegister<T> {
     /// Reads the value of the register.
     #[inline(always)]
     pub fn read(&self) -> T {
-        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
+        unsafe { ::core::ptr::read_volatile(self.register.get()) }
     }
 
     /// Writes a new value to the register.
     #[inline(always)]
     pub fn write(&self, val: T) {
-        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
+        unsafe { ::core::ptr::write_volatile(self.register.get(), val) }
     }
 }
 
@@ -33,20 +35,20 @@ impl<T> RWRegister<T> {
 /// undefined behaviour or memory unsafety. For example, any registers you write a memory
 /// address into.
 pub struct UnsafeRWRegister<T> {
-    register: T,
+    register: UnsafeCell<T>,
 }
 
-impl<T> UnsafeRWRegister<T> {
+impl<T: Copy> UnsafeRWRegister<T> {
     /// Reads the value of the register.
     #[inline(always)]
     pub unsafe fn read(&self) -> T {
-        ::core::ptr::read_volatile(&self.register as *const T)
+        ::core::ptr::read_volatile(self.register.get())
     }
 
     /// Writes a new value to the register.
     #[inline(always)]
     pub unsafe fn write(&self, val: T) {
-        ::core::ptr::write_volatile(&self.register as *const T as *mut T, val)
+        ::core::ptr::write_volatile(self.register.get(), val)
     }
 }
 
@@ -58,14 +60,14 @@ impl<T> UnsafeRWRegister<T> {
 /// This register should be used where reads and writes to this peripheral register do not
 /// lead to memory unsafety.
 pub struct RORegister<T> {
-    register: T,
+    register: UnsafeCell<T>,
 }
 
-impl<T> RORegister<T> {
+impl<T: Copy> RORegister<T> {
     /// Reads the value of the register.
     #[inline(always)]
     pub fn read(&self) -> T {
-        unsafe { ::core::ptr::read_volatile(&self.register as *const T) }
+        unsafe { ::core::ptr::read_volatile(self.register.get()) }
     }
 }
 
@@ -77,14 +79,14 @@ impl<T> RORegister<T> {
 /// This register should be used where reads and writes to this peripheral may invoke
 /// undefined behaviour or memory unsafety.
 pub struct UnsafeRORegister<T> {
-    register: T,
+    register: UnsafeCell<T>,
 }
 
-impl<T> UnsafeRORegister<T> {
+impl<T: Copy> UnsafeRORegister<T> {
     /// Reads the value of the register.
     #[inline(always)]
     pub unsafe fn read(&self) -> T {
-        ::core::ptr::read_volatile(&self.register as *const T)
+        ::core::ptr::read_volatile(self.register.get())
     }
 }
 
@@ -96,14 +98,14 @@ impl<T> UnsafeRORegister<T> {
 /// This register should be used where writes to this peripheral register do not lead to memory
 /// unsafety.
 pub struct WORegister<T> {
-    register: T,
+    register: UnsafeCell<T>,
 }
 
-impl<T> WORegister<T> {
+impl<T: Copy> WORegister<T> {
     /// Writes a new value to the register.
     #[inline(always)]
     pub fn write(&self, val: T) {
-        unsafe { ::core::ptr::write_volatile(&self.register as *const T as *mut T, val) }
+        unsafe { ::core::ptr::write_volatile(self.register.get(), val) }
     }
 }
 
@@ -115,14 +117,14 @@ impl<T> WORegister<T> {
 /// This register should be used where reads and writes to this peripheral may invoke
 /// undefined behaviour or memory unsafety.
 pub struct UnsafeWORegister<T> {
-    register: T,
+    register: UnsafeCell<T>,
 }
 
-impl<T> UnsafeWORegister<T> {
+impl<T: Copy> UnsafeWORegister<T> {
     /// Writes a new value to the register.
     #[inline(always)]
     pub unsafe fn write(&self, val: T) {
-        ::core::ptr::write_volatile(&self.register as *const T as *mut T, val)
+        ::core::ptr::write_volatile(self.register.get(), val)
     }
 }
 
