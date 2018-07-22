@@ -13,8 +13,7 @@ buildall:
 	for device in stm32-rs/devices/*.yaml; do\
 		echo $$device;\
 		cargo build --features `basename $$device .yaml` || break 0;\
-		cargo build --features `basename $$device .yaml`,rt || break 0;\
+		cargo build --features `basename $$device .yaml` --no-default-features || break 0;\
 	done
-	cargo build --features doc
 
 .PHONY: stm32-rs

@@ -622,57 +622,75 @@ class PeripheralInstance(Node):
         /// Access functions for the {self.name} peripheral instance
         pub mod {self.name} {{
             use external_cortex_m;
-            pub use super::{{RegisterBlock, ResetValues}};
+            pub use super::{{RegisterBlock, ResetValues, Instance}};
 
-            pub(super) const ptr: *const RegisterBlock =
-                0x{self.addr:08x} as *const _;
+            const INSTANCE: Instance = Instance {{
+                addr: 0x{self.addr:08x},
+                _marker: ::core::marker::PhantomData,
+            }};
 
             /// Reset values for each field in {self.name}
             pub const reset: ResetValues = ResetValues {{
                 {resets}
             }};
 
-            /// Unsafe direct access to {self.name}
-            ///
-            /// This is unsafe because you are not ensured unique access to
-            /// the peripheral, so you may encounter data races. It is up to
-            /// you to ensure you will not cause data races.
-            #[inline(always)]
-            pub unsafe fn get() -> &'static RegisterBlock {{
-                &*ptr
-            }}
-
             #[allow(private_no_mangle_statics)]
             #[no_mangle]
             static mut {self.name}_TAKEN: bool = false;
 
-            /// Safe one-time access to {self.name}
+            /// Safe access to {self.name}
             ///
-            /// This function returns `Some(&RegisterBlock)` the first time
-            /// it is called, and `None` thereafter. This ensures that if you
-            /// do get `Some(&RegisterBlock)`, you are ensured unique access to
+            /// This function returns `Some(Instance)` if this instance is not
+            /// currently taken, and `None` if it is. This ensures that if you
+            /// do get `Some(Instance)`, you are ensured unique access to
             /// the peripheral and there cannot be data races (unless other
             /// code uses `unsafe`, of course). You can then pass the
-            /// `&RegisterBlock` around to other functions as required.
-            pub fn take() -> Option<&'static RegisterBlock> {{
+            /// `Instance` around to other functions as required. When you're
+            /// done with it, you can call `release(instance)` to return it.
+            ///
+            /// `Instance` itself dereferences to a `RegisterBlock`, which
+            /// provides access to the peripheral's registers.
+            #[inline]
+            pub fn take() -> Option<Instance> {{
                 external_cortex_m::interrupt::free(|_| unsafe {{
                     if {self.name}_TAKEN {{
                         None
                     }} else {{
                         {self.name}_TAKEN = true;
-                        Some(get())
+                        Some(INSTANCE)
                     }}
                 }})
+            }}
+
+            /// Release exclusive access to {self.name}
+            ///
+            /// This function allows you to return an `Instance` so that it
+            /// is available to `take()` again. This function will panic if
+            /// you return a different `Instance` or if this instance is not
+            /// already taken.
+            #[inline]
+            pub fn release(inst: Instance) {{
+                external_cortex_m::interrupt::free(|_| unsafe {{
+                    if {self.name}_TAKEN && inst.addr == INSTANCE.addr {{
+                        {self.name}_TAKEN = false;
+                    }} else {{
+                        panic!("Released a peripheral which was not taken");
+                    }}
+                }});
             }}
         }}
 
         /// Raw pointer to {self.name}.
         ///
-        /// Dereferencing this is unsafe for the same reasons as `get()`:
-        /// you may encounter data races with other users of this peripheral.
+        /// Dereferencing this is unsafe because you are not ensured unique
+        /// access to the peripheral, so you may encounter data races with
+        /// other users of this peripheral. It is up to you to ensure you
+        /// will not cause data races.
+        ///
         /// This constant is provided for ease of use in unsafe code: you can
         /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-        pub const {self.name}: *const RegisterBlock = {self.name}::ptr;"""
+        pub const {self.name}: *const RegisterBlock =
+            0x{self.addr:08x} as *const _;"""
 
     def __lt__(self, other):
         return self.name < other.name
@@ -746,6 +764,23 @@ class PeripheralPrototype(Node):
             {lines}
         }}"""
 
+    def to_rust_instance(self):
+        """Creates an Instance struct for this peripheral."""
+        return """
+        pub struct Instance {
+            pub(crate) addr: u32,
+            pub(crate) _marker: PhantomData<*const RegisterBlock>,
+        }
+        impl ::core::ops::Deref for Instance {
+            type Target = RegisterBlock;
+            #[inline(always)]
+            fn deref(&self) -> &RegisterBlock {
+                unsafe { &*(self.addr as *const _) }
+            }
+        }
+        unsafe impl Send for Instance {}
+        """
+
     def to_rust_file(self, path):
         """
         Creates {peripheral}.rs in path, and writes all register modules,
@@ -764,6 +799,7 @@ class PeripheralPrototype(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
+            "use core::marker::PhantomData;",
             f"use {{{regtypes}}};",
             "",
         ])
@@ -776,6 +812,7 @@ class PeripheralPrototype(Node):
             f.write(modules)
             f.write(self.to_rust_register_block())
             f.write(self.to_rust_reset_values())
+            f.write(self.to_rust_instance())
             f.write(instances)
         rustfmt(fname)
 
@@ -896,7 +933,7 @@ class PeripheralPrototypeLink(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
-            f"pub use {self.path}::{{RegisterBlock, ResetValues}};",
+            f"pub use {self.path}::{{RegisterBlock, ResetValues, Instance}};",
             "",
         ])
         registers = ", ".join(m.name for m in self.prototype.registers)

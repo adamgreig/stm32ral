@@ -41,9 +41,10 @@ extern crate stm32ral;
 use stm32ral::{rcc, gpio};
 
 // For safe access we have to first `take()` the peripheral instance.
-// This can only be done once (it will return None thereafter) to ensure
-// that no other code can be simultaneously accessing the perihperal,
-// which could lead to a race condition. See below for unsafe use.
+// This only returns Some(Instance) if that instance is not already
+// taken; otherwise it returns None. This ensures that no other code can be
+// simultaneously accessing the peripheral, which could lead to a race
+// condition. There's `release()` to return it. See below for unsafe use.
 let gpioa = gpio::GPIOA::take().unwrap();
 let rcc = rcc::RCC::take().unwrap();
 
@@ -72,12 +73,12 @@ modify_reg!(gpio, gpioa, MODER, |r| r | (0b10 << 4));
 let pa1 = (gpioa.IDR.read() & gpio::IDR::IDR1::mask) >> gpio::IDR::IDR1::offset;
 gpioa.ODR.write(gpio::ODR::ODR2::RW::Output << gpio::ODR::ODR2::offset);
 
+// Once you're done with a peripheral, you can release it so it is available
+// to `take()` again. You can't use `gpioa` after this line.
+gpio::GPIOA::release(gpioa);
+
 // For unsafe access, you don't need to first call `take()`, just use `GPIOA`:
 unsafe { modify_reg!(gpio, GPIOA, MODER, MODER1: Output) };
-
-// Or you can use `get()` to unsafely get an instance:
-let gpioa = unsafe { gpio::GPIOA::get() };
-modify_reg!(gpio, gpioa, MODER, MODER1: Output);
 ```
 
 See [the example project](https://github.com/adamgreig/stm32ral-example) for
@@ -233,21 +234,39 @@ one `ResetValues` appropriately initialised, so you can:
 gpioa.MODER.write(stm32ral::gpio::GPIOA::reset.MODER);
 ```
 
+There is an `Instance` struct which represents a value you can own and move
+around and give out references to etc, which Derefs to a `RegisterBlock`
+to actually access the registers. There's only one `Instance` for each
+peripheral instance; you can get it using `take()` and return it for someone
+else using `release()` (see below).
+
+```rust
+// Inside a peripheral module such as `stm32ral::stm32f4::stm32f405::gpio`
+
+pub struct Instance {
+    addr: u32,
+}
+impl Deref for Instance {
+    type Target = RegisterBlock;
+    fn deref(&self) -> &RegisterBlock { ... }
+}
+```
+
 Finally there is a module for each instance of the peripheral, containing
-its `ResetValues` and a `take()` and unsafe `get()` function to obtain
-a `&RegisterBlock`. The safe `take()` returns an `Option<&RegisterBlock>`
-which will be `Some` the first time you call it and `None` every subsequent
-time, to ensure that you have exclusive access to the peripheral and cannot
-encounter data races. The unsafe `get()` just returns a `&RegisterBlock`;
-it's then up to you to ensure no data races will occur.
+its `ResetValues`, its one `Instance`, and a `take()` function to obtain it.
+`take()` returns an `Option<Instance>` which will be `Some` if the instance
+was available and `None` if not. This ensures you have exclusive acess
+to the peripheral and cannot encounter data races with other safe code.
+You can call `release()` to return the instance for others to `take()`.
 
 ```rust
 // Inside a peripheral module such as `stm32ral::stm32f4::stm32f405::gpio`
 
 pub mod GPIOA {
     pub const reset: ResetValues = ResetValues { ... };
-    pub unsafe fn get() -> &'static RegisterBlock { ... };
-    pub fn take() -> Option<&'static RegisterBlock> { ... };
+    const INSTANCE: Instance = Instance { ... };
+    pub fn take() -> Option<Instance> { ... };
+    pub fn release(Instance) { ... };
 }
 
 pub mod GPIOB { ... }
@@ -255,25 +274,25 @@ pub mod GPIOC { ... }
 // and so on
 ```
 
-These constants are what permit access to the relevant registers:
+These instances are what permit access to the relevant registers:
 
 ```rust
 // In reality, you'd use write_reg!(gpio, gpioa, MODER, 0x1234)
 // and read_reg!(gpio, gpioa, MODER)
 let gpioa = gpio::GPIOA::take().unwrap();
-gpioa..MODER.write(0x1234);
+gpioa.MODER.write(0x1234);
 let _ = gpioa.MODER.read();
 ```
 
-For convenience in unsafe code, there is also a raw pointer for each
+For convenience in unsafe code, there is also a raw pointer directly to each
 `RegisterBlock`:
 
 ```rust
 pub const GPIOA: *const RegisterBlock = ...;
 ```
 
-This permits direct use in macros without requiring you to
-first call `take()` or `get()` (see below).
+This permits direct use in macros without requiring you to first call `take()`
+(see below for macros).
 
 As an implementation detail, many structs are actually refactored to live
 in the family level, with the original definitions replaced by `pub use`
@@ -285,6 +304,19 @@ The same is also true of duplicated values in the `R`, `W`, and `RW` modules.
 To simplify using all the constants and registers, four macros are provided.
 For full details please check out
 [the documentation](https://docs.rs/stm32ral).
+
+In the definitions below:
+* `peripheral` is a path to a peripheral module, for example
+  `stm32ral::gpio`,
+* `instance` is any expression that dereferences to `RegisterBlock`:
+  an `Instance`, `&Instance`, `&RegisterBlock`, or `*const RegisterBlock`,
+* `INSTANCE` is the path to an instance module, for example
+  `stm32ral::gpio::GPIOA`, but anything inside the `peripheral` module will
+  be in scope, so you can simply specify `GPIOA`,
+* `REGISTER` is an ident and the name of any register in the peripheral,
+  for example `MODER`, which must exist as a field in the `RegisterBlock`,
+* `value` can be a literal value or any named values from the register
+  module.
 
 #### `write_reg!(peripheral, instance, REGISTER, value)`
 
@@ -372,9 +404,9 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog);
 #### `reset_reg!(peripheral, instance, INSTANCE, REGISTER)`
 
 * Writes the reset value to `instance.REGISTER`
-* Note you have to specify both an `instance` (the actual `&RegisterBlock`)
-  and `INSTANCE` (the name of the instance module inside the peripheral
-  module, e.g. `peripheral::INSTANCE::reset` must exist).
+* Note you have to specify both an `instance` (anything that derefs to
+  `RegisterBlock`) and `INSTANCE` (the name of the instance module inside the 
+  peripheral module, e.g. `peripheral::INSTANCE::reset` must exist).
 
 ```rust
 // Reset GPIOA back to reset state, with JTAG/SWD pins on PA13, PA14, PA15.
@@ -387,9 +419,9 @@ reset_reg!(stm32ral::gpio, gpioa, GPIOA, MODER);
   other fields
 * Reads `instance.REGISTER`, masks off the specified `FIELD`s, sets those
   bits to their reset values, and writes back the result
-* Note you have to specify both an `instance` (the actual `&RegisterBlock`)
-  and `INSTANCE` (the name of the instance module inside the peripheral
-  module, e.g. `peripheral::INSTANCE::reset` must exist).
+* Note you have to specify both an `instance` (anything that derefs to
+  `RegisterBlock`) and `INSTANCE` (the name of the instance module inside the 
+  peripheral module, e.g. `peripheral::INSTANCE::reset` must exist).
 
 ```rust
 // Reset PA13, PA14, PA15 to their reset state.
@@ -399,11 +431,11 @@ reset_reg!(stm32ral::gpio, gpioa, GPIOA, MODER, MODER13, MODER14, MODER15);
 #### Unsafe Macro Use
 
 For convenience, when using the macros in an `unsafe` context,
-you do not need to first `take()`/`get()` the instance and can instead
+you do not need to first `take()` the instance and can instead
 specify it directly:
 
 ```rust
-// The `GPIOE` is effectively the same as `GPIOE::get()` here.
+// Unsafely and directly access GPIOE.
 unsafe { write_reg!(stm32ral::gpio, GPIOE, 0x01010101) };
 
 // The macro is effectively doing this:
@@ -474,22 +506,22 @@ interrupt routine wants to access the same peripheral, you will race it,
 leading to undefined behaviour.
 
 The solution provided here is similar to `svd2rust`, though more granular:
-every peripheral instance has a `take() -> Option<&RegisterBlock>` function
-which returns the reference the first time it is called, and None thereafter.
-You can therefore use this safe function in your code to obtain a reference
-once, and pass it on to any other functions that require it, while ensuring
-no other threads (or interrupt routines) can access the peripheral in safe
-code. The references are `!Sync` due to an interior `UnsafeCell`, so you
-cannot pass the `&RegisterBlock` between threads.
+every peripheral instance has a `take() -> Option<Instance>` function
+which returns `Some(Instance)` if the instance is not currently taken, and None
+if it is. You can therefore use this safe function in your code to obtain an
+Instance, and pass it (or a reference to it) on to any other functions that
+require it, while ensuring no other threads (or interrupt routines) can
+access the peripheral in safe code. When you're done using it, you can call
+`release(instance)` to make it available to `take()` again.
 
 However, you will often need to use peripherals in other contexts where it is
-awkward or impossible to safety pass the `&RegisterBlock` you first obtained.
-This crate provides both an `unsafe get() -> &RegisterBlock` which always
-returns the reference, and a `*const RegisterBlock` which can be used for
-convenience with the macros. When using these unsafe features, you must ensure
-no data races will happen yourself (for instance, because an interrupt will
-only fire after you are doing initialising the peripheral and don't access it
-thereafter, or because you use your own mutex to ensure exclusive access, etc).
+awkward or impossible to safety pass the `Instance` around.
+This crate provides a `*const RegisterBlock` which can be unsafely dereferenced 
+for this purpose, and can be given directly in the macros in an unsafe context.
+When using these unsafe features, you must ensure no data races will happen
+yourself (for instance, because an interrupt will only fire after you are done
+initialising the peripheral and don't access it thereafter, or because you use
+your own mutex to ensure exclusive access, etc).
 
 ## Contributing
 
@@ -527,6 +559,58 @@ $ make
 
 Be sure to update the submodule (`git submodule update`) if it's been changed
 upstream to make sure you're using the latest available SVD patches.
+
+## Outstanding Work
+
+There are a few unresolved issues which require some further thought,
+but shouldn't present major backwards compatibility issues:
+
+### More Enumerated Values, Bad SVD Files
+
+The work to add all possible enumerated values and fix incorrect SVD files is
+always ongoing at [stm32-rs](https://github.com/adamgreig/stm32-rs).
+
+### Aliased Registers
+
+Aliased registers are not as well handled as they could be. This is a classic
+problem for Rust register accesses as Rust does not yet have anonymous
+unions, which would be the usual solution in C.
+
+At the moment, stm32ral merges aliased registers, attempting to pick a suitable
+merged name, and combining all the fields together. This is ergonomic for
+many aliased registers (e.g., `CCMR` in timers), but not for others
+(such as `OTG_HS_DIEPINT5` and `OTG_HS_DIEPTSIZ7`, yuck).
+
+Once there are anonymous unions there might be a better solution.
+
+### Timers
+
+Most peripherals combine well, for instance `GPIOA` through `GPIOK` are all
+instances of `gpio::RegisterBlock`. The same applies to most other peripherals
+like `USART`, `SPI`, `I2C`, and so on.
+
+Timers are not well merged because their hierarchy is complicated: we can't
+just have a single `TIM` since there are so many different register blocks,
+but the solution at the moment (no merging) is not optimal either.
+
+Ideally we might identify the various categories, such as:
+
+* Advanced
+* Basic
+* General purpose (type 1)
+* General purpose (type 2)
+* General purpose (32 bit)
+* Low power
+* High resolution
+
+We could then try to group those together.
+
+### Other Peripherals
+
+A few other peripherals do not merge well yet either, especially
+on STM32F373 and STM32F3x8 where some GPIO peripherals do not have the
+`LCKR` registers, annoyingly. The best solution might be to just pretend
+it does have it.
 
 ## License
 

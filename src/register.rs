@@ -171,7 +171,9 @@ impl<T: Copy> UnsafeWORegister<T> {
 ///
 /// In both cases, the first arguments are:
 /// * the path to the peripheral module: `stm32ral::gpio`,
-/// * a reference to the instance of that peripheral: 'gpioa' (a `&RegisterBlock`),
+/// * a reference to the instance of that peripheral: 'gpioa' (anything which dereferences to
+///   `RegisterBlock`, such as `Instance`, `&Instance`, `&RegisterBlock`, or
+///   `*const RegisterBlock`),
 /// * the register you wish you access: `MODER` (a field on the `RegisterBlock`).
 ///
 /// In the single-value usage, the final argument is just the value to write:
@@ -284,7 +286,9 @@ macro_rules! write_reg {
 ///
 /// In both cases, the first arguments are:
 /// * the path to the peripheral module: `stm32ral::gpio`,
-/// * the instance of that peripheral: `gpioa` (a `&RegisterBlock`),
+/// * a reference to the instance of that peripheral: 'gpioa' (anything which dereferences to
+///   `RegisterBlock`, such as `Instance`, `&Instance`, `&RegisterBlock`, or
+///   `*const RegisterBlock`),
 /// * the register you wish you access: `MODER` (a field on the `RegisterBlock`).
 ///
 /// In the whole-register usage, the final argument is a closure that accepts the current value
@@ -414,7 +418,9 @@ macro_rules! modify_reg {
 ///
 /// In all cases, the first arguments are:
 /// * the path to the peripheral module: `stm32ral::gpio`,
-/// * the instance of that peripheral: `gpioa` (a `&RegisterBlock`),
+/// * a reference to the instance of that peripheral: 'gpioa' (anything which dereferences to
+///   `RegisterBlock`, such as `Instance`, `&Instance`, `&RegisterBlock`, or
+///   `*const RegisterBlock`),
 /// * the register you wish to access: `IDR` (a field on the `RegisterBlock`).
 ///
 /// In the whole-register usage, the macro simply returns the register's value:
@@ -515,7 +521,9 @@ macro_rules! read_reg {
 ///
 /// In both cases, the first arguments are:
 /// * the path to the peripheral module: `stm32ral::gpio`,
-/// * the instance of that peripheral: `gpioa` (a `&RegisterBlock`),
+/// * a reference to the instance of that peripheral: 'gpioa' (anything which dereferences to
+///   `RegisterBlock`, such as `Instance`, `&Instance`, `&RegisterBlock`, or
+///   `*const RegisterBlock`),
 /// * the module for the instance of that peripheral: `GPIOA`,
 /// * the register you wish to access: `MODER` (a field on the `RegisterBlock`).
 ///
