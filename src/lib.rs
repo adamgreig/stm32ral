@@ -19,6 +19,8 @@
 
 #![no_std]
 
+extern crate cortex_m as external_cortex_m;
+
 #[macro_use]
 mod register;
 
@@ -30,11 +32,13 @@ mod register;
 /// This macro is only available with the `rt` feature.
 ///
 /// # Examples
-/// ```rust
+/// ```
+/// # #[macro_use] extern crate stm32ral; fn main() {
 /// interrupt!(TIM2, my_tim2_handler);
 /// fn my_tim2_handler() {
-///     write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0);
+///     unsafe { write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0) };
 /// }
+/// # }
 /// ```
 #[cfg(any(feature="doc", feature="rt"))]
 #[macro_export]

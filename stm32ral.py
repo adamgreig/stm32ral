@@ -36,6 +36,8 @@ CRATE_LIB_PREAMBLE = """\
 
 #![no_std]
 
+extern crate cortex_m as external_cortex_m;
+
 #[macro_use]
 mod register;
 
@@ -47,11 +49,13 @@ mod register;
 /// This macro is only available with the `rt` feature.
 ///
 /// # Examples
-/// ```rust
+/// ```
+/// # #[macro_use] extern crate stm32ral; fn main() {
 /// interrupt!(TIM2, my_tim2_handler);
 /// fn my_tim2_handler() {
-///     write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0);
+///     unsafe { write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0) };
 /// }
+/// # }
 /// ```
 #[cfg(any(feature="doc", feature="rt"))]
 #[macro_export]
@@ -88,17 +92,20 @@ license = "MIT/Apache-2.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
+no-default-features = true
 
 [dependencies]
 bare-metal = "0.2.0"
+cortex-m = "0.5.2"
 
 [dependencies.cortex-m-rt]
 optional = true
 version = "0.5.1"
 
 [features]
-default = []
 rt = ["cortex-m-rt/device"]
+inline-asm = ["cortex-m/inline-asm"]
+default = ["rt", "inline-asm"]
 doc = []
 """
 
@@ -165,7 +172,7 @@ class EnumeratedValue(Node):
 
     def to_rust(self, field_width):
         return f"""
-        /// {escape_desc(self.desc)}
+        /// 0b{self.value:0{field_width}b}: {escape_desc(self.desc)}
         pub const {self.name}: u32 = 0b{self.value:0{field_width}b};"""
 
     @classmethod
@@ -201,7 +208,16 @@ class EnumeratedValues(Node):
 
     def to_rust(self, field_width):
         values = "\n".join(v.to_rust(field_width) for v in self.values)
+        if self.name == "R":
+            desc = "Read-only values"
+        elif self.name == "W":
+            desc = "Write-only values"
+        else:
+            desc = "Read-write values"
+        if not values:
+            desc += " (empty)"
         return f"""\
+        /// {desc}
         pub mod {self.name} {{
             {values}
         }}"""
@@ -288,7 +304,9 @@ class Field(Node):
         return f"""
         /// {escape_desc(self.desc)}
         pub mod {self.name} {{
+            /// Bit offset ({self.offset})
             pub const offset: u32 = {self.offset};
+            /// Mask (0b{mask:b} << {self.offset})
             pub const mask: u32 = 0b{mask:b} << offset;
             {self.r.to_rust(self.width)}
             {self.w.to_rust(self.width)}
@@ -601,10 +619,60 @@ class PeripheralInstance(Node):
         resets = ", ".join(
             f"{registers[k]}: 0x{v:08X}" for k, v in self.reset_values.items())
         return f"""
-        pub const {self.name.upper()}: Instance = Instance {{
-            ptr: 0x{self.addr:08x} as *const RegisterBlock,
-            reset: ResetValues {{ {resets} }},
-        }};"""
+        /// Access functions for the {self.name} peripheral instance
+        pub mod {self.name} {{
+            use external_cortex_m;
+            pub use super::{{RegisterBlock, ResetValues}};
+
+            pub(super) const ptr: *const RegisterBlock =
+                0x{self.addr:08x} as *const _;
+
+            /// Reset values for each field in {self.name}
+            pub const reset: ResetValues = ResetValues {{
+                {resets}
+            }};
+
+            /// Unsafe direct access to {self.name}
+            ///
+            /// This is unsafe because you are not ensured unique access to
+            /// the peripheral, so you may encounter data races. It is up to
+            /// you to ensure you will not cause data races.
+            #[inline(always)]
+            pub unsafe fn get() -> &'static RegisterBlock {{
+                &*ptr
+            }}
+
+            #[allow(private_no_mangle_statics)]
+            #[no_mangle]
+            static mut {self.name}_TAKEN: bool = false;
+
+            /// Safe one-time access to {self.name}
+            ///
+            /// This function returns `Some(&RegisterBlock)` the first time
+            /// it is called, and `None` thereafter. This ensures that if you
+            /// do get `Some(&RegisterBlock)`, you are ensured unique access to
+            /// the peripheral and there cannot be data races (unless other
+            /// code uses `unsafe`, of course). You can then pass the
+            /// `&RegisterBlock` around to other functions as required.
+            pub fn take() -> Option<&'static RegisterBlock> {{
+                external_cortex_m::interrupt::free(|_| unsafe {{
+                    if {self.name}_TAKEN {{
+                        None
+                    }} else {{
+                        {self.name}_TAKEN = true;
+                        Some(get())
+                    }}
+                }})
+            }}
+        }}
+
+        /// Raw pointer to {self.name}.
+        ///
+        /// Dereferencing this is unsafe for the same reasons as `get()`:
+        /// you may encounter data races with other users of this peripheral.
+        /// This constant is provided for ease of use in unsafe code: you can
+        /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
+        pub const {self.name}: *const RegisterBlock = {self.name}::ptr;"""
 
     def __lt__(self, other):
         return self.name < other.name
@@ -678,20 +746,6 @@ class PeripheralPrototype(Node):
             {lines}
         }}"""
 
-    def to_rust_instance_struct(self):
-        """Creates an Instance struct for this peripheral."""
-        return """
-        pub struct Instance {
-            pub ptr: *const RegisterBlock,
-            pub reset: ResetValues,
-        }
-        impl ::core::ops::Deref for Instance {
-            type Target = RegisterBlock;
-            fn deref(&self) -> &RegisterBlock {
-                unsafe { &*(self.ptr) }
-            }
-        }"""
-
     def to_rust_file(self, path):
         """
         Creates {peripheral}.rs in path, and writes all register modules,
@@ -709,6 +763,7 @@ class PeripheralPrototype(Node):
             "#![allow(non_snake_case, non_upper_case_globals)]",
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
+            "",
             f"use {{{regtypes}}};",
             "",
         ])
@@ -721,7 +776,6 @@ class PeripheralPrototype(Node):
             f.write(modules)
             f.write(self.to_rust_register_block())
             f.write(self.to_rust_reset_values())
-            f.write(self.to_rust_instance_struct())
             f.write(instances)
         rustfmt(fname)
 
@@ -842,7 +896,7 @@ class PeripheralPrototypeLink(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
-            f"pub use {self.path}::{{RegisterBlock, ResetValues, Instance}};",
+            f"pub use {self.path}::{{RegisterBlock, ResetValues}};",
             "",
         ])
         registers = ", ".join(m.name for m in self.prototype.registers)
@@ -1418,6 +1472,8 @@ def common_name(a, b, ctx=""):
         if x == "adc12_common" and y == "adc3_common":
             return "adc_common"
         if x.startswith("delay_block_") and y.startswith("delay_block_"):
+            return "dlyb"
+        if x == "dlyb" and y.startswith("delay_block_"):
             return "dlyb"
 
     if len(diffpos) == 0:

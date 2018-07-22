@@ -12,17 +12,20 @@ license = "MIT/Apache-2.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
+no-default-features = true
 
 [dependencies]
 bare-metal = "0.2.0"
+cortex-m = "0.5.2"
 
 [dependencies.cortex-m-rt]
 optional = true
 version = "0.5.1"
 
 [features]
-default = []
 rt = ["cortex-m-rt/device"]
+inline-asm = ["cortex-m/inline-asm"]
+default = ["rt", "inline-asm"]
 doc = []
 armv6_m = []
 armv7e_m = []

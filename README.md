@@ -34,51 +34,65 @@ Please consider trying it out and contributing or leaving feedback!
 ## Quick Example
 
 ```rust
+#[macro_use]
+extern crate stm32ral;
 use stm32ral::{rcc, gpio};
+
+// For safe access we have to first `take()` the peripheral instance.
+// This can only be done once (it will return None thereafter) to ensure
+// that no other code can be simultaneously accessing the perihperal,
+// which could lead to a race condition. See below for unsafe use.
+let gpioa = gpio::GPIOA::take().unwrap();
+let rcc = rcc::RCC::take().unwrap();
 
 // Field-level read/modify/write, with either named values or just literals.
 // Most of your code will look like this.
-modify_reg!(rcc, RCC, AHB1ENR, GPIOAEN: Enabled);
-modify_reg!(gpio, GPIOA, MODER, MODER1: Input, MODER2: Output, MODER3: Input);
-while read_reg!(gpio, GPIOA, IDR, IDR3 == High) {
-    let pa1 = read_reg!(gpio, GPIOA, IDR, IDR1);
-    modify_reg!(gpio, GPIOA, ODR, ODR2: pa1);
+modify_reg!(rcc, rcc, AHB1ENR, GPIOAEN: Enabled);
+modify_reg!(gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+while read_reg!(gpio, gpioa, IDR, IDR3 == High) {
+    let pa1 = read_reg!(gpio, gpioa, IDR, IDR1);
+    modify_reg!(gpio, gpioa, ODR, ODR2: pa1);
 }
 
 // You can also reset whole registers or specific fields
-reset_reg!(gpio, GPIOA, MODER, MODER13, MODER14, MODER15);
-reset_reg!(gpio, GPIOB, MODER);
+reset_reg!(gpio, gpioa, MODER, MODER13, MODER14, MODER15);
+reset_reg!(gpio, gpioa, MODER);
 
 // Whole-register read/modify/write.
 // Rarely used but nice to have the option.
 // It's a bit shorter for single-field registers.
-let port = read_reg!(gpio, GPIOA, IDR);
-write_reg!(gpio, GPIOA, ODR, 0x12345678);
-modify_reg!(gpio, GPIOA, MODER, |r| r | (0b10 << 4));
+let port = read_reg!(gpio, gpioa, IDR);
+write_reg!(gpio, gpioa, ODR, 0x12345678);
+modify_reg!(gpio, gpioa, MODER, |r| r | (0b10 << 4));
 
 // Or forego the macros and just use the constants yourself.
 // The macros above just expand to these forms for you, bringing
 // the relevant constants into scope. Nothing else is going on.
 let pa1 = (gpio::GPIOA.IDR.read() & gpio::IDR::IDR1::mask)
           >> gpio::IDR::IDR1::offset;
-gpio::GPIOA.ODR.write(gpio::ODR::ODR2::RW::Output << gpio::ODR::ODR2::offset);
+gpioa.ODR.write(gpio::ODR::ODR2::RW::Output << gpio::ODR::ODR2::offset);
+
+// For unsafe access, you don't need to first call `take()`:
+unsafe { modify_reg!(gpio, GPIOA, MODER, MODER1: Output) };
+
+// Or you can use `get()` to unsafely get an instance:
+let gpioa = unsafe { gpio::GPIOA::get() };
+modify_reg!(gpio, gpioa, MODER, MODER1: Output);
 ```
 
 ## Why use stm32ral?
 
-* Small and lightweight (~20MB total file size, <2MB compressed)
+* Small and lightweight (~30MB total file size, ~2MB compressed)
 * Simple (just 4 macros and a lot of constants)
 * Quick to compile (~2s build time)
 * Covers [all STM32 devices](supported_devices.md) in one crate
-* Supports `cortex-m-rt` via the `rt` feature, including interrupts
+* Supports `cortex-m-rt` via the (default) `rt` feature, including interrupts
 * Doesn't get in your way
 * A bit like what you're used to from C header files
 
 ## Why not use stm32ral?
 
 * Still experimental, might have breaking changes to API design
-* Takes an assume-safe-by-default approach so edge cases may be missed
-  (but you'll probably notice when you start writing pointers to registers)
 * Won't keep you warm burning CPU time
 * A bit like what you're used to from C header files
 
@@ -98,20 +112,47 @@ gpio::GPIOA.ODR.write(gpio::ODR::ODR2::RW::Output << gpio::ODR::ODR2::offset);
 ## Using in your own crates
 
 In your `Cargo.toml`:
+
 ```toml
 [dependencies.stm32ral]
 version = "0.1.0"
-features = ["stm32f405", "rt"]
+features = ["stm32f405"]
 ```
 Replace `stm32f405` with the required chip name. See
 [Supported Devices](supported_devices.md) for the full list.
 
 Then, in your code:
+
 ```rust
 #[macro_use]
 extern crate stm32ral;
 
-modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+let gpioa = stm32ral::gpio::GPIOA::take().unwrap();
+modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3: Input);
+```
+
+### Crate Features
+
+* `inline-asm`: enables `inline-asm` on the `cortex_m` dependency.
+  Recommended if you're using a nightly compiler that supports it,
+  which is why it's on by default, but you can disable it to run on
+  stable.
+* `rt`: enables `device` on the `cortex_m_rt` dependency, and
+  provides the relevant interrupt link scripts.
+  Recommended for most users which is why it's on by default, but you can
+  disable it if you want to handle interrupts yourself.
+* `doc`: makes all devices visible in the output without using any of them
+  at the top level. Ideal for generating documentation. Not useful for
+  actually building code.
+* CPU features like `armv7em`: brings in peripherals from the CPU core itself,
+  the relevant one is automatically included by the device features.
+* All other features: one per supported device, for example, `stm32f405`.
+
+To disable the default `inline-asm` and `rt` features, in your `Cargo.toml`:
+
+```toml
+[dependencies]
+stm32ral = {"version": "0.1.0", "default-features": false}
 ```
 
 ### Register Definitions
@@ -177,41 +218,56 @@ pub struct RegisterBlock {
 }
 ```
 
-Then there is the `Instance` struct, one of which is created for each instance
-of this peripheral. It has a `ptr` member which is a raw pointer to the
-`RegisterBlock`, and implements `Deref` to `&RegisterBlock`.
-It also contains a `ResetValues` (see below).
+Then there is the `ResetValues` struct, which has an integer field for each
+register in the `RegisterBlock`. Each instance of the peripheral will include
+one `ResetValues` appropriately initialised, so you can:
+
+```rust
+// In reality, you'd use reset_reg!(gpio, gpioa, GPIOA, MODER);
+gpioa.MODER.write(stm32ral::gpio::GPIOA::reset.MODER);
+```
+
+Finally there is a module for each instance of the peripheral, containing
+its `ResetValues` and a `take()` and unsafe `get()` function to obtain
+a `&RegisterBlock`. The safe `take()` returns an `Option<&RegisterBlock>`
+which will be `Some` the first time you call it and `None` every subsequent
+time, to ensure that you have exclusive access to the peripheral and cannot
+encounter data races. The unsafe `get()` just returns a `&RegisterBlock`;
+it's then up to you to ensure no data races will occur.
 
 ```rust
 // Inside a peripheral module such as `stm32ral::stm32f4::stm32f405::gpio`
 
-pub struct Instance {
-    pub ptr: *const RegisterBlock,
-    pub reset: ResetValues, // described below
+pub mod GPIOA {
+    pub const reset: ResetValues = ResetValues { ... };
+    pub unsafe fn get() -> &'static RegisterBlock { ... };
+    pub fn take() -> Option<&'static RegisterBlock> { ... };
 }
 
-pub const GPIOA: Instance = Instance { ptr = 0x40020000 as *const _ };
-pub const GPIOB //...
-pub const GPIOC //...
+pub mod GPIOB { ... }
+pub mod GPIOC { ... }
+// and so on
 ```
 
 These constants are what permit access to the relevant registers:
 
 ```rust
-// In reality, you'd use write_reg!(gpio, GPIOA, MODER, 0x1234)
-// and read_reg!(gpio, GPIOA, MODER)
-gpio::GPIOA.MODER.write(0x1234);
-let _ = gpio::GPIOA.MODER.read();
+// In reality, you'd use write_reg!(gpio, gpioa, MODER, 0x1234)
+// and read_reg!(gpio, gpioa, MODER)
+let gpioa = gpio::GPIOA::take().unwrap();
+gpioa..MODER.write(0x1234);
+let _ = gpioa.MODER.read();
 ```
 
-Finally there is also a `ResetValues` struct defined which contains an
-integer constant reset value for each register. These structs live inside
-the same `GPIOA` instance consts, so you can:
+For convenience in unsafe code, there is also a raw pointer for each
+`RegisterBlock`:
 
 ```rust
-// In reality, you'd use reset_reg!(gpio, GPIOA, MODER);
-gpio::GPIOA.MODER.write(GPIOA.reset.MODER);
+pub const GPIOA: *const RegisterBlock = ...;
 ```
+
+This permits direct use in macros without requiring you to
+first call `take()` or `get()` (see below).
 
 As an implementation detail, many structs are actually refactored to live
 in the family level, with the original definitions replaced by `pub use`
@@ -224,16 +280,16 @@ To simplify using all the constants and registers, four macros are provided.
 For full details please check out
 [the documentation](https://docs.rs/stm32ral).
 
-#### `write_reg!(peripheral, INSTANCE, REGISTER, value)`
+#### `write_reg!(peripheral, instance, REGISTER, value)`
 
-* Directly writes `value` to `INSTANCE.REGISTER`.
+* Directly writes `value` to `instance.REGISTER`.
 
 ```rust
 // Set PA3 high (and all other GPIOA pins low).
-write_reg!(stm32ral::gpio, GPIOA, ODR, 1<<3);
+write_reg!(stm32ral::gpio, gpioa, ODR, 1<<3);
 ```
 
-#### `write_reg!(peripheral, INSTANCE, REGISTER, FIELD1: value1, FIELD2: value2, ...)`
+#### `write_reg!(peripheral, instance, REGISTER, FIELD1: value1, FIELD2: value2, ...)`
 
 * Writes `value`s to `FIELD`s and all other fields to 0 (for one or more `FIELD`s)
 * You can use any `FIELD` which is a submodule of `REGISTER`.
@@ -246,28 +302,28 @@ write_reg!(stm32ral::gpio, GPIOA, ODR, 1<<3);
 // (In reality, be careful, as this operation will change the state of the
 //  JTAG/SWD pins PA13-15, possibly breaking debugger access.
 //  Use modify_reg!() instead.)
-write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog, MODER5: 0b01);
+write_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog, MODER5: 0b01);
 ```
 
-#### `read_reg!(peripheral, INSTANCE, REGISTER)`
+#### `read_reg!(peripheral, instance, REGISTER)`
 
-* Reads and returns the current value of `INSTANCE.REGISTER`
+* Reads and returns the current value of `instance.REGISTER`
 
 ```rust
 // Get the value of the whole register IDR
-let val = read_reg!(stm32ral::gpio, GPIOA, IDR);
+let val = read_reg!(stm32ral::gpio, gpioa, IDR);
 ```
 
-#### `read_reg!(peripheral, INSTANCE, REGISTER, FIELD)`
+#### `read_reg!(peripheral, instance, REGISTER, FIELD)`
 
-* Reads and returns the current value of `FIELD` inside `INSTANCE.REGISTER`
+* Reads and returns the current value of `FIELD` inside `instance.REGISTER`
 
 ```rust
 // Get the value of IDR2 (masked and shifted down to the LSbits)
-let val = read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2);
+let val = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2);
 ```
 
-#### `read_reg!(peripheral, INSTANCE, REGISTER, FIELD EXPRESSION)`
+#### `read_reg!(peripheral, instance, REGISTER, FIELD EXPRESSION)`
 
 * Reads the current value of `FIELD` and returns the value of
   `FIELD EXPRESSION`
@@ -278,25 +334,25 @@ let val = read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2);
 
 ```rust
 // Busy wait while PA2 is high
-while read_reg!(stm32ral::gpio, GPIOA, IDR, IDR2 == High) {}
+while read_reg!(stm32ral::gpio, gpioa, IDR, IDR2 == High) {}
 ```
 
-#### `modify_reg!(peripheral, INSTANCE, REGISTER, |r| fn(r))`
+#### `modify_reg!(peripheral, instance, REGISTER, |r| fn(r))`
 
-* Reads `INSTANCE.REGISTER` as `r`, then writes `fn(r)` to it
+* Reads `instance.REGISTER` as `r`, then writes `fn(r)` to it
 * Any lambda or function taking the register's type is acceptable
 
 ```rust
 // Set PA3 high without affecting any other bits
 // (in reality, use the BSRR register for this).
-modify_reg!(stm32ral::gpio, GPIOA, ODR, |reg| reg | (1<<3));
+modify_reg!(stm32ral::gpio, gpioa, ODR, |reg| reg | (1<<3));
 ```
 
-#### `modify_reg!(peripheral, INSTANCE, REGISTER, FIELD1: VALUE1, FIELD2: VALUE2, ...)`
+#### `modify_reg!(peripheral, instance, REGISTER, FIELD1: VALUE1, FIELD2: VALUE2, ...)`
 
 * Updates only the specified `FIELD`s to the new `VALUE`s, without changing
   any other fields
-* Reads `INSTANCE.REGISTER`, masks out the bits corresponding to the specified
+* Reads `instance.REGISTER`, masks out the bits corresponding to the specified
   `FIELD`s, sets those bits to the specified `VALUE`s, and writes back the
   result
 * As with `write_reg!()`, all the values from the `W` and `RW` modules of
@@ -304,34 +360,57 @@ modify_reg!(stm32ral::gpio, GPIOA, ODR, |reg| reg | (1<<3));
 
 ```rust
 // Set PA3 to Output and PA4 to Analog, but without affecting any other pins.
-modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog);
+modify_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog);
 ```
 
-#### `reset_reg!(peripheral, INSTANCE, REGISTER)`
+#### `reset_reg!(peripheral, instance, INSTANCE, REGISTER)`
 
-* Writes the reset value to `INSTANCE.REGISTER`
+* Writes the reset value to `instance.REGISTER`
+* Note having to specify both an `instance` (the actual `&RegisterBlock`)
+  and `INSTANCE` (the name of the instance module inside the peripheral
+  module, e.g. `peripheral::INSTANCE::reset` must exist).
 
 ```rust
 // Reset GPIOA back to reset state, with JTAG/SWD pins on PA13, PA14, PA15.
-reset_reg!(stm32ral::gpio, GPIOA, MODER);
+reset_reg!(stm32ral::gpio, gpioa, GPIOA, MODER);
 ```
 
-#### `reset_reg!(peripheral, INSTANCE, REGISTER, FIELD1, FIELD2)`
+#### `reset_reg!(peripheral, instance, INSTANCE, REGISTER, FIELD1, FIELD2)`
 
 * Writes the reset value to the specified `FIELD`s without changing the
   other fields
-* Reads `INSTANCE.REGISTER`, masks off the specified `FIELD`s, sets those
+* Reads `instance.REGISTER`, masks off the specified `FIELD`s, sets those
   bits to their reset values, and writes back the result
+* Note having to specify both an `instance` (the actual `&RegisterBlock`)
+  and `INSTANCE` (the name of the instance module inside the peripheral
+  module, e.g. `peripheral::INSTANCE::reset` must exist).
 
 ```rust
 // Reset PA13, PA14, PA15 to their reset state.
-reset_reg!(stm32ral::gpio, GPIOA, MODER, MODER13, MODER14, MODER15);
+reset_reg!(stm32ral::gpio, gpioa, GPIOA, MODER, MODER13, MODER14, MODER15);
 ```
+
+#### Unsafe Macro Use
+
+For convenience, when using the macros in an `unsafe` context,
+you do not need to first `take()`/`get()` the instance and can instead
+specify it directly:
+
+```rust
+// The `GPIOE` is effectively the same as `GPIOE::get()` here.
+unsafe { write_reg!(stm32ral::gpio, GPIOE, 0x01010101) };
+
+// The macro is effectively doing this:
+unsafe { (*stm32ral::gpio::GPIOE).MODER.write( 0x01010101 ) };
+```
+
+This works because each instance also exists as a `*const RegisterBlock`
+in the peripheral module, which the macros bring into scope and dereference.
 
 ### Runtime Support & Interrupts
 
-Use the `rt` feature to bring in `cortex-m-rt` support, providing a suitable
-`device.x` linker script and interrupt definitions.
+Use the default `rt` feature to bring in `cortex-m-rt` support, providing a
+suitable `device.x` linker script and interrupt definitions.
 
 You can then specify your own interrupt handler:
 
@@ -351,22 +430,52 @@ peripherals.NVIC.enable(stm32ral::Interrupt::TIM2);
 
 ## Safety
 
-Safety is approached by marking some registers as unsafe, which require unsafe
-blocks/functions to access.
-Unsafe registers are those where access could lead to [undefined
-behaviour](https://doc.rust-lang.org/reference/behavior-considered-undefined.html),
-such as DMA source and target registers, cache control registers, etc. Most
-registers will not be unsafe and can be directly accessed in safe code. The
-macros provided for field access ensure values are masked for the field width,
-but otherwise nothing prevents safe code writing arbitrary values to registers
-not specifically marked unsafe. This is considered a usability trade-off;
-while some illegal values in some device registers will surely cause unexpected
-behaviour; so will many _legal_ values (Rust cannot prevent you setting an
-output low which is hardwired to the supply rail, for example). Aside from
-a few specific registers, writing those values should not cause undefined
-behaviour in Rust itself, so our tradeoff is to try and prevent UB while not
-trying to use the safety system to enforce that all register fields may only
-be written with legal values.
+There are two major safety concerns with a register access crate.
+
+First is the possibility that peripherals will perform actions on unrelated
+memory, for example a DMA peripheral or a cache control register. These
+registers are all marked as unsafe and reading or writing them will require
+an `unsafe` block or function. Under the hood, they use the `UnsafeXXRegister`
+types instead of the usual `XXRegister`. Since such registers could potentially
+cause [undefined behaviour](https://doc.rust-lang.org/reference/behavior-considered-undefined.html),
+the user must make sure when accessing them to provide their own safety
+guarantees.
+
+Most registers will not be unsafe and can be directly accessed in safe code.
+The macros provided for field access ensure values are masked for the field
+width, but otherwise nothing prevents safe code writing arbitrary values
+to registers not specifically marked unsafe. This is considered a usability
+trade-off; while some illegal values in some device registers will surely cause
+unexpected behaviour; so will many _legal_ values (Rust cannot prevent you
+setting an output low which is hardwired to the supply rail, for example).
+Aside from a few specific registers, writing those values should not cause
+undefined behaviour in Rust itself, so our tradeoff is to try and prevent UB
+while not trying to use the safety system to enforce that all register fields
+may only be written with legal values.
+
+The second safety issue is around synchronised access to peripherals, which
+are effectively global shared memory. The safety concern is around data races:
+if you are reading and writing from a peripheral but halfway through an
+interrupt routine wants to access the same peripheral, you will race it,
+leading to undefined behaviour.
+
+The solution provided here is similar to `svd2rust`, though more granular:
+every peripheral instance has a `take() -> Option<&RegisterBlock>` function
+which returns the reference the first time it is called, and None thereafter.
+You can therefore use this safe function in your code to obtain a reference
+once, and pass it on to any other functions that require it, while ensuring
+no other threads (or interrupt routines) can access the peripheral in safe
+code. The references are `!Sync` due to an interior `UnsafeCell`, so you
+cannot pass the `&RegisterBlock` between threads.
+
+However, you will often need to use peripherals in other contexts where it is
+awkward or impossible to safety pass the `&RegisterBlock` you first obtained.
+This crate provides both an `unsafe get() -> &RegisterBlock` which always
+returns the reference, and a `*const RegisterBlock` which can be used for
+convenience with the macros. When using these unsafe features, you must ensure
+no data races will happen yourself (for instance, because an interrupt will
+only fire after you are doing initialising the peripheral and don't access it
+thereafter, or because you use your own mutex to ensure exclusive access, etc).
 
 ## Contributing
 
@@ -387,6 +496,7 @@ otherwise changing how `stm32ral` is put together; it's not required just to
 use it in another Rust project.
 
 First set up the stm32-rs submodule:
+
 ```
 $ git submodule update --init
 $ cd stm32-rs/svd
@@ -396,6 +506,7 @@ $ cd ../..
 
 Now you should simply be able to run make, which will automatically run
 `make patch` inside the stm32-rs submodule to produce up-to-date patched SVDs.
+
 ```
 $ make
 ```
