@@ -55,12 +55,11 @@ while read_reg!(gpio, gpioa, IDR, IDR3 == High) {
 }
 
 // You can also reset whole registers or specific fields
-reset_reg!(gpio, gpioa, MODER, MODER13, MODER14, MODER15);
-reset_reg!(gpio, gpioa, MODER);
+reset_reg!(gpio, gpioa, GPIOA, MODER, MODER13, MODER14, MODER15);
+reset_reg!(gpio, gpioa, GPIOA, MODER);
 
 // Whole-register read/modify/write.
 // Rarely used but nice to have the option.
-// It's a bit shorter for single-field registers.
 let port = read_reg!(gpio, gpioa, IDR);
 write_reg!(gpio, gpioa, ODR, 0x12345678);
 modify_reg!(gpio, gpioa, MODER, |r| r | (0b10 << 4));
@@ -68,11 +67,10 @@ modify_reg!(gpio, gpioa, MODER, |r| r | (0b10 << 4));
 // Or forego the macros and just use the constants yourself.
 // The macros above just expand to these forms for you, bringing
 // the relevant constants into scope. Nothing else is going on.
-let pa1 = (gpio::GPIOA.IDR.read() & gpio::IDR::IDR1::mask)
-          >> gpio::IDR::IDR1::offset;
+let pa1 = (gpioa.IDR.read() & gpio::IDR::IDR1::mask) >> gpio::IDR::IDR1::offset;
 gpioa.ODR.write(gpio::ODR::ODR2::RW::Output << gpio::ODR::ODR2::offset);
 
-// For unsafe access, you don't need to first call `take()`:
+// For unsafe access, you don't need to first call `take()`, just use `GPIOA`:
 unsafe { modify_reg!(gpio, GPIOA, MODER, MODER1: Output) };
 
 // Or you can use `get()` to unsafely get an instance:
@@ -102,7 +100,7 @@ modify_reg!(gpio, gpioa, MODER, MODER1: Output);
   generating Cortex-M device crates from SVD files, and provided inspiration
   for this project
 * [stm32-rs](https://github.com/adamgreig/stm32-rs) provides `svd2rust` crates
-  for all STM32 devices supported by this crate, and they use the same
+  for all STM32 devices supported by this crate, and uses the same
   underlying patched SVD files
 * [TockOS](https://www.tockos.org/blog/2018/mmio-registers/) has a nice looking
   API for register access using their `svd2regs` tool.
@@ -138,7 +136,7 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3:
   which is why it's on by default, but you can disable it to run on
   stable.
 * `rt`: enables `device` on the `cortex_m_rt` dependency, and
-  provides the relevant interrupt link scripts.
+  provides the relevant interrupt linker scripts.
   Recommended for most users which is why it's on by default, but you can
   disable it if you want to handle interrupts yourself.
 * `doc`: makes all devices visible in the output without using any of them
@@ -146,16 +144,19 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3:
   actually building code.
 * CPU features like `armv7em`: brings in peripherals from the CPU core itself,
   the relevant one is automatically included by the device features.
-* All other features: one per supported device, for example, `stm32f405`.
+* Device features: one per supported device, for example, `stm32f405`.
+  You should enable precisely one of these.
 
 To disable the default `inline-asm` and `rt` features, in your `Cargo.toml`:
 
 ```toml
-[dependencies]
-stm32ral = {"version": "0.1.0", "default-features": false}
+[dependencies.stm32ral]
+version = "0.1.0"
+default-features = false
+features = ["stm32f405"]
 ```
 
-### Register Definitions
+### Internal Structure
 
 At the top level of `stm32ral`, there is a module for each supported family
 of devices, such as `stm32ral::stm32f4`. Inside each family are modules for
@@ -366,7 +367,7 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog);
 #### `reset_reg!(peripheral, instance, INSTANCE, REGISTER)`
 
 * Writes the reset value to `instance.REGISTER`
-* Note having to specify both an `instance` (the actual `&RegisterBlock`)
+* Note you have to specify both an `instance` (the actual `&RegisterBlock`)
   and `INSTANCE` (the name of the instance module inside the peripheral
   module, e.g. `peripheral::INSTANCE::reset` must exist).
 
@@ -381,7 +382,7 @@ reset_reg!(stm32ral::gpio, gpioa, GPIOA, MODER);
   other fields
 * Reads `instance.REGISTER`, masks off the specified `FIELD`s, sets those
   bits to their reset values, and writes back the result
-* Note having to specify both an `instance` (the actual `&RegisterBlock`)
+* Note you have to specify both an `instance` (the actual `&RegisterBlock`)
   and `INSTANCE` (the name of the instance module inside the peripheral
   module, e.g. `peripheral::INSTANCE::reset` must exist).
 
@@ -430,16 +431,24 @@ peripherals.NVIC.enable(stm32ral::Interrupt::TIM2);
 
 ## Safety
 
+First, a safety preface. This crate considers safety strictly in the Rust
+sense of avoiding [undefined behaviour](https://doc.rust-lang.org/reference/behavior-considered-undefined.html),
+and not in any more general sense related to embedded hardware. We use safety
+to avoid data races but not to avoid shorting out your hardware: that's on you.
+Given the low-level nature of this crate, it is expected it will often (though
+not always!) be used in an `unsafe` context, and is designed to facilitate this
+as much as possible. Higher level crates such as HALs seem a better place
+to facilitate safe abstractions.
+
 There are two major safety concerns with a register access crate.
 
 First is the possibility that peripherals will perform actions on unrelated
-memory, for example a DMA peripheral or a cache control register. These
-registers are all marked as unsafe and reading or writing them will require
-an `unsafe` block or function. Under the hood, they use the `UnsafeXXRegister`
-types instead of the usual `XXRegister`. Since such registers could potentially
-cause [undefined behaviour](https://doc.rust-lang.org/reference/behavior-considered-undefined.html),
-the user must make sure when accessing them to provide their own safety
-guarantees.
+memory, for example a DMA peripheral or a cache control register. Such
+registers are marked as unsafe and reading or writing them will always
+require an `unsafe` block or function. Under the hood, they use
+the `UnsafeXXRegister` types instead of the usual `XXRegister`. Since such
+registers could potentially cause undefined behaviour, the user must make sure
+when accessing them to provide their own safety guarantees.
 
 Most registers will not be unsafe and can be directly accessed in safe code.
 The macros provided for field access ensure values are masked for the field
