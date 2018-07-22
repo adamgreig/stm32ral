@@ -12,6 +12,8 @@ The underlying data is generated via the patched SVD files in
 
 [Supported Devices](supported_devices.md)
 
+[Example Project](https://github.com/adamgreig/stm32ral-example)
+
 ## What is it?
 
 stm32ral is an experiment into a lightweight register access layer. It provides
@@ -77,6 +79,9 @@ unsafe { modify_reg!(gpio, GPIOA, MODER, MODER1: Output) };
 let gpioa = unsafe { gpio::GPIOA::get() };
 modify_reg!(gpio, gpioa, MODER, MODER1: Output);
 ```
+
+See [the example project](https://github.com/adamgreig/stm32ral-example) for
+a more complete example that should build out of the box.
 
 ## Why use stm32ral?
 
