@@ -622,7 +622,7 @@ class PeripheralInstance(Node):
         /// Access functions for the {self.name} peripheral instance
         pub mod {self.name} {{
             use external_cortex_m;
-            pub use super::{{RegisterBlock, ResetValues, Instance}};
+            use super::{{ResetValues, Instance}};
 
             const INSTANCE: Instance = Instance {{
                 addr: 0x{self.addr:08x},
@@ -680,7 +680,7 @@ class PeripheralInstance(Node):
             }}
         }}
 
-        /// Raw pointer to {self.name}.
+        /// Raw pointer to {self.name}
         ///
         /// Dereferencing this is unsafe because you are not ensured unique
         /// access to the peripheral, so you may encounter data races with
@@ -778,7 +778,7 @@ class PeripheralPrototype(Node):
                 unsafe { &*(self.addr as *const _) }
             }
         }
-        unsafe impl Send for Instance {}
+
         """
 
     def to_rust_file(self, path):

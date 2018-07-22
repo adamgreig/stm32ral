@@ -160,7 +160,7 @@ impl<T: Copy> UnsafeWORegister<T> {
 /// // Write values to specific fields. Unspecified fields are written to 0.
 /// write_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog);
 ///
-/// // Unsafe access without requiring you to first `take()`/`get()` the instance
+/// // Unsafe access without requiring you to first `take()` the instance
 /// unsafe { write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog) };
 /// # }
 /// ```
@@ -236,7 +236,7 @@ impl<T: Copy> UnsafeWORegister<T> {
 /// but not if used with RWRegister.
 ///
 /// When run in an unsafe context, peripheral instances are directly accessible without requiring
-/// having called `take()` or `get()` beforehand:
+/// having called `take()` beforehand:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// unsafe { write_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog) };
@@ -275,7 +275,7 @@ macro_rules! write_reg {
 /// // Write values to specific fields. Unspecified fields are left unchanged.
 /// modify_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog);
 ///
-/// // Unsafe access without requiring you to first `take()`/`get()` the instance
+/// // Unsafe access without requiring you to first `take()` the instance
 /// unsafe { modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog) };
 /// # }
 /// ```
@@ -365,7 +365,7 @@ macro_rules! write_reg {
 /// but not if used with RWRegister.
 ///
 /// When run in an unsafe context, peripheral instances are directly accessible without requiring
-/// having called `take()` or `get()` beforehand:
+/// having called `take()` beforehand:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// unsafe { modify_reg!(stm32ral::gpio, GPIOA, MODER, MODER3: Output, MODER4: Analog) };
@@ -407,7 +407,7 @@ macro_rules! modify_reg {
 /// // Check if one field is equal to a specific value, with the field's named values in scope.
 /// while read_reg!(stm32ral::gpio, gpioa, IDR, IDR2 == High) {}
 ///
-/// // Unsafe access without requiring you to first `take()`/`get()` the instance
+/// // Unsafe access without requiring you to first `take()` the instance
 /// let val = unsafe { read_reg!(stm32ral::gpio, GPIOA, IDR) };
 /// # }
 /// ```
@@ -467,7 +467,7 @@ macro_rules! modify_reg {
 /// UnsafeRORegister, but not if used with RWRegister, or RORegister.
 ///
 /// When run in an unsafe context, peripheral instances are directly accessible without requiring
-/// having called `take()` or `get()` beforehand:
+/// having called `take()` beforehand:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// let val = unsafe { read_reg!(stm32ral::gpio, GPIOA, MODER) };
@@ -558,7 +558,7 @@ macro_rules! read_reg {
 /// UnsafeRORegister, but not if used with RWRegister or RORegister.
 ///
 /// When run in an unsafe context, peripheral instances are directly accessible without requiring
-/// having called `take()` or `get()` beforehand:
+/// having called `take()` beforehand:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// unsafe { reset_reg!(stm32ral::gpio, GPIOA, GPIOA, MODER) };
