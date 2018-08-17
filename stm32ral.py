@@ -923,6 +923,7 @@ class PeripheralPrototypeLink(Node):
         self.prototype = prototype
         self.path = path
         self.instances = []
+        self.parent_device_names = []
 
     def to_dict(self):
         return {"prototype": self.prototype.name, "path": self.path,
@@ -936,6 +937,10 @@ class PeripheralPrototypeLink(Node):
         Finally runs rustfmt over the new file.
         """
         desc = "\n//! ".join(self.prototype.desc.split("\n"))
+        if len(self.parent_device_names) > 1:
+            desc += "\n//!\n"
+            desc += "//! Used by: " + ', '.join(
+                sorted(set(self.parent_device_names)))
         preamble = "\n".join([
             "#![allow(non_snake_case, non_upper_case_globals)]",
             "#![allow(non_camel_case_types)]",
@@ -994,9 +999,9 @@ class PeripheralSharedInstanceLink(Node):
 
     def to_parent_entry(self):
         if self.usename == self.name:
-            return f"pub use super::shared_instances::{self.name};\n"
+            return f"pub use super::instances::{self.name};\n"
         else:
-            return (f"pub use super::shared_instances::{self.usename} "
+            return (f"pub use super::instances::{self.usename} "
                     f"as {self.name};\n")
 
     def to_rust_file(self, path):
@@ -1258,26 +1263,26 @@ class Family(Node):
     Peripheral prototypes (i.e. the register block and registers and fields)
     which are used by more than one device in this family live in `peripherals`
     and instances (i.e. specific memory addresses for GPIOA, GPIOB, ...)
-    which are used by more than one device live in `shared_instances`.
+    which are used by more than one device live in `instances`.
     """
     def __init__(self, name):
         self.name = name
         self.devices = []
         self.peripherals = []
-        self.shared_instances = []
+        self.instances = []
 
     def to_dict(self):
         return {"name": self.name,
                 "devices": [d.to_dict() for d in self.devices],
                 "peripherals": [p.to_dict() for p in self.peripherals],
-                "shared_instances": [i.to_dict()
-                                     for i in self.shared_instances]}
+                "instances": [i.to_dict()
+                              for i in self.instances]}
 
     def to_files(self, path, pool):
         familypath = os.path.join(path, self.name)
         os.makedirs(familypath, exist_ok=True)
         periphpath = os.path.join(familypath, "peripherals")
-        instpath = os.path.join(familypath, "shared_instances")
+        instpath = os.path.join(familypath, "instances")
         os.makedirs(periphpath, exist_ok=True)
         os.makedirs(instpath, exist_ok=True)
         pool_results = []
@@ -1287,7 +1292,7 @@ class Family(Node):
             f.write("/// Peripherals shared by multiple devices\n")
             f.write('pub mod peripherals;\n\n')
             f.write("/// Peripheral instances shared by multiple devices\n")
-            f.write("pub mod shared_instances;\n\n")
+            f.write("pub(crate) mod instances;\n\n")
             for device in self.devices:
                 dname = device.name
                 result = pool.apply_async(device.to_files, (familypath,))
@@ -1303,7 +1308,7 @@ class Family(Node):
                 f.write(f'#[cfg(any(feature="doc", {features}))]\n')
                 f.write(f'pub mod {peripheral.name};\n\n')
         with open(os.path.join(instpath, "mod.rs"), "w") as f:
-            for instance in self.shared_instances:
+            for instance in self.instances:
                 r = pool.apply_async(instance.to_rust_file, (instpath,))
                 pool_results.append(r)
                 features = ", ".join(
@@ -1395,10 +1400,10 @@ class Family(Node):
         self.refactor_common_instances(links)
 
     def refactor_common_instances(self, links):
+        to_group = set()
+        groups = dict()
         for primary, children in links.items():
             members = [primary] + list(children)
-            to_group = set()
-            groups = dict()
             for l1, l2 in itertools.combinations(members, 2):
                 didx1, pidx1 = l1
                 didx2, pidx2 = l2
@@ -1411,35 +1416,35 @@ class Family(Node):
                     if l1 not in groups:
                         groups[l1] = []
                     groups[l1].append(l2)
-            pnames = set()
-            dupnames = set()
-            for (didx, pidx) in groups:
-                p = self.devices[didx].peripherals[pidx]
-                if p.name in pnames:
-                    dupnames.add(p.name)
-                pnames.add(p.name)
-            for idx in groups:
-                didx, pidx = idx
-                d = self.devices[didx]
-                p = d.peripherals[pidx]
-                name = p.name
-                if name in dupnames:
-                    name += "_" + d.name[5:]
-                    for cidx in groups[idx]:
-                        cdidx, _ = cidx
-                        cd = self.devices[cdidx]
-                        name += "_" + cd.name[5:]
-                linkp = PeripheralSharedInstanceLink(p.name, name, p)
-                self.devices[didx].peripherals[pidx] = linkp
-                groupp = p
-                groupp.name = name
-                groupp.parent_device_names = [d.name]
-                self.shared_instances.append(groupp)
+        pnames = set()
+        dupnames = set()
+        for (didx, pidx) in groups:
+            p = self.devices[didx].peripherals[pidx]
+            if p.name in pnames:
+                dupnames.add(p.name)
+            pnames.add(p.name)
+        for idx in groups:
+            didx, pidx = idx
+            d = self.devices[didx]
+            p = d.peripherals[pidx]
+            name = p.name
+            if name in dupnames:
+                name += "_" + d.name[5:]
                 for cidx in groups[idx]:
-                    cdidx, cpidx = cidx
+                    cdidx, _ = cidx
                     cd = self.devices[cdidx]
-                    groupp.parent_device_names.append(cd.name)
-                    cd.peripherals[cpidx] = linkp
+                    name += "_" + cd.name[5:]
+            linkp = PeripheralSharedInstanceLink(p.name, name, p)
+            self.devices[didx].peripherals[pidx] = linkp
+            groupp = p
+            groupp.name = name
+            groupp.parent_device_names.append(d.name)
+            self.instances.append(groupp)
+            for cidx in groups[idx]:
+                cdidx, cpidx = cidx
+                cd = self.devices[cdidx]
+                groupp.parent_device_names.append(cd.name)
+                cd.peripherals[cpidx] = linkp
 
 
 class Crate:

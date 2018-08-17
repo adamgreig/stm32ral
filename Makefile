@@ -16,4 +16,7 @@ buildall:
 		cargo build --features `basename $$device .yaml` --no-default-features || break 0;\
 	done
 
+doc:
+	cargo doc --features doc --no-default-features
+
 .PHONY: stm32-rs
