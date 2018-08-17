@@ -235,7 +235,7 @@ gpioa.MODER.write(stm32ral::gpio::GPIOA::reset.MODER);
 ```
 
 There is an `Instance` struct which represents a value you can own and move
-around and give out references to etc, which Derefs to a `RegisterBlock`
+around and give out references to, which Derefs to a `RegisterBlock`
 to actually access the registers. There's only one `Instance` for each
 peripheral instance; you can get it using `take()` and return it for someone
 else using `release()` (see below).

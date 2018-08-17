@@ -695,6 +695,11 @@ class PeripheralInstance(Node):
     def __lt__(self, other):
         return self.name < other.name
 
+    def __eq__(self, other):
+        return (self.name == other.name and
+                self.addr == other.addr and
+                self.reset_values == other.reset_values)
+
 
 class PeripheralPrototype(Node):
     """
@@ -815,6 +820,9 @@ class PeripheralPrototype(Node):
             f.write(self.to_rust_instance())
             f.write(instances)
         rustfmt(fname)
+
+    def to_parent_entry(self):
+        return f"pub mod {self.name};\n"
 
     @classmethod
     def from_svd(cls, svd, node, register_ctx):
@@ -947,6 +955,9 @@ class PeripheralPrototypeLink(Node):
             f.write("\n")
             f.write(instances)
         rustfmt(fname)
+
+    def to_parent_entry(self):
+        return f"pub mod {self.name};\n"
 
     @classmethod
     def from_peripherals(cls, p1, p2, path):
@@ -1128,7 +1139,7 @@ class Device(Node):
                 f.write("pub mod interrupts;\n")
                 f.write("pub use self::interrupts::Interrupt;\n\n")
             for peripheral in self.peripherals:
-                f.write(f"pub mod {peripheral.name};\n")
+                f.write(peripheral.to_parent_entry())
         rustfmt(mname)
         if not self.special:
             dname = os.path.join(devicepath, "device.x")
