@@ -507,15 +507,15 @@ leading to undefined behaviour.
 
 The solution provided here is similar to `svd2rust`, though more granular:
 every peripheral instance has a `take() -> Option<Instance>` function
-which returns `Some(Instance)` if the instance is not currently taken, and None
-if it is. You can therefore use this safe function in your code to obtain an
-Instance, and pass it (or a reference to it) on to any other functions that
-require it, while ensuring no other threads (or interrupt routines) can
-access the peripheral in safe code. When you're done using it, you can call
-`release(instance)` to make it available to `take()` again.
+which returns `Some(Instance)` if the instance is not currently taken, and
+`None` if it is. You can therefore use this safe function in your code to
+obtain an Instance, and pass it (or a reference to it) on to any other
+functions that require it, while ensuring no other threads (or interrupt
+routines) can access the peripheral in safe code. When you're done using it,
+you can call `release(instance)` to make it available to `take()` again.
 
 However, you will often need to use peripherals in other contexts where it is
-awkward or impossible to safety pass the `Instance` around.
+awkward or impossible to safely pass the `Instance` around.
 This crate provides a `*const RegisterBlock` which can be unsafely dereferenced 
 for this purpose, and can be given directly in the macros in an unsafe context.
 When using these unsafe features, you must ensure no data races will happen
