@@ -80,12 +80,12 @@ impl<T: Copy> RORegister<T> {
     }
 }
 
-/// A read-only register of type T, where read/write access is unsafe.
+/// A read-only register of type T, where read access is unsafe.
 ///
 /// Contains one value of type T and provides a volatile read function to it.
 ///
 /// # Safety
-/// This register should be used where reads and writes to this peripheral may invoke
+/// This register should be used where reads to this peripheral may invoke
 /// undefined behaviour or memory unsafety.
 ///
 /// Access to this register must be synchronised; if multiple threads (or the main thread and an
