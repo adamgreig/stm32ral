@@ -352,13 +352,17 @@ write_reg!(stm32ral::gpio, gpioa, MODER, MODER3: Output, MODER4: Analog, MODER5:
 let val = read_reg!(stm32ral::gpio, gpioa, IDR);
 ```
 
-#### `read_reg!(peripheral, instance, REGISTER, FIELD)`
+#### `read_reg!(peripheral, instance, REGISTER, FIELD1, FIELD2, ...)`
 
-* Reads and returns the current value of `FIELD` inside `instance.REGISTER`
+* Reads and returns the current values of `FIELD1`, `FIELD2`, ... inside
+  `instance.REGISTER`
 
 ```rust
 // Get the value of IDR2 (masked and shifted down to the LSbits)
-let val = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2);
+let idr2 = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2);
+
+// Get the value of IDR2 and IDR3
+let (idr2, idr3) = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2, IDR);
 ```
 
 #### `read_reg!(peripheral, instance, REGISTER, FIELD EXPRESSION)`

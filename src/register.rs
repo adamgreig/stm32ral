@@ -404,6 +404,9 @@ macro_rules! modify_reg {
 /// // Read one field from the register.
 /// let val = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2);
 ///
+/// // Read multiple fields from the register.
+/// let (val1, val2, val3) = read_reg!(stm32ral::gpio, gpioa, IDR, IDR0, IDR1, IDR2);
+///
 /// // Check if one field is equal to a specific value, with the field's named values in scope.
 /// while read_reg!(stm32ral::gpio, gpioa, IDR, IDR2 == High) {}
 ///
@@ -414,7 +417,7 @@ macro_rules! modify_reg {
 ///
 /// # Usage
 /// Like `write_reg!`, this macro can be used multiple ways, either reading the entire register or
-/// reading a single field from it and potentially performing a comparison with that field.
+/// reading a one or more fields from it and potentially performing a comparison with one field.
 ///
 /// In all cases, the first arguments are:
 /// * the path to the peripheral module: `stm32ral::gpio`,
@@ -442,10 +445,19 @@ macro_rules! modify_reg {
 /// // As above, but expanded for exposition:
 /// let val = ((*gpioa).IDR.read() & stm32ral::gpio::IDR::IDR2::mask)
 ///           >> stm32ral::gpio::IDR::IDR2::offset;
+///
+/// // Read multiple fields
+/// let (val1, val2) = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2, IDR3);
+///
+/// // As above, but expanded for exposition:
+/// let (val1, val2) = { let val = ((*gpioa).IDR.read();
+///     (val & stm32ral::gpio::IDR::IDR2::mask) >> stm32ral::gpio::IDR::IDR2::offset,
+///      val & stm32ral::gpio::IDR::IDR3::mask) >> stm32ral::gpio::IDR::IDR3::offset,
+///     )};
 /// # }
 /// ```
 ///
-/// For comparing individual fields, the macro masks and shifts and then performs the comparison:
+/// For comparing a single field, the macro masks and shifts and then performs the comparison:
 /// ```
 /// # #[macro_use] extern crate stm32ral; fn main() {
 /// # let gpioa = stm32ral::gpio::GPIOA::take().unwrap();
@@ -477,12 +489,15 @@ macro_rules! modify_reg {
 /// and the macro brings such constants into scope and then dereferences the provided reference.
 #[macro_export]
 macro_rules! read_reg {
-    ( $periph:path, $instance:expr, $reg:ident, $field:ident ) => {{
+    ( $periph:path, $instance:expr, $reg:ident, $( $field:ident ),+ ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
-        #[allow(unused_imports)]
-        use $periph::{$reg::$field::{mask, offset, R::*, RW::*}};
-        ((*$instance).$reg.read() & mask) >> offset
+        let val = ((*$instance).$reg.read());
+        ( $({
+            #[allow(unused_imports)]
+            use $periph::{$reg::$field::{mask, offset, R::*, RW::*}};
+            (val & mask) >> offset
+        }) , *)
     }};
     ( $periph:path, $instance:expr, $reg:ident, $field:ident $($cmp:tt)* ) => {{
         #[allow(unused_imports)]
