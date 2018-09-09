@@ -16,11 +16,11 @@ no-default-features = true
 
 [dependencies]
 bare-metal = "0.2.0"
-cortex-m = "0.5.4"
+cortex-m = "0.5.7"
 
 [dependencies.cortex-m-rt]
 optional = true
-version = "0.5.2"
+version = "0.6.3"
 
 [features]
 rt = ["cortex-m-rt/device"]
