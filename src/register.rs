@@ -386,7 +386,7 @@ macro_rules! modify_reg {
     ( $periph:path, $instance:expr, $reg:ident, $fn:expr ) => {{
         #[allow(unused_imports)]
         use $periph::{*};
-        (*$instance).$reg.write($fn($instance.$reg.read()));
+        (*$instance).$reg.write($fn((*$instance).$reg.read()));
     }};
 }
 
