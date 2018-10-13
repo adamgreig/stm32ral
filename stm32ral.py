@@ -36,6 +36,7 @@ CRATE_LIB_PREAMBLE = """\
 
 #![no_std]
 
+#[cfg(not(feature="nosync"))]
 extern crate cortex_m as external_cortex_m;
 
 #[macro_use]
@@ -95,17 +96,18 @@ features = ["doc"]
 no-default-features = true
 
 [dependencies]
-bare-metal = "0.2.0"
-cortex-m = "0.5.4"
+bare-metal = "0.2.3"
+cortex-m = "0.5.7"
 
 [dependencies.cortex-m-rt]
 optional = true
-version = "0.5.2"
+version = "0.6.4"
 
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["cortex-m/inline-asm"]
 default = ["rt", "inline-asm"]
+nosync = []
 doc = []
 """
 
@@ -621,9 +623,15 @@ class PeripheralInstance(Node):
         return f"""
         /// Access functions for the {self.name} peripheral instance
         pub mod {self.name} {{
+            #[cfg(not(feature="nosync"))]
             use external_cortex_m;
-            use super::{{ResetValues, Instance}};
 
+            use super::ResetValues;
+
+            #[cfg(not(feature="nosync"))]
+            use super::Instance;
+
+            #[cfg(not(feature="nosync"))]
             const INSTANCE: Instance = Instance {{
                 addr: 0x{self.addr:08x},
                 _marker: ::core::marker::PhantomData,
@@ -634,6 +642,7 @@ class PeripheralInstance(Node):
                 {resets}
             }};
 
+            #[cfg(not(feature="nosync"))]
             #[allow(private_no_mangle_statics)]
             #[no_mangle]
             static mut {self.name}_TAKEN: bool = false;
@@ -650,6 +659,7 @@ class PeripheralInstance(Node):
             ///
             /// `Instance` itself dereferences to a `RegisterBlock`, which
             /// provides access to the peripheral's registers.
+            #[cfg(not(feature="nosync"))]
             #[inline]
             pub fn take() -> Option<Instance> {{
                 external_cortex_m::interrupt::free(|_| unsafe {{
@@ -668,6 +678,7 @@ class PeripheralInstance(Node):
             /// is available to `take()` again. This function will panic if
             /// you return a different `Instance` or if this instance is not
             /// already taken.
+            #[cfg(not(feature="nosync"))]
             #[inline]
             pub fn release(inst: Instance) {{
                 external_cortex_m::interrupt::free(|_| unsafe {{
@@ -772,10 +783,12 @@ class PeripheralPrototype(Node):
     def to_rust_instance(self):
         """Creates an Instance struct for this peripheral."""
         return """
+        #[cfg(not(feature="nosync"))]
         pub struct Instance {
             pub(crate) addr: u32,
             pub(crate) _marker: PhantomData<*const RegisterBlock>,
         }
+        #[cfg(not(feature="nosync"))]
         impl ::core::ops::Deref for Instance {
             type Target = RegisterBlock;
             #[inline(always)]
@@ -794,6 +807,8 @@ class PeripheralPrototype(Node):
         """
         regtypes = set(r.to_regtype() for r in self.registers)
         regtypes = ", ".join(regtypes)
+        if self.desc is None:
+            print(self.to_dict())
         desc = "\n//! ".join(escape_desc(self.desc).split("\n"))
         if len(self.parent_device_names) > 1:
             desc += "\n//!\n"
@@ -804,6 +819,7 @@ class PeripheralPrototype(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
+            "#[cfg(not(feature=\"nosync\"))]",
             "use core::marker::PhantomData;",
             f"use {{{regtypes}}};",
             "",
@@ -946,7 +962,9 @@ class PeripheralPrototypeLink(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
-            f"pub use {self.path}::{{RegisterBlock, ResetValues, Instance}};",
+            f"pub use {self.path}::{{RegisterBlock, ResetValues}};",
+            "#[cfg(not(feature = \"nosync\"))]",
+            f"pub use {self.path}::{{Instance}};",
             "",
         ])
         registers = ", ".join(m.name for m in self.prototype.registers)

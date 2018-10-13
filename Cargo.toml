@@ -15,17 +15,18 @@ features = ["doc"]
 no-default-features = true
 
 [dependencies]
-bare-metal = "0.2.0"
+bare-metal = "0.2.3"
 cortex-m = "0.5.7"
 
 [dependencies.cortex-m-rt]
 optional = true
-version = "0.6.3"
+version = "0.6.4"
 
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["cortex-m/inline-asm"]
 default = ["rt", "inline-asm"]
+nosync = []
 doc = []
 armv6_m = []
 armv7e_m = []

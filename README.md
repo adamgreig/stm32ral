@@ -79,6 +79,7 @@ gpio::GPIOA::release(gpioa);
 
 // For unsafe access, you don't need to first call `take()`, just use `GPIOA`:
 unsafe { modify_reg!(gpio, GPIOA, MODER, MODER1: Output) };
+// With the `nosync` feature set, this is the only way to access registers.
 ```
 
 See [the example project](https://github.com/adamgreig/stm32ral-example) for
@@ -148,6 +149,14 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3:
 * `doc`: makes all devices visible in the output without using any of them
   at the top level. Ideal for generating documentation. Not useful for
   actually building code.
+* `nosync`: disables all synchronised access (`take()`/`release()` functions).
+  The only way to access registers is with the direct `unsafe` access, such as
+  `write_reg!(stm32ral::gpio, GPIOA, MODER, MODER1: Input)`.
+  Removes all associated synchronisation overhead, but of course the user
+  must ensure they do not cause race conditions. "C" mode.
+  Especially useful if enabled by a HAL crate which will perform its own
+  synchronisation but can still permit unsafe direct access to peripherals by
+  users (which is why this is a 'negative' feature).
 * CPU features like `armv7em`: brings in peripherals from the CPU core itself,
   the relevant one is automatically included by the device features.
 * Device features: one per supported device, for example, `stm32f405`.
@@ -293,6 +302,10 @@ pub const GPIOA: *const RegisterBlock = ...;
 
 This permits direct use in macros without requiring you to first call `take()`
 (see below for macros).
+
+Note that with the `nosync` feature enabled, the `Instance` and
+`take()`/`release()` methods are not generated; the only access is via the
+raw pointer described above.
 
 As an implementation detail, many structs are actually refactored to live
 in the family level, with the original definitions replaced by `pub use`
@@ -526,6 +539,11 @@ When using these unsafe features, you must ensure no data races will happen
 yourself (for instance, because an interrupt will only fire after you are done
 initialising the peripheral and don't access it thereafter, or because you use
 your own mutex to ensure exclusive access, etc).
+
+The `nosync` feature removes all the synchronisation methods described above
+and leaves only unsafe access, reducing overhead and permitting some higher
+level crate to provide its own safe access guarantees without having to take
+every peripheral at runtime.
 
 ## Contributing
 
