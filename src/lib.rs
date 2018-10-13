@@ -19,6 +19,7 @@
 
 #![no_std]
 
+#[cfg(not(feature="nosync"))]
 extern crate cortex_m as external_cortex_m;
 
 #[macro_use]
