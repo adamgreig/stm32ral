@@ -303,13 +303,20 @@ class Field(Node):
 
     def to_rust(self):
         mask = 2**self.width - 1
+        if self.width == 1:
+            mask = "1"
+        elif self.width < 6:
+            mask = f"0b{mask:b}"
+        else:
+            mask = f"0x{mask:x}"
+        bits = f"bit{'s' if self.width>1 else ''}"
         return f"""
         /// {escape_desc(self.desc)}
         pub mod {self.name} {{
-            /// Bit offset ({self.offset})
+            /// Offset ({self.offset} bits)
             pub const offset: u32 = {self.offset};
-            /// Mask (0b{mask:b} << {self.offset})
-            pub const mask: u32 = 0b{mask:b} << offset;
+            /// Mask ({self.width} {bits}: {mask} << {self.offset})
+            pub const mask: u32 = {mask} << offset;
             {self.r.to_rust(self.width)}
             {self.w.to_rust(self.width)}
             {self.rw.to_rust(self.width)}
