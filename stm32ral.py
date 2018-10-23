@@ -39,38 +39,14 @@ CRATE_LIB_PREAMBLE = """\
 #[cfg(not(feature="nosync"))]
 extern crate cortex_m as external_cortex_m;
 
+#[cfg(feature="rt")]
+extern crate cortex_m_rt;
+
 #[macro_use]
 mod register;
 
-/// Set the interrupt handler for a specific interrupt.
-///
-/// Call with `interrupt!(NAME, my_handler);` where `NAME` must be in
-/// `stm32ral::interrupts::Interrupt`, and `my_handler` must have type `fn()`.
-///
-/// This macro is only available with the `rt` feature.
-///
-/// # Examples
-/// ```
-/// # #[macro_use] extern crate stm32ral; fn main() {
-/// interrupt!(TIM2, my_tim2_handler);
-/// fn my_tim2_handler() {
-///     unsafe { write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0) };
-/// }
-/// # }
-/// ```
-#[cfg(any(feature="doc", feature="rt"))]
-#[macro_export]
-macro_rules! interrupt {
-    ($name:ident, $handler:path) => {
-        #[no_mangle]
-        pub unsafe extern "C" fn $name() {
-            let _ = $crate::interrupts::Interrupt::$name;
-            let f: fn() = $handler;
-            f()
-        }
-    };
-}
-
+#[cfg(feature="rt")]
+pub use cortex_m_rt::interrupt;
 
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
@@ -108,7 +84,7 @@ rt = ["cortex-m-rt/device"]
 inline-asm = ["cortex-m/inline-asm"]
 default = ["rt", "inline-asm"]
 nosync = []
-doc = []
+doc = ["rt"]
 """
 
 
@@ -1171,14 +1147,14 @@ class Device(Node):
                 #[repr(u8)]
                 #[derive(Clone,Copy)]
                 #[allow(non_camel_case_types)]
-                pub enum Interrupt {{""")
+                pub enum interrupt {{""")
             for interrupt in self.interrupts:
                 f.write(f"/// {interrupt.value}: ")
                 f.write(f"{escape_desc(interrupt.desc)}\n")
                 f.write(f"{interrupt.name} = {interrupt.value},\n")
             f.write("}\n")
             f.write("""\
-                unsafe impl bare_metal::Nr for Interrupt {
+                unsafe impl bare_metal::Nr for interrupt {
                     #[inline]
                     fn nr(&self) -> u8 {
                         *self as u8
@@ -1207,7 +1183,7 @@ class Device(Node):
                 f.write(f"\npub const NVIC_PRIO_BITS: u8 = {prio_bits};\n\n")
                 f.write("/// Interrupt-related magic for this device\n")
                 f.write("pub mod interrupts;\n")
-                f.write("pub use self::interrupts::Interrupt;\n\n")
+                f.write("pub use self::interrupts::interrupt;\n\n")
             for peripheral in self.peripherals:
                 f.write(peripheral.to_parent_entry())
         rustfmt(mname)
