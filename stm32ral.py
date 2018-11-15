@@ -72,19 +72,19 @@ features = ["doc"]
 no-default-features = true
 
 [dependencies]
-bare-metal = "0.2.3"
-cortex-m = "0.5.7"
+bare-metal = "0.2.4"
+cortex-m = "0.5.8"
 
 [dependencies.cortex-m-rt]
 optional = true
-version = "0.6.4"
+version = "0.6.5"
 
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["cortex-m/inline-asm"]
-default = ["rt", "inline-asm"]
+default = []
 nosync = []
-doc = ["rt"]
+doc = []
 """
 
 
@@ -626,6 +626,8 @@ class PeripheralInstance(Node):
             }};
 
             #[cfg(not(feature="nosync"))]
+            #[allow(renamed_and_removed_lints)]
+            #[allow(private_no_mangle_statics)]
             #[no_mangle]
             static mut {self.name}_TAKEN: bool = false;
 
