@@ -1146,14 +1146,14 @@ class Device(Node):
                 #[repr(u8)]
                 #[derive(Clone,Copy)]
                 #[allow(non_camel_case_types)]
-                pub enum interrupt {{""")
+                pub enum Interrupt {{""")
             for interrupt in self.interrupts:
                 f.write(f"/// {interrupt.value}: ")
                 f.write(f"{escape_desc(interrupt.desc)}\n")
                 f.write(f"{interrupt.name} = {interrupt.value},\n")
             f.write("}\n")
             f.write("""\
-                unsafe impl bare_metal::Nr for interrupt {
+                unsafe impl bare_metal::Nr for Interrupt {
                     #[inline]
                     fn nr(&self) -> u8 {
                         *self as u8
@@ -1182,7 +1182,8 @@ class Device(Node):
                 f.write(f"\npub const NVIC_PRIO_BITS: u8 = {prio_bits};\n\n")
                 f.write("/// Interrupt-related magic for this device\n")
                 f.write("pub mod interrupts;\n")
-                f.write("pub use self::interrupts::interrupt;\n\n")
+                f.write("pub use self::interrupts::Interrupt;\n")
+                f.write("pub use self::interrupts::Interrupt as interrupt;\n\n")
             for peripheral in self.peripherals:
                 f.write(peripheral.to_parent_entry())
         rustfmt(mname)
