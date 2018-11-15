@@ -626,7 +626,6 @@ class PeripheralInstance(Node):
             }};
 
             #[cfg(not(feature="nosync"))]
-            #[allow(private_no_mangle_statics)]
             #[no_mangle]
             static mut {self.name}_TAKEN: bool = false;
 
