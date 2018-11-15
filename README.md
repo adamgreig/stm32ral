@@ -91,7 +91,7 @@ a more complete example that should build out of the box.
 * Simple (just 4 macros and a lot of constants)
 * Quick to compile (~2s build time)
 * Covers [all STM32 devices](supported_devices.md) in one crate
-* Supports `cortex-m-rt` via the (default) `rt` feature, including interrupts
+* Supports `cortex-m-rt` via the `rt` feature, including interrupts
 * Doesn't get in your way
 * A bit like what you're used to from C header files
 
@@ -139,13 +139,11 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3:
 ### Crate Features
 
 * `inline-asm`: enables `inline-asm` on the `cortex_m` dependency.
-  Recommended if you're using a nightly compiler that supports it,
-  which is why it's on by default, but you can disable it to run on
-  stable.
+  Recommended if you're using a nightly compiler that supports it.
 * `rt`: enables `device` on the `cortex_m_rt` dependency, and
   provides the relevant interrupt linker scripts.
-  Recommended for most users which is why it's on by default, but you can
-  disable it if you want to handle interrupts yourself.
+  Recommended for most users, but you can leave it off
+  if you want to handle interrupts yourself.
 * `doc`: makes all devices visible in the output without using any of them
   at the top level. Ideal for generating documentation. Not useful for
   actually building code.
@@ -161,15 +159,6 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3:
   the relevant one is automatically included by the device features.
 * Device features: one per supported device, for example, `stm32f405`.
   You should enable precisely one of these.
-
-To disable the default `inline-asm` and `rt` features, in your `Cargo.toml`:
-
-```toml
-[dependencies.stm32ral]
-version = "0.1.0"
-default-features = false
-features = ["stm32f405"]
-```
 
 ### Internal Structure
 
