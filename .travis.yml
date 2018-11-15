@@ -17,7 +17,7 @@ install:
   - rustup component add rustfmt-preview
 
 script:
-  - make -j$(nproc)
+  - make -j2
   - git update-index --refresh
   - git diff-files --exit-code
   - test -z "$(git ls-files --exclude-standard --others)"
