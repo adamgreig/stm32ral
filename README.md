@@ -11,12 +11,9 @@ The underlying data is generated via the patched SVD files in
 [![Build Status](https://travis-ci.org/adamgreig/stm32ral.svg?branch=master)](https://travis-ci.org/adamgreig/stm32ral)
 ![License](https://img.shields.io/crates/l/stm32ral.svg)
 
-[Documentation](https://docs.rs/stm32ral)
-
-[Repository](https://github.com/adamgreig/stm32ral)
-
-[Supported Devices](supported_devices.md)
-
+[Documentation](https://docs.rs/stm32ral) ·
+[Repository](https://github.com/adamgreig/stm32ral) ·
+[Supported Devices](supported_devices.md) ·
 [Example Project](https://github.com/adamgreig/stm32ral-example)
 
 ## What is it?
