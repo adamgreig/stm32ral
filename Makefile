@@ -5,8 +5,8 @@ crate: stm32-rs
 	python3 make_supported_devices.py stm32-rs/stm32_part_table.yaml supported_devices.md
 
 stm32-rs:
-	make -C stm32-rs patch
-	make -C stm32-rs/cortex_m patch
+	+make -C stm32-rs patch
+	+make -C stm32-rs/cortex_m patch
 
 clean:
 	rm -rf src/peripherals src/stm32* src/cortex_m src/lib.rs
