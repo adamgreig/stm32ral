@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## v0.1.1 - 2018-11-16
+## [v0.1.1] - 2018-11-16
 
 * Fix Travis and docs.rs builds
 
