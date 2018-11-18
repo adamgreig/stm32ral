@@ -455,14 +455,14 @@ in the peripheral module, which the macros bring into scope and dereference.
 
 ### Runtime Support & Interrupts
 
-Use the default `rt` feature to bring in `cortex-m-rt` support, providing a
+Use the `rt` feature to bring in `cortex-m-rt` support, providing a
 suitable `device.x` linker script and interrupt definitions.
 
 You can then specify your own interrupt handler:
 
 ```rust
-interrupt!(TIM2, my_tim2_handler);
-fn my_tim2_handler() {
+#[interrupt]
+fn TIM2() {
     write_reg!(stm32ral::tim2, TIM2, SR, UIF: 0);
 }
 ```
