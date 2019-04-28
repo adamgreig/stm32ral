@@ -6,6 +6,7 @@ Licensed under MIT and Apache 2.0, see LICENSE_MIT and LICENSE_APACHE.
 """
 
 import os
+import copy
 import argparse
 import itertools
 import subprocess
@@ -78,8 +79,8 @@ no-default-features = true
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
 bare-metal = "0.2.4"
-cortex-m = "0.5.8"
-cortex-m-rt = { version="0.6.5", optional=true }
+cortex-m = "0.6.0"
+cortex-m-rt = { version="0.6.8", optional=true }
 
 [features]
 rt = ["cortex-m-rt/device"]
@@ -146,6 +147,9 @@ class EnumeratedValue(Node):
         self.name = name
         self.desc = desc
         self.value = value
+        if self.name[0] in "0123456789":
+            self.name = "_" + self.name
+            print("Name started with a number:", self.name)
 
     def to_dict(self):
         return {"name": self.name, "desc": self.desc, "value": self.value}
@@ -272,6 +276,9 @@ class Field(Node):
         self.r = r
         self.w = w
         self.rw = rw
+        if self.name[0] in "0123456789":
+            self.name = "_" + self.name
+            print("Name started with a number:", self.name)
 
     def to_dict(self):
         return {"name": self.name, "desc": self.desc, "width": self.width,
@@ -847,7 +854,14 @@ class PeripheralPrototype(Node):
             raise ValueError(f"No registers found for peripheral {name}")
         ctx = register_ctx
         for register in registers.findall('register'):
-            peripheral.registers.append(Register.from_svd(svd, register, ctx))
+            # If register has a 'dim' field, expand to multiple registers
+            for dimr in expand_dim(register):
+                peripheral.registers.append(Register.from_svd(svd, dimr, ctx))
+        for cluster in registers.findall('cluster'):
+            for dimc in expand_dim(cluster):
+                for clusr in expand_cluster(dimc):
+                    reg = Register.from_svd(svd, clusr, ctx)
+                    peripheral.registers.append(reg)
         resets = {r.offset: r.reset_value for r in peripheral.registers}
         peripheral.instances.append(PeripheralInstance(name, addr, resets))
         return peripheral
@@ -1563,6 +1577,56 @@ def get_string(node, tag, default=None):
     if text == default:
         return text
     return " ".join(text.split())
+
+
+def expand_dim(node):
+    """
+    Returns an expanded list of nodes per the dimElementGroup, or just
+    a list containing node if no dimElementGroup specified.
+    """
+    dim = get_int(node, 'dim')
+    if dim is None:
+        return [node]
+
+    inc = get_int(node, 'dimIncrement')
+    idxs = get_string(node, 'dimIndex')
+    if idxs is None:
+        idxs = list(range(dim))
+    else:
+        if "," in idxs:
+            idxs = idxs.split(",")
+        elif "-" in idxs:
+            li, ri = idxs.split("-")
+            idxs = list(range(int(li), int(ri)+1))
+        else:
+            raise ValueError("Unknown dimIndex: '{}'".format(idxs))
+
+    nodes = []
+    for cnt, idx in enumerate(idxs):
+        name = get_string(node, 'name').replace("%s", str(idx))
+        dim_node = copy.deepcopy(node)
+        dim_node.find('name').text = name
+        addr = get_int(dim_node, 'addressOffset') + cnt * inc
+        dim_node.find('addressOffset').text = "0x{:08x}".format(addr)
+        dim_node.attrib['dim_index'] = idx
+        nodes.append(dim_node)
+    return nodes
+
+
+def expand_cluster(node):
+    if node.attrib.get('dim_index') is None:
+        raise ValueError("Can't process a cluster without dim_index set")
+    cluster_idx = node.attrib['dim_index']
+    cluster_addr = get_int(node, 'addressOffset')
+    nodes = []
+    for register in node.findall('register'):
+        addr = cluster_addr + get_int(register, 'addressOffset')
+        name = get_string(register, 'name') + str(cluster_idx)
+        clusr = copy.deepcopy(register)
+        clusr.find('addressOffset').text = "0x{:08x}".format(addr)
+        clusr.find('name').text = name
+        nodes.append(clusr)
+    return nodes
 
 
 def escape_desc(desc):
