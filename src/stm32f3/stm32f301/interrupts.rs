@@ -54,6 +54,8 @@ extern "C" {
     fn ADC_SD1_IRQ();
     fn ADC_SD2_IRQ();
     fn ADC_SD3_IRQ();
+    fn I2C3_EV_IRQ();
+    fn I2C3_ER_IRQ();
     fn USB_HP_IRQ();
     fn USB_LP_IRQ();
     fn USB_WAKEUP_IRQ();
@@ -206,8 +208,12 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: I2C3_EV_IRQ,
+    },
+    Vector {
+        _handler: I2C3_ER_IRQ,
+    },
     Vector {
         _handler: USB_HP_IRQ,
     },
@@ -337,6 +343,10 @@ pub enum Interrupt {
     ADC_SD2_IRQ = 62,
     /// 63: ADC sigma delta 3 (SDADC3) global interrupt
     ADC_SD3_IRQ = 63,
+    /// 72: I2C3 event interrupt / EXTI Line27 interrupt
+    I2C3_EV_IRQ = 72,
+    /// 73: I2C3 error interrupt
+    I2C3_ER_IRQ = 73,
     /// 74: USB high priority interrupt
     USB_HP_IRQ = 74,
     /// 75: USB low priority interrupt

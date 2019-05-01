@@ -10,8 +10,8 @@ pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::cryp_f7x5_f7x6_f7x7_f7x9 as cryp;
 pub use super::instances::dcmi;
-pub use super::instances::dma_f7x5_f7x9 as dma;
-pub use super::instances::fmc_f7x5_f7x6_f7x7_f7x9 as fmc;
+pub use super::instances::dma_f7x5_f7x6_f7x7_f7x9 as dma;
+pub use super::instances::fmc_f7x6_f7x7_f7x9 as fmc;
 pub use super::instances::gpio_f7x5_f7x6_f7x7_f7x9 as gpio;
 pub use super::instances::hash;
 pub use super::instances::rcc_f7x5_f7x9 as rcc;
@@ -30,6 +30,7 @@ pub use super::instances::adc_common_f7x7_f7x9 as adc_common;
 pub use super::instances::can_f7x7_f7x9 as can;
 pub use super::instances::cec;
 pub use super::instances::crc_f7x5_f7x6_f7x7_f7x9 as crc;
+pub use super::instances::dbgmcu_f7x7_f7x9 as dbgmcu;
 pub use super::instances::dfsdm;
 pub use super::instances::dma2d;
 pub use super::instances::dsi;

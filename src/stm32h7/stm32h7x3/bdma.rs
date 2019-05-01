@@ -4,10 +4,10 @@
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
+use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
 
 /// DMA interrupt status register
-pub mod BDMA_ISR {
+pub mod ISR {
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
     pub mod GIF1 {
@@ -459,7 +459,7 @@ pub mod BDMA_ISR {
 }
 
 /// DMA interrupt flag clear register
-pub mod BDMA_IFCR {
+pub mod IFCR {
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
     pub mod CGIF1 {
@@ -911,7 +911,7 @@ pub mod BDMA_IFCR {
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR1 {
+pub mod CCR1 {
 
     /// Channel enable This bit is set and cleared by software.
     pub mod EN {
@@ -1083,7 +1083,7 @@ pub mod BDMA_CCR1 {
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR1 {
+pub mod CNDTR1 {
 
     /// Number of data to transfer Number of data to be transferred (0 up to 65535). This register can only be written when the channel is disabled. Once the channel is enabled, this register is read-only, indicating the remaining bytes to be transmitted. This register decrements after each DMA transfer. Once the transfer is completed, this register can either stay at zero or be reloaded automatically by the value previously programmed if the channel is configured in auto-reload mode. If this register is zero, no transaction can be served whether the channel is enabled or not.
     pub mod NDT {
@@ -1101,7 +1101,7 @@ pub mod BDMA_CNDTR1 {
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR1 {
+pub mod CPAR1 {
 
     /// Peripheral address Base address of the peripheral data register from/to which the data will be read/written. When PSIZE is 01 (16-bit), the PA\[0\] bit is ignored. Access is automatically aligned to a half-word address. When PSIZE is 10 (32-bit), PA\[1:0\] are ignored. Access is automatically aligned to a word address.
     pub mod PA {
@@ -1119,7 +1119,7 @@ pub mod BDMA_CPAR1 {
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR1 {
+pub mod CMAR1 {
 
     /// Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA\[0\] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA\[1:0\] are ignored. Access is automatically aligned to a word address.
     pub mod MA {
@@ -1137,373 +1137,373 @@ pub mod BDMA_CMAR1 {
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR2 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR2 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR2 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR2 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR2 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR2 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR2 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR2 {
+    pub use super::CMAR1::MA;
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR3 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR3 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR3 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR3 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR3 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR3 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR3 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR3 {
+    pub use super::CMAR1::MA;
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR4 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR4 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR4 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR4 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR4 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR4 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR4 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR4 {
+    pub use super::CMAR1::MA;
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR5 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR5 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR5 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR5 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR5 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR5 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR5 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR5 {
+    pub use super::CMAR1::MA;
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR6 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR6 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR6 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR6 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR6 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR6 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR6 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR6 {
+    pub use super::CMAR1::MA;
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR7 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR7 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR7 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR7 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR7 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR7 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR7 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR7 {
+    pub use super::CMAR1::MA;
 }
 
 /// DMA channel x configuration register
-pub mod BDMA_CCR8 {
-    pub use super::BDMA_CCR1::CIRC;
-    pub use super::BDMA_CCR1::DIR;
-    pub use super::BDMA_CCR1::EN;
-    pub use super::BDMA_CCR1::HTIE;
-    pub use super::BDMA_CCR1::MEM2MEM;
-    pub use super::BDMA_CCR1::MINC;
-    pub use super::BDMA_CCR1::MSIZE;
-    pub use super::BDMA_CCR1::PINC;
-    pub use super::BDMA_CCR1::PL;
-    pub use super::BDMA_CCR1::PSIZE;
-    pub use super::BDMA_CCR1::TCIE;
-    pub use super::BDMA_CCR1::TEIE;
+pub mod CCR8 {
+    pub use super::CCR1::CIRC;
+    pub use super::CCR1::DIR;
+    pub use super::CCR1::EN;
+    pub use super::CCR1::HTIE;
+    pub use super::CCR1::MEM2MEM;
+    pub use super::CCR1::MINC;
+    pub use super::CCR1::MSIZE;
+    pub use super::CCR1::PINC;
+    pub use super::CCR1::PL;
+    pub use super::CCR1::PSIZE;
+    pub use super::CCR1::TCIE;
+    pub use super::CCR1::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod BDMA_CNDTR8 {
-    pub use super::BDMA_CNDTR1::NDT;
+pub mod CNDTR8 {
+    pub use super::CNDTR1::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CPAR8 {
-    pub use super::BDMA_CPAR1::PA;
+pub mod CPAR8 {
+    pub use super::CPAR1::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod BDMA_CMAR8 {
-    pub use super::BDMA_CMAR1::MA;
+pub mod CMAR8 {
+    pub use super::CMAR1::MA;
 }
 pub struct RegisterBlock {
     /// DMA interrupt status register
-    pub BDMA_ISR: RORegister<u32>,
+    pub ISR: RORegister<u32>,
 
     /// DMA interrupt flag clear register
-    pub BDMA_IFCR: WORegister<u32>,
+    pub IFCR: WORegister<u32>,
 
     /// DMA channel x configuration register
-    pub BDMA_CCR1: RWRegister<u32>,
+    pub CCR1: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR1: RWRegister<u32>,
+    pub CNDTR1: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR1: RWRegister<u32>,
+    pub CPAR1: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR1: RWRegister<u32>,
+    pub CMAR1: UnsafeRWRegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR2: RWRegister<u32>,
+    pub CCR2: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR2: RWRegister<u32>,
+    pub CNDTR2: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR2: RWRegister<u32>,
+    pub CPAR2: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR2: RWRegister<u32>,
+    pub CMAR2: UnsafeRWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR3: RWRegister<u32>,
+    pub CCR3: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR3: RWRegister<u32>,
+    pub CNDTR3: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR3: RWRegister<u32>,
+    pub CPAR3: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR3: RWRegister<u32>,
+    pub CMAR3: UnsafeRWRegister<u32>,
 
     _reserved3: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR4: RWRegister<u32>,
+    pub CCR4: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR4: RWRegister<u32>,
+    pub CNDTR4: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR4: RWRegister<u32>,
+    pub CPAR4: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR4: RWRegister<u32>,
+    pub CMAR4: UnsafeRWRegister<u32>,
 
     _reserved4: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR5: RWRegister<u32>,
+    pub CCR5: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR5: RWRegister<u32>,
+    pub CNDTR5: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR5: RWRegister<u32>,
+    pub CPAR5: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR5: RWRegister<u32>,
+    pub CMAR5: UnsafeRWRegister<u32>,
 
     _reserved5: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR6: RWRegister<u32>,
+    pub CCR6: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR6: RWRegister<u32>,
+    pub CNDTR6: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR6: RWRegister<u32>,
+    pub CPAR6: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR6: RWRegister<u32>,
+    pub CMAR6: UnsafeRWRegister<u32>,
 
     _reserved6: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR7: RWRegister<u32>,
+    pub CCR7: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR7: RWRegister<u32>,
+    pub CNDTR7: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR7: RWRegister<u32>,
+    pub CPAR7: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR7: RWRegister<u32>,
+    pub CMAR7: UnsafeRWRegister<u32>,
 
     _reserved7: [u32; 1],
 
     /// DMA channel x configuration register
-    pub BDMA_CCR8: RWRegister<u32>,
+    pub CCR8: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub BDMA_CNDTR8: RWRegister<u32>,
+    pub CNDTR8: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CPAR8: RWRegister<u32>,
+    pub CPAR8: UnsafeRWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub BDMA_CMAR8: RWRegister<u32>,
+    pub CMAR8: UnsafeRWRegister<u32>,
 }
 pub struct ResetValues {
-    pub BDMA_ISR: u32,
-    pub BDMA_IFCR: u32,
-    pub BDMA_CCR1: u32,
-    pub BDMA_CNDTR1: u32,
-    pub BDMA_CPAR1: u32,
-    pub BDMA_CMAR1: u32,
-    pub BDMA_CCR2: u32,
-    pub BDMA_CNDTR2: u32,
-    pub BDMA_CPAR2: u32,
-    pub BDMA_CMAR2: u32,
-    pub BDMA_CCR3: u32,
-    pub BDMA_CNDTR3: u32,
-    pub BDMA_CPAR3: u32,
-    pub BDMA_CMAR3: u32,
-    pub BDMA_CCR4: u32,
-    pub BDMA_CNDTR4: u32,
-    pub BDMA_CPAR4: u32,
-    pub BDMA_CMAR4: u32,
-    pub BDMA_CCR5: u32,
-    pub BDMA_CNDTR5: u32,
-    pub BDMA_CPAR5: u32,
-    pub BDMA_CMAR5: u32,
-    pub BDMA_CCR6: u32,
-    pub BDMA_CNDTR6: u32,
-    pub BDMA_CPAR6: u32,
-    pub BDMA_CMAR6: u32,
-    pub BDMA_CCR7: u32,
-    pub BDMA_CNDTR7: u32,
-    pub BDMA_CPAR7: u32,
-    pub BDMA_CMAR7: u32,
-    pub BDMA_CCR8: u32,
-    pub BDMA_CNDTR8: u32,
-    pub BDMA_CPAR8: u32,
-    pub BDMA_CMAR8: u32,
+    pub ISR: u32,
+    pub IFCR: u32,
+    pub CCR1: u32,
+    pub CNDTR1: u32,
+    pub CPAR1: u32,
+    pub CMAR1: u32,
+    pub CCR2: u32,
+    pub CNDTR2: u32,
+    pub CPAR2: u32,
+    pub CMAR2: u32,
+    pub CCR3: u32,
+    pub CNDTR3: u32,
+    pub CPAR3: u32,
+    pub CMAR3: u32,
+    pub CCR4: u32,
+    pub CNDTR4: u32,
+    pub CPAR4: u32,
+    pub CMAR4: u32,
+    pub CCR5: u32,
+    pub CNDTR5: u32,
+    pub CPAR5: u32,
+    pub CMAR5: u32,
+    pub CCR6: u32,
+    pub CNDTR6: u32,
+    pub CPAR6: u32,
+    pub CMAR6: u32,
+    pub CCR7: u32,
+    pub CNDTR7: u32,
+    pub CPAR7: u32,
+    pub CMAR7: u32,
+    pub CCR8: u32,
+    pub CNDTR8: u32,
+    pub CPAR8: u32,
+    pub CMAR8: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1537,40 +1537,40 @@ pub mod BDMA {
 
     /// Reset values for each field in BDMA
     pub const reset: ResetValues = ResetValues {
-        BDMA_ISR: 0x00000000,
-        BDMA_IFCR: 0x00000000,
-        BDMA_CCR1: 0x00000000,
-        BDMA_CNDTR1: 0x00000000,
-        BDMA_CPAR1: 0x00000000,
-        BDMA_CMAR1: 0x00000000,
-        BDMA_CCR2: 0x00000000,
-        BDMA_CNDTR2: 0x00000000,
-        BDMA_CPAR2: 0x00000000,
-        BDMA_CMAR2: 0x00000000,
-        BDMA_CCR3: 0x00000000,
-        BDMA_CNDTR3: 0x00000000,
-        BDMA_CPAR3: 0x00000000,
-        BDMA_CMAR3: 0x00000000,
-        BDMA_CCR4: 0x00000000,
-        BDMA_CNDTR4: 0x00000000,
-        BDMA_CPAR4: 0x00000000,
-        BDMA_CMAR4: 0x00000000,
-        BDMA_CCR5: 0x00000000,
-        BDMA_CNDTR5: 0x00000000,
-        BDMA_CPAR5: 0x00000000,
-        BDMA_CMAR5: 0x00000000,
-        BDMA_CCR6: 0x00000000,
-        BDMA_CNDTR6: 0x00000000,
-        BDMA_CPAR6: 0x00000000,
-        BDMA_CMAR6: 0x00000000,
-        BDMA_CCR7: 0x00000000,
-        BDMA_CNDTR7: 0x00000000,
-        BDMA_CPAR7: 0x00000000,
-        BDMA_CMAR7: 0x00000000,
-        BDMA_CCR8: 0x00000000,
-        BDMA_CNDTR8: 0x00000000,
-        BDMA_CPAR8: 0x00000000,
-        BDMA_CMAR8: 0x00000000,
+        ISR: 0x00000000,
+        IFCR: 0x00000000,
+        CCR1: 0x00000000,
+        CNDTR1: 0x00000000,
+        CPAR1: 0x00000000,
+        CMAR1: 0x00000000,
+        CCR2: 0x00000000,
+        CNDTR2: 0x00000000,
+        CPAR2: 0x00000000,
+        CMAR2: 0x00000000,
+        CCR3: 0x00000000,
+        CNDTR3: 0x00000000,
+        CPAR3: 0x00000000,
+        CMAR3: 0x00000000,
+        CCR4: 0x00000000,
+        CNDTR4: 0x00000000,
+        CPAR4: 0x00000000,
+        CMAR4: 0x00000000,
+        CCR5: 0x00000000,
+        CNDTR5: 0x00000000,
+        CPAR5: 0x00000000,
+        CMAR5: 0x00000000,
+        CCR6: 0x00000000,
+        CNDTR6: 0x00000000,
+        CPAR6: 0x00000000,
+        CMAR6: 0x00000000,
+        CCR7: 0x00000000,
+        CNDTR7: 0x00000000,
+        CPAR7: 0x00000000,
+        CMAR7: 0x00000000,
+        CCR8: 0x00000000,
+        CNDTR8: 0x00000000,
+        CPAR8: 0x00000000,
+        CMAR8: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

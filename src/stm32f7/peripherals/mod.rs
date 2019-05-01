@@ -20,7 +20,7 @@ pub mod crc_v1;
 pub mod cryp_v1;
 
 #[cfg(any(feature="doc", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x5", feature="stm32f7x6"))]
-pub mod dbg;
+pub mod dbgmcu_v1;
 
 #[cfg(any(feature="doc", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x5", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod dac;
@@ -161,9 +161,6 @@ pub mod cryp_v2;
 pub mod dcmi;
 
 #[cfg(any(feature="doc", feature="stm32f7x5", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
-pub mod fmc_v2;
-
-#[cfg(any(feature="doc", feature="stm32f7x5", feature="stm32f7x9"))]
 pub mod dma_v2;
 
 #[cfg(any(feature="doc", feature="stm32f7x5", feature="stm32f7x9"))]
@@ -274,6 +271,9 @@ pub mod otg_hs_host_v2;
 #[cfg(any(feature="doc", feature="stm32f7x5", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod otg_hs_device_v2;
 
+#[cfg(any(feature="doc", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
+pub mod fmc_v2;
+
 #[cfg(any(feature="doc", feature="stm32f7x7", feature="stm32f7x7"))]
 pub mod tim1_v3;
 
@@ -303,6 +303,9 @@ pub mod dsi;
 
 #[cfg(any(feature="doc", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod adc_common_v3;
+
+#[cfg(any(feature="doc", feature="stm32f7x7", feature="stm32f7x9"))]
+pub mod dbgmcu_v2;
 
 #[cfg(any(feature="doc", feature="stm32f7x9", feature="stm32f7x9"))]
 pub mod tim1_v4;

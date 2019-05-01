@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// OTG_HS control and status register
-pub mod OTG_HS_GOTGCTL {
+pub mod GOTGCTL {
 
     /// Session request success
     pub mod SRQSCS {
@@ -165,7 +165,7 @@ pub mod OTG_HS_GOTGCTL {
 }
 
 /// OTG_HS interrupt register
-pub mod OTG_HS_GOTGINT {
+pub mod GOTGINT {
 
     /// Session end detected
     pub mod SEDET {
@@ -267,7 +267,7 @@ pub mod OTG_HS_GOTGINT {
 }
 
 /// OTG_HS AHB configuration register
-pub mod OTG_HS_GAHBCFG {
+pub mod GAHBCFG {
 
     /// Global interrupt mask
     pub mod GINT {
@@ -341,7 +341,7 @@ pub mod OTG_HS_GAHBCFG {
 }
 
 /// OTG_HS USB configuration register
-pub mod OTG_HS_GUSBCFG {
+pub mod GUSBCFG {
 
     /// FS timeout calibration
     pub mod TOCAL {
@@ -583,7 +583,7 @@ pub mod OTG_HS_GUSBCFG {
 }
 
 /// OTG_HS reset register
-pub mod OTG_HS_GRSTCTL {
+pub mod GRSTCTL {
 
     /// Core soft reset
     pub mod CSRST {
@@ -699,7 +699,7 @@ pub mod OTG_HS_GRSTCTL {
 }
 
 /// OTG_HS core interrupt register
-pub mod OTG_HS_GINTSTS {
+pub mod GINTSTS {
 
     /// Current mode of operation
     pub mod CMOD {
@@ -1067,7 +1067,7 @@ pub mod OTG_HS_GINTSTS {
 }
 
 /// OTG_HS interrupt mask register
-pub mod OTG_HS_GINTMSK {
+pub mod GINTMSK {
 
     /// Mode mismatch interrupt mask
     pub mod MMISM {
@@ -1448,10 +1448,10 @@ pub mod OTG_HS_GINTMSK {
     }
 }
 
-/// OTG_HS_GRXSTSR_Host and OTG_HS_GRXSTSR_Device
-/// OTG_HS_GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
-/// OTG_HS_GRXSTSR_Device: OTG_HS Receive status debug read register (peripheral mode mode)
-pub mod OTG_HS_GRXSTSR {
+/// GRXSTSR_Host and GRXSTSR_Device
+/// GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
+/// GRXSTSR_Device: OTG_HS Receive status debug read register (peripheral mode mode)
+pub mod GRXSTSR {
 
     /// Channel number
     pub mod CHNUM {
@@ -1538,20 +1538,20 @@ pub mod OTG_HS_GRXSTSR {
     }
 }
 
-/// OTG_HS_GRXSTSP_Host and OTG_HS_GRXSTSP_Device
-/// OTG_HS_GRXSTSP_Host: OTG_HS status read and pop register (host mode)
-/// OTG_HS_GRXSTSP_Device: OTG_HS status read and pop register (peripheral mode)
-pub mod OTG_HS_GRXSTSP {
-    pub use super::OTG_HS_GRXSTSR::BCNT;
-    pub use super::OTG_HS_GRXSTSR::CHNUM;
-    pub use super::OTG_HS_GRXSTSR::DPID;
-    pub use super::OTG_HS_GRXSTSR::EPNUM;
-    pub use super::OTG_HS_GRXSTSR::FRMNUM;
-    pub use super::OTG_HS_GRXSTSR::PKTSTS;
+/// GRXSTSP_Host and GRXSTSP_Device
+/// GRXSTSP_Host: OTG_HS status read and pop register (host mode)
+/// GRXSTSP_Device: OTG_HS status read and pop register (peripheral mode)
+pub mod GRXSTSP {
+    pub use super::GRXSTSR::BCNT;
+    pub use super::GRXSTSR::CHNUM;
+    pub use super::GRXSTSR::DPID;
+    pub use super::GRXSTSR::EPNUM;
+    pub use super::GRXSTSR::FRMNUM;
+    pub use super::GRXSTSR::PKTSTS;
 }
 
 /// OTG_HS Receive FIFO size register
-pub mod OTG_HS_GRXFSIZ {
+pub mod GRXFSIZ {
 
     /// RxFIFO depth
     pub mod RXFD {
@@ -1568,10 +1568,10 @@ pub mod OTG_HS_GRXFSIZ {
     }
 }
 
-/// OTG_HS_HNPTXFSIZ_Host and OTG_HS_DIEPTXF0_Device
-/// OTG_HS_HNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
-/// OTG_HS_DIEPTXF0_Device: Endpoint 0 transmit FIFO size (peripheral mode)
-pub mod OTG_HS {
+/// HNPTXFSIZ_Host and DIEPTXF0_Device
+/// HNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
+/// DIEPTXF0_Device: Endpoint 0 transmit FIFO size (peripheral mode)
+pub mod HNPTXFSIZ_Host {
 
     /// Nonperiodic transmit RAM start address
     pub mod NPTXFSA {
@@ -1631,7 +1631,7 @@ pub mod OTG_HS {
 }
 
 /// OTG_HS nonperiodic transmit FIFO/queue status register
-pub mod OTG_HS_GNPTXSTS {
+pub mod GNPTXSTS {
 
     /// Nonperiodic TxFIFO space available
     pub mod NPTXFSAV {
@@ -1677,7 +1677,7 @@ pub mod OTG_HS_GNPTXSTS {
 }
 
 /// OTG_HS general core configuration register
-pub mod OTG_HS_GCCFG {
+pub mod GCCFG {
 
     /// Power down
     pub mod PWRDWN {
@@ -1821,7 +1821,7 @@ pub mod OTG_HS_GCCFG {
 }
 
 /// OTG_HS core ID register
-pub mod OTG_HS_CID {
+pub mod CID {
 
     /// Product ID field
     pub mod PRODUCT_ID {
@@ -1839,7 +1839,7 @@ pub mod OTG_HS_CID {
 }
 
 /// OTG_HS Host periodic transmit FIFO size register
-pub mod OTG_HS_HPTXFSIZ {
+pub mod HPTXFSIZ {
 
     /// Host periodic TxFIFO start address
     pub mod PTXSA {
@@ -1871,7 +1871,7 @@ pub mod OTG_HS_HPTXFSIZ {
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF1 {
+pub mod DIEPTXF1 {
 
     /// IN endpoint FIFOx transmit RAM start address
     pub mod INEPTXSA {
@@ -1903,43 +1903,43 @@ pub mod OTG_HS_DIEPTXF1 {
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF2 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF2 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF3 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF3 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF4 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF4 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF5 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF5 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF6 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF6 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_HS device IN endpoint transmit FIFO size register
-pub mod OTG_HS_DIEPTXF7 {
-    pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF7 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG core LPM configuration register
-pub mod OTG_HS_GLPMCFG {
+pub mod GLPMCFG {
 
     /// LPM support enable
     pub mod LPMEN {
@@ -2153,112 +2153,112 @@ pub mod OTG_HS_GLPMCFG {
 }
 pub struct RegisterBlock {
     /// OTG_HS control and status register
-    pub OTG_HS_GOTGCTL: RWRegister<u32>,
+    pub GOTGCTL: RWRegister<u32>,
 
     /// OTG_HS interrupt register
-    pub OTG_HS_GOTGINT: RWRegister<u32>,
+    pub GOTGINT: RWRegister<u32>,
 
     /// OTG_HS AHB configuration register
-    pub OTG_HS_GAHBCFG: RWRegister<u32>,
+    pub GAHBCFG: RWRegister<u32>,
 
     /// OTG_HS USB configuration register
-    pub OTG_HS_GUSBCFG: RWRegister<u32>,
+    pub GUSBCFG: RWRegister<u32>,
 
     /// OTG_HS reset register
-    pub OTG_HS_GRSTCTL: RWRegister<u32>,
+    pub GRSTCTL: RWRegister<u32>,
 
     /// OTG_HS core interrupt register
-    pub OTG_HS_GINTSTS: RWRegister<u32>,
+    pub GINTSTS: RWRegister<u32>,
 
     /// OTG_HS interrupt mask register
-    pub OTG_HS_GINTMSK: RWRegister<u32>,
+    pub GINTMSK: RWRegister<u32>,
 
-    /// OTG_HS_GRXSTSR_Host and OTG_HS_GRXSTSR_Device
-    /// OTG_HS_GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
-    /// OTG_HS_GRXSTSR_Device: OTG_HS Receive status debug read register (peripheral mode mode)
-    pub OTG_HS_GRXSTSR: RWRegister<u32>,
+    /// GRXSTSR_Host and GRXSTSR_Device
+    /// GRXSTSR_Host: OTG_HS Receive status debug read register (host mode)
+    /// GRXSTSR_Device: OTG_HS Receive status debug read register (peripheral mode mode)
+    pub GRXSTSR: RWRegister<u32>,
 
-    /// OTG_HS_GRXSTSP_Host and OTG_HS_GRXSTSP_Device
-    /// OTG_HS_GRXSTSP_Host: OTG_HS status read and pop register (host mode)
-    /// OTG_HS_GRXSTSP_Device: OTG_HS status read and pop register (peripheral mode)
-    pub OTG_HS_GRXSTSP: RWRegister<u32>,
+    /// GRXSTSP_Host and GRXSTSP_Device
+    /// GRXSTSP_Host: OTG_HS status read and pop register (host mode)
+    /// GRXSTSP_Device: OTG_HS status read and pop register (peripheral mode)
+    pub GRXSTSP: RWRegister<u32>,
 
     /// OTG_HS Receive FIFO size register
-    pub OTG_HS_GRXFSIZ: RWRegister<u32>,
+    pub GRXFSIZ: RWRegister<u32>,
 
-    /// OTG_HS_HNPTXFSIZ_Host and OTG_HS_DIEPTXF0_Device
-    /// OTG_HS_HNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
-    /// OTG_HS_DIEPTXF0_Device: Endpoint 0 transmit FIFO size (peripheral mode)
-    pub OTG_HS: RWRegister<u32>,
+    /// HNPTXFSIZ_Host and DIEPTXF0_Device
+    /// HNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
+    /// DIEPTXF0_Device: Endpoint 0 transmit FIFO size (peripheral mode)
+    pub HNPTXFSIZ_Host: RWRegister<u32>,
 
     /// OTG_HS nonperiodic transmit FIFO/queue status register
-    pub OTG_HS_GNPTXSTS: RORegister<u32>,
+    pub GNPTXSTS: RORegister<u32>,
 
     _reserved1: [u32; 2],
 
     /// OTG_HS general core configuration register
-    pub OTG_HS_GCCFG: RWRegister<u32>,
+    pub GCCFG: RWRegister<u32>,
 
     /// OTG_HS core ID register
-    pub OTG_HS_CID: RWRegister<u32>,
+    pub CID: RWRegister<u32>,
 
     _reserved2: [u32; 5],
 
     /// OTG core LPM configuration register
-    pub OTG_HS_GLPMCFG: RWRegister<u32>,
+    pub GLPMCFG: RWRegister<u32>,
 
     _reserved3: [u32; 42],
 
     /// OTG_HS Host periodic transmit FIFO size register
-    pub OTG_HS_HPTXFSIZ: RWRegister<u32>,
+    pub HPTXFSIZ: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF1: RWRegister<u32>,
+    pub DIEPTXF1: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF2: RWRegister<u32>,
+    pub DIEPTXF2: RWRegister<u32>,
 
     _reserved4: [u32; 4],
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF3: RWRegister<u32>,
+    pub DIEPTXF3: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF4: RWRegister<u32>,
+    pub DIEPTXF4: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF5: RWRegister<u32>,
+    pub DIEPTXF5: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF6: RWRegister<u32>,
+    pub DIEPTXF6: RWRegister<u32>,
 
     /// OTG_HS device IN endpoint transmit FIFO size register
-    pub OTG_HS_DIEPTXF7: RWRegister<u32>,
+    pub DIEPTXF7: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_HS_GOTGCTL: u32,
-    pub OTG_HS_GOTGINT: u32,
-    pub OTG_HS_GAHBCFG: u32,
-    pub OTG_HS_GUSBCFG: u32,
-    pub OTG_HS_GRSTCTL: u32,
-    pub OTG_HS_GINTSTS: u32,
-    pub OTG_HS_GINTMSK: u32,
-    pub OTG_HS_GRXSTSR: u32,
-    pub OTG_HS_GRXSTSP: u32,
-    pub OTG_HS_GRXFSIZ: u32,
-    pub OTG_HS: u32,
-    pub OTG_HS_GNPTXSTS: u32,
-    pub OTG_HS_GCCFG: u32,
-    pub OTG_HS_CID: u32,
-    pub OTG_HS_GLPMCFG: u32,
-    pub OTG_HS_HPTXFSIZ: u32,
-    pub OTG_HS_DIEPTXF1: u32,
-    pub OTG_HS_DIEPTXF2: u32,
-    pub OTG_HS_DIEPTXF3: u32,
-    pub OTG_HS_DIEPTXF4: u32,
-    pub OTG_HS_DIEPTXF5: u32,
-    pub OTG_HS_DIEPTXF6: u32,
-    pub OTG_HS_DIEPTXF7: u32,
+    pub GOTGCTL: u32,
+    pub GOTGINT: u32,
+    pub GAHBCFG: u32,
+    pub GUSBCFG: u32,
+    pub GRSTCTL: u32,
+    pub GINTSTS: u32,
+    pub GINTMSK: u32,
+    pub GRXSTSR: u32,
+    pub GRXSTSP: u32,
+    pub GRXFSIZ: u32,
+    pub HNPTXFSIZ_Host: u32,
+    pub GNPTXSTS: u32,
+    pub GCCFG: u32,
+    pub CID: u32,
+    pub GLPMCFG: u32,
+    pub HPTXFSIZ: u32,
+    pub DIEPTXF1: u32,
+    pub DIEPTXF2: u32,
+    pub DIEPTXF3: u32,
+    pub DIEPTXF4: u32,
+    pub DIEPTXF5: u32,
+    pub DIEPTXF6: u32,
+    pub DIEPTXF7: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -2292,29 +2292,29 @@ pub mod OTG1_HS_GLOBAL {
 
     /// Reset values for each field in OTG1_HS_GLOBAL
     pub const reset: ResetValues = ResetValues {
-        OTG_HS_GOTGCTL: 0x00000800,
-        OTG_HS_GOTGINT: 0x00000000,
-        OTG_HS_GAHBCFG: 0x00000000,
-        OTG_HS_GUSBCFG: 0x00000A00,
-        OTG_HS_GRSTCTL: 0x20000000,
-        OTG_HS_GINTSTS: 0x04000020,
-        OTG_HS_GINTMSK: 0x00000000,
-        OTG_HS_GRXSTSR: 0x00000000,
-        OTG_HS_GRXSTSP: 0x00000000,
-        OTG_HS_GRXFSIZ: 0x00000200,
-        OTG_HS: 0x00000200,
-        OTG_HS_GNPTXSTS: 0x00080200,
-        OTG_HS_GCCFG: 0x00000000,
-        OTG_HS_CID: 0x00001200,
-        OTG_HS_HPTXFSIZ: 0x02000600,
-        OTG_HS_DIEPTXF1: 0x02000400,
-        OTG_HS_DIEPTXF2: 0x02000400,
-        OTG_HS_DIEPTXF3: 0x02000400,
-        OTG_HS_DIEPTXF4: 0x02000400,
-        OTG_HS_DIEPTXF5: 0x02000400,
-        OTG_HS_DIEPTXF6: 0x02000400,
-        OTG_HS_DIEPTXF7: 0x02000400,
-        OTG_HS_GLPMCFG: 0x00000000,
+        GOTGCTL: 0x00000800,
+        GOTGINT: 0x00000000,
+        GAHBCFG: 0x00000000,
+        GUSBCFG: 0x00000A00,
+        GRSTCTL: 0x20000000,
+        GINTSTS: 0x04000020,
+        GINTMSK: 0x00000000,
+        GRXSTSR: 0x00000000,
+        GRXSTSP: 0x00000000,
+        GRXFSIZ: 0x00000200,
+        HNPTXFSIZ_Host: 0x00000200,
+        GNPTXSTS: 0x00080200,
+        GCCFG: 0x00000000,
+        CID: 0x00001200,
+        HPTXFSIZ: 0x02000600,
+        DIEPTXF1: 0x02000400,
+        DIEPTXF2: 0x02000400,
+        DIEPTXF3: 0x02000400,
+        DIEPTXF4: 0x02000400,
+        DIEPTXF5: 0x02000400,
+        DIEPTXF6: 0x02000400,
+        DIEPTXF7: 0x02000400,
+        GLPMCFG: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -2396,29 +2396,29 @@ pub mod OTG2_HS_GLOBAL {
 
     /// Reset values for each field in OTG2_HS_GLOBAL
     pub const reset: ResetValues = ResetValues {
-        OTG_HS_GOTGCTL: 0x00000800,
-        OTG_HS_GOTGINT: 0x00000000,
-        OTG_HS_GAHBCFG: 0x00000000,
-        OTG_HS_GUSBCFG: 0x00000A00,
-        OTG_HS_GRSTCTL: 0x20000000,
-        OTG_HS_GINTSTS: 0x04000020,
-        OTG_HS_GINTMSK: 0x00000000,
-        OTG_HS_GRXSTSR: 0x00000000,
-        OTG_HS_GRXSTSP: 0x00000000,
-        OTG_HS_GRXFSIZ: 0x00000200,
-        OTG_HS: 0x00000200,
-        OTG_HS_GNPTXSTS: 0x00080200,
-        OTG_HS_GCCFG: 0x00000000,
-        OTG_HS_CID: 0x00001200,
-        OTG_HS_HPTXFSIZ: 0x02000600,
-        OTG_HS_DIEPTXF1: 0x02000400,
-        OTG_HS_DIEPTXF2: 0x02000400,
-        OTG_HS_DIEPTXF3: 0x02000400,
-        OTG_HS_DIEPTXF4: 0x02000400,
-        OTG_HS_DIEPTXF5: 0x02000400,
-        OTG_HS_DIEPTXF6: 0x02000400,
-        OTG_HS_DIEPTXF7: 0x02000400,
-        OTG_HS_GLPMCFG: 0x00000000,
+        GOTGCTL: 0x00000800,
+        GOTGINT: 0x00000000,
+        GAHBCFG: 0x00000000,
+        GUSBCFG: 0x00000A00,
+        GRSTCTL: 0x20000000,
+        GINTSTS: 0x04000020,
+        GINTMSK: 0x00000000,
+        GRXSTSR: 0x00000000,
+        GRXSTSP: 0x00000000,
+        GRXFSIZ: 0x00000200,
+        HNPTXFSIZ_Host: 0x00000200,
+        GNPTXSTS: 0x00080200,
+        GCCFG: 0x00000000,
+        CID: 0x00001200,
+        HPTXFSIZ: 0x02000600,
+        DIEPTXF1: 0x02000400,
+        DIEPTXF2: 0x02000400,
+        DIEPTXF3: 0x02000400,
+        DIEPTXF4: 0x02000400,
+        DIEPTXF5: 0x02000400,
+        DIEPTXF6: 0x02000400,
+        DIEPTXF7: 0x02000400,
+        GLPMCFG: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

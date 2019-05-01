@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// CRS control register
-pub mod CRS_CR {
+pub mod CR {
 
     /// SYNC event OK interrupt enable
     pub mod SYNCOKIE {
@@ -123,7 +123,7 @@ pub mod CRS_CR {
 }
 
 /// This register can be written only when the frequency error counter is disabled (CEN bit is cleared in CRS_CR). When the counter is enabled, this register is write-protected.
-pub mod CRS_CFGR {
+pub mod CFGR {
 
     /// Counter reload value RELOAD is the value to be loaded in the frequency error counter with each SYNC event. Refer to Section7.3.3: Frequency error measurement for more details about counter behavior.
     pub mod RELOAD {
@@ -197,7 +197,7 @@ pub mod CRS_CFGR {
 }
 
 /// CRS interrupt and status register
-pub mod CRS_ISR {
+pub mod ISR {
 
     /// SYNC event OK flag This flag is set by hardware when the measured frequency error is smaller than FELIM * 3. This means that either no adjustment of the TRIM value is needed or that an adjustment by one trimming step is enough to compensate the frequency error. An interrupt is generated if the SYNCOKIE bit is set in the CRS_CR register. It is cleared by software by setting the SYNCOKC bit in the CRS_ICR register.
     pub mod SYNCOKF {
@@ -327,7 +327,7 @@ pub mod CRS_ISR {
 }
 
 /// CRS interrupt flag clear register
-pub mod CRS_ICR {
+pub mod ICR {
 
     /// SYNC event OK clear flag Writing 1 to this bit clears the SYNCOKF flag in the CRS_ISR register.
     pub mod SYNCOKC {
@@ -387,22 +387,22 @@ pub mod CRS_ICR {
 }
 pub struct RegisterBlock {
     /// CRS control register
-    pub CRS_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// This register can be written only when the frequency error counter is disabled (CEN bit is cleared in CRS_CR). When the counter is enabled, this register is write-protected.
-    pub CRS_CFGR: RWRegister<u32>,
+    pub CFGR: RWRegister<u32>,
 
     /// CRS interrupt and status register
-    pub CRS_ISR: RORegister<u32>,
+    pub ISR: RORegister<u32>,
 
     /// CRS interrupt flag clear register
-    pub CRS_ICR: RWRegister<u32>,
+    pub ICR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub CRS_CR: u32,
-    pub CRS_CFGR: u32,
-    pub CRS_ISR: u32,
-    pub CRS_ICR: u32,
+    pub CR: u32,
+    pub CFGR: u32,
+    pub ISR: u32,
+    pub ICR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -436,10 +436,10 @@ pub mod CRS {
 
     /// Reset values for each field in CRS
     pub const reset: ResetValues = ResetValues {
-        CRS_CR: 0x00002000,
-        CRS_CFGR: 0x2022BB7F,
-        CRS_ISR: 0x00000000,
-        CRS_ICR: 0x00000000,
+        CR: 0x00002000,
+        CFGR: 0x2022BB7F,
+        ISR: 0x00000000,
+        ICR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

@@ -73,6 +73,10 @@ fn main() {
             "src/stm32f7/stm32f7x7/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F7X9").is_some() {
             "src/stm32f7/stm32f7x9/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G0X0").is_some() {
+            "src/stm32g0/stm32g0x0/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G0X1").is_some() {
+            "src/stm32g0/stm32g0x1/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H7X3").is_some() {
             "src/stm32h7/stm32h7x3/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L0X1").is_some() {

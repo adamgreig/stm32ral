@@ -28,7 +28,7 @@ pub mod CR1 {
             pub const M0: u32 = 0b0;
 
             /// 0b1: 1 start bit, 7 data bits, n stop bits
-            pub const Bit_7: u32 = 0b1;
+            pub const Bit7: u32 = 0b1;
         }
     }
 
@@ -88,10 +88,10 @@ pub mod CR1 {
         pub mod RW {
 
             /// 0b0: 1 start bit, 8 data bits, n stop bits
-            pub const Bit_8: u32 = 0b0;
+            pub const Bit8: u32 = 0b0;
 
             /// 0b1: 1 start bit, 9 data bits, n stop bits
-            pub const Bit_9: u32 = 0b1;
+            pub const Bit9: u32 = 0b1;
         }
     }
 
@@ -498,16 +498,16 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b00: 1 stop bit
-            pub const Bit_1: u32 = 0b00;
+            pub const Stop1: u32 = 0b00;
 
             /// 0b01: 0.5 stop bit
-            pub const Bit_0_5: u32 = 0b01;
+            pub const Stop0p5: u32 = 0b01;
 
             /// 0b10: 2 stop bit
-            pub const Bit_2: u32 = 0b10;
+            pub const Stop2: u32 = 0b10;
 
             /// 0b11: 1.5 stop bit
-            pub const Bit_1_5: u32 = 0b11;
+            pub const Stop1p5: u32 = 0b11;
         }
     }
 
@@ -546,10 +546,10 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b0: 4-bit address detection
-            pub const Bit_4: u32 = 0b0;
+            pub const Bit4: u32 = 0b0;
 
             /// 0b1: 7-bit address detection
-            pub const Bit_7: u32 = 0b1;
+            pub const Bit7: u32 = 0b1;
         }
     }
 

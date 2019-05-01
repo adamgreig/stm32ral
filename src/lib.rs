@@ -166,6 +166,15 @@ pub use stm32f7::stm32f7x7::*;
 #[cfg(feature="stm32f7x9")]
 pub use stm32f7::stm32f7x9::*;
 
+#[cfg(any(feature="doc", feature="stm32g0x0", feature="stm32g0x1"))]
+pub mod stm32g0;
+
+#[cfg(feature="stm32g0x0")]
+pub use stm32g0::stm32g0x0::*;
+
+#[cfg(feature="stm32g0x1")]
+pub use stm32g0::stm32g0x1::*;
+
 #[cfg(any(feature="doc", feature="stm32h7x3"))]
 pub mod stm32h7;
 

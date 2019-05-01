@@ -38,7 +38,7 @@ pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tsc;
 pub use super::instances::usart;
-pub use super::instances::usb_fs;
+pub use super::instances::usb;
 pub use super::instances::usb_sram;
 pub use super::instances::wwdg;
 pub mod lcd;

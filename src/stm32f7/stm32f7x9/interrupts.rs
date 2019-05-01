@@ -34,6 +34,8 @@ extern "C" {
     fn TIM4();
     fn I2C1_EV();
     fn I2C1_ER();
+    fn I2C2_EV();
+    fn I2C2_ER();
     fn SPI1();
     fn SPI2();
     fn USART1();
@@ -51,6 +53,7 @@ extern "C" {
     fn SDIO();
     fn TIM5();
     fn SPI3();
+    fn UART4();
     fn UART5();
     fn TIM6_DAC();
     fn TIM7();
@@ -69,6 +72,9 @@ extern "C" {
     fn DMA2_Stream5();
     fn DMA2_Stream6();
     fn DMA2_Stream7();
+    fn USART6();
+    fn I2C3_EV();
+    fn I2C3_ER();
     fn OTG_HS_EP1_OUT();
     fn OTG_HS_EP1_IN();
     fn OTG_HS_WKUP();
@@ -173,8 +179,8 @@ pub static __INTERRUPTS: [Vector; 110] = [
     Vector { _handler: TIM4 },
     Vector { _handler: I2C1_EV },
     Vector { _handler: I2C1_ER },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: I2C2_EV },
+    Vector { _handler: I2C2_ER },
     Vector { _handler: SPI1 },
     Vector { _handler: SPI2 },
     Vector { _handler: USART1 },
@@ -206,7 +212,7 @@ pub static __INTERRUPTS: [Vector; 110] = [
     Vector { _handler: SDIO },
     Vector { _handler: TIM5 },
     Vector { _handler: SPI3 },
-    Vector { _reserved: 0 },
+    Vector { _handler: UART4 },
     Vector { _handler: UART5 },
     Vector { _handler: TIM6_DAC },
     Vector { _handler: TIM7 },
@@ -241,9 +247,9 @@ pub static __INTERRUPTS: [Vector; 110] = [
     Vector {
         _handler: DMA2_Stream7,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: USART6 },
+    Vector { _handler: I2C3_EV },
+    Vector { _handler: I2C3_ER },
     Vector {
         _handler: OTG_HS_EP1_OUT,
     },
@@ -371,6 +377,10 @@ pub enum Interrupt {
     I2C1_EV = 31,
     /// 32: I2C1 error interrupt
     I2C1_ER = 32,
+    /// 33: I2C2 event interrupt
+    I2C2_EV = 33,
+    /// 34: I2C2 error interrupt
+    I2C2_ER = 34,
     /// 35: SPI1 global interrupt
     SPI1 = 35,
     /// 36: SPI2 global interrupt
@@ -405,6 +415,8 @@ pub enum Interrupt {
     TIM5 = 50,
     /// 51: SPI3 global interrupt
     SPI3 = 51,
+    /// 52: UART4 global interrupt
+    UART4 = 52,
     /// 53: UART5 global interrupt
     UART5 = 53,
     /// 54: TIM6 global interrupt, DAC1 and DAC2 underrun error interrupt
@@ -441,6 +453,12 @@ pub enum Interrupt {
     DMA2_Stream6 = 69,
     /// 70: DMA2 Stream7 global interrupt
     DMA2_Stream7 = 70,
+    /// 71: USART6 global interrupt
+    USART6 = 71,
+    /// 72: I2C3 event interrupt
+    I2C3_EV = 72,
+    /// 73: I2C3 error interrupt
+    I2C3_ER = 73,
     /// 74: USB On The Go HS End Point 1 Out global interrupt
     OTG_HS_EP1_OUT = 74,
     /// 75: USB On The Go HS End Point 1 In global interrupt

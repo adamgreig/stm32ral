@@ -36,12 +36,12 @@
 
 | Feature | Devices | Links |
 |:-------:|:-------:|:-----:|
-| `stm32f301` | STM32F301 | [RM0366](https://www.st.com/resource/en/reference_manual/dm00094350.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f301.html) |
+| `stm32f301` | STM32F301, STM32F318 | [RM0366](https://www.st.com/resource/en/reference_manual/dm00094350.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f301.html) |
 | `stm32f302` | STM32F302 | [RM0365](https://www.st.com/resource/en/reference_manual/dm00094349.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f302.html) |
 | `stm32f303` | STM32F303 | [RM0316](https://www.st.com/resource/en/reference_manual/dm00043574.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f303.html) |
-| `stm32f373` | STM32F373 | [RM0313](https://www.st.com/resource/en/reference_manual/dm00041563.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f3x8.html) |
+| `stm32f373` | STM32F373, STM32F378 | [RM0313](https://www.st.com/resource/en/reference_manual/dm00041563.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f373.html) |
 | `stm32f3x4` | STM32F334 | [RM0364](https://www.st.com/resource/en/reference_manual/dm00093941.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f334.html) |
-| `stm32f3x8` | STM32F318, STM32F328, STM32F358, STM32F378, STM32F398 | [RM0316](https://www.st.com/resource/en/reference_manual/dm00043574.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f373.html) |
+| `stm32f3x8` | STM32F328, STM32F358, STM32F398 | [RM0316](https://www.st.com/resource/en/reference_manual/dm00043574.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32f3-series/stm32f3x8.html) |
 
 
 
@@ -113,6 +113,15 @@
 | `stm32l4x3` | STM32L433, STM32L443 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32l4x3.html) |
 | `stm32l4x5` | STM32L475 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32l4x5.html) |
 | `stm32l4x6` | STM32L476, STM32L486, STM32L496, STM32L4A6 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32l4x6.html) |
+
+
+
+## STM32G0
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32g0x0` | STM32G070 | [RM0454](https://www.st.com/resource/en/reference_manual/dm00463896.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32g0-series/stm32g0x0-value-line.html) |
+| `stm32g0x1` | STM32G071, STM32G081 | [RM0444](https://www.st.com/resource/en/reference_manual/dm00371828.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-mainstream-mcus/stm32g0-series/stm32g0x1.html) |
 
 
 

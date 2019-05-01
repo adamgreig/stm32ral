@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! DMA controller
 //!
-//! Used by: stm32f7x5, stm32f7x9
+//! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -1194,8 +1194,61 @@ pub mod HIFCR {
     }
 }
 
+/// stream x peripheral address register
+pub mod S0PAR {
+
+    /// Peripheral address
+    pub mod PA {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// stream x peripheral address register
+pub mod S1PAR {
+    pub use super::S0PAR::PA;
+}
+
+/// stream x peripheral address register
+pub mod S2PAR {
+    pub use super::S0PAR::PA;
+}
+
+/// stream x peripheral address register
+pub mod S3PAR {
+    pub use super::S0PAR::PA;
+}
+
+/// stream x peripheral address register
+pub mod S4PAR {
+    pub use super::S0PAR::PA;
+}
+
+/// stream x peripheral address register
+pub mod S5PAR {
+    pub use super::S0PAR::PA;
+}
+
+/// stream x peripheral address register
+pub mod S6PAR {
+    pub use super::S0PAR::PA;
+}
+
+/// stream x peripheral address register
+pub mod S7PAR {
+    pub use super::S0PAR::PA;
+}
+
 /// stream x configuration register
-pub mod S0CR {
+pub mod CR0 {
 
     /// Channel selection
     pub mod CHSEL {
@@ -1585,7 +1638,7 @@ pub mod S0CR {
 }
 
 /// stream x number of data register
-pub mod S0NDTR {
+pub mod NDTR0 {
 
     /// Number of data items to transfer
     pub mod NDT {
@@ -1602,26 +1655,8 @@ pub mod S0NDTR {
     }
 }
 
-/// stream x peripheral address register
-pub mod S0PAR {
-
-    /// Peripheral address
-    pub mod PA {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// stream x memory 0 address register
-pub mod S0M0AR {
+pub mod M0AR0 {
 
     /// Memory 0 address
     pub mod M0A {
@@ -1639,7 +1674,7 @@ pub mod S0M0AR {
 }
 
 /// stream x memory 1 address register
-pub mod S0M1AR {
+pub mod M1AR0 {
 
     /// Memory 1 address (used in case of Double buffer mode)
     pub mod M1A {
@@ -1657,7 +1692,7 @@ pub mod S0M1AR {
 }
 
 /// stream x FIFO control register
-pub mod S0FCR {
+pub mod FCR0 {
 
     /// FIFO error interrupt enable
     pub mod FEIE {
@@ -1763,747 +1798,325 @@ pub mod S0FCR {
 }
 
 /// stream x configuration register
-pub mod S1CR {
-
-    /// Channel selection
-    pub mod CHSEL {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (4 bits: 0b1111 << 25)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Memory burst transfer configuration
-    pub mod MBURST {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (2 bits: 0b11 << 23)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Single transfer
-            pub const Single: u32 = 0b00;
-
-            /// 0b01: Incremental burst of 4 beats
-            pub const INCR4: u32 = 0b01;
-
-            /// 0b10: Incremental burst of 8 beats
-            pub const INCR8: u32 = 0b10;
-
-            /// 0b11: Incremental burst of 16 beats
-            pub const INCR16: u32 = 0b11;
-        }
-    }
-
-    /// Peripheral burst transfer configuration
-    pub mod PBURST {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (2 bits: 0b11 << 21)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MBURST::RW;
-    }
-
-    /// ACK
-    pub mod ACK {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Current target (only in double buffer mode)
-    pub mod CT {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The current target memory is Memory 0
-            pub const Memory0: u32 = 0b0;
-
-            /// 0b1: The current target memory is Memory 1
-            pub const Memory1: u32 = 0b1;
-        }
-    }
-
-    /// Double buffer mode
-    pub mod DBM {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No buffer switching at the end of transfer
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: Memory target switched at the end of the DMA transfer
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Priority level
-    pub mod PL {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (2 bits: 0b11 << 16)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Low
-            pub const Low: u32 = 0b00;
-
-            /// 0b01: Medium
-            pub const Medium: u32 = 0b01;
-
-            /// 0b10: High
-            pub const High: u32 = 0b10;
-
-            /// 0b11: Very high
-            pub const VeryHigh: u32 = 0b11;
-        }
-    }
-
-    /// Peripheral increment offset size
-    pub mod PINCOS {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The offset size for the peripheral address calculation is linked to the PSIZE
-            pub const PSIZE: u32 = 0b0;
-
-            /// 0b1: The offset size for the peripheral address calculation is fixed to 4 (32-bit alignment)
-            pub const Fixed4: u32 = 0b1;
-        }
-    }
-
-    /// Memory data size
-    pub mod MSIZE {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (2 bits: 0b11 << 13)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Byte (8-bit)
-            pub const Byte: u32 = 0b00;
-
-            /// 0b01: Half-word (16-bit)
-            pub const HalfWord: u32 = 0b01;
-
-            /// 0b10: Word (32-bit)
-            pub const Word: u32 = 0b10;
-        }
-    }
-
-    /// Peripheral data size
-    pub mod PSIZE {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (2 bits: 0b11 << 11)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MSIZE::RW;
-    }
-
-    /// Memory increment mode
-    pub mod MINC {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Address pointer is fixed
-            pub const Fixed: u32 = 0b0;
-
-            /// 0b1: Address pointer is incremented after each data transfer
-            pub const Incremented: u32 = 0b1;
-        }
-    }
-
-    /// Peripheral increment mode
-    pub mod PINC {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MINC::RW;
-    }
-
-    /// Circular mode
-    pub mod CIRC {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Circular mode disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: Circular mode enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Data transfer direction
-    pub mod DIR {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (2 bits: 0b11 << 6)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Peripheral-to-memory
-            pub const PeripheralToMemory: u32 = 0b00;
-
-            /// 0b01: Memory-to-peripheral
-            pub const MemoryToPeripheral: u32 = 0b01;
-
-            /// 0b10: Memory-to-memory
-            pub const MemoryToMemory: u32 = 0b10;
-        }
-    }
-
-    /// Peripheral flow controller
-    pub mod PFCTRL {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The DMA is the flow controller
-            pub const DMA: u32 = 0b0;
-
-            /// 0b1: The peripheral is the flow controller
-            pub const Peripheral: u32 = 0b1;
-        }
-    }
-
-    /// Transfer complete interrupt enable
-    pub mod TCIE {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TC interrupt disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: TC interrupt enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Half transfer interrupt enable
-    pub mod HTIE {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: HT interrupt disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: HT interrupt enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Transfer error interrupt enable
-    pub mod TEIE {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TE interrupt disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: TE interrupt enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Direct mode error interrupt enable
-    pub mod DMEIE {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DME interrupt disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: DME interrupt enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Stream enable / flag stream ready when read low
-    pub mod EN {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Stream disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: Stream enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
+pub mod CR1 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S1NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S1PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR1 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S1M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR1 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S1M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR1 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S1FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR1 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 
 /// stream x configuration register
-pub mod S2CR {
-    pub use super::S1CR::ACK;
-    pub use super::S1CR::CHSEL;
-    pub use super::S1CR::CIRC;
-    pub use super::S1CR::CT;
-    pub use super::S1CR::DBM;
-    pub use super::S1CR::DIR;
-    pub use super::S1CR::DMEIE;
-    pub use super::S1CR::EN;
-    pub use super::S1CR::HTIE;
-    pub use super::S1CR::MBURST;
-    pub use super::S1CR::MINC;
-    pub use super::S1CR::MSIZE;
-    pub use super::S1CR::PBURST;
-    pub use super::S1CR::PFCTRL;
-    pub use super::S1CR::PINC;
-    pub use super::S1CR::PINCOS;
-    pub use super::S1CR::PL;
-    pub use super::S1CR::PSIZE;
-    pub use super::S1CR::TCIE;
-    pub use super::S1CR::TEIE;
+pub mod CR2 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S2NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S2PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR2 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S2M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR2 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S2M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR2 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S2FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR2 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 
 /// stream x configuration register
-pub mod S3CR {
-    pub use super::S1CR::ACK;
-    pub use super::S1CR::CHSEL;
-    pub use super::S1CR::CIRC;
-    pub use super::S1CR::CT;
-    pub use super::S1CR::DBM;
-    pub use super::S1CR::DIR;
-    pub use super::S1CR::DMEIE;
-    pub use super::S1CR::EN;
-    pub use super::S1CR::HTIE;
-    pub use super::S1CR::MBURST;
-    pub use super::S1CR::MINC;
-    pub use super::S1CR::MSIZE;
-    pub use super::S1CR::PBURST;
-    pub use super::S1CR::PFCTRL;
-    pub use super::S1CR::PINC;
-    pub use super::S1CR::PINCOS;
-    pub use super::S1CR::PL;
-    pub use super::S1CR::PSIZE;
-    pub use super::S1CR::TCIE;
-    pub use super::S1CR::TEIE;
+pub mod CR3 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S3NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S3PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR3 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S3M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR3 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S3M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR3 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S3FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR3 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 
 /// stream x configuration register
-pub mod S4CR {
-    pub use super::S1CR::ACK;
-    pub use super::S1CR::CHSEL;
-    pub use super::S1CR::CIRC;
-    pub use super::S1CR::CT;
-    pub use super::S1CR::DBM;
-    pub use super::S1CR::DIR;
-    pub use super::S1CR::DMEIE;
-    pub use super::S1CR::EN;
-    pub use super::S1CR::HTIE;
-    pub use super::S1CR::MBURST;
-    pub use super::S1CR::MINC;
-    pub use super::S1CR::MSIZE;
-    pub use super::S1CR::PBURST;
-    pub use super::S1CR::PFCTRL;
-    pub use super::S1CR::PINC;
-    pub use super::S1CR::PINCOS;
-    pub use super::S1CR::PL;
-    pub use super::S1CR::PSIZE;
-    pub use super::S1CR::TCIE;
-    pub use super::S1CR::TEIE;
+pub mod CR4 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S4NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S4PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR4 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S4M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR4 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S4M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR4 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S4FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR4 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 
 /// stream x configuration register
-pub mod S5CR {
-    pub use super::S1CR::ACK;
-    pub use super::S1CR::CHSEL;
-    pub use super::S1CR::CIRC;
-    pub use super::S1CR::CT;
-    pub use super::S1CR::DBM;
-    pub use super::S1CR::DIR;
-    pub use super::S1CR::DMEIE;
-    pub use super::S1CR::EN;
-    pub use super::S1CR::HTIE;
-    pub use super::S1CR::MBURST;
-    pub use super::S1CR::MINC;
-    pub use super::S1CR::MSIZE;
-    pub use super::S1CR::PBURST;
-    pub use super::S1CR::PFCTRL;
-    pub use super::S1CR::PINC;
-    pub use super::S1CR::PINCOS;
-    pub use super::S1CR::PL;
-    pub use super::S1CR::PSIZE;
-    pub use super::S1CR::TCIE;
-    pub use super::S1CR::TEIE;
+pub mod CR5 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S5NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S5PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR5 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S5M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR5 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S5M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR5 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S5FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR5 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 
 /// stream x configuration register
-pub mod S6CR {
-    pub use super::S1CR::ACK;
-    pub use super::S1CR::CHSEL;
-    pub use super::S1CR::CIRC;
-    pub use super::S1CR::CT;
-    pub use super::S1CR::DBM;
-    pub use super::S1CR::DIR;
-    pub use super::S1CR::DMEIE;
-    pub use super::S1CR::EN;
-    pub use super::S1CR::HTIE;
-    pub use super::S1CR::MBURST;
-    pub use super::S1CR::MINC;
-    pub use super::S1CR::MSIZE;
-    pub use super::S1CR::PBURST;
-    pub use super::S1CR::PFCTRL;
-    pub use super::S1CR::PINC;
-    pub use super::S1CR::PINCOS;
-    pub use super::S1CR::PL;
-    pub use super::S1CR::PSIZE;
-    pub use super::S1CR::TCIE;
-    pub use super::S1CR::TEIE;
+pub mod CR6 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S6NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S6PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR6 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S6M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR6 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S6M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR6 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S6FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR6 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 
 /// stream x configuration register
-pub mod S7CR {
-    pub use super::S1CR::ACK;
-    pub use super::S1CR::CHSEL;
-    pub use super::S1CR::CIRC;
-    pub use super::S1CR::CT;
-    pub use super::S1CR::DBM;
-    pub use super::S1CR::DIR;
-    pub use super::S1CR::DMEIE;
-    pub use super::S1CR::EN;
-    pub use super::S1CR::HTIE;
-    pub use super::S1CR::MBURST;
-    pub use super::S1CR::MINC;
-    pub use super::S1CR::MSIZE;
-    pub use super::S1CR::PBURST;
-    pub use super::S1CR::PFCTRL;
-    pub use super::S1CR::PINC;
-    pub use super::S1CR::PINCOS;
-    pub use super::S1CR::PL;
-    pub use super::S1CR::PSIZE;
-    pub use super::S1CR::TCIE;
-    pub use super::S1CR::TEIE;
+pub mod CR7 {
+    pub use super::CR0::CHSEL;
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::DMEIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MBURST;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PBURST;
+    pub use super::CR0::PFCTRL;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PINCOS;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// stream x number of data register
-pub mod S7NDTR {
-    pub use super::S0NDTR::NDT;
-}
-
-/// stream x peripheral address register
-pub mod S7PAR {
-    pub use super::S0PAR::PA;
+pub mod NDTR7 {
+    pub use super::NDTR0::NDT;
 }
 
 /// stream x memory 0 address register
-pub mod S7M0AR {
-    pub use super::S0M0AR::M0A;
+pub mod M0AR7 {
+    pub use super::M0AR0::M0A;
 }
 
 /// stream x memory 1 address register
-pub mod S7M1AR {
-    pub use super::S0M1AR::M1A;
+pub mod M1AR7 {
+    pub use super::M1AR0::M1A;
 }
 
 /// stream x FIFO control register
-pub mod S7FCR {
-    pub use super::S0FCR::DMDIS;
-    pub use super::S0FCR::FEIE;
-    pub use super::S0FCR::FS;
-    pub use super::S0FCR::FTH;
+pub mod FCR7 {
+    pub use super::FCR0::DMDIS;
+    pub use super::FCR0::FEIE;
+    pub use super::FCR0::FS;
+    pub use super::FCR0::FTH;
 }
 pub struct RegisterBlock {
     /// low interrupt status register
@@ -2519,202 +2132,202 @@ pub struct RegisterBlock {
     pub HIFCR: WORegister<u32>,
 
     /// stream x configuration register
-    pub S0CR: RWRegister<u32>,
+    pub CR0: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S0NDTR: RWRegister<u32>,
+    pub NDTR0: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S0PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S0M0AR: UnsafeRWRegister<u32>,
+    pub M0AR0: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S0M1AR: UnsafeRWRegister<u32>,
+    pub M1AR0: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S0FCR: RWRegister<u32>,
+    pub FCR0: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S1CR: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S1NDTR: RWRegister<u32>,
+    pub NDTR1: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S1PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S1M0AR: UnsafeRWRegister<u32>,
+    pub M0AR1: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S1M1AR: UnsafeRWRegister<u32>,
+    pub M1AR1: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S1FCR: RWRegister<u32>,
+    pub FCR1: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S2CR: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S2NDTR: RWRegister<u32>,
+    pub NDTR2: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S2PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S2M0AR: UnsafeRWRegister<u32>,
+    pub M0AR2: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S2M1AR: UnsafeRWRegister<u32>,
+    pub M1AR2: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S2FCR: RWRegister<u32>,
+    pub FCR2: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S3CR: RWRegister<u32>,
+    pub CR3: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S3NDTR: RWRegister<u32>,
+    pub NDTR3: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S3PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S3M0AR: UnsafeRWRegister<u32>,
+    pub M0AR3: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S3M1AR: UnsafeRWRegister<u32>,
+    pub M1AR3: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S3FCR: RWRegister<u32>,
+    pub FCR3: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S4CR: RWRegister<u32>,
+    pub CR4: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S4NDTR: RWRegister<u32>,
+    pub NDTR4: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S4PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S4M0AR: UnsafeRWRegister<u32>,
+    pub M0AR4: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S4M1AR: UnsafeRWRegister<u32>,
+    pub M1AR4: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S4FCR: RWRegister<u32>,
+    pub FCR4: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S5CR: RWRegister<u32>,
+    pub CR5: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S5NDTR: RWRegister<u32>,
+    pub NDTR5: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S5PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S5M0AR: UnsafeRWRegister<u32>,
+    pub M0AR5: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S5M1AR: UnsafeRWRegister<u32>,
+    pub M1AR5: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S5FCR: RWRegister<u32>,
+    pub FCR5: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S6CR: RWRegister<u32>,
+    pub CR6: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S6NDTR: RWRegister<u32>,
+    pub NDTR6: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S6PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S6M0AR: UnsafeRWRegister<u32>,
+    pub M0AR6: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S6M1AR: UnsafeRWRegister<u32>,
+    pub M1AR6: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S6FCR: RWRegister<u32>,
+    pub FCR6: RWRegister<u32>,
 
     /// stream x configuration register
-    pub S7CR: RWRegister<u32>,
+    pub CR7: RWRegister<u32>,
 
     /// stream x number of data register
-    pub S7NDTR: RWRegister<u32>,
+    pub NDTR7: RWRegister<u32>,
 
     /// stream x peripheral address register
     pub S7PAR: UnsafeRWRegister<u32>,
 
     /// stream x memory 0 address register
-    pub S7M0AR: UnsafeRWRegister<u32>,
+    pub M0AR7: RWRegister<u32>,
 
     /// stream x memory 1 address register
-    pub S7M1AR: UnsafeRWRegister<u32>,
+    pub M1AR7: RWRegister<u32>,
 
     /// stream x FIFO control register
-    pub S7FCR: RWRegister<u32>,
+    pub FCR7: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub LISR: u32,
     pub HISR: u32,
     pub LIFCR: u32,
     pub HIFCR: u32,
-    pub S0CR: u32,
-    pub S0NDTR: u32,
+    pub CR0: u32,
+    pub NDTR0: u32,
     pub S0PAR: u32,
-    pub S0M0AR: u32,
-    pub S0M1AR: u32,
-    pub S0FCR: u32,
-    pub S1CR: u32,
-    pub S1NDTR: u32,
+    pub M0AR0: u32,
+    pub M1AR0: u32,
+    pub FCR0: u32,
+    pub CR1: u32,
+    pub NDTR1: u32,
     pub S1PAR: u32,
-    pub S1M0AR: u32,
-    pub S1M1AR: u32,
-    pub S1FCR: u32,
-    pub S2CR: u32,
-    pub S2NDTR: u32,
+    pub M0AR1: u32,
+    pub M1AR1: u32,
+    pub FCR1: u32,
+    pub CR2: u32,
+    pub NDTR2: u32,
     pub S2PAR: u32,
-    pub S2M0AR: u32,
-    pub S2M1AR: u32,
-    pub S2FCR: u32,
-    pub S3CR: u32,
-    pub S3NDTR: u32,
+    pub M0AR2: u32,
+    pub M1AR2: u32,
+    pub FCR2: u32,
+    pub CR3: u32,
+    pub NDTR3: u32,
     pub S3PAR: u32,
-    pub S3M0AR: u32,
-    pub S3M1AR: u32,
-    pub S3FCR: u32,
-    pub S4CR: u32,
-    pub S4NDTR: u32,
+    pub M0AR3: u32,
+    pub M1AR3: u32,
+    pub FCR3: u32,
+    pub CR4: u32,
+    pub NDTR4: u32,
     pub S4PAR: u32,
-    pub S4M0AR: u32,
-    pub S4M1AR: u32,
-    pub S4FCR: u32,
-    pub S5CR: u32,
-    pub S5NDTR: u32,
+    pub M0AR4: u32,
+    pub M1AR4: u32,
+    pub FCR4: u32,
+    pub CR5: u32,
+    pub NDTR5: u32,
     pub S5PAR: u32,
-    pub S5M0AR: u32,
-    pub S5M1AR: u32,
-    pub S5FCR: u32,
-    pub S6CR: u32,
-    pub S6NDTR: u32,
+    pub M0AR5: u32,
+    pub M1AR5: u32,
+    pub FCR5: u32,
+    pub CR6: u32,
+    pub NDTR6: u32,
     pub S6PAR: u32,
-    pub S6M0AR: u32,
-    pub S6M1AR: u32,
-    pub S6FCR: u32,
-    pub S7CR: u32,
-    pub S7NDTR: u32,
+    pub M0AR6: u32,
+    pub M1AR6: u32,
+    pub FCR6: u32,
+    pub CR7: u32,
+    pub NDTR7: u32,
     pub S7PAR: u32,
-    pub S7M0AR: u32,
-    pub S7M1AR: u32,
-    pub S7FCR: u32,
+    pub M0AR7: u32,
+    pub M1AR7: u32,
+    pub FCR7: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

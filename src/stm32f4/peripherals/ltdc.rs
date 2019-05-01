@@ -6,7 +6,7 @@
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
+use {RORegister, RWRegister, WORegister};
 
 /// Synchronization Size Configuration Register
 pub mod SSCR {
@@ -607,7 +607,7 @@ pub mod CDSR {
 }
 
 /// Layerx Control Register
-pub mod L1CR {
+pub mod CR1 {
 
     /// Color Look-Up Table Enable
     pub mod CLUTEN {
@@ -653,7 +653,7 @@ pub mod L1CR {
 }
 
 /// Layerx Window Horizontal Position Configuration Register
-pub mod L1WHPCR {
+pub mod WHPCR1 {
 
     /// Window Horizontal Stop Position
     pub mod WHSPPOS {
@@ -685,7 +685,7 @@ pub mod L1WHPCR {
 }
 
 /// Layerx Window Vertical Position Configuration Register
-pub mod L1WVPCR {
+pub mod WVPCR1 {
 
     /// Window Vertical Stop Position
     pub mod WVSPPOS {
@@ -717,7 +717,7 @@ pub mod L1WVPCR {
 }
 
 /// Layerx Color Keying Configuration Register
-pub mod L1CKCR {
+pub mod CKCR1 {
 
     /// Color Key Red value
     pub mod CKRED {
@@ -763,7 +763,7 @@ pub mod L1CKCR {
 }
 
 /// Layerx Pixel Format Configuration Register
-pub mod L1PFCR {
+pub mod PFCR1 {
 
     /// Pixel Format
     pub mod PF {
@@ -781,7 +781,7 @@ pub mod L1PFCR {
 }
 
 /// Layerx Constant Alpha Configuration Register
-pub mod L1CACR {
+pub mod CACR1 {
 
     /// Constant Alpha
     pub mod CONSTA {
@@ -799,7 +799,7 @@ pub mod L1CACR {
 }
 
 /// Layerx Default Color Configuration Register
-pub mod L1DCCR {
+pub mod DCCR1 {
 
     /// Default Color Alpha
     pub mod DCALPHA {
@@ -859,7 +859,7 @@ pub mod L1DCCR {
 }
 
 /// Layerx Blending Factors Configuration Register
-pub mod L1BFCR {
+pub mod BFCR1 {
 
     /// Blending Factor 1
     pub mod BF1 {
@@ -891,7 +891,7 @@ pub mod L1BFCR {
 }
 
 /// Layerx Color Frame Buffer Address Register
-pub mod L1CFBAR {
+pub mod CFBAR1 {
 
     /// Color Frame Buffer Start Address
     pub mod CFBADD {
@@ -909,7 +909,7 @@ pub mod L1CFBAR {
 }
 
 /// Layerx Color Frame Buffer Length Register
-pub mod L1CFBLR {
+pub mod CFBLR1 {
 
     /// Color Frame Buffer Pitch in bytes
     pub mod CFBP {
@@ -941,7 +941,7 @@ pub mod L1CFBLR {
 }
 
 /// Layerx ColorFrame Buffer Line Number Register
-pub mod L1CFBLNR {
+pub mod CFBLNR1 {
 
     /// Frame Buffer Line Number
     pub mod CFBLNBR {
@@ -959,7 +959,7 @@ pub mod L1CFBLNR {
 }
 
 /// Layerx CLUT Write Register
-pub mod L1CLUTWR {
+pub mod CLUTWR1 {
 
     /// CLUT Address
     pub mod CLUTADD {
@@ -1019,116 +1019,77 @@ pub mod L1CLUTWR {
 }
 
 /// Layerx Control Register
-pub mod L2CR {
-    pub use super::L1CR::CLUTEN;
-    pub use super::L1CR::COLKEN;
-    pub use super::L1CR::LEN;
+pub mod CR2 {
+    pub use super::CR1::CLUTEN;
+    pub use super::CR1::COLKEN;
+    pub use super::CR1::LEN;
 }
 
 /// Layerx Window Horizontal Position Configuration Register
-pub mod L2WHPCR {
-    pub use super::L1WHPCR::WHSPPOS;
-    pub use super::L1WHPCR::WHSTPOS;
+pub mod WHPCR2 {
+    pub use super::WHPCR1::WHSPPOS;
+    pub use super::WHPCR1::WHSTPOS;
 }
 
 /// Layerx Window Vertical Position Configuration Register
-pub mod L2WVPCR {
-    pub use super::L1WVPCR::WVSPPOS;
-    pub use super::L1WVPCR::WVSTPOS;
+pub mod WVPCR2 {
+    pub use super::WVPCR1::WVSPPOS;
+    pub use super::WVPCR1::WVSTPOS;
 }
 
 /// Layerx Color Keying Configuration Register
-pub mod L2CKCR {
-
-    /// Color Key Red value
-    pub mod CKRED {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (9 bits: 0x1ff << 15)
-        pub const mask: u32 = 0x1ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Color Key Green value
-    pub mod CKGREEN {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (7 bits: 0x7f << 8)
-        pub const mask: u32 = 0x7f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Color Key Blue value
-    pub mod CKBLUE {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (8 bits: 0xff << 0)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod CKCR2 {
+    pub use super::CKCR1::CKBLUE;
+    pub use super::CKCR1::CKGREEN;
+    pub use super::CKCR1::CKRED;
 }
 
 /// Layerx Pixel Format Configuration Register
-pub mod L2PFCR {
-    pub use super::L1PFCR::PF;
+pub mod PFCR2 {
+    pub use super::PFCR1::PF;
 }
 
 /// Layerx Constant Alpha Configuration Register
-pub mod L2CACR {
-    pub use super::L1CACR::CONSTA;
+pub mod CACR2 {
+    pub use super::CACR1::CONSTA;
 }
 
 /// Layerx Default Color Configuration Register
-pub mod L2DCCR {
-    pub use super::L1DCCR::DCALPHA;
-    pub use super::L1DCCR::DCBLUE;
-    pub use super::L1DCCR::DCGREEN;
-    pub use super::L1DCCR::DCRED;
+pub mod DCCR2 {
+    pub use super::DCCR1::DCALPHA;
+    pub use super::DCCR1::DCBLUE;
+    pub use super::DCCR1::DCGREEN;
+    pub use super::DCCR1::DCRED;
 }
 
 /// Layerx Blending Factors Configuration Register
-pub mod L2BFCR {
-    pub use super::L1BFCR::BF1;
-    pub use super::L1BFCR::BF2;
+pub mod BFCR2 {
+    pub use super::BFCR1::BF1;
+    pub use super::BFCR1::BF2;
 }
 
 /// Layerx Color Frame Buffer Address Register
-pub mod L2CFBAR {
-    pub use super::L1CFBAR::CFBADD;
+pub mod CFBAR2 {
+    pub use super::CFBAR1::CFBADD;
 }
 
 /// Layerx Color Frame Buffer Length Register
-pub mod L2CFBLR {
-    pub use super::L1CFBLR::CFBLL;
-    pub use super::L1CFBLR::CFBP;
+pub mod CFBLR2 {
+    pub use super::CFBLR1::CFBLL;
+    pub use super::CFBLR1::CFBP;
 }
 
 /// Layerx ColorFrame Buffer Line Number Register
-pub mod L2CFBLNR {
-    pub use super::L1CFBLNR::CFBLNBR;
+pub mod CFBLNR2 {
+    pub use super::CFBLNR1::CFBLNBR;
 }
 
 /// Layerx CLUT Write Register
-pub mod L2CLUTWR {
-    pub use super::L1CLUTWR::BLUE;
-    pub use super::L1CLUTWR::CLUTADD;
-    pub use super::L1CLUTWR::GREEN;
-    pub use super::L1CLUTWR::RED;
+pub mod CLUTWR2 {
+    pub use super::CLUTWR1::BLUE;
+    pub use super::CLUTWR1::CLUTADD;
+    pub use super::CLUTWR1::GREEN;
+    pub use super::CLUTWR1::RED;
 }
 pub struct RegisterBlock {
     _reserved1: [u32; 2],
@@ -1181,86 +1142,86 @@ pub struct RegisterBlock {
     _reserved5: [u32; 14],
 
     /// Layerx Control Register
-    pub L1CR: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// Layerx Window Horizontal Position Configuration Register
-    pub L1WHPCR: RWRegister<u32>,
+    pub WHPCR1: RWRegister<u32>,
 
     /// Layerx Window Vertical Position Configuration Register
-    pub L1WVPCR: RWRegister<u32>,
+    pub WVPCR1: RWRegister<u32>,
 
     /// Layerx Color Keying Configuration Register
-    pub L1CKCR: RWRegister<u32>,
+    pub CKCR1: RWRegister<u32>,
 
     /// Layerx Pixel Format Configuration Register
-    pub L1PFCR: RWRegister<u32>,
+    pub PFCR1: RWRegister<u32>,
 
     /// Layerx Constant Alpha Configuration Register
-    pub L1CACR: RWRegister<u32>,
+    pub CACR1: RWRegister<u32>,
 
     /// Layerx Default Color Configuration Register
-    pub L1DCCR: RWRegister<u32>,
+    pub DCCR1: RWRegister<u32>,
 
     /// Layerx Blending Factors Configuration Register
-    pub L1BFCR: RWRegister<u32>,
+    pub BFCR1: RWRegister<u32>,
 
     _reserved6: [u32; 2],
 
     /// Layerx Color Frame Buffer Address Register
-    pub L1CFBAR: UnsafeRWRegister<u32>,
+    pub CFBAR1: RWRegister<u32>,
 
     /// Layerx Color Frame Buffer Length Register
-    pub L1CFBLR: RWRegister<u32>,
+    pub CFBLR1: RWRegister<u32>,
 
     /// Layerx ColorFrame Buffer Line Number Register
-    pub L1CFBLNR: RWRegister<u32>,
+    pub CFBLNR1: RWRegister<u32>,
 
     _reserved7: [u32; 3],
 
     /// Layerx CLUT Write Register
-    pub L1CLUTWR: WORegister<u32>,
+    pub CLUTWR1: WORegister<u32>,
 
     _reserved8: [u32; 15],
 
     /// Layerx Control Register
-    pub L2CR: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
     /// Layerx Window Horizontal Position Configuration Register
-    pub L2WHPCR: RWRegister<u32>,
+    pub WHPCR2: RWRegister<u32>,
 
     /// Layerx Window Vertical Position Configuration Register
-    pub L2WVPCR: RWRegister<u32>,
+    pub WVPCR2: RWRegister<u32>,
 
     /// Layerx Color Keying Configuration Register
-    pub L2CKCR: RWRegister<u32>,
+    pub CKCR2: RWRegister<u32>,
 
     /// Layerx Pixel Format Configuration Register
-    pub L2PFCR: RWRegister<u32>,
+    pub PFCR2: RWRegister<u32>,
 
     /// Layerx Constant Alpha Configuration Register
-    pub L2CACR: RWRegister<u32>,
+    pub CACR2: RWRegister<u32>,
 
     /// Layerx Default Color Configuration Register
-    pub L2DCCR: RWRegister<u32>,
+    pub DCCR2: RWRegister<u32>,
 
     /// Layerx Blending Factors Configuration Register
-    pub L2BFCR: RWRegister<u32>,
+    pub BFCR2: RWRegister<u32>,
 
     _reserved9: [u32; 2],
 
     /// Layerx Color Frame Buffer Address Register
-    pub L2CFBAR: UnsafeRWRegister<u32>,
+    pub CFBAR2: RWRegister<u32>,
 
     /// Layerx Color Frame Buffer Length Register
-    pub L2CFBLR: RWRegister<u32>,
+    pub CFBLR2: RWRegister<u32>,
 
     /// Layerx ColorFrame Buffer Line Number Register
-    pub L2CFBLNR: RWRegister<u32>,
+    pub CFBLNR2: RWRegister<u32>,
 
     _reserved10: [u32; 3],
 
     /// Layerx CLUT Write Register
-    pub L2CLUTWR: WORegister<u32>,
+    pub CLUTWR2: WORegister<u32>,
 }
 pub struct ResetValues {
     pub SSCR: u32,
@@ -1276,30 +1237,30 @@ pub struct ResetValues {
     pub LIPCR: u32,
     pub CPSR: u32,
     pub CDSR: u32,
-    pub L1CR: u32,
-    pub L1WHPCR: u32,
-    pub L1WVPCR: u32,
-    pub L1CKCR: u32,
-    pub L1PFCR: u32,
-    pub L1CACR: u32,
-    pub L1DCCR: u32,
-    pub L1BFCR: u32,
-    pub L1CFBAR: u32,
-    pub L1CFBLR: u32,
-    pub L1CFBLNR: u32,
-    pub L1CLUTWR: u32,
-    pub L2CR: u32,
-    pub L2WHPCR: u32,
-    pub L2WVPCR: u32,
-    pub L2CKCR: u32,
-    pub L2PFCR: u32,
-    pub L2CACR: u32,
-    pub L2DCCR: u32,
-    pub L2BFCR: u32,
-    pub L2CFBAR: u32,
-    pub L2CFBLR: u32,
-    pub L2CFBLNR: u32,
-    pub L2CLUTWR: u32,
+    pub CR1: u32,
+    pub WHPCR1: u32,
+    pub WVPCR1: u32,
+    pub CKCR1: u32,
+    pub PFCR1: u32,
+    pub CACR1: u32,
+    pub DCCR1: u32,
+    pub BFCR1: u32,
+    pub CFBAR1: u32,
+    pub CFBLR1: u32,
+    pub CFBLNR1: u32,
+    pub CLUTWR1: u32,
+    pub CR2: u32,
+    pub WHPCR2: u32,
+    pub WVPCR2: u32,
+    pub CKCR2: u32,
+    pub PFCR2: u32,
+    pub CACR2: u32,
+    pub DCCR2: u32,
+    pub BFCR2: u32,
+    pub CFBAR2: u32,
+    pub CFBLR2: u32,
+    pub CFBLNR2: u32,
+    pub CLUTWR2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

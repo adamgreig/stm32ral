@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Power control
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -190,8 +190,8 @@ pub mod CR {
 /// power control/status register
 pub mod CSR {
 
-    /// Backup regulator enable
-    pub mod BRE {
+    /// Enable WKUP pin 2
+    pub mod EWUP2 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -204,8 +204,8 @@ pub mod CSR {
         pub mod RW {}
     }
 
-    /// Enable WKUP pin
-    pub mod EWUP {
+    /// Enable WKUP pin 1
+    pub mod EWUP1 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -218,8 +218,8 @@ pub mod CSR {
         pub mod RW {}
     }
 
-    /// Backup regulator ready
-    pub mod BRR {
+    /// Internal voltage reference ready flag
+    pub mod VREFINTRDYF {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -293,6 +293,20 @@ pub mod CSR {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Enable WKUP pin 3
+    pub mod EWUP3 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

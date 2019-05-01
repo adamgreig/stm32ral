@@ -3,9 +3,9 @@
 //! Analog to digital converter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::adc1_v1::Instance;
-pub use stm32f1::peripherals::adc1_v1::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::adc1_v1::{
+pub use stm32f1::peripherals::adc1::Instance;
+pub use stm32f1::peripherals::adc1::{RegisterBlock, ResetValues};
+pub use stm32f1::peripherals::adc1::{
     CR1, CR2, DR, HTR, JDR1, JDR2, JDR3, JDR4, JOFR1, JOFR2, JOFR3, JOFR4, JSQR, LTR, SMPR1, SMPR2,
     SQR1, SQR2, SQR3, SR,
 };

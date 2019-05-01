@@ -5,9 +5,6 @@ pub mod crc;
 pub mod gpio;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
-pub mod spi;
-
-#[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod i2c;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
@@ -38,9 +35,6 @@ pub mod nvic;
 pub mod dma1;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
-pub mod adc;
-
-#[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod usart;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2"))]
@@ -62,10 +56,19 @@ pub mod scb;
 pub mod stk;
 
 #[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
-pub mod pwr;
+pub mod spi;
 
 #[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
-pub mod syscfg_comp;
+pub mod pwr;
+
+#[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x8"))]
+pub mod rcc;
+
+#[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
+pub mod syscfg;
+
+#[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
+pub mod adc;
 
 #[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod tsc;
@@ -84,6 +87,9 @@ pub mod can;
 
 #[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod dac;
+
+#[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
+pub mod comp;
 
 #[cfg(any(feature="doc", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod dbgmcu;

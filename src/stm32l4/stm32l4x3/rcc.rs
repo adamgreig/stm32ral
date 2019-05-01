@@ -187,8 +187,45 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: range 0 around 100 kHz
+            pub const Range100K: u32 = 0b0000;
+
+            /// 0b0001: range 1 around 200 kHz
+            pub const Range200K: u32 = 0b0001;
+
+            /// 0b0010: range 2 around 400 kHz
+            pub const Range400K: u32 = 0b0010;
+
+            /// 0b0011: range 3 around 800 kHz
+            pub const Range800K: u32 = 0b0011;
+
+            /// 0b0100: range 4 around 1 MHz
+            pub const Range1M: u32 = 0b0100;
+
+            /// 0b0101: range 5 around 2 MHz
+            pub const Range2M: u32 = 0b0101;
+
+            /// 0b0110: range 6 around 4 MHz
+            pub const Range4M: u32 = 0b0110;
+
+            /// 0b0111: range 7 around 8 MHz
+            pub const Range8M: u32 = 0b0111;
+
+            /// 0b1000: range 8 around 16 MHz
+            pub const Range16M: u32 = 0b1000;
+
+            /// 0b1001: range 9 around 24 MHz
+            pub const Range24M: u32 = 0b1001;
+
+            /// 0b1010: range 10 around 32 MHz
+            pub const Range32M: u32 = 0b1010;
+
+            /// 0b1011: range 11 around 48 MHz
+            pub const Range48M: u32 = 0b1011;
+        }
     }
 
     /// MSI clock range selection
@@ -2206,7 +2243,7 @@ pub mod APB1ENR1 {
     }
 
     /// USB FS clock enable
-    pub mod USBF {
+    pub mod USBFSEN {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)

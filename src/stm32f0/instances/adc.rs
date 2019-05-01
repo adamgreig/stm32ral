@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-digital converter
 //!
-//! Used by: stm32f0x0, stm32f0x1, stm32f0x2, stm32f0x8
+//! Used by: stm32f0x1, stm32f0x2, stm32f0x8
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32f0::peripherals::adc::Instance;

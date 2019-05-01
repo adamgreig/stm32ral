@@ -1133,7 +1133,7 @@ pub mod CCMR1 {
     }
 
     /// Input capture 2 prescaler
-    pub mod IC2PCS {
+    pub mod IC2PSC {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (2 bits: 0b11 << 10)
@@ -1161,7 +1161,7 @@ pub mod CCMR1 {
     }
 
     /// Input capture 1 prescaler
-    pub mod ICPCS {
+    pub mod IC1PSC {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (2 bits: 0b11 << 2)
@@ -1635,7 +1635,7 @@ pub mod ARR {
 pub mod CCR1 {
 
     /// Capture/Compare 1 value
-    pub mod CCR1 {
+    pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -1649,58 +1649,19 @@ pub mod CCR1 {
     }
 }
 
-/// capture/compare register 2
+/// capture/compare register 1
 pub mod CCR2 {
-
-    /// Capture/Compare 2 value
-    pub mod CCR2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CCR1::CCR;
 }
 
-/// capture/compare register 3
+/// capture/compare register 1
 pub mod CCR3 {
-
-    /// Capture/Compare value
-    pub mod CCR3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CCR1::CCR;
 }
 
-/// capture/compare register 4
+/// capture/compare register 1
 pub mod CCR4 {
-
-    /// Capture/Compare value
-    pub mod CCR4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CCR1::CCR;
 }
 
 /// DMA control register
@@ -1933,13 +1894,13 @@ pub struct RegisterBlock {
     /// capture/compare register 1
     pub CCR1: RWRegister<u32>,
 
-    /// capture/compare register 2
+    /// capture/compare register 1
     pub CCR2: RWRegister<u32>,
 
-    /// capture/compare register 3
+    /// capture/compare register 1
     pub CCR3: RWRegister<u32>,
 
-    /// capture/compare register 4
+    /// capture/compare register 1
     pub CCR4: RWRegister<u32>,
 
     /// break and dead-time register

@@ -9,12 +9,12 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::cryp_f7x5_f7x6_f7x7_f7x9 as cryp;
-pub use super::instances::dbg;
+pub use super::instances::dbgmcu_f7x2_f7x3_f7x5_f7x6 as dbgmcu;
 pub use super::instances::dcmi;
-pub use super::instances::fmc_f7x5_f7x6_f7x7_f7x9 as fmc;
+pub use super::instances::dma_f7x5_f7x6_f7x7_f7x9 as dma;
+pub use super::instances::fmc_f7x6_f7x7_f7x9 as fmc;
 pub use super::instances::hash;
 pub use super::instances::rng;
-pub mod dma;
 pub mod rcc;
 pub use super::instances::gpio_f7x5_f7x6_f7x7_f7x9 as gpio;
 pub use super::instances::syscfg_f7x5_f7x6_f7x7_f7x9 as syscfg;

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32l0::peripherals::spi::Instance;

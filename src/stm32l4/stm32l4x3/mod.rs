@@ -53,5 +53,5 @@ pub use super::instances::sdmmc;
 pub use super::instances::spi_l4x3_l4x5_l4x6 as spi;
 pub use super::instances::stk;
 pub use super::instances::swpmi1;
-pub use super::instances::usb_l4x3_l4x5 as usb;
+pub use super::instances::usb;
 pub use super::instances::vrefbuf;

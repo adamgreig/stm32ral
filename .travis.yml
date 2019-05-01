@@ -22,4 +22,4 @@ script:
   - git diff-files --exit-code
   - test -z "$(git ls-files --exclude-standard --others)"
   - make buildall
-  - cargo test --doc --no-run --features stm32f405
+  - cargo test --doc --features stm32f405

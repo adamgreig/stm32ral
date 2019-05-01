@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// QUADSPI control register
-pub mod QUADSPI_CR {
+pub mod CR {
 
     /// Enable Enable the QUADSPI.
     pub mod EN {
@@ -235,7 +235,7 @@ pub mod QUADSPI_CR {
 }
 
 /// QUADSPI device configuration register
-pub mod QUADSPI_DCR {
+pub mod DCR {
 
     /// indicates the level that clk takes between command
     pub mod CKMODE {
@@ -281,7 +281,7 @@ pub mod QUADSPI_DCR {
 }
 
 /// QUADSPI status register
-pub mod QUADSPI_SR {
+pub mod SR {
 
     /// Transfer error flag This bit is set in indirect mode when an invalid address is being accessed in indirect mode. It is cleared by writing 1 to CTEF.
     pub mod TEF {
@@ -383,7 +383,7 @@ pub mod QUADSPI_SR {
 }
 
 /// QUADSPI flag clear register
-pub mod QUADSPI_FCR {
+pub mod FCR {
 
     /// Clear transfer error flag Writing 1 clears the TEF flag in the QUADSPI_SR register
     pub mod CTEF {
@@ -443,7 +443,7 @@ pub mod QUADSPI_FCR {
 }
 
 /// QUADSPI data length register
-pub mod QUADSPI_DLR {
+pub mod DLR {
 
     /// Data length Number of data to be retrieved (value+1) in indirect and status-polling modes. A value no greater than 3 (indicating 4 bytes) should be used for status-polling mode. All 1s in indirect mode means undefined length, where QUADSPI will continue until the end of memory, as defined by FSIZE. 0x0000_0000: 1 byte is to be transferred 0x0000_0001: 2 bytes are to be transferred 0x0000_0002: 3 bytes are to be transferred 0x0000_0003: 4 bytes are to be transferred ... 0xFFFF_FFFD: 4,294,967,294 (4G-2) bytes are to be transferred 0xFFFF_FFFE: 4,294,967,295 (4G-1) bytes are to be transferred 0xFFFF_FFFF: undefined length -- all bytes until the end of Flash memory (as defined by FSIZE) are to be transferred. Continue reading indefinitely if FSIZE = 0x1F. DL\[0\] is stuck at 1 in dual-flash mode (DFM = 1) even when 0 is written to this bit, thus assuring that each access transfers an even number of bytes. This field has no effect when in memory-mapped mode (FMODE = 10). This field can be written only when BUSY = 0.
     pub mod DL {
@@ -461,7 +461,7 @@ pub mod QUADSPI_DLR {
 }
 
 /// QUADSPI communication configuration register
-pub mod QUADSPI_CCR {
+pub mod CCR {
 
     /// Instruction Instruction to be send to the external SPI device. This field can be written only when BUSY = 0.
     pub mod INSTRUCTION {
@@ -633,7 +633,7 @@ pub mod QUADSPI_CCR {
 }
 
 /// QUADSPI address register
-pub mod QUADSPI_AR {
+pub mod AR {
 
     /// \[31 0\]: Address Address to be send to the external Flash memory Writes to this field are ignored when BUSY = 0 or when FMODE = 11 (memory-mapped mode). In dual flash mode, ADDRESS\[0\] is automatically stuck to 0 as the address should always be even
     pub mod ADDRESS {
@@ -651,7 +651,7 @@ pub mod QUADSPI_AR {
 }
 
 /// QUADSPI alternate bytes registers
-pub mod QUADSPI_ABR {
+pub mod ABR {
 
     /// Alternate Bytes Optional data to be send to the external SPI device right after the address. This field can be written only when BUSY = 0.
     pub mod ALTERNATE {
@@ -669,7 +669,7 @@ pub mod QUADSPI_ABR {
 }
 
 /// QUADSPI data register
-pub mod QUADSPI_DR {
+pub mod DR {
 
     /// Data Data to be sent/received to/from the external SPI device. In indirect write mode, data written to this register is stored on the FIFO before it is sent to the Flash memory during the data phase. If the FIFO is too full, a write operation is stalled until the FIFO has enough space to accept the amount of data being written. In indirect read mode, reading this register gives (via the FIFO) the data which was received from the Flash memory. If the FIFO does not have as many bytes as requested by the read operation and if BUSY=1, the read operation is stalled until enough data is present or until the transfer is complete, whichever happens first. In automatic polling mode, this register contains the last data read from the Flash memory (without masking). Word, halfword, and byte accesses to this register are supported. In indirect write mode, a byte write adds 1 byte to the FIFO, a halfword write 2, and a word write 4. Similarly, in indirect read mode, a byte read removes 1 byte from the FIFO, a halfword read 2, and a word read 4. Accesses in indirect mode must be aligned to the bottom of this register: a byte read must read DATA\[7:0\] and a halfword read must read DATA\[15:0\].
     pub mod DATA {
@@ -687,7 +687,7 @@ pub mod QUADSPI_DR {
 }
 
 /// QUADSPI polling status mask register
-pub mod QUADSPI_PSMKR {
+pub mod PSMKR {
 
     /// Status mask Mask to be applied to the status bytes received in polling mode. For bit n: This field can be written only when BUSY = 0.
     pub mod MASK {
@@ -705,7 +705,7 @@ pub mod QUADSPI_PSMKR {
 }
 
 /// QUADSPI polling status match register
-pub mod QUADSPI_PSMAR {
+pub mod PSMAR {
 
     /// Status match Value to be compared with the masked status register to get a match. This field can be written only when BUSY = 0.
     pub mod MATCH {
@@ -723,7 +723,7 @@ pub mod QUADSPI_PSMAR {
 }
 
 /// QUADSPI polling interval register
-pub mod QUADSPI_PIR {
+pub mod PIR {
 
     /// Polling interval Number of CLK cycles between to read during automatic polling phases. This field can be written only when BUSY = 0.
     pub mod INTERVAL {
@@ -741,7 +741,7 @@ pub mod QUADSPI_PIR {
 }
 
 /// QUADSPI low-power timeout register
-pub mod QUADSPI_LPTR {
+pub mod LPTR {
 
     /// Timeout period After each access in memory-mapped mode, the QUADSPI prefetches the subsequent bytes and holds these bytes in the FIFO. This field indicates how many CLK cycles the QUADSPI waits after the FIFO becomes full until it raises nCS, putting the Flash memory in a lower-consumption state. This field can be written only when BUSY = 0.
     pub mod TIMEOUT {
@@ -759,58 +759,58 @@ pub mod QUADSPI_LPTR {
 }
 pub struct RegisterBlock {
     /// QUADSPI control register
-    pub QUADSPI_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// QUADSPI device configuration register
-    pub QUADSPI_DCR: RWRegister<u32>,
+    pub DCR: RWRegister<u32>,
 
     /// QUADSPI status register
-    pub QUADSPI_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// QUADSPI flag clear register
-    pub QUADSPI_FCR: RWRegister<u32>,
+    pub FCR: RWRegister<u32>,
 
     /// QUADSPI data length register
-    pub QUADSPI_DLR: RWRegister<u32>,
+    pub DLR: RWRegister<u32>,
 
     /// QUADSPI communication configuration register
-    pub QUADSPI_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 
     /// QUADSPI address register
-    pub QUADSPI_AR: RWRegister<u32>,
+    pub AR: RWRegister<u32>,
 
     /// QUADSPI alternate bytes registers
-    pub QUADSPI_ABR: RWRegister<u32>,
+    pub ABR: RWRegister<u32>,
 
     /// QUADSPI data register
-    pub QUADSPI_DR: RWRegister<u32>,
+    pub DR: RWRegister<u32>,
 
     /// QUADSPI polling status mask register
-    pub QUADSPI_PSMKR: RWRegister<u32>,
+    pub PSMKR: RWRegister<u32>,
 
     /// QUADSPI polling status match register
-    pub QUADSPI_PSMAR: RWRegister<u32>,
+    pub PSMAR: RWRegister<u32>,
 
     /// QUADSPI polling interval register
-    pub QUADSPI_PIR: RWRegister<u32>,
+    pub PIR: RWRegister<u32>,
 
     /// QUADSPI low-power timeout register
-    pub QUADSPI_LPTR: RWRegister<u32>,
+    pub LPTR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub QUADSPI_CR: u32,
-    pub QUADSPI_DCR: u32,
-    pub QUADSPI_SR: u32,
-    pub QUADSPI_FCR: u32,
-    pub QUADSPI_DLR: u32,
-    pub QUADSPI_CCR: u32,
-    pub QUADSPI_AR: u32,
-    pub QUADSPI_ABR: u32,
-    pub QUADSPI_DR: u32,
-    pub QUADSPI_PSMKR: u32,
-    pub QUADSPI_PSMAR: u32,
-    pub QUADSPI_PIR: u32,
-    pub QUADSPI_LPTR: u32,
+    pub CR: u32,
+    pub DCR: u32,
+    pub SR: u32,
+    pub FCR: u32,
+    pub DLR: u32,
+    pub CCR: u32,
+    pub AR: u32,
+    pub ABR: u32,
+    pub DR: u32,
+    pub PSMKR: u32,
+    pub PSMAR: u32,
+    pub PIR: u32,
+    pub LPTR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -844,19 +844,19 @@ pub mod QUADSPI {
 
     /// Reset values for each field in QUADSPI
     pub const reset: ResetValues = ResetValues {
-        QUADSPI_CR: 0x00000000,
-        QUADSPI_DCR: 0x00000000,
-        QUADSPI_SR: 0x00000000,
-        QUADSPI_FCR: 0x00000000,
-        QUADSPI_DLR: 0x00000000,
-        QUADSPI_CCR: 0x00000000,
-        QUADSPI_AR: 0x00000000,
-        QUADSPI_ABR: 0x00000000,
-        QUADSPI_DR: 0x00000000,
-        QUADSPI_PSMKR: 0x00000000,
-        QUADSPI_PSMAR: 0x00000000,
-        QUADSPI_PIR: 0x00000000,
-        QUADSPI_LPTR: 0x00000000,
+        CR: 0x00000000,
+        DCR: 0x00000000,
+        SR: 0x00000000,
+        FCR: 0x00000000,
+        DLR: 0x00000000,
+        CCR: 0x00000000,
+        AR: 0x00000000,
+        ABR: 0x00000000,
+        DR: 0x00000000,
+        PSMKR: 0x00000000,
+        PSMAR: 0x00000000,
+        PIR: 0x00000000,
+        LPTR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

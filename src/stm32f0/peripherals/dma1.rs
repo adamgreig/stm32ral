@@ -6,7 +6,7 @@
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
+use {RORegister, RWRegister, WORegister};
 
 /// DMA interrupt status register (DMA_ISR)
 pub mod ISR {
@@ -797,7 +797,7 @@ pub mod IFCR {
 }
 
 /// DMA channel configuration register (DMA_CCR)
-pub mod CCR1 {
+pub mod CR1 {
 
     /// Channel enable
     pub mod EN {
@@ -1046,7 +1046,7 @@ pub mod CCR1 {
 }
 
 /// DMA channel 1 number of data register
-pub mod CNDTR1 {
+pub mod NDTR1 {
 
     /// Number of data to transfer
     pub mod NDT {
@@ -1064,7 +1064,7 @@ pub mod CNDTR1 {
 }
 
 /// DMA channel 1 peripheral address register
-pub mod CPAR1 {
+pub mod PAR1 {
 
     /// Peripheral address
     pub mod PA {
@@ -1082,7 +1082,7 @@ pub mod CPAR1 {
 }
 
 /// DMA channel 1 memory address register
-pub mod CMAR1 {
+pub mod MAR1 {
 
     /// Memory address
     pub mod MA {
@@ -1100,189 +1100,189 @@ pub mod CMAR1 {
 }
 
 /// DMA channel configuration register (DMA_CCR)
-pub mod CCR2 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR2 {
+    pub use super::CR1::CIRC;
+    pub use super::CR1::DIR;
+    pub use super::CR1::EN;
+    pub use super::CR1::HTIE;
+    pub use super::CR1::MEM2MEM;
+    pub use super::CR1::MINC;
+    pub use super::CR1::MSIZE;
+    pub use super::CR1::PINC;
+    pub use super::CR1::PL;
+    pub use super::CR1::PSIZE;
+    pub use super::CR1::TCIE;
+    pub use super::CR1::TEIE;
 }
 
-/// DMA channel 2 number of data register
-pub mod CNDTR2 {
-    pub use super::CNDTR1::NDT;
+/// DMA channel 1 number of data register
+pub mod NDTR2 {
+    pub use super::NDTR1::NDT;
 }
 
-/// DMA channel 2 peripheral address register
-pub mod CPAR2 {
-    pub use super::CPAR1::PA;
+/// DMA channel 1 peripheral address register
+pub mod PAR2 {
+    pub use super::PAR1::PA;
 }
 
-/// DMA channel 2 memory address register
-pub mod CMAR2 {
-    pub use super::CMAR1::MA;
-}
-
-/// DMA channel configuration register (DMA_CCR)
-pub mod CCR3 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
-}
-
-/// DMA channel 3 number of data register
-pub mod CNDTR3 {
-    pub use super::CNDTR1::NDT;
-}
-
-/// DMA channel 3 peripheral address register
-pub mod CPAR3 {
-    pub use super::CPAR1::PA;
-}
-
-/// DMA channel 3 memory address register
-pub mod CMAR3 {
-    pub use super::CMAR1::MA;
+/// DMA channel 1 memory address register
+pub mod MAR2 {
+    pub use super::MAR1::MA;
 }
 
 /// DMA channel configuration register (DMA_CCR)
-pub mod CCR4 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR3 {
+    pub use super::CR1::CIRC;
+    pub use super::CR1::DIR;
+    pub use super::CR1::EN;
+    pub use super::CR1::HTIE;
+    pub use super::CR1::MEM2MEM;
+    pub use super::CR1::MINC;
+    pub use super::CR1::MSIZE;
+    pub use super::CR1::PINC;
+    pub use super::CR1::PL;
+    pub use super::CR1::PSIZE;
+    pub use super::CR1::TCIE;
+    pub use super::CR1::TEIE;
 }
 
-/// DMA channel 4 number of data register
-pub mod CNDTR4 {
-    pub use super::CNDTR1::NDT;
+/// DMA channel 1 number of data register
+pub mod NDTR3 {
+    pub use super::NDTR1::NDT;
 }
 
-/// DMA channel 4 peripheral address register
-pub mod CPAR4 {
-    pub use super::CPAR1::PA;
+/// DMA channel 1 peripheral address register
+pub mod PAR3 {
+    pub use super::PAR1::PA;
 }
 
-/// DMA channel 4 memory address register
-pub mod CMAR4 {
-    pub use super::CMAR1::MA;
-}
-
-/// DMA channel configuration register (DMA_CCR)
-pub mod CCR5 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
-}
-
-/// DMA channel 5 number of data register
-pub mod CNDTR5 {
-    pub use super::CNDTR1::NDT;
-}
-
-/// DMA channel 5 peripheral address register
-pub mod CPAR5 {
-    pub use super::CPAR1::PA;
-}
-
-/// DMA channel 5 memory address register
-pub mod CMAR5 {
-    pub use super::CMAR1::MA;
+/// DMA channel 1 memory address register
+pub mod MAR3 {
+    pub use super::MAR1::MA;
 }
 
 /// DMA channel configuration register (DMA_CCR)
-pub mod CCR6 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR4 {
+    pub use super::CR1::CIRC;
+    pub use super::CR1::DIR;
+    pub use super::CR1::EN;
+    pub use super::CR1::HTIE;
+    pub use super::CR1::MEM2MEM;
+    pub use super::CR1::MINC;
+    pub use super::CR1::MSIZE;
+    pub use super::CR1::PINC;
+    pub use super::CR1::PL;
+    pub use super::CR1::PSIZE;
+    pub use super::CR1::TCIE;
+    pub use super::CR1::TEIE;
 }
 
-/// DMA channel 6 number of data register
-pub mod CNDTR6 {
-    pub use super::CNDTR1::NDT;
+/// DMA channel 1 number of data register
+pub mod NDTR4 {
+    pub use super::NDTR1::NDT;
 }
 
-/// DMA channel 6 peripheral address register
-pub mod CPAR6 {
-    pub use super::CPAR1::PA;
+/// DMA channel 1 peripheral address register
+pub mod PAR4 {
+    pub use super::PAR1::PA;
 }
 
-/// DMA channel 6 memory address register
-pub mod CMAR6 {
-    pub use super::CMAR1::MA;
+/// DMA channel 1 memory address register
+pub mod MAR4 {
+    pub use super::MAR1::MA;
 }
 
 /// DMA channel configuration register (DMA_CCR)
-pub mod CCR7 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR5 {
+    pub use super::CR1::CIRC;
+    pub use super::CR1::DIR;
+    pub use super::CR1::EN;
+    pub use super::CR1::HTIE;
+    pub use super::CR1::MEM2MEM;
+    pub use super::CR1::MINC;
+    pub use super::CR1::MSIZE;
+    pub use super::CR1::PINC;
+    pub use super::CR1::PL;
+    pub use super::CR1::PSIZE;
+    pub use super::CR1::TCIE;
+    pub use super::CR1::TEIE;
 }
 
-/// DMA channel 7 number of data register
-pub mod CNDTR7 {
-    pub use super::CNDTR1::NDT;
+/// DMA channel 1 number of data register
+pub mod NDTR5 {
+    pub use super::NDTR1::NDT;
 }
 
-/// DMA channel 7 peripheral address register
-pub mod CPAR7 {
-    pub use super::CPAR1::PA;
+/// DMA channel 1 peripheral address register
+pub mod PAR5 {
+    pub use super::PAR1::PA;
 }
 
-/// DMA channel 7 memory address register
-pub mod CMAR7 {
-    pub use super::CMAR1::MA;
+/// DMA channel 1 memory address register
+pub mod MAR5 {
+    pub use super::MAR1::MA;
+}
+
+/// DMA channel configuration register (DMA_CCR)
+pub mod CR6 {
+    pub use super::CR1::CIRC;
+    pub use super::CR1::DIR;
+    pub use super::CR1::EN;
+    pub use super::CR1::HTIE;
+    pub use super::CR1::MEM2MEM;
+    pub use super::CR1::MINC;
+    pub use super::CR1::MSIZE;
+    pub use super::CR1::PINC;
+    pub use super::CR1::PL;
+    pub use super::CR1::PSIZE;
+    pub use super::CR1::TCIE;
+    pub use super::CR1::TEIE;
+}
+
+/// DMA channel 1 number of data register
+pub mod NDTR6 {
+    pub use super::NDTR1::NDT;
+}
+
+/// DMA channel 1 peripheral address register
+pub mod PAR6 {
+    pub use super::PAR1::PA;
+}
+
+/// DMA channel 1 memory address register
+pub mod MAR6 {
+    pub use super::MAR1::MA;
+}
+
+/// DMA channel configuration register (DMA_CCR)
+pub mod CR7 {
+    pub use super::CR1::CIRC;
+    pub use super::CR1::DIR;
+    pub use super::CR1::EN;
+    pub use super::CR1::HTIE;
+    pub use super::CR1::MEM2MEM;
+    pub use super::CR1::MINC;
+    pub use super::CR1::MSIZE;
+    pub use super::CR1::PINC;
+    pub use super::CR1::PL;
+    pub use super::CR1::PSIZE;
+    pub use super::CR1::TCIE;
+    pub use super::CR1::TEIE;
+}
+
+/// DMA channel 1 number of data register
+pub mod NDTR7 {
+    pub use super::NDTR1::NDT;
+}
+
+/// DMA channel 1 peripheral address register
+pub mod PAR7 {
+    pub use super::PAR1::PA;
+}
+
+/// DMA channel 1 memory address register
+pub mod MAR7 {
+    pub use super::MAR1::MA;
 }
 pub struct RegisterBlock {
     /// DMA interrupt status register (DMA_ISR)
@@ -1292,132 +1292,132 @@ pub struct RegisterBlock {
     pub IFCR: WORegister<u32>,
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR1: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// DMA channel 1 number of data register
-    pub CNDTR1: RWRegister<u32>,
+    pub NDTR1: RWRegister<u32>,
 
     /// DMA channel 1 peripheral address register
-    pub CPAR1: UnsafeRWRegister<u32>,
+    pub PAR1: RWRegister<u32>,
 
     /// DMA channel 1 memory address register
-    pub CMAR1: UnsafeRWRegister<u32>,
+    pub MAR1: RWRegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR2: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
-    /// DMA channel 2 number of data register
-    pub CNDTR2: RWRegister<u32>,
+    /// DMA channel 1 number of data register
+    pub NDTR2: RWRegister<u32>,
 
-    /// DMA channel 2 peripheral address register
-    pub CPAR2: UnsafeRWRegister<u32>,
+    /// DMA channel 1 peripheral address register
+    pub PAR2: RWRegister<u32>,
 
-    /// DMA channel 2 memory address register
-    pub CMAR2: UnsafeRWRegister<u32>,
+    /// DMA channel 1 memory address register
+    pub MAR2: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR3: RWRegister<u32>,
+    pub CR3: RWRegister<u32>,
 
-    /// DMA channel 3 number of data register
-    pub CNDTR3: RWRegister<u32>,
+    /// DMA channel 1 number of data register
+    pub NDTR3: RWRegister<u32>,
 
-    /// DMA channel 3 peripheral address register
-    pub CPAR3: UnsafeRWRegister<u32>,
+    /// DMA channel 1 peripheral address register
+    pub PAR3: RWRegister<u32>,
 
-    /// DMA channel 3 memory address register
-    pub CMAR3: UnsafeRWRegister<u32>,
+    /// DMA channel 1 memory address register
+    pub MAR3: RWRegister<u32>,
 
     _reserved3: [u32; 1],
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR4: RWRegister<u32>,
+    pub CR4: RWRegister<u32>,
 
-    /// DMA channel 4 number of data register
-    pub CNDTR4: RWRegister<u32>,
+    /// DMA channel 1 number of data register
+    pub NDTR4: RWRegister<u32>,
 
-    /// DMA channel 4 peripheral address register
-    pub CPAR4: UnsafeRWRegister<u32>,
+    /// DMA channel 1 peripheral address register
+    pub PAR4: RWRegister<u32>,
 
-    /// DMA channel 4 memory address register
-    pub CMAR4: UnsafeRWRegister<u32>,
+    /// DMA channel 1 memory address register
+    pub MAR4: RWRegister<u32>,
 
     _reserved4: [u32; 1],
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR5: RWRegister<u32>,
+    pub CR5: RWRegister<u32>,
 
-    /// DMA channel 5 number of data register
-    pub CNDTR5: RWRegister<u32>,
+    /// DMA channel 1 number of data register
+    pub NDTR5: RWRegister<u32>,
 
-    /// DMA channel 5 peripheral address register
-    pub CPAR5: UnsafeRWRegister<u32>,
+    /// DMA channel 1 peripheral address register
+    pub PAR5: RWRegister<u32>,
 
-    /// DMA channel 5 memory address register
-    pub CMAR5: UnsafeRWRegister<u32>,
+    /// DMA channel 1 memory address register
+    pub MAR5: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR6: RWRegister<u32>,
+    pub CR6: RWRegister<u32>,
 
-    /// DMA channel 6 number of data register
-    pub CNDTR6: RWRegister<u32>,
+    /// DMA channel 1 number of data register
+    pub NDTR6: RWRegister<u32>,
 
-    /// DMA channel 6 peripheral address register
-    pub CPAR6: UnsafeRWRegister<u32>,
+    /// DMA channel 1 peripheral address register
+    pub PAR6: RWRegister<u32>,
 
-    /// DMA channel 6 memory address register
-    pub CMAR6: UnsafeRWRegister<u32>,
+    /// DMA channel 1 memory address register
+    pub MAR6: RWRegister<u32>,
 
     _reserved6: [u32; 1],
 
     /// DMA channel configuration register (DMA_CCR)
-    pub CCR7: RWRegister<u32>,
+    pub CR7: RWRegister<u32>,
 
-    /// DMA channel 7 number of data register
-    pub CNDTR7: RWRegister<u32>,
+    /// DMA channel 1 number of data register
+    pub NDTR7: RWRegister<u32>,
 
-    /// DMA channel 7 peripheral address register
-    pub CPAR7: UnsafeRWRegister<u32>,
+    /// DMA channel 1 peripheral address register
+    pub PAR7: RWRegister<u32>,
 
-    /// DMA channel 7 memory address register
-    pub CMAR7: UnsafeRWRegister<u32>,
+    /// DMA channel 1 memory address register
+    pub MAR7: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ISR: u32,
     pub IFCR: u32,
-    pub CCR1: u32,
-    pub CNDTR1: u32,
-    pub CPAR1: u32,
-    pub CMAR1: u32,
-    pub CCR2: u32,
-    pub CNDTR2: u32,
-    pub CPAR2: u32,
-    pub CMAR2: u32,
-    pub CCR3: u32,
-    pub CNDTR3: u32,
-    pub CPAR3: u32,
-    pub CMAR3: u32,
-    pub CCR4: u32,
-    pub CNDTR4: u32,
-    pub CPAR4: u32,
-    pub CMAR4: u32,
-    pub CCR5: u32,
-    pub CNDTR5: u32,
-    pub CPAR5: u32,
-    pub CMAR5: u32,
-    pub CCR6: u32,
-    pub CNDTR6: u32,
-    pub CPAR6: u32,
-    pub CMAR6: u32,
-    pub CCR7: u32,
-    pub CNDTR7: u32,
-    pub CPAR7: u32,
-    pub CMAR7: u32,
+    pub CR1: u32,
+    pub NDTR1: u32,
+    pub PAR1: u32,
+    pub MAR1: u32,
+    pub CR2: u32,
+    pub NDTR2: u32,
+    pub PAR2: u32,
+    pub MAR2: u32,
+    pub CR3: u32,
+    pub NDTR3: u32,
+    pub PAR3: u32,
+    pub MAR3: u32,
+    pub CR4: u32,
+    pub NDTR4: u32,
+    pub PAR4: u32,
+    pub MAR4: u32,
+    pub CR5: u32,
+    pub NDTR5: u32,
+    pub PAR5: u32,
+    pub MAR5: u32,
+    pub CR6: u32,
+    pub NDTR6: u32,
+    pub PAR6: u32,
+    pub MAR6: u32,
+    pub CR7: u32,
+    pub NDTR7: u32,
+    pub PAR7: u32,
+    pub MAR7: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

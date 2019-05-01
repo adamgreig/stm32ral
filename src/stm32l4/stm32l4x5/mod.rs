@@ -53,7 +53,7 @@ pub use super::instances::nvic;
 pub use super::instances::opamp;
 pub use super::instances::quadspi;
 pub use super::instances::tim8;
-pub use super::instances::usb_l4x3_l4x5 as usb;
+pub use super::instances::usb;
 pub mod adc123_common;
 pub mod rcc;
 pub use super::instances::dbgmcu_l4x5_l4x6 as dbgmcu;

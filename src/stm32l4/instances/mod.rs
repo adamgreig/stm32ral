@@ -34,9 +34,6 @@ pub mod i2c_l4x3_l4x5;
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod flash;
 
-#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2"))]
-pub mod rcc;
-
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod pwr;
 
@@ -136,9 +133,6 @@ pub mod nvic;
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod crs;
 
-#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2"))]
-pub mod usb_l4x1_l4x2;
-
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x5"))]
 pub mod dfsdm;
 
@@ -176,7 +170,7 @@ pub mod comp_l4x3_l4x5_l4x6;
 pub mod can1_l4x3_l4x5;
 
 #[cfg(any(feature="doc", feature="stm32l4x3", feature="stm32l4x5"))]
-pub mod usb_l4x3_l4x5;
+pub mod usb;
 
 #[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod fmc;

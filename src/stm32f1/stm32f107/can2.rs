@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// CAN_MCR
-pub mod CAN_MCR {
+pub mod MCR {
 
     /// DBF
     pub mod DBF {
@@ -151,7 +151,7 @@ pub mod CAN_MCR {
 }
 
 /// CAN_MSR
-pub mod CAN_MSR {
+pub mod MSR {
 
     /// RX
     pub mod RX {
@@ -281,7 +281,7 @@ pub mod CAN_MSR {
 }
 
 /// CAN_TSR
-pub mod CAN_TSR {
+pub mod TSR {
 
     /// Lowest priority flag for mailbox 2
     pub mod LOW2 {
@@ -593,10 +593,10 @@ pub mod CAN_TSR {
 }
 
 /// CAN_RF0R
-pub mod CAN_RF0R {
+pub mod RF0R {
 
     /// RFOM0
-    pub mod RFOM0 {
+    pub mod RFOM {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -610,7 +610,7 @@ pub mod CAN_RF0R {
     }
 
     /// FOVR0
-    pub mod FOVR0 {
+    pub mod FOVR {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -624,7 +624,7 @@ pub mod CAN_RF0R {
     }
 
     /// FULL0
-    pub mod FULL0 {
+    pub mod FULL {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -638,7 +638,7 @@ pub mod CAN_RF0R {
     }
 
     /// FMP0
-    pub mod FMP0 {
+    pub mod FMP {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (2 bits: 0b11 << 0)
@@ -652,68 +652,16 @@ pub mod CAN_RF0R {
     }
 }
 
-/// CAN_RF1R
-pub mod CAN_RF1R {
-
-    /// RFOM1
-    pub mod RFOM1 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FOVR1
-    pub mod FOVR1 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FULL1
-    pub mod FULL1 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FMP1
-    pub mod FMP1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// CAN_RF0R
+pub mod RF1R {
+    pub use super::RF0R::FMP;
+    pub use super::RF0R::FOVR;
+    pub use super::RF0R::FULL;
+    pub use super::RF0R::RFOM;
 }
 
 /// CAN_IER
-pub mod CAN_IER {
+pub mod IER {
 
     /// SLKIE
     pub mod SLKIE {
@@ -913,7 +861,7 @@ pub mod CAN_IER {
 }
 
 /// CAN_ESR
-pub mod CAN_ESR {
+pub mod ESR {
 
     /// REC
     pub mod REC {
@@ -1001,7 +949,7 @@ pub mod CAN_ESR {
 }
 
 /// CAN_BTR
-pub mod CAN_BTR {
+pub mod BTR {
 
     /// SILM
     pub mod SILM {
@@ -1089,7 +1037,7 @@ pub mod CAN_BTR {
 }
 
 /// CAN_TI0R
-pub mod CAN_TI0R {
+pub mod TIR0 {
 
     /// STID
     pub mod STID {
@@ -1163,7 +1111,7 @@ pub mod CAN_TI0R {
 }
 
 /// CAN_TDT0R
-pub mod CAN_TDT0R {
+pub mod TDTR0 {
 
     /// TIME
     pub mod TIME {
@@ -1209,7 +1157,7 @@ pub mod CAN_TDT0R {
 }
 
 /// CAN_TDL0R
-pub mod CAN_TDL0R {
+pub mod TDLR0 {
 
     /// DATA3
     pub mod DATA3 {
@@ -1269,7 +1217,7 @@ pub mod CAN_TDL0R {
 }
 
 /// CAN_TDH0R
-pub mod CAN_TDH0R {
+pub mod TDHR0 {
 
     /// DATA7
     pub mod DATA7 {
@@ -1328,72 +1276,72 @@ pub mod CAN_TDH0R {
     }
 }
 
-/// CAN_TI1R
-pub mod CAN_TI1R {
-    pub use super::CAN_TI0R::EXID;
-    pub use super::CAN_TI0R::IDE;
-    pub use super::CAN_TI0R::RTR;
-    pub use super::CAN_TI0R::STID;
-    pub use super::CAN_TI0R::TXRQ;
+/// CAN_TI0R
+pub mod TIR1 {
+    pub use super::TIR0::EXID;
+    pub use super::TIR0::IDE;
+    pub use super::TIR0::RTR;
+    pub use super::TIR0::STID;
+    pub use super::TIR0::TXRQ;
 }
 
-/// CAN_TDT1R
-pub mod CAN_TDT1R {
-    pub use super::CAN_TDT0R::DLC;
-    pub use super::CAN_TDT0R::TGT;
-    pub use super::CAN_TDT0R::TIME;
+/// CAN_TDT0R
+pub mod TDTR1 {
+    pub use super::TDTR0::DLC;
+    pub use super::TDTR0::TGT;
+    pub use super::TDTR0::TIME;
 }
 
-/// CAN_TDL1R
-pub mod CAN_TDL1R {
-    pub use super::CAN_TDL0R::DATA0;
-    pub use super::CAN_TDL0R::DATA1;
-    pub use super::CAN_TDL0R::DATA2;
-    pub use super::CAN_TDL0R::DATA3;
+/// CAN_TDL0R
+pub mod TDLR1 {
+    pub use super::TDLR0::DATA0;
+    pub use super::TDLR0::DATA1;
+    pub use super::TDLR0::DATA2;
+    pub use super::TDLR0::DATA3;
 }
 
-/// CAN_TDH1R
-pub mod CAN_TDH1R {
-    pub use super::CAN_TDH0R::DATA4;
-    pub use super::CAN_TDH0R::DATA5;
-    pub use super::CAN_TDH0R::DATA6;
-    pub use super::CAN_TDH0R::DATA7;
+/// CAN_TDH0R
+pub mod TDHR1 {
+    pub use super::TDHR0::DATA4;
+    pub use super::TDHR0::DATA5;
+    pub use super::TDHR0::DATA6;
+    pub use super::TDHR0::DATA7;
 }
 
-/// CAN_TI2R
-pub mod CAN_TI2R {
-    pub use super::CAN_TI0R::EXID;
-    pub use super::CAN_TI0R::IDE;
-    pub use super::CAN_TI0R::RTR;
-    pub use super::CAN_TI0R::STID;
-    pub use super::CAN_TI0R::TXRQ;
+/// CAN_TI0R
+pub mod TIR2 {
+    pub use super::TIR0::EXID;
+    pub use super::TIR0::IDE;
+    pub use super::TIR0::RTR;
+    pub use super::TIR0::STID;
+    pub use super::TIR0::TXRQ;
 }
 
-/// CAN_TDT2R
-pub mod CAN_TDT2R {
-    pub use super::CAN_TDT0R::DLC;
-    pub use super::CAN_TDT0R::TGT;
-    pub use super::CAN_TDT0R::TIME;
+/// CAN_TDT0R
+pub mod TDTR2 {
+    pub use super::TDTR0::DLC;
+    pub use super::TDTR0::TGT;
+    pub use super::TDTR0::TIME;
 }
 
-/// CAN_TDL2R
-pub mod CAN_TDL2R {
-    pub use super::CAN_TDL0R::DATA0;
-    pub use super::CAN_TDL0R::DATA1;
-    pub use super::CAN_TDL0R::DATA2;
-    pub use super::CAN_TDL0R::DATA3;
+/// CAN_TDL0R
+pub mod TDLR2 {
+    pub use super::TDLR0::DATA0;
+    pub use super::TDLR0::DATA1;
+    pub use super::TDLR0::DATA2;
+    pub use super::TDLR0::DATA3;
 }
 
-/// CAN_TDH2R
-pub mod CAN_TDH2R {
-    pub use super::CAN_TDH0R::DATA4;
-    pub use super::CAN_TDH0R::DATA5;
-    pub use super::CAN_TDH0R::DATA6;
-    pub use super::CAN_TDH0R::DATA7;
+/// CAN_TDH0R
+pub mod TDHR2 {
+    pub use super::TDHR0::DATA4;
+    pub use super::TDHR0::DATA5;
+    pub use super::TDHR0::DATA6;
+    pub use super::TDHR0::DATA7;
 }
 
 /// CAN_RI0R
-pub mod CAN_RI0R {
+pub mod RIR0 {
 
     /// STID
     pub mod STID {
@@ -1453,7 +1401,7 @@ pub mod CAN_RI0R {
 }
 
 /// CAN_RDT0R
-pub mod CAN_RDT0R {
+pub mod RDTR0 {
 
     /// TIME
     pub mod TIME {
@@ -1499,7 +1447,7 @@ pub mod CAN_RDT0R {
 }
 
 /// CAN_RDL0R
-pub mod CAN_RDL0R {
+pub mod RDLR0 {
 
     /// DATA3
     pub mod DATA3 {
@@ -1559,7 +1507,7 @@ pub mod CAN_RDL0R {
 }
 
 /// CAN_RDH0R
-pub mod CAN_RDH0R {
+pub mod RDHR0 {
 
     /// DATA7
     pub mod DATA7 {
@@ -1618,152 +1566,152 @@ pub mod CAN_RDH0R {
     }
 }
 
-/// CAN_RI1R
-pub mod CAN_RI1R {
-    pub use super::CAN_RI0R::EXID;
-    pub use super::CAN_RI0R::IDE;
-    pub use super::CAN_RI0R::RTR;
-    pub use super::CAN_RI0R::STID;
+/// CAN_RI0R
+pub mod RIR1 {
+    pub use super::RIR0::EXID;
+    pub use super::RIR0::IDE;
+    pub use super::RIR0::RTR;
+    pub use super::RIR0::STID;
 }
 
-/// CAN_RDT1R
-pub mod CAN_RDT1R {
-    pub use super::CAN_RDT0R::DLC;
-    pub use super::CAN_RDT0R::FMI;
-    pub use super::CAN_RDT0R::TIME;
+/// CAN_RDT0R
+pub mod RDTR1 {
+    pub use super::RDTR0::DLC;
+    pub use super::RDTR0::FMI;
+    pub use super::RDTR0::TIME;
 }
 
-/// CAN_RDL1R
-pub mod CAN_RDL1R {
-    pub use super::CAN_RDL0R::DATA0;
-    pub use super::CAN_RDL0R::DATA1;
-    pub use super::CAN_RDL0R::DATA2;
-    pub use super::CAN_RDL0R::DATA3;
+/// CAN_RDL0R
+pub mod RDLR1 {
+    pub use super::RDLR0::DATA0;
+    pub use super::RDLR0::DATA1;
+    pub use super::RDLR0::DATA2;
+    pub use super::RDLR0::DATA3;
 }
 
-/// CAN_RDH1R
-pub mod CAN_RDH1R {
-    pub use super::CAN_RDH0R::DATA4;
-    pub use super::CAN_RDH0R::DATA5;
-    pub use super::CAN_RDH0R::DATA6;
-    pub use super::CAN_RDH0R::DATA7;
+/// CAN_RDH0R
+pub mod RDHR1 {
+    pub use super::RDHR0::DATA4;
+    pub use super::RDHR0::DATA5;
+    pub use super::RDHR0::DATA6;
+    pub use super::RDHR0::DATA7;
 }
 pub struct RegisterBlock {
     /// CAN_MCR
-    pub CAN_MCR: RWRegister<u32>,
+    pub MCR: RWRegister<u32>,
 
     /// CAN_MSR
-    pub CAN_MSR: RWRegister<u32>,
+    pub MSR: RWRegister<u32>,
 
     /// CAN_TSR
-    pub CAN_TSR: RWRegister<u32>,
+    pub TSR: RWRegister<u32>,
 
     /// CAN_RF0R
-    pub CAN_RF0R: RWRegister<u32>,
+    pub RF0R: RWRegister<u32>,
 
-    /// CAN_RF1R
-    pub CAN_RF1R: RWRegister<u32>,
+    /// CAN_RF0R
+    pub RF1R: RWRegister<u32>,
 
     /// CAN_IER
-    pub CAN_IER: RWRegister<u32>,
+    pub IER: RWRegister<u32>,
 
     /// CAN_ESR
-    pub CAN_ESR: RWRegister<u32>,
+    pub ESR: RWRegister<u32>,
 
     /// CAN_BTR
-    pub CAN_BTR: RWRegister<u32>,
+    pub BTR: RWRegister<u32>,
 
     _reserved1: [u32; 88],
 
     /// CAN_TI0R
-    pub CAN_TI0R: RWRegister<u32>,
+    pub TIR0: RWRegister<u32>,
 
     /// CAN_TDT0R
-    pub CAN_TDT0R: RWRegister<u32>,
+    pub TDTR0: RWRegister<u32>,
 
     /// CAN_TDL0R
-    pub CAN_TDL0R: RWRegister<u32>,
+    pub TDLR0: RWRegister<u32>,
 
     /// CAN_TDH0R
-    pub CAN_TDH0R: RWRegister<u32>,
+    pub TDHR0: RWRegister<u32>,
 
-    /// CAN_TI1R
-    pub CAN_TI1R: RWRegister<u32>,
+    /// CAN_TI0R
+    pub TIR1: RWRegister<u32>,
 
-    /// CAN_TDT1R
-    pub CAN_TDT1R: RWRegister<u32>,
+    /// CAN_TDT0R
+    pub TDTR1: RWRegister<u32>,
 
-    /// CAN_TDL1R
-    pub CAN_TDL1R: RWRegister<u32>,
+    /// CAN_TDL0R
+    pub TDLR1: RWRegister<u32>,
 
-    /// CAN_TDH1R
-    pub CAN_TDH1R: RWRegister<u32>,
+    /// CAN_TDH0R
+    pub TDHR1: RWRegister<u32>,
 
-    /// CAN_TI2R
-    pub CAN_TI2R: RWRegister<u32>,
+    /// CAN_TI0R
+    pub TIR2: RWRegister<u32>,
 
-    /// CAN_TDT2R
-    pub CAN_TDT2R: RWRegister<u32>,
+    /// CAN_TDT0R
+    pub TDTR2: RWRegister<u32>,
 
-    /// CAN_TDL2R
-    pub CAN_TDL2R: RWRegister<u32>,
+    /// CAN_TDL0R
+    pub TDLR2: RWRegister<u32>,
 
-    /// CAN_TDH2R
-    pub CAN_TDH2R: RWRegister<u32>,
+    /// CAN_TDH0R
+    pub TDHR2: RWRegister<u32>,
 
     /// CAN_RI0R
-    pub CAN_RI0R: RORegister<u32>,
+    pub RIR0: RORegister<u32>,
 
     /// CAN_RDT0R
-    pub CAN_RDT0R: RORegister<u32>,
+    pub RDTR0: RORegister<u32>,
 
     /// CAN_RDL0R
-    pub CAN_RDL0R: RORegister<u32>,
+    pub RDLR0: RORegister<u32>,
 
     /// CAN_RDH0R
-    pub CAN_RDH0R: RORegister<u32>,
+    pub RDHR0: RORegister<u32>,
 
-    /// CAN_RI1R
-    pub CAN_RI1R: RORegister<u32>,
+    /// CAN_RI0R
+    pub RIR1: RORegister<u32>,
 
-    /// CAN_RDT1R
-    pub CAN_RDT1R: RORegister<u32>,
+    /// CAN_RDT0R
+    pub RDTR1: RORegister<u32>,
 
-    /// CAN_RDL1R
-    pub CAN_RDL1R: RORegister<u32>,
+    /// CAN_RDL0R
+    pub RDLR1: RORegister<u32>,
 
-    /// CAN_RDH1R
-    pub CAN_RDH1R: RORegister<u32>,
+    /// CAN_RDH0R
+    pub RDHR1: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub CAN_MCR: u32,
-    pub CAN_MSR: u32,
-    pub CAN_TSR: u32,
-    pub CAN_RF0R: u32,
-    pub CAN_RF1R: u32,
-    pub CAN_IER: u32,
-    pub CAN_ESR: u32,
-    pub CAN_BTR: u32,
-    pub CAN_TI0R: u32,
-    pub CAN_TDT0R: u32,
-    pub CAN_TDL0R: u32,
-    pub CAN_TDH0R: u32,
-    pub CAN_TI1R: u32,
-    pub CAN_TDT1R: u32,
-    pub CAN_TDL1R: u32,
-    pub CAN_TDH1R: u32,
-    pub CAN_TI2R: u32,
-    pub CAN_TDT2R: u32,
-    pub CAN_TDL2R: u32,
-    pub CAN_TDH2R: u32,
-    pub CAN_RI0R: u32,
-    pub CAN_RDT0R: u32,
-    pub CAN_RDL0R: u32,
-    pub CAN_RDH0R: u32,
-    pub CAN_RI1R: u32,
-    pub CAN_RDT1R: u32,
-    pub CAN_RDL1R: u32,
-    pub CAN_RDH1R: u32,
+    pub MCR: u32,
+    pub MSR: u32,
+    pub TSR: u32,
+    pub RF0R: u32,
+    pub RF1R: u32,
+    pub IER: u32,
+    pub ESR: u32,
+    pub BTR: u32,
+    pub TIR0: u32,
+    pub TDTR0: u32,
+    pub TDLR0: u32,
+    pub TDHR0: u32,
+    pub TIR1: u32,
+    pub TDTR1: u32,
+    pub TDLR1: u32,
+    pub TDHR1: u32,
+    pub TIR2: u32,
+    pub TDTR2: u32,
+    pub TDLR2: u32,
+    pub TDHR2: u32,
+    pub RIR0: u32,
+    pub RDTR0: u32,
+    pub RDLR0: u32,
+    pub RDHR0: u32,
+    pub RIR1: u32,
+    pub RDTR1: u32,
+    pub RDLR1: u32,
+    pub RDHR1: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1797,34 +1745,34 @@ pub mod CAN2 {
 
     /// Reset values for each field in CAN2
     pub const reset: ResetValues = ResetValues {
-        CAN_MCR: 0x00000000,
-        CAN_MSR: 0x00000000,
-        CAN_TSR: 0x00000000,
-        CAN_RF0R: 0x00000000,
-        CAN_RF1R: 0x00000000,
-        CAN_IER: 0x00000000,
-        CAN_ESR: 0x00000000,
-        CAN_BTR: 0x00000000,
-        CAN_TI0R: 0x00000000,
-        CAN_TDT0R: 0x00000000,
-        CAN_TDL0R: 0x00000000,
-        CAN_TDH0R: 0x00000000,
-        CAN_TI1R: 0x00000000,
-        CAN_TDT1R: 0x00000000,
-        CAN_TDL1R: 0x00000000,
-        CAN_TDH1R: 0x00000000,
-        CAN_TI2R: 0x00000000,
-        CAN_TDT2R: 0x00000000,
-        CAN_TDL2R: 0x00000000,
-        CAN_TDH2R: 0x00000000,
-        CAN_RI0R: 0x00000000,
-        CAN_RDT0R: 0x00000000,
-        CAN_RDL0R: 0x00000000,
-        CAN_RDH0R: 0x00000000,
-        CAN_RI1R: 0x00000000,
-        CAN_RDT1R: 0x00000000,
-        CAN_RDL1R: 0x00000000,
-        CAN_RDH1R: 0x00000000,
+        MCR: 0x00000000,
+        MSR: 0x00000000,
+        TSR: 0x00000000,
+        RF0R: 0x00000000,
+        RF1R: 0x00000000,
+        IER: 0x00000000,
+        ESR: 0x00000000,
+        BTR: 0x00000000,
+        TIR0: 0x00000000,
+        TDTR0: 0x00000000,
+        TDLR0: 0x00000000,
+        TDHR0: 0x00000000,
+        TIR1: 0x00000000,
+        TDTR1: 0x00000000,
+        TDLR1: 0x00000000,
+        TDHR1: 0x00000000,
+        TIR2: 0x00000000,
+        TDTR2: 0x00000000,
+        TDLR2: 0x00000000,
+        TDHR2: 0x00000000,
+        RIR0: 0x00000000,
+        RDTR0: 0x00000000,
+        RDLR0: 0x00000000,
+        RDHR0: 0x00000000,
+        RIR1: 0x00000000,
+        RDTR1: 0x00000000,
+        RDLR1: 0x00000000,
+        RDHR1: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

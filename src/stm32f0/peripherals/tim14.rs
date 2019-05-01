@@ -432,7 +432,7 @@ pub mod ARR {
 pub mod CCR1 {
 
     /// Capture/Compare 1 value
-    pub mod CCR1 {
+    pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)

@@ -11,6 +11,8 @@ extern "C" {
     fn EXTI4_15();
     fn TSC();
     fn DMA1_CH1();
+    fn DMA1_CH2_3();
+    fn DMA1_CH4_5_6_7();
     fn ADC_COMP();
     fn TIM1_BRK_UP_TRG_COM();
     fn TIM1_CC();
@@ -54,8 +56,12 @@ pub static __INTERRUPTS: [Vector; 32] = [
     Vector { _handler: EXTI4_15 },
     Vector { _handler: TSC },
     Vector { _handler: DMA1_CH1 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: DMA1_CH2_3,
+    },
+    Vector {
+        _handler: DMA1_CH4_5_6_7,
+    },
     Vector { _handler: ADC_COMP },
     Vector {
         _handler: TIM1_BRK_UP_TRG_COM,
@@ -105,6 +111,10 @@ pub enum Interrupt {
     TSC = 8,
     /// 9: DMA1 channel 1 interrupt
     DMA1_CH1 = 9,
+    /// 10: DMA channel 2 and 3 interrupts
+    DMA1_CH2_3 = 10,
+    /// 11: DMA channel 4, 5, 6 and 7 interrupts
+    DMA1_CH4_5_6_7 = 11,
     /// 12: ADC and comparator interrupts
     ADC_COMP = 12,
     /// 13: TIM1 break, update, trigger and commutation interrupt

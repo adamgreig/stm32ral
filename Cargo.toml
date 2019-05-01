@@ -12,7 +12,7 @@ categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
 
 # Change version in stm32ral.py, not here!
-version = "0.1.1"
+version = "0.1.2"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -21,8 +21,8 @@ no-default-features = true
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
 bare-metal = "0.2.4"
-cortex-m = "0.5.8"
-cortex-m-rt = { version="0.6.5", optional=true }
+cortex-m = "0.6.0"
+cortex-m-rt = { version="0.6.8", optional=true }
 
 [features]
 rt = ["cortex-m-rt/device"]
@@ -67,6 +67,8 @@ stm32f7x5 = ["armv7e_m"]
 stm32f7x6 = ["armv7e_m"]
 stm32f7x7 = ["armv7e_m"]
 stm32f7x9 = ["armv7e_m"]
+stm32g0x0 = ["armv6_m"]
+stm32g0x1 = ["armv6_m"]
 stm32h7x3 = ["armv7e_m"]
 stm32l0x1 = ["armv6_m"]
 stm32l0x2 = ["armv6_m"]

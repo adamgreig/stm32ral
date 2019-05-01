@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General purpose timer
 //!
-//! Used by: stm32f101, stm32f102, stm32f103
+//! Used by: stm32f101, stm32f102, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32f1::peripherals::tim2_v2::Instance;

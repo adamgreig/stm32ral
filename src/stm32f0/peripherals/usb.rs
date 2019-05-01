@@ -35,8 +35,21 @@ pub mod EP0R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: all transmission requests addressed to this endpoint are ignored
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: the endpoint is stalled and all transmission requests result in a STALL handshake
+            pub const Stall: u32 = 0b01;
+
+            /// 0b10: the endpoint is naked and all transmission requests result in a NAK handshake
+            pub const Nak: u32 = 0b10;
+
+            /// 0b11: this endpoint is enabled for transmission
+            pub const Valid: u32 = 0b11;
+        }
     }
 
     /// Data Toggle, for transmission transfers
@@ -91,8 +104,21 @@ pub mod EP0R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Bulk endpoint
+            pub const Bulk: u32 = 0b00;
+
+            /// 0b01: Control endpoint
+            pub const Control: u32 = 0b01;
+
+            /// 0b10: Iso endpoint
+            pub const Iso: u32 = 0b10;
+
+            /// 0b11: Interrupt endpoint
+            pub const Interrupt: u32 = 0b11;
+        }
     }
 
     /// Setup transaction completed
@@ -119,8 +145,21 @@ pub mod EP0R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: all reception requests addressed to this endpoint are ignored
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: the endpoint is stalled and all reception requests result in a STALL handshake
+            pub const Stall: u32 = 0b01;
+
+            /// 0b10: the endpoint is naked and all reception requests result in a NAK handshake
+            pub const Nak: u32 = 0b10;
+
+            /// 0b11: this endpoint is enabled for reception
+            pub const Valid: u32 = 0b11;
+        }
     }
 
     /// Data Toggle, for reception transfers
@@ -263,8 +302,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Clear USB reset
+            pub const NoReset: u32 = 0b0;
+
+            /// 0b1: Force a reset of the USB peripheral, exactly like a RESET signaling on the USB
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// Power down
@@ -277,8 +323,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No power down
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enter power down mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Low-power mode
@@ -291,8 +344,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No low-power mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enter low-power mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Force suspend
@@ -305,8 +365,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Enter suspend mode. Clocks and static power dissipation in the analog transceiver are left unaffected
+            pub const Suspend: u32 = 0b1;
+        }
     }
 
     /// Resume request
@@ -319,8 +386,12 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Resume requested
+            pub const Requested: u32 = 0b1;
+        }
     }
 
     /// LPM L1 Resume request
@@ -333,8 +404,12 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: LPM L1 request requested
+            pub const Requested: u32 = 0b1;
+        }
     }
 
     /// LPM L1 state request interrupt mask
@@ -347,8 +422,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: L1REQ Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: L1REQ Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Expected start of frame interrupt mask
@@ -361,8 +443,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ESOF Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ESOF Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Start of frame interrupt mask
@@ -375,8 +464,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SOF Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SOF Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// USB reset interrupt mask
@@ -389,8 +485,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RESET Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: RESET Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Suspend mode interrupt mask
@@ -403,8 +506,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Suspend Mode Request SUSP Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SUSP Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Wakeup interrupt mask
@@ -417,8 +527,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: WKUP Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: WKUP Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt mask
@@ -431,8 +548,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ERR Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ERR Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Packet memory area over / underrun interrupt mask
@@ -445,8 +569,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PMAOVR Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: PMAOVR Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Correct transfer interrupt mask
@@ -459,8 +590,15 @@ pub mod CNTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Correct Transfer (CTR) Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CTR Interrupt enabled, an interrupt request is generated when the corresponding bit in the USB_ISTR register is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -491,8 +629,15 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: data transmitted by the USB peripheral to the host PC
+            pub const To: u32 = 0b0;
+
+            /// 0b1: data received by the USB peripheral from the host PC
+            pub const From: u32 = 0b1;
+        }
     }
 
     /// LPM L1 state request
@@ -505,8 +650,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: LPM command to enter the L1 state is successfully received and acknowledged
+            pub const Received: u32 = 0b1;
+        }
     }
 
     /// Expected start frame
@@ -519,8 +668,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: an SOF packet is expected but not received
+            pub const ExpectedStartOfFrame: u32 = 0b1;
+        }
     }
 
     /// start of frame
@@ -533,8 +686,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: beginning of a new USB frame and it is set when a SOF packet arrives through the USB bus
+            pub const StartOfFrame: u32 = 0b1;
+        }
     }
 
     /// reset request
@@ -547,8 +704,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: peripheral detects an active USB RESET signal at its inputs
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// Suspend mode request
@@ -561,8 +722,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: no traffic has been received for 3 ms, indicating a suspend mode request from the USB bus
+            pub const Suspend: u32 = 0b1;
+        }
     }
 
     /// Wakeup
@@ -575,8 +740,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: activity is detected that wakes up the USB peripheral
+            pub const Wakeup: u32 = 0b1;
+        }
     }
 
     /// Error
@@ -589,8 +758,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: One of No ANSwer, Cyclic Redundancy Check, Bit Stuffing or Framing format Violation error occurred
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// Packet memory area over / underrun
@@ -603,8 +776,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: microcontroller has not been able to respond in time to an USB memory request
+            pub const Overrun: u32 = 0b1;
+        }
     }
 
     /// Correct transfer
@@ -617,8 +794,12 @@ pub mod ISTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: endpoint has successfully completed a transaction
+            pub const Completed: u32 = 0b1;
+        }
     }
 }
 
@@ -663,8 +844,12 @@ pub mod FNR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: the frame timer remains in this state until an USB reset or USB suspend event occurs
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Receive data - line status
@@ -677,8 +862,12 @@ pub mod FNR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: received data minus upstream port data line
+            pub const Received: u32 = 0b1;
+        }
     }
 
     /// Receive data + line status
@@ -691,8 +880,12 @@ pub mod FNR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: received data plus upstream port data line
+            pub const Received: u32 = 0b1;
+        }
     }
 }
 
@@ -723,8 +916,15 @@ pub mod DADDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: USB device disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USB device enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -759,8 +959,15 @@ pub mod LPMCSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: enable the LPM support within the USB device
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: no LPM transactions are handled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// LPM Token acknowledge enable
@@ -773,8 +980,15 @@ pub mod LPMCSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: the valid LPM Token will be NYET
+            pub const Nyet: u32 = 0b0;
+
+            /// 0b1: the valid LPM Token will be ACK
+            pub const Ack: u32 = 0b1;
+        }
     }
 
     /// bRemoteWake value
@@ -819,8 +1033,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: disable the BCD support
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: enable the BCD support within the USB device
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data contact detection (DCD) mode enable
@@ -833,8 +1054,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data contact detection (DCD) mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Data contact detection (DCD) mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Primary detection (PD) mode enable
@@ -847,8 +1075,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Primary detection (PD) mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Primary detection (PD) mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Secondary detection (SD) mode enable
@@ -861,8 +1096,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Secondary detection (SD) mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Secondary detection (SD) mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data contact detection (DCD) status
@@ -875,8 +1117,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: data lines contact not detected
+            pub const NotDetected: u32 = 0b0;
+
+            /// 0b1: data lines contact detected
+            pub const Detected: u32 = 0b1;
+        }
     }
 
     /// Primary detection (PD) status
@@ -889,8 +1138,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no BCD support detected
+            pub const NoBCD: u32 = 0b0;
+
+            /// 0b1: BCD support detected
+            pub const BCD: u32 = 0b1;
+        }
     }
 
     /// Secondary detection (SD) status
@@ -903,8 +1159,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CDP detected
+            pub const CDP: u32 = 0b0;
+
+            /// 0b1: DCP detected
+            pub const DCP: u32 = 0b1;
+        }
     }
 
     /// DM pull-up detection status
@@ -917,8 +1180,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal port detected
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: PS2 port or proprietary charger detected
+            pub const PS2: u32 = 0b1;
+        }
     }
 
     /// DP pull-up control
@@ -931,8 +1201,15 @@ pub mod BCDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: signalize disconnect to the host when needed by the user software
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: enable the embedded pull-up on the DP line
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 pub struct RegisterBlock {

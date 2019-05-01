@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -1244,7 +1244,7 @@ pub mod CALR {
         pub mod RW {}
     }
 
-    /// Use an 8-second calibration cycle period
+    /// Use a 8-second calibration cycle period
     pub mod CALW8 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;

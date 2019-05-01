@@ -9,7 +9,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// SAI AConfiguration register 1
-pub mod SAI_ACR1 {
+pub mod CR1A {
 
     /// Master clock divider
     pub mod MCKDIV {
@@ -180,180 +180,8 @@ pub mod SAI_ACR1 {
     }
 }
 
-/// SAI BConfiguration register 1
-pub mod SAI_BCR1 {
-
-    /// Audio block mode
-    pub mod MODE {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Protocol configuration
-    pub mod PRTCFG {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (2 bits: 0b11 << 2)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Data size
-    pub mod DS {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (3 bits: 0b111 << 5)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Least significant bit first
-    pub mod LSBFIRST {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clock strobing edge
-    pub mod CKSTR {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Synchronization enable
-    pub mod SYNCEN {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (2 bits: 0b11 << 10)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Mono mode
-    pub mod MONO {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Output drive
-    pub mod OUTDRIV {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (1 bit: 1 << 13)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Audio block enable
-    pub mod SAIBEN {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DMA enable
-    pub mod DMAEN {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// No divider
-    pub mod NODIV {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Master clock divider
-    pub mod MCKDIV {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (4 bits: 0b1111 << 20)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// SAI AConfiguration register 2
-pub mod SAI_ACR2 {
+pub mod CR2A {
 
     /// FIFO threshold
     pub mod FTH {
@@ -468,20 +296,8 @@ pub mod SAI_ACR2 {
     }
 }
 
-/// SAI BConfiguration register 2
-pub mod SAI_BCR2 {
-    pub use super::SAI_ACR2::COMP;
-    pub use super::SAI_ACR2::CPL;
-    pub use super::SAI_ACR2::FFLUSH;
-    pub use super::SAI_ACR2::FTH;
-    pub use super::SAI_ACR2::MUTE;
-    pub use super::SAI_ACR2::MUTECNT;
-    pub use super::SAI_ACR2::MUTEVAL;
-    pub use super::SAI_ACR2::TRIS;
-}
-
 /// SAI AFrame configuration register
-pub mod SAI_AFRCR {
+pub mod FRCRA {
 
     /// Frame length
     pub mod FRL {
@@ -554,17 +370,8 @@ pub mod SAI_AFRCR {
     }
 }
 
-/// SAI BFrame configuration register
-pub mod SAI_BFRCR {
-    pub use super::SAI_AFRCR::FRL;
-    pub use super::SAI_AFRCR::FSALL;
-    pub use super::SAI_AFRCR::FSDEF;
-    pub use super::SAI_AFRCR::FSOFF;
-    pub use super::SAI_AFRCR::FSPOL;
-}
-
 /// SAI ASlot register
-pub mod SAI_ASLOTR {
+pub mod SLOTRA {
 
     /// First bit offset
     pub mod FBOFF {
@@ -623,16 +430,8 @@ pub mod SAI_ASLOTR {
     }
 }
 
-/// SAI BSlot register
-pub mod SAI_BSLOTR {
-    pub use super::SAI_ASLOTR::FBOFF;
-    pub use super::SAI_ASLOTR::NBSLOT;
-    pub use super::SAI_ASLOTR::SLOTEN;
-    pub use super::SAI_ASLOTR::SLOTSZ;
-}
-
 /// SAI AInterrupt mask register2
-pub mod SAI_AIM {
+pub mod IMA {
 
     /// Overrun/underrun interrupt enable
     pub mod OVRUDRIE {
@@ -733,19 +532,8 @@ pub mod SAI_AIM {
     }
 }
 
-/// SAI BInterrupt mask register2
-pub mod SAI_BIM {
-    pub use super::SAI_AIM::AFSDETIE;
-    pub use super::SAI_AIM::CNRDYIE;
-    pub use super::SAI_AIM::FREQIE;
-    pub use super::SAI_AIM::LFSDETIE;
-    pub use super::SAI_AIM::MUTEDETIE;
-    pub use super::SAI_AIM::OVRUDRIE;
-    pub use super::SAI_AIM::WCKCFGIE;
-}
-
 /// SAI AStatus register
-pub mod SAI_ASR {
+pub mod SRA {
 
     /// Overrun / underrun
     pub mod OVRUDR {
@@ -860,20 +648,8 @@ pub mod SAI_ASR {
     }
 }
 
-/// SAI BStatus register
-pub mod SAI_BSR {
-    pub use super::SAI_ASR::AFSDET;
-    pub use super::SAI_ASR::CNRDY;
-    pub use super::SAI_ASR::FLTH;
-    pub use super::SAI_ASR::FREQ;
-    pub use super::SAI_ASR::LFSDET;
-    pub use super::SAI_ASR::MUTEDET;
-    pub use super::SAI_ASR::OVRUDR;
-    pub use super::SAI_ASR::WCKCFG;
-}
-
 /// SAI AClear flag register
-pub mod SAI_ACLRFR {
+pub mod CLRFRA {
 
     /// Clear overrun / underrun
     pub mod COVRUDR {
@@ -960,18 +736,8 @@ pub mod SAI_ACLRFR {
     }
 }
 
-/// SAI BClear flag register
-pub mod SAI_BCLRFR {
-    pub use super::SAI_ACLRFR::CAFSDET;
-    pub use super::SAI_ACLRFR::CCNRDY;
-    pub use super::SAI_ACLRFR::CLFSDET;
-    pub use super::SAI_ACLRFR::CMUTEDET;
-    pub use super::SAI_ACLRFR::COVRUDR;
-    pub use super::SAI_ACLRFR::CWCKCFG;
-}
-
 /// SAI AData register
-pub mod SAI_ADR {
+pub mod DRA {
 
     /// Data
     pub mod DATA {
@@ -988,78 +754,156 @@ pub mod SAI_ADR {
     }
 }
 
-/// SAI BData register
-pub mod SAI_BDR {
-    pub use super::SAI_ADR::DATA;
+/// SAI AConfiguration register 1
+pub mod CR1B {
+    pub use super::CR1A::CKSTR;
+    pub use super::CR1A::DMAEN;
+    pub use super::CR1A::DS;
+    pub use super::CR1A::LSBFIRST;
+    pub use super::CR1A::MCKDIV;
+    pub use super::CR1A::MODE;
+    pub use super::CR1A::MONO;
+    pub use super::CR1A::NODIV;
+    pub use super::CR1A::OUTDRIV;
+    pub use super::CR1A::PRTCFG;
+    pub use super::CR1A::SAIAEN;
+    pub use super::CR1A::SYNCEN;
+}
+
+/// SAI AConfiguration register 2
+pub mod CR2B {
+    pub use super::CR2A::COMP;
+    pub use super::CR2A::CPL;
+    pub use super::CR2A::FFLUSH;
+    pub use super::CR2A::FTH;
+    pub use super::CR2A::MUTE;
+    pub use super::CR2A::MUTECNT;
+    pub use super::CR2A::MUTEVAL;
+    pub use super::CR2A::TRIS;
+}
+
+/// SAI AFrame configuration register
+pub mod FRCRB {
+    pub use super::FRCRA::FRL;
+    pub use super::FRCRA::FSALL;
+    pub use super::FRCRA::FSDEF;
+    pub use super::FRCRA::FSOFF;
+    pub use super::FRCRA::FSPOL;
+}
+
+/// SAI ASlot register
+pub mod SLOTRB {
+    pub use super::SLOTRA::FBOFF;
+    pub use super::SLOTRA::NBSLOT;
+    pub use super::SLOTRA::SLOTEN;
+    pub use super::SLOTRA::SLOTSZ;
+}
+
+/// SAI AInterrupt mask register2
+pub mod IMB {
+    pub use super::IMA::AFSDETIE;
+    pub use super::IMA::CNRDYIE;
+    pub use super::IMA::FREQIE;
+    pub use super::IMA::LFSDETIE;
+    pub use super::IMA::MUTEDETIE;
+    pub use super::IMA::OVRUDRIE;
+    pub use super::IMA::WCKCFGIE;
+}
+
+/// SAI AStatus register
+pub mod SRB {
+    pub use super::SRA::AFSDET;
+    pub use super::SRA::CNRDY;
+    pub use super::SRA::FLTH;
+    pub use super::SRA::FREQ;
+    pub use super::SRA::LFSDET;
+    pub use super::SRA::MUTEDET;
+    pub use super::SRA::OVRUDR;
+    pub use super::SRA::WCKCFG;
+}
+
+/// SAI AClear flag register
+pub mod CLRFRB {
+    pub use super::CLRFRA::CAFSDET;
+    pub use super::CLRFRA::CCNRDY;
+    pub use super::CLRFRA::CLFSDET;
+    pub use super::CLRFRA::CMUTEDET;
+    pub use super::CLRFRA::COVRUDR;
+    pub use super::CLRFRA::CWCKCFG;
+}
+
+/// SAI AData register
+pub mod DRB {
+    pub use super::DRA::DATA;
 }
 pub struct RegisterBlock {
     _reserved1: [u32; 1],
 
     /// SAI AConfiguration register 1
-    pub SAI_ACR1: RWRegister<u32>,
+    pub CR1A: RWRegister<u32>,
 
     /// SAI AConfiguration register 2
-    pub SAI_ACR2: RWRegister<u32>,
+    pub CR2A: RWRegister<u32>,
 
     /// SAI AFrame configuration register
-    pub SAI_AFRCR: RWRegister<u32>,
+    pub FRCRA: RWRegister<u32>,
 
     /// SAI ASlot register
-    pub SAI_ASLOTR: RWRegister<u32>,
+    pub SLOTRA: RWRegister<u32>,
 
     /// SAI AInterrupt mask register2
-    pub SAI_AIM: RWRegister<u32>,
+    pub IMA: RWRegister<u32>,
 
     /// SAI AStatus register
-    pub SAI_ASR: RORegister<u32>,
+    pub SRA: RORegister<u32>,
 
     /// SAI AClear flag register
-    pub SAI_ACLRFR: RWRegister<u32>,
+    pub CLRFRA: RWRegister<u32>,
 
     /// SAI AData register
-    pub SAI_ADR: RWRegister<u32>,
+    pub DRA: RWRegister<u32>,
 
-    /// SAI BConfiguration register 1
-    pub SAI_BCR1: RWRegister<u32>,
+    /// SAI AConfiguration register 1
+    pub CR1B: RWRegister<u32>,
 
-    /// SAI BConfiguration register 2
-    pub SAI_BCR2: RWRegister<u32>,
+    /// SAI AConfiguration register 2
+    pub CR2B: RWRegister<u32>,
 
-    /// SAI BFrame configuration register
-    pub SAI_BFRCR: RWRegister<u32>,
+    /// SAI AFrame configuration register
+    pub FRCRB: RWRegister<u32>,
 
-    /// SAI BSlot register
-    pub SAI_BSLOTR: RWRegister<u32>,
+    /// SAI ASlot register
+    pub SLOTRB: RWRegister<u32>,
 
-    /// SAI BInterrupt mask register2
-    pub SAI_BIM: RWRegister<u32>,
+    /// SAI AInterrupt mask register2
+    pub IMB: RWRegister<u32>,
 
-    /// SAI BStatus register
-    pub SAI_BSR: RORegister<u32>,
+    /// SAI AStatus register
+    pub SRB: RORegister<u32>,
 
-    /// SAI BClear flag register
-    pub SAI_BCLRFR: RWRegister<u32>,
+    /// SAI AClear flag register
+    pub CLRFRB: RWRegister<u32>,
 
-    /// SAI BData register
-    pub SAI_BDR: RWRegister<u32>,
+    /// SAI AData register
+    pub DRB: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub SAI_ACR1: u32,
-    pub SAI_ACR2: u32,
-    pub SAI_AFRCR: u32,
-    pub SAI_ASLOTR: u32,
-    pub SAI_AIM: u32,
-    pub SAI_ASR: u32,
-    pub SAI_ACLRFR: u32,
-    pub SAI_ADR: u32,
-    pub SAI_BCR1: u32,
-    pub SAI_BCR2: u32,
-    pub SAI_BFRCR: u32,
-    pub SAI_BSLOTR: u32,
-    pub SAI_BIM: u32,
-    pub SAI_BSR: u32,
-    pub SAI_BCLRFR: u32,
-    pub SAI_BDR: u32,
+    pub CR1A: u32,
+    pub CR2A: u32,
+    pub FRCRA: u32,
+    pub SLOTRA: u32,
+    pub IMA: u32,
+    pub SRA: u32,
+    pub CLRFRA: u32,
+    pub DRA: u32,
+    pub CR1B: u32,
+    pub CR2B: u32,
+    pub FRCRB: u32,
+    pub SLOTRB: u32,
+    pub IMB: u32,
+    pub SRB: u32,
+    pub CLRFRB: u32,
+    pub DRB: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

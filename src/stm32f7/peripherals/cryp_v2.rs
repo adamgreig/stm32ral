@@ -362,118 +362,6 @@ pub mod MISR {
     }
 }
 
-/// key registers
-pub mod K0LR {
-
-    /// b224
-    pub mod b2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// key registers
-pub mod K0RR {
-
-    /// b192
-    pub mod b {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// key registers
-pub mod K1LR {
-
-    /// b160
-    pub mod b1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// key registers
-pub mod K1RR {
-    pub use super::K1LR::b1;
-}
-
-/// key registers
-pub mod K2LR {
-    pub use super::K0RR::b;
-}
-
-/// key registers
-pub mod K2RR {
-    pub use super::K0RR::b;
-}
-
-/// key registers
-pub mod K3LR {
-    pub use super::K0RR::b;
-}
-
-/// key registers
-pub mod K3RR {
-    pub use super::K0RR::b;
-}
-
-/// initialization vector registers
-pub mod IV0LR {
-
-    /// IV31
-    pub mod IV {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// initialization vector registers
-pub mod IV0RR {
-    pub use super::IV0LR::IV;
-}
-
-/// initialization vector registers
-pub mod IV1LR {
-    pub use super::IV0LR::IV;
-}
-
-/// initialization vector registers
-pub mod IV1RR {
-    pub use super::IV0LR::IV;
-}
-
 /// context swap register
 pub mod CSGCMCCM0R {
 
@@ -494,135 +382,44 @@ pub mod CSGCMCCM0R {
 
 /// context swap register
 pub mod CSGCMCCM1R {
-
-    /// CSGCMCCM1R
-    pub mod CSGCMCCM1R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCMCCM2R {
-
-    /// CSGCMCCM2R
-    pub mod CSGCMCCM2R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCMCCM3R {
-
-    /// CSGCMCCM3R
-    pub mod CSGCMCCM3R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCMCCM4R {
-
-    /// CSGCMCCM4R
-    pub mod CSGCMCCM4R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCMCCM5R {
-
-    /// CSGCMCCM5R
-    pub mod CSGCMCCM5R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCMCCM6R {
-
-    /// CSGCMCCM6R
-    pub mod CSGCMCCM6R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCMCCM7R {
-
-    /// CSGCMCCM7R
-    pub mod CSGCMCCM7R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCMCCM0R::CSGCMCCM0R;
 }
 
 /// context swap register
 pub mod CSGCM0R {
 
     /// CSGCM0R
-    pub mod CSGCM0R {
+    pub mod CSGCMR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -638,99 +435,44 @@ pub mod CSGCM0R {
 
 /// context swap register
 pub mod CSGCM1R {
-
-    /// CSGCM1R
-    pub mod CSGCM1R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCM0R::CSGCMR;
 }
 
 /// context swap register
 pub mod CSGCM2R {
-
-    /// CSGCM2R
-    pub mod CSGCM2R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCM0R::CSGCMR;
 }
 
 /// context swap register
 pub mod CSGCM3R {
-
-    /// CSGCM3R
-    pub mod CSGCM3R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCM0R::CSGCMR;
 }
 
 /// context swap register
 pub mod CSGCM4R {
-
-    /// CSGCM4R
-    pub mod CSGCM4R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCM0R::CSGCMR;
 }
 
 /// context swap register
 pub mod CSGCM5R {
-
-    /// CSGCM5R
-    pub mod CSGCM5R {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSGCM0R::CSGCMR;
 }
 
 /// context swap register
 pub mod CSGCM6R {
+    pub use super::CSGCM0R::CSGCMR;
+}
 
-    /// CSGCM6R
-    pub mod CSGCM6R {
+/// context swap register
+pub mod CSGCM7R {
+    pub use super::CSGCM0R::CSGCMR;
+}
+
+/// key registers
+pub mod KLR0 {
+
+    /// b224
+    pub mod b2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -744,11 +486,11 @@ pub mod CSGCM6R {
     }
 }
 
-/// context swap register
-pub mod CSGCM7R {
+/// key registers
+pub mod KRR0 {
 
-    /// CSGCM7R
-    pub mod CSGCM7R {
+    /// b192
+    pub mod b {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -760,6 +502,69 @@ pub mod CSGCM7R {
         /// Read-write values (empty)
         pub mod RW {}
     }
+}
+
+/// key registers
+pub mod KLR1 {
+    pub use super::KLR0::b2;
+}
+
+/// key registers
+pub mod KRR1 {
+    pub use super::KRR0::b;
+}
+
+/// key registers
+pub mod KLR2 {
+    pub use super::KLR0::b2;
+}
+
+/// key registers
+pub mod KRR2 {
+    pub use super::KRR0::b;
+}
+
+/// key registers
+pub mod KLR3 {
+    pub use super::KLR0::b2;
+}
+
+/// key registers
+pub mod KRR3 {
+    pub use super::KRR0::b;
+}
+
+/// initialization vector registers
+pub mod IVLR0 {
+
+    /// IV31
+    pub mod IV {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// initialization vector registers
+pub mod IVRR0 {
+    pub use super::IVLR0::IV;
+}
+
+/// initialization vector registers
+pub mod IVLR1 {
+    pub use super::IVLR0::IV;
+}
+
+/// initialization vector registers
+pub mod IVRR1 {
+    pub use super::IVLR0::IV;
 }
 pub struct RegisterBlock {
     /// control register
@@ -787,40 +592,40 @@ pub struct RegisterBlock {
     pub MISR: RORegister<u32>,
 
     /// key registers
-    pub K0LR: WORegister<u32>,
+    pub KLR0: WORegister<u32>,
 
     /// key registers
-    pub K0RR: WORegister<u32>,
+    pub KRR0: WORegister<u32>,
 
     /// key registers
-    pub K1LR: WORegister<u32>,
+    pub KLR1: WORegister<u32>,
 
     /// key registers
-    pub K1RR: WORegister<u32>,
+    pub KRR1: WORegister<u32>,
 
     /// key registers
-    pub K2LR: WORegister<u32>,
+    pub KLR2: WORegister<u32>,
 
     /// key registers
-    pub K2RR: WORegister<u32>,
+    pub KRR2: WORegister<u32>,
 
     /// key registers
-    pub K3LR: WORegister<u32>,
+    pub KLR3: WORegister<u32>,
 
     /// key registers
-    pub K3RR: WORegister<u32>,
+    pub KRR3: WORegister<u32>,
 
     /// initialization vector registers
-    pub IV0LR: RWRegister<u32>,
+    pub IVLR0: RWRegister<u32>,
 
     /// initialization vector registers
-    pub IV0RR: RWRegister<u32>,
+    pub IVRR0: RWRegister<u32>,
 
     /// initialization vector registers
-    pub IV1LR: RWRegister<u32>,
+    pub IVLR1: RWRegister<u32>,
 
     /// initialization vector registers
-    pub IV1RR: RWRegister<u32>,
+    pub IVRR1: RWRegister<u32>,
 
     /// context swap register
     pub CSGCMCCM0R: RWRegister<u32>,
@@ -879,18 +684,18 @@ pub struct ResetValues {
     pub IMSCR: u32,
     pub RISR: u32,
     pub MISR: u32,
-    pub K0LR: u32,
-    pub K0RR: u32,
-    pub K1LR: u32,
-    pub K1RR: u32,
-    pub K2LR: u32,
-    pub K2RR: u32,
-    pub K3LR: u32,
-    pub K3RR: u32,
-    pub IV0LR: u32,
-    pub IV0RR: u32,
-    pub IV1LR: u32,
-    pub IV1RR: u32,
+    pub KLR0: u32,
+    pub KRR0: u32,
+    pub KLR1: u32,
+    pub KRR1: u32,
+    pub KLR2: u32,
+    pub KRR2: u32,
+    pub KLR3: u32,
+    pub KRR3: u32,
+    pub IVLR0: u32,
+    pub IVRR0: u32,
+    pub IVLR1: u32,
+    pub IVRR1: u32,
     pub CSGCMCCM0R: u32,
     pub CSGCMCCM1R: u32,
     pub CSGCMCCM2R: u32,

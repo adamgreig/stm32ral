@@ -11,7 +11,7 @@ pub use self::interrupts::Interrupt as interrupt;
 pub use super::instances::adc1;
 pub use super::instances::adc_common_f401_f410_f411_f412_f413 as adc_common;
 pub use super::instances::crc;
-pub use super::instances::dbg_f401_f410_f411_f412_f413 as dbg;
+pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
 pub use super::instances::exti;
 pub mod flash;
 pub use super::instances::iwdg;

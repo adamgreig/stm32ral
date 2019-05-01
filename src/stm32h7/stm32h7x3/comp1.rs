@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister, WORegister};
 
 /// Comparator status register
-pub mod COMP1_SR {
+pub mod SR {
 
     /// COMP channel 1 output status bit
     pub mod C1VAL {
@@ -67,7 +67,7 @@ pub mod COMP1_SR {
 }
 
 /// Comparator interrupt clear flag register
-pub mod COMP1_ICFR {
+pub mod ICFR {
 
     /// Clear COMP channel 1 Interrupt Flag
     pub mod CC1IF {
@@ -99,7 +99,7 @@ pub mod COMP1_ICFR {
 }
 
 /// Comparator option register
-pub mod COMP1_OR {
+pub mod OR {
 
     /// Selection of source for alternate function of output ports
     pub mod AFOP {
@@ -131,7 +131,7 @@ pub mod COMP1_OR {
 }
 
 /// Comparator configuration register 1
-pub mod COMP1_CFGR1 {
+pub mod CFGR1 {
 
     /// COMP channel 1 enable bit
     pub mod EN {
@@ -289,7 +289,7 @@ pub mod COMP1_CFGR1 {
 }
 
 /// Comparator configuration register 2
-pub mod COMP1_CFGR2 {
+pub mod CFGR2 {
 
     /// COMP channel 1 enable bit
     pub mod EN {
@@ -461,26 +461,26 @@ pub mod COMP1_CFGR2 {
 }
 pub struct RegisterBlock {
     /// Comparator status register
-    pub COMP1_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// Comparator interrupt clear flag register
-    pub COMP1_ICFR: WORegister<u32>,
+    pub ICFR: WORegister<u32>,
 
     /// Comparator option register
-    pub COMP1_OR: RWRegister<u32>,
+    pub OR: RWRegister<u32>,
 
     /// Comparator configuration register 1
-    pub COMP1_CFGR1: RWRegister<u32>,
+    pub CFGR1: RWRegister<u32>,
 
     /// Comparator configuration register 2
-    pub COMP1_CFGR2: RWRegister<u32>,
+    pub CFGR2: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub COMP1_SR: u32,
-    pub COMP1_ICFR: u32,
-    pub COMP1_OR: u32,
-    pub COMP1_CFGR1: u32,
-    pub COMP1_CFGR2: u32,
+    pub SR: u32,
+    pub ICFR: u32,
+    pub OR: u32,
+    pub CFGR1: u32,
+    pub CFGR2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -514,11 +514,11 @@ pub mod COMP1 {
 
     /// Reset values for each field in COMP1
     pub const reset: ResetValues = ResetValues {
-        COMP1_SR: 0x00000000,
-        COMP1_ICFR: 0x00000000,
-        COMP1_OR: 0x00000000,
-        COMP1_CFGR1: 0x00000000,
-        COMP1_CFGR2: 0x00000000,
+        SR: 0x00000000,
+        ICFR: 0x00000000,
+        OR: 0x00000000,
+        CFGR1: 0x00000000,
+        CFGR2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

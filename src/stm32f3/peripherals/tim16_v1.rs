@@ -35,8 +35,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TIMx_APRR register is not buffered
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TIMx_APRR register is buffered
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// One-pulse mode
@@ -70,8 +77,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Any of counter overflow/underflow, setting UG, or update through slave mode, generates an update interrupt or DMA request
+            pub const AnyEvent: u32 = 0b0;
+
+            /// 0b1: Only counter overflow/underflow generates an update interrupt or DMA request
+            pub const CounterOnly: u32 = 0b1;
+        }
     }
 
     /// Update disable
@@ -84,8 +98,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update event enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Update event disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// Counter enable
@@ -98,8 +119,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Counter enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -351,8 +379,15 @@ pub mod DIER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -439,8 +474,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No update occurred
+            pub const Clear: u32 = 0b0;
+
+            /// 0b1: Update interrupt pending.
+            pub const UpdatePending: u32 = 0b1;
+        }
     }
 }
 
@@ -513,8 +555,12 @@ pub mod EGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Re-initializes the timer counter and generates an update of the reigsters.
+            pub const Update: u32 = 0b1;
+        }
     }
 }
 

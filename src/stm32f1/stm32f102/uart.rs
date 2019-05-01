@@ -3,9 +3,9 @@
 //! Universal asynchronous receiver transmitter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::uart4::Instance;
-pub use stm32f1::peripherals::uart4::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::uart4::{BRR, CR1, CR2, CR3, DR, SR};
+pub use stm32f1::peripherals::uart::Instance;
+pub use stm32f1::peripherals::uart::{RegisterBlock, ResetValues};
+pub use stm32f1::peripherals::uart::{BRR, CR1, CR2, CR3, DR, SR};
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {

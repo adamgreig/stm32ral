@@ -547,8 +547,8 @@ pub mod CR2 {
             /// 0b00: 1 stop bit
             pub const Stop1: u32 = 0b00;
 
-            /// 0b01: 2 stop bits
-            pub const Stop2: u32 = 0b01;
+            /// 0b10: 2 stop bits
+            pub const Stop2: u32 = 0b10;
         }
     }
 

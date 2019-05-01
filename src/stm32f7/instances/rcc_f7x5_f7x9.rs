@@ -9,8 +9,8 @@ pub use stm32f7::peripherals::rcc_v2::Instance;
 pub use stm32f7::peripherals::rcc_v2::{RegisterBlock, ResetValues};
 pub use stm32f7::peripherals::rcc_v2::{
     AHB1ENR, AHB1LPENR, AHB1RSTR, AHB2ENR, AHB2LPENR, AHB2RSTR, AHB3ENR, AHB3LPENR, AHB3RSTR,
-    APB1ENR, APB1LPENR, APB1RSTR, APB2ENR, APB2LPENR, APB2RSTR, BDCR, CFGR, CIR, CR, CSR, DKCFGR1,
-    DKCFGR2, PLLCFGR, PLLI2SCFGR, PLLSAICFGR, SSCGR,
+    APB1ENR, APB1LPENR, APB1RSTR, APB2ENR, APB2LPENR, APB2RSTR, BDCR, CFGR, CIR, CR, CSR, DCKCFGR1,
+    DCKCFGR2, PLLCFGR, PLLI2SCFGR, PLLSAICFGR, SSCGR,
 };
 
 /// Access functions for the RCC peripheral instance
@@ -55,8 +55,8 @@ pub mod RCC {
         SSCGR: 0x00000000,
         PLLI2SCFGR: 0x20003000,
         PLLSAICFGR: 0x20003000,
-        DKCFGR1: 0x20003000,
-        DKCFGR2: 0x20003000,
+        DCKCFGR1: 0x20003000,
+        DCKCFGR2: 0x20003000,
     };
 
     #[cfg(not(feature = "nosync"))]

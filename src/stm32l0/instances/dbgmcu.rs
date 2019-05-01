@@ -5,9 +5,9 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::dbg::Instance;
-pub use stm32l0::peripherals::dbg::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::dbg::{APB1_FZ, APB2_FZ, CR, IDCODE};
+pub use stm32l0::peripherals::dbgmcu::Instance;
+pub use stm32l0::peripherals::dbgmcu::{RegisterBlock, ResetValues};
+pub use stm32l0::peripherals::dbgmcu::{APB1_FZ, APB2_FZ, CR, IDCODE};
 
 /// Access functions for the DBGMCU peripheral instance
 pub mod DBGMCU {

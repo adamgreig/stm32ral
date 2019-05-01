@@ -8,8 +8,40 @@
 use core::marker::PhantomData;
 use {RORegister, RWRegister, WORegister};
 
-/// BConfiguration register 1
-pub mod BCR1 {
+/// Global configuration register
+pub mod GCR {
+
+    /// Synchronization inputs
+    pub mod SYNCIN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (2 bits: 0b11 << 0)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Synchronization outputs
+    pub mod SYNCOUT {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (2 bits: 0b11 << 4)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// AConfiguration register 1
+pub mod CR1A {
 
     /// Master clock divider
     pub mod MCKDIV {
@@ -53,7 +85,7 @@ pub mod BCR1 {
         pub mod RW {}
     }
 
-    /// Audio block B enable
+    /// Audio block A enable
     pub mod SAIXEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -180,8 +212,8 @@ pub mod BCR1 {
     }
 }
 
-/// BConfiguration register 2
-pub mod BCR2 {
+/// AConfiguration register 2
+pub mod CR2A {
 
     /// Companding mode
     pub mod COMP {
@@ -296,8 +328,8 @@ pub mod BCR2 {
     }
 }
 
-/// BFRCR
-pub mod BFRCR {
+/// AFRCR
+pub mod FRCRA {
 
     /// Frame synchronization offset
     pub mod FSOFF {
@@ -370,8 +402,8 @@ pub mod BFRCR {
     }
 }
 
-/// BSlot register
-pub mod BSLOTR {
+/// ASlot register
+pub mod SLOTRA {
 
     /// Slot enable
     pub mod SLOTEN {
@@ -430,8 +462,8 @@ pub mod BSLOTR {
     }
 }
 
-/// BInterrupt mask register2
-pub mod BIM {
+/// AInterrupt mask register2
+pub mod IMA {
 
     /// Late frame synchronization detection interrupt enable
     pub mod LFSDETIE {
@@ -532,8 +564,8 @@ pub mod BIM {
     }
 }
 
-/// BStatus register
-pub mod BSR {
+/// AStatus register
+pub mod SRA {
 
     /// FIFO level threshold
     pub mod FLVL {
@@ -605,7 +637,7 @@ pub mod BSR {
         pub mod RW {}
     }
 
-    /// Wrong clock configuration flag
+    /// Wrong clock configuration flag. This bit is read only.
     pub mod WCKCFG {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -648,8 +680,8 @@ pub mod BSR {
     }
 }
 
-/// BClear flag register
-pub mod BCLRFR {
+/// AClear flag register
+pub mod CLRFRA {
 
     /// Clear late frame synchronization detection flag
     pub mod CLFSDET {
@@ -665,7 +697,7 @@ pub mod BCLRFR {
         pub mod RW {}
     }
 
-    /// Clear anticipated frame synchronization detection flag
+    /// Clear anticipated frame synchronization detection flag.
     pub mod CAFSDET {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -736,8 +768,8 @@ pub mod BCLRFR {
     }
 }
 
-/// BData register
-pub mod BDR {
+/// AData register
+pub mod DRA {
 
     /// Data
     pub mod DATA {
@@ -755,189 +787,157 @@ pub mod BDR {
 }
 
 /// AConfiguration register 1
-pub mod ACR1 {
-    pub use super::BCR1::CKSTR;
-    pub use super::BCR1::DMAEN;
-    pub use super::BCR1::DS;
-    pub use super::BCR1::LSBFIRST;
-    pub use super::BCR1::MCKDIV;
-    pub use super::BCR1::MODE;
-    pub use super::BCR1::MONO;
-    pub use super::BCR1::NODIV;
-    pub use super::BCR1::OUTDRIV;
-    pub use super::BCR1::PRTCFG;
-    pub use super::BCR1::SAIXEN;
-    pub use super::BCR1::SYNCEN;
+pub mod CR1B {
+    pub use super::CR1A::CKSTR;
+    pub use super::CR1A::DMAEN;
+    pub use super::CR1A::DS;
+    pub use super::CR1A::LSBFIRST;
+    pub use super::CR1A::MCKDIV;
+    pub use super::CR1A::MODE;
+    pub use super::CR1A::MONO;
+    pub use super::CR1A::NODIV;
+    pub use super::CR1A::OUTDRIV;
+    pub use super::CR1A::PRTCFG;
+    pub use super::CR1A::SAIXEN;
+    pub use super::CR1A::SYNCEN;
 }
 
 /// AConfiguration register 2
-pub mod ACR2 {
-    pub use super::BCR2::COMP;
-    pub use super::BCR2::CPL;
-    pub use super::BCR2::FFLUS;
-    pub use super::BCR2::FTH;
-    pub use super::BCR2::MUTE;
-    pub use super::BCR2::MUTECN;
-    pub use super::BCR2::MUTEVAL;
-    pub use super::BCR2::TRIS;
+pub mod CR2B {
+    pub use super::CR2A::COMP;
+    pub use super::CR2A::CPL;
+    pub use super::CR2A::FFLUS;
+    pub use super::CR2A::FTH;
+    pub use super::CR2A::MUTE;
+    pub use super::CR2A::MUTECN;
+    pub use super::CR2A::MUTEVAL;
+    pub use super::CR2A::TRIS;
 }
 
 /// AFRCR
-pub mod AFRCR {
-    pub use super::BFRCR::FRL;
-    pub use super::BFRCR::FSALL;
-    pub use super::BFRCR::FSDEF;
-    pub use super::BFRCR::FSOFF;
-    pub use super::BFRCR::FSPOL;
+pub mod FRCRB {
+    pub use super::FRCRA::FRL;
+    pub use super::FRCRA::FSALL;
+    pub use super::FRCRA::FSDEF;
+    pub use super::FRCRA::FSOFF;
+    pub use super::FRCRA::FSPOL;
 }
 
 /// ASlot register
-pub mod ASLOTR {
-    pub use super::BSLOTR::FBOFF;
-    pub use super::BSLOTR::NBSLOT;
-    pub use super::BSLOTR::SLOTEN;
-    pub use super::BSLOTR::SLOTSZ;
+pub mod SLOTRB {
+    pub use super::SLOTRA::FBOFF;
+    pub use super::SLOTRA::NBSLOT;
+    pub use super::SLOTRA::SLOTEN;
+    pub use super::SLOTRA::SLOTSZ;
 }
 
 /// AInterrupt mask register2
-pub mod AIM {
-    pub use super::BIM::AFSDETIE;
-    pub use super::BIM::CNRDYIE;
-    pub use super::BIM::FREQIE;
-    pub use super::BIM::LFSDETIE;
-    pub use super::BIM::MUTEDETIE;
-    pub use super::BIM::OVRUDRIE;
-    pub use super::BIM::WCKCFGIE;
+pub mod IMB {
+    pub use super::IMA::AFSDETIE;
+    pub use super::IMA::CNRDYIE;
+    pub use super::IMA::FREQIE;
+    pub use super::IMA::LFSDETIE;
+    pub use super::IMA::MUTEDETIE;
+    pub use super::IMA::OVRUDRIE;
+    pub use super::IMA::WCKCFGIE;
 }
 
 /// AStatus register
-pub mod ASR {
-    pub use super::BSR::AFSDET;
-    pub use super::BSR::CNRDY;
-    pub use super::BSR::FLVL;
-    pub use super::BSR::FREQ;
-    pub use super::BSR::LFSDET;
-    pub use super::BSR::MUTEDET;
-    pub use super::BSR::OVRUDR;
-    pub use super::BSR::WCKCFG;
+pub mod SRB {
+    pub use super::SRA::AFSDET;
+    pub use super::SRA::CNRDY;
+    pub use super::SRA::FLVL;
+    pub use super::SRA::FREQ;
+    pub use super::SRA::LFSDET;
+    pub use super::SRA::MUTEDET;
+    pub use super::SRA::OVRUDR;
+    pub use super::SRA::WCKCFG;
 }
 
 /// AClear flag register
-pub mod ACLRFR {
-    pub use super::BCLRFR::CAFSDET;
-    pub use super::BCLRFR::CCNRDY;
-    pub use super::BCLRFR::CLFSDET;
-    pub use super::BCLRFR::CMUTEDET;
-    pub use super::BCLRFR::COVRUDR;
-    pub use super::BCLRFR::CWCKCFG;
+pub mod CLRFRB {
+    pub use super::CLRFRA::CAFSDET;
+    pub use super::CLRFRA::CCNRDY;
+    pub use super::CLRFRA::CLFSDET;
+    pub use super::CLRFRA::CMUTEDET;
+    pub use super::CLRFRA::COVRUDR;
+    pub use super::CLRFRA::CWCKCFG;
 }
 
 /// AData register
-pub mod ADR {
-    pub use super::BDR::DATA;
-}
-
-/// Global configuration register
-pub mod GCR {
-
-    /// Synchronization inputs
-    pub mod SYNCIN {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Synchronization outputs
-    pub mod SYNCOUT {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod DRB {
+    pub use super::DRA::DATA;
 }
 pub struct RegisterBlock {
     /// Global configuration register
     pub GCR: RWRegister<u32>,
 
     /// AConfiguration register 1
-    pub ACR1: RWRegister<u32>,
+    pub CR1A: RWRegister<u32>,
 
     /// AConfiguration register 2
-    pub ACR2: RWRegister<u32>,
+    pub CR2A: RWRegister<u32>,
 
     /// AFRCR
-    pub AFRCR: RWRegister<u32>,
+    pub FRCRA: RWRegister<u32>,
 
     /// ASlot register
-    pub ASLOTR: RWRegister<u32>,
+    pub SLOTRA: RWRegister<u32>,
 
     /// AInterrupt mask register2
-    pub AIM: RWRegister<u32>,
+    pub IMA: RWRegister<u32>,
 
     /// AStatus register
-    pub ASR: RORegister<u32>,
+    pub SRA: RORegister<u32>,
 
     /// AClear flag register
-    pub ACLRFR: WORegister<u32>,
+    pub CLRFRA: WORegister<u32>,
 
     /// AData register
-    pub ADR: RWRegister<u32>,
+    pub DRA: RWRegister<u32>,
 
-    /// BConfiguration register 1
-    pub BCR1: RWRegister<u32>,
+    /// AConfiguration register 1
+    pub CR1B: RWRegister<u32>,
 
-    /// BConfiguration register 2
-    pub BCR2: RWRegister<u32>,
+    /// AConfiguration register 2
+    pub CR2B: RWRegister<u32>,
 
-    /// BFRCR
-    pub BFRCR: RWRegister<u32>,
+    /// AFRCR
+    pub FRCRB: RWRegister<u32>,
 
-    /// BSlot register
-    pub BSLOTR: RWRegister<u32>,
+    /// ASlot register
+    pub SLOTRB: RWRegister<u32>,
 
-    /// BInterrupt mask register2
-    pub BIM: RWRegister<u32>,
+    /// AInterrupt mask register2
+    pub IMB: RWRegister<u32>,
 
-    /// BStatus register
-    pub BSR: RORegister<u32>,
+    /// AStatus register
+    pub SRB: RORegister<u32>,
 
-    /// BClear flag register
-    pub BCLRFR: WORegister<u32>,
+    /// AClear flag register
+    pub CLRFRB: WORegister<u32>,
 
-    /// BData register
-    pub BDR: RWRegister<u32>,
+    /// AData register
+    pub DRB: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub GCR: u32,
-    pub ACR1: u32,
-    pub ACR2: u32,
-    pub AFRCR: u32,
-    pub ASLOTR: u32,
-    pub AIM: u32,
-    pub ASR: u32,
-    pub ACLRFR: u32,
-    pub ADR: u32,
-    pub BCR1: u32,
-    pub BCR2: u32,
-    pub BFRCR: u32,
-    pub BSLOTR: u32,
-    pub BIM: u32,
-    pub BSR: u32,
-    pub BCLRFR: u32,
-    pub BDR: u32,
+    pub CR1A: u32,
+    pub CR2A: u32,
+    pub FRCRA: u32,
+    pub SLOTRA: u32,
+    pub IMA: u32,
+    pub SRA: u32,
+    pub CLRFRA: u32,
+    pub DRA: u32,
+    pub CR1B: u32,
+    pub CR2B: u32,
+    pub FRCRB: u32,
+    pub SLOTRB: u32,
+    pub IMB: u32,
+    pub SRB: u32,
+    pub CLRFRB: u32,
+    pub DRB: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -15,7 +15,7 @@ pub use super::instances::can1;
 pub use super::instances::crc_f7x2_f7x3 as crc;
 pub use super::instances::cryp_f7x2_f7x3 as cryp;
 pub use super::instances::dac;
-pub use super::instances::dbg;
+pub use super::instances::dbgmcu_f7x2_f7x3_f7x5_f7x6 as dbgmcu;
 pub use super::instances::dma_f7x2_f7x3 as dma;
 pub use super::instances::exti_f7x2_f7x3 as exti;
 pub use super::instances::flash_f7x2_f7x3 as flash;

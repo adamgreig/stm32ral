@@ -70,7 +70,7 @@ categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
 
 # Change version in stm32ral.py, not here!
-version = "0.1.1"
+version = "0.1.2"
 
 [package.metadata.docs.rs]
 features = ["doc"]

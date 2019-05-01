@@ -21,8 +21,21 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Input mode (reset state)
+            pub const Input: u32 = 0b00;
+
+            /// 0b01: Output mode 10 MHz
+            pub const Output: u32 = 0b01;
+
+            /// 0b10: Output mode 2 MHz
+            pub const Output2: u32 = 0b10;
+
+            /// 0b11: Output mode 50 MHz
+            pub const Output50: u32 = 0b11;
+        }
     }
 
     /// Port n.0 configuration bits
@@ -35,8 +48,21 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Analog mode / Push-Pull mode
+            pub const PushPull: u32 = 0b00;
+
+            /// 0b01: Floating input (reset state) / Open Drain-Mode
+            pub const OpenDrain: u32 = 0b01;
+
+            /// 0b10: Input with pull-up/pull-down / Alternate Function Push-Pull Mode
+            pub const AltPushPull: u32 = 0b10;
+
+            /// 0b11: Alternate Function Open-Drain Mode
+            pub const AltOpenDrain: u32 = 0b11;
+        }
     }
 
     /// Port n.1 mode bits
@@ -49,8 +75,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.1 configuration bits
@@ -63,8 +88,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 
     /// Port n.2 mode bits
@@ -77,8 +101,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.2 configuration bits
@@ -91,8 +114,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 
     /// Port n.3 mode bits
@@ -105,8 +127,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.3 configuration bits
@@ -119,8 +140,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 
     /// Port n.4 mode bits
@@ -133,8 +153,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.4 configuration bits
@@ -147,8 +166,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 
     /// Port n.5 mode bits
@@ -161,8 +179,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.5 configuration bits
@@ -175,8 +192,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 
     /// Port n.6 mode bits
@@ -189,8 +205,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.6 configuration bits
@@ -203,8 +218,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 
     /// Port n.7 mode bits
@@ -217,8 +231,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port n.7 configuration bits
@@ -231,8 +244,7 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF0::RW;
     }
 }
 
@@ -249,8 +261,21 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Input mode (reset state)
+            pub const Input: u32 = 0b00;
+
+            /// 0b01: Output mode 10 MHz
+            pub const Output: u32 = 0b01;
+
+            /// 0b10: Output mode 2 MHz
+            pub const Output2: u32 = 0b10;
+
+            /// 0b11: Output mode 50 MHz
+            pub const Output50: u32 = 0b11;
+        }
     }
 
     /// Port n.8 configuration bits
@@ -263,8 +288,21 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Analog mode / Push-Pull mode
+            pub const PushPull: u32 = 0b00;
+
+            /// 0b01: Floating input (reset state) / Open Drain-Mode
+            pub const OpenDrain: u32 = 0b01;
+
+            /// 0b10: Input with pull-up/pull-down / Alternate Function Push-Pull Mode
+            pub const AltPushPull: u32 = 0b10;
+
+            /// 0b11: Alternate Function Open-Drain Mode
+            pub const AltOpenDrain: u32 = 0b11;
+        }
     }
 
     /// Port n.9 mode bits
@@ -277,8 +315,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.9 configuration bits
@@ -291,8 +328,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 
     /// Port n.10 mode bits
@@ -305,8 +341,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.10 configuration bits
@@ -319,8 +354,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 
     /// Port n.11 mode bits
@@ -333,8 +367,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.11 configuration bits
@@ -347,8 +380,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 
     /// Port n.12 mode bits
@@ -361,8 +393,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.12 configuration bits
@@ -375,8 +406,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 
     /// Port n.13 mode bits
@@ -389,8 +419,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.13 configuration bits
@@ -403,8 +432,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 
     /// Port n.14 mode bits
@@ -417,8 +445,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.14 configuration bits
@@ -431,8 +458,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 
     /// Port n.15 mode bits
@@ -445,8 +471,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE8::RW;
     }
 
     /// Port n.15 configuration bits
@@ -459,8 +484,7 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CNF8::RW;
     }
 }
 

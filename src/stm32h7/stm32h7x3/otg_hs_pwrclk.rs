@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use RWRegister;
 
 /// Power and clock gating control register
-pub mod OTG_HS_PCGCR {
+pub mod PCGCR {
 
     /// Stop PHY clock
     pub mod STPPCLK {
@@ -53,10 +53,10 @@ pub mod OTG_HS_PCGCR {
 }
 pub struct RegisterBlock {
     /// Power and clock gating control register
-    pub OTG_HS_PCGCR: RWRegister<u32>,
+    pub PCGCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_HS_PCGCR: u32,
+    pub PCGCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -89,9 +89,7 @@ pub mod OTG1_HS_PWRCLK {
     };
 
     /// Reset values for each field in OTG1_HS_PWRCLK
-    pub const reset: ResetValues = ResetValues {
-        OTG_HS_PCGCR: 0x00000000,
-    };
+    pub const reset: ResetValues = ResetValues { PCGCR: 0x00000000 };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]
@@ -171,9 +169,7 @@ pub mod OTG2_HS_PWRCLK {
     };
 
     /// Reset values for each field in OTG2_HS_PWRCLK
-    pub const reset: ResetValues = ResetValues {
-        OTG_HS_PCGCR: 0x00000000,
-    };
+    pub const reset: ResetValues = ResetValues { PCGCR: 0x00000000 };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]

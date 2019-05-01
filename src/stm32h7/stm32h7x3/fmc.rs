@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-pub mod FMC_BCR1 {
+pub mod BCR1 {
 
     /// Memory bank enable bit This bit enables the memory bank. After reset Bank1 is enabled, all others are disabled. Accessing a disabled bank causes an ERROR on AXI bus.
     pub mod MBKEN {
@@ -263,7 +263,7 @@ pub mod FMC_BCR1 {
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-pub mod FMC_BTR1 {
+pub mod BTR1 {
 
     /// Address setup phase duration These bits are written by software to define the duration of the address setup phase (refer to Figure81 to Figure93), used in SRAMs, ROMs and asynchronous NOR Flash: For each access mode address setup phase duration, please refer to the respective figure (refer to Figure81 to Figure93). Note: In synchronous accesses, this value is dont care. In Muxed mode or Mode D, the minimum value for ADDSET is 1.
     pub mod ADDSET {
@@ -365,106 +365,106 @@ pub mod FMC_BTR1 {
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-pub mod FMC_BCR2 {
-    pub use super::FMC_BCR1::ASYNCWAIT;
-    pub use super::FMC_BCR1::BMAP;
-    pub use super::FMC_BCR1::BURSTEN;
-    pub use super::FMC_BCR1::CBURSTRW;
-    pub use super::FMC_BCR1::CCLKEN;
-    pub use super::FMC_BCR1::CPSIZE;
-    pub use super::FMC_BCR1::EXTMOD;
-    pub use super::FMC_BCR1::FACCEN;
-    pub use super::FMC_BCR1::FMCEN;
-    pub use super::FMC_BCR1::MBKEN;
-    pub use super::FMC_BCR1::MTYP;
-    pub use super::FMC_BCR1::MUXEN;
-    pub use super::FMC_BCR1::MWID;
-    pub use super::FMC_BCR1::WAITCFG;
-    pub use super::FMC_BCR1::WAITEN;
-    pub use super::FMC_BCR1::WAITPOL;
-    pub use super::FMC_BCR1::WFDIS;
-    pub use super::FMC_BCR1::WREN;
+pub mod BCR2 {
+    pub use super::BCR1::ASYNCWAIT;
+    pub use super::BCR1::BMAP;
+    pub use super::BCR1::BURSTEN;
+    pub use super::BCR1::CBURSTRW;
+    pub use super::BCR1::CCLKEN;
+    pub use super::BCR1::CPSIZE;
+    pub use super::BCR1::EXTMOD;
+    pub use super::BCR1::FACCEN;
+    pub use super::BCR1::FMCEN;
+    pub use super::BCR1::MBKEN;
+    pub use super::BCR1::MTYP;
+    pub use super::BCR1::MUXEN;
+    pub use super::BCR1::MWID;
+    pub use super::BCR1::WAITCFG;
+    pub use super::BCR1::WAITEN;
+    pub use super::BCR1::WAITPOL;
+    pub use super::BCR1::WFDIS;
+    pub use super::BCR1::WREN;
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-pub mod FMC_BTR2 {
-    pub use super::FMC_BTR1::ACCMOD;
-    pub use super::FMC_BTR1::ADDHLD;
-    pub use super::FMC_BTR1::ADDSET;
-    pub use super::FMC_BTR1::BUSTURN;
-    pub use super::FMC_BTR1::CLKDIV;
-    pub use super::FMC_BTR1::DATAST;
-    pub use super::FMC_BTR1::DATLAT;
+pub mod BTR2 {
+    pub use super::BTR1::ACCMOD;
+    pub use super::BTR1::ADDHLD;
+    pub use super::BTR1::ADDSET;
+    pub use super::BTR1::BUSTURN;
+    pub use super::BTR1::CLKDIV;
+    pub use super::BTR1::DATAST;
+    pub use super::BTR1::DATLAT;
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-pub mod FMC_BCR3 {
-    pub use super::FMC_BCR1::ASYNCWAIT;
-    pub use super::FMC_BCR1::BMAP;
-    pub use super::FMC_BCR1::BURSTEN;
-    pub use super::FMC_BCR1::CBURSTRW;
-    pub use super::FMC_BCR1::CCLKEN;
-    pub use super::FMC_BCR1::CPSIZE;
-    pub use super::FMC_BCR1::EXTMOD;
-    pub use super::FMC_BCR1::FACCEN;
-    pub use super::FMC_BCR1::FMCEN;
-    pub use super::FMC_BCR1::MBKEN;
-    pub use super::FMC_BCR1::MTYP;
-    pub use super::FMC_BCR1::MUXEN;
-    pub use super::FMC_BCR1::MWID;
-    pub use super::FMC_BCR1::WAITCFG;
-    pub use super::FMC_BCR1::WAITEN;
-    pub use super::FMC_BCR1::WAITPOL;
-    pub use super::FMC_BCR1::WFDIS;
-    pub use super::FMC_BCR1::WREN;
+pub mod BCR3 {
+    pub use super::BCR1::ASYNCWAIT;
+    pub use super::BCR1::BMAP;
+    pub use super::BCR1::BURSTEN;
+    pub use super::BCR1::CBURSTRW;
+    pub use super::BCR1::CCLKEN;
+    pub use super::BCR1::CPSIZE;
+    pub use super::BCR1::EXTMOD;
+    pub use super::BCR1::FACCEN;
+    pub use super::BCR1::FMCEN;
+    pub use super::BCR1::MBKEN;
+    pub use super::BCR1::MTYP;
+    pub use super::BCR1::MUXEN;
+    pub use super::BCR1::MWID;
+    pub use super::BCR1::WAITCFG;
+    pub use super::BCR1::WAITEN;
+    pub use super::BCR1::WAITPOL;
+    pub use super::BCR1::WFDIS;
+    pub use super::BCR1::WREN;
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-pub mod FMC_BTR3 {
-    pub use super::FMC_BTR1::ACCMOD;
-    pub use super::FMC_BTR1::ADDHLD;
-    pub use super::FMC_BTR1::ADDSET;
-    pub use super::FMC_BTR1::BUSTURN;
-    pub use super::FMC_BTR1::CLKDIV;
-    pub use super::FMC_BTR1::DATAST;
-    pub use super::FMC_BTR1::DATLAT;
+pub mod BTR3 {
+    pub use super::BTR1::ACCMOD;
+    pub use super::BTR1::ADDHLD;
+    pub use super::BTR1::ADDSET;
+    pub use super::BTR1::BUSTURN;
+    pub use super::BTR1::CLKDIV;
+    pub use super::BTR1::DATAST;
+    pub use super::BTR1::DATLAT;
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-pub mod FMC_BCR4 {
-    pub use super::FMC_BCR1::ASYNCWAIT;
-    pub use super::FMC_BCR1::BMAP;
-    pub use super::FMC_BCR1::BURSTEN;
-    pub use super::FMC_BCR1::CBURSTRW;
-    pub use super::FMC_BCR1::CCLKEN;
-    pub use super::FMC_BCR1::CPSIZE;
-    pub use super::FMC_BCR1::EXTMOD;
-    pub use super::FMC_BCR1::FACCEN;
-    pub use super::FMC_BCR1::FMCEN;
-    pub use super::FMC_BCR1::MBKEN;
-    pub use super::FMC_BCR1::MTYP;
-    pub use super::FMC_BCR1::MUXEN;
-    pub use super::FMC_BCR1::MWID;
-    pub use super::FMC_BCR1::WAITCFG;
-    pub use super::FMC_BCR1::WAITEN;
-    pub use super::FMC_BCR1::WAITPOL;
-    pub use super::FMC_BCR1::WFDIS;
-    pub use super::FMC_BCR1::WREN;
+pub mod BCR4 {
+    pub use super::BCR1::ASYNCWAIT;
+    pub use super::BCR1::BMAP;
+    pub use super::BCR1::BURSTEN;
+    pub use super::BCR1::CBURSTRW;
+    pub use super::BCR1::CCLKEN;
+    pub use super::BCR1::CPSIZE;
+    pub use super::BCR1::EXTMOD;
+    pub use super::BCR1::FACCEN;
+    pub use super::BCR1::FMCEN;
+    pub use super::BCR1::MBKEN;
+    pub use super::BCR1::MTYP;
+    pub use super::BCR1::MUXEN;
+    pub use super::BCR1::MWID;
+    pub use super::BCR1::WAITCFG;
+    pub use super::BCR1::WAITEN;
+    pub use super::BCR1::WAITPOL;
+    pub use super::BCR1::WFDIS;
+    pub use super::BCR1::WREN;
 }
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-pub mod FMC_BTR4 {
-    pub use super::FMC_BTR1::ACCMOD;
-    pub use super::FMC_BTR1::ADDHLD;
-    pub use super::FMC_BTR1::ADDSET;
-    pub use super::FMC_BTR1::BUSTURN;
-    pub use super::FMC_BTR1::CLKDIV;
-    pub use super::FMC_BTR1::DATAST;
-    pub use super::FMC_BTR1::DATLAT;
+pub mod BTR4 {
+    pub use super::BTR1::ACCMOD;
+    pub use super::BTR1::ADDHLD;
+    pub use super::BTR1::ADDSET;
+    pub use super::BTR1::BUSTURN;
+    pub use super::BTR1::CLKDIV;
+    pub use super::BTR1::DATAST;
+    pub use super::BTR1::DATLAT;
 }
 
 /// NAND Flash control registers
-pub mod FMC_PCR {
+pub mod PCR {
 
     /// Wait feature enable bit. This bit enables the Wait feature for the NAND Flash memory bank:
     pub mod PWAITEN {
@@ -566,7 +566,7 @@ pub mod FMC_PCR {
 }
 
 /// This register contains information about the FIFO status and interrupt. The FMC features a FIFO that is used when writing to memories to transfer up to 16 words of data.This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals other than the FMC, while the FMC is draining its FIFO into the memory. One of these register bits indicates the status of the FIFO, for ECC purposes.The ECC is calculated while the data are written to the memory. To read the correct ECC, the software must consequently wait until the FIFO is empty.
-pub mod FMC_SR {
+pub mod SR {
 
     /// Interrupt rising edge status The flag is set by hardware and reset by software. Note: If this bit is written by software to 1 it will be set.
     pub mod IRS {
@@ -668,7 +668,7 @@ pub mod FMC_SR {
 }
 
 /// The FMC_PMEM read/write register contains the timing information for NAND Flash memory bank. This information is used to access either the common memory space of the NAND Flash for command, address write access and data read/write access.
-pub mod FMC_PMEM {
+pub mod PMEM {
 
     /// Common memory x setup time These bits define the number of KCK_FMC (+1) clock cycles to set up the address before the command assertion (NWE, NOE), for NAND Flash read or write access to common memory space:
     pub mod MEMSET {
@@ -728,7 +728,7 @@ pub mod FMC_PMEM {
 }
 
 /// The FMC_PATT read/write register contains the timing information for NAND Flash memory bank. It is used for 8-bit accesses to the attribute memory space of the NAND Flash for the last address write access if the timing must differ from that of previous accesses (for Ready/Busy management, refer to Section20.8.5: NAND Flash prewait feature).
-pub mod FMC_PATT {
+pub mod PATT {
 
     /// Attribute memory setup time These bits define the number of KCK_FMC (+1) clock cycles to set up address before the command assertion (NWE, NOE), for NAND Flash read or write access to attribute memory space:
     pub mod ATTSET {
@@ -788,7 +788,7 @@ pub mod FMC_PATT {
 }
 
 /// This register contain the current error correction code value computed by the ECC computation modules of the FMC NAND controller. When the CPU reads/writes the data from a NAND Flash memory page at the correct address (refer to Section20.8.6: Computation of the error correction code (ECC) in NAND Flash memory), the data read/written from/to the NAND Flash memory are processed automatically by the ECC computation module. When X bytes have been read (according to the ECCPS field in the FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC registers. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and, to correct it otherwise. The FMC_ECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
-pub mod FMC_ECCR {
+pub mod ECCR {
 
     /// ECC result This field contains the value computed by the ECC computation logic. Table167 describes the contents of these bit fields.
     pub mod ECC {
@@ -806,7 +806,7 @@ pub mod FMC_ECCR {
 }
 
 /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-pub mod FMC_BWTR1 {
+pub mod BWTR1 {
 
     /// Address setup phase duration. These bits are written by software to define the duration of the address setup phase in KCK_FMC cycles (refer to Figure81 to Figure93), used in asynchronous accesses: ... Note: In synchronous accesses, this value is not used, the address setup phase is always 1 Flash clock period duration. In muxed mode, the minimum ADDSET value is 1.
     pub mod ADDSET {
@@ -880,34 +880,34 @@ pub mod FMC_BWTR1 {
 }
 
 /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-pub mod FMC_BWTR2 {
-    pub use super::FMC_BWTR1::ACCMOD;
-    pub use super::FMC_BWTR1::ADDHLD;
-    pub use super::FMC_BWTR1::ADDSET;
-    pub use super::FMC_BWTR1::BUSTURN;
-    pub use super::FMC_BWTR1::DATAST;
+pub mod BWTR2 {
+    pub use super::BWTR1::ACCMOD;
+    pub use super::BWTR1::ADDHLD;
+    pub use super::BWTR1::ADDSET;
+    pub use super::BWTR1::BUSTURN;
+    pub use super::BWTR1::DATAST;
 }
 
 /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-pub mod FMC_BWTR3 {
-    pub use super::FMC_BWTR1::ACCMOD;
-    pub use super::FMC_BWTR1::ADDHLD;
-    pub use super::FMC_BWTR1::ADDSET;
-    pub use super::FMC_BWTR1::BUSTURN;
-    pub use super::FMC_BWTR1::DATAST;
+pub mod BWTR3 {
+    pub use super::BWTR1::ACCMOD;
+    pub use super::BWTR1::ADDHLD;
+    pub use super::BWTR1::ADDSET;
+    pub use super::BWTR1::BUSTURN;
+    pub use super::BWTR1::DATAST;
 }
 
 /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-pub mod FMC_BWTR4 {
-    pub use super::FMC_BWTR1::ACCMOD;
-    pub use super::FMC_BWTR1::ADDHLD;
-    pub use super::FMC_BWTR1::ADDSET;
-    pub use super::FMC_BWTR1::BUSTURN;
-    pub use super::FMC_BWTR1::DATAST;
+pub mod BWTR4 {
+    pub use super::BWTR1::ACCMOD;
+    pub use super::BWTR1::ADDHLD;
+    pub use super::BWTR1::ADDSET;
+    pub use super::BWTR1::BUSTURN;
+    pub use super::BWTR1::DATAST;
 }
 
 /// This register contains the control parameters for each SDRAM memory bank
-pub mod FMC_SDCR1 {
+pub mod SDCR1 {
 
     /// Number of column address bits These bits define the number of bits of a column address.
     pub mod NC {
@@ -1037,20 +1037,20 @@ pub mod FMC_SDCR1 {
 }
 
 /// This register contains the control parameters for each SDRAM memory bank
-pub mod FMC_SDCR2 {
-    pub use super::FMC_SDCR1::CAS;
-    pub use super::FMC_SDCR1::MWID;
-    pub use super::FMC_SDCR1::NB;
-    pub use super::FMC_SDCR1::NC;
-    pub use super::FMC_SDCR1::NR;
-    pub use super::FMC_SDCR1::RBURST;
-    pub use super::FMC_SDCR1::RPIPE;
-    pub use super::FMC_SDCR1::SDCLK;
-    pub use super::FMC_SDCR1::WP;
+pub mod SDCR2 {
+    pub use super::SDCR1::CAS;
+    pub use super::SDCR1::MWID;
+    pub use super::SDCR1::NB;
+    pub use super::SDCR1::NC;
+    pub use super::SDCR1::NR;
+    pub use super::SDCR1::RBURST;
+    pub use super::SDCR1::RPIPE;
+    pub use super::SDCR1::SDCLK;
+    pub use super::SDCR1::WP;
 }
 
 /// This register contains the timing parameters of each SDRAM bank
-pub mod FMC_SDTR1 {
+pub mod SDTR1 {
 
     /// Load Mode Register to Active These bits define the delay between a Load Mode Register command and an Active or Refresh command in number of memory clock cycles. ....
     pub mod TMRD {
@@ -1152,18 +1152,18 @@ pub mod FMC_SDTR1 {
 }
 
 /// This register contains the timing parameters of each SDRAM bank
-pub mod FMC_SDTR2 {
-    pub use super::FMC_SDTR1::TMRD;
-    pub use super::FMC_SDTR1::TRAS;
-    pub use super::FMC_SDTR1::TRC;
-    pub use super::FMC_SDTR1::TRCD;
-    pub use super::FMC_SDTR1::TRP;
-    pub use super::FMC_SDTR1::TWR;
-    pub use super::FMC_SDTR1::TXSR;
+pub mod SDTR2 {
+    pub use super::SDTR1::TMRD;
+    pub use super::SDTR1::TRAS;
+    pub use super::SDTR1::TRC;
+    pub use super::SDTR1::TRCD;
+    pub use super::SDTR1::TRP;
+    pub use super::SDTR1::TWR;
+    pub use super::SDTR1::TXSR;
 }
 
 /// This register contains the command issued when the SDRAM device is accessed. This register is used to initialize the SDRAM device, and to activate the Self-refresh and the Power-down modes. As soon as the MODE field is written, the command will be issued only to one or to both SDRAM banks according to CTB1 and CTB2 command bits. This register is the same for both SDRAM banks.
-pub mod FMC_SDCMR {
+pub mod SDCMR {
 
     /// Command mode These bits define the command issued to the SDRAM device. Note: When a command is issued, at least one Command Target Bank bit ( CTB1 or CTB2) must be set otherwise the command will be ignored. Note: If two SDRAM banks are used, the Auto-refresh and PALL command must be issued simultaneously to the two devices with CTB1 and CTB2 bits set otherwise the command will be ignored. Note: If only one SDRAM bank is used and a command is issued with its associated CTB bit set, the other CTB bit of the unused bank must be kept to 0.
     pub mod MODE {
@@ -1237,7 +1237,7 @@ pub mod FMC_SDCMR {
 }
 
 /// This register sets the refresh rate in number of SDCLK clock cycles between the refresh cycles by configuring the Refresh Timer Count value.Examplewhere 64 ms is the SDRAM refresh period.The refresh rate must be increased by 20 SDRAM clock cycles (as in the above example) to obtain a safe margin if an internal refresh request occurs when a read request has been accepted. It corresponds to a COUNT value of 0000111000000 (448). This 13-bit field is loaded into a timer which is decremented using the SDRAM clock. This timer generates a refresh pulse when zero is reached. The COUNT value must be set at least to 41 SDRAM clock cycles.As soon as the FMC_SDRTR register is programmed, the timer starts counting. If the value programmed in the register is 0, no refresh is carried out. This register must not be reprogrammed after the initialization procedure to avoid modifying the refresh rate.Each time a refresh pulse is generated, this 13-bit COUNT field is reloaded into the counter.If a memory access is in progress, the Auto-refresh request is delayed. However, if the memory access and Auto-refresh requests are generated simultaneously, the Auto-refresh takes precedence. If the memory access occurs during a refresh operation, the request is buffered to be processed when the refresh is complete.This register is common to SDRAM bank 1 and bank 2.
-pub mod FMC_SDRTR {
+pub mod SDRTR {
 
     /// Clear Refresh error flag This bit is used to clear the Refresh Error Flag (RE) in the Status Register.
     pub mod CRE {
@@ -1283,7 +1283,7 @@ pub mod FMC_SDRTR {
 }
 
 /// SDRAM Status register
-pub mod FMC_SDSR {
+pub mod SDSR {
 
     /// Refresh error flag An interrupt is generated if REIE = 1 and RE = 1
     pub mod RE {
@@ -1329,116 +1329,116 @@ pub mod FMC_SDSR {
 }
 pub struct RegisterBlock {
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-    pub FMC_BCR1: RWRegister<u32>,
+    pub BCR1: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-    pub FMC_BTR1: RWRegister<u32>,
+    pub BTR1: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-    pub FMC_BCR2: RWRegister<u32>,
+    pub BCR2: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-    pub FMC_BTR2: RWRegister<u32>,
+    pub BTR2: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-    pub FMC_BCR3: RWRegister<u32>,
+    pub BCR3: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-    pub FMC_BTR3: RWRegister<u32>,
+    pub BTR3: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
-    pub FMC_BCR4: RWRegister<u32>,
+    pub BCR4: RWRegister<u32>,
 
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.If the EXTMOD bit is set in the FMC_BCRx register, then this register is partitioned for write and read access, that is, 2 registers are available: one to configure read accesses (this register) and one to configure write accesses (FMC_BWTRx registers).
-    pub FMC_BTR4: RWRegister<u32>,
+    pub BTR4: RWRegister<u32>,
 
     _reserved1: [u32; 24],
 
     /// NAND Flash control registers
-    pub FMC_PCR: RWRegister<u32>,
+    pub PCR: RWRegister<u32>,
 
     /// This register contains information about the FIFO status and interrupt. The FMC features a FIFO that is used when writing to memories to transfer up to 16 words of data.This is used to quickly write to the FIFO and free the AXI bus for transactions to peripherals other than the FMC, while the FMC is draining its FIFO into the memory. One of these register bits indicates the status of the FIFO, for ECC purposes.The ECC is calculated while the data are written to the memory. To read the correct ECC, the software must consequently wait until the FIFO is empty.
-    pub FMC_SR: RWRegister<u32>,
+    pub SR: RWRegister<u32>,
 
     /// The FMC_PMEM read/write register contains the timing information for NAND Flash memory bank. This information is used to access either the common memory space of the NAND Flash for command, address write access and data read/write access.
-    pub FMC_PMEM: RWRegister<u32>,
+    pub PMEM: RWRegister<u32>,
 
     /// The FMC_PATT read/write register contains the timing information for NAND Flash memory bank. It is used for 8-bit accesses to the attribute memory space of the NAND Flash for the last address write access if the timing must differ from that of previous accesses (for Ready/Busy management, refer to Section20.8.5: NAND Flash prewait feature).
-    pub FMC_PATT: RWRegister<u32>,
+    pub PATT: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// This register contain the current error correction code value computed by the ECC computation modules of the FMC NAND controller. When the CPU reads/writes the data from a NAND Flash memory page at the correct address (refer to Section20.8.6: Computation of the error correction code (ECC) in NAND Flash memory), the data read/written from/to the NAND Flash memory are processed automatically by the ECC computation module. When X bytes have been read (according to the ECCPS field in the FMC_PCR registers), the CPU must read the computed ECC value from the FMC_ECC registers. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and, to correct it otherwise. The FMC_ECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
-    pub FMC_ECCR: RORegister<u32>,
+    pub ECCR: RORegister<u32>,
 
     _reserved3: [u32; 27],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-    pub FMC_BWTR1: RWRegister<u32>,
+    pub BWTR1: RWRegister<u32>,
 
     _reserved4: [u32; 1],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-    pub FMC_BWTR2: RWRegister<u32>,
+    pub BWTR2: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-    pub FMC_BWTR3: RWRegister<u32>,
+    pub BWTR3: RWRegister<u32>,
 
     _reserved6: [u32; 1],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
-    pub FMC_BWTR4: RWRegister<u32>,
+    pub BWTR4: RWRegister<u32>,
 
     _reserved7: [u32; 8],
 
     /// This register contains the control parameters for each SDRAM memory bank
-    pub FMC_SDCR1: RWRegister<u32>,
+    pub SDCR1: RWRegister<u32>,
 
     /// This register contains the control parameters for each SDRAM memory bank
-    pub FMC_SDCR2: RWRegister<u32>,
+    pub SDCR2: RWRegister<u32>,
 
     /// This register contains the timing parameters of each SDRAM bank
-    pub FMC_SDTR1: RWRegister<u32>,
+    pub SDTR1: RWRegister<u32>,
 
     /// This register contains the timing parameters of each SDRAM bank
-    pub FMC_SDTR2: RWRegister<u32>,
+    pub SDTR2: RWRegister<u32>,
 
     /// This register contains the command issued when the SDRAM device is accessed. This register is used to initialize the SDRAM device, and to activate the Self-refresh and the Power-down modes. As soon as the MODE field is written, the command will be issued only to one or to both SDRAM banks according to CTB1 and CTB2 command bits. This register is the same for both SDRAM banks.
-    pub FMC_SDCMR: RWRegister<u32>,
+    pub SDCMR: RWRegister<u32>,
 
     /// This register sets the refresh rate in number of SDCLK clock cycles between the refresh cycles by configuring the Refresh Timer Count value.Examplewhere 64 ms is the SDRAM refresh period.The refresh rate must be increased by 20 SDRAM clock cycles (as in the above example) to obtain a safe margin if an internal refresh request occurs when a read request has been accepted. It corresponds to a COUNT value of 0000111000000 (448). This 13-bit field is loaded into a timer which is decremented using the SDRAM clock. This timer generates a refresh pulse when zero is reached. The COUNT value must be set at least to 41 SDRAM clock cycles.As soon as the FMC_SDRTR register is programmed, the timer starts counting. If the value programmed in the register is 0, no refresh is carried out. This register must not be reprogrammed after the initialization procedure to avoid modifying the refresh rate.Each time a refresh pulse is generated, this 13-bit COUNT field is reloaded into the counter.If a memory access is in progress, the Auto-refresh request is delayed. However, if the memory access and Auto-refresh requests are generated simultaneously, the Auto-refresh takes precedence. If the memory access occurs during a refresh operation, the request is buffered to be processed when the refresh is complete.This register is common to SDRAM bank 1 and bank 2.
-    pub FMC_SDRTR: RWRegister<u32>,
+    pub SDRTR: RWRegister<u32>,
 
     /// SDRAM Status register
-    pub FMC_SDSR: RORegister<u32>,
+    pub SDSR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub FMC_BCR1: u32,
-    pub FMC_BTR1: u32,
-    pub FMC_BCR2: u32,
-    pub FMC_BTR2: u32,
-    pub FMC_BCR3: u32,
-    pub FMC_BTR3: u32,
-    pub FMC_BCR4: u32,
-    pub FMC_BTR4: u32,
-    pub FMC_PCR: u32,
-    pub FMC_SR: u32,
-    pub FMC_PMEM: u32,
-    pub FMC_PATT: u32,
-    pub FMC_ECCR: u32,
-    pub FMC_BWTR1: u32,
-    pub FMC_BWTR2: u32,
-    pub FMC_BWTR3: u32,
-    pub FMC_BWTR4: u32,
-    pub FMC_SDCR1: u32,
-    pub FMC_SDCR2: u32,
-    pub FMC_SDTR1: u32,
-    pub FMC_SDTR2: u32,
-    pub FMC_SDCMR: u32,
-    pub FMC_SDRTR: u32,
-    pub FMC_SDSR: u32,
+    pub BCR1: u32,
+    pub BTR1: u32,
+    pub BCR2: u32,
+    pub BTR2: u32,
+    pub BCR3: u32,
+    pub BTR3: u32,
+    pub BCR4: u32,
+    pub BTR4: u32,
+    pub PCR: u32,
+    pub SR: u32,
+    pub PMEM: u32,
+    pub PATT: u32,
+    pub ECCR: u32,
+    pub BWTR1: u32,
+    pub BWTR2: u32,
+    pub BWTR3: u32,
+    pub BWTR4: u32,
+    pub SDCR1: u32,
+    pub SDCR2: u32,
+    pub SDTR1: u32,
+    pub SDTR2: u32,
+    pub SDCMR: u32,
+    pub SDRTR: u32,
+    pub SDSR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1472,30 +1472,30 @@ pub mod FMC {
 
     /// Reset values for each field in FMC
     pub const reset: ResetValues = ResetValues {
-        FMC_BCR1: 0x000030DB,
-        FMC_BTR1: 0x0FFFFFFF,
-        FMC_BCR2: 0x000030D2,
-        FMC_BTR2: 0x0FFFFFFF,
-        FMC_BCR3: 0x000030D2,
-        FMC_BTR3: 0x0FFFFFFF,
-        FMC_BCR4: 0x000030D2,
-        FMC_BTR4: 0x0FFFFFFF,
-        FMC_PCR: 0x00000018,
-        FMC_SR: 0x00000040,
-        FMC_PMEM: 0xFCFCFCFC,
-        FMC_PATT: 0xFCFCFCFC,
-        FMC_ECCR: 0x00000000,
-        FMC_BWTR1: 0x0FFFFFFF,
-        FMC_BWTR2: 0x0FFFFFFF,
-        FMC_BWTR3: 0x0FFFFFFF,
-        FMC_BWTR4: 0x0FFFFFFF,
-        FMC_SDCR1: 0x000002D0,
-        FMC_SDCR2: 0x000002D0,
-        FMC_SDTR1: 0x0FFFFFFF,
-        FMC_SDTR2: 0x0FFFFFFF,
-        FMC_SDCMR: 0x00000000,
-        FMC_SDRTR: 0x00000000,
-        FMC_SDSR: 0x00000000,
+        BCR1: 0x000030DB,
+        BTR1: 0x0FFFFFFF,
+        BCR2: 0x000030D2,
+        BTR2: 0x0FFFFFFF,
+        BCR3: 0x000030D2,
+        BTR3: 0x0FFFFFFF,
+        BCR4: 0x000030D2,
+        BTR4: 0x0FFFFFFF,
+        PCR: 0x00000018,
+        SR: 0x00000040,
+        PMEM: 0xFCFCFCFC,
+        PATT: 0xFCFCFCFC,
+        ECCR: 0x00000000,
+        BWTR1: 0x0FFFFFFF,
+        BWTR2: 0x0FFFFFFF,
+        BWTR3: 0x0FFFFFFF,
+        BWTR4: 0x0FFFFFFF,
+        SDCR1: 0x000002D0,
+        SDCR2: 0x000002D0,
+        SDTR1: 0x0FFFFFFF,
+        SDTR2: 0x0FFFFFFF,
+        SDCMR: 0x00000000,
+        SDRTR: 0x00000000,
+        SDSR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

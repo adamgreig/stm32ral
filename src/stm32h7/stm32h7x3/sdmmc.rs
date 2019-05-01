@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// SDMMC power control register
-pub mod SDMMC_POWER {
+pub mod POWER {
 
     /// SDMMC state control bits. These bits can only be written when the SDMMC is not in the power-on state (PWRCTRL?11). These bits are used to define the functional state of the SDMMC signals: Any further write will be ignored, PWRCTRL value will keep 11.
     pub mod PWRCTRL {
@@ -67,7 +67,7 @@ pub mod SDMMC_POWER {
 }
 
 /// The SDMMC_CLKCR register controls the SDMMC_CK output clock, the SDMMC_RX_CLK receive clock, and the bus width.
-pub mod SDMMC_CLKCR {
+pub mod CLKCR {
 
     /// Clock divide factor This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). This field defines the divide factor between the input clock (SDMMCCLK) and the output clock (SDMMC_CK): SDMMC_CK frequency = SDMMCCLK / \[2 * CLKDIV\]. 0xx: etc.. xxx: etc..
     pub mod CLKDIV {
@@ -183,7 +183,7 @@ pub mod SDMMC_CLKCR {
 }
 
 /// The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
-pub mod SDMMC_ARGR {
+pub mod ARGR {
 
     /// Command argument. These bits can only be written by firmware when CPSM is disabled (CPSMEN = 0). Command argument sent to a card as part of a command message. If a command contains an argument, it must be loaded into this register before writing a command to the command register.
     pub mod CMDARG {
@@ -201,7 +201,7 @@ pub mod SDMMC_ARGR {
 }
 
 /// The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
-pub mod SDMMC_CMDR {
+pub mod CMDR {
 
     /// Command index. This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). The command index is sent to the card as part of a command message.
     pub mod CMDINDEX {
@@ -359,7 +359,7 @@ pub mod SDMMC_CMDR {
 }
 
 /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-pub mod SDMMC_RESP1R {
+pub mod RESP1R {
 
     /// see Table 432
     pub mod CARDSTATUS1 {
@@ -377,7 +377,7 @@ pub mod SDMMC_RESP1R {
 }
 
 /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-pub mod SDMMC_RESP2R {
+pub mod RESP2R {
 
     /// see Table404.
     pub mod CARDSTATUS2 {
@@ -395,7 +395,7 @@ pub mod SDMMC_RESP2R {
 }
 
 /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-pub mod SDMMC_RESP3R {
+pub mod RESP3R {
 
     /// see Table404.
     pub mod CARDSTATUS3 {
@@ -413,7 +413,7 @@ pub mod SDMMC_RESP3R {
 }
 
 /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-pub mod SDMMC_RESP4R {
+pub mod RESP4R {
 
     /// see Table404.
     pub mod CARDSTATUS4 {
@@ -431,7 +431,7 @@ pub mod SDMMC_RESP4R {
 }
 
 /// The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
-pub mod SDMMC_DTIMER {
+pub mod DTIMER {
 
     /// Data and R1b busy timeout period This bit can only be written when the CPSM and DPSM are not active (CPSMACT = 0 and DPSMACT = 0). Data and R1b busy timeout period expressed in card bus clock periods.
     pub mod DATATIME {
@@ -449,7 +449,7 @@ pub mod SDMMC_DTIMER {
 }
 
 /// The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
-pub mod SDMMC_DLENR {
+pub mod DLENR {
 
     /// Data length value This register can only be written by firmware when DPSM is inactive (DPSMACT = 0). Number of data bytes to be transferred. When DDR = 1 DATALENGTH is truncated to a multiple of 2. (The last odd byte is not transfered) When DATALENGTH = 0 no data will be transfered, when requested by a CPSMEN and CMDTRANS = 1 also no command will be transfered. DTEN and CPSMEN are cleared to 0.
     pub mod DATALENGTH {
@@ -467,7 +467,7 @@ pub mod SDMMC_DLENR {
 }
 
 /// The SDMMC_DCTRL register control the data path state machine (DPSM).
-pub mod SDMMC_DCTRL {
+pub mod DCTRL {
 
     /// Data transfer enable bit This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0). This bit is cleared by Hardware when data transfer completes. This bit shall only be used to transfer data when no associated data transfer command is used, i.e. shall not be used with SD or eMMC cards.
     pub mod DTEN {
@@ -611,7 +611,7 @@ pub mod SDMMC_DCTRL {
 }
 
 /// The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
-pub mod SDMMC_DCNTR {
+pub mod DCNTR {
 
     /// Data count value When read, the number of remaining data bytes to be transferred is returned. Write has no effect.
     pub mod DATACOUNT {
@@ -629,7 +629,7 @@ pub mod SDMMC_DCNTR {
 }
 
 /// The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits \[29,21,11:0\]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits \[20:12\]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
-pub mod SDMMC_STAR {
+pub mod STAR {
 
     /// Command response received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
     pub mod CCRCFAIL {
@@ -1039,7 +1039,7 @@ pub mod SDMMC_STAR {
 }
 
 /// The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
-pub mod SDMMC_ICR {
+pub mod ICR {
 
     /// CCRCFAIL flag clear bit Set by software to clear the CCRCFAIL flag.
     pub mod CCRCFAILC {
@@ -1323,7 +1323,7 @@ pub mod SDMMC_ICR {
 }
 
 /// The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
-pub mod SDMMC_MASKR {
+pub mod MASKR {
 
     /// Command CRC fail interrupt enable Set and cleared by software to enable/disable interrupt caused by command CRC failure.
     pub mod CCRCFAILIE {
@@ -1649,7 +1649,7 @@ pub mod SDMMC_MASKR {
 }
 
 /// The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
-pub mod SDMMC_ACKTIMER {
+pub mod ACKTIMER {
 
     /// Boot acknowledgment timeout period This bit can only be written by firmware when CPSM is disabled (CPSMEN = 0). Boot acknowledgment timeout period expressed in card bus clock periods.
     pub mod ACKTIME {
@@ -1667,7 +1667,7 @@ pub mod SDMMC_ACKTIMER {
 }
 
 /// The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
-pub mod SDMMC_IDMACTRLR {
+pub mod IDMACTRLR {
 
     /// IDMA enable This bit can only be written by firmware when DPSM is inactive (DPSMACT = 0).
     pub mod IDMAEN {
@@ -1713,7 +1713,7 @@ pub mod SDMMC_IDMACTRLR {
 }
 
 /// The SDMMC_IDMABSIZER register contains the buffers size when in double buffer configuration.
-pub mod SDMMC_IDMABSIZER {
+pub mod IDMABSIZER {
 
     /// Number of transfers per buffer. This 8-bit value shall be multiplied by 8 to get the size of the buffer in 32-bit words and by 32 to get the size of the buffer in bytes. Example: IDMABNDT = 0x01: buffer size = 8 words = 32 bytes. These bits can only be written by firmware when DPSM is inactive (DPSMACT = 0).
     pub mod IDMABNDT {
@@ -1731,7 +1731,7 @@ pub mod SDMMC_IDMABSIZER {
 }
 
 /// The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
-pub mod SDMMC_IDMABASE0R {
+pub mod IDMABASE0R {
 
     /// Buffer 0 memory base address bits \[31:2\], shall be word aligned (bit \[1:0\] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 0 is inactive (IDMABACT = 1).
     pub mod IDMABASE0 {
@@ -1749,7 +1749,7 @@ pub mod SDMMC_IDMABASE0R {
 }
 
 /// The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
-pub mod SDMMC_IDMABASE1R {
+pub mod IDMABASE1R {
 
     /// Buffer 1 memory base address, shall be word aligned (bit \[1:0\] are always 0 and read only). This register can be written by firmware when DPSM is inactive (DPSMACT = 0), and can dynamically be written by firmware when DPSM active (DPSMACT = 1) and memory buffer 1 is inactive (IDMABACT = 0).
     pub mod IDMABASE1 {
@@ -1767,7 +1767,7 @@ pub mod SDMMC_IDMABASE1R {
 }
 
 /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
-pub mod SDMMC_FIFOR {
+pub mod FIFOR {
 
     /// Receive and transmit FIFO data This register can only be read or written by firmware when the DPSM is active (DPSMACT=1). The FIFO data occupies 16 entries of 32-bit words.
     pub mod FIFODATA {
@@ -1785,7 +1785,7 @@ pub mod SDMMC_FIFOR {
 }
 
 /// SDMMC IP version register
-pub mod SDMMC_VER {
+pub mod VER {
 
     /// IP minor revision number.
     pub mod MINREV {
@@ -1817,7 +1817,7 @@ pub mod SDMMC_VER {
 }
 
 /// SDMMC IP identification register
-pub mod SDMMC_ID {
+pub mod ID {
 
     /// SDMMC IP identification.
     pub mod IP_ID {
@@ -1835,7 +1835,7 @@ pub mod SDMMC_ID {
 }
 
 /// SDMMC command response register
-pub mod SDMMC_RESPCMDR {
+pub mod RESPCMDR {
 
     /// Response command index
     pub mod RESPCMD {
@@ -1853,108 +1853,108 @@ pub mod SDMMC_RESPCMDR {
 }
 pub struct RegisterBlock {
     /// SDMMC power control register
-    pub SDMMC_POWER: RWRegister<u32>,
+    pub POWER: RWRegister<u32>,
 
     /// The SDMMC_CLKCR register controls the SDMMC_CK output clock, the SDMMC_RX_CLK receive clock, and the bus width.
-    pub SDMMC_CLKCR: RWRegister<u32>,
+    pub CLKCR: RWRegister<u32>,
 
     /// The SDMMC_ARGR register contains a 32-bit command argument, which is sent to a card as part of a command message.
-    pub SDMMC_ARGR: RWRegister<u32>,
+    pub ARGR: RWRegister<u32>,
 
     /// The SDMMC_CMDR register contains the command index and command type bits. The command index is sent to a card as part of a command message. The command type bits control the command path state machine (CPSM).
-    pub SDMMC_CMDR: RWRegister<u32>,
+    pub CMDR: RWRegister<u32>,
 
     /// SDMMC command response register
-    pub SDMMC_RESPCMDR: RORegister<u32>,
+    pub RESPCMDR: RORegister<u32>,
 
     /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-    pub SDMMC_RESP1R: RORegister<u32>,
+    pub RESP1R: RORegister<u32>,
 
     /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-    pub SDMMC_RESP2R: RORegister<u32>,
+    pub RESP2R: RORegister<u32>,
 
     /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-    pub SDMMC_RESP3R: RORegister<u32>,
+    pub RESP3R: RORegister<u32>,
 
     /// The SDMMC_RESP1/2/3/4R registers contain the status of a card, which is part of the received response.
-    pub SDMMC_RESP4R: RORegister<u32>,
+    pub RESP4R: RORegister<u32>,
 
     /// The SDMMC_DTIMER register contains the data timeout period, in card bus clock periods. A counter loads the value from the SDMMC_DTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_R or Busy state. If the timer reaches 0 while the DPSM is in either of these states, the timeout status flag is set.
-    pub SDMMC_DTIMER: RWRegister<u32>,
+    pub DTIMER: RWRegister<u32>,
 
     /// The SDMMC_DLENR register contains the number of data bytes to be transferred. The value is loaded into the data counter when data transfer starts.
-    pub SDMMC_DLENR: RWRegister<u32>,
+    pub DLENR: RWRegister<u32>,
 
     /// The SDMMC_DCTRL register control the data path state machine (DPSM).
-    pub SDMMC_DCTRL: RWRegister<u32>,
+    pub DCTRL: RWRegister<u32>,
 
     /// The SDMMC_DCNTR register loads the value from the data length register (see SDMMC_DLENR) when the DPSM moves from the Idle state to the Wait_R or Wait_S state. As data is transferred, the counter decrements the value until it reaches 0. The DPSM then moves to the Idle state and when there has been no error, the data status end flag (DATAEND) is set.
-    pub SDMMC_DCNTR: RORegister<u32>,
+    pub DCNTR: RORegister<u32>,
 
     /// The SDMMC_STAR register is a read-only register. It contains two types of flag:Static flags (bits \[29,21,11:0\]): these bits remain asserted until they are cleared by writing to the SDMMC interrupt Clear register (see SDMMC_ICR)Dynamic flags (bits \[20:12\]): these bits change state depending on the state of the underlying logic (for example, FIFO full and empty flags are asserted and de-asserted as data while written to the FIFO)
-    pub SDMMC_STAR: RORegister<u32>,
+    pub STAR: RORegister<u32>,
 
     /// The SDMMC_ICR register is a write-only register. Writing a bit with 1 clears the corresponding bit in the SDMMC_STAR status register.
-    pub SDMMC_ICR: RWRegister<u32>,
+    pub ICR: RWRegister<u32>,
 
     /// The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
-    pub SDMMC_MASKR: RWRegister<u32>,
+    pub MASKR: RWRegister<u32>,
 
     /// The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
-    pub SDMMC_ACKTIMER: RWRegister<u32>,
+    pub ACKTIMER: RWRegister<u32>,
 
     _reserved1: [u32; 3],
 
     /// The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
-    pub SDMMC_IDMACTRLR: RWRegister<u32>,
+    pub IDMACTRLR: RWRegister<u32>,
 
     /// The SDMMC_IDMABSIZER register contains the buffers size when in double buffer configuration.
-    pub SDMMC_IDMABSIZER: RWRegister<u32>,
+    pub IDMABSIZER: RWRegister<u32>,
 
     /// The SDMMC_IDMABASE0R register contains the memory buffer base address in single buffer configuration and the buffer 0 base address in double buffer configuration.
-    pub SDMMC_IDMABASE0R: RWRegister<u32>,
+    pub IDMABASE0R: RWRegister<u32>,
 
     /// The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
-    pub SDMMC_IDMABASE1R: RWRegister<u32>,
+    pub IDMABASE1R: RWRegister<u32>,
 
     _reserved2: [u32; 8],
 
     /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
-    pub SDMMC_FIFOR: RWRegister<u32>,
+    pub FIFOR: RWRegister<u32>,
 
     _reserved3: [u32; 220],
 
     /// SDMMC IP version register
-    pub SDMMC_VER: RORegister<u32>,
+    pub VER: RORegister<u32>,
 
     /// SDMMC IP identification register
-    pub SDMMC_ID: RORegister<u32>,
+    pub ID: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub SDMMC_POWER: u32,
-    pub SDMMC_CLKCR: u32,
-    pub SDMMC_ARGR: u32,
-    pub SDMMC_CMDR: u32,
-    pub SDMMC_RESPCMDR: u32,
-    pub SDMMC_RESP1R: u32,
-    pub SDMMC_RESP2R: u32,
-    pub SDMMC_RESP3R: u32,
-    pub SDMMC_RESP4R: u32,
-    pub SDMMC_DTIMER: u32,
-    pub SDMMC_DLENR: u32,
-    pub SDMMC_DCTRL: u32,
-    pub SDMMC_DCNTR: u32,
-    pub SDMMC_STAR: u32,
-    pub SDMMC_ICR: u32,
-    pub SDMMC_MASKR: u32,
-    pub SDMMC_ACKTIMER: u32,
-    pub SDMMC_IDMACTRLR: u32,
-    pub SDMMC_IDMABSIZER: u32,
-    pub SDMMC_IDMABASE0R: u32,
-    pub SDMMC_IDMABASE1R: u32,
-    pub SDMMC_FIFOR: u32,
-    pub SDMMC_VER: u32,
-    pub SDMMC_ID: u32,
+    pub POWER: u32,
+    pub CLKCR: u32,
+    pub ARGR: u32,
+    pub CMDR: u32,
+    pub RESPCMDR: u32,
+    pub RESP1R: u32,
+    pub RESP2R: u32,
+    pub RESP3R: u32,
+    pub RESP4R: u32,
+    pub DTIMER: u32,
+    pub DLENR: u32,
+    pub DCTRL: u32,
+    pub DCNTR: u32,
+    pub STAR: u32,
+    pub ICR: u32,
+    pub MASKR: u32,
+    pub ACKTIMER: u32,
+    pub IDMACTRLR: u32,
+    pub IDMABSIZER: u32,
+    pub IDMABASE0R: u32,
+    pub IDMABASE1R: u32,
+    pub FIFOR: u32,
+    pub VER: u32,
+    pub ID: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1988,30 +1988,30 @@ pub mod SDMMC1 {
 
     /// Reset values for each field in SDMMC1
     pub const reset: ResetValues = ResetValues {
-        SDMMC_POWER: 0x00000000,
-        SDMMC_CLKCR: 0x00000000,
-        SDMMC_ARGR: 0x00000000,
-        SDMMC_CMDR: 0x00000000,
-        SDMMC_RESP1R: 0x00000000,
-        SDMMC_RESP2R: 0x00000000,
-        SDMMC_RESP3R: 0x00000000,
-        SDMMC_RESP4R: 0x00000000,
-        SDMMC_DTIMER: 0x00000000,
-        SDMMC_DLENR: 0x00000000,
-        SDMMC_DCTRL: 0x00000000,
-        SDMMC_DCNTR: 0x00000000,
-        SDMMC_STAR: 0x00000000,
-        SDMMC_ICR: 0x00000000,
-        SDMMC_MASKR: 0x00000000,
-        SDMMC_ACKTIMER: 0x00000000,
-        SDMMC_IDMACTRLR: 0x00000000,
-        SDMMC_IDMABSIZER: 0x00000000,
-        SDMMC_IDMABASE0R: 0x00000000,
-        SDMMC_IDMABASE1R: 0x00000000,
-        SDMMC_FIFOR: 0x00000000,
-        SDMMC_VER: 0x00000010,
-        SDMMC_ID: 0x00140022,
-        SDMMC_RESPCMDR: 0xA3C5DD01,
+        POWER: 0x00000000,
+        CLKCR: 0x00000000,
+        ARGR: 0x00000000,
+        CMDR: 0x00000000,
+        RESP1R: 0x00000000,
+        RESP2R: 0x00000000,
+        RESP3R: 0x00000000,
+        RESP4R: 0x00000000,
+        DTIMER: 0x00000000,
+        DLENR: 0x00000000,
+        DCTRL: 0x00000000,
+        DCNTR: 0x00000000,
+        STAR: 0x00000000,
+        ICR: 0x00000000,
+        MASKR: 0x00000000,
+        ACKTIMER: 0x00000000,
+        IDMACTRLR: 0x00000000,
+        IDMABSIZER: 0x00000000,
+        IDMABASE0R: 0x00000000,
+        IDMABASE1R: 0x00000000,
+        FIFOR: 0x00000000,
+        VER: 0x00000010,
+        ID: 0x00140022,
+        RESPCMDR: 0xA3C5DD01,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -2093,30 +2093,30 @@ pub mod SDMMC2 {
 
     /// Reset values for each field in SDMMC2
     pub const reset: ResetValues = ResetValues {
-        SDMMC_POWER: 0x00000000,
-        SDMMC_CLKCR: 0x00000000,
-        SDMMC_ARGR: 0x00000000,
-        SDMMC_CMDR: 0x00000000,
-        SDMMC_RESP1R: 0x00000000,
-        SDMMC_RESP2R: 0x00000000,
-        SDMMC_RESP3R: 0x00000000,
-        SDMMC_RESP4R: 0x00000000,
-        SDMMC_DTIMER: 0x00000000,
-        SDMMC_DLENR: 0x00000000,
-        SDMMC_DCTRL: 0x00000000,
-        SDMMC_DCNTR: 0x00000000,
-        SDMMC_STAR: 0x00000000,
-        SDMMC_ICR: 0x00000000,
-        SDMMC_MASKR: 0x00000000,
-        SDMMC_ACKTIMER: 0x00000000,
-        SDMMC_IDMACTRLR: 0x00000000,
-        SDMMC_IDMABSIZER: 0x00000000,
-        SDMMC_IDMABASE0R: 0x00000000,
-        SDMMC_IDMABASE1R: 0x00000000,
-        SDMMC_FIFOR: 0x00000000,
-        SDMMC_VER: 0x00000010,
-        SDMMC_ID: 0x00140022,
-        SDMMC_RESPCMDR: 0xA3C5DD01,
+        POWER: 0x00000000,
+        CLKCR: 0x00000000,
+        ARGR: 0x00000000,
+        CMDR: 0x00000000,
+        RESP1R: 0x00000000,
+        RESP2R: 0x00000000,
+        RESP3R: 0x00000000,
+        RESP4R: 0x00000000,
+        DTIMER: 0x00000000,
+        DLENR: 0x00000000,
+        DCTRL: 0x00000000,
+        DCNTR: 0x00000000,
+        STAR: 0x00000000,
+        ICR: 0x00000000,
+        MASKR: 0x00000000,
+        ACKTIMER: 0x00000000,
+        IDMACTRLR: 0x00000000,
+        IDMABSIZER: 0x00000000,
+        IDMABASE0R: 0x00000000,
+        IDMABASE1R: 0x00000000,
+        FIFOR: 0x00000000,
+        VER: 0x00000010,
+        ID: 0x00140022,
+        RESPCMDR: 0xA3C5DD01,
     };
 
     #[cfg(not(feature = "nosync"))]

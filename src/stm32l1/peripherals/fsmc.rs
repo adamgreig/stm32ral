@@ -208,6 +208,60 @@ pub mod BCR1 {
     }
 }
 
+/// BCR1
+pub mod BCR2 {
+    pub use super::BCR1::ASYNCWAIT;
+    pub use super::BCR1::BURSTEN;
+    pub use super::BCR1::CBURSTRW;
+    pub use super::BCR1::EXTMOD;
+    pub use super::BCR1::FACCEN;
+    pub use super::BCR1::MBKEN;
+    pub use super::BCR1::MTYP;
+    pub use super::BCR1::MUXEN;
+    pub use super::BCR1::MWID;
+    pub use super::BCR1::WAITCFG;
+    pub use super::BCR1::WAITEN;
+    pub use super::BCR1::WAITPOL;
+    pub use super::BCR1::WRAPMOD;
+    pub use super::BCR1::WREN;
+}
+
+/// BCR1
+pub mod BCR3 {
+    pub use super::BCR1::ASYNCWAIT;
+    pub use super::BCR1::BURSTEN;
+    pub use super::BCR1::CBURSTRW;
+    pub use super::BCR1::EXTMOD;
+    pub use super::BCR1::FACCEN;
+    pub use super::BCR1::MBKEN;
+    pub use super::BCR1::MTYP;
+    pub use super::BCR1::MUXEN;
+    pub use super::BCR1::MWID;
+    pub use super::BCR1::WAITCFG;
+    pub use super::BCR1::WAITEN;
+    pub use super::BCR1::WAITPOL;
+    pub use super::BCR1::WRAPMOD;
+    pub use super::BCR1::WREN;
+}
+
+/// BCR1
+pub mod BCR4 {
+    pub use super::BCR1::ASYNCWAIT;
+    pub use super::BCR1::BURSTEN;
+    pub use super::BCR1::CBURSTRW;
+    pub use super::BCR1::EXTMOD;
+    pub use super::BCR1::FACCEN;
+    pub use super::BCR1::MBKEN;
+    pub use super::BCR1::MTYP;
+    pub use super::BCR1::MUXEN;
+    pub use super::BCR1::MWID;
+    pub use super::BCR1::WAITCFG;
+    pub use super::BCR1::WAITEN;
+    pub use super::BCR1::WAITPOL;
+    pub use super::BCR1::WRAPMOD;
+    pub use super::BCR1::WREN;
+}
+
 /// BTR1
 pub mod BTR1 {
 
@@ -310,25 +364,7 @@ pub mod BTR1 {
     }
 }
 
-/// BCR2
-pub mod BCR2 {
-    pub use super::BCR1::ASYNCWAIT;
-    pub use super::BCR1::BURSTEN;
-    pub use super::BCR1::CBURSTRW;
-    pub use super::BCR1::EXTMOD;
-    pub use super::BCR1::FACCEN;
-    pub use super::BCR1::MBKEN;
-    pub use super::BCR1::MTYP;
-    pub use super::BCR1::MUXEN;
-    pub use super::BCR1::MWID;
-    pub use super::BCR1::WAITCFG;
-    pub use super::BCR1::WAITEN;
-    pub use super::BCR1::WAITPOL;
-    pub use super::BCR1::WRAPMOD;
-    pub use super::BCR1::WREN;
-}
-
-/// BTR2
+/// BTR1
 pub mod BTR2 {
     pub use super::BTR1::ACCMOD;
     pub use super::BTR1::ADDHLD;
@@ -339,25 +375,7 @@ pub mod BTR2 {
     pub use super::BTR1::DATLAT;
 }
 
-/// BCR3
-pub mod BCR3 {
-    pub use super::BCR1::ASYNCWAIT;
-    pub use super::BCR1::BURSTEN;
-    pub use super::BCR1::CBURSTRW;
-    pub use super::BCR1::EXTMOD;
-    pub use super::BCR1::FACCEN;
-    pub use super::BCR1::MBKEN;
-    pub use super::BCR1::MTYP;
-    pub use super::BCR1::MUXEN;
-    pub use super::BCR1::MWID;
-    pub use super::BCR1::WAITCFG;
-    pub use super::BCR1::WAITEN;
-    pub use super::BCR1::WAITPOL;
-    pub use super::BCR1::WRAPMOD;
-    pub use super::BCR1::WREN;
-}
-
-/// BTR3
+/// BTR1
 pub mod BTR3 {
     pub use super::BTR1::ACCMOD;
     pub use super::BTR1::ADDHLD;
@@ -368,25 +386,7 @@ pub mod BTR3 {
     pub use super::BTR1::DATLAT;
 }
 
-/// BCR4
-pub mod BCR4 {
-    pub use super::BCR1::ASYNCWAIT;
-    pub use super::BCR1::BURSTEN;
-    pub use super::BCR1::CBURSTRW;
-    pub use super::BCR1::EXTMOD;
-    pub use super::BCR1::FACCEN;
-    pub use super::BCR1::MBKEN;
-    pub use super::BCR1::MTYP;
-    pub use super::BCR1::MUXEN;
-    pub use super::BCR1::MWID;
-    pub use super::BCR1::WAITCFG;
-    pub use super::BCR1::WAITEN;
-    pub use super::BCR1::WAITPOL;
-    pub use super::BCR1::WRAPMOD;
-    pub use super::BCR1::WREN;
-}
-
-/// BTR4
+/// BTR1
 pub mod BTR4 {
     pub use super::BTR1::ACCMOD;
     pub use super::BTR1::ADDHLD;
@@ -485,7 +485,7 @@ pub mod BWTR1 {
     }
 }
 
-/// BWTR2
+/// BWTR1
 pub mod BWTR2 {
     pub use super::BWTR1::ACCMOD;
     pub use super::BWTR1::ADDHLD;
@@ -495,7 +495,7 @@ pub mod BWTR2 {
     pub use super::BWTR1::DATLAT;
 }
 
-/// BWTR3
+/// BWTR1
 pub mod BWTR3 {
     pub use super::BWTR1::ACCMOD;
     pub use super::BWTR1::ADDHLD;
@@ -505,7 +505,7 @@ pub mod BWTR3 {
     pub use super::BWTR1::DATLAT;
 }
 
-/// BWTR4
+/// BWTR1
 pub mod BWTR4 {
     pub use super::BWTR1::ACCMOD;
     pub use super::BWTR1::ADDHLD;
@@ -521,22 +521,22 @@ pub struct RegisterBlock {
     /// BTR1
     pub BTR1: RWRegister<u32>,
 
-    /// BCR2
+    /// BCR1
     pub BCR2: RWRegister<u32>,
 
-    /// BTR2
+    /// BTR1
     pub BTR2: RWRegister<u32>,
 
-    /// BCR3
+    /// BCR1
     pub BCR3: RWRegister<u32>,
 
-    /// BTR3
+    /// BTR1
     pub BTR3: RWRegister<u32>,
 
-    /// BCR4
+    /// BCR1
     pub BCR4: RWRegister<u32>,
 
-    /// BTR4
+    /// BTR1
     pub BTR4: RWRegister<u32>,
 
     _reserved1: [u32; 57],
@@ -546,17 +546,17 @@ pub struct RegisterBlock {
 
     _reserved2: [u32; 1],
 
-    /// BWTR2
+    /// BWTR1
     pub BWTR2: RWRegister<u32>,
 
     _reserved3: [u32; 1],
 
-    /// BWTR3
+    /// BWTR1
     pub BWTR3: RWRegister<u32>,
 
     _reserved4: [u32; 1],
 
-    /// BWTR4
+    /// BWTR1
     pub BWTR4: RWRegister<u32>,
 }
 pub struct ResetValues {

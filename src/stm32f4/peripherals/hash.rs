@@ -206,7 +206,7 @@ pub mod STR {
 pub mod HR0 {
 
     /// H0
-    pub mod H0 {
+    pub mod H {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -222,74 +222,22 @@ pub mod HR0 {
 
 /// digest registers
 pub mod HR1 {
-
-    /// H1
-    pub mod H1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 
 /// digest registers
 pub mod HR2 {
-
-    /// H2
-    pub mod H2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 
 /// digest registers
 pub mod HR3 {
-
-    /// H3
-    pub mod H3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 
 /// digest registers
 pub mod HR4 {
-
-    /// H4
-    pub mod H4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 
 /// interrupt enable register
@@ -388,7 +336,7 @@ pub mod SR {
 pub mod CSR0 {
 
     /// CSR0
-    pub mod CSR0 {
+    pub mod CSR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -404,1035 +352,307 @@ pub mod CSR0 {
 
 /// context swap registers
 pub mod CSR1 {
-
-    /// CSR1
-    pub mod CSR1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR2 {
-
-    /// CSR2
-    pub mod CSR2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR3 {
-
-    /// CSR3
-    pub mod CSR3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR4 {
-
-    /// CSR4
-    pub mod CSR4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR5 {
-
-    /// CSR5
-    pub mod CSR5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR6 {
-
-    /// CSR6
-    pub mod CSR6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR7 {
-
-    /// CSR7
-    pub mod CSR7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR8 {
-
-    /// CSR8
-    pub mod CSR8 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR9 {
-
-    /// CSR9
-    pub mod CSR9 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR10 {
-
-    /// CSR10
-    pub mod CSR10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR11 {
-
-    /// CSR11
-    pub mod CSR11 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR12 {
-
-    /// CSR12
-    pub mod CSR12 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR13 {
-
-    /// CSR13
-    pub mod CSR13 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR14 {
-
-    /// CSR14
-    pub mod CSR14 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR15 {
-
-    /// CSR15
-    pub mod CSR15 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR16 {
-
-    /// CSR16
-    pub mod CSR16 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR17 {
-
-    /// CSR17
-    pub mod CSR17 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR18 {
-
-    /// CSR18
-    pub mod CSR18 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR19 {
-
-    /// CSR19
-    pub mod CSR19 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR20 {
-
-    /// CSR20
-    pub mod CSR20 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR21 {
-
-    /// CSR21
-    pub mod CSR21 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR22 {
-
-    /// CSR22
-    pub mod CSR22 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR23 {
-
-    /// CSR23
-    pub mod CSR23 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR24 {
-
-    /// CSR24
-    pub mod CSR24 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR25 {
-
-    /// CSR25
-    pub mod CSR25 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR26 {
-
-    /// CSR26
-    pub mod CSR26 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR27 {
-
-    /// CSR27
-    pub mod CSR27 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR28 {
-
-    /// CSR28
-    pub mod CSR28 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR29 {
-
-    /// CSR29
-    pub mod CSR29 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR30 {
-
-    /// CSR30
-    pub mod CSR30 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR31 {
-
-    /// CSR31
-    pub mod CSR31 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR32 {
-
-    /// CSR32
-    pub mod CSR32 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR33 {
-
-    /// CSR33
-    pub mod CSR33 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR34 {
-
-    /// CSR34
-    pub mod CSR34 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR35 {
-
-    /// CSR35
-    pub mod CSR35 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR36 {
-
-    /// CSR36
-    pub mod CSR36 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR37 {
-
-    /// CSR37
-    pub mod CSR37 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR38 {
-
-    /// CSR38
-    pub mod CSR38 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR39 {
-
-    /// CSR39
-    pub mod CSR39 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR40 {
-
-    /// CSR40
-    pub mod CSR40 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR41 {
-
-    /// CSR41
-    pub mod CSR41 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR42 {
-
-    /// CSR42
-    pub mod CSR42 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR43 {
-
-    /// CSR43
-    pub mod CSR43 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR44 {
-
-    /// CSR44
-    pub mod CSR44 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR45 {
-
-    /// CSR45
-    pub mod CSR45 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR46 {
-
-    /// CSR46
-    pub mod CSR46 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR47 {
-
-    /// CSR47
-    pub mod CSR47 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR48 {
-
-    /// CSR48
-    pub mod CSR48 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR49 {
-
-    /// CSR49
-    pub mod CSR49 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR50 {
-
-    /// CSR50
-    pub mod CSR50 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR51 {
-
-    /// CSR51
-    pub mod CSR51 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR52 {
-
-    /// CSR52
-    pub mod CSR52 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// context swap registers
 pub mod CSR53 {
-
-    /// CSR53
-    pub mod CSR53 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CSR0::CSR;
 }
 
 /// HASH digest register
 pub mod HASH_HR0 {
-    pub use super::HR0::H0;
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR1 {
-    pub use super::HR1::H1;
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR2 {
-    pub use super::HR2::H2;
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR3 {
-    pub use super::HR3::H3;
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR4 {
-    pub use super::HR4::H4;
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR5 {
-
-    /// H5
-    pub mod H5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR6 {
-
-    /// H6
-    pub mod H6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 
-/// read-only
+/// HASH digest register
 pub mod HASH_HR7 {
-
-    /// H7
-    pub mod H7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::HR0::H;
 }
 pub struct RegisterBlock {
     /// control register
@@ -1634,25 +854,25 @@ pub struct RegisterBlock {
     /// HASH digest register
     pub HASH_HR0: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR1: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR2: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR3: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR4: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR5: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR6: RORegister<u32>,
 
-    /// read-only
+    /// HASH digest register
     pub HASH_HR7: RORegister<u32>,
 }
 pub struct ResetValues {

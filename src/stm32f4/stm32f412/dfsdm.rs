@@ -6,8 +6,177 @@
 use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
+/// control register 2
+pub mod DFSDM0_CR2 {
+
+    /// Analog watchdog channel selection
+    pub mod AWDCH {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Extremes detector channel selection
+    pub mod EXCH {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clock absence interrupt enable
+    pub mod CKABIE {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Short-circuit detector interrupt enable
+    pub mod SCDIE {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Analog watchdog interrupt enable
+    pub mod AWDIE {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Regular data overrun interrupt enable
+    pub mod ROVRIE {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Injected data overrun interrupt enable
+    pub mod JOVRIE {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Regular end of conversion interrupt enable
+    pub mod REOCIE {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Injected end of conversion interrupt enable
+    pub mod JEOCIE {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// control register 2
+pub mod DFSDM1_CR2 {
+    pub use super::DFSDM0_CR2::AWDCH;
+    pub use super::DFSDM0_CR2::AWDIE;
+    pub use super::DFSDM0_CR2::CKABIE;
+    pub use super::DFSDM0_CR2::EXCH;
+    pub use super::DFSDM0_CR2::JEOCIE;
+    pub use super::DFSDM0_CR2::JOVRIE;
+    pub use super::DFSDM0_CR2::REOCIE;
+    pub use super::DFSDM0_CR2::ROVRIE;
+    pub use super::DFSDM0_CR2::SCDIE;
+}
+
+/// control register 2
+pub mod DFSDM2_CR2 {
+    pub use super::DFSDM0_CR2::AWDCH;
+    pub use super::DFSDM0_CR2::AWDIE;
+    pub use super::DFSDM0_CR2::CKABIE;
+    pub use super::DFSDM0_CR2::EXCH;
+    pub use super::DFSDM0_CR2::JEOCIE;
+    pub use super::DFSDM0_CR2::JOVRIE;
+    pub use super::DFSDM0_CR2::REOCIE;
+    pub use super::DFSDM0_CR2::ROVRIE;
+    pub use super::DFSDM0_CR2::SCDIE;
+}
+
+/// control register 2
+pub mod DFSDM3_CR2 {
+    pub use super::DFSDM0_CR2::AWDCH;
+    pub use super::DFSDM0_CR2::AWDIE;
+    pub use super::DFSDM0_CR2::CKABIE;
+    pub use super::DFSDM0_CR2::EXCH;
+    pub use super::DFSDM0_CR2::JEOCIE;
+    pub use super::DFSDM0_CR2::JOVRIE;
+    pub use super::DFSDM0_CR2::REOCIE;
+    pub use super::DFSDM0_CR2::ROVRIE;
+    pub use super::DFSDM0_CR2::SCDIE;
+}
+
 /// channel configuration y register
-pub mod CHCFG0R1 {
+pub mod CFGR10 {
 
     /// DFSDMEN
     pub mod DFSDMEN {
@@ -165,7 +334,7 @@ pub mod CHCFG0R1 {
 }
 
 /// channel configuration y register
-pub mod CHCFG0R2 {
+pub mod CFGR20 {
 
     /// OFFSET
     pub mod OFFSET {
@@ -197,7 +366,7 @@ pub mod CHCFG0R2 {
 }
 
 /// analog watchdog and short-circuit detector register
-pub mod AWSCD0R {
+pub mod AWSCDR0 {
 
     /// AWFORD
     pub mod AWFORD {
@@ -257,7 +426,7 @@ pub mod AWSCD0R {
 }
 
 /// channel watchdog filter data register
-pub mod CHWDAT0R {
+pub mod WDATR0 {
 
     /// WDATA
     pub mod WDATA {
@@ -275,7 +444,7 @@ pub mod CHWDAT0R {
 }
 
 /// channel data input register
-pub mod CHDATIN0R {
+pub mod DATINR0 {
 
     /// INDAT1
     pub mod INDAT1 {
@@ -306,371 +475,288 @@ pub mod CHDATIN0R {
     }
 }
 
-/// CHCFG1R1
-pub mod CHCFG1R1 {
-
-    /// DATPACK
-    pub mod DATPACK {
-        /// Offset (14 bits)
-        pub const offset: u32 = 14;
-        /// Mask (2 bits: 0b11 << 14)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATMPX
-    pub mod DATMPX {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (2 bits: 0b11 << 12)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CHINSEL
-    pub mod CHINSEL {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CHEN
-    pub mod CHEN {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CKABEN
-    pub mod CKABEN {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SCDEN
-    pub mod SCDEN {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SPICKSEL
-    pub mod SPICKSEL {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (2 bits: 0b11 << 2)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SITP
-    pub mod SITP {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// channel configuration y register
+pub mod CFGR11 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG1R2
-pub mod CHCFG1R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR21 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD1R
-pub mod AWSCD1R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR1 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT1R
-pub mod CHWDAT1R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR1 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN1R
-pub mod CHDATIN1R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR1 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
-/// CHCFG2R1
-pub mod CHCFG2R1 {
-    pub use super::CHCFG1R1::CHEN;
-    pub use super::CHCFG1R1::CHINSEL;
-    pub use super::CHCFG1R1::CKABEN;
-    pub use super::CHCFG1R1::DATMPX;
-    pub use super::CHCFG1R1::DATPACK;
-    pub use super::CHCFG1R1::SCDEN;
-    pub use super::CHCFG1R1::SITP;
-    pub use super::CHCFG1R1::SPICKSEL;
+/// channel configuration y register
+pub mod CFGR12 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG2R2
-pub mod CHCFG2R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR22 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD2R
-pub mod AWSCD2R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR2 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT2R
-pub mod CHWDAT2R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR2 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN2R
-pub mod CHDATIN2R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR2 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
-/// CHCFG3R1
-pub mod CHCFG3R1 {
-    pub use super::CHCFG1R1::CHEN;
-    pub use super::CHCFG1R1::CHINSEL;
-    pub use super::CHCFG1R1::CKABEN;
-    pub use super::CHCFG1R1::DATMPX;
-    pub use super::CHCFG1R1::DATPACK;
-    pub use super::CHCFG1R1::SCDEN;
-    pub use super::CHCFG1R1::SITP;
-    pub use super::CHCFG1R1::SPICKSEL;
+/// channel configuration y register
+pub mod CFGR13 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG3R2
-pub mod CHCFG3R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR23 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD3R
-pub mod AWSCD3R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR3 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT3R
-pub mod CHWDAT3R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR3 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN3R
-pub mod CHDATIN3R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR3 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
-/// CHCFG4R1
-pub mod CHCFG4R1 {
-    pub use super::CHCFG1R1::CHEN;
-    pub use super::CHCFG1R1::CHINSEL;
-    pub use super::CHCFG1R1::CKABEN;
-    pub use super::CHCFG1R1::DATMPX;
-    pub use super::CHCFG1R1::DATPACK;
-    pub use super::CHCFG1R1::SCDEN;
-    pub use super::CHCFG1R1::SITP;
-    pub use super::CHCFG1R1::SPICKSEL;
+/// channel configuration y register
+pub mod CFGR14 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG4R2
-pub mod CHCFG4R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR24 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD4R
-pub mod AWSCD4R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR4 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT4R
-pub mod CHWDAT4R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR4 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN4R
-pub mod CHDATIN4R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR4 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
-/// CHCFG5R1
-pub mod CHCFG5R1 {
-    pub use super::CHCFG1R1::CHEN;
-    pub use super::CHCFG1R1::CHINSEL;
-    pub use super::CHCFG1R1::CKABEN;
-    pub use super::CHCFG1R1::DATMPX;
-    pub use super::CHCFG1R1::DATPACK;
-    pub use super::CHCFG1R1::SCDEN;
-    pub use super::CHCFG1R1::SITP;
-    pub use super::CHCFG1R1::SPICKSEL;
+/// channel configuration y register
+pub mod CFGR15 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG5R2
-pub mod CHCFG5R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR25 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD5R
-pub mod AWSCD5R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR5 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT5R
-pub mod CHWDAT5R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR5 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN5R
-pub mod CHDATIN5R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR5 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
-/// CHCFG6R1
-pub mod CHCFG6R1 {
-    pub use super::CHCFG1R1::CHEN;
-    pub use super::CHCFG1R1::CHINSEL;
-    pub use super::CHCFG1R1::CKABEN;
-    pub use super::CHCFG1R1::DATMPX;
-    pub use super::CHCFG1R1::DATPACK;
-    pub use super::CHCFG1R1::SCDEN;
-    pub use super::CHCFG1R1::SITP;
-    pub use super::CHCFG1R1::SPICKSEL;
+/// channel configuration y register
+pub mod CFGR16 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG6R2
-pub mod CHCFG6R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR26 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD6R
-pub mod AWSCD6R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR6 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT6R
-pub mod CHWDAT6R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR6 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN6R
-pub mod CHDATIN6R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR6 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
-/// CHCFG7R1
-pub mod CHCFG7R1 {
-    pub use super::CHCFG1R1::CHEN;
-    pub use super::CHCFG1R1::CHINSEL;
-    pub use super::CHCFG1R1::CKABEN;
-    pub use super::CHCFG1R1::DATMPX;
-    pub use super::CHCFG1R1::DATPACK;
-    pub use super::CHCFG1R1::SCDEN;
-    pub use super::CHCFG1R1::SITP;
-    pub use super::CHCFG1R1::SPICKSEL;
+/// channel configuration y register
+pub mod CFGR17 {
+    pub use super::CFGR10::CHEN;
+    pub use super::CFGR10::CHINSEL;
+    pub use super::CFGR10::CKABEN;
+    pub use super::CFGR10::CKOUTDIV;
+    pub use super::CFGR10::CKOUTSRC;
+    pub use super::CFGR10::DATMPX;
+    pub use super::CFGR10::DATPACK;
+    pub use super::CFGR10::DFSDMEN;
+    pub use super::CFGR10::SCDEN;
+    pub use super::CFGR10::SITP;
+    pub use super::CFGR10::SPICKSEL;
 }
 
-/// CHCFG7R2
-pub mod CHCFG7R2 {
-    pub use super::CHCFG0R2::DTRBS;
-    pub use super::CHCFG0R2::OFFSET;
+/// channel configuration y register
+pub mod CFGR27 {
+    pub use super::CFGR20::DTRBS;
+    pub use super::CFGR20::OFFSET;
 }
 
-/// AWSCD7R
-pub mod AWSCD7R {
-    pub use super::AWSCD0R::AWFORD;
-    pub use super::AWSCD0R::AWFOSR;
-    pub use super::AWSCD0R::BKSCD;
-    pub use super::AWSCD0R::SCDT;
+/// analog watchdog and short-circuit detector register
+pub mod AWSCDR7 {
+    pub use super::AWSCDR0::AWFORD;
+    pub use super::AWSCDR0::AWFOSR;
+    pub use super::AWSCDR0::BKSCD;
+    pub use super::AWSCDR0::SCDT;
 }
 
-/// CHWDAT7R
-pub mod CHWDAT7R {
-    pub use super::CHWDAT0R::WDATA;
+/// channel watchdog filter data register
+pub mod WDATR7 {
+    pub use super::WDATR0::WDATA;
 }
 
-/// CHDATIN7R
-pub mod CHDATIN7R {
-    pub use super::CHDATIN0R::INDAT0;
-    pub use super::CHDATIN0R::INDAT1;
+/// channel data input register
+pub mod DATINR7 {
+    pub use super::DATINR0::INDAT0;
+    pub use super::DATINR0::INDAT1;
 }
 
 /// control register 1
-pub mod DFSDM0_CR1 {
+pub mod CR20 {
 
     /// Analog watchdog fast mode select
     pub mod AWFSEL {
@@ -869,138 +955,8 @@ pub mod DFSDM0_CR1 {
     }
 }
 
-/// control register 2
-pub mod DFSDM0_CR2 {
-
-    /// Analog watchdog channel selection
-    pub mod AWDCH {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Extremes detector channel selection
-    pub mod EXCH {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clock absence interrupt enable
-    pub mod CKABIE {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Short-circuit detector interrupt enable
-    pub mod SCDIE {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Analog watchdog interrupt enable
-    pub mod AWDIE {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Regular data overrun interrupt enable
-    pub mod ROVRIE {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Injected data overrun interrupt enable
-    pub mod JOVRIE {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Regular end of conversion interrupt enable
-    pub mod REOCIE {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Injected end of conversion interrupt enable
-    pub mod JEOCIE {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// interrupt and status register
-pub mod DFSDM0_ISR {
+pub mod ISR0 {
 
     /// short-circuit detector flag
     pub mod SCDF {
@@ -1130,7 +1086,7 @@ pub mod DFSDM0_ISR {
 }
 
 /// interrupt flag clear register
-pub mod DFSDM0_ICR {
+pub mod ICR0 {
 
     /// Clear the short-circuit detector flag
     pub mod CLRSCDF {
@@ -1190,7 +1146,7 @@ pub mod DFSDM0_ICR {
 }
 
 /// injected channel group selection register
-pub mod DFSDM0_JCHGR {
+pub mod JCHGR0 {
 
     /// Injected channel group selection
     pub mod JCHG {
@@ -1208,7 +1164,7 @@ pub mod DFSDM0_JCHGR {
 }
 
 /// filter control register
-pub mod DFSDM0_FCR {
+pub mod FCR0 {
 
     /// Sinc filter order
     pub mod FORD {
@@ -1254,7 +1210,7 @@ pub mod DFSDM0_FCR {
 }
 
 /// data register for injected group
-pub mod DFSDM0_JDATAR {
+pub mod JDATAR0 {
 
     /// Injected group conversion data
     pub mod JDATA {
@@ -1286,7 +1242,7 @@ pub mod DFSDM0_JDATAR {
 }
 
 /// data register for the regular channel
-pub mod DFSDM0_RDATAR {
+pub mod RDATAR0 {
 
     /// Regular channel conversion data
     pub mod RDATA {
@@ -1332,7 +1288,7 @@ pub mod DFSDM0_RDATAR {
 }
 
 /// analog watchdog high threshold register
-pub mod DFSDM0_AWHTR {
+pub mod AWHTR0 {
 
     /// Analog watchdog high threshold
     pub mod AWHT {
@@ -1364,7 +1320,7 @@ pub mod DFSDM0_AWHTR {
 }
 
 /// analog watchdog low threshold register
-pub mod DFSDM0_AWLTR {
+pub mod AWLTR0 {
 
     /// Analog watchdog low threshold
     pub mod AWLT {
@@ -1396,7 +1352,7 @@ pub mod DFSDM0_AWLTR {
 }
 
 /// analog watchdog status register
-pub mod DFSDM0_AWSR {
+pub mod AWSR0 {
 
     /// Analog watchdog high threshold flag
     pub mod AWHTF {
@@ -1428,7 +1384,7 @@ pub mod DFSDM0_AWSR {
 }
 
 /// analog watchdog clear flag register
-pub mod DFSDM0_AWCFR {
+pub mod AWCFR0 {
 
     /// Clear the analog watchdog high threshold flag
     pub mod CLRAWHTF {
@@ -1460,7 +1416,7 @@ pub mod DFSDM0_AWCFR {
 }
 
 /// Extremes detector maximum register
-pub mod DFSDM0_EXMAX {
+pub mod EXMAX0 {
 
     /// Extremes detector maximum value
     pub mod EXMAX {
@@ -1492,7 +1448,7 @@ pub mod DFSDM0_EXMAX {
 }
 
 /// Extremes detector minimum register
-pub mod DFSDM0_EXMIN {
+pub mod EXMIN0 {
 
     /// EXMIN
     pub mod EXMIN {
@@ -1524,7 +1480,7 @@ pub mod DFSDM0_EXMIN {
 }
 
 /// conversion timer register
-pub mod DFSDM0_CNVTIMR {
+pub mod CNVTIMR0 {
 
     /// 28-bit timer counting conversion time t = CNVCNT\[27:0\] / fDFSDM_CKIN
     pub mod CNVCNT {
@@ -1542,782 +1498,743 @@ pub mod DFSDM0_CNVTIMR {
 }
 
 /// control register 1
-pub mod DFSDM1_CR1 {
-    pub use super::DFSDM0_CR1::AWFSEL;
-    pub use super::DFSDM0_CR1::DFEN;
-    pub use super::DFSDM0_CR1::FAST;
-    pub use super::DFSDM0_CR1::JDMAEN;
-    pub use super::DFSDM0_CR1::JEXTEN;
-    pub use super::DFSDM0_CR1::JEXTSEL;
-    pub use super::DFSDM0_CR1::JSCAN;
-    pub use super::DFSDM0_CR1::JSWSTART;
-    pub use super::DFSDM0_CR1::JSYNC;
-    pub use super::DFSDM0_CR1::RCH;
-    pub use super::DFSDM0_CR1::RCONT;
-    pub use super::DFSDM0_CR1::RDMAEN;
-    pub use super::DFSDM0_CR1::RSWSTART;
-    pub use super::DFSDM0_CR1::RSYNC;
-}
-
-/// control register 2
-pub mod DFSDM1_CR2 {
-    pub use super::DFSDM0_CR2::AWDCH;
-    pub use super::DFSDM0_CR2::AWDIE;
-    pub use super::DFSDM0_CR2::CKABIE;
-    pub use super::DFSDM0_CR2::EXCH;
-    pub use super::DFSDM0_CR2::JEOCIE;
-    pub use super::DFSDM0_CR2::JOVRIE;
-    pub use super::DFSDM0_CR2::REOCIE;
-    pub use super::DFSDM0_CR2::ROVRIE;
-    pub use super::DFSDM0_CR2::SCDIE;
+pub mod CR21 {
+    pub use super::CR20::AWFSEL;
+    pub use super::CR20::DFEN;
+    pub use super::CR20::FAST;
+    pub use super::CR20::JDMAEN;
+    pub use super::CR20::JEXTEN;
+    pub use super::CR20::JEXTSEL;
+    pub use super::CR20::JSCAN;
+    pub use super::CR20::JSWSTART;
+    pub use super::CR20::JSYNC;
+    pub use super::CR20::RCH;
+    pub use super::CR20::RCONT;
+    pub use super::CR20::RDMAEN;
+    pub use super::CR20::RSWSTART;
+    pub use super::CR20::RSYNC;
 }
 
 /// interrupt and status register
-pub mod DFSDM1_ISR {
-    pub use super::DFSDM0_ISR::AWDF;
-    pub use super::DFSDM0_ISR::CKABF;
-    pub use super::DFSDM0_ISR::JCIP;
-    pub use super::DFSDM0_ISR::JEOCF;
-    pub use super::DFSDM0_ISR::JOVRF;
-    pub use super::DFSDM0_ISR::RCIP;
-    pub use super::DFSDM0_ISR::REOCF;
-    pub use super::DFSDM0_ISR::ROVRF;
-    pub use super::DFSDM0_ISR::SCDF;
+pub mod ISR1 {
+    pub use super::ISR0::AWDF;
+    pub use super::ISR0::CKABF;
+    pub use super::ISR0::JCIP;
+    pub use super::ISR0::JEOCF;
+    pub use super::ISR0::JOVRF;
+    pub use super::ISR0::RCIP;
+    pub use super::ISR0::REOCF;
+    pub use super::ISR0::ROVRF;
+    pub use super::ISR0::SCDF;
 }
 
 /// interrupt flag clear register
-pub mod DFSDM1_ICR {
-    pub use super::DFSDM0_ICR::CLRCKABF;
-    pub use super::DFSDM0_ICR::CLRJOVRF;
-    pub use super::DFSDM0_ICR::CLRROVRF;
-    pub use super::DFSDM0_ICR::CLRSCDF;
+pub mod ICR1 {
+    pub use super::ICR0::CLRCKABF;
+    pub use super::ICR0::CLRJOVRF;
+    pub use super::ICR0::CLRROVRF;
+    pub use super::ICR0::CLRSCDF;
 }
 
 /// injected channel group selection register
-pub mod DFSDM1_JCHGR {
-    pub use super::DFSDM0_JCHGR::JCHG;
+pub mod JCHGR1 {
+    pub use super::JCHGR0::JCHG;
 }
 
 /// filter control register
-pub mod DFSDM1_FCR {
-    pub use super::DFSDM0_FCR::FORD;
-    pub use super::DFSDM0_FCR::FOSR;
-    pub use super::DFSDM0_FCR::IOSR;
+pub mod FCR1 {
+    pub use super::FCR0::FORD;
+    pub use super::FCR0::FOSR;
+    pub use super::FCR0::IOSR;
 }
 
 /// data register for injected group
-pub mod DFSDM1_JDATAR {
-    pub use super::DFSDM0_JDATAR::JDATA;
-    pub use super::DFSDM0_JDATAR::JDATACH;
+pub mod JDATAR1 {
+    pub use super::JDATAR0::JDATA;
+    pub use super::JDATAR0::JDATACH;
 }
 
 /// data register for the regular channel
-pub mod DFSDM1_RDATAR {
-    pub use super::DFSDM0_RDATAR::RDATA;
-    pub use super::DFSDM0_RDATAR::RDATACH;
-    pub use super::DFSDM0_RDATAR::RPEND;
+pub mod RDATAR1 {
+    pub use super::RDATAR0::RDATA;
+    pub use super::RDATAR0::RDATACH;
+    pub use super::RDATAR0::RPEND;
 }
 
 /// analog watchdog high threshold register
-pub mod DFSDM1_AWHTR {
-    pub use super::DFSDM0_AWHTR::AWHT;
-    pub use super::DFSDM0_AWHTR::BKAWH;
+pub mod AWHTR1 {
+    pub use super::AWHTR0::AWHT;
+    pub use super::AWHTR0::BKAWH;
 }
 
 /// analog watchdog low threshold register
-pub mod DFSDM1_AWLTR {
-    pub use super::DFSDM0_AWLTR::AWLT;
-    pub use super::DFSDM0_AWLTR::BKAWL;
+pub mod AWLTR1 {
+    pub use super::AWLTR0::AWLT;
+    pub use super::AWLTR0::BKAWL;
 }
 
 /// analog watchdog status register
-pub mod DFSDM1_AWSR {
-    pub use super::DFSDM0_AWSR::AWHTF;
-    pub use super::DFSDM0_AWSR::AWLTF;
+pub mod AWSR1 {
+    pub use super::AWSR0::AWHTF;
+    pub use super::AWSR0::AWLTF;
 }
 
 /// analog watchdog clear flag register
-pub mod DFSDM1_AWCFR {
-    pub use super::DFSDM0_AWCFR::CLRAWHTF;
-    pub use super::DFSDM0_AWCFR::CLRAWLTF;
+pub mod AWCFR1 {
+    pub use super::AWCFR0::CLRAWHTF;
+    pub use super::AWCFR0::CLRAWLTF;
 }
 
 /// Extremes detector maximum register
-pub mod DFSDM1_EXMAX {
-    pub use super::DFSDM0_EXMAX::EXMAX;
-    pub use super::DFSDM0_EXMAX::EXMAXCH;
+pub mod EXMAX1 {
+    pub use super::EXMAX0::EXMAX;
+    pub use super::EXMAX0::EXMAXCH;
 }
 
 /// Extremes detector minimum register
-pub mod DFSDM1_EXMIN {
-    pub use super::DFSDM0_EXMIN::EXMIN;
-    pub use super::DFSDM0_EXMIN::EXMINCH;
+pub mod EXMIN1 {
+    pub use super::EXMIN0::EXMIN;
+    pub use super::EXMIN0::EXMINCH;
 }
 
 /// conversion timer register
-pub mod DFSDM1_CNVTIMR {
-    pub use super::DFSDM0_CNVTIMR::CNVCNT;
+pub mod CNVTIMR1 {
+    pub use super::CNVTIMR0::CNVCNT;
 }
 
 /// control register 1
-pub mod DFSDM2_CR1 {
-    pub use super::DFSDM0_CR1::AWFSEL;
-    pub use super::DFSDM0_CR1::DFEN;
-    pub use super::DFSDM0_CR1::FAST;
-    pub use super::DFSDM0_CR1::JDMAEN;
-    pub use super::DFSDM0_CR1::JEXTEN;
-    pub use super::DFSDM0_CR1::JEXTSEL;
-    pub use super::DFSDM0_CR1::JSCAN;
-    pub use super::DFSDM0_CR1::JSWSTART;
-    pub use super::DFSDM0_CR1::JSYNC;
-    pub use super::DFSDM0_CR1::RCH;
-    pub use super::DFSDM0_CR1::RCONT;
-    pub use super::DFSDM0_CR1::RDMAEN;
-    pub use super::DFSDM0_CR1::RSWSTART;
-    pub use super::DFSDM0_CR1::RSYNC;
-}
-
-/// control register 2
-pub mod DFSDM2_CR2 {
-    pub use super::DFSDM0_CR2::AWDCH;
-    pub use super::DFSDM0_CR2::AWDIE;
-    pub use super::DFSDM0_CR2::CKABIE;
-    pub use super::DFSDM0_CR2::EXCH;
-    pub use super::DFSDM0_CR2::JEOCIE;
-    pub use super::DFSDM0_CR2::JOVRIE;
-    pub use super::DFSDM0_CR2::REOCIE;
-    pub use super::DFSDM0_CR2::ROVRIE;
-    pub use super::DFSDM0_CR2::SCDIE;
+pub mod CR22 {
+    pub use super::CR20::AWFSEL;
+    pub use super::CR20::DFEN;
+    pub use super::CR20::FAST;
+    pub use super::CR20::JDMAEN;
+    pub use super::CR20::JEXTEN;
+    pub use super::CR20::JEXTSEL;
+    pub use super::CR20::JSCAN;
+    pub use super::CR20::JSWSTART;
+    pub use super::CR20::JSYNC;
+    pub use super::CR20::RCH;
+    pub use super::CR20::RCONT;
+    pub use super::CR20::RDMAEN;
+    pub use super::CR20::RSWSTART;
+    pub use super::CR20::RSYNC;
 }
 
 /// interrupt and status register
-pub mod DFSDM2_ISR {
-    pub use super::DFSDM0_ISR::AWDF;
-    pub use super::DFSDM0_ISR::CKABF;
-    pub use super::DFSDM0_ISR::JCIP;
-    pub use super::DFSDM0_ISR::JEOCF;
-    pub use super::DFSDM0_ISR::JOVRF;
-    pub use super::DFSDM0_ISR::RCIP;
-    pub use super::DFSDM0_ISR::REOCF;
-    pub use super::DFSDM0_ISR::ROVRF;
-    pub use super::DFSDM0_ISR::SCDF;
+pub mod ISR2 {
+    pub use super::ISR0::AWDF;
+    pub use super::ISR0::CKABF;
+    pub use super::ISR0::JCIP;
+    pub use super::ISR0::JEOCF;
+    pub use super::ISR0::JOVRF;
+    pub use super::ISR0::RCIP;
+    pub use super::ISR0::REOCF;
+    pub use super::ISR0::ROVRF;
+    pub use super::ISR0::SCDF;
 }
 
 /// interrupt flag clear register
-pub mod DFSDM2_ICR {
-    pub use super::DFSDM0_ICR::CLRCKABF;
-    pub use super::DFSDM0_ICR::CLRJOVRF;
-    pub use super::DFSDM0_ICR::CLRROVRF;
-    pub use super::DFSDM0_ICR::CLRSCDF;
+pub mod ICR2 {
+    pub use super::ICR0::CLRCKABF;
+    pub use super::ICR0::CLRJOVRF;
+    pub use super::ICR0::CLRROVRF;
+    pub use super::ICR0::CLRSCDF;
 }
 
 /// injected channel group selection register
-pub mod DFSDM2_JCHGR {
-    pub use super::DFSDM0_JCHGR::JCHG;
+pub mod JCHGR2 {
+    pub use super::JCHGR0::JCHG;
 }
 
 /// filter control register
-pub mod DFSDM2_FCR {
-    pub use super::DFSDM0_FCR::FORD;
-    pub use super::DFSDM0_FCR::FOSR;
-    pub use super::DFSDM0_FCR::IOSR;
+pub mod FCR2 {
+    pub use super::FCR0::FORD;
+    pub use super::FCR0::FOSR;
+    pub use super::FCR0::IOSR;
 }
 
 /// data register for injected group
-pub mod DFSDM2_JDATAR {
-    pub use super::DFSDM0_JDATAR::JDATA;
-    pub use super::DFSDM0_JDATAR::JDATACH;
+pub mod JDATAR2 {
+    pub use super::JDATAR0::JDATA;
+    pub use super::JDATAR0::JDATACH;
 }
 
 /// data register for the regular channel
-pub mod DFSDM2_RDATAR {
-    pub use super::DFSDM0_RDATAR::RDATA;
-    pub use super::DFSDM0_RDATAR::RDATACH;
-    pub use super::DFSDM0_RDATAR::RPEND;
+pub mod RDATAR2 {
+    pub use super::RDATAR0::RDATA;
+    pub use super::RDATAR0::RDATACH;
+    pub use super::RDATAR0::RPEND;
 }
 
 /// analog watchdog high threshold register
-pub mod DFSDM2_AWHTR {
-    pub use super::DFSDM0_AWHTR::AWHT;
-    pub use super::DFSDM0_AWHTR::BKAWH;
+pub mod AWHTR2 {
+    pub use super::AWHTR0::AWHT;
+    pub use super::AWHTR0::BKAWH;
 }
 
 /// analog watchdog low threshold register
-pub mod DFSDM2_AWLTR {
-    pub use super::DFSDM0_AWLTR::AWLT;
-    pub use super::DFSDM0_AWLTR::BKAWL;
+pub mod AWLTR2 {
+    pub use super::AWLTR0::AWLT;
+    pub use super::AWLTR0::BKAWL;
 }
 
 /// analog watchdog status register
-pub mod DFSDM2_AWSR {
-    pub use super::DFSDM0_AWSR::AWHTF;
-    pub use super::DFSDM0_AWSR::AWLTF;
+pub mod AWSR2 {
+    pub use super::AWSR0::AWHTF;
+    pub use super::AWSR0::AWLTF;
 }
 
 /// analog watchdog clear flag register
-pub mod DFSDM2_AWCFR {
-    pub use super::DFSDM0_AWCFR::CLRAWHTF;
-    pub use super::DFSDM0_AWCFR::CLRAWLTF;
+pub mod AWCFR2 {
+    pub use super::AWCFR0::CLRAWHTF;
+    pub use super::AWCFR0::CLRAWLTF;
 }
 
 /// Extremes detector maximum register
-pub mod DFSDM2_EXMAX {
-    pub use super::DFSDM0_EXMAX::EXMAX;
-    pub use super::DFSDM0_EXMAX::EXMAXCH;
+pub mod EXMAX2 {
+    pub use super::EXMAX0::EXMAX;
+    pub use super::EXMAX0::EXMAXCH;
 }
 
 /// Extremes detector minimum register
-pub mod DFSDM2_EXMIN {
-    pub use super::DFSDM0_EXMIN::EXMIN;
-    pub use super::DFSDM0_EXMIN::EXMINCH;
+pub mod EXMIN2 {
+    pub use super::EXMIN0::EXMIN;
+    pub use super::EXMIN0::EXMINCH;
 }
 
 /// conversion timer register
-pub mod DFSDM2_CNVTIMR {
-    pub use super::DFSDM0_CNVTIMR::CNVCNT;
+pub mod CNVTIMR2 {
+    pub use super::CNVTIMR0::CNVCNT;
 }
 
 /// control register 1
-pub mod DFSDM3_CR1 {
-    pub use super::DFSDM0_CR1::AWFSEL;
-    pub use super::DFSDM0_CR1::DFEN;
-    pub use super::DFSDM0_CR1::FAST;
-    pub use super::DFSDM0_CR1::JDMAEN;
-    pub use super::DFSDM0_CR1::JEXTEN;
-    pub use super::DFSDM0_CR1::JEXTSEL;
-    pub use super::DFSDM0_CR1::JSCAN;
-    pub use super::DFSDM0_CR1::JSWSTART;
-    pub use super::DFSDM0_CR1::JSYNC;
-    pub use super::DFSDM0_CR1::RCH;
-    pub use super::DFSDM0_CR1::RCONT;
-    pub use super::DFSDM0_CR1::RDMAEN;
-    pub use super::DFSDM0_CR1::RSWSTART;
-    pub use super::DFSDM0_CR1::RSYNC;
-}
-
-/// control register 2
-pub mod DFSDM3_CR2 {
-    pub use super::DFSDM0_CR2::AWDCH;
-    pub use super::DFSDM0_CR2::AWDIE;
-    pub use super::DFSDM0_CR2::CKABIE;
-    pub use super::DFSDM0_CR2::EXCH;
-    pub use super::DFSDM0_CR2::JEOCIE;
-    pub use super::DFSDM0_CR2::JOVRIE;
-    pub use super::DFSDM0_CR2::REOCIE;
-    pub use super::DFSDM0_CR2::ROVRIE;
-    pub use super::DFSDM0_CR2::SCDIE;
+pub mod CR23 {
+    pub use super::CR20::AWFSEL;
+    pub use super::CR20::DFEN;
+    pub use super::CR20::FAST;
+    pub use super::CR20::JDMAEN;
+    pub use super::CR20::JEXTEN;
+    pub use super::CR20::JEXTSEL;
+    pub use super::CR20::JSCAN;
+    pub use super::CR20::JSWSTART;
+    pub use super::CR20::JSYNC;
+    pub use super::CR20::RCH;
+    pub use super::CR20::RCONT;
+    pub use super::CR20::RDMAEN;
+    pub use super::CR20::RSWSTART;
+    pub use super::CR20::RSYNC;
 }
 
 /// interrupt and status register
-pub mod DFSDM3_ISR {
-    pub use super::DFSDM0_ISR::AWDF;
-    pub use super::DFSDM0_ISR::CKABF;
-    pub use super::DFSDM0_ISR::JCIP;
-    pub use super::DFSDM0_ISR::JEOCF;
-    pub use super::DFSDM0_ISR::JOVRF;
-    pub use super::DFSDM0_ISR::RCIP;
-    pub use super::DFSDM0_ISR::REOCF;
-    pub use super::DFSDM0_ISR::ROVRF;
-    pub use super::DFSDM0_ISR::SCDF;
+pub mod ISR3 {
+    pub use super::ISR0::AWDF;
+    pub use super::ISR0::CKABF;
+    pub use super::ISR0::JCIP;
+    pub use super::ISR0::JEOCF;
+    pub use super::ISR0::JOVRF;
+    pub use super::ISR0::RCIP;
+    pub use super::ISR0::REOCF;
+    pub use super::ISR0::ROVRF;
+    pub use super::ISR0::SCDF;
 }
 
 /// interrupt flag clear register
-pub mod DFSDM3_ICR {
-    pub use super::DFSDM0_ICR::CLRCKABF;
-    pub use super::DFSDM0_ICR::CLRJOVRF;
-    pub use super::DFSDM0_ICR::CLRROVRF;
-    pub use super::DFSDM0_ICR::CLRSCDF;
+pub mod ICR3 {
+    pub use super::ICR0::CLRCKABF;
+    pub use super::ICR0::CLRJOVRF;
+    pub use super::ICR0::CLRROVRF;
+    pub use super::ICR0::CLRSCDF;
 }
 
 /// injected channel group selection register
-pub mod DFSDM3_JCHGR {
-    pub use super::DFSDM0_JCHGR::JCHG;
+pub mod JCHGR3 {
+    pub use super::JCHGR0::JCHG;
 }
 
 /// filter control register
-pub mod DFSDM3_FCR {
-    pub use super::DFSDM0_FCR::FORD;
-    pub use super::DFSDM0_FCR::FOSR;
-    pub use super::DFSDM0_FCR::IOSR;
+pub mod FCR3 {
+    pub use super::FCR0::FORD;
+    pub use super::FCR0::FOSR;
+    pub use super::FCR0::IOSR;
 }
 
 /// data register for injected group
-pub mod DFSDM3_JDATAR {
-    pub use super::DFSDM0_JDATAR::JDATA;
-    pub use super::DFSDM0_JDATAR::JDATACH;
+pub mod JDATAR3 {
+    pub use super::JDATAR0::JDATA;
+    pub use super::JDATAR0::JDATACH;
 }
 
 /// data register for the regular channel
-pub mod DFSDM3_RDATAR {
-    pub use super::DFSDM0_RDATAR::RDATA;
-    pub use super::DFSDM0_RDATAR::RDATACH;
-    pub use super::DFSDM0_RDATAR::RPEND;
+pub mod RDATAR3 {
+    pub use super::RDATAR0::RDATA;
+    pub use super::RDATAR0::RDATACH;
+    pub use super::RDATAR0::RPEND;
 }
 
 /// analog watchdog high threshold register
-pub mod DFSDM3_AWHTR {
-    pub use super::DFSDM0_AWHTR::AWHT;
-    pub use super::DFSDM0_AWHTR::BKAWH;
+pub mod AWHTR3 {
+    pub use super::AWHTR0::AWHT;
+    pub use super::AWHTR0::BKAWH;
 }
 
 /// analog watchdog low threshold register
-pub mod DFSDM3_AWLTR {
-    pub use super::DFSDM0_AWLTR::AWLT;
-    pub use super::DFSDM0_AWLTR::BKAWL;
+pub mod AWLTR3 {
+    pub use super::AWLTR0::AWLT;
+    pub use super::AWLTR0::BKAWL;
 }
 
 /// analog watchdog status register
-pub mod DFSDM3_AWSR {
-    pub use super::DFSDM0_AWSR::AWHTF;
-    pub use super::DFSDM0_AWSR::AWLTF;
+pub mod AWSR3 {
+    pub use super::AWSR0::AWHTF;
+    pub use super::AWSR0::AWLTF;
 }
 
 /// analog watchdog clear flag register
-pub mod DFSDM3_AWCFR {
-    pub use super::DFSDM0_AWCFR::CLRAWHTF;
-    pub use super::DFSDM0_AWCFR::CLRAWLTF;
+pub mod AWCFR3 {
+    pub use super::AWCFR0::CLRAWHTF;
+    pub use super::AWCFR0::CLRAWLTF;
 }
 
 /// Extremes detector maximum register
-pub mod DFSDM3_EXMAX {
-    pub use super::DFSDM0_EXMAX::EXMAX;
-    pub use super::DFSDM0_EXMAX::EXMAXCH;
+pub mod EXMAX3 {
+    pub use super::EXMAX0::EXMAX;
+    pub use super::EXMAX0::EXMAXCH;
 }
 
 /// Extremes detector minimum register
-pub mod DFSDM3_EXMIN {
-    pub use super::DFSDM0_EXMIN::EXMIN;
-    pub use super::DFSDM0_EXMIN::EXMINCH;
+pub mod EXMIN3 {
+    pub use super::EXMIN0::EXMIN;
+    pub use super::EXMIN0::EXMINCH;
 }
 
 /// conversion timer register
-pub mod DFSDM3_CNVTIMR {
-    pub use super::DFSDM0_CNVTIMR::CNVCNT;
+pub mod CNVTIMR3 {
+    pub use super::CNVTIMR0::CNVCNT;
 }
 pub struct RegisterBlock {
     /// channel configuration y register
-    pub CHCFG0R1: RWRegister<u32>,
+    pub CFGR10: RWRegister<u32>,
 
     /// channel configuration y register
-    pub CHCFG0R2: RWRegister<u32>,
+    pub CFGR20: RWRegister<u32>,
 
     /// analog watchdog and short-circuit detector register
-    pub AWSCD0R: RWRegister<u32>,
+    pub AWSCDR0: RWRegister<u32>,
 
     /// channel watchdog filter data register
-    pub CHWDAT0R: RWRegister<u32>,
+    pub WDATR0: RWRegister<u32>,
 
     /// channel data input register
-    pub CHDATIN0R: RWRegister<u32>,
+    pub DATINR0: RWRegister<u32>,
 
     _reserved1: [u32; 3],
 
-    /// CHCFG1R1
-    pub CHCFG1R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR11: RWRegister<u32>,
 
-    /// CHCFG1R2
-    pub CHCFG1R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR21: RWRegister<u32>,
 
-    /// AWSCD1R
-    pub AWSCD1R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR1: RWRegister<u32>,
 
-    /// CHWDAT1R
-    pub CHWDAT1R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR1: RWRegister<u32>,
 
-    /// CHDATIN1R
-    pub CHDATIN1R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR1: RWRegister<u32>,
 
     _reserved2: [u32; 3],
 
-    /// CHCFG2R1
-    pub CHCFG2R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR12: RWRegister<u32>,
 
-    /// CHCFG2R2
-    pub CHCFG2R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR22: RWRegister<u32>,
 
-    /// AWSCD2R
-    pub AWSCD2R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR2: RWRegister<u32>,
 
-    /// CHWDAT2R
-    pub CHWDAT2R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR2: RWRegister<u32>,
 
-    /// CHDATIN2R
-    pub CHDATIN2R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR2: RWRegister<u32>,
 
     _reserved3: [u32; 3],
 
-    /// CHCFG3R1
-    pub CHCFG3R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR13: RWRegister<u32>,
 
-    /// CHCFG3R2
-    pub CHCFG3R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR23: RWRegister<u32>,
 
-    /// AWSCD3R
-    pub AWSCD3R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR3: RWRegister<u32>,
 
-    /// CHWDAT3R
-    pub CHWDAT3R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR3: RWRegister<u32>,
 
-    /// CHDATIN3R
-    pub CHDATIN3R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR3: RWRegister<u32>,
 
     _reserved4: [u32; 3],
 
-    /// CHCFG4R1
-    pub CHCFG4R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR14: RWRegister<u32>,
 
-    /// CHCFG4R2
-    pub CHCFG4R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR24: RWRegister<u32>,
 
-    /// AWSCD4R
-    pub AWSCD4R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR4: RWRegister<u32>,
 
-    /// CHWDAT4R
-    pub CHWDAT4R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR4: RWRegister<u32>,
 
-    /// CHDATIN4R
-    pub CHDATIN4R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR4: RWRegister<u32>,
 
     _reserved5: [u32; 3],
 
-    /// CHCFG5R1
-    pub CHCFG5R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR15: RWRegister<u32>,
 
-    /// CHCFG5R2
-    pub CHCFG5R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR25: RWRegister<u32>,
 
-    /// AWSCD5R
-    pub AWSCD5R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR5: RWRegister<u32>,
 
-    /// CHWDAT5R
-    pub CHWDAT5R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR5: RWRegister<u32>,
 
-    /// CHDATIN5R
-    pub CHDATIN5R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR5: RWRegister<u32>,
 
     _reserved6: [u32; 3],
 
-    /// CHCFG6R1
-    pub CHCFG6R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR16: RWRegister<u32>,
 
-    /// CHCFG6R2
-    pub CHCFG6R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR26: RWRegister<u32>,
 
-    /// AWSCD6R
-    pub AWSCD6R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR6: RWRegister<u32>,
 
-    /// CHWDAT6R
-    pub CHWDAT6R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR6: RWRegister<u32>,
 
-    /// CHDATIN6R
-    pub CHDATIN6R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR6: RWRegister<u32>,
 
     _reserved7: [u32; 3],
 
-    /// CHCFG7R1
-    pub CHCFG7R1: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR17: RWRegister<u32>,
 
-    /// CHCFG7R2
-    pub CHCFG7R2: RWRegister<u32>,
+    /// channel configuration y register
+    pub CFGR27: RWRegister<u32>,
 
-    /// AWSCD7R
-    pub AWSCD7R: RWRegister<u32>,
+    /// analog watchdog and short-circuit detector register
+    pub AWSCDR7: RWRegister<u32>,
 
-    /// CHWDAT7R
-    pub CHWDAT7R: RWRegister<u32>,
+    /// channel watchdog filter data register
+    pub WDATR7: RWRegister<u32>,
 
-    /// CHDATIN7R
-    pub CHDATIN7R: RWRegister<u32>,
+    /// channel data input register
+    pub DATINR7: RWRegister<u32>,
 
     _reserved8: [u32; 3],
 
     /// control register 1
-    pub DFSDM0_CR1: RWRegister<u32>,
+    pub CR20: RWRegister<u32>,
 
     /// control register 2
     pub DFSDM0_CR2: RWRegister<u32>,
 
     /// interrupt and status register
-    pub DFSDM0_ISR: RORegister<u32>,
+    pub ISR0: RORegister<u32>,
 
     /// interrupt flag clear register
-    pub DFSDM0_ICR: RWRegister<u32>,
+    pub ICR0: RWRegister<u32>,
 
     /// injected channel group selection register
-    pub DFSDM0_JCHGR: RWRegister<u32>,
+    pub JCHGR0: RWRegister<u32>,
 
     /// filter control register
-    pub DFSDM0_FCR: RWRegister<u32>,
+    pub FCR0: RWRegister<u32>,
 
     /// data register for injected group
-    pub DFSDM0_JDATAR: RORegister<u32>,
+    pub JDATAR0: RORegister<u32>,
 
     /// data register for the regular channel
-    pub DFSDM0_RDATAR: RORegister<u32>,
+    pub RDATAR0: RORegister<u32>,
 
     /// analog watchdog high threshold register
-    pub DFSDM0_AWHTR: RWRegister<u32>,
+    pub AWHTR0: RWRegister<u32>,
 
     /// analog watchdog low threshold register
-    pub DFSDM0_AWLTR: RWRegister<u32>,
+    pub AWLTR0: RWRegister<u32>,
 
     /// analog watchdog status register
-    pub DFSDM0_AWSR: RORegister<u32>,
+    pub AWSR0: RORegister<u32>,
 
     /// analog watchdog clear flag register
-    pub DFSDM0_AWCFR: RWRegister<u32>,
+    pub AWCFR0: RWRegister<u32>,
 
     /// Extremes detector maximum register
-    pub DFSDM0_EXMAX: RORegister<u32>,
+    pub EXMAX0: RORegister<u32>,
 
     /// Extremes detector minimum register
-    pub DFSDM0_EXMIN: RORegister<u32>,
+    pub EXMIN0: RORegister<u32>,
 
     /// conversion timer register
-    pub DFSDM0_CNVTIMR: RORegister<u32>,
+    pub CNVTIMR0: RORegister<u32>,
 
     _reserved9: [u32; 49],
 
     /// control register 1
-    pub DFSDM1_CR1: RWRegister<u32>,
+    pub CR21: RWRegister<u32>,
 
     /// control register 2
     pub DFSDM1_CR2: RWRegister<u32>,
 
     /// interrupt and status register
-    pub DFSDM1_ISR: RORegister<u32>,
+    pub ISR1: RORegister<u32>,
 
     /// interrupt flag clear register
-    pub DFSDM1_ICR: RWRegister<u32>,
+    pub ICR1: RWRegister<u32>,
 
     /// injected channel group selection register
-    pub DFSDM1_JCHGR: RWRegister<u32>,
+    pub JCHGR1: RWRegister<u32>,
 
     /// filter control register
-    pub DFSDM1_FCR: RWRegister<u32>,
+    pub FCR1: RWRegister<u32>,
 
     /// data register for injected group
-    pub DFSDM1_JDATAR: RORegister<u32>,
+    pub JDATAR1: RORegister<u32>,
 
     /// data register for the regular channel
-    pub DFSDM1_RDATAR: RORegister<u32>,
+    pub RDATAR1: RORegister<u32>,
 
     /// analog watchdog high threshold register
-    pub DFSDM1_AWHTR: RWRegister<u32>,
+    pub AWHTR1: RWRegister<u32>,
 
     /// analog watchdog low threshold register
-    pub DFSDM1_AWLTR: RWRegister<u32>,
+    pub AWLTR1: RWRegister<u32>,
 
     /// analog watchdog status register
-    pub DFSDM1_AWSR: RORegister<u32>,
+    pub AWSR1: RORegister<u32>,
 
     /// analog watchdog clear flag register
-    pub DFSDM1_AWCFR: RWRegister<u32>,
+    pub AWCFR1: RWRegister<u32>,
 
     /// Extremes detector maximum register
-    pub DFSDM1_EXMAX: RORegister<u32>,
+    pub EXMAX1: RORegister<u32>,
 
     /// Extremes detector minimum register
-    pub DFSDM1_EXMIN: RORegister<u32>,
+    pub EXMIN1: RORegister<u32>,
 
     /// conversion timer register
-    pub DFSDM1_CNVTIMR: RORegister<u32>,
+    pub CNVTIMR1: RORegister<u32>,
 
     _reserved10: [u32; 49],
 
     /// control register 1
-    pub DFSDM2_CR1: RWRegister<u32>,
+    pub CR22: RWRegister<u32>,
 
     /// control register 2
     pub DFSDM2_CR2: RWRegister<u32>,
 
     /// interrupt and status register
-    pub DFSDM2_ISR: RORegister<u32>,
+    pub ISR2: RORegister<u32>,
 
     /// interrupt flag clear register
-    pub DFSDM2_ICR: RWRegister<u32>,
+    pub ICR2: RWRegister<u32>,
 
     /// injected channel group selection register
-    pub DFSDM2_JCHGR: RWRegister<u32>,
+    pub JCHGR2: RWRegister<u32>,
 
     /// filter control register
-    pub DFSDM2_FCR: RWRegister<u32>,
+    pub FCR2: RWRegister<u32>,
 
     /// data register for injected group
-    pub DFSDM2_JDATAR: RORegister<u32>,
+    pub JDATAR2: RORegister<u32>,
 
     /// data register for the regular channel
-    pub DFSDM2_RDATAR: RORegister<u32>,
+    pub RDATAR2: RORegister<u32>,
 
     /// analog watchdog high threshold register
-    pub DFSDM2_AWHTR: RWRegister<u32>,
+    pub AWHTR2: RWRegister<u32>,
 
     /// analog watchdog low threshold register
-    pub DFSDM2_AWLTR: RWRegister<u32>,
+    pub AWLTR2: RWRegister<u32>,
 
     /// analog watchdog status register
-    pub DFSDM2_AWSR: RORegister<u32>,
+    pub AWSR2: RORegister<u32>,
 
     /// analog watchdog clear flag register
-    pub DFSDM2_AWCFR: RWRegister<u32>,
+    pub AWCFR2: RWRegister<u32>,
 
     /// Extremes detector maximum register
-    pub DFSDM2_EXMAX: RORegister<u32>,
+    pub EXMAX2: RORegister<u32>,
 
     /// Extremes detector minimum register
-    pub DFSDM2_EXMIN: RORegister<u32>,
+    pub EXMIN2: RORegister<u32>,
 
     /// conversion timer register
-    pub DFSDM2_CNVTIMR: RORegister<u32>,
+    pub CNVTIMR2: RORegister<u32>,
 
     _reserved11: [u32; 49],
 
     /// control register 1
-    pub DFSDM3_CR1: RWRegister<u32>,
+    pub CR23: RWRegister<u32>,
 
     /// control register 2
     pub DFSDM3_CR2: RWRegister<u32>,
 
     /// interrupt and status register
-    pub DFSDM3_ISR: RORegister<u32>,
+    pub ISR3: RORegister<u32>,
 
     /// interrupt flag clear register
-    pub DFSDM3_ICR: RWRegister<u32>,
+    pub ICR3: RWRegister<u32>,
 
     /// injected channel group selection register
-    pub DFSDM3_JCHGR: RWRegister<u32>,
+    pub JCHGR3: RWRegister<u32>,
 
     /// filter control register
-    pub DFSDM3_FCR: RWRegister<u32>,
+    pub FCR3: RWRegister<u32>,
 
     /// data register for injected group
-    pub DFSDM3_JDATAR: RORegister<u32>,
+    pub JDATAR3: RORegister<u32>,
 
     /// data register for the regular channel
-    pub DFSDM3_RDATAR: RORegister<u32>,
+    pub RDATAR3: RORegister<u32>,
 
     /// analog watchdog high threshold register
-    pub DFSDM3_AWHTR: RWRegister<u32>,
+    pub AWHTR3: RWRegister<u32>,
 
     /// analog watchdog low threshold register
-    pub DFSDM3_AWLTR: RWRegister<u32>,
+    pub AWLTR3: RWRegister<u32>,
 
     /// analog watchdog status register
-    pub DFSDM3_AWSR: RORegister<u32>,
+    pub AWSR3: RORegister<u32>,
 
     /// analog watchdog clear flag register
-    pub DFSDM3_AWCFR: RWRegister<u32>,
+    pub AWCFR3: RWRegister<u32>,
 
     /// Extremes detector maximum register
-    pub DFSDM3_EXMAX: RORegister<u32>,
+    pub EXMAX3: RORegister<u32>,
 
     /// Extremes detector minimum register
-    pub DFSDM3_EXMIN: RORegister<u32>,
+    pub EXMIN3: RORegister<u32>,
 
     /// conversion timer register
-    pub DFSDM3_CNVTIMR: RORegister<u32>,
+    pub CNVTIMR3: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub CHCFG0R1: u32,
-    pub CHCFG0R2: u32,
-    pub AWSCD0R: u32,
-    pub CHWDAT0R: u32,
-    pub CHDATIN0R: u32,
-    pub CHCFG1R1: u32,
-    pub CHCFG1R2: u32,
-    pub AWSCD1R: u32,
-    pub CHWDAT1R: u32,
-    pub CHDATIN1R: u32,
-    pub CHCFG2R1: u32,
-    pub CHCFG2R2: u32,
-    pub AWSCD2R: u32,
-    pub CHWDAT2R: u32,
-    pub CHDATIN2R: u32,
-    pub CHCFG3R1: u32,
-    pub CHCFG3R2: u32,
-    pub AWSCD3R: u32,
-    pub CHWDAT3R: u32,
-    pub CHDATIN3R: u32,
-    pub CHCFG4R1: u32,
-    pub CHCFG4R2: u32,
-    pub AWSCD4R: u32,
-    pub CHWDAT4R: u32,
-    pub CHDATIN4R: u32,
-    pub CHCFG5R1: u32,
-    pub CHCFG5R2: u32,
-    pub AWSCD5R: u32,
-    pub CHWDAT5R: u32,
-    pub CHDATIN5R: u32,
-    pub CHCFG6R1: u32,
-    pub CHCFG6R2: u32,
-    pub AWSCD6R: u32,
-    pub CHWDAT6R: u32,
-    pub CHDATIN6R: u32,
-    pub CHCFG7R1: u32,
-    pub CHCFG7R2: u32,
-    pub AWSCD7R: u32,
-    pub CHWDAT7R: u32,
-    pub CHDATIN7R: u32,
-    pub DFSDM0_CR1: u32,
+    pub CFGR10: u32,
+    pub CFGR20: u32,
+    pub AWSCDR0: u32,
+    pub WDATR0: u32,
+    pub DATINR0: u32,
+    pub CFGR11: u32,
+    pub CFGR21: u32,
+    pub AWSCDR1: u32,
+    pub WDATR1: u32,
+    pub DATINR1: u32,
+    pub CFGR12: u32,
+    pub CFGR22: u32,
+    pub AWSCDR2: u32,
+    pub WDATR2: u32,
+    pub DATINR2: u32,
+    pub CFGR13: u32,
+    pub CFGR23: u32,
+    pub AWSCDR3: u32,
+    pub WDATR3: u32,
+    pub DATINR3: u32,
+    pub CFGR14: u32,
+    pub CFGR24: u32,
+    pub AWSCDR4: u32,
+    pub WDATR4: u32,
+    pub DATINR4: u32,
+    pub CFGR15: u32,
+    pub CFGR25: u32,
+    pub AWSCDR5: u32,
+    pub WDATR5: u32,
+    pub DATINR5: u32,
+    pub CFGR16: u32,
+    pub CFGR26: u32,
+    pub AWSCDR6: u32,
+    pub WDATR6: u32,
+    pub DATINR6: u32,
+    pub CFGR17: u32,
+    pub CFGR27: u32,
+    pub AWSCDR7: u32,
+    pub WDATR7: u32,
+    pub DATINR7: u32,
+    pub CR20: u32,
     pub DFSDM0_CR2: u32,
-    pub DFSDM0_ISR: u32,
-    pub DFSDM0_ICR: u32,
-    pub DFSDM0_JCHGR: u32,
-    pub DFSDM0_FCR: u32,
-    pub DFSDM0_JDATAR: u32,
-    pub DFSDM0_RDATAR: u32,
-    pub DFSDM0_AWHTR: u32,
-    pub DFSDM0_AWLTR: u32,
-    pub DFSDM0_AWSR: u32,
-    pub DFSDM0_AWCFR: u32,
-    pub DFSDM0_EXMAX: u32,
-    pub DFSDM0_EXMIN: u32,
-    pub DFSDM0_CNVTIMR: u32,
-    pub DFSDM1_CR1: u32,
+    pub ISR0: u32,
+    pub ICR0: u32,
+    pub JCHGR0: u32,
+    pub FCR0: u32,
+    pub JDATAR0: u32,
+    pub RDATAR0: u32,
+    pub AWHTR0: u32,
+    pub AWLTR0: u32,
+    pub AWSR0: u32,
+    pub AWCFR0: u32,
+    pub EXMAX0: u32,
+    pub EXMIN0: u32,
+    pub CNVTIMR0: u32,
+    pub CR21: u32,
     pub DFSDM1_CR2: u32,
-    pub DFSDM1_ISR: u32,
-    pub DFSDM1_ICR: u32,
-    pub DFSDM1_JCHGR: u32,
-    pub DFSDM1_FCR: u32,
-    pub DFSDM1_JDATAR: u32,
-    pub DFSDM1_RDATAR: u32,
-    pub DFSDM1_AWHTR: u32,
-    pub DFSDM1_AWLTR: u32,
-    pub DFSDM1_AWSR: u32,
-    pub DFSDM1_AWCFR: u32,
-    pub DFSDM1_EXMAX: u32,
-    pub DFSDM1_EXMIN: u32,
-    pub DFSDM1_CNVTIMR: u32,
-    pub DFSDM2_CR1: u32,
+    pub ISR1: u32,
+    pub ICR1: u32,
+    pub JCHGR1: u32,
+    pub FCR1: u32,
+    pub JDATAR1: u32,
+    pub RDATAR1: u32,
+    pub AWHTR1: u32,
+    pub AWLTR1: u32,
+    pub AWSR1: u32,
+    pub AWCFR1: u32,
+    pub EXMAX1: u32,
+    pub EXMIN1: u32,
+    pub CNVTIMR1: u32,
+    pub CR22: u32,
     pub DFSDM2_CR2: u32,
-    pub DFSDM2_ISR: u32,
-    pub DFSDM2_ICR: u32,
-    pub DFSDM2_JCHGR: u32,
-    pub DFSDM2_FCR: u32,
-    pub DFSDM2_JDATAR: u32,
-    pub DFSDM2_RDATAR: u32,
-    pub DFSDM2_AWHTR: u32,
-    pub DFSDM2_AWLTR: u32,
-    pub DFSDM2_AWSR: u32,
-    pub DFSDM2_AWCFR: u32,
-    pub DFSDM2_EXMAX: u32,
-    pub DFSDM2_EXMIN: u32,
-    pub DFSDM2_CNVTIMR: u32,
-    pub DFSDM3_CR1: u32,
+    pub ISR2: u32,
+    pub ICR2: u32,
+    pub JCHGR2: u32,
+    pub FCR2: u32,
+    pub JDATAR2: u32,
+    pub RDATAR2: u32,
+    pub AWHTR2: u32,
+    pub AWLTR2: u32,
+    pub AWSR2: u32,
+    pub AWCFR2: u32,
+    pub EXMAX2: u32,
+    pub EXMIN2: u32,
+    pub CNVTIMR2: u32,
+    pub CR23: u32,
     pub DFSDM3_CR2: u32,
-    pub DFSDM3_ISR: u32,
-    pub DFSDM3_ICR: u32,
-    pub DFSDM3_JCHGR: u32,
-    pub DFSDM3_FCR: u32,
-    pub DFSDM3_JDATAR: u32,
-    pub DFSDM3_RDATAR: u32,
-    pub DFSDM3_AWHTR: u32,
-    pub DFSDM3_AWLTR: u32,
-    pub DFSDM3_AWSR: u32,
-    pub DFSDM3_AWCFR: u32,
-    pub DFSDM3_EXMAX: u32,
-    pub DFSDM3_EXMIN: u32,
-    pub DFSDM3_CNVTIMR: u32,
+    pub ISR3: u32,
+    pub ICR3: u32,
+    pub JCHGR3: u32,
+    pub FCR3: u32,
+    pub JDATAR3: u32,
+    pub RDATAR3: u32,
+    pub AWHTR3: u32,
+    pub AWLTR3: u32,
+    pub AWSR3: u32,
+    pub AWCFR3: u32,
+    pub EXMAX3: u32,
+    pub EXMIN3: u32,
+    pub CNVTIMR3: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -2351,106 +2268,106 @@ pub mod DFSDM {
 
     /// Reset values for each field in DFSDM
     pub const reset: ResetValues = ResetValues {
-        CHCFG0R1: 0x00000000,
-        CHCFG0R2: 0x00000000,
-        AWSCD0R: 0x00000000,
-        CHWDAT0R: 0x00000000,
-        CHDATIN0R: 0x00000000,
-        CHCFG1R1: 0x00000000,
-        CHCFG1R2: 0x00000000,
-        AWSCD1R: 0x00000000,
-        CHWDAT1R: 0x00000000,
-        CHDATIN1R: 0x00000000,
-        CHCFG2R1: 0x00000000,
-        CHCFG2R2: 0x00000000,
-        AWSCD2R: 0x00000000,
-        CHWDAT2R: 0x00000000,
-        CHDATIN2R: 0x00000000,
-        CHCFG3R1: 0x00000000,
-        CHCFG3R2: 0x00000000,
-        AWSCD3R: 0x00000000,
-        CHWDAT3R: 0x00000000,
-        CHDATIN3R: 0x00000000,
-        CHCFG4R1: 0x00000000,
-        CHCFG4R2: 0x00000000,
-        AWSCD4R: 0x00000000,
-        CHWDAT4R: 0x00000000,
-        CHDATIN4R: 0x00000000,
-        CHCFG5R1: 0x00000000,
-        CHCFG5R2: 0x00000000,
-        AWSCD5R: 0x00000000,
-        CHWDAT5R: 0x00000000,
-        CHDATIN5R: 0x00000000,
-        CHCFG6R1: 0x00000000,
-        CHCFG6R2: 0x00000000,
-        AWSCD6R: 0x00000000,
-        CHWDAT6R: 0x00000000,
-        CHDATIN6R: 0x00000000,
-        CHCFG7R1: 0x00000000,
-        CHCFG7R2: 0x00000000,
-        AWSCD7R: 0x00000000,
-        CHWDAT7R: 0x00000000,
-        CHDATIN7R: 0x00000000,
-        DFSDM0_CR1: 0x00000000,
         DFSDM0_CR2: 0x00000000,
-        DFSDM0_ISR: 0x00FF0000,
-        DFSDM0_ICR: 0x00000000,
-        DFSDM0_JCHGR: 0x00000001,
-        DFSDM0_FCR: 0x00000000,
-        DFSDM0_JDATAR: 0x00000000,
-        DFSDM0_RDATAR: 0x00000000,
-        DFSDM0_AWHTR: 0x00000000,
-        DFSDM0_AWLTR: 0x00000000,
-        DFSDM0_AWSR: 0x00000000,
-        DFSDM0_AWCFR: 0x00000000,
-        DFSDM0_EXMAX: 0x80000000,
-        DFSDM0_EXMIN: 0x7FFFFF00,
-        DFSDM0_CNVTIMR: 0x00000000,
-        DFSDM1_CR1: 0x00000000,
         DFSDM1_CR2: 0x00000000,
-        DFSDM1_ISR: 0x00FF0000,
-        DFSDM1_ICR: 0x00000000,
-        DFSDM1_JCHGR: 0x00000001,
-        DFSDM1_FCR: 0x00000000,
-        DFSDM1_JDATAR: 0x00000000,
-        DFSDM1_RDATAR: 0x00000000,
-        DFSDM1_AWHTR: 0x00000000,
-        DFSDM1_AWLTR: 0x00000000,
-        DFSDM1_AWSR: 0x00000000,
-        DFSDM1_AWCFR: 0x00000000,
-        DFSDM1_EXMAX: 0x80000000,
-        DFSDM1_EXMIN: 0x7FFFFF00,
-        DFSDM1_CNVTIMR: 0x00000000,
-        DFSDM2_CR1: 0x00000000,
         DFSDM2_CR2: 0x00000000,
-        DFSDM2_ISR: 0x00FF0000,
-        DFSDM2_ICR: 0x00000000,
-        DFSDM2_JCHGR: 0x00000001,
-        DFSDM2_FCR: 0x00000000,
-        DFSDM2_JDATAR: 0x00000000,
-        DFSDM2_RDATAR: 0x00000000,
-        DFSDM2_AWHTR: 0x00000000,
-        DFSDM2_AWLTR: 0x00000000,
-        DFSDM2_AWSR: 0x00000000,
-        DFSDM2_AWCFR: 0x00000000,
-        DFSDM2_EXMAX: 0x80000000,
-        DFSDM2_EXMIN: 0x7FFFFF00,
-        DFSDM2_CNVTIMR: 0x00000000,
-        DFSDM3_CR1: 0x00000000,
         DFSDM3_CR2: 0x00000000,
-        DFSDM3_ISR: 0x00FF0000,
-        DFSDM3_ICR: 0x00000000,
-        DFSDM3_JCHGR: 0x00000001,
-        DFSDM3_FCR: 0x00000000,
-        DFSDM3_JDATAR: 0x00000000,
-        DFSDM3_RDATAR: 0x00000000,
-        DFSDM3_AWHTR: 0x00000000,
-        DFSDM3_AWLTR: 0x00000000,
-        DFSDM3_AWSR: 0x00000000,
-        DFSDM3_AWCFR: 0x00000000,
-        DFSDM3_EXMAX: 0x80000000,
-        DFSDM3_EXMIN: 0x7FFFFF00,
-        DFSDM3_CNVTIMR: 0x00000000,
+        CFGR10: 0x00000000,
+        CFGR20: 0x00000000,
+        AWSCDR0: 0x00000000,
+        WDATR0: 0x00000000,
+        DATINR0: 0x00000000,
+        CFGR11: 0x00000000,
+        CFGR21: 0x00000000,
+        AWSCDR1: 0x00000000,
+        WDATR1: 0x00000000,
+        DATINR1: 0x00000000,
+        CFGR12: 0x00000000,
+        CFGR22: 0x00000000,
+        AWSCDR2: 0x00000000,
+        WDATR2: 0x00000000,
+        DATINR2: 0x00000000,
+        CFGR13: 0x00000000,
+        CFGR23: 0x00000000,
+        AWSCDR3: 0x00000000,
+        WDATR3: 0x00000000,
+        DATINR3: 0x00000000,
+        CFGR14: 0x00000000,
+        CFGR24: 0x00000000,
+        AWSCDR4: 0x00000000,
+        WDATR4: 0x00000000,
+        DATINR4: 0x00000000,
+        CFGR15: 0x00000000,
+        CFGR25: 0x00000000,
+        AWSCDR5: 0x00000000,
+        WDATR5: 0x00000000,
+        DATINR5: 0x00000000,
+        CFGR16: 0x00000000,
+        CFGR26: 0x00000000,
+        AWSCDR6: 0x00000000,
+        WDATR6: 0x00000000,
+        DATINR6: 0x00000000,
+        CFGR17: 0x00000000,
+        CFGR27: 0x00000000,
+        AWSCDR7: 0x00000000,
+        WDATR7: 0x00000000,
+        DATINR7: 0x00000000,
+        CR20: 0x00000000,
+        ISR0: 0x00FF0000,
+        ICR0: 0x00000000,
+        JCHGR0: 0x00000001,
+        FCR0: 0x00000000,
+        JDATAR0: 0x00000000,
+        RDATAR0: 0x00000000,
+        AWHTR0: 0x00000000,
+        AWLTR0: 0x00000000,
+        AWSR0: 0x00000000,
+        AWCFR0: 0x00000000,
+        EXMAX0: 0x80000000,
+        EXMIN0: 0x7FFFFF00,
+        CNVTIMR0: 0x00000000,
+        CR21: 0x00000000,
+        ISR1: 0x00FF0000,
+        ICR1: 0x00000000,
+        JCHGR1: 0x00000001,
+        FCR1: 0x00000000,
+        JDATAR1: 0x00000000,
+        RDATAR1: 0x00000000,
+        AWHTR1: 0x00000000,
+        AWLTR1: 0x00000000,
+        AWSR1: 0x00000000,
+        AWCFR1: 0x00000000,
+        EXMAX1: 0x80000000,
+        EXMIN1: 0x7FFFFF00,
+        CNVTIMR1: 0x00000000,
+        CR22: 0x00000000,
+        ISR2: 0x00FF0000,
+        ICR2: 0x00000000,
+        JCHGR2: 0x00000001,
+        FCR2: 0x00000000,
+        JDATAR2: 0x00000000,
+        RDATAR2: 0x00000000,
+        AWHTR2: 0x00000000,
+        AWLTR2: 0x00000000,
+        AWSR2: 0x00000000,
+        AWCFR2: 0x00000000,
+        EXMAX2: 0x80000000,
+        EXMIN2: 0x7FFFFF00,
+        CNVTIMR2: 0x00000000,
+        CR23: 0x00000000,
+        ISR3: 0x00FF0000,
+        ICR3: 0x00000000,
+        JCHGR3: 0x00000001,
+        FCR3: 0x00000000,
+        JDATAR3: 0x00000000,
+        RDATAR3: 0x00000000,
+        AWHTR3: 0x00000000,
+        AWLTR3: 0x00000000,
+        AWSR3: 0x00000000,
+        AWCFR3: 0x00000000,
+        EXMAX3: 0x80000000,
+        EXMIN3: 0x7FFFFF00,
+        CNVTIMR3: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

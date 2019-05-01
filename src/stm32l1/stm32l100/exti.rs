@@ -989,7 +989,7 @@ pub mod SWIER {
         pub mod W {
 
             /// 0b1: Generates an interrupt request
-            pub const Request: u32 = 0b1;
+            pub const Pend: u32 = 0b1;
         }
         /// Read-write values (empty)
         pub mod RW {}

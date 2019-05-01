@@ -9,7 +9,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// MDIOS configuration register
-pub mod MDIOS_CR {
+pub mod CR {
 
     /// Peripheral enable
     pub mod EN {
@@ -97,7 +97,7 @@ pub mod MDIOS_CR {
 }
 
 /// MDIOS write flag register
-pub mod MDIOS_WRFR {
+pub mod WRFR {
 
     /// Write flags for MDIO registers 0 to 31
     pub mod WRF {
@@ -115,7 +115,7 @@ pub mod MDIOS_WRFR {
 }
 
 /// MDIOS clear write flag register
-pub mod MDIOS_CWRFR {
+pub mod CWRFR {
 
     /// Clear the write flag
     pub mod CWRF {
@@ -133,7 +133,7 @@ pub mod MDIOS_CWRFR {
 }
 
 /// MDIOS read flag register
-pub mod MDIOS_RDFR {
+pub mod RDFR {
 
     /// Read flags for MDIO registers 0 to 31
     pub mod RDF {
@@ -151,7 +151,7 @@ pub mod MDIOS_RDFR {
 }
 
 /// MDIOS clear read flag register
-pub mod MDIOS_CRDFR {
+pub mod CRDFR {
 
     /// Clear the read flag
     pub mod CRDF {
@@ -169,7 +169,7 @@ pub mod MDIOS_CRDFR {
 }
 
 /// MDIOS status register
-pub mod MDIOS_SR {
+pub mod SR {
 
     /// Preamble error flag
     pub mod PERF {
@@ -215,7 +215,7 @@ pub mod MDIOS_SR {
 }
 
 /// MDIOS clear flag register
-pub mod MDIOS_CLRFR {
+pub mod CLRFR {
 
     /// Clear the preamble error flag
     pub mod CPERF {
@@ -261,10 +261,10 @@ pub mod MDIOS_CLRFR {
 }
 
 /// MDIOS input data register 0
-pub mod MDIOS_DINR0 {
+pub mod DINR0 {
 
     /// Input data received from MDIO Master during write frames
-    pub mod DIN0 {
+    pub mod DIN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -278,551 +278,166 @@ pub mod MDIOS_DINR0 {
     }
 }
 
-/// MDIOS input data register 1
-pub mod MDIOS_DINR1 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR1 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 2
-pub mod MDIOS_DINR2 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR2 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 3
-pub mod MDIOS_DINR3 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR3 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 4
-pub mod MDIOS_DINR4 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR4 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 5
-pub mod MDIOS_DINR5 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR5 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 6
-pub mod MDIOS_DINR6 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR6 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 7
-pub mod MDIOS_DINR7 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR7 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 8
-pub mod MDIOS_DINR8 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN8 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR8 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 9
-pub mod MDIOS_DINR9 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN9 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR9 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 10
-pub mod MDIOS_DINR10 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR10 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 11
-pub mod MDIOS_DINR11 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN11 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR11 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 12
-pub mod MDIOS_DINR12 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN12 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR12 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 13
-pub mod MDIOS_DINR13 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN13 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR13 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 14
-pub mod MDIOS_DINR14 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN14 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR14 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 15
-pub mod MDIOS_DINR15 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN15 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR15 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 16
-pub mod MDIOS_DINR16 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN16 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR16 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 17
-pub mod MDIOS_DINR17 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN17 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR17 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 18
-pub mod MDIOS_DINR18 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN18 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR18 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 19
-pub mod MDIOS_DINR19 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN19 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR19 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 20
-pub mod MDIOS_DINR20 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN20 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR20 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 21
-pub mod MDIOS_DINR21 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN21 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR21 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 22
-pub mod MDIOS_DINR22 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN22 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR22 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 23
-pub mod MDIOS_DINR23 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN23 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR23 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 24
-pub mod MDIOS_DINR24 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN24 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR24 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 25
-pub mod MDIOS_DINR25 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN25 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR25 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 26
-pub mod MDIOS_DINR26 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN26 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR26 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 27
-pub mod MDIOS_DINR27 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN27 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR27 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 28
-pub mod MDIOS_DINR28 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN28 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR28 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 29
-pub mod MDIOS_DINR29 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN29 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR29 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 30
-pub mod MDIOS_DINR30 {
-
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN30 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS input data register 0
+pub mod DINR30 {
+    pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 31
-pub mod MDIOS_DINR31 {
+/// MDIOS input data register 0
+pub mod DINR31 {
+    pub use super::DINR0::DIN;
+}
 
-    /// Input data received from MDIO Master during write frames
-    pub mod DIN31 {
+/// MDIOS output data register 0
+pub mod DOUTR0 {
+
+    /// Output data sent to MDIO Master during read frames
+    pub mod DOUT {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -837,866 +452,445 @@ pub mod MDIOS_DINR31 {
 }
 
 /// MDIOS output data register 0
-pub mod MDIOS_DOUTR0 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod DOUTR1 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 1
-pub mod MDIOS_DOUTR1 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR2 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 2
-pub mod MDIOS_DOUTR2 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR3 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 3
-pub mod MDIOS_DOUTR3 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR4 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 4
-pub mod MDIOS_DOUTR4 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR5 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 5
-pub mod MDIOS_DOUTR5 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR6 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 6
-pub mod MDIOS_DOUTR6 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR7 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 7
-pub mod MDIOS_DOUTR7 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR8 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 8
-pub mod MDIOS_DOUTR8 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT8 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR9 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 9
-pub mod MDIOS_DOUTR9 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT9 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR10 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 10
-pub mod MDIOS_DOUTR10 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR11 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 11
-pub mod MDIOS_DOUTR11 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT11 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR12 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 12
-pub mod MDIOS_DOUTR12 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT12 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR13 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 13
-pub mod MDIOS_DOUTR13 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT13 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR14 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 14
-pub mod MDIOS_DOUTR14 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT14 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR15 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 15
-pub mod MDIOS_DOUTR15 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT15 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR16 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 16
-pub mod MDIOS_DOUTR16 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT16 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR17 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 17
-pub mod MDIOS_DOUTR17 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT17 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR18 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 18
-pub mod MDIOS_DOUTR18 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT18 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR19 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 19
-pub mod MDIOS_DOUTR19 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT19 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR20 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 20
-pub mod MDIOS_DOUTR20 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT20 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR21 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 21
-pub mod MDIOS_DOUTR21 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT21 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR22 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 22
-pub mod MDIOS_DOUTR22 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT22 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR23 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 23
-pub mod MDIOS_DOUTR23 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT23 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR24 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 24
-pub mod MDIOS_DOUTR24 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT24 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR25 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 25
-pub mod MDIOS_DOUTR25 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT25 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR26 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 26
-pub mod MDIOS_DOUTR26 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT26 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR27 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 27
-pub mod MDIOS_DOUTR27 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT27 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR28 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 28
-pub mod MDIOS_DOUTR28 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT28 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR29 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 29
-pub mod MDIOS_DOUTR29 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT29 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR30 {
+    pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 30
-pub mod MDIOS_DOUTR30 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT30 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// MDIOS output data register 31
-pub mod MDIOS_DOUTR31 {
-
-    /// Output data sent to MDIO Master during read frames
-    pub mod DOUT31 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// MDIOS output data register 0
+pub mod DOUTR31 {
+    pub use super::DOUTR0::DOUT;
 }
 pub struct RegisterBlock {
     /// MDIOS configuration register
-    pub MDIOS_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// MDIOS write flag register
-    pub MDIOS_WRFR: RORegister<u32>,
+    pub WRFR: RORegister<u32>,
 
     /// MDIOS clear write flag register
-    pub MDIOS_CWRFR: RWRegister<u32>,
+    pub CWRFR: RWRegister<u32>,
 
     /// MDIOS read flag register
-    pub MDIOS_RDFR: RORegister<u32>,
+    pub RDFR: RORegister<u32>,
 
     /// MDIOS clear read flag register
-    pub MDIOS_CRDFR: RWRegister<u32>,
+    pub CRDFR: RWRegister<u32>,
 
     /// MDIOS status register
-    pub MDIOS_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// MDIOS clear flag register
-    pub MDIOS_CLRFR: RWRegister<u32>,
+    pub CLRFR: RWRegister<u32>,
 
     /// MDIOS input data register 0
-    pub MDIOS_DINR0: RORegister<u32>,
+    pub DINR0: RORegister<u32>,
 
-    /// MDIOS input data register 1
-    pub MDIOS_DINR1: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR1: RORegister<u32>,
 
-    /// MDIOS input data register 2
-    pub MDIOS_DINR2: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR2: RORegister<u32>,
 
-    /// MDIOS input data register 3
-    pub MDIOS_DINR3: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR3: RORegister<u32>,
 
-    /// MDIOS input data register 4
-    pub MDIOS_DINR4: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR4: RORegister<u32>,
 
-    /// MDIOS input data register 5
-    pub MDIOS_DINR5: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR5: RORegister<u32>,
 
-    /// MDIOS input data register 6
-    pub MDIOS_DINR6: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR6: RORegister<u32>,
 
-    /// MDIOS input data register 7
-    pub MDIOS_DINR7: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR7: RORegister<u32>,
 
-    /// MDIOS input data register 8
-    pub MDIOS_DINR8: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR8: RORegister<u32>,
 
-    /// MDIOS input data register 9
-    pub MDIOS_DINR9: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR9: RORegister<u32>,
 
-    /// MDIOS input data register 10
-    pub MDIOS_DINR10: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR10: RORegister<u32>,
 
-    /// MDIOS input data register 11
-    pub MDIOS_DINR11: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR11: RORegister<u32>,
 
-    /// MDIOS input data register 12
-    pub MDIOS_DINR12: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR12: RORegister<u32>,
 
-    /// MDIOS input data register 13
-    pub MDIOS_DINR13: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR13: RORegister<u32>,
 
-    /// MDIOS input data register 14
-    pub MDIOS_DINR14: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR14: RORegister<u32>,
 
-    /// MDIOS input data register 15
-    pub MDIOS_DINR15: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR15: RORegister<u32>,
 
-    /// MDIOS input data register 16
-    pub MDIOS_DINR16: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR16: RORegister<u32>,
 
-    /// MDIOS input data register 17
-    pub MDIOS_DINR17: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR17: RORegister<u32>,
 
-    /// MDIOS input data register 18
-    pub MDIOS_DINR18: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR18: RORegister<u32>,
 
-    /// MDIOS input data register 19
-    pub MDIOS_DINR19: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR19: RORegister<u32>,
 
-    /// MDIOS input data register 20
-    pub MDIOS_DINR20: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR20: RORegister<u32>,
 
-    /// MDIOS input data register 21
-    pub MDIOS_DINR21: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR21: RORegister<u32>,
 
-    /// MDIOS input data register 22
-    pub MDIOS_DINR22: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR22: RORegister<u32>,
 
-    /// MDIOS input data register 23
-    pub MDIOS_DINR23: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR23: RORegister<u32>,
 
-    /// MDIOS input data register 24
-    pub MDIOS_DINR24: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR24: RORegister<u32>,
 
-    /// MDIOS input data register 25
-    pub MDIOS_DINR25: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR25: RORegister<u32>,
 
-    /// MDIOS input data register 26
-    pub MDIOS_DINR26: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR26: RORegister<u32>,
 
-    /// MDIOS input data register 27
-    pub MDIOS_DINR27: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR27: RORegister<u32>,
 
-    /// MDIOS input data register 28
-    pub MDIOS_DINR28: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR28: RORegister<u32>,
 
-    /// MDIOS input data register 29
-    pub MDIOS_DINR29: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR29: RORegister<u32>,
 
-    /// MDIOS input data register 30
-    pub MDIOS_DINR30: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR30: RORegister<u32>,
 
-    /// MDIOS input data register 31
-    pub MDIOS_DINR31: RORegister<u32>,
+    /// MDIOS input data register 0
+    pub DINR31: RORegister<u32>,
 
     /// MDIOS output data register 0
-    pub MDIOS_DOUTR0: RWRegister<u32>,
+    pub DOUTR0: RWRegister<u32>,
 
-    /// MDIOS output data register 1
-    pub MDIOS_DOUTR1: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR1: RWRegister<u32>,
 
-    /// MDIOS output data register 2
-    pub MDIOS_DOUTR2: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR2: RWRegister<u32>,
 
-    /// MDIOS output data register 3
-    pub MDIOS_DOUTR3: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR3: RWRegister<u32>,
 
-    /// MDIOS output data register 4
-    pub MDIOS_DOUTR4: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR4: RWRegister<u32>,
 
-    /// MDIOS output data register 5
-    pub MDIOS_DOUTR5: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR5: RWRegister<u32>,
 
-    /// MDIOS output data register 6
-    pub MDIOS_DOUTR6: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR6: RWRegister<u32>,
 
-    /// MDIOS output data register 7
-    pub MDIOS_DOUTR7: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR7: RWRegister<u32>,
 
-    /// MDIOS output data register 8
-    pub MDIOS_DOUTR8: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR8: RWRegister<u32>,
 
-    /// MDIOS output data register 9
-    pub MDIOS_DOUTR9: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR9: RWRegister<u32>,
 
-    /// MDIOS output data register 10
-    pub MDIOS_DOUTR10: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR10: RWRegister<u32>,
 
-    /// MDIOS output data register 11
-    pub MDIOS_DOUTR11: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR11: RWRegister<u32>,
 
-    /// MDIOS output data register 12
-    pub MDIOS_DOUTR12: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR12: RWRegister<u32>,
 
-    /// MDIOS output data register 13
-    pub MDIOS_DOUTR13: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR13: RWRegister<u32>,
 
-    /// MDIOS output data register 14
-    pub MDIOS_DOUTR14: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR14: RWRegister<u32>,
 
-    /// MDIOS output data register 15
-    pub MDIOS_DOUTR15: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR15: RWRegister<u32>,
 
-    /// MDIOS output data register 16
-    pub MDIOS_DOUTR16: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR16: RWRegister<u32>,
 
-    /// MDIOS output data register 17
-    pub MDIOS_DOUTR17: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR17: RWRegister<u32>,
 
-    /// MDIOS output data register 18
-    pub MDIOS_DOUTR18: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR18: RWRegister<u32>,
 
-    /// MDIOS output data register 19
-    pub MDIOS_DOUTR19: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR19: RWRegister<u32>,
 
-    /// MDIOS output data register 20
-    pub MDIOS_DOUTR20: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR20: RWRegister<u32>,
 
-    /// MDIOS output data register 21
-    pub MDIOS_DOUTR21: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR21: RWRegister<u32>,
 
-    /// MDIOS output data register 22
-    pub MDIOS_DOUTR22: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR22: RWRegister<u32>,
 
-    /// MDIOS output data register 23
-    pub MDIOS_DOUTR23: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR23: RWRegister<u32>,
 
-    /// MDIOS output data register 24
-    pub MDIOS_DOUTR24: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR24: RWRegister<u32>,
 
-    /// MDIOS output data register 25
-    pub MDIOS_DOUTR25: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR25: RWRegister<u32>,
 
-    /// MDIOS output data register 26
-    pub MDIOS_DOUTR26: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR26: RWRegister<u32>,
 
-    /// MDIOS output data register 27
-    pub MDIOS_DOUTR27: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR27: RWRegister<u32>,
 
-    /// MDIOS output data register 28
-    pub MDIOS_DOUTR28: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR28: RWRegister<u32>,
 
-    /// MDIOS output data register 29
-    pub MDIOS_DOUTR29: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR29: RWRegister<u32>,
 
-    /// MDIOS output data register 30
-    pub MDIOS_DOUTR30: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR30: RWRegister<u32>,
 
-    /// MDIOS output data register 31
-    pub MDIOS_DOUTR31: RWRegister<u32>,
+    /// MDIOS output data register 0
+    pub DOUTR31: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub MDIOS_CR: u32,
-    pub MDIOS_WRFR: u32,
-    pub MDIOS_CWRFR: u32,
-    pub MDIOS_RDFR: u32,
-    pub MDIOS_CRDFR: u32,
-    pub MDIOS_SR: u32,
-    pub MDIOS_CLRFR: u32,
-    pub MDIOS_DINR0: u32,
-    pub MDIOS_DINR1: u32,
-    pub MDIOS_DINR2: u32,
-    pub MDIOS_DINR3: u32,
-    pub MDIOS_DINR4: u32,
-    pub MDIOS_DINR5: u32,
-    pub MDIOS_DINR6: u32,
-    pub MDIOS_DINR7: u32,
-    pub MDIOS_DINR8: u32,
-    pub MDIOS_DINR9: u32,
-    pub MDIOS_DINR10: u32,
-    pub MDIOS_DINR11: u32,
-    pub MDIOS_DINR12: u32,
-    pub MDIOS_DINR13: u32,
-    pub MDIOS_DINR14: u32,
-    pub MDIOS_DINR15: u32,
-    pub MDIOS_DINR16: u32,
-    pub MDIOS_DINR17: u32,
-    pub MDIOS_DINR18: u32,
-    pub MDIOS_DINR19: u32,
-    pub MDIOS_DINR20: u32,
-    pub MDIOS_DINR21: u32,
-    pub MDIOS_DINR22: u32,
-    pub MDIOS_DINR23: u32,
-    pub MDIOS_DINR24: u32,
-    pub MDIOS_DINR25: u32,
-    pub MDIOS_DINR26: u32,
-    pub MDIOS_DINR27: u32,
-    pub MDIOS_DINR28: u32,
-    pub MDIOS_DINR29: u32,
-    pub MDIOS_DINR30: u32,
-    pub MDIOS_DINR31: u32,
-    pub MDIOS_DOUTR0: u32,
-    pub MDIOS_DOUTR1: u32,
-    pub MDIOS_DOUTR2: u32,
-    pub MDIOS_DOUTR3: u32,
-    pub MDIOS_DOUTR4: u32,
-    pub MDIOS_DOUTR5: u32,
-    pub MDIOS_DOUTR6: u32,
-    pub MDIOS_DOUTR7: u32,
-    pub MDIOS_DOUTR8: u32,
-    pub MDIOS_DOUTR9: u32,
-    pub MDIOS_DOUTR10: u32,
-    pub MDIOS_DOUTR11: u32,
-    pub MDIOS_DOUTR12: u32,
-    pub MDIOS_DOUTR13: u32,
-    pub MDIOS_DOUTR14: u32,
-    pub MDIOS_DOUTR15: u32,
-    pub MDIOS_DOUTR16: u32,
-    pub MDIOS_DOUTR17: u32,
-    pub MDIOS_DOUTR18: u32,
-    pub MDIOS_DOUTR19: u32,
-    pub MDIOS_DOUTR20: u32,
-    pub MDIOS_DOUTR21: u32,
-    pub MDIOS_DOUTR22: u32,
-    pub MDIOS_DOUTR23: u32,
-    pub MDIOS_DOUTR24: u32,
-    pub MDIOS_DOUTR25: u32,
-    pub MDIOS_DOUTR26: u32,
-    pub MDIOS_DOUTR27: u32,
-    pub MDIOS_DOUTR28: u32,
-    pub MDIOS_DOUTR29: u32,
-    pub MDIOS_DOUTR30: u32,
-    pub MDIOS_DOUTR31: u32,
+    pub CR: u32,
+    pub WRFR: u32,
+    pub CWRFR: u32,
+    pub RDFR: u32,
+    pub CRDFR: u32,
+    pub SR: u32,
+    pub CLRFR: u32,
+    pub DINR0: u32,
+    pub DINR1: u32,
+    pub DINR2: u32,
+    pub DINR3: u32,
+    pub DINR4: u32,
+    pub DINR5: u32,
+    pub DINR6: u32,
+    pub DINR7: u32,
+    pub DINR8: u32,
+    pub DINR9: u32,
+    pub DINR10: u32,
+    pub DINR11: u32,
+    pub DINR12: u32,
+    pub DINR13: u32,
+    pub DINR14: u32,
+    pub DINR15: u32,
+    pub DINR16: u32,
+    pub DINR17: u32,
+    pub DINR18: u32,
+    pub DINR19: u32,
+    pub DINR20: u32,
+    pub DINR21: u32,
+    pub DINR22: u32,
+    pub DINR23: u32,
+    pub DINR24: u32,
+    pub DINR25: u32,
+    pub DINR26: u32,
+    pub DINR27: u32,
+    pub DINR28: u32,
+    pub DINR29: u32,
+    pub DINR30: u32,
+    pub DINR31: u32,
+    pub DOUTR0: u32,
+    pub DOUTR1: u32,
+    pub DOUTR2: u32,
+    pub DOUTR3: u32,
+    pub DOUTR4: u32,
+    pub DOUTR5: u32,
+    pub DOUTR6: u32,
+    pub DOUTR7: u32,
+    pub DOUTR8: u32,
+    pub DOUTR9: u32,
+    pub DOUTR10: u32,
+    pub DOUTR11: u32,
+    pub DOUTR12: u32,
+    pub DOUTR13: u32,
+    pub DOUTR14: u32,
+    pub DOUTR15: u32,
+    pub DOUTR16: u32,
+    pub DOUTR17: u32,
+    pub DOUTR18: u32,
+    pub DOUTR19: u32,
+    pub DOUTR20: u32,
+    pub DOUTR21: u32,
+    pub DOUTR22: u32,
+    pub DOUTR23: u32,
+    pub DOUTR24: u32,
+    pub DOUTR25: u32,
+    pub DOUTR26: u32,
+    pub DOUTR27: u32,
+    pub DOUTR28: u32,
+    pub DOUTR29: u32,
+    pub DOUTR30: u32,
+    pub DOUTR31: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
