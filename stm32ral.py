@@ -52,6 +52,16 @@ pub use cortex_m_rt::interrupt;
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
 
+#[cfg(feature="rtfm")]
+pub struct Peripherals {}
+
+#[cfg(feature="rtfm")]
+impl Peripherals {
+    pub fn steal() -> Self {
+        Peripherals {}
+    }
+}
+
 """
 
 
@@ -69,7 +79,7 @@ keywords = ["stm32", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
 
-# Change version in stm32ral.py, not here!
+# Change version in stm32ral.py, not in Cargo.toml!
 version = "0.1.2"
 
 [package.metadata.docs.rs]
@@ -85,6 +95,7 @@ cortex-m-rt = { version="0.6.8", optional=true }
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["cortex-m/inline-asm"]
+rtfm = []
 default = []
 nosync = []
 doc = []
