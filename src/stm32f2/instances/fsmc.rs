@@ -31,27 +31,27 @@ pub mod FSMC {
     /// Reset values for each field in FSMC
     pub const reset: ResetValues = ResetValues {
         BCR1: 0x000030D0,
-        BTR1: 0xFFFFFFFF,
         BCR2: 0x000030D0,
-        BTR2: 0xFFFFFFFF,
         BCR3: 0x000030D0,
-        BTR3: 0xFFFFFFFF,
         BCR4: 0x000030D0,
+        BTR1: 0xFFFFFFFF,
+        BTR2: 0xFFFFFFFF,
+        BTR3: 0xFFFFFFFF,
         BTR4: 0xFFFFFFFF,
         PCR2: 0x00000018,
-        SR2: 0x00000040,
-        PMEM2: 0xFCFCFCFC,
-        PATT2: 0xFCFCFCFC,
-        ECCR2: 0x00000000,
         PCR3: 0x00000018,
-        SR3: 0x00000040,
-        PMEM3: 0xFCFCFCFC,
-        PATT3: 0xFCFCFCFC,
-        ECCR3: 0x00000000,
         PCR4: 0x00000018,
+        SR2: 0x00000040,
+        SR3: 0x00000040,
         SR4: 0x00000040,
+        PMEM2: 0xFCFCFCFC,
+        PMEM3: 0xFCFCFCFC,
         PMEM4: 0xFCFCFCFC,
+        PATT2: 0xFCFCFCFC,
+        PATT3: 0xFCFCFCFC,
         PATT4: 0xFCFCFCFC,
+        ECCR2: 0x00000000,
+        ECCR3: 0x00000000,
         PIO4: 0xFCFCFCFC,
         BWTR1: 0x0FFFFFFF,
         BWTR2: 0x0FFFFFFF,
@@ -106,6 +106,18 @@ pub mod FSMC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal FSMC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FSMC_TAKEN = true;
+        INSTANCE
     }
 }
 

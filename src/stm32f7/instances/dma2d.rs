@@ -102,6 +102,18 @@ pub mod DMA2D {
             }
         });
     }
+
+    /// Unsafely steal DMA2D
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DMA2D_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to DMA2D

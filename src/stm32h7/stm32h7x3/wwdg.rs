@@ -164,6 +164,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the WWDG peripheral instance
 pub mod WWDG {
@@ -235,6 +237,18 @@ pub mod WWDG {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal WWDG
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        WWDG_TAKEN = true;
+        INSTANCE
     }
 }
 

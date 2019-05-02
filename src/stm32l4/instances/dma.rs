@@ -112,6 +112,18 @@ pub mod DMA1 {
             }
         });
     }
+
+    /// Unsafely steal DMA1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DMA1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to DMA1
@@ -223,6 +235,18 @@ pub mod DMA2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DMA2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DMA2_TAKEN = true;
+        INSTANCE
     }
 }
 

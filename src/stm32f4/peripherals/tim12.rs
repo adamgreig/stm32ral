@@ -723,7 +723,7 @@ pub mod ARR {
 pub mod CCR1 {
 
     /// Capture/Compare 1 value
-    pub mod CCR1 {
+    pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -737,22 +737,9 @@ pub mod CCR1 {
     }
 }
 
-/// capture/compare register 2
+/// capture/compare register 1
 pub mod CCR2 {
-
-    /// Capture/Compare 2 value
-    pub mod CCR2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::CCR1::CCR;
 }
 pub struct RegisterBlock {
     /// control register 1
@@ -796,7 +783,7 @@ pub struct RegisterBlock {
     /// capture/compare register 1
     pub CCR1: RWRegister<u32>,
 
-    /// capture/compare register 2
+    /// capture/compare register 1
     pub CCR2: RWRegister<u32>,
 }
 pub struct ResetValues {
@@ -826,3 +813,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

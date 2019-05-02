@@ -495,6 +495,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the ADC12_Common peripheral instance
 pub mod ADC12_Common {
@@ -566,6 +568,18 @@ pub mod ADC12_Common {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal ADC12_Common
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        ADC12_Common_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -650,6 +664,18 @@ pub mod ADC3_Common {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal ADC3_Common
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        ADC3_Common_TAKEN = true;
+        INSTANCE
     }
 }
 

@@ -4683,6 +4683,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the Ethernet_MAC peripheral instance
 pub mod Ethernet_MAC {
@@ -4836,6 +4838,18 @@ pub mod Ethernet_MAC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal Ethernet_MAC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        Ethernet_MAC_TAKEN = true;
+        INSTANCE
     }
 }
 

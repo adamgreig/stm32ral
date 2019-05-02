@@ -25,12 +25,15 @@ extern "C" {
     fn I2C2_ER();
     fn SPI1();
     fn SPI2();
+    fn USART1();
+    fn USART2();
     fn EXTI15_10();
     fn RTC_Alarm();
     fn OTG_FS_WKUP();
     fn SDIO();
     fn SPI3();
     fn OTG_FS();
+    fn USART6();
     fn I2C3_EV();
     fn I2C3_ER();
     fn FPU();
@@ -93,8 +96,8 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _handler: I2C2_ER },
     Vector { _handler: SPI1 },
     Vector { _handler: SPI2 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: USART1 },
+    Vector { _handler: USART2 },
     Vector { _reserved: 0 },
     Vector {
         _handler: EXTI15_10,
@@ -133,7 +136,7 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: USART6 },
     Vector { _handler: I2C3_EV },
     Vector { _handler: I2C3_ER },
     Vector { _reserved: 0 },
@@ -202,6 +205,10 @@ pub enum Interrupt {
     SPI1 = 35,
     /// 36: SPI2 global interrupt
     SPI2 = 36,
+    /// 37: USART1 global interrupt
+    USART1 = 37,
+    /// 38: USART2 global interrupt
+    USART2 = 38,
     /// 40: EXTI Line\[15:10\] interrupts
     EXTI15_10 = 40,
     /// 41: RTC Alarms (A and B) through EXTI line interrupt
@@ -214,6 +221,8 @@ pub enum Interrupt {
     SPI3 = 51,
     /// 67: USB On The Go FS global interrupt
     OTG_FS = 67,
+    /// 71: USART6 global interrupt
+    USART6 = 71,
     /// 72: I2C3 event interrupt
     I2C3_EV = 72,
     /// 73: I2C3 error interrupt

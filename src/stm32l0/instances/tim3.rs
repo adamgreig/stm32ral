@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::tim2::Instance;
-pub use stm32l0::peripherals::tim2::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::tim2::{
+pub use stm32l0::peripherals::tim2_v2::Instance;
+pub use stm32l0::peripherals::tim2_v2::{RegisterBlock, ResetValues};
+pub use stm32l0::peripherals::tim2_v2::{
     ARR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, OR, PSC,
     SMCR, SR,
 };
@@ -98,6 +98,18 @@ pub mod TIM3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal TIM3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        TIM3_TAKEN = true;
+        INSTANCE
     }
 }
 

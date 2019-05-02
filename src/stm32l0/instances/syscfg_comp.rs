@@ -88,6 +88,18 @@ pub mod SYSCFG_COMP {
             }
         });
     }
+
+    /// Unsafely steal SYSCFG_COMP
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SYSCFG_COMP_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SYSCFG_COMP

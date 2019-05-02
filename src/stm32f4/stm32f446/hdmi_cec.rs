@@ -629,6 +629,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the HDMI_CEC peripheral instance
 pub mod HDMI_CEC {
@@ -703,6 +705,18 @@ pub mod HDMI_CEC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal HDMI_CEC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        HDMI_CEC_TAKEN = true;
+        INSTANCE
     }
 }
 

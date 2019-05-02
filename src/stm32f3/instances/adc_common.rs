@@ -80,6 +80,18 @@ pub mod ADC1_2 {
             }
         });
     }
+
+    /// Unsafely steal ADC1_2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        ADC1_2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to ADC1_2
@@ -163,6 +175,18 @@ pub mod ADC3_4 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal ADC3_4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        ADC3_4_TAKEN = true;
+        INSTANCE
     }
 }
 

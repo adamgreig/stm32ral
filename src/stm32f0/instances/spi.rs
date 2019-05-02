@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface
 //!
-//! Used by: stm32f0x0, stm32f0x1, stm32f0x2, stm32f0x8
+//! Used by: stm32f0x1, stm32f0x2, stm32f0x8
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32f0::peripherals::spi::Instance;
@@ -85,6 +85,18 @@ pub mod SPI1 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SPI1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SPI1_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -175,6 +187,18 @@ pub mod SPI2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SPI2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SPI2_TAKEN = true;
+        INSTANCE
     }
 }
 

@@ -1971,6 +1971,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the SDMMC peripheral instance
 pub mod SDMMC {
@@ -2063,6 +2065,18 @@ pub mod SDMMC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SDMMC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SDMMC_TAKEN = true;
+        INSTANCE
     }
 }
 

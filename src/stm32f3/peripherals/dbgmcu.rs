@@ -115,7 +115,7 @@ pub mod CR {
 }
 
 /// APB Low Freeze Register
-pub mod APB1FZ {
+pub mod APB1_FZ {
 
     /// Debug Timer 2 stopped when Core is halted
     pub mod DBG_TIM2_STOP {
@@ -409,7 +409,7 @@ pub struct RegisterBlock {
     pub CR: RWRegister<u32>,
 
     /// APB Low Freeze Register
-    pub APB1FZ: RWRegister<u32>,
+    pub APB1_FZ: RWRegister<u32>,
 
     /// APB High Freeze Register
     pub APB2FZ: RWRegister<u32>,
@@ -417,7 +417,7 @@ pub struct RegisterBlock {
 pub struct ResetValues {
     pub IDCODE: u32,
     pub CR: u32,
-    pub APB1FZ: u32,
+    pub APB1_FZ: u32,
     pub APB2FZ: u32,
 }
 #[cfg(not(feature = "nosync"))]
@@ -433,3 +433,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

@@ -1030,7 +1030,7 @@ pub mod SMPR2 {
 pub mod JOFR1 {
 
     /// Data offset for injected channel x
-    pub mod JOFFSET1 {
+    pub mod JOFFSET {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (12 bits: 0xfff << 0)
@@ -1046,56 +1046,17 @@ pub mod JOFR1 {
 
 /// injected channel data offset register x
 pub mod JOFR2 {
-
-    /// Data offset for injected channel x
-    pub mod JOFFSET2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::JOFR1::JOFFSET;
 }
 
 /// injected channel data offset register x
 pub mod JOFR3 {
-
-    /// Data offset for injected channel x
-    pub mod JOFFSET3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::JOFR1::JOFFSET;
 }
 
 /// injected channel data offset register x
 pub mod JOFR4 {
-
-    /// Data offset for injected channel x
-    pub mod JOFFSET4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::JOFR1::JOFFSET;
 }
 
 /// watchdog higher threshold register
@@ -1604,3 +1565,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

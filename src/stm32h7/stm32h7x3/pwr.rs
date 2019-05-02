@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// PWR control register 1
-pub mod PWR_CR1 {
+pub mod CR1 {
 
     /// Low-power Deepsleep with SVOS3 (SVOS4 and SVOS5 always use low-power, regardless of the setting of this bit)
     pub mod LPDS {
@@ -123,7 +123,7 @@ pub mod PWR_CR1 {
 }
 
 /// PWR control status register 1
-pub mod PWR_CSR1 {
+pub mod CSR1 {
 
     /// Programmable voltage detect output This bit is set and cleared by hardware. It is valid only if the PVD has been enabled by the PVDE bit. Note: since the PVD is disabled in Standby mode, this bit is equal to 0 after Standby or reset until the PVDE bit is set.
     pub mod PVDO {
@@ -183,7 +183,7 @@ pub mod PWR_CSR1 {
 }
 
 /// This register is not reset by wakeup from Standby mode, RESET signal and VDD POR. It is only reset by VSW POR and VSWRST reset. This register shall not be accessed when VSWRST bit in RCC_BDCR register resets the VSW domain.After reset, PWR_CR2 register is write-protected. Prior to modifying its content, the DBP bit in PWR_CR1 register must be set to disable the write protection.
-pub mod PWR_CR2 {
+pub mod CR2 {
 
     /// Backup regulator enable When set, the Backup regulator (used to maintain the backup RAM content in Standby and VBAT modes) is enabled. If BREN is reset, the backup regulator is switched off. The backup RAM can still be used in Run and Stop modes. However, its content will be lost in Standby and VBAT modes. If BREN is set, the application must wait till the Backup Regulator Ready flag (BRRDY) is set to indicate that the data written into the SRAM will be maintained in Standby and VBAT modes.
     pub mod BREN {
@@ -285,7 +285,7 @@ pub mod PWR_CR2 {
 }
 
 /// Reset only by POR only, not reset by wakeup from Standby mode and RESET pad. The lower byte of this register is written once after POR and shall be written before changing VOS level or ck_sys clock frequency. No limitation applies to the upper bytes.Programming data corresponding to an invalid combination of SDLEVEL, SDEXTHP, SDEN, LDOEN and BYPASS bits (see Table9) will be ignored: data will not be written, the written-once mechanism will lock the register and any further write access will be ignored. The default supply configuration will be kept and the ACTVOSRDY bit in PWR control status register 1 (PWR_CSR1) will go on indicating invalid voltage levels. The system shall be power cycled before writing a new value.
-pub mod PWR_CR3 {
+pub mod CR3 {
 
     /// Power management unit bypass
     pub mod BYPASS {
@@ -401,7 +401,7 @@ pub mod PWR_CR3 {
 }
 
 /// This register allows controlling CPU1 power.
-pub mod PWR_CPUCR {
+pub mod CPUCR {
 
     /// D1 domain Power Down Deepsleep selection. This bit allows CPU1 to define the Deepsleep mode for D1 domain.
     pub mod PDDS_D1 {
@@ -531,7 +531,7 @@ pub mod PWR_CPUCR {
 }
 
 /// This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
-pub mod PWR_D3CR {
+pub mod D3CR {
 
     /// VOS Ready bit for VCORE voltage scaling output selection. This bit is set to 1 by hardware when Bypass mode is selected in PWR control register 3 (PWR_CR3).
     pub mod VOSRDY {
@@ -563,7 +563,7 @@ pub mod PWR_D3CR {
 }
 
 /// reset only by system reset, not reset by wakeup from Standby mode5 wait states are required when writing this register (when clearing a WKUPF bit in PWR_WKUPFR, the AHB write access will complete after the WKUPF has been cleared).
-pub mod PWR_WKUPCR {
+pub mod WKUPCR {
 
     /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
     pub mod WKUPC {
@@ -581,7 +581,7 @@ pub mod PWR_WKUPCR {
 }
 
 /// reset only by system reset, not reset by wakeup from Standby mode
-pub mod PWR_WKUPFR {
+pub mod WKUPFR {
 
     /// Wakeup pin WKUPF flag. This bit is set by hardware and cleared only by a Reset pin or by setting the WKUPCn+1 bit in the PWR wakeup clear register (PWR_WKUPCR).
     pub mod WKUPF1 {
@@ -669,7 +669,7 @@ pub mod PWR_WKUPFR {
 }
 
 /// Reset only by system reset, not reset by wakeup from Standby mode
-pub mod PWR_WKUPEPR {
+pub mod WKUPEPR {
 
     /// Enable Wakeup Pin WKUPn+1 Each bit is set and cleared by software. Note: An additional wakeup event is detected if WKUPn+1 pin is enabled (by setting the WKUPENn+1 bit) when WKUPn+1 pin level is already high when WKUPPn+1 selects rising edge, or low when WKUPPn+1 selects falling edge.
     pub mod WKUPEN1 {
@@ -925,46 +925,46 @@ pub mod PWR_WKUPEPR {
 }
 pub struct RegisterBlock {
     /// PWR control register 1
-    pub PWR_CR1: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// PWR control status register 1
-    pub PWR_CSR1: RORegister<u32>,
+    pub CSR1: RORegister<u32>,
 
     /// This register is not reset by wakeup from Standby mode, RESET signal and VDD POR. It is only reset by VSW POR and VSWRST reset. This register shall not be accessed when VSWRST bit in RCC_BDCR register resets the VSW domain.After reset, PWR_CR2 register is write-protected. Prior to modifying its content, the DBP bit in PWR_CR1 register must be set to disable the write protection.
-    pub PWR_CR2: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
     /// Reset only by POR only, not reset by wakeup from Standby mode and RESET pad. The lower byte of this register is written once after POR and shall be written before changing VOS level or ck_sys clock frequency. No limitation applies to the upper bytes.Programming data corresponding to an invalid combination of SDLEVEL, SDEXTHP, SDEN, LDOEN and BYPASS bits (see Table9) will be ignored: data will not be written, the written-once mechanism will lock the register and any further write access will be ignored. The default supply configuration will be kept and the ACTVOSRDY bit in PWR control status register 1 (PWR_CSR1) will go on indicating invalid voltage levels. The system shall be power cycled before writing a new value.
-    pub PWR_CR3: RWRegister<u32>,
+    pub CR3: RWRegister<u32>,
 
     /// This register allows controlling CPU1 power.
-    pub PWR_CPUCR: RWRegister<u32>,
+    pub CPUCR: RWRegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
-    pub PWR_D3CR: RWRegister<u32>,
+    pub D3CR: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// reset only by system reset, not reset by wakeup from Standby mode5 wait states are required when writing this register (when clearing a WKUPF bit in PWR_WKUPFR, the AHB write access will complete after the WKUPF has been cleared).
-    pub PWR_WKUPCR: RWRegister<u32>,
+    pub WKUPCR: RWRegister<u32>,
 
     /// reset only by system reset, not reset by wakeup from Standby mode
-    pub PWR_WKUPFR: RWRegister<u32>,
+    pub WKUPFR: RWRegister<u32>,
 
     /// Reset only by system reset, not reset by wakeup from Standby mode
-    pub PWR_WKUPEPR: RWRegister<u32>,
+    pub WKUPEPR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub PWR_CR1: u32,
-    pub PWR_CSR1: u32,
-    pub PWR_CR2: u32,
-    pub PWR_CR3: u32,
-    pub PWR_CPUCR: u32,
-    pub PWR_D3CR: u32,
-    pub PWR_WKUPCR: u32,
-    pub PWR_WKUPFR: u32,
-    pub PWR_WKUPEPR: u32,
+    pub CR1: u32,
+    pub CSR1: u32,
+    pub CR2: u32,
+    pub CR3: u32,
+    pub CPUCR: u32,
+    pub D3CR: u32,
+    pub WKUPCR: u32,
+    pub WKUPFR: u32,
+    pub WKUPEPR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -979,6 +979,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the PWR peripheral instance
 pub mod PWR {
@@ -998,15 +1000,15 @@ pub mod PWR {
 
     /// Reset values for each field in PWR
     pub const reset: ResetValues = ResetValues {
-        PWR_CR1: 0xF000C000,
-        PWR_CSR1: 0x00004000,
-        PWR_CR2: 0x00000000,
-        PWR_CR3: 0x00000006,
-        PWR_CPUCR: 0x00000000,
-        PWR_D3CR: 0x00004000,
-        PWR_WKUPCR: 0x00000000,
-        PWR_WKUPFR: 0x00000000,
-        PWR_WKUPEPR: 0x00000000,
+        CR1: 0xF000C000,
+        CSR1: 0x00004000,
+        CR2: 0x00000000,
+        CR3: 0x00000006,
+        CPUCR: 0x00000000,
+        D3CR: 0x00004000,
+        WKUPCR: 0x00000000,
+        WKUPFR: 0x00000000,
+        WKUPEPR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -1056,6 +1058,18 @@ pub mod PWR {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal PWR
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        PWR_TAKEN = true;
+        INSTANCE
     }
 }
 

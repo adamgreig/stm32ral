@@ -120,6 +120,18 @@ pub mod USB_OTG_HOST {
             }
         });
     }
+
+    /// Unsafely steal USB_OTG_HOST
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USB_OTG_HOST_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USB_OTG_HOST

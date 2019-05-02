@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flash
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32l0::peripherals::flash::Instance;
@@ -85,6 +85,18 @@ pub mod Flash {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal Flash
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        Flash_TAKEN = true;
+        INSTANCE
     }
 }
 

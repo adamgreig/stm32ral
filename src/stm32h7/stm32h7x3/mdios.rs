@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// MDIOS configuration register
-pub mod MDIOS_CR {
+pub mod CR {
 
     /// Peripheral enable
     pub mod EN {
@@ -95,7 +95,7 @@ pub mod MDIOS_CR {
 }
 
 /// MDIOS write flag register
-pub mod MDIOS_WRFR {
+pub mod WRFR {
 
     /// Write flags for MDIO registers 0 to 31
     pub mod WRF {
@@ -113,7 +113,7 @@ pub mod MDIOS_WRFR {
 }
 
 /// MDIOS clear write flag register
-pub mod MDIOS_CWRFR {
+pub mod CWRFR {
 
     /// Clear the write flag
     pub mod CWRF {
@@ -131,7 +131,7 @@ pub mod MDIOS_CWRFR {
 }
 
 /// MDIOS read flag register
-pub mod MDIOS_RDFR {
+pub mod RDFR {
 
     /// Read flags for MDIO registers 0 to 31
     pub mod RDF {
@@ -149,7 +149,7 @@ pub mod MDIOS_RDFR {
 }
 
 /// MDIOS clear read flag register
-pub mod MDIOS_CRDFR {
+pub mod CRDFR {
 
     /// Clear the read flag
     pub mod CRDF {
@@ -167,7 +167,7 @@ pub mod MDIOS_CRDFR {
 }
 
 /// MDIOS status register
-pub mod MDIOS_SR {
+pub mod SR {
 
     /// Preamble error flag
     pub mod PERF {
@@ -213,7 +213,7 @@ pub mod MDIOS_SR {
 }
 
 /// MDIOS clear flag register
-pub mod MDIOS_CLRFR {
+pub mod CLRFR {
 
     /// Clear the preamble error flag
     pub mod CPERF {
@@ -259,7 +259,7 @@ pub mod MDIOS_CLRFR {
 }
 
 /// MDIOS input data register 0
-pub mod MDIOS_DINR0 {
+pub mod DINR0 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN0 {
@@ -277,7 +277,7 @@ pub mod MDIOS_DINR0 {
 }
 
 /// MDIOS input data register 1
-pub mod MDIOS_DINR1 {
+pub mod DINR1 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN1 {
@@ -295,7 +295,7 @@ pub mod MDIOS_DINR1 {
 }
 
 /// MDIOS input data register 2
-pub mod MDIOS_DINR2 {
+pub mod DINR2 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN2 {
@@ -313,7 +313,7 @@ pub mod MDIOS_DINR2 {
 }
 
 /// MDIOS input data register 3
-pub mod MDIOS_DINR3 {
+pub mod DINR3 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN3 {
@@ -331,7 +331,7 @@ pub mod MDIOS_DINR3 {
 }
 
 /// MDIOS input data register 4
-pub mod MDIOS_DINR4 {
+pub mod DINR4 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN4 {
@@ -349,7 +349,7 @@ pub mod MDIOS_DINR4 {
 }
 
 /// MDIOS input data register 5
-pub mod MDIOS_DINR5 {
+pub mod DINR5 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN5 {
@@ -367,7 +367,7 @@ pub mod MDIOS_DINR5 {
 }
 
 /// MDIOS input data register 6
-pub mod MDIOS_DINR6 {
+pub mod DINR6 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN6 {
@@ -385,7 +385,7 @@ pub mod MDIOS_DINR6 {
 }
 
 /// MDIOS input data register 7
-pub mod MDIOS_DINR7 {
+pub mod DINR7 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN7 {
@@ -403,7 +403,7 @@ pub mod MDIOS_DINR7 {
 }
 
 /// MDIOS input data register 8
-pub mod MDIOS_DINR8 {
+pub mod DINR8 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN8 {
@@ -421,7 +421,7 @@ pub mod MDIOS_DINR8 {
 }
 
 /// MDIOS input data register 9
-pub mod MDIOS_DINR9 {
+pub mod DINR9 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN9 {
@@ -439,7 +439,7 @@ pub mod MDIOS_DINR9 {
 }
 
 /// MDIOS input data register 10
-pub mod MDIOS_DINR10 {
+pub mod DINR10 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN10 {
@@ -457,7 +457,7 @@ pub mod MDIOS_DINR10 {
 }
 
 /// MDIOS input data register 11
-pub mod MDIOS_DINR11 {
+pub mod DINR11 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN11 {
@@ -475,7 +475,7 @@ pub mod MDIOS_DINR11 {
 }
 
 /// MDIOS input data register 12
-pub mod MDIOS_DINR12 {
+pub mod DINR12 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN12 {
@@ -493,7 +493,7 @@ pub mod MDIOS_DINR12 {
 }
 
 /// MDIOS input data register 13
-pub mod MDIOS_DINR13 {
+pub mod DINR13 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN13 {
@@ -511,7 +511,7 @@ pub mod MDIOS_DINR13 {
 }
 
 /// MDIOS input data register 14
-pub mod MDIOS_DINR14 {
+pub mod DINR14 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN14 {
@@ -529,7 +529,7 @@ pub mod MDIOS_DINR14 {
 }
 
 /// MDIOS input data register 15
-pub mod MDIOS_DINR15 {
+pub mod DINR15 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN15 {
@@ -547,7 +547,7 @@ pub mod MDIOS_DINR15 {
 }
 
 /// MDIOS input data register 16
-pub mod MDIOS_DINR16 {
+pub mod DINR16 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN16 {
@@ -565,7 +565,7 @@ pub mod MDIOS_DINR16 {
 }
 
 /// MDIOS input data register 17
-pub mod MDIOS_DINR17 {
+pub mod DINR17 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN17 {
@@ -583,7 +583,7 @@ pub mod MDIOS_DINR17 {
 }
 
 /// MDIOS input data register 18
-pub mod MDIOS_DINR18 {
+pub mod DINR18 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN18 {
@@ -601,7 +601,7 @@ pub mod MDIOS_DINR18 {
 }
 
 /// MDIOS input data register 19
-pub mod MDIOS_DINR19 {
+pub mod DINR19 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN19 {
@@ -619,7 +619,7 @@ pub mod MDIOS_DINR19 {
 }
 
 /// MDIOS input data register 20
-pub mod MDIOS_DINR20 {
+pub mod DINR20 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN20 {
@@ -637,7 +637,7 @@ pub mod MDIOS_DINR20 {
 }
 
 /// MDIOS input data register 21
-pub mod MDIOS_DINR21 {
+pub mod DINR21 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN21 {
@@ -655,7 +655,7 @@ pub mod MDIOS_DINR21 {
 }
 
 /// MDIOS input data register 22
-pub mod MDIOS_DINR22 {
+pub mod DINR22 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN22 {
@@ -673,7 +673,7 @@ pub mod MDIOS_DINR22 {
 }
 
 /// MDIOS input data register 23
-pub mod MDIOS_DINR23 {
+pub mod DINR23 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN23 {
@@ -691,7 +691,7 @@ pub mod MDIOS_DINR23 {
 }
 
 /// MDIOS input data register 24
-pub mod MDIOS_DINR24 {
+pub mod DINR24 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN24 {
@@ -709,7 +709,7 @@ pub mod MDIOS_DINR24 {
 }
 
 /// MDIOS input data register 25
-pub mod MDIOS_DINR25 {
+pub mod DINR25 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN25 {
@@ -727,7 +727,7 @@ pub mod MDIOS_DINR25 {
 }
 
 /// MDIOS input data register 26
-pub mod MDIOS_DINR26 {
+pub mod DINR26 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN26 {
@@ -745,7 +745,7 @@ pub mod MDIOS_DINR26 {
 }
 
 /// MDIOS input data register 27
-pub mod MDIOS_DINR27 {
+pub mod DINR27 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN27 {
@@ -763,7 +763,7 @@ pub mod MDIOS_DINR27 {
 }
 
 /// MDIOS input data register 28
-pub mod MDIOS_DINR28 {
+pub mod DINR28 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN28 {
@@ -781,7 +781,7 @@ pub mod MDIOS_DINR28 {
 }
 
 /// MDIOS input data register 29
-pub mod MDIOS_DINR29 {
+pub mod DINR29 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN29 {
@@ -799,7 +799,7 @@ pub mod MDIOS_DINR29 {
 }
 
 /// MDIOS input data register 30
-pub mod MDIOS_DINR30 {
+pub mod DINR30 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN30 {
@@ -817,7 +817,7 @@ pub mod MDIOS_DINR30 {
 }
 
 /// MDIOS input data register 31
-pub mod MDIOS_DINR31 {
+pub mod DINR31 {
 
     /// Input data received from MDIO Master during write frames
     pub mod DIN31 {
@@ -835,7 +835,7 @@ pub mod MDIOS_DINR31 {
 }
 
 /// MDIOS output data register 0
-pub mod MDIOS_DOUTR0 {
+pub mod DOUTR0 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT0 {
@@ -853,7 +853,7 @@ pub mod MDIOS_DOUTR0 {
 }
 
 /// MDIOS output data register 1
-pub mod MDIOS_DOUTR1 {
+pub mod DOUTR1 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT1 {
@@ -871,7 +871,7 @@ pub mod MDIOS_DOUTR1 {
 }
 
 /// MDIOS output data register 2
-pub mod MDIOS_DOUTR2 {
+pub mod DOUTR2 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT2 {
@@ -889,7 +889,7 @@ pub mod MDIOS_DOUTR2 {
 }
 
 /// MDIOS output data register 3
-pub mod MDIOS_DOUTR3 {
+pub mod DOUTR3 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT3 {
@@ -907,7 +907,7 @@ pub mod MDIOS_DOUTR3 {
 }
 
 /// MDIOS output data register 4
-pub mod MDIOS_DOUTR4 {
+pub mod DOUTR4 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT4 {
@@ -925,7 +925,7 @@ pub mod MDIOS_DOUTR4 {
 }
 
 /// MDIOS output data register 5
-pub mod MDIOS_DOUTR5 {
+pub mod DOUTR5 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT5 {
@@ -943,7 +943,7 @@ pub mod MDIOS_DOUTR5 {
 }
 
 /// MDIOS output data register 6
-pub mod MDIOS_DOUTR6 {
+pub mod DOUTR6 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT6 {
@@ -961,7 +961,7 @@ pub mod MDIOS_DOUTR6 {
 }
 
 /// MDIOS output data register 7
-pub mod MDIOS_DOUTR7 {
+pub mod DOUTR7 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT7 {
@@ -979,7 +979,7 @@ pub mod MDIOS_DOUTR7 {
 }
 
 /// MDIOS output data register 8
-pub mod MDIOS_DOUTR8 {
+pub mod DOUTR8 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT8 {
@@ -997,7 +997,7 @@ pub mod MDIOS_DOUTR8 {
 }
 
 /// MDIOS output data register 9
-pub mod MDIOS_DOUTR9 {
+pub mod DOUTR9 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT9 {
@@ -1015,7 +1015,7 @@ pub mod MDIOS_DOUTR9 {
 }
 
 /// MDIOS output data register 10
-pub mod MDIOS_DOUTR10 {
+pub mod DOUTR10 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT10 {
@@ -1033,7 +1033,7 @@ pub mod MDIOS_DOUTR10 {
 }
 
 /// MDIOS output data register 11
-pub mod MDIOS_DOUTR11 {
+pub mod DOUTR11 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT11 {
@@ -1051,7 +1051,7 @@ pub mod MDIOS_DOUTR11 {
 }
 
 /// MDIOS output data register 12
-pub mod MDIOS_DOUTR12 {
+pub mod DOUTR12 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT12 {
@@ -1069,7 +1069,7 @@ pub mod MDIOS_DOUTR12 {
 }
 
 /// MDIOS output data register 13
-pub mod MDIOS_DOUTR13 {
+pub mod DOUTR13 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT13 {
@@ -1087,7 +1087,7 @@ pub mod MDIOS_DOUTR13 {
 }
 
 /// MDIOS output data register 14
-pub mod MDIOS_DOUTR14 {
+pub mod DOUTR14 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT14 {
@@ -1105,7 +1105,7 @@ pub mod MDIOS_DOUTR14 {
 }
 
 /// MDIOS output data register 15
-pub mod MDIOS_DOUTR15 {
+pub mod DOUTR15 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT15 {
@@ -1123,7 +1123,7 @@ pub mod MDIOS_DOUTR15 {
 }
 
 /// MDIOS output data register 16
-pub mod MDIOS_DOUTR16 {
+pub mod DOUTR16 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT16 {
@@ -1141,7 +1141,7 @@ pub mod MDIOS_DOUTR16 {
 }
 
 /// MDIOS output data register 17
-pub mod MDIOS_DOUTR17 {
+pub mod DOUTR17 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT17 {
@@ -1159,7 +1159,7 @@ pub mod MDIOS_DOUTR17 {
 }
 
 /// MDIOS output data register 18
-pub mod MDIOS_DOUTR18 {
+pub mod DOUTR18 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT18 {
@@ -1177,7 +1177,7 @@ pub mod MDIOS_DOUTR18 {
 }
 
 /// MDIOS output data register 19
-pub mod MDIOS_DOUTR19 {
+pub mod DOUTR19 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT19 {
@@ -1195,7 +1195,7 @@ pub mod MDIOS_DOUTR19 {
 }
 
 /// MDIOS output data register 20
-pub mod MDIOS_DOUTR20 {
+pub mod DOUTR20 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT20 {
@@ -1213,7 +1213,7 @@ pub mod MDIOS_DOUTR20 {
 }
 
 /// MDIOS output data register 21
-pub mod MDIOS_DOUTR21 {
+pub mod DOUTR21 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT21 {
@@ -1231,7 +1231,7 @@ pub mod MDIOS_DOUTR21 {
 }
 
 /// MDIOS output data register 22
-pub mod MDIOS_DOUTR22 {
+pub mod DOUTR22 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT22 {
@@ -1249,7 +1249,7 @@ pub mod MDIOS_DOUTR22 {
 }
 
 /// MDIOS output data register 23
-pub mod MDIOS_DOUTR23 {
+pub mod DOUTR23 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT23 {
@@ -1267,7 +1267,7 @@ pub mod MDIOS_DOUTR23 {
 }
 
 /// MDIOS output data register 24
-pub mod MDIOS_DOUTR24 {
+pub mod DOUTR24 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT24 {
@@ -1285,7 +1285,7 @@ pub mod MDIOS_DOUTR24 {
 }
 
 /// MDIOS output data register 25
-pub mod MDIOS_DOUTR25 {
+pub mod DOUTR25 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT25 {
@@ -1303,7 +1303,7 @@ pub mod MDIOS_DOUTR25 {
 }
 
 /// MDIOS output data register 26
-pub mod MDIOS_DOUTR26 {
+pub mod DOUTR26 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT26 {
@@ -1321,7 +1321,7 @@ pub mod MDIOS_DOUTR26 {
 }
 
 /// MDIOS output data register 27
-pub mod MDIOS_DOUTR27 {
+pub mod DOUTR27 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT27 {
@@ -1339,7 +1339,7 @@ pub mod MDIOS_DOUTR27 {
 }
 
 /// MDIOS output data register 28
-pub mod MDIOS_DOUTR28 {
+pub mod DOUTR28 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT28 {
@@ -1357,7 +1357,7 @@ pub mod MDIOS_DOUTR28 {
 }
 
 /// MDIOS output data register 29
-pub mod MDIOS_DOUTR29 {
+pub mod DOUTR29 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT29 {
@@ -1375,7 +1375,7 @@ pub mod MDIOS_DOUTR29 {
 }
 
 /// MDIOS output data register 30
-pub mod MDIOS_DOUTR30 {
+pub mod DOUTR30 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT30 {
@@ -1393,7 +1393,7 @@ pub mod MDIOS_DOUTR30 {
 }
 
 /// MDIOS output data register 31
-pub mod MDIOS_DOUTR31 {
+pub mod DOUTR31 {
 
     /// Output data sent to MDIO Master during read frames
     pub mod DOUT31 {
@@ -1411,290 +1411,290 @@ pub mod MDIOS_DOUTR31 {
 }
 pub struct RegisterBlock {
     /// MDIOS configuration register
-    pub MDIOS_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// MDIOS write flag register
-    pub MDIOS_WRFR: RORegister<u32>,
+    pub WRFR: RORegister<u32>,
 
     /// MDIOS clear write flag register
-    pub MDIOS_CWRFR: RWRegister<u32>,
+    pub CWRFR: RWRegister<u32>,
 
     /// MDIOS read flag register
-    pub MDIOS_RDFR: RORegister<u32>,
+    pub RDFR: RORegister<u32>,
 
     /// MDIOS clear read flag register
-    pub MDIOS_CRDFR: RWRegister<u32>,
+    pub CRDFR: RWRegister<u32>,
 
     /// MDIOS status register
-    pub MDIOS_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// MDIOS clear flag register
-    pub MDIOS_CLRFR: RWRegister<u32>,
+    pub CLRFR: RWRegister<u32>,
 
     /// MDIOS input data register 0
-    pub MDIOS_DINR0: RORegister<u32>,
+    pub DINR0: RORegister<u32>,
 
     /// MDIOS input data register 1
-    pub MDIOS_DINR1: RORegister<u32>,
+    pub DINR1: RORegister<u32>,
 
     /// MDIOS input data register 2
-    pub MDIOS_DINR2: RORegister<u32>,
+    pub DINR2: RORegister<u32>,
 
     /// MDIOS input data register 3
-    pub MDIOS_DINR3: RORegister<u32>,
+    pub DINR3: RORegister<u32>,
 
     /// MDIOS input data register 4
-    pub MDIOS_DINR4: RORegister<u32>,
+    pub DINR4: RORegister<u32>,
 
     /// MDIOS input data register 5
-    pub MDIOS_DINR5: RORegister<u32>,
+    pub DINR5: RORegister<u32>,
 
     /// MDIOS input data register 6
-    pub MDIOS_DINR6: RORegister<u32>,
+    pub DINR6: RORegister<u32>,
 
     /// MDIOS input data register 7
-    pub MDIOS_DINR7: RORegister<u32>,
+    pub DINR7: RORegister<u32>,
 
     /// MDIOS input data register 8
-    pub MDIOS_DINR8: RORegister<u32>,
+    pub DINR8: RORegister<u32>,
 
     /// MDIOS input data register 9
-    pub MDIOS_DINR9: RORegister<u32>,
+    pub DINR9: RORegister<u32>,
 
     /// MDIOS input data register 10
-    pub MDIOS_DINR10: RORegister<u32>,
+    pub DINR10: RORegister<u32>,
 
     /// MDIOS input data register 11
-    pub MDIOS_DINR11: RORegister<u32>,
+    pub DINR11: RORegister<u32>,
 
     /// MDIOS input data register 12
-    pub MDIOS_DINR12: RORegister<u32>,
+    pub DINR12: RORegister<u32>,
 
     /// MDIOS input data register 13
-    pub MDIOS_DINR13: RORegister<u32>,
+    pub DINR13: RORegister<u32>,
 
     /// MDIOS input data register 14
-    pub MDIOS_DINR14: RORegister<u32>,
+    pub DINR14: RORegister<u32>,
 
     /// MDIOS input data register 15
-    pub MDIOS_DINR15: RORegister<u32>,
+    pub DINR15: RORegister<u32>,
 
     /// MDIOS input data register 16
-    pub MDIOS_DINR16: RORegister<u32>,
+    pub DINR16: RORegister<u32>,
 
     /// MDIOS input data register 17
-    pub MDIOS_DINR17: RORegister<u32>,
+    pub DINR17: RORegister<u32>,
 
     /// MDIOS input data register 18
-    pub MDIOS_DINR18: RORegister<u32>,
+    pub DINR18: RORegister<u32>,
 
     /// MDIOS input data register 19
-    pub MDIOS_DINR19: RORegister<u32>,
+    pub DINR19: RORegister<u32>,
 
     /// MDIOS input data register 20
-    pub MDIOS_DINR20: RORegister<u32>,
+    pub DINR20: RORegister<u32>,
 
     /// MDIOS input data register 21
-    pub MDIOS_DINR21: RORegister<u32>,
+    pub DINR21: RORegister<u32>,
 
     /// MDIOS input data register 22
-    pub MDIOS_DINR22: RORegister<u32>,
+    pub DINR22: RORegister<u32>,
 
     /// MDIOS input data register 23
-    pub MDIOS_DINR23: RORegister<u32>,
+    pub DINR23: RORegister<u32>,
 
     /// MDIOS input data register 24
-    pub MDIOS_DINR24: RORegister<u32>,
+    pub DINR24: RORegister<u32>,
 
     /// MDIOS input data register 25
-    pub MDIOS_DINR25: RORegister<u32>,
+    pub DINR25: RORegister<u32>,
 
     /// MDIOS input data register 26
-    pub MDIOS_DINR26: RORegister<u32>,
+    pub DINR26: RORegister<u32>,
 
     /// MDIOS input data register 27
-    pub MDIOS_DINR27: RORegister<u32>,
+    pub DINR27: RORegister<u32>,
 
     /// MDIOS input data register 28
-    pub MDIOS_DINR28: RORegister<u32>,
+    pub DINR28: RORegister<u32>,
 
     /// MDIOS input data register 29
-    pub MDIOS_DINR29: RORegister<u32>,
+    pub DINR29: RORegister<u32>,
 
     /// MDIOS input data register 30
-    pub MDIOS_DINR30: RORegister<u32>,
+    pub DINR30: RORegister<u32>,
 
     /// MDIOS input data register 31
-    pub MDIOS_DINR31: RORegister<u32>,
+    pub DINR31: RORegister<u32>,
 
     /// MDIOS output data register 0
-    pub MDIOS_DOUTR0: RWRegister<u32>,
+    pub DOUTR0: RWRegister<u32>,
 
     /// MDIOS output data register 1
-    pub MDIOS_DOUTR1: RWRegister<u32>,
+    pub DOUTR1: RWRegister<u32>,
 
     /// MDIOS output data register 2
-    pub MDIOS_DOUTR2: RWRegister<u32>,
+    pub DOUTR2: RWRegister<u32>,
 
     /// MDIOS output data register 3
-    pub MDIOS_DOUTR3: RWRegister<u32>,
+    pub DOUTR3: RWRegister<u32>,
 
     /// MDIOS output data register 4
-    pub MDIOS_DOUTR4: RWRegister<u32>,
+    pub DOUTR4: RWRegister<u32>,
 
     /// MDIOS output data register 5
-    pub MDIOS_DOUTR5: RWRegister<u32>,
+    pub DOUTR5: RWRegister<u32>,
 
     /// MDIOS output data register 6
-    pub MDIOS_DOUTR6: RWRegister<u32>,
+    pub DOUTR6: RWRegister<u32>,
 
     /// MDIOS output data register 7
-    pub MDIOS_DOUTR7: RWRegister<u32>,
+    pub DOUTR7: RWRegister<u32>,
 
     /// MDIOS output data register 8
-    pub MDIOS_DOUTR8: RWRegister<u32>,
+    pub DOUTR8: RWRegister<u32>,
 
     /// MDIOS output data register 9
-    pub MDIOS_DOUTR9: RWRegister<u32>,
+    pub DOUTR9: RWRegister<u32>,
 
     /// MDIOS output data register 10
-    pub MDIOS_DOUTR10: RWRegister<u32>,
+    pub DOUTR10: RWRegister<u32>,
 
     /// MDIOS output data register 11
-    pub MDIOS_DOUTR11: RWRegister<u32>,
+    pub DOUTR11: RWRegister<u32>,
 
     /// MDIOS output data register 12
-    pub MDIOS_DOUTR12: RWRegister<u32>,
+    pub DOUTR12: RWRegister<u32>,
 
     /// MDIOS output data register 13
-    pub MDIOS_DOUTR13: RWRegister<u32>,
+    pub DOUTR13: RWRegister<u32>,
 
     /// MDIOS output data register 14
-    pub MDIOS_DOUTR14: RWRegister<u32>,
+    pub DOUTR14: RWRegister<u32>,
 
     /// MDIOS output data register 15
-    pub MDIOS_DOUTR15: RWRegister<u32>,
+    pub DOUTR15: RWRegister<u32>,
 
     /// MDIOS output data register 16
-    pub MDIOS_DOUTR16: RWRegister<u32>,
+    pub DOUTR16: RWRegister<u32>,
 
     /// MDIOS output data register 17
-    pub MDIOS_DOUTR17: RWRegister<u32>,
+    pub DOUTR17: RWRegister<u32>,
 
     /// MDIOS output data register 18
-    pub MDIOS_DOUTR18: RWRegister<u32>,
+    pub DOUTR18: RWRegister<u32>,
 
     /// MDIOS output data register 19
-    pub MDIOS_DOUTR19: RWRegister<u32>,
+    pub DOUTR19: RWRegister<u32>,
 
     /// MDIOS output data register 20
-    pub MDIOS_DOUTR20: RWRegister<u32>,
+    pub DOUTR20: RWRegister<u32>,
 
     /// MDIOS output data register 21
-    pub MDIOS_DOUTR21: RWRegister<u32>,
+    pub DOUTR21: RWRegister<u32>,
 
     /// MDIOS output data register 22
-    pub MDIOS_DOUTR22: RWRegister<u32>,
+    pub DOUTR22: RWRegister<u32>,
 
     /// MDIOS output data register 23
-    pub MDIOS_DOUTR23: RWRegister<u32>,
+    pub DOUTR23: RWRegister<u32>,
 
     /// MDIOS output data register 24
-    pub MDIOS_DOUTR24: RWRegister<u32>,
+    pub DOUTR24: RWRegister<u32>,
 
     /// MDIOS output data register 25
-    pub MDIOS_DOUTR25: RWRegister<u32>,
+    pub DOUTR25: RWRegister<u32>,
 
     /// MDIOS output data register 26
-    pub MDIOS_DOUTR26: RWRegister<u32>,
+    pub DOUTR26: RWRegister<u32>,
 
     /// MDIOS output data register 27
-    pub MDIOS_DOUTR27: RWRegister<u32>,
+    pub DOUTR27: RWRegister<u32>,
 
     /// MDIOS output data register 28
-    pub MDIOS_DOUTR28: RWRegister<u32>,
+    pub DOUTR28: RWRegister<u32>,
 
     /// MDIOS output data register 29
-    pub MDIOS_DOUTR29: RWRegister<u32>,
+    pub DOUTR29: RWRegister<u32>,
 
     /// MDIOS output data register 30
-    pub MDIOS_DOUTR30: RWRegister<u32>,
+    pub DOUTR30: RWRegister<u32>,
 
     /// MDIOS output data register 31
-    pub MDIOS_DOUTR31: RWRegister<u32>,
+    pub DOUTR31: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub MDIOS_CR: u32,
-    pub MDIOS_WRFR: u32,
-    pub MDIOS_CWRFR: u32,
-    pub MDIOS_RDFR: u32,
-    pub MDIOS_CRDFR: u32,
-    pub MDIOS_SR: u32,
-    pub MDIOS_CLRFR: u32,
-    pub MDIOS_DINR0: u32,
-    pub MDIOS_DINR1: u32,
-    pub MDIOS_DINR2: u32,
-    pub MDIOS_DINR3: u32,
-    pub MDIOS_DINR4: u32,
-    pub MDIOS_DINR5: u32,
-    pub MDIOS_DINR6: u32,
-    pub MDIOS_DINR7: u32,
-    pub MDIOS_DINR8: u32,
-    pub MDIOS_DINR9: u32,
-    pub MDIOS_DINR10: u32,
-    pub MDIOS_DINR11: u32,
-    pub MDIOS_DINR12: u32,
-    pub MDIOS_DINR13: u32,
-    pub MDIOS_DINR14: u32,
-    pub MDIOS_DINR15: u32,
-    pub MDIOS_DINR16: u32,
-    pub MDIOS_DINR17: u32,
-    pub MDIOS_DINR18: u32,
-    pub MDIOS_DINR19: u32,
-    pub MDIOS_DINR20: u32,
-    pub MDIOS_DINR21: u32,
-    pub MDIOS_DINR22: u32,
-    pub MDIOS_DINR23: u32,
-    pub MDIOS_DINR24: u32,
-    pub MDIOS_DINR25: u32,
-    pub MDIOS_DINR26: u32,
-    pub MDIOS_DINR27: u32,
-    pub MDIOS_DINR28: u32,
-    pub MDIOS_DINR29: u32,
-    pub MDIOS_DINR30: u32,
-    pub MDIOS_DINR31: u32,
-    pub MDIOS_DOUTR0: u32,
-    pub MDIOS_DOUTR1: u32,
-    pub MDIOS_DOUTR2: u32,
-    pub MDIOS_DOUTR3: u32,
-    pub MDIOS_DOUTR4: u32,
-    pub MDIOS_DOUTR5: u32,
-    pub MDIOS_DOUTR6: u32,
-    pub MDIOS_DOUTR7: u32,
-    pub MDIOS_DOUTR8: u32,
-    pub MDIOS_DOUTR9: u32,
-    pub MDIOS_DOUTR10: u32,
-    pub MDIOS_DOUTR11: u32,
-    pub MDIOS_DOUTR12: u32,
-    pub MDIOS_DOUTR13: u32,
-    pub MDIOS_DOUTR14: u32,
-    pub MDIOS_DOUTR15: u32,
-    pub MDIOS_DOUTR16: u32,
-    pub MDIOS_DOUTR17: u32,
-    pub MDIOS_DOUTR18: u32,
-    pub MDIOS_DOUTR19: u32,
-    pub MDIOS_DOUTR20: u32,
-    pub MDIOS_DOUTR21: u32,
-    pub MDIOS_DOUTR22: u32,
-    pub MDIOS_DOUTR23: u32,
-    pub MDIOS_DOUTR24: u32,
-    pub MDIOS_DOUTR25: u32,
-    pub MDIOS_DOUTR26: u32,
-    pub MDIOS_DOUTR27: u32,
-    pub MDIOS_DOUTR28: u32,
-    pub MDIOS_DOUTR29: u32,
-    pub MDIOS_DOUTR30: u32,
-    pub MDIOS_DOUTR31: u32,
+    pub CR: u32,
+    pub WRFR: u32,
+    pub CWRFR: u32,
+    pub RDFR: u32,
+    pub CRDFR: u32,
+    pub SR: u32,
+    pub CLRFR: u32,
+    pub DINR0: u32,
+    pub DINR1: u32,
+    pub DINR2: u32,
+    pub DINR3: u32,
+    pub DINR4: u32,
+    pub DINR5: u32,
+    pub DINR6: u32,
+    pub DINR7: u32,
+    pub DINR8: u32,
+    pub DINR9: u32,
+    pub DINR10: u32,
+    pub DINR11: u32,
+    pub DINR12: u32,
+    pub DINR13: u32,
+    pub DINR14: u32,
+    pub DINR15: u32,
+    pub DINR16: u32,
+    pub DINR17: u32,
+    pub DINR18: u32,
+    pub DINR19: u32,
+    pub DINR20: u32,
+    pub DINR21: u32,
+    pub DINR22: u32,
+    pub DINR23: u32,
+    pub DINR24: u32,
+    pub DINR25: u32,
+    pub DINR26: u32,
+    pub DINR27: u32,
+    pub DINR28: u32,
+    pub DINR29: u32,
+    pub DINR30: u32,
+    pub DINR31: u32,
+    pub DOUTR0: u32,
+    pub DOUTR1: u32,
+    pub DOUTR2: u32,
+    pub DOUTR3: u32,
+    pub DOUTR4: u32,
+    pub DOUTR5: u32,
+    pub DOUTR6: u32,
+    pub DOUTR7: u32,
+    pub DOUTR8: u32,
+    pub DOUTR9: u32,
+    pub DOUTR10: u32,
+    pub DOUTR11: u32,
+    pub DOUTR12: u32,
+    pub DOUTR13: u32,
+    pub DOUTR14: u32,
+    pub DOUTR15: u32,
+    pub DOUTR16: u32,
+    pub DOUTR17: u32,
+    pub DOUTR18: u32,
+    pub DOUTR19: u32,
+    pub DOUTR20: u32,
+    pub DOUTR21: u32,
+    pub DOUTR22: u32,
+    pub DOUTR23: u32,
+    pub DOUTR24: u32,
+    pub DOUTR25: u32,
+    pub DOUTR26: u32,
+    pub DOUTR27: u32,
+    pub DOUTR28: u32,
+    pub DOUTR29: u32,
+    pub DOUTR30: u32,
+    pub DOUTR31: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1709,6 +1709,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the MDIOS peripheral instance
 pub mod MDIOS {
@@ -1728,77 +1730,77 @@ pub mod MDIOS {
 
     /// Reset values for each field in MDIOS
     pub const reset: ResetValues = ResetValues {
-        MDIOS_CR: 0x00000000,
-        MDIOS_WRFR: 0x00000000,
-        MDIOS_CWRFR: 0x00000000,
-        MDIOS_RDFR: 0x00000000,
-        MDIOS_CRDFR: 0x00000000,
-        MDIOS_SR: 0x00000000,
-        MDIOS_CLRFR: 0x00000000,
-        MDIOS_DINR0: 0x00000000,
-        MDIOS_DINR1: 0x00000000,
-        MDIOS_DINR2: 0x00000000,
-        MDIOS_DINR3: 0x00000000,
-        MDIOS_DINR4: 0x00000000,
-        MDIOS_DINR5: 0x00000000,
-        MDIOS_DINR6: 0x00000000,
-        MDIOS_DINR7: 0x00000000,
-        MDIOS_DINR8: 0x00000000,
-        MDIOS_DINR9: 0x00000000,
-        MDIOS_DINR10: 0x00000000,
-        MDIOS_DINR11: 0x00000000,
-        MDIOS_DINR12: 0x00000000,
-        MDIOS_DINR13: 0x00000000,
-        MDIOS_DINR14: 0x00000000,
-        MDIOS_DINR15: 0x00000000,
-        MDIOS_DINR16: 0x00000000,
-        MDIOS_DINR17: 0x00000000,
-        MDIOS_DINR18: 0x00000000,
-        MDIOS_DINR19: 0x00000000,
-        MDIOS_DINR20: 0x00000000,
-        MDIOS_DINR21: 0x00000000,
-        MDIOS_DINR22: 0x00000000,
-        MDIOS_DINR23: 0x00000000,
-        MDIOS_DINR24: 0x00000000,
-        MDIOS_DINR25: 0x00000000,
-        MDIOS_DINR26: 0x00000000,
-        MDIOS_DINR27: 0x00000000,
-        MDIOS_DINR28: 0x00000000,
-        MDIOS_DINR29: 0x00000000,
-        MDIOS_DINR30: 0x00000000,
-        MDIOS_DINR31: 0x00000000,
-        MDIOS_DOUTR0: 0x00000000,
-        MDIOS_DOUTR1: 0x00000000,
-        MDIOS_DOUTR2: 0x00000000,
-        MDIOS_DOUTR3: 0x00000000,
-        MDIOS_DOUTR4: 0x00000000,
-        MDIOS_DOUTR5: 0x00000000,
-        MDIOS_DOUTR6: 0x00000000,
-        MDIOS_DOUTR7: 0x00000000,
-        MDIOS_DOUTR8: 0x00000000,
-        MDIOS_DOUTR9: 0x00000000,
-        MDIOS_DOUTR10: 0x00000000,
-        MDIOS_DOUTR11: 0x00000000,
-        MDIOS_DOUTR12: 0x00000000,
-        MDIOS_DOUTR13: 0x00000000,
-        MDIOS_DOUTR14: 0x00000000,
-        MDIOS_DOUTR15: 0x00000000,
-        MDIOS_DOUTR16: 0x00000000,
-        MDIOS_DOUTR17: 0x00000000,
-        MDIOS_DOUTR18: 0x00000000,
-        MDIOS_DOUTR19: 0x00000000,
-        MDIOS_DOUTR20: 0x00000000,
-        MDIOS_DOUTR21: 0x00000000,
-        MDIOS_DOUTR22: 0x00000000,
-        MDIOS_DOUTR23: 0x00000000,
-        MDIOS_DOUTR24: 0x00000000,
-        MDIOS_DOUTR25: 0x00000000,
-        MDIOS_DOUTR26: 0x00000000,
-        MDIOS_DOUTR27: 0x00000000,
-        MDIOS_DOUTR28: 0x00000000,
-        MDIOS_DOUTR29: 0x00000000,
-        MDIOS_DOUTR30: 0x00000000,
-        MDIOS_DOUTR31: 0x00000000,
+        CR: 0x00000000,
+        WRFR: 0x00000000,
+        CWRFR: 0x00000000,
+        RDFR: 0x00000000,
+        CRDFR: 0x00000000,
+        SR: 0x00000000,
+        CLRFR: 0x00000000,
+        DINR0: 0x00000000,
+        DINR1: 0x00000000,
+        DINR2: 0x00000000,
+        DINR3: 0x00000000,
+        DINR4: 0x00000000,
+        DINR5: 0x00000000,
+        DINR6: 0x00000000,
+        DINR7: 0x00000000,
+        DINR8: 0x00000000,
+        DINR9: 0x00000000,
+        DINR10: 0x00000000,
+        DINR11: 0x00000000,
+        DINR12: 0x00000000,
+        DINR13: 0x00000000,
+        DINR14: 0x00000000,
+        DINR15: 0x00000000,
+        DINR16: 0x00000000,
+        DINR17: 0x00000000,
+        DINR18: 0x00000000,
+        DINR19: 0x00000000,
+        DINR20: 0x00000000,
+        DINR21: 0x00000000,
+        DINR22: 0x00000000,
+        DINR23: 0x00000000,
+        DINR24: 0x00000000,
+        DINR25: 0x00000000,
+        DINR26: 0x00000000,
+        DINR27: 0x00000000,
+        DINR28: 0x00000000,
+        DINR29: 0x00000000,
+        DINR30: 0x00000000,
+        DINR31: 0x00000000,
+        DOUTR0: 0x00000000,
+        DOUTR1: 0x00000000,
+        DOUTR2: 0x00000000,
+        DOUTR3: 0x00000000,
+        DOUTR4: 0x00000000,
+        DOUTR5: 0x00000000,
+        DOUTR6: 0x00000000,
+        DOUTR7: 0x00000000,
+        DOUTR8: 0x00000000,
+        DOUTR9: 0x00000000,
+        DOUTR10: 0x00000000,
+        DOUTR11: 0x00000000,
+        DOUTR12: 0x00000000,
+        DOUTR13: 0x00000000,
+        DOUTR14: 0x00000000,
+        DOUTR15: 0x00000000,
+        DOUTR16: 0x00000000,
+        DOUTR17: 0x00000000,
+        DOUTR18: 0x00000000,
+        DOUTR19: 0x00000000,
+        DOUTR20: 0x00000000,
+        DOUTR21: 0x00000000,
+        DOUTR22: 0x00000000,
+        DOUTR23: 0x00000000,
+        DOUTR24: 0x00000000,
+        DOUTR25: 0x00000000,
+        DOUTR26: 0x00000000,
+        DOUTR27: 0x00000000,
+        DOUTR28: 0x00000000,
+        DOUTR29: 0x00000000,
+        DOUTR30: 0x00000000,
+        DOUTR31: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -1848,6 +1850,18 @@ pub mod MDIOS {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal MDIOS
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        MDIOS_TAKEN = true;
+        INSTANCE
     }
 }
 

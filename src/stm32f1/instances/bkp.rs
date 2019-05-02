@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Backup registers
 //!
-//! Used by: stm32f101, stm32f102, stm32f103, stm32f107
+//! Used by: stm32f101, stm32f102, stm32f107
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32f1::peripherals::bkp::Instance;
@@ -125,6 +125,18 @@ pub mod BKP {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal BKP
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        BKP_TAKEN = true;
+        INSTANCE
     }
 }
 

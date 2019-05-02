@@ -85,6 +85,18 @@ pub mod LPTIM1 {
             }
         });
     }
+
+    /// Unsafely steal LPTIM1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        LPTIM1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to LPTIM1

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flexible memory controller
 //!
-//! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -1614,3 +1614,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

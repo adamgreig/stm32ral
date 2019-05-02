@@ -93,6 +93,18 @@ pub mod Ethernet_DMA {
             }
         });
     }
+
+    /// Unsafely steal Ethernet_DMA
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        Ethernet_DMA_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to Ethernet_DMA

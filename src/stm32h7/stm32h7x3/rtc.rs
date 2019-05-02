@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister, WORegister};
 
 /// The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_TR {
+pub mod TR {
 
     /// Second units in BCD format
     pub mod SU {
@@ -109,7 +109,7 @@ pub mod RTC_TR {
 }
 
 /// The RTC_DR is the calendar date shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_DR {
+pub mod DR {
 
     /// Date units in BCD format
     pub mod DU {
@@ -211,7 +211,7 @@ pub mod RTC_DR {
 }
 
 /// RTC control register
-pub mod RTC_CR {
+pub mod CR {
 
     /// Wakeup clock selection
     pub mod WUCKSEL {
@@ -509,7 +509,7 @@ pub mod RTC_CR {
 }
 
 /// This register is write protected (except for RTC_ISR\[13:8\] bits). The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_ISR {
+pub mod ISR {
 
     /// Alarm A write flag This bit is set by hardware when Alarm A values can be changed, after the ALRAE bit has been set to 0 in RTC_CR. It is cleared by hardware in initialization mode.
     pub mod ALRAWF {
@@ -765,7 +765,7 @@ pub mod RTC_ISR {
 }
 
 /// This register must be written in initialization mode only. The initialization must be performed in two separate write accesses. Refer to Calendar initialization and configuration on page9.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_PRER {
+pub mod PRER {
 
     /// Synchronous prescaler factor This is the synchronous division factor: ck_spre frequency = ck_apre frequency/(PREDIV_S+1)
     pub mod PREDIV_S {
@@ -797,7 +797,7 @@ pub mod RTC_PRER {
 }
 
 /// This register can be written only when WUTWF is set to 1 in RTC_ISR.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_WUTR {
+pub mod WUTR {
 
     /// Wakeup auto-reload value bits When the wakeup timer is enabled (WUTE set to 1), the WUTF flag is set every (WUT\[15:0\] + 1) ck_wut cycles. The ck_wut period is selected through WUCKSEL\[2:0\] bits of the RTC_CR register When WUCKSEL\[2\] = 1, the wakeup timer becomes 17-bits and WUCKSEL\[1\] effectively becomes WUT\[16\] the most-significant bit to be reloaded into the timer. The first assertion of WUTF occurs (WUT+1) ck_wut cycles after WUTE is set. Setting WUT\[15:0\] to 0x0000 with WUCKSEL\[2:0\] =011 (RTCCLK/2) is forbidden.
     pub mod WUT {
@@ -815,7 +815,7 @@ pub mod RTC_WUTR {
 }
 
 /// This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_ALRMAR {
+pub mod ALRMAR {
 
     /// Second units in BCD format.
     pub mod SU {
@@ -1015,25 +1015,25 @@ pub mod RTC_ALRMAR {
 }
 
 /// This register can be written only when ALRBWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_ALRMBR {
-    pub use super::RTC_ALRMAR::DT;
-    pub use super::RTC_ALRMAR::DU;
-    pub use super::RTC_ALRMAR::HT;
-    pub use super::RTC_ALRMAR::HU;
-    pub use super::RTC_ALRMAR::MNT;
-    pub use super::RTC_ALRMAR::MNU;
-    pub use super::RTC_ALRMAR::MSK1;
-    pub use super::RTC_ALRMAR::MSK2;
-    pub use super::RTC_ALRMAR::MSK3;
-    pub use super::RTC_ALRMAR::MSK4;
-    pub use super::RTC_ALRMAR::PM;
-    pub use super::RTC_ALRMAR::ST;
-    pub use super::RTC_ALRMAR::SU;
-    pub use super::RTC_ALRMAR::WDSEL;
+pub mod ALRMBR {
+    pub use super::ALRMAR::DT;
+    pub use super::ALRMAR::DU;
+    pub use super::ALRMAR::HT;
+    pub use super::ALRMAR::HU;
+    pub use super::ALRMAR::MNT;
+    pub use super::ALRMAR::MNU;
+    pub use super::ALRMAR::MSK1;
+    pub use super::ALRMAR::MSK2;
+    pub use super::ALRMAR::MSK3;
+    pub use super::ALRMAR::MSK4;
+    pub use super::ALRMAR::PM;
+    pub use super::ALRMAR::ST;
+    pub use super::ALRMAR::SU;
+    pub use super::ALRMAR::WDSEL;
 }
 
 /// RTC write protection register
-pub mod RTC_WPR {
+pub mod WPR {
 
     /// Write protection key This byte is written by software. Reading this byte always returns 0x00. Refer to RTC register write protection for a description of how to unlock RTC register write protection.
     pub mod KEY {
@@ -1051,7 +1051,7 @@ pub mod RTC_WPR {
 }
 
 /// RTC sub second register
-pub mod RTC_SSR {
+pub mod SSR {
 
     /// Sub second value SS\[15:0\] is the value in the synchronous prescaler counter. The fraction of a second is given by the formula below: Second fraction = (PREDIV_S - SS) / (PREDIV_S + 1) Note: SS can be larger than PREDIV_S only after a shift operation. In that case, the correct time/date is one second less than as indicated by RTC_TR/RTC_DR.
     pub mod SS {
@@ -1069,7 +1069,7 @@ pub mod RTC_SSR {
 }
 
 /// This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_SHIFTR {
+pub mod SHIFTR {
 
     /// Subtract a fraction of a second These bits are write only and is always read as zero. Writing to this bit has no effect when a shift operation is pending (when SHPF=1, in RTC_ISR). The value which is written to SUBFS is added to the synchronous prescaler counter. Since this counter counts down, this operation effectively subtracts from (delays) the clock by: Delay (seconds) = SUBFS / (PREDIV_S + 1) A fraction of a second can effectively be added to the clock (advancing the clock) when the ADD1S function is used in conjunction with SUBFS, effectively advancing the clock by: Advance (seconds) = (1 - (SUBFS / (PREDIV_S + 1))). Note: Writing to SUBFS causes RSF to be cleared. Software can then wait until RSF=1 to be sure that the shadow registers have been updated with the shifted time.
     pub mod SUBFS {
@@ -1101,7 +1101,7 @@ pub mod RTC_SHIFTR {
 }
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_ISR. It is cleared when TSF bit is reset.
-pub mod RTC_TSTR {
+pub mod TSTR {
 
     /// Second units in BCD format.
     pub mod SU {
@@ -1203,7 +1203,7 @@ pub mod RTC_TSTR {
 }
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_ISR. It is cleared when TSF bit is reset.
-pub mod RTC_TSDR {
+pub mod TSDR {
 
     /// Date units in BCD format
     pub mod DU {
@@ -1277,12 +1277,12 @@ pub mod RTC_TSDR {
 }
 
 /// The content of this register is valid only when RTC_ISR/TSF is set. It is cleared when the RTC_ISR/TSF bit is reset.
-pub mod RTC_TSSSR {
-    pub use super::RTC_SSR::SS;
+pub mod TSSSR {
+    pub use super::SSR::SS;
 }
 
 /// This register is write protected. The write access procedure is described in RTC register write protection on page9.
-pub mod RTC_CALR {
+pub mod CALR {
 
     /// Calibration minus The frequency of the calendar is reduced by masking CALM out of 220 RTCCLK pulses (32 seconds if the input frequency is 32768 Hz). This decreases the frequency of the calendar with a resolution of 0.9537 ppm. To increase the frequency of the calendar, this feature should be used in conjunction with CALP. See Section24.3.12: RTC smooth digital calibration on page13.
     pub mod CALM {
@@ -1342,7 +1342,7 @@ pub mod RTC_CALR {
 }
 
 /// RTC tamper and alternate function configuration register
-pub mod RTC_TAMPCR {
+pub mod TAMPCR {
 
     /// RTC_TAMP1 input detection enable
     pub mod TAMP1E {
@@ -1640,7 +1640,7 @@ pub mod RTC_TAMPCR {
 }
 
 /// This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
-pub mod RTC_ALRMASSR {
+pub mod ALRMASSR {
 
     /// Sub seconds value This value is compared with the contents of the synchronous prescaler counter to determine if Alarm A is to be activated. Only bits 0 up MASKSS-1 are compared.
     pub mod SS {
@@ -1672,13 +1672,13 @@ pub mod RTC_ALRMASSR {
 }
 
 /// This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode.This register is write protected.The write access procedure is described in Section: RTC register write protection.
-pub mod RTC_ALRMBSSR {
-    pub use super::RTC_ALRMASSR::MASKSS;
-    pub use super::RTC_ALRMASSR::SS;
+pub mod ALRMBSSR {
+    pub use super::ALRMASSR::MASKSS;
+    pub use super::ALRMASSR::SS;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP0R {
+pub mod BKP0R {
 
     /// The application can write or read data to and from these registers. They are powered-on by VBAT when VDD is switched off, so that they are not reset by System reset, and their contents remain valid when the device operates in low-power mode. This register is reset on a tamper detection event, as long as TAMPxF=1. or when the Flash readout protection is disabled.
     pub mod BKP {
@@ -1696,82 +1696,82 @@ pub mod RTC_BKP0R {
 }
 
 /// RTC backup registers
-pub mod RTC_BKP1R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP1R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP2R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP2R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP3R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP3R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP4R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP4R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP5R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP5R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP6R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP6R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP7R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP7R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP8R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP8R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP9R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP9R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP10R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP10R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP11R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP11R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP12R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP12R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP13R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP13R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP14R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP14R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP15R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP15R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC option register
-pub mod RTC_OR {
+pub mod OR {
 
     /// RTC_ALARM output type on PC13
     pub mod RTC_ALARM_TYPE {
@@ -1803,292 +1803,292 @@ pub mod RTC_OR {
 }
 
 /// RTC backup registers
-pub mod RTC_BKP16R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP16R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP17R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP17R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP18R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP18R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP19R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP19R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP20R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP20R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP21R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP21R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP22R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP22R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP23R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP23R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP24R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP24R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP25R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP25R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP26R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP26R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP27R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP27R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP28R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP28R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP29R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP29R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP30R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP30R {
+    pub use super::BKP0R::BKP;
 }
 
 /// RTC backup registers
-pub mod RTC_BKP31R {
-    pub use super::RTC_BKP0R::BKP;
+pub mod BKP31R {
+    pub use super::BKP0R::BKP;
 }
 pub struct RegisterBlock {
     /// The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_TR: RWRegister<u32>,
+    pub TR: RWRegister<u32>,
 
     /// The RTC_DR is the calendar date shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_DR: RWRegister<u32>,
+    pub DR: RWRegister<u32>,
 
     /// RTC control register
-    pub RTC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// This register is write protected (except for RTC_ISR\[13:8\] bits). The write access procedure is described in RTC register write protection on page9.
-    pub RTC_ISR: RWRegister<u32>,
+    pub ISR: RWRegister<u32>,
 
     /// This register must be written in initialization mode only. The initialization must be performed in two separate write accesses. Refer to Calendar initialization and configuration on page9.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_PRER: RWRegister<u32>,
+    pub PRER: RWRegister<u32>,
 
     /// This register can be written only when WUTWF is set to 1 in RTC_ISR.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_WUTR: RWRegister<u32>,
+    pub WUTR: RWRegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_ALRMAR: RWRegister<u32>,
+    pub ALRMAR: RWRegister<u32>,
 
     /// This register can be written only when ALRBWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_ALRMBR: RWRegister<u32>,
+    pub ALRMBR: RWRegister<u32>,
 
     /// RTC write protection register
-    pub RTC_WPR: WORegister<u32>,
+    pub WPR: WORegister<u32>,
 
     /// RTC sub second register
-    pub RTC_SSR: RORegister<u32>,
+    pub SSR: RORegister<u32>,
 
     /// This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_SHIFTR: WORegister<u32>,
+    pub SHIFTR: WORegister<u32>,
 
     /// The content of this register is valid only when TSF is set to 1 in RTC_ISR. It is cleared when TSF bit is reset.
-    pub RTC_TSTR: RORegister<u32>,
+    pub TSTR: RORegister<u32>,
 
     /// The content of this register is valid only when TSF is set to 1 in RTC_ISR. It is cleared when TSF bit is reset.
-    pub RTC_TSDR: RORegister<u32>,
+    pub TSDR: RORegister<u32>,
 
     /// The content of this register is valid only when RTC_ISR/TSF is set. It is cleared when the RTC_ISR/TSF bit is reset.
-    pub RTC_TSSSR: RORegister<u32>,
+    pub TSSSR: RORegister<u32>,
 
     /// This register is write protected. The write access procedure is described in RTC register write protection on page9.
-    pub RTC_CALR: RWRegister<u32>,
+    pub CALR: RWRegister<u32>,
 
     /// RTC tamper and alternate function configuration register
-    pub RTC_TAMPCR: RWRegister<u32>,
+    pub TAMPCR: RWRegister<u32>,
 
     /// This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
-    pub RTC_ALRMASSR: RWRegister<u32>,
+    pub ALRMASSR: RWRegister<u32>,
 
     /// This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode.This register is write protected.The write access procedure is described in Section: RTC register write protection.
-    pub RTC_ALRMBSSR: RWRegister<u32>,
+    pub ALRMBSSR: RWRegister<u32>,
 
     /// RTC option register
-    pub RTC_OR: RWRegister<u32>,
+    pub OR: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP0R: RWRegister<u32>,
+    pub BKP0R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP1R: RWRegister<u32>,
+    pub BKP1R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP2R: RWRegister<u32>,
+    pub BKP2R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP3R: RWRegister<u32>,
+    pub BKP3R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP4R: RWRegister<u32>,
+    pub BKP4R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP5R: RWRegister<u32>,
+    pub BKP5R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP6R: RWRegister<u32>,
+    pub BKP6R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP7R: RWRegister<u32>,
+    pub BKP7R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP8R: RWRegister<u32>,
+    pub BKP8R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP9R: RWRegister<u32>,
+    pub BKP9R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP10R: RWRegister<u32>,
+    pub BKP10R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP11R: RWRegister<u32>,
+    pub BKP11R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP12R: RWRegister<u32>,
+    pub BKP12R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP13R: RWRegister<u32>,
+    pub BKP13R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP14R: RWRegister<u32>,
+    pub BKP14R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP15R: RWRegister<u32>,
+    pub BKP15R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP16R: RWRegister<u32>,
+    pub BKP16R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP17R: RWRegister<u32>,
+    pub BKP17R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP18R: RWRegister<u32>,
+    pub BKP18R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP19R: RWRegister<u32>,
+    pub BKP19R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP20R: RWRegister<u32>,
+    pub BKP20R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP21R: RWRegister<u32>,
+    pub BKP21R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP22R: RWRegister<u32>,
+    pub BKP22R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP23R: RWRegister<u32>,
+    pub BKP23R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP24R: RWRegister<u32>,
+    pub BKP24R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP25R: RWRegister<u32>,
+    pub BKP25R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP26R: RWRegister<u32>,
+    pub BKP26R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP27R: RWRegister<u32>,
+    pub BKP27R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP28R: RWRegister<u32>,
+    pub BKP28R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP29R: RWRegister<u32>,
+    pub BKP29R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP30R: RWRegister<u32>,
+    pub BKP30R: RWRegister<u32>,
 
     /// RTC backup registers
-    pub RTC_BKP31R: RWRegister<u32>,
+    pub BKP31R: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub RTC_TR: u32,
-    pub RTC_DR: u32,
-    pub RTC_CR: u32,
-    pub RTC_ISR: u32,
-    pub RTC_PRER: u32,
-    pub RTC_WUTR: u32,
-    pub RTC_ALRMAR: u32,
-    pub RTC_ALRMBR: u32,
-    pub RTC_WPR: u32,
-    pub RTC_SSR: u32,
-    pub RTC_SHIFTR: u32,
-    pub RTC_TSTR: u32,
-    pub RTC_TSDR: u32,
-    pub RTC_TSSSR: u32,
-    pub RTC_CALR: u32,
-    pub RTC_TAMPCR: u32,
-    pub RTC_ALRMASSR: u32,
-    pub RTC_ALRMBSSR: u32,
-    pub RTC_OR: u32,
-    pub RTC_BKP0R: u32,
-    pub RTC_BKP1R: u32,
-    pub RTC_BKP2R: u32,
-    pub RTC_BKP3R: u32,
-    pub RTC_BKP4R: u32,
-    pub RTC_BKP5R: u32,
-    pub RTC_BKP6R: u32,
-    pub RTC_BKP7R: u32,
-    pub RTC_BKP8R: u32,
-    pub RTC_BKP9R: u32,
-    pub RTC_BKP10R: u32,
-    pub RTC_BKP11R: u32,
-    pub RTC_BKP12R: u32,
-    pub RTC_BKP13R: u32,
-    pub RTC_BKP14R: u32,
-    pub RTC_BKP15R: u32,
-    pub RTC_BKP16R: u32,
-    pub RTC_BKP17R: u32,
-    pub RTC_BKP18R: u32,
-    pub RTC_BKP19R: u32,
-    pub RTC_BKP20R: u32,
-    pub RTC_BKP21R: u32,
-    pub RTC_BKP22R: u32,
-    pub RTC_BKP23R: u32,
-    pub RTC_BKP24R: u32,
-    pub RTC_BKP25R: u32,
-    pub RTC_BKP26R: u32,
-    pub RTC_BKP27R: u32,
-    pub RTC_BKP28R: u32,
-    pub RTC_BKP29R: u32,
-    pub RTC_BKP30R: u32,
-    pub RTC_BKP31R: u32,
+    pub TR: u32,
+    pub DR: u32,
+    pub CR: u32,
+    pub ISR: u32,
+    pub PRER: u32,
+    pub WUTR: u32,
+    pub ALRMAR: u32,
+    pub ALRMBR: u32,
+    pub WPR: u32,
+    pub SSR: u32,
+    pub SHIFTR: u32,
+    pub TSTR: u32,
+    pub TSDR: u32,
+    pub TSSSR: u32,
+    pub CALR: u32,
+    pub TAMPCR: u32,
+    pub ALRMASSR: u32,
+    pub ALRMBSSR: u32,
+    pub OR: u32,
+    pub BKP0R: u32,
+    pub BKP1R: u32,
+    pub BKP2R: u32,
+    pub BKP3R: u32,
+    pub BKP4R: u32,
+    pub BKP5R: u32,
+    pub BKP6R: u32,
+    pub BKP7R: u32,
+    pub BKP8R: u32,
+    pub BKP9R: u32,
+    pub BKP10R: u32,
+    pub BKP11R: u32,
+    pub BKP12R: u32,
+    pub BKP13R: u32,
+    pub BKP14R: u32,
+    pub BKP15R: u32,
+    pub BKP16R: u32,
+    pub BKP17R: u32,
+    pub BKP18R: u32,
+    pub BKP19R: u32,
+    pub BKP20R: u32,
+    pub BKP21R: u32,
+    pub BKP22R: u32,
+    pub BKP23R: u32,
+    pub BKP24R: u32,
+    pub BKP25R: u32,
+    pub BKP26R: u32,
+    pub BKP27R: u32,
+    pub BKP28R: u32,
+    pub BKP29R: u32,
+    pub BKP30R: u32,
+    pub BKP31R: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -2103,6 +2103,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the RTC peripheral instance
 pub mod RTC {
@@ -2122,57 +2124,57 @@ pub mod RTC {
 
     /// Reset values for each field in RTC
     pub const reset: ResetValues = ResetValues {
-        RTC_TR: 0x00000000,
-        RTC_DR: 0x00002101,
-        RTC_CR: 0x00000000,
-        RTC_ISR: 0x00000007,
-        RTC_PRER: 0x007F00FF,
-        RTC_WUTR: 0x0000FFFF,
-        RTC_ALRMAR: 0x00000000,
-        RTC_ALRMBR: 0x00000000,
-        RTC_WPR: 0x00000000,
-        RTC_SSR: 0x00000000,
-        RTC_SHIFTR: 0x00000000,
-        RTC_TSTR: 0x00000000,
-        RTC_TSDR: 0x00000000,
-        RTC_TSSSR: 0x00000000,
-        RTC_CALR: 0x00000000,
-        RTC_TAMPCR: 0x00000000,
-        RTC_ALRMASSR: 0x00000000,
-        RTC_ALRMBSSR: 0x00000000,
-        RTC_BKP0R: 0x00000000,
-        RTC_BKP1R: 0x00000000,
-        RTC_BKP2R: 0x00000000,
-        RTC_BKP3R: 0x00000000,
-        RTC_BKP4R: 0x00000000,
-        RTC_BKP5R: 0x00000000,
-        RTC_BKP6R: 0x00000000,
-        RTC_BKP7R: 0x00000000,
-        RTC_BKP8R: 0x00000000,
-        RTC_BKP9R: 0x00000000,
-        RTC_BKP10R: 0x00000000,
-        RTC_BKP11R: 0x00000000,
-        RTC_BKP12R: 0x00000000,
-        RTC_BKP13R: 0x00000000,
-        RTC_BKP14R: 0x00000000,
-        RTC_BKP15R: 0x00000000,
-        RTC_OR: 0x00000000,
-        RTC_BKP16R: 0x00000000,
-        RTC_BKP17R: 0x00000000,
-        RTC_BKP18R: 0x00000000,
-        RTC_BKP19R: 0x00000000,
-        RTC_BKP20R: 0x00000000,
-        RTC_BKP21R: 0x00000000,
-        RTC_BKP22R: 0x00000000,
-        RTC_BKP23R: 0x00000000,
-        RTC_BKP24R: 0x00000000,
-        RTC_BKP25R: 0x00000000,
-        RTC_BKP26R: 0x00000000,
-        RTC_BKP27R: 0x00000000,
-        RTC_BKP28R: 0x00000000,
-        RTC_BKP29R: 0x00000000,
-        RTC_BKP30R: 0x00000000,
-        RTC_BKP31R: 0x00000000,
+        TR: 0x00000000,
+        DR: 0x00002101,
+        CR: 0x00000000,
+        ISR: 0x00000007,
+        PRER: 0x007F00FF,
+        WUTR: 0x0000FFFF,
+        ALRMAR: 0x00000000,
+        ALRMBR: 0x00000000,
+        WPR: 0x00000000,
+        SSR: 0x00000000,
+        SHIFTR: 0x00000000,
+        TSTR: 0x00000000,
+        TSDR: 0x00000000,
+        TSSSR: 0x00000000,
+        CALR: 0x00000000,
+        TAMPCR: 0x00000000,
+        ALRMASSR: 0x00000000,
+        ALRMBSSR: 0x00000000,
+        BKP0R: 0x00000000,
+        BKP1R: 0x00000000,
+        BKP2R: 0x00000000,
+        BKP3R: 0x00000000,
+        BKP4R: 0x00000000,
+        BKP5R: 0x00000000,
+        BKP6R: 0x00000000,
+        BKP7R: 0x00000000,
+        BKP8R: 0x00000000,
+        BKP9R: 0x00000000,
+        BKP10R: 0x00000000,
+        BKP11R: 0x00000000,
+        BKP12R: 0x00000000,
+        BKP13R: 0x00000000,
+        BKP14R: 0x00000000,
+        BKP15R: 0x00000000,
+        OR: 0x00000000,
+        BKP16R: 0x00000000,
+        BKP17R: 0x00000000,
+        BKP18R: 0x00000000,
+        BKP19R: 0x00000000,
+        BKP20R: 0x00000000,
+        BKP21R: 0x00000000,
+        BKP22R: 0x00000000,
+        BKP23R: 0x00000000,
+        BKP24R: 0x00000000,
+        BKP25R: 0x00000000,
+        BKP26R: 0x00000000,
+        BKP27R: 0x00000000,
+        BKP28R: 0x00000000,
+        BKP29R: 0x00000000,
+        BKP30R: 0x00000000,
+        BKP31R: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -2222,6 +2224,18 @@ pub mod RTC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal RTC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        RTC_TAKEN = true;
+        INSTANCE
     }
 }
 

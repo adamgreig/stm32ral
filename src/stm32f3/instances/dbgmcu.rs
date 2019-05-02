@@ -7,7 +7,7 @@
 #[cfg(not(feature = "nosync"))]
 pub use stm32f3::peripherals::dbgmcu::Instance;
 pub use stm32f3::peripherals::dbgmcu::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::dbgmcu::{APB1FZ, APB2FZ, CR, IDCODE};
+pub use stm32f3::peripherals::dbgmcu::{APB1_FZ, APB2FZ, CR, IDCODE};
 
 /// Access functions for the DBGMCU peripheral instance
 pub mod DBGMCU {
@@ -29,7 +29,7 @@ pub mod DBGMCU {
     pub const reset: ResetValues = ResetValues {
         IDCODE: 0x00000000,
         CR: 0x00000000,
-        APB1FZ: 0x00000000,
+        APB1_FZ: 0x00000000,
         APB2FZ: 0x00000000,
     };
 
@@ -80,6 +80,18 @@ pub mod DBGMCU {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DBGMCU
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DBGMCU_TAKEN = true;
+        INSTANCE
     }
 }
 

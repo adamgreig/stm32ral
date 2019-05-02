@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32l0::peripherals::tim22::Instance;
@@ -92,6 +92,18 @@ pub mod TIM22 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal TIM22
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        TIM22_TAKEN = true;
+        INSTANCE
     }
 }
 

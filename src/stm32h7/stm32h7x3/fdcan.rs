@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister};
 
 /// FDCAN Core Release Register
-pub mod FDCAN_CREL {
+pub mod CREL {
 
     /// Core release
     pub mod REL {
@@ -95,7 +95,7 @@ pub mod FDCAN_CREL {
 }
 
 /// FDCAN Core Release Register
-pub mod FDCAN_ENDN {
+pub mod ENDN {
 
     /// Endiannes Test Value
     pub mod ETV {
@@ -113,7 +113,7 @@ pub mod FDCAN_ENDN {
 }
 
 /// FDCAN Data Bit Timing and Prescaler Register
-pub mod FDCAN_DBTP {
+pub mod DBTP {
 
     /// Synchronization Jump Width
     pub mod DSJW {
@@ -187,7 +187,7 @@ pub mod FDCAN_DBTP {
 }
 
 /// FDCAN Test Register
-pub mod FDCAN_TEST {
+pub mod TEST {
 
     /// Loop Back mode
     pub mod LBCK {
@@ -233,7 +233,7 @@ pub mod FDCAN_TEST {
 }
 
 /// FDCAN RAM Watchdog Register
-pub mod FDCAN_RWD {
+pub mod RWD {
 
     /// Watchdog value
     pub mod WDV {
@@ -265,7 +265,7 @@ pub mod FDCAN_RWD {
 }
 
 /// FDCAN CC Control Register
-pub mod FDCAN_CCCR {
+pub mod CCCR {
 
     /// Initialization
     pub mod INIT {
@@ -465,7 +465,7 @@ pub mod FDCAN_CCCR {
 }
 
 /// FDCAN Nominal Bit Timing and Prescaler Register
-pub mod FDCAN_NBTP {
+pub mod NBTP {
 
     /// NSJW: Nominal (Re)Synchronization Jump Width
     pub mod NSJW {
@@ -525,7 +525,7 @@ pub mod FDCAN_NBTP {
 }
 
 /// FDCAN Timestamp Counter Configuration Register
-pub mod FDCAN_TSCC {
+pub mod TSCC {
 
     /// Timestamp Counter Prescaler
     pub mod TCP {
@@ -557,7 +557,7 @@ pub mod FDCAN_TSCC {
 }
 
 /// FDCAN Timestamp Counter Value Register
-pub mod FDCAN_TSCV {
+pub mod TSCV {
 
     /// Timestamp Counter
     pub mod TSC {
@@ -575,7 +575,7 @@ pub mod FDCAN_TSCV {
 }
 
 /// FDCAN Timeout Counter Configuration Register
-pub mod FDCAN_TOCC {
+pub mod TOCC {
 
     /// Enable Timeout Counter
     pub mod ETOC {
@@ -621,7 +621,7 @@ pub mod FDCAN_TOCC {
 }
 
 /// FDCAN Timeout Counter Value Register
-pub mod FDCAN_TOCV {
+pub mod TOCV {
 
     /// Timeout Counter
     pub mod TOC {
@@ -639,7 +639,7 @@ pub mod FDCAN_TOCV {
 }
 
 /// FDCAN Error Counter Register
-pub mod FDCAN_ECR {
+pub mod ECR {
 
     /// AN Error Logging
     pub mod CEL {
@@ -699,7 +699,7 @@ pub mod FDCAN_ECR {
 }
 
 /// FDCAN Protocol Status Register
-pub mod FDCAN_PSR {
+pub mod PSR {
 
     /// Last Error Code
     pub mod LEC {
@@ -857,7 +857,7 @@ pub mod FDCAN_PSR {
 }
 
 /// FDCAN Transmitter Delay Compensation Register
-pub mod FDCAN_TDCR {
+pub mod TDCR {
 
     /// Transmitter Delay Compensation Filter Window Length
     pub mod TDCF {
@@ -889,7 +889,7 @@ pub mod FDCAN_TDCR {
 }
 
 /// FDCAN Interrupt Register
-pub mod FDCAN_IR {
+pub mod IR {
 
     /// Rx FIFO 0 New Message
     pub mod RF0N {
@@ -1285,7 +1285,7 @@ pub mod FDCAN_IR {
 }
 
 /// FDCAN Interrupt Enable Register
-pub mod FDCAN_IE {
+pub mod IE {
 
     /// Rx FIFO 0 New Message Enable
     pub mod RF0NE {
@@ -1709,7 +1709,7 @@ pub mod FDCAN_IE {
 }
 
 /// FDCAN Interrupt Line Select Register
-pub mod FDCAN_ILS {
+pub mod ILS {
 
     /// Rx FIFO 0 New Message Interrupt Line
     pub mod RF0NL {
@@ -2133,7 +2133,7 @@ pub mod FDCAN_ILS {
 }
 
 /// FDCAN Interrupt Line Enable Register
-pub mod FDCAN_ILE {
+pub mod ILE {
 
     /// Enable Interrupt Line 0
     pub mod EINT0 {
@@ -2165,7 +2165,7 @@ pub mod FDCAN_ILE {
 }
 
 /// FDCAN Global Filter Configuration Register
-pub mod FDCAN_GFC {
+pub mod GFC {
 
     /// Reject Remote Frames Extended
     pub mod RRFE {
@@ -2225,7 +2225,7 @@ pub mod FDCAN_GFC {
 }
 
 /// FDCAN Standard ID Filter Configuration Register
-pub mod FDCAN_SIDFC {
+pub mod SIDFC {
 
     /// Filter List Standard Start Address
     pub mod FLSSA {
@@ -2257,7 +2257,7 @@ pub mod FDCAN_SIDFC {
 }
 
 /// FDCAN Extended ID Filter Configuration Register
-pub mod FDCAN_XIDFC {
+pub mod XIDFC {
 
     /// Filter List Standard Start Address
     pub mod FLESA {
@@ -2289,7 +2289,7 @@ pub mod FDCAN_XIDFC {
 }
 
 /// FDCAN Extended ID and Mask Register
-pub mod FDCAN_XIDAM {
+pub mod XIDAM {
 
     /// Extended ID Mask
     pub mod EIDM {
@@ -2307,7 +2307,7 @@ pub mod FDCAN_XIDAM {
 }
 
 /// FDCAN High Priority Message Status Register
-pub mod FDCAN_HPMS {
+pub mod HPMS {
 
     /// Buffer Index
     pub mod BIDX {
@@ -2367,7 +2367,7 @@ pub mod FDCAN_HPMS {
 }
 
 /// FDCAN New Data 1 Register
-pub mod FDCAN_NDAT1 {
+pub mod NDAT1 {
 
     /// New data
     pub mod ND0 {
@@ -2819,7 +2819,7 @@ pub mod FDCAN_NDAT1 {
 }
 
 /// FDCAN New Data 2 Register
-pub mod FDCAN_NDAT2 {
+pub mod NDAT2 {
 
     /// New data
     pub mod ND32 {
@@ -3271,7 +3271,7 @@ pub mod FDCAN_NDAT2 {
 }
 
 /// FDCAN Rx FIFO 0 Configuration Register
-pub mod FDCAN_RXF0C {
+pub mod RXF0C {
 
     /// Rx FIFO 0 Start Address
     pub mod F0SA {
@@ -3317,7 +3317,7 @@ pub mod FDCAN_RXF0C {
 }
 
 /// FDCAN Rx FIFO 0 Status Register
-pub mod FDCAN_RXF0S {
+pub mod RXF0S {
 
     /// Rx FIFO 0 Fill Level
     pub mod F0FL {
@@ -3391,7 +3391,7 @@ pub mod FDCAN_RXF0S {
 }
 
 /// CAN Rx FIFO 0 Acknowledge Register
-pub mod FDCAN_RXF0A {
+pub mod RXF0A {
 
     /// Rx FIFO 0 Acknowledge Index
     pub mod FA01 {
@@ -3409,7 +3409,7 @@ pub mod FDCAN_RXF0A {
 }
 
 /// FDCAN Rx Buffer Configuration Register
-pub mod FDCAN_RXBC {
+pub mod RXBC {
 
     /// Rx Buffer Start Address
     pub mod RBSA {
@@ -3427,7 +3427,7 @@ pub mod FDCAN_RXBC {
 }
 
 /// FDCAN Rx FIFO 1 Configuration Register
-pub mod FDCAN_RXF1C {
+pub mod RXF1C {
 
     /// Rx FIFO 1 Start Address
     pub mod F1SA {
@@ -3473,7 +3473,7 @@ pub mod FDCAN_RXF1C {
 }
 
 /// FDCAN Rx FIFO 1 Status Register
-pub mod FDCAN_RXF1S {
+pub mod RXF1S {
 
     /// Rx FIFO 1 Fill Level
     pub mod F1FL {
@@ -3561,7 +3561,7 @@ pub mod FDCAN_RXF1S {
 }
 
 /// FDCAN Rx FIFO 1 Acknowledge Register
-pub mod FDCAN_RXF1A {
+pub mod RXF1A {
 
     /// Rx FIFO 1 Acknowledge Index
     pub mod F1AI {
@@ -3579,7 +3579,7 @@ pub mod FDCAN_RXF1A {
 }
 
 /// FDCAN Rx Buffer Element Size Configuration Register
-pub mod FDCAN_RXESC {
+pub mod RXESC {
 
     /// Rx FIFO 1 Data Field Size:
     pub mod F0DS {
@@ -3625,7 +3625,7 @@ pub mod FDCAN_RXESC {
 }
 
 /// FDCAN Tx Buffer Configuration Register
-pub mod FDCAN_TXBC {
+pub mod TXBC {
 
     /// Tx Buffers Start Address
     pub mod TBSA {
@@ -3685,7 +3685,7 @@ pub mod FDCAN_TXBC {
 }
 
 /// FDCAN Tx FIFO/Queue Status Register
-pub mod FDCAN_TXFQS {
+pub mod TXFQS {
 
     /// Tx FIFO Free Level
     pub mod TFFL {
@@ -3745,7 +3745,7 @@ pub mod FDCAN_TXFQS {
 }
 
 /// FDCAN Tx Buffer Element Size Configuration Register
-pub mod FDCAN_TXESC {
+pub mod TXESC {
 
     /// Tx Buffer Data Field Size:
     pub mod TBDS {
@@ -3763,7 +3763,7 @@ pub mod FDCAN_TXESC {
 }
 
 /// FDCAN Tx Buffer Request Pending Register
-pub mod FDCAN_TXBRP {
+pub mod TXBRP {
 
     /// Transmission Request Pending
     pub mod TRP {
@@ -3781,7 +3781,7 @@ pub mod FDCAN_TXBRP {
 }
 
 /// FDCAN Tx Buffer Add Request Register
-pub mod FDCAN_TXBAR {
+pub mod TXBAR {
 
     /// Add Request
     pub mod AR {
@@ -3799,7 +3799,7 @@ pub mod FDCAN_TXBAR {
 }
 
 /// FDCAN Tx Buffer Cancellation Request Register
-pub mod FDCAN_TXBCR {
+pub mod TXBCR {
 
     /// Cancellation Request
     pub mod CR {
@@ -3817,7 +3817,7 @@ pub mod FDCAN_TXBCR {
 }
 
 /// FDCAN Tx Buffer Transmission Occurred Register
-pub mod FDCAN_TXBTO {
+pub mod TXBTO {
 
     /// Transmission Occurred.
     pub mod TO {
@@ -3835,7 +3835,7 @@ pub mod FDCAN_TXBTO {
 }
 
 /// FDCAN Tx Buffer Cancellation Finished Register
-pub mod FDCAN_TXBCF {
+pub mod TXBCF {
 
     /// Cancellation Finished
     pub mod CF {
@@ -3853,7 +3853,7 @@ pub mod FDCAN_TXBCF {
 }
 
 /// FDCAN Tx Buffer Transmission Interrupt Enable Register
-pub mod FDCAN_TXBTIE {
+pub mod TXBTIE {
 
     /// Transmission Interrupt Enable
     pub mod TIE {
@@ -3871,7 +3871,7 @@ pub mod FDCAN_TXBTIE {
 }
 
 /// FDCAN Tx Buffer Cancellation Finished Interrupt Enable Register
-pub mod FDCAN_TXBCIE {
+pub mod TXBCIE {
 
     /// Cancellation Finished Interrupt Enable
     pub mod CF {
@@ -3889,7 +3889,7 @@ pub mod FDCAN_TXBCIE {
 }
 
 /// FDCAN Tx Event FIFO Configuration Register
-pub mod FDCAN_TXEFC {
+pub mod TXEFC {
 
     /// Event FIFO Start Address
     pub mod EFSA {
@@ -3935,7 +3935,7 @@ pub mod FDCAN_TXEFC {
 }
 
 /// FDCAN Tx Event FIFO Status Register
-pub mod FDCAN_TXEFS {
+pub mod TXEFS {
 
     /// Event FIFO Fill Level
     pub mod EFFL {
@@ -3995,7 +3995,7 @@ pub mod FDCAN_TXEFS {
 }
 
 /// FDCAN Tx Event FIFO Acknowledge Register
-pub mod FDCAN_TXEFA {
+pub mod TXEFA {
 
     /// Event FIFO Acknowledge Index
     pub mod EFAI {
@@ -4013,7 +4013,7 @@ pub mod FDCAN_TXEFA {
 }
 
 /// FDCAN TT Trigger Memory Configuration Register
-pub mod FDCAN_TTTMC {
+pub mod TTTMC {
 
     /// Trigger Memory Start Address
     pub mod TMSA {
@@ -4045,7 +4045,7 @@ pub mod FDCAN_TTTMC {
 }
 
 /// FDCAN TT Reference Message Configuration Register
-pub mod FDCAN_TTRMC {
+pub mod TTRMC {
 
     /// Reference Identifier.
     pub mod RID {
@@ -4091,7 +4091,7 @@ pub mod FDCAN_TTRMC {
 }
 
 /// FDCAN TT Operation Configuration Register
-pub mod FDCAN_TTOCF {
+pub mod TTOCF {
 
     /// Operation Mode
     pub mod OM {
@@ -4235,7 +4235,7 @@ pub mod FDCAN_TTOCF {
 }
 
 /// FDCAN TT Matrix Limits Register
-pub mod FDCAN_TTMLM {
+pub mod TTMLM {
 
     /// Cycle Count Max
     pub mod CCM {
@@ -4295,7 +4295,7 @@ pub mod FDCAN_TTMLM {
 }
 
 /// FDCAN TUR Configuration Register
-pub mod FDCAN_TURCF {
+pub mod TURCF {
 
     /// Numerator Configuration Low.
     pub mod NCL {
@@ -4341,7 +4341,7 @@ pub mod FDCAN_TURCF {
 }
 
 /// FDCAN TT Operation Control Register
-pub mod FDCAN_TTOCN {
+pub mod TTOCN {
 
     /// Set Global time
     pub mod SGT {
@@ -4559,7 +4559,7 @@ pub mod CAN_TTGTP {
 }
 
 /// FDCAN TT Time Mark Register
-pub mod FDCAN_TTTMK {
+pub mod TTTMK {
 
     /// Time Mark
     pub mod TM {
@@ -4605,7 +4605,7 @@ pub mod FDCAN_TTTMK {
 }
 
 /// FDCAN TT Interrupt Register
-pub mod FDCAN_TTIR {
+pub mod TTIR {
 
     /// Start of Basic Cycle
     pub mod SBC {
@@ -4875,7 +4875,7 @@ pub mod FDCAN_TTIR {
 }
 
 /// FDCAN TT Interrupt Enable Register
-pub mod FDCAN_TTIE {
+pub mod TTIE {
 
     /// Start of Basic Cycle Interrupt Enable
     pub mod SBCE {
@@ -5145,7 +5145,7 @@ pub mod FDCAN_TTIE {
 }
 
 /// FDCAN TT Interrupt Line Select Register
-pub mod FDCAN_TTILS {
+pub mod TTILS {
 
     /// Start of Basic Cycle Interrupt Line
     pub mod SBCL {
@@ -5415,7 +5415,7 @@ pub mod FDCAN_TTILS {
 }
 
 /// FDCAN TT Operation Status Register
-pub mod FDCAN_TTOST {
+pub mod TTOST {
 
     /// Error Level
     pub mod EL {
@@ -5615,7 +5615,7 @@ pub mod FDCAN_TTOST {
 }
 
 /// FDCAN TUR Numerator Actual Register
-pub mod FDCAN_TURNA {
+pub mod TURNA {
 
     /// Numerator Actual Value
     pub mod NAV {
@@ -5633,7 +5633,7 @@ pub mod FDCAN_TURNA {
 }
 
 /// FDCAN TT Local and Global Time Register
-pub mod FDCAN_TTLGT {
+pub mod TTLGT {
 
     /// Local Time
     pub mod LT {
@@ -5665,7 +5665,7 @@ pub mod FDCAN_TTLGT {
 }
 
 /// FDCAN TT Cycle Time and Count Register
-pub mod FDCAN_TTCTC {
+pub mod TTCTC {
 
     /// Cycle Time
     pub mod CT {
@@ -5697,7 +5697,7 @@ pub mod FDCAN_TTCTC {
 }
 
 /// FDCAN TT Capture Time Register
-pub mod FDCAN_TTCPT {
+pub mod TTCPT {
 
     /// Cycle Count Value
     pub mod CT {
@@ -5729,7 +5729,7 @@ pub mod FDCAN_TTCPT {
 }
 
 /// FDCAN TT Cycle Sync Mark Register
-pub mod FDCAN_TTCSM {
+pub mod TTCSM {
 
     /// Cycle Sync Mark
     pub mod CSM {
@@ -5747,7 +5747,7 @@ pub mod FDCAN_TTCSM {
 }
 
 /// FDCAN TT Trigger Select Register
-pub mod FDCAN_TTTS {
+pub mod TTTS {
 
     /// Stop watch trigger input selection
     pub mod SWTDEL {
@@ -5779,278 +5779,278 @@ pub mod FDCAN_TTTS {
 }
 pub struct RegisterBlock {
     /// FDCAN Core Release Register
-    pub FDCAN_CREL: RORegister<u32>,
+    pub CREL: RORegister<u32>,
 
     /// FDCAN Core Release Register
-    pub FDCAN_ENDN: RORegister<u32>,
+    pub ENDN: RORegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// FDCAN Data Bit Timing and Prescaler Register
-    pub FDCAN_DBTP: RORegister<u32>,
+    pub DBTP: RORegister<u32>,
 
     /// FDCAN Test Register
-    pub FDCAN_TEST: RORegister<u32>,
+    pub TEST: RORegister<u32>,
 
     /// FDCAN RAM Watchdog Register
-    pub FDCAN_RWD: RORegister<u32>,
+    pub RWD: RORegister<u32>,
 
     /// FDCAN CC Control Register
-    pub FDCAN_CCCR: RWRegister<u32>,
+    pub CCCR: RWRegister<u32>,
 
     /// FDCAN Nominal Bit Timing and Prescaler Register
-    pub FDCAN_NBTP: RWRegister<u32>,
+    pub NBTP: RWRegister<u32>,
 
     /// FDCAN Timestamp Counter Configuration Register
-    pub FDCAN_TSCC: RWRegister<u32>,
+    pub TSCC: RWRegister<u32>,
 
     /// FDCAN Timestamp Counter Value Register
-    pub FDCAN_TSCV: RWRegister<u32>,
+    pub TSCV: RWRegister<u32>,
 
     /// FDCAN Timeout Counter Configuration Register
-    pub FDCAN_TOCC: RWRegister<u32>,
+    pub TOCC: RWRegister<u32>,
 
     /// FDCAN Timeout Counter Value Register
-    pub FDCAN_TOCV: RWRegister<u32>,
+    pub TOCV: RWRegister<u32>,
 
     _reserved2: [u32; 4],
 
     /// FDCAN Error Counter Register
-    pub FDCAN_ECR: RWRegister<u32>,
+    pub ECR: RWRegister<u32>,
 
     /// FDCAN Protocol Status Register
-    pub FDCAN_PSR: RWRegister<u32>,
+    pub PSR: RWRegister<u32>,
 
     /// FDCAN Transmitter Delay Compensation Register
-    pub FDCAN_TDCR: RORegister<u32>,
+    pub TDCR: RORegister<u32>,
 
     _reserved3: [u32; 1],
 
     /// FDCAN Interrupt Register
-    pub FDCAN_IR: RORegister<u32>,
+    pub IR: RORegister<u32>,
 
     /// FDCAN Interrupt Enable Register
-    pub FDCAN_IE: RORegister<u32>,
+    pub IE: RORegister<u32>,
 
     /// FDCAN Interrupt Line Select Register
-    pub FDCAN_ILS: RORegister<u32>,
+    pub ILS: RORegister<u32>,
 
     /// FDCAN Interrupt Line Enable Register
-    pub FDCAN_ILE: RWRegister<u32>,
+    pub ILE: RWRegister<u32>,
 
     _reserved4: [u32; 8],
 
     /// FDCAN Global Filter Configuration Register
-    pub FDCAN_GFC: RWRegister<u32>,
+    pub GFC: RWRegister<u32>,
 
     /// FDCAN Standard ID Filter Configuration Register
-    pub FDCAN_SIDFC: RWRegister<u32>,
+    pub SIDFC: RWRegister<u32>,
 
     /// FDCAN Extended ID Filter Configuration Register
-    pub FDCAN_XIDFC: RWRegister<u32>,
+    pub XIDFC: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
     /// FDCAN Extended ID and Mask Register
-    pub FDCAN_XIDAM: RWRegister<u32>,
+    pub XIDAM: RWRegister<u32>,
 
     /// FDCAN High Priority Message Status Register
-    pub FDCAN_HPMS: RORegister<u32>,
+    pub HPMS: RORegister<u32>,
 
     /// FDCAN New Data 1 Register
-    pub FDCAN_NDAT1: RORegister<u32>,
+    pub NDAT1: RORegister<u32>,
 
     /// FDCAN New Data 2 Register
-    pub FDCAN_NDAT2: RORegister<u32>,
+    pub NDAT2: RORegister<u32>,
 
     /// FDCAN Rx FIFO 0 Configuration Register
-    pub FDCAN_RXF0C: RWRegister<u32>,
+    pub RXF0C: RWRegister<u32>,
 
     /// FDCAN Rx FIFO 0 Status Register
-    pub FDCAN_RXF0S: RWRegister<u32>,
+    pub RXF0S: RWRegister<u32>,
 
     /// CAN Rx FIFO 0 Acknowledge Register
-    pub FDCAN_RXF0A: RWRegister<u32>,
+    pub RXF0A: RWRegister<u32>,
 
     /// FDCAN Rx Buffer Configuration Register
-    pub FDCAN_RXBC: RWRegister<u32>,
+    pub RXBC: RWRegister<u32>,
 
     /// FDCAN Rx FIFO 1 Configuration Register
-    pub FDCAN_RXF1C: RWRegister<u32>,
+    pub RXF1C: RWRegister<u32>,
 
     /// FDCAN Rx FIFO 1 Status Register
-    pub FDCAN_RXF1S: RWRegister<u32>,
+    pub RXF1S: RWRegister<u32>,
 
     /// FDCAN Rx FIFO 1 Acknowledge Register
-    pub FDCAN_RXF1A: RWRegister<u32>,
+    pub RXF1A: RWRegister<u32>,
 
     /// FDCAN Rx Buffer Element Size Configuration Register
-    pub FDCAN_RXESC: RWRegister<u32>,
+    pub RXESC: RWRegister<u32>,
 
     /// FDCAN Tx Buffer Configuration Register
-    pub FDCAN_TXBC: RWRegister<u32>,
+    pub TXBC: RWRegister<u32>,
 
     /// FDCAN Tx FIFO/Queue Status Register
-    pub FDCAN_TXFQS: RORegister<u32>,
+    pub TXFQS: RORegister<u32>,
 
     /// FDCAN Tx Buffer Element Size Configuration Register
-    pub FDCAN_TXESC: RWRegister<u32>,
+    pub TXESC: RWRegister<u32>,
 
     /// FDCAN Tx Buffer Request Pending Register
-    pub FDCAN_TXBRP: RORegister<u32>,
+    pub TXBRP: RORegister<u32>,
 
     /// FDCAN Tx Buffer Add Request Register
-    pub FDCAN_TXBAR: RWRegister<u32>,
+    pub TXBAR: RWRegister<u32>,
 
     /// FDCAN Tx Buffer Cancellation Request Register
-    pub FDCAN_TXBCR: RWRegister<u32>,
+    pub TXBCR: RWRegister<u32>,
 
     /// FDCAN Tx Buffer Transmission Occurred Register
-    pub FDCAN_TXBTO: RWRegister<u32>,
+    pub TXBTO: RWRegister<u32>,
 
     /// FDCAN Tx Buffer Cancellation Finished Register
-    pub FDCAN_TXBCF: RORegister<u32>,
+    pub TXBCF: RORegister<u32>,
 
     /// FDCAN Tx Buffer Transmission Interrupt Enable Register
-    pub FDCAN_TXBTIE: RWRegister<u32>,
+    pub TXBTIE: RWRegister<u32>,
 
     /// FDCAN Tx Buffer Cancellation Finished Interrupt Enable Register
-    pub FDCAN_TXBCIE: RWRegister<u32>,
+    pub TXBCIE: RWRegister<u32>,
 
     _reserved6: [u32; 2],
 
     /// FDCAN Tx Event FIFO Configuration Register
-    pub FDCAN_TXEFC: RWRegister<u32>,
+    pub TXEFC: RWRegister<u32>,
 
     /// FDCAN Tx Event FIFO Status Register
-    pub FDCAN_TXEFS: RWRegister<u32>,
+    pub TXEFS: RWRegister<u32>,
 
     /// FDCAN Tx Event FIFO Acknowledge Register
-    pub FDCAN_TXEFA: RWRegister<u32>,
+    pub TXEFA: RWRegister<u32>,
 
     _reserved7: [u32; 1],
 
     /// FDCAN TT Trigger Memory Configuration Register
-    pub FDCAN_TTTMC: RWRegister<u32>,
+    pub TTTMC: RWRegister<u32>,
 
     /// FDCAN TT Reference Message Configuration Register
-    pub FDCAN_TTRMC: RWRegister<u32>,
+    pub TTRMC: RWRegister<u32>,
 
     /// FDCAN TT Operation Configuration Register
-    pub FDCAN_TTOCF: RWRegister<u32>,
+    pub TTOCF: RWRegister<u32>,
 
     /// FDCAN TT Matrix Limits Register
-    pub FDCAN_TTMLM: RWRegister<u32>,
+    pub TTMLM: RWRegister<u32>,
 
     /// FDCAN TUR Configuration Register
-    pub FDCAN_TURCF: RWRegister<u32>,
+    pub TURCF: RWRegister<u32>,
 
     /// FDCAN TT Operation Control Register
-    pub FDCAN_TTOCN: RWRegister<u32>,
+    pub TTOCN: RWRegister<u32>,
 
     /// FDCAN TT Global Time Preset Register
     pub CAN_TTGTP: RWRegister<u32>,
 
     /// FDCAN TT Time Mark Register
-    pub FDCAN_TTTMK: RWRegister<u32>,
+    pub TTTMK: RWRegister<u32>,
 
     /// FDCAN TT Interrupt Register
-    pub FDCAN_TTIR: RWRegister<u32>,
+    pub TTIR: RWRegister<u32>,
 
     /// FDCAN TT Interrupt Enable Register
-    pub FDCAN_TTIE: RWRegister<u32>,
+    pub TTIE: RWRegister<u32>,
 
     /// FDCAN TT Interrupt Line Select Register
-    pub FDCAN_TTILS: RWRegister<u32>,
+    pub TTILS: RWRegister<u32>,
 
     /// FDCAN TT Operation Status Register
-    pub FDCAN_TTOST: RWRegister<u32>,
+    pub TTOST: RWRegister<u32>,
 
     /// FDCAN TUR Numerator Actual Register
-    pub FDCAN_TURNA: RORegister<u32>,
+    pub TURNA: RORegister<u32>,
 
     /// FDCAN TT Local and Global Time Register
-    pub FDCAN_TTLGT: RORegister<u32>,
+    pub TTLGT: RORegister<u32>,
 
     /// FDCAN TT Cycle Time and Count Register
-    pub FDCAN_TTCTC: RORegister<u32>,
+    pub TTCTC: RORegister<u32>,
 
     /// FDCAN TT Capture Time Register
-    pub FDCAN_TTCPT: RORegister<u32>,
+    pub TTCPT: RORegister<u32>,
 
     /// FDCAN TT Cycle Sync Mark Register
-    pub FDCAN_TTCSM: RORegister<u32>,
+    pub TTCSM: RORegister<u32>,
 
     _reserved8: [u32; 111],
 
     /// FDCAN TT Trigger Select Register
-    pub FDCAN_TTTS: RWRegister<u32>,
+    pub TTTS: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub FDCAN_CREL: u32,
-    pub FDCAN_ENDN: u32,
-    pub FDCAN_DBTP: u32,
-    pub FDCAN_TEST: u32,
-    pub FDCAN_RWD: u32,
-    pub FDCAN_CCCR: u32,
-    pub FDCAN_NBTP: u32,
-    pub FDCAN_TSCC: u32,
-    pub FDCAN_TSCV: u32,
-    pub FDCAN_TOCC: u32,
-    pub FDCAN_TOCV: u32,
-    pub FDCAN_ECR: u32,
-    pub FDCAN_PSR: u32,
-    pub FDCAN_TDCR: u32,
-    pub FDCAN_IR: u32,
-    pub FDCAN_IE: u32,
-    pub FDCAN_ILS: u32,
-    pub FDCAN_ILE: u32,
-    pub FDCAN_GFC: u32,
-    pub FDCAN_SIDFC: u32,
-    pub FDCAN_XIDFC: u32,
-    pub FDCAN_XIDAM: u32,
-    pub FDCAN_HPMS: u32,
-    pub FDCAN_NDAT1: u32,
-    pub FDCAN_NDAT2: u32,
-    pub FDCAN_RXF0C: u32,
-    pub FDCAN_RXF0S: u32,
-    pub FDCAN_RXF0A: u32,
-    pub FDCAN_RXBC: u32,
-    pub FDCAN_RXF1C: u32,
-    pub FDCAN_RXF1S: u32,
-    pub FDCAN_RXF1A: u32,
-    pub FDCAN_RXESC: u32,
-    pub FDCAN_TXBC: u32,
-    pub FDCAN_TXFQS: u32,
-    pub FDCAN_TXESC: u32,
-    pub FDCAN_TXBRP: u32,
-    pub FDCAN_TXBAR: u32,
-    pub FDCAN_TXBCR: u32,
-    pub FDCAN_TXBTO: u32,
-    pub FDCAN_TXBCF: u32,
-    pub FDCAN_TXBTIE: u32,
-    pub FDCAN_TXBCIE: u32,
-    pub FDCAN_TXEFC: u32,
-    pub FDCAN_TXEFS: u32,
-    pub FDCAN_TXEFA: u32,
-    pub FDCAN_TTTMC: u32,
-    pub FDCAN_TTRMC: u32,
-    pub FDCAN_TTOCF: u32,
-    pub FDCAN_TTMLM: u32,
-    pub FDCAN_TURCF: u32,
-    pub FDCAN_TTOCN: u32,
+    pub CREL: u32,
+    pub ENDN: u32,
+    pub DBTP: u32,
+    pub TEST: u32,
+    pub RWD: u32,
+    pub CCCR: u32,
+    pub NBTP: u32,
+    pub TSCC: u32,
+    pub TSCV: u32,
+    pub TOCC: u32,
+    pub TOCV: u32,
+    pub ECR: u32,
+    pub PSR: u32,
+    pub TDCR: u32,
+    pub IR: u32,
+    pub IE: u32,
+    pub ILS: u32,
+    pub ILE: u32,
+    pub GFC: u32,
+    pub SIDFC: u32,
+    pub XIDFC: u32,
+    pub XIDAM: u32,
+    pub HPMS: u32,
+    pub NDAT1: u32,
+    pub NDAT2: u32,
+    pub RXF0C: u32,
+    pub RXF0S: u32,
+    pub RXF0A: u32,
+    pub RXBC: u32,
+    pub RXF1C: u32,
+    pub RXF1S: u32,
+    pub RXF1A: u32,
+    pub RXESC: u32,
+    pub TXBC: u32,
+    pub TXFQS: u32,
+    pub TXESC: u32,
+    pub TXBRP: u32,
+    pub TXBAR: u32,
+    pub TXBCR: u32,
+    pub TXBTO: u32,
+    pub TXBCF: u32,
+    pub TXBTIE: u32,
+    pub TXBCIE: u32,
+    pub TXEFC: u32,
+    pub TXEFS: u32,
+    pub TXEFA: u32,
+    pub TTTMC: u32,
+    pub TTRMC: u32,
+    pub TTOCF: u32,
+    pub TTMLM: u32,
+    pub TURCF: u32,
+    pub TTOCN: u32,
     pub CAN_TTGTP: u32,
-    pub FDCAN_TTTMK: u32,
-    pub FDCAN_TTIR: u32,
-    pub FDCAN_TTIE: u32,
-    pub FDCAN_TTILS: u32,
-    pub FDCAN_TTOST: u32,
-    pub FDCAN_TURNA: u32,
-    pub FDCAN_TTLGT: u32,
-    pub FDCAN_TTCTC: u32,
-    pub FDCAN_TTCPT: u32,
-    pub FDCAN_TTCSM: u32,
-    pub FDCAN_TTTS: u32,
+    pub TTTMK: u32,
+    pub TTIR: u32,
+    pub TTIE: u32,
+    pub TTILS: u32,
+    pub TTOST: u32,
+    pub TURNA: u32,
+    pub TTLGT: u32,
+    pub TTCTC: u32,
+    pub TTCPT: u32,
+    pub TTCSM: u32,
+    pub TTTS: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -6065,6 +6065,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the CAN_CCU peripheral instance
 pub mod CAN_CCU {
@@ -6084,70 +6086,70 @@ pub mod CAN_CCU {
 
     /// Reset values for each field in CAN_CCU
     pub const reset: ResetValues = ResetValues {
-        FDCAN_CREL: 0x00000000,
-        FDCAN_ENDN: 0x00000000,
-        FDCAN_DBTP: 0x00000000,
-        FDCAN_TEST: 0x00000000,
-        FDCAN_RWD: 0x00000000,
-        FDCAN_CCCR: 0x00000000,
-        FDCAN_NBTP: 0x00000000,
-        FDCAN_TSCC: 0x00000000,
-        FDCAN_TSCV: 0x00000000,
-        FDCAN_TOCC: 0x00000000,
-        FDCAN_TOCV: 0x00000000,
-        FDCAN_ECR: 0x00000000,
-        FDCAN_PSR: 0x00000000,
-        FDCAN_TDCR: 0x00000000,
-        FDCAN_IR: 0x00000000,
-        FDCAN_IE: 0x00000000,
-        FDCAN_ILS: 0x00000000,
-        FDCAN_ILE: 0x00000000,
-        FDCAN_GFC: 0x00000000,
-        FDCAN_SIDFC: 0x00000000,
-        FDCAN_XIDFC: 0x00000000,
-        FDCAN_XIDAM: 0x00000000,
-        FDCAN_HPMS: 0x00000000,
-        FDCAN_NDAT1: 0x00000000,
-        FDCAN_NDAT2: 0x00000000,
-        FDCAN_RXF0C: 0x00000000,
-        FDCAN_RXF0S: 0x00000000,
-        FDCAN_RXF0A: 0x00000000,
-        FDCAN_RXBC: 0x00000000,
-        FDCAN_RXF1C: 0x00000000,
-        FDCAN_RXF1S: 0x00000000,
-        FDCAN_RXF1A: 0x00000000,
-        FDCAN_RXESC: 0x00000000,
-        FDCAN_TXBC: 0x00000000,
-        FDCAN_TXFQS: 0x00000000,
-        FDCAN_TXESC: 0x00000000,
-        FDCAN_TXBRP: 0x00000000,
-        FDCAN_TXBAR: 0x00000000,
-        FDCAN_TXBCR: 0x00000000,
-        FDCAN_TXBTO: 0x00000000,
-        FDCAN_TXBCF: 0x00000000,
-        FDCAN_TXBTIE: 0x00000000,
-        FDCAN_TXBCIE: 0x00000000,
-        FDCAN_TXEFC: 0x00000000,
-        FDCAN_TXEFS: 0x00000000,
-        FDCAN_TXEFA: 0x00000000,
-        FDCAN_TTTMC: 0x00000000,
-        FDCAN_TTRMC: 0x00000000,
-        FDCAN_TTOCF: 0x00000000,
-        FDCAN_TTMLM: 0x00000000,
-        FDCAN_TURCF: 0x00000000,
-        FDCAN_TTOCN: 0x00000000,
+        CREL: 0x00000000,
+        ENDN: 0x00000000,
+        DBTP: 0x00000000,
+        TEST: 0x00000000,
+        RWD: 0x00000000,
+        CCCR: 0x00000000,
+        NBTP: 0x00000000,
+        TSCC: 0x00000000,
+        TSCV: 0x00000000,
+        TOCC: 0x00000000,
+        TOCV: 0x00000000,
+        ECR: 0x00000000,
+        PSR: 0x00000000,
+        TDCR: 0x00000000,
+        IR: 0x00000000,
+        IE: 0x00000000,
+        ILS: 0x00000000,
+        ILE: 0x00000000,
+        GFC: 0x00000000,
+        SIDFC: 0x00000000,
+        XIDFC: 0x00000000,
+        XIDAM: 0x00000000,
+        HPMS: 0x00000000,
+        NDAT1: 0x00000000,
+        NDAT2: 0x00000000,
+        RXF0C: 0x00000000,
+        RXF0S: 0x00000000,
+        RXF0A: 0x00000000,
+        RXBC: 0x00000000,
+        RXF1C: 0x00000000,
+        RXF1S: 0x00000000,
+        RXF1A: 0x00000000,
+        RXESC: 0x00000000,
+        TXBC: 0x00000000,
+        TXFQS: 0x00000000,
+        TXESC: 0x00000000,
+        TXBRP: 0x00000000,
+        TXBAR: 0x00000000,
+        TXBCR: 0x00000000,
+        TXBTO: 0x00000000,
+        TXBCF: 0x00000000,
+        TXBTIE: 0x00000000,
+        TXBCIE: 0x00000000,
+        TXEFC: 0x00000000,
+        TXEFS: 0x00000000,
+        TXEFA: 0x00000000,
+        TTTMC: 0x00000000,
+        TTRMC: 0x00000000,
+        TTOCF: 0x00000000,
+        TTMLM: 0x00000000,
+        TURCF: 0x00000000,
+        TTOCN: 0x00000000,
         CAN_TTGTP: 0x00000000,
-        FDCAN_TTTMK: 0x00000000,
-        FDCAN_TTIR: 0x00000000,
-        FDCAN_TTIE: 0x00000000,
-        FDCAN_TTILS: 0x00000000,
-        FDCAN_TTOST: 0x00000000,
-        FDCAN_TURNA: 0x00000000,
-        FDCAN_TTLGT: 0x00000000,
-        FDCAN_TTCTC: 0x00000000,
-        FDCAN_TTCPT: 0x00000000,
-        FDCAN_TTCSM: 0x00000000,
-        FDCAN_TTTS: 0x00000000,
+        TTTMK: 0x00000000,
+        TTIR: 0x00000000,
+        TTIE: 0x00000000,
+        TTILS: 0x00000000,
+        TTOST: 0x00000000,
+        TURNA: 0x00000000,
+        TTLGT: 0x00000000,
+        TTCTC: 0x00000000,
+        TTCPT: 0x00000000,
+        TTCSM: 0x00000000,
+        TTTS: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -6198,6 +6200,18 @@ pub mod CAN_CCU {
             }
         });
     }
+
+    /// Unsafely steal CAN_CCU
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN_CCU_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN_CCU
@@ -6229,70 +6243,70 @@ pub mod CAN_Msg_RAM {
 
     /// Reset values for each field in CAN_Msg_RAM
     pub const reset: ResetValues = ResetValues {
-        FDCAN_CREL: 0x00000000,
-        FDCAN_ENDN: 0x00000000,
-        FDCAN_DBTP: 0x00000000,
-        FDCAN_TEST: 0x00000000,
-        FDCAN_RWD: 0x00000000,
-        FDCAN_CCCR: 0x00000000,
-        FDCAN_NBTP: 0x00000000,
-        FDCAN_TSCC: 0x00000000,
-        FDCAN_TSCV: 0x00000000,
-        FDCAN_TOCC: 0x00000000,
-        FDCAN_TOCV: 0x00000000,
-        FDCAN_ECR: 0x00000000,
-        FDCAN_PSR: 0x00000000,
-        FDCAN_TDCR: 0x00000000,
-        FDCAN_IR: 0x00000000,
-        FDCAN_IE: 0x00000000,
-        FDCAN_ILS: 0x00000000,
-        FDCAN_ILE: 0x00000000,
-        FDCAN_GFC: 0x00000000,
-        FDCAN_SIDFC: 0x00000000,
-        FDCAN_XIDFC: 0x00000000,
-        FDCAN_XIDAM: 0x00000000,
-        FDCAN_HPMS: 0x00000000,
-        FDCAN_NDAT1: 0x00000000,
-        FDCAN_NDAT2: 0x00000000,
-        FDCAN_RXF0C: 0x00000000,
-        FDCAN_RXF0S: 0x00000000,
-        FDCAN_RXF0A: 0x00000000,
-        FDCAN_RXBC: 0x00000000,
-        FDCAN_RXF1C: 0x00000000,
-        FDCAN_RXF1S: 0x00000000,
-        FDCAN_RXF1A: 0x00000000,
-        FDCAN_RXESC: 0x00000000,
-        FDCAN_TXBC: 0x00000000,
-        FDCAN_TXFQS: 0x00000000,
-        FDCAN_TXESC: 0x00000000,
-        FDCAN_TXBRP: 0x00000000,
-        FDCAN_TXBAR: 0x00000000,
-        FDCAN_TXBCR: 0x00000000,
-        FDCAN_TXBTO: 0x00000000,
-        FDCAN_TXBCF: 0x00000000,
-        FDCAN_TXBTIE: 0x00000000,
-        FDCAN_TXBCIE: 0x00000000,
-        FDCAN_TXEFC: 0x00000000,
-        FDCAN_TXEFS: 0x00000000,
-        FDCAN_TXEFA: 0x00000000,
-        FDCAN_TTTMC: 0x00000000,
-        FDCAN_TTRMC: 0x00000000,
-        FDCAN_TTOCF: 0x00000000,
-        FDCAN_TTMLM: 0x00000000,
-        FDCAN_TURCF: 0x00000000,
-        FDCAN_TTOCN: 0x00000000,
+        CREL: 0x00000000,
+        ENDN: 0x00000000,
+        DBTP: 0x00000000,
+        TEST: 0x00000000,
+        RWD: 0x00000000,
+        CCCR: 0x00000000,
+        NBTP: 0x00000000,
+        TSCC: 0x00000000,
+        TSCV: 0x00000000,
+        TOCC: 0x00000000,
+        TOCV: 0x00000000,
+        ECR: 0x00000000,
+        PSR: 0x00000000,
+        TDCR: 0x00000000,
+        IR: 0x00000000,
+        IE: 0x00000000,
+        ILS: 0x00000000,
+        ILE: 0x00000000,
+        GFC: 0x00000000,
+        SIDFC: 0x00000000,
+        XIDFC: 0x00000000,
+        XIDAM: 0x00000000,
+        HPMS: 0x00000000,
+        NDAT1: 0x00000000,
+        NDAT2: 0x00000000,
+        RXF0C: 0x00000000,
+        RXF0S: 0x00000000,
+        RXF0A: 0x00000000,
+        RXBC: 0x00000000,
+        RXF1C: 0x00000000,
+        RXF1S: 0x00000000,
+        RXF1A: 0x00000000,
+        RXESC: 0x00000000,
+        TXBC: 0x00000000,
+        TXFQS: 0x00000000,
+        TXESC: 0x00000000,
+        TXBRP: 0x00000000,
+        TXBAR: 0x00000000,
+        TXBCR: 0x00000000,
+        TXBTO: 0x00000000,
+        TXBCF: 0x00000000,
+        TXBTIE: 0x00000000,
+        TXBCIE: 0x00000000,
+        TXEFC: 0x00000000,
+        TXEFS: 0x00000000,
+        TXEFA: 0x00000000,
+        TTTMC: 0x00000000,
+        TTRMC: 0x00000000,
+        TTOCF: 0x00000000,
+        TTMLM: 0x00000000,
+        TURCF: 0x00000000,
+        TTOCN: 0x00000000,
         CAN_TTGTP: 0x00000000,
-        FDCAN_TTTMK: 0x00000000,
-        FDCAN_TTIR: 0x00000000,
-        FDCAN_TTIE: 0x00000000,
-        FDCAN_TTILS: 0x00000000,
-        FDCAN_TTOST: 0x00000000,
-        FDCAN_TURNA: 0x00000000,
-        FDCAN_TTLGT: 0x00000000,
-        FDCAN_TTCTC: 0x00000000,
-        FDCAN_TTCPT: 0x00000000,
-        FDCAN_TTCSM: 0x00000000,
-        FDCAN_TTTS: 0x00000000,
+        TTTMK: 0x00000000,
+        TTIR: 0x00000000,
+        TTIE: 0x00000000,
+        TTILS: 0x00000000,
+        TTOST: 0x00000000,
+        TURNA: 0x00000000,
+        TTLGT: 0x00000000,
+        TTCTC: 0x00000000,
+        TTCPT: 0x00000000,
+        TTCSM: 0x00000000,
+        TTTS: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -6343,6 +6357,18 @@ pub mod CAN_Msg_RAM {
             }
         });
     }
+
+    /// Unsafely steal CAN_Msg_RAM
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN_Msg_RAM_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN_Msg_RAM
@@ -6374,70 +6400,70 @@ pub mod FDCAN1 {
 
     /// Reset values for each field in FDCAN1
     pub const reset: ResetValues = ResetValues {
-        FDCAN_CREL: 0x00000000,
-        FDCAN_ENDN: 0x00000000,
-        FDCAN_DBTP: 0x00000000,
-        FDCAN_TEST: 0x00000000,
-        FDCAN_RWD: 0x00000000,
-        FDCAN_CCCR: 0x00000000,
-        FDCAN_NBTP: 0x00000000,
-        FDCAN_TSCC: 0x00000000,
-        FDCAN_TSCV: 0x00000000,
-        FDCAN_TOCC: 0x00000000,
-        FDCAN_TOCV: 0x00000000,
-        FDCAN_ECR: 0x00000000,
-        FDCAN_PSR: 0x00000000,
-        FDCAN_TDCR: 0x00000000,
-        FDCAN_IR: 0x00000000,
-        FDCAN_IE: 0x00000000,
-        FDCAN_ILS: 0x00000000,
-        FDCAN_ILE: 0x00000000,
-        FDCAN_GFC: 0x00000000,
-        FDCAN_SIDFC: 0x00000000,
-        FDCAN_XIDFC: 0x00000000,
-        FDCAN_XIDAM: 0x00000000,
-        FDCAN_HPMS: 0x00000000,
-        FDCAN_NDAT1: 0x00000000,
-        FDCAN_NDAT2: 0x00000000,
-        FDCAN_RXF0C: 0x00000000,
-        FDCAN_RXF0S: 0x00000000,
-        FDCAN_RXF0A: 0x00000000,
-        FDCAN_RXBC: 0x00000000,
-        FDCAN_RXF1C: 0x00000000,
-        FDCAN_RXF1S: 0x00000000,
-        FDCAN_RXF1A: 0x00000000,
-        FDCAN_RXESC: 0x00000000,
-        FDCAN_TXBC: 0x00000000,
-        FDCAN_TXFQS: 0x00000000,
-        FDCAN_TXESC: 0x00000000,
-        FDCAN_TXBRP: 0x00000000,
-        FDCAN_TXBAR: 0x00000000,
-        FDCAN_TXBCR: 0x00000000,
-        FDCAN_TXBTO: 0x00000000,
-        FDCAN_TXBCF: 0x00000000,
-        FDCAN_TXBTIE: 0x00000000,
-        FDCAN_TXBCIE: 0x00000000,
-        FDCAN_TXEFC: 0x00000000,
-        FDCAN_TXEFS: 0x00000000,
-        FDCAN_TXEFA: 0x00000000,
-        FDCAN_TTTMC: 0x00000000,
-        FDCAN_TTRMC: 0x00000000,
-        FDCAN_TTOCF: 0x00000000,
-        FDCAN_TTMLM: 0x00000000,
-        FDCAN_TURCF: 0x00000000,
-        FDCAN_TTOCN: 0x00000000,
+        CREL: 0x00000000,
+        ENDN: 0x00000000,
+        DBTP: 0x00000000,
+        TEST: 0x00000000,
+        RWD: 0x00000000,
+        CCCR: 0x00000000,
+        NBTP: 0x00000000,
+        TSCC: 0x00000000,
+        TSCV: 0x00000000,
+        TOCC: 0x00000000,
+        TOCV: 0x00000000,
+        ECR: 0x00000000,
+        PSR: 0x00000000,
+        TDCR: 0x00000000,
+        IR: 0x00000000,
+        IE: 0x00000000,
+        ILS: 0x00000000,
+        ILE: 0x00000000,
+        GFC: 0x00000000,
+        SIDFC: 0x00000000,
+        XIDFC: 0x00000000,
+        XIDAM: 0x00000000,
+        HPMS: 0x00000000,
+        NDAT1: 0x00000000,
+        NDAT2: 0x00000000,
+        RXF0C: 0x00000000,
+        RXF0S: 0x00000000,
+        RXF0A: 0x00000000,
+        RXBC: 0x00000000,
+        RXF1C: 0x00000000,
+        RXF1S: 0x00000000,
+        RXF1A: 0x00000000,
+        RXESC: 0x00000000,
+        TXBC: 0x00000000,
+        TXFQS: 0x00000000,
+        TXESC: 0x00000000,
+        TXBRP: 0x00000000,
+        TXBAR: 0x00000000,
+        TXBCR: 0x00000000,
+        TXBTO: 0x00000000,
+        TXBCF: 0x00000000,
+        TXBTIE: 0x00000000,
+        TXBCIE: 0x00000000,
+        TXEFC: 0x00000000,
+        TXEFS: 0x00000000,
+        TXEFA: 0x00000000,
+        TTTMC: 0x00000000,
+        TTRMC: 0x00000000,
+        TTOCF: 0x00000000,
+        TTMLM: 0x00000000,
+        TURCF: 0x00000000,
+        TTOCN: 0x00000000,
         CAN_TTGTP: 0x00000000,
-        FDCAN_TTTMK: 0x00000000,
-        FDCAN_TTIR: 0x00000000,
-        FDCAN_TTIE: 0x00000000,
-        FDCAN_TTILS: 0x00000000,
-        FDCAN_TTOST: 0x00000000,
-        FDCAN_TURNA: 0x00000000,
-        FDCAN_TTLGT: 0x00000000,
-        FDCAN_TTCTC: 0x00000000,
-        FDCAN_TTCPT: 0x00000000,
-        FDCAN_TTCSM: 0x00000000,
-        FDCAN_TTTS: 0x00000000,
+        TTTMK: 0x00000000,
+        TTIR: 0x00000000,
+        TTIE: 0x00000000,
+        TTILS: 0x00000000,
+        TTOST: 0x00000000,
+        TURNA: 0x00000000,
+        TTLGT: 0x00000000,
+        TTCTC: 0x00000000,
+        TTCPT: 0x00000000,
+        TTCSM: 0x00000000,
+        TTTS: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -6488,6 +6514,18 @@ pub mod FDCAN1 {
             }
         });
     }
+
+    /// Unsafely steal FDCAN1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FDCAN1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to FDCAN1
@@ -6519,70 +6557,70 @@ pub mod FDCAN2 {
 
     /// Reset values for each field in FDCAN2
     pub const reset: ResetValues = ResetValues {
-        FDCAN_CREL: 0x00000000,
-        FDCAN_ENDN: 0x00000000,
-        FDCAN_DBTP: 0x00000000,
-        FDCAN_TEST: 0x00000000,
-        FDCAN_RWD: 0x00000000,
-        FDCAN_CCCR: 0x00000000,
-        FDCAN_NBTP: 0x00000000,
-        FDCAN_TSCC: 0x00000000,
-        FDCAN_TSCV: 0x00000000,
-        FDCAN_TOCC: 0x00000000,
-        FDCAN_TOCV: 0x00000000,
-        FDCAN_ECR: 0x00000000,
-        FDCAN_PSR: 0x00000000,
-        FDCAN_TDCR: 0x00000000,
-        FDCAN_IR: 0x00000000,
-        FDCAN_IE: 0x00000000,
-        FDCAN_ILS: 0x00000000,
-        FDCAN_ILE: 0x00000000,
-        FDCAN_GFC: 0x00000000,
-        FDCAN_SIDFC: 0x00000000,
-        FDCAN_XIDFC: 0x00000000,
-        FDCAN_XIDAM: 0x00000000,
-        FDCAN_HPMS: 0x00000000,
-        FDCAN_NDAT1: 0x00000000,
-        FDCAN_NDAT2: 0x00000000,
-        FDCAN_RXF0C: 0x00000000,
-        FDCAN_RXF0S: 0x00000000,
-        FDCAN_RXF0A: 0x00000000,
-        FDCAN_RXBC: 0x00000000,
-        FDCAN_RXF1C: 0x00000000,
-        FDCAN_RXF1S: 0x00000000,
-        FDCAN_RXF1A: 0x00000000,
-        FDCAN_RXESC: 0x00000000,
-        FDCAN_TXBC: 0x00000000,
-        FDCAN_TXFQS: 0x00000000,
-        FDCAN_TXESC: 0x00000000,
-        FDCAN_TXBRP: 0x00000000,
-        FDCAN_TXBAR: 0x00000000,
-        FDCAN_TXBCR: 0x00000000,
-        FDCAN_TXBTO: 0x00000000,
-        FDCAN_TXBCF: 0x00000000,
-        FDCAN_TXBTIE: 0x00000000,
-        FDCAN_TXBCIE: 0x00000000,
-        FDCAN_TXEFC: 0x00000000,
-        FDCAN_TXEFS: 0x00000000,
-        FDCAN_TXEFA: 0x00000000,
-        FDCAN_TTTMC: 0x00000000,
-        FDCAN_TTRMC: 0x00000000,
-        FDCAN_TTOCF: 0x00000000,
-        FDCAN_TTMLM: 0x00000000,
-        FDCAN_TURCF: 0x00000000,
-        FDCAN_TTOCN: 0x00000000,
+        CREL: 0x00000000,
+        ENDN: 0x00000000,
+        DBTP: 0x00000000,
+        TEST: 0x00000000,
+        RWD: 0x00000000,
+        CCCR: 0x00000000,
+        NBTP: 0x00000000,
+        TSCC: 0x00000000,
+        TSCV: 0x00000000,
+        TOCC: 0x00000000,
+        TOCV: 0x00000000,
+        ECR: 0x00000000,
+        PSR: 0x00000000,
+        TDCR: 0x00000000,
+        IR: 0x00000000,
+        IE: 0x00000000,
+        ILS: 0x00000000,
+        ILE: 0x00000000,
+        GFC: 0x00000000,
+        SIDFC: 0x00000000,
+        XIDFC: 0x00000000,
+        XIDAM: 0x00000000,
+        HPMS: 0x00000000,
+        NDAT1: 0x00000000,
+        NDAT2: 0x00000000,
+        RXF0C: 0x00000000,
+        RXF0S: 0x00000000,
+        RXF0A: 0x00000000,
+        RXBC: 0x00000000,
+        RXF1C: 0x00000000,
+        RXF1S: 0x00000000,
+        RXF1A: 0x00000000,
+        RXESC: 0x00000000,
+        TXBC: 0x00000000,
+        TXFQS: 0x00000000,
+        TXESC: 0x00000000,
+        TXBRP: 0x00000000,
+        TXBAR: 0x00000000,
+        TXBCR: 0x00000000,
+        TXBTO: 0x00000000,
+        TXBCF: 0x00000000,
+        TXBTIE: 0x00000000,
+        TXBCIE: 0x00000000,
+        TXEFC: 0x00000000,
+        TXEFS: 0x00000000,
+        TXEFA: 0x00000000,
+        TTTMC: 0x00000000,
+        TTRMC: 0x00000000,
+        TTOCF: 0x00000000,
+        TTMLM: 0x00000000,
+        TURCF: 0x00000000,
+        TTOCN: 0x00000000,
         CAN_TTGTP: 0x00000000,
-        FDCAN_TTTMK: 0x00000000,
-        FDCAN_TTIR: 0x00000000,
-        FDCAN_TTIE: 0x00000000,
-        FDCAN_TTILS: 0x00000000,
-        FDCAN_TTOST: 0x00000000,
-        FDCAN_TURNA: 0x00000000,
-        FDCAN_TTLGT: 0x00000000,
-        FDCAN_TTCTC: 0x00000000,
-        FDCAN_TTCPT: 0x00000000,
-        FDCAN_TTCSM: 0x00000000,
-        FDCAN_TTTS: 0x00000000,
+        TTTMK: 0x00000000,
+        TTIR: 0x00000000,
+        TTIE: 0x00000000,
+        TTILS: 0x00000000,
+        TTOST: 0x00000000,
+        TURNA: 0x00000000,
+        TTLGT: 0x00000000,
+        TTCTC: 0x00000000,
+        TTCPT: 0x00000000,
+        TTCSM: 0x00000000,
+        TTTS: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -6632,6 +6670,18 @@ pub mod FDCAN2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal FDCAN2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FDCAN2_TAKEN = true;
+        INSTANCE
     }
 }
 

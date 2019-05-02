@@ -84,6 +84,18 @@ pub mod SPI1 {
             }
         });
     }
+
+    /// Unsafely steal SPI1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SPI1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SPI1
@@ -172,6 +184,18 @@ pub mod SPI2 {
             }
         });
     }
+
+    /// Unsafely steal SPI2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SPI2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SPI2
@@ -259,6 +283,18 @@ pub mod SPI3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SPI3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SPI3_TAKEN = true;
+        INSTANCE
     }
 }
 

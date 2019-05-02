@@ -92,6 +92,18 @@ pub mod DAC1 {
             }
         });
     }
+
+    /// Unsafely steal DAC1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DAC1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to DAC1
@@ -186,6 +198,18 @@ pub mod DAC2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DAC2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DAC2_TAKEN = true;
+        INSTANCE
     }
 }
 

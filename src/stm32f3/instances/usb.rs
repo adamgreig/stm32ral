@@ -2,14 +2,13 @@
 #![allow(non_camel_case_types)]
 //! Universal serial bus full-speed device interface
 //!
-//! Used by: stm32f301, stm32f373, stm32f3x8
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32f3::peripherals::usb::Instance;
 pub use stm32f3::peripherals::usb::{RegisterBlock, ResetValues};
 pub use stm32f3::peripherals::usb::{
-    BTABLE, DADDR, FNR, ISTR, USB_CNTR, USB_EP0R, USB_EP1R, USB_EP2R, USB_EP3R, USB_EP4R, USB_EP5R,
-    USB_EP6R, USB_EP7R,
+    BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR,
 };
 
 /// Access functions for the USB peripheral instance
@@ -30,15 +29,15 @@ pub mod USB {
 
     /// Reset values for each field in USB
     pub const reset: ResetValues = ResetValues {
-        USB_EP0R: 0x00000000,
-        USB_EP1R: 0x00000000,
-        USB_EP2R: 0x00000000,
-        USB_EP3R: 0x00000000,
-        USB_EP4R: 0x00000000,
-        USB_EP5R: 0x00000000,
-        USB_EP6R: 0x00000000,
-        USB_EP7R: 0x00000000,
-        USB_CNTR: 0x00000003,
+        EP0R: 0x00000000,
+        EP1R: 0x00000000,
+        EP2R: 0x00000000,
+        EP3R: 0x00000000,
+        EP4R: 0x00000000,
+        EP5R: 0x00000000,
+        EP6R: 0x00000000,
+        EP7R: 0x00000000,
+        CNTR: 0x00000003,
         ISTR: 0x00000000,
         FNR: 0x00000000,
         DADDR: 0x00000000,
@@ -92,6 +91,18 @@ pub mod USB {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USB
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USB_TAKEN = true;
+        INSTANCE
     }
 }
 

@@ -85,6 +85,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the SCB_ACTRL peripheral instance
 pub mod SCB_ACTRL {
@@ -152,6 +154,18 @@ pub mod SCB_ACTRL {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SCB_ACTRL
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SCB_ACTRL_TAKEN = true;
+        INSTANCE
     }
 }
 

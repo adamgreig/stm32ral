@@ -68,7 +68,7 @@ pub mod CR1 {
             pub const M0: u32 = 0b0;
 
             /// 0b1: 1 start bit, 7 data bits, n stop bits
-            pub const Bit_7: u32 = 0b1;
+            pub const Bit7: u32 = 0b1;
         }
     }
 
@@ -128,10 +128,10 @@ pub mod CR1 {
         pub mod RW {
 
             /// 0b0: Oversampling by 16
-            pub const Oversampling_16: u32 = 0b0;
+            pub const Oversampling16: u32 = 0b0;
 
             /// 0b1: Oversampling by 8
-            pub const Oversampling_8: u32 = 0b1;
+            pub const Oversampling8: u32 = 0b1;
         }
     }
 
@@ -191,10 +191,10 @@ pub mod CR1 {
         pub mod RW {
 
             /// 0b0: 1 start bit, 8 data bits, n stop bits
-            pub const Bit_8: u32 = 0b0;
+            pub const Bit8: u32 = 0b0;
 
             /// 0b1: 1 start bit, 9 data bits, n stop bits
-            pub const Bit_9: u32 = 0b1;
+            pub const Bit9: u32 = 0b1;
         }
     }
 
@@ -664,16 +664,16 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b00: 1 stop bit
-            pub const Bit_1: u32 = 0b00;
+            pub const Stop1: u32 = 0b00;
 
             /// 0b01: 0.5 stop bit
-            pub const Bit_0_5: u32 = 0b01;
+            pub const Stop0p5: u32 = 0b01;
 
             /// 0b10: 2 stop bit
-            pub const Bit_2: u32 = 0b10;
+            pub const Stop2: u32 = 0b10;
 
             /// 0b11: 1.5 stop bit
-            pub const Bit_1_5: u32 = 0b11;
+            pub const Stop1p5: u32 = 0b11;
         }
     }
 
@@ -796,10 +796,10 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b0: 10-bit break detection
-            pub const Bit_10: u32 = 0b0;
+            pub const Bit10: u32 = 0b0;
 
             /// 0b1: 11-bit break detection
-            pub const Bit_11: u32 = 0b1;
+            pub const Bit11: u32 = 0b1;
         }
     }
 
@@ -817,10 +817,10 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b0: 4-bit address detection
-            pub const Bit_4: u32 = 0b0;
+            pub const Bit4: u32 = 0b0;
 
             /// 0b1: 7-bit address detection
-            pub const Bit_7: u32 = 0b1;
+            pub const Bit7: u32 = 0b1;
         }
     }
 
@@ -872,10 +872,10 @@ pub mod CR2 {
             pub const Edge: u32 = 0b01;
 
             /// 0b10: 0x7F frame detection
-            pub const Frame_7F: u32 = 0b10;
+            pub const Frame7F: u32 = 0b10;
 
             /// 0b11: 0x55 frame detection
-            pub const Frame_55: u32 = 0b11;
+            pub const Frame55: u32 = 0b11;
         }
     }
 
@@ -1124,10 +1124,10 @@ pub mod CR3 {
         pub mod RW {
 
             /// 0b0: Three sample bit method
-            pub const Sample_3: u32 = 0b0;
+            pub const Sample3: u32 = 0b0;
 
             /// 0b1: One sample bit method
-            pub const Sample_1: u32 = 0b1;
+            pub const Sample1: u32 = 0b1;
         }
     }
 
@@ -2314,6 +2314,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {
@@ -2394,6 +2396,18 @@ pub mod UART4 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal UART4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        UART4_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -2488,6 +2502,18 @@ pub mod UART5 {
             }
         });
     }
+
+    /// Unsafely steal UART5
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        UART5_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to UART5
@@ -2580,6 +2606,18 @@ pub mod UART7 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal UART7
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        UART7_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -2674,6 +2712,18 @@ pub mod UART8 {
             }
         });
     }
+
+    /// Unsafely steal UART8
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        UART8_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to UART8
@@ -2766,6 +2816,18 @@ pub mod USART1 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USART1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART1_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -2860,6 +2922,18 @@ pub mod USART2 {
             }
         });
     }
+
+    /// Unsafely steal USART2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USART2
@@ -2953,6 +3027,18 @@ pub mod USART3 {
             }
         });
     }
+
+    /// Unsafely steal USART3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART3_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USART3
@@ -3045,6 +3131,18 @@ pub mod USART6 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USART6
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART6_TAKEN = true;
+        INSTANCE
     }
 }
 

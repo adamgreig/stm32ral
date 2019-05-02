@@ -4,10 +4,10 @@
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
+use {RORegister, RWRegister, UnsafeRWRegister};
 
 /// OTG_HS host configuration register
-pub mod OTG_HS_HCFG {
+pub mod HCFG {
 
     /// FS/LS PHY clock select
     pub mod FSLSPCS {
@@ -39,7 +39,7 @@ pub mod OTG_HS_HCFG {
 }
 
 /// OTG_HS Host frame interval register
-pub mod OTG_HS_HFIR {
+pub mod HFIR {
 
     /// Frame interval
     pub mod FRIVL {
@@ -57,7 +57,7 @@ pub mod OTG_HS_HFIR {
 }
 
 /// OTG_HS host frame number/frame time remaining register
-pub mod OTG_HS_HFNUM {
+pub mod HFNUM {
 
     /// Frame number
     pub mod FRNUM {
@@ -89,7 +89,7 @@ pub mod OTG_HS_HFNUM {
 }
 
 /// OTG_HS_Host periodic transmit FIFO/queue status register
-pub mod OTG_HS_HPTXSTS {
+pub mod HPTXSTS {
 
     /// Periodic transmit data FIFO space available
     pub mod PTXFSAVL {
@@ -135,7 +135,7 @@ pub mod OTG_HS_HPTXSTS {
 }
 
 /// OTG_HS Host all channels interrupt register
-pub mod OTG_HS_HAINT {
+pub mod HAINT {
 
     /// Channel interrupts
     pub mod HAINT {
@@ -153,7 +153,7 @@ pub mod OTG_HS_HAINT {
 }
 
 /// OTG_HS host all channels interrupt mask register
-pub mod OTG_HS_HAINTMSK {
+pub mod HAINTMSK {
 
     /// Channel interrupt mask
     pub mod HAINTM {
@@ -171,7 +171,7 @@ pub mod OTG_HS_HAINTMSK {
 }
 
 /// OTG_HS host port control and status register
-pub mod OTG_HS_HPRT {
+pub mod HPRT {
 
     /// Port connect status
     pub mod PCSTS {
@@ -357,7 +357,7 @@ pub mod OTG_HS_HPRT {
 }
 
 /// OTG_HS host channel-0 characteristics register
-pub mod OTG_HS_HCCHAR0 {
+pub mod HCCHAR0 {
 
     /// Maximum packet size
     pub mod MPSIZ {
@@ -501,161 +501,161 @@ pub mod OTG_HS_HCCHAR0 {
 }
 
 /// OTG_HS host channel-1 characteristics register
-pub mod OTG_HS_HCCHAR1 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR1 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-2 characteristics register
-pub mod OTG_HS_HCCHAR2 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR2 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-3 characteristics register
-pub mod OTG_HS_HCCHAR3 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR3 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-4 characteristics register
-pub mod OTG_HS_HCCHAR4 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR4 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-5 characteristics register
-pub mod OTG_HS_HCCHAR5 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR5 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-6 characteristics register
-pub mod OTG_HS_HCCHAR6 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR6 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-7 characteristics register
-pub mod OTG_HS_HCCHAR7 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR7 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-8 characteristics register
-pub mod OTG_HS_HCCHAR8 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR8 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-9 characteristics register
-pub mod OTG_HS_HCCHAR9 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR9 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-10 characteristics register
-pub mod OTG_HS_HCCHAR10 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR10 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-11 characteristics register
-pub mod OTG_HS_HCCHAR11 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR11 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-0 split control register
-pub mod OTG_HS_HCSPLT0 {
+pub mod HCSPLT0 {
 
     /// Port address
     pub mod PRTADDR {
@@ -729,106 +729,106 @@ pub mod OTG_HS_HCSPLT0 {
 }
 
 /// OTG_HS host channel-1 split control register
-pub mod OTG_HS_HCSPLT1 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT1 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-2 split control register
-pub mod OTG_HS_HCSPLT2 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT2 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-3 split control register
-pub mod OTG_HS_HCSPLT3 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT3 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-4 split control register
-pub mod OTG_HS_HCSPLT4 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT4 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-5 split control register
-pub mod OTG_HS_HCSPLT5 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT5 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-6 split control register
-pub mod OTG_HS_HCSPLT6 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT6 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-7 split control register
-pub mod OTG_HS_HCSPLT7 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT7 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-8 split control register
-pub mod OTG_HS_HCSPLT8 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT8 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-9 split control register
-pub mod OTG_HS_HCSPLT9 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT9 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-10 split control register
-pub mod OTG_HS_HCSPLT10 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT10 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-11 split control register
-pub mod OTG_HS_HCSPLT11 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT11 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-11 interrupt register
-pub mod OTG_HS_HCINT0 {
+pub mod HCINT0 {
 
     /// Transfer completed
     pub mod XFRC {
@@ -986,172 +986,172 @@ pub mod OTG_HS_HCINT0 {
 }
 
 /// OTG_HS host channel-1 interrupt register
-pub mod OTG_HS_HCINT1 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT1 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-2 interrupt register
-pub mod OTG_HS_HCINT2 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT2 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-3 interrupt register
-pub mod OTG_HS_HCINT3 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT3 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-4 interrupt register
-pub mod OTG_HS_HCINT4 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT4 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-5 interrupt register
-pub mod OTG_HS_HCINT5 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT5 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-6 interrupt register
-pub mod OTG_HS_HCINT6 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT6 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-7 interrupt register
-pub mod OTG_HS_HCINT7 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT7 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-8 interrupt register
-pub mod OTG_HS_HCINT8 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT8 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-9 interrupt register
-pub mod OTG_HS_HCINT9 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT9 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-10 interrupt register
-pub mod OTG_HS_HCINT10 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT10 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-11 interrupt register
-pub mod OTG_HS_HCINT11 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT11 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-11 interrupt mask register
-pub mod OTG_HS_HCINTMSK0 {
+pub mod HCINTMSK0 {
 
     /// Transfer completed mask
     pub mod XFRCM {
@@ -1309,172 +1309,172 @@ pub mod OTG_HS_HCINTMSK0 {
 }
 
 /// OTG_HS host channel-1 interrupt mask register
-pub mod OTG_HS_HCINTMSK1 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK1 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-2 interrupt mask register
-pub mod OTG_HS_HCINTMSK2 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK2 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-3 interrupt mask register
-pub mod OTG_HS_HCINTMSK3 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK3 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-4 interrupt mask register
-pub mod OTG_HS_HCINTMSK4 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK4 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-5 interrupt mask register
-pub mod OTG_HS_HCINTMSK5 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK5 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-6 interrupt mask register
-pub mod OTG_HS_HCINTMSK6 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK6 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-7 interrupt mask register
-pub mod OTG_HS_HCINTMSK7 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK7 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-8 interrupt mask register
-pub mod OTG_HS_HCINTMSK8 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK8 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-9 interrupt mask register
-pub mod OTG_HS_HCINTMSK9 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK9 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-10 interrupt mask register
-pub mod OTG_HS_HCINTMSK10 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK10 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-11 interrupt mask register
-pub mod OTG_HS_HCINTMSK11 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK11 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-11 transfer size register
-pub mod OTG_HS_HCTSIZ0 {
+pub mod HCTSIZ0 {
 
     /// Transfer size
     pub mod XFRSIZ {
@@ -1520,84 +1520,84 @@ pub mod OTG_HS_HCTSIZ0 {
 }
 
 /// OTG_HS host channel-1 transfer size register
-pub mod OTG_HS_HCTSIZ1 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ1 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-2 transfer size register
-pub mod OTG_HS_HCTSIZ2 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ2 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-3 transfer size register
-pub mod OTG_HS_HCTSIZ3 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ3 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-4 transfer size register
-pub mod OTG_HS_HCTSIZ4 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ4 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-5 transfer size register
-pub mod OTG_HS_HCTSIZ5 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ5 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-6 transfer size register
-pub mod OTG_HS_HCTSIZ6 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ6 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-7 transfer size register
-pub mod OTG_HS_HCTSIZ7 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ7 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-8 transfer size register
-pub mod OTG_HS_HCTSIZ8 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ8 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-9 transfer size register
-pub mod OTG_HS_HCTSIZ9 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ9 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-10 transfer size register
-pub mod OTG_HS_HCTSIZ10 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ10 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-11 transfer size register
-pub mod OTG_HS_HCTSIZ11 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ11 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-0 DMA address register
-pub mod OTG_HS_HCDMA0 {
+pub mod HCDMA0 {
 
     /// DMA address
     pub mod DMAADDR {
@@ -1615,295 +1615,295 @@ pub mod OTG_HS_HCDMA0 {
 }
 
 /// OTG_HS host channel-1 DMA address register
-pub mod OTG_HS_HCDMA1 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA1 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-2 DMA address register
-pub mod OTG_HS_HCDMA2 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA2 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-3 DMA address register
-pub mod OTG_HS_HCDMA3 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA3 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-4 DMA address register
-pub mod OTG_HS_HCDMA4 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA4 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-5 DMA address register
-pub mod OTG_HS_HCDMA5 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA5 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-6 DMA address register
-pub mod OTG_HS_HCDMA6 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA6 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-7 DMA address register
-pub mod OTG_HS_HCDMA7 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA7 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-8 DMA address register
-pub mod OTG_HS_HCDMA8 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA8 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-9 DMA address register
-pub mod OTG_HS_HCDMA9 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA9 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-10 DMA address register
-pub mod OTG_HS_HCDMA10 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA10 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-11 DMA address register
-pub mod OTG_HS_HCDMA11 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA11 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-12 characteristics register
-pub mod OTG_HS_HCCHAR12 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR12 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-12 split control register
-pub mod OTG_HS_HCSPLT12 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT12 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-12 interrupt register
-pub mod OTG_HS_HCINT12 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT12 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-12 interrupt mask register
-pub mod OTG_HS_HCINTMSK12 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK12 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-12 transfer size register
-pub mod OTG_HS_HCTSIZ12 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ12 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-12 DMA address register
-pub mod OTG_HS_HCDMA12 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA12 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-13 characteristics register
-pub mod OTG_HS_HCCHAR13 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR13 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-13 split control register
-pub mod OTG_HS_HCSPLT13 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT13 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-13 interrupt register
-pub mod OTG_HS_HCINT13 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT13 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-13 interrupt mask register
-pub mod OTG_HS_HCINTMSK13 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK13 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-13 transfer size register
-pub mod OTG_HS_HCTSIZ13 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ13 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-13 DMA address register
-pub mod OTG_HS_HCDMA13 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA13 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-14 characteristics register
-pub mod OTG_HS_HCCHAR14 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR14 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-14 split control register
-pub mod OTG_HS_HCSPLT14 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT14 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-14 interrupt register
-pub mod OTG_HS_HCINT14 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT14 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-14 interrupt mask register
-pub mod OTG_HS_HCINTMSK14 {
-    pub use super::OTG_HS_HCINTMSK0::ACKM;
-    pub use super::OTG_HS_HCINTMSK0::AHBERR;
-    pub use super::OTG_HS_HCINTMSK0::BBERRM;
-    pub use super::OTG_HS_HCINTMSK0::CHHM;
-    pub use super::OTG_HS_HCINTMSK0::DTERRM;
-    pub use super::OTG_HS_HCINTMSK0::FRMORM;
-    pub use super::OTG_HS_HCINTMSK0::NAKM;
-    pub use super::OTG_HS_HCINTMSK0::NYET;
-    pub use super::OTG_HS_HCINTMSK0::STALLM;
-    pub use super::OTG_HS_HCINTMSK0::TXERRM;
-    pub use super::OTG_HS_HCINTMSK0::XFRCM;
+pub mod HCINTMSK14 {
+    pub use super::HCINTMSK0::ACKM;
+    pub use super::HCINTMSK0::AHBERR;
+    pub use super::HCINTMSK0::BBERRM;
+    pub use super::HCINTMSK0::CHHM;
+    pub use super::HCINTMSK0::DTERRM;
+    pub use super::HCINTMSK0::FRMORM;
+    pub use super::HCINTMSK0::NAKM;
+    pub use super::HCINTMSK0::NYET;
+    pub use super::HCINTMSK0::STALLM;
+    pub use super::HCINTMSK0::TXERRM;
+    pub use super::HCINTMSK0::XFRCM;
 }
 
 /// OTG_HS host channel-14 transfer size register
-pub mod OTG_HS_HCTSIZ14 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ14 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-14 DMA address register
-pub mod OTG_HS_HCDMA14 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA14 {
+    pub use super::HCDMA0::DMAADDR;
 }
 
 /// OTG_HS host channel-15 characteristics register
-pub mod OTG_HS_HCCHAR15 {
-    pub use super::OTG_HS_HCCHAR0::CHDIS;
-    pub use super::OTG_HS_HCCHAR0::CHENA;
-    pub use super::OTG_HS_HCCHAR0::DAD;
-    pub use super::OTG_HS_HCCHAR0::EPDIR;
-    pub use super::OTG_HS_HCCHAR0::EPNUM;
-    pub use super::OTG_HS_HCCHAR0::EPTYP;
-    pub use super::OTG_HS_HCCHAR0::LSDEV;
-    pub use super::OTG_HS_HCCHAR0::MC;
-    pub use super::OTG_HS_HCCHAR0::MPSIZ;
-    pub use super::OTG_HS_HCCHAR0::ODDFRM;
+pub mod HCCHAR15 {
+    pub use super::HCCHAR0::CHDIS;
+    pub use super::HCCHAR0::CHENA;
+    pub use super::HCCHAR0::DAD;
+    pub use super::HCCHAR0::EPDIR;
+    pub use super::HCCHAR0::EPNUM;
+    pub use super::HCCHAR0::EPTYP;
+    pub use super::HCCHAR0::LSDEV;
+    pub use super::HCCHAR0::MC;
+    pub use super::HCCHAR0::MPSIZ;
+    pub use super::HCCHAR0::ODDFRM;
 }
 
 /// OTG_HS host channel-15 split control register
-pub mod OTG_HS_HCSPLT15 {
-    pub use super::OTG_HS_HCSPLT0::COMPLSPLT;
-    pub use super::OTG_HS_HCSPLT0::HUBADDR;
-    pub use super::OTG_HS_HCSPLT0::PRTADDR;
-    pub use super::OTG_HS_HCSPLT0::SPLITEN;
-    pub use super::OTG_HS_HCSPLT0::XACTPOS;
+pub mod HCSPLT15 {
+    pub use super::HCSPLT0::COMPLSPLT;
+    pub use super::HCSPLT0::HUBADDR;
+    pub use super::HCSPLT0::PRTADDR;
+    pub use super::HCSPLT0::SPLITEN;
+    pub use super::HCSPLT0::XACTPOS;
 }
 
 /// OTG_HS host channel-15 interrupt register
-pub mod OTG_HS_HCINT15 {
-    pub use super::OTG_HS_HCINT0::ACK;
-    pub use super::OTG_HS_HCINT0::AHBERR;
-    pub use super::OTG_HS_HCINT0::BBERR;
-    pub use super::OTG_HS_HCINT0::CHH;
-    pub use super::OTG_HS_HCINT0::DTERR;
-    pub use super::OTG_HS_HCINT0::FRMOR;
-    pub use super::OTG_HS_HCINT0::NAK;
-    pub use super::OTG_HS_HCINT0::NYET;
-    pub use super::OTG_HS_HCINT0::STALL;
-    pub use super::OTG_HS_HCINT0::TXERR;
-    pub use super::OTG_HS_HCINT0::XFRC;
+pub mod HCINT15 {
+    pub use super::HCINT0::ACK;
+    pub use super::HCINT0::AHBERR;
+    pub use super::HCINT0::BBERR;
+    pub use super::HCINT0::CHH;
+    pub use super::HCINT0::DTERR;
+    pub use super::HCINT0::FRMOR;
+    pub use super::HCINT0::NAK;
+    pub use super::HCINT0::NYET;
+    pub use super::HCINT0::STALL;
+    pub use super::HCINT0::TXERR;
+    pub use super::HCINT0::XFRC;
 }
 
 /// OTG_HS host channel-15 interrupt mask register
-pub mod OTG_HS_HCINTMSK15 {
+pub mod HCINTMSK15 {
 
     /// Transfer completed mask
     pub mod XFRCM {
@@ -2061,458 +2061,458 @@ pub mod OTG_HS_HCINTMSK15 {
 }
 
 /// OTG_HS host channel-15 transfer size register
-pub mod OTG_HS_HCTSIZ15 {
-    pub use super::OTG_HS_HCTSIZ0::DPID;
-    pub use super::OTG_HS_HCTSIZ0::PKTCNT;
-    pub use super::OTG_HS_HCTSIZ0::XFRSIZ;
+pub mod HCTSIZ15 {
+    pub use super::HCTSIZ0::DPID;
+    pub use super::HCTSIZ0::PKTCNT;
+    pub use super::HCTSIZ0::XFRSIZ;
 }
 
 /// OTG_HS host channel-15 DMA address register
-pub mod OTG_HS_HCDMA15 {
-    pub use super::OTG_HS_HCDMA0::DMAADDR;
+pub mod HCDMA15 {
+    pub use super::HCDMA0::DMAADDR;
 }
 pub struct RegisterBlock {
     /// OTG_HS host configuration register
-    pub OTG_HS_HCFG: RWRegister<u32>,
+    pub HCFG: RWRegister<u32>,
 
     /// OTG_HS Host frame interval register
-    pub OTG_HS_HFIR: RWRegister<u32>,
+    pub HFIR: RWRegister<u32>,
 
     /// OTG_HS host frame number/frame time remaining register
-    pub OTG_HS_HFNUM: RORegister<u32>,
+    pub HFNUM: RORegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// OTG_HS_Host periodic transmit FIFO/queue status register
-    pub OTG_HS_HPTXSTS: RWRegister<u32>,
+    pub HPTXSTS: RWRegister<u32>,
 
     /// OTG_HS Host all channels interrupt register
-    pub OTG_HS_HAINT: RORegister<u32>,
+    pub HAINT: RORegister<u32>,
 
     /// OTG_HS host all channels interrupt mask register
-    pub OTG_HS_HAINTMSK: RWRegister<u32>,
+    pub HAINTMSK: RWRegister<u32>,
 
     _reserved2: [u32; 9],
 
     /// OTG_HS host port control and status register
-    pub OTG_HS_HPRT: RWRegister<u32>,
+    pub HPRT: RWRegister<u32>,
 
     _reserved3: [u32; 47],
 
     /// OTG_HS host channel-0 characteristics register
-    pub OTG_HS_HCCHAR0: RWRegister<u32>,
+    pub HCCHAR0: RWRegister<u32>,
 
     /// OTG_HS host channel-0 split control register
-    pub OTG_HS_HCSPLT0: RWRegister<u32>,
+    pub HCSPLT0: RWRegister<u32>,
 
     /// OTG_HS host channel-11 interrupt register
-    pub OTG_HS_HCINT0: RWRegister<u32>,
+    pub HCINT0: RWRegister<u32>,
 
     /// OTG_HS host channel-11 interrupt mask register
-    pub OTG_HS_HCINTMSK0: RWRegister<u32>,
+    pub HCINTMSK0: RWRegister<u32>,
 
     /// OTG_HS host channel-11 transfer size register
-    pub OTG_HS_HCTSIZ0: RWRegister<u32>,
+    pub HCTSIZ0: RWRegister<u32>,
 
     /// OTG_HS host channel-0 DMA address register
-    pub OTG_HS_HCDMA0: RWRegister<u32>,
+    pub HCDMA0: UnsafeRWRegister<u32>,
 
     _reserved4: [u32; 2],
 
     /// OTG_HS host channel-1 characteristics register
-    pub OTG_HS_HCCHAR1: RWRegister<u32>,
+    pub HCCHAR1: RWRegister<u32>,
 
     /// OTG_HS host channel-1 split control register
-    pub OTG_HS_HCSPLT1: RWRegister<u32>,
+    pub HCSPLT1: RWRegister<u32>,
 
     /// OTG_HS host channel-1 interrupt register
-    pub OTG_HS_HCINT1: RWRegister<u32>,
+    pub HCINT1: RWRegister<u32>,
 
     /// OTG_HS host channel-1 interrupt mask register
-    pub OTG_HS_HCINTMSK1: RWRegister<u32>,
+    pub HCINTMSK1: RWRegister<u32>,
 
     /// OTG_HS host channel-1 transfer size register
-    pub OTG_HS_HCTSIZ1: RWRegister<u32>,
+    pub HCTSIZ1: RWRegister<u32>,
 
     /// OTG_HS host channel-1 DMA address register
-    pub OTG_HS_HCDMA1: RWRegister<u32>,
+    pub HCDMA1: UnsafeRWRegister<u32>,
 
     _reserved5: [u32; 2],
 
     /// OTG_HS host channel-2 characteristics register
-    pub OTG_HS_HCCHAR2: RWRegister<u32>,
+    pub HCCHAR2: RWRegister<u32>,
 
     /// OTG_HS host channel-2 split control register
-    pub OTG_HS_HCSPLT2: RWRegister<u32>,
+    pub HCSPLT2: RWRegister<u32>,
 
     /// OTG_HS host channel-2 interrupt register
-    pub OTG_HS_HCINT2: RWRegister<u32>,
+    pub HCINT2: RWRegister<u32>,
 
     /// OTG_HS host channel-2 interrupt mask register
-    pub OTG_HS_HCINTMSK2: RWRegister<u32>,
+    pub HCINTMSK2: RWRegister<u32>,
 
     /// OTG_HS host channel-2 transfer size register
-    pub OTG_HS_HCTSIZ2: RWRegister<u32>,
+    pub HCTSIZ2: RWRegister<u32>,
 
     /// OTG_HS host channel-2 DMA address register
-    pub OTG_HS_HCDMA2: RWRegister<u32>,
+    pub HCDMA2: UnsafeRWRegister<u32>,
 
     _reserved6: [u32; 2],
 
     /// OTG_HS host channel-3 characteristics register
-    pub OTG_HS_HCCHAR3: RWRegister<u32>,
+    pub HCCHAR3: RWRegister<u32>,
 
     /// OTG_HS host channel-3 split control register
-    pub OTG_HS_HCSPLT3: RWRegister<u32>,
+    pub HCSPLT3: RWRegister<u32>,
 
     /// OTG_HS host channel-3 interrupt register
-    pub OTG_HS_HCINT3: RWRegister<u32>,
+    pub HCINT3: RWRegister<u32>,
 
     /// OTG_HS host channel-3 interrupt mask register
-    pub OTG_HS_HCINTMSK3: RWRegister<u32>,
+    pub HCINTMSK3: RWRegister<u32>,
 
     /// OTG_HS host channel-3 transfer size register
-    pub OTG_HS_HCTSIZ3: RWRegister<u32>,
+    pub HCTSIZ3: RWRegister<u32>,
 
     /// OTG_HS host channel-3 DMA address register
-    pub OTG_HS_HCDMA3: RWRegister<u32>,
+    pub HCDMA3: UnsafeRWRegister<u32>,
 
     _reserved7: [u32; 2],
 
     /// OTG_HS host channel-4 characteristics register
-    pub OTG_HS_HCCHAR4: RWRegister<u32>,
+    pub HCCHAR4: RWRegister<u32>,
 
     /// OTG_HS host channel-4 split control register
-    pub OTG_HS_HCSPLT4: RWRegister<u32>,
+    pub HCSPLT4: RWRegister<u32>,
 
     /// OTG_HS host channel-4 interrupt register
-    pub OTG_HS_HCINT4: RWRegister<u32>,
+    pub HCINT4: RWRegister<u32>,
 
     /// OTG_HS host channel-4 interrupt mask register
-    pub OTG_HS_HCINTMSK4: RWRegister<u32>,
+    pub HCINTMSK4: RWRegister<u32>,
 
     /// OTG_HS host channel-4 transfer size register
-    pub OTG_HS_HCTSIZ4: RWRegister<u32>,
+    pub HCTSIZ4: RWRegister<u32>,
 
     /// OTG_HS host channel-4 DMA address register
-    pub OTG_HS_HCDMA4: RWRegister<u32>,
+    pub HCDMA4: UnsafeRWRegister<u32>,
 
     _reserved8: [u32; 2],
 
     /// OTG_HS host channel-5 characteristics register
-    pub OTG_HS_HCCHAR5: RWRegister<u32>,
+    pub HCCHAR5: RWRegister<u32>,
 
     /// OTG_HS host channel-5 split control register
-    pub OTG_HS_HCSPLT5: RWRegister<u32>,
+    pub HCSPLT5: RWRegister<u32>,
 
     /// OTG_HS host channel-5 interrupt register
-    pub OTG_HS_HCINT5: RWRegister<u32>,
+    pub HCINT5: RWRegister<u32>,
 
     /// OTG_HS host channel-5 interrupt mask register
-    pub OTG_HS_HCINTMSK5: RWRegister<u32>,
+    pub HCINTMSK5: RWRegister<u32>,
 
     /// OTG_HS host channel-5 transfer size register
-    pub OTG_HS_HCTSIZ5: RWRegister<u32>,
+    pub HCTSIZ5: RWRegister<u32>,
 
     /// OTG_HS host channel-5 DMA address register
-    pub OTG_HS_HCDMA5: RWRegister<u32>,
+    pub HCDMA5: UnsafeRWRegister<u32>,
 
     _reserved9: [u32; 2],
 
     /// OTG_HS host channel-6 characteristics register
-    pub OTG_HS_HCCHAR6: RWRegister<u32>,
+    pub HCCHAR6: RWRegister<u32>,
 
     /// OTG_HS host channel-6 split control register
-    pub OTG_HS_HCSPLT6: RWRegister<u32>,
+    pub HCSPLT6: RWRegister<u32>,
 
     /// OTG_HS host channel-6 interrupt register
-    pub OTG_HS_HCINT6: RWRegister<u32>,
+    pub HCINT6: RWRegister<u32>,
 
     /// OTG_HS host channel-6 interrupt mask register
-    pub OTG_HS_HCINTMSK6: RWRegister<u32>,
+    pub HCINTMSK6: RWRegister<u32>,
 
     /// OTG_HS host channel-6 transfer size register
-    pub OTG_HS_HCTSIZ6: RWRegister<u32>,
+    pub HCTSIZ6: RWRegister<u32>,
 
     /// OTG_HS host channel-6 DMA address register
-    pub OTG_HS_HCDMA6: RWRegister<u32>,
+    pub HCDMA6: UnsafeRWRegister<u32>,
 
     _reserved10: [u32; 2],
 
     /// OTG_HS host channel-7 characteristics register
-    pub OTG_HS_HCCHAR7: RWRegister<u32>,
+    pub HCCHAR7: RWRegister<u32>,
 
     /// OTG_HS host channel-7 split control register
-    pub OTG_HS_HCSPLT7: RWRegister<u32>,
+    pub HCSPLT7: RWRegister<u32>,
 
     /// OTG_HS host channel-7 interrupt register
-    pub OTG_HS_HCINT7: RWRegister<u32>,
+    pub HCINT7: RWRegister<u32>,
 
     /// OTG_HS host channel-7 interrupt mask register
-    pub OTG_HS_HCINTMSK7: RWRegister<u32>,
+    pub HCINTMSK7: RWRegister<u32>,
 
     /// OTG_HS host channel-7 transfer size register
-    pub OTG_HS_HCTSIZ7: RWRegister<u32>,
+    pub HCTSIZ7: RWRegister<u32>,
 
     /// OTG_HS host channel-7 DMA address register
-    pub OTG_HS_HCDMA7: RWRegister<u32>,
+    pub HCDMA7: UnsafeRWRegister<u32>,
 
     _reserved11: [u32; 2],
 
     /// OTG_HS host channel-8 characteristics register
-    pub OTG_HS_HCCHAR8: RWRegister<u32>,
+    pub HCCHAR8: RWRegister<u32>,
 
     /// OTG_HS host channel-8 split control register
-    pub OTG_HS_HCSPLT8: RWRegister<u32>,
+    pub HCSPLT8: RWRegister<u32>,
 
     /// OTG_HS host channel-8 interrupt register
-    pub OTG_HS_HCINT8: RWRegister<u32>,
+    pub HCINT8: RWRegister<u32>,
 
     /// OTG_HS host channel-8 interrupt mask register
-    pub OTG_HS_HCINTMSK8: RWRegister<u32>,
+    pub HCINTMSK8: RWRegister<u32>,
 
     /// OTG_HS host channel-8 transfer size register
-    pub OTG_HS_HCTSIZ8: RWRegister<u32>,
+    pub HCTSIZ8: RWRegister<u32>,
 
     /// OTG_HS host channel-8 DMA address register
-    pub OTG_HS_HCDMA8: RWRegister<u32>,
+    pub HCDMA8: UnsafeRWRegister<u32>,
 
     _reserved12: [u32; 2],
 
     /// OTG_HS host channel-9 characteristics register
-    pub OTG_HS_HCCHAR9: RWRegister<u32>,
+    pub HCCHAR9: RWRegister<u32>,
 
     /// OTG_HS host channel-9 split control register
-    pub OTG_HS_HCSPLT9: RWRegister<u32>,
+    pub HCSPLT9: RWRegister<u32>,
 
     /// OTG_HS host channel-9 interrupt register
-    pub OTG_HS_HCINT9: RWRegister<u32>,
+    pub HCINT9: RWRegister<u32>,
 
     /// OTG_HS host channel-9 interrupt mask register
-    pub OTG_HS_HCINTMSK9: RWRegister<u32>,
+    pub HCINTMSK9: RWRegister<u32>,
 
     /// OTG_HS host channel-9 transfer size register
-    pub OTG_HS_HCTSIZ9: RWRegister<u32>,
+    pub HCTSIZ9: RWRegister<u32>,
 
     /// OTG_HS host channel-9 DMA address register
-    pub OTG_HS_HCDMA9: RWRegister<u32>,
+    pub HCDMA9: UnsafeRWRegister<u32>,
 
     _reserved13: [u32; 2],
 
     /// OTG_HS host channel-10 characteristics register
-    pub OTG_HS_HCCHAR10: RWRegister<u32>,
+    pub HCCHAR10: RWRegister<u32>,
 
     /// OTG_HS host channel-10 split control register
-    pub OTG_HS_HCSPLT10: RWRegister<u32>,
+    pub HCSPLT10: RWRegister<u32>,
 
     /// OTG_HS host channel-10 interrupt register
-    pub OTG_HS_HCINT10: RWRegister<u32>,
+    pub HCINT10: RWRegister<u32>,
 
     /// OTG_HS host channel-10 interrupt mask register
-    pub OTG_HS_HCINTMSK10: RWRegister<u32>,
+    pub HCINTMSK10: RWRegister<u32>,
 
     /// OTG_HS host channel-10 transfer size register
-    pub OTG_HS_HCTSIZ10: RWRegister<u32>,
+    pub HCTSIZ10: RWRegister<u32>,
 
     /// OTG_HS host channel-10 DMA address register
-    pub OTG_HS_HCDMA10: RWRegister<u32>,
+    pub HCDMA10: UnsafeRWRegister<u32>,
 
     _reserved14: [u32; 2],
 
     /// OTG_HS host channel-11 characteristics register
-    pub OTG_HS_HCCHAR11: RWRegister<u32>,
+    pub HCCHAR11: RWRegister<u32>,
 
     /// OTG_HS host channel-11 split control register
-    pub OTG_HS_HCSPLT11: RWRegister<u32>,
+    pub HCSPLT11: RWRegister<u32>,
 
     /// OTG_HS host channel-11 interrupt register
-    pub OTG_HS_HCINT11: RWRegister<u32>,
+    pub HCINT11: RWRegister<u32>,
 
     /// OTG_HS host channel-11 interrupt mask register
-    pub OTG_HS_HCINTMSK11: RWRegister<u32>,
+    pub HCINTMSK11: RWRegister<u32>,
 
     /// OTG_HS host channel-11 transfer size register
-    pub OTG_HS_HCTSIZ11: RWRegister<u32>,
+    pub HCTSIZ11: RWRegister<u32>,
 
     /// OTG_HS host channel-11 DMA address register
-    pub OTG_HS_HCDMA11: RWRegister<u32>,
+    pub HCDMA11: UnsafeRWRegister<u32>,
 
     /// OTG_HS host channel-12 characteristics register
-    pub OTG_HS_HCCHAR12: RWRegister<u32>,
+    pub HCCHAR12: RWRegister<u32>,
 
     /// OTG_HS host channel-12 split control register
-    pub OTG_HS_HCSPLT12: RWRegister<u32>,
+    pub HCSPLT12: RWRegister<u32>,
 
     /// OTG_HS host channel-12 interrupt register
-    pub OTG_HS_HCINT12: RWRegister<u32>,
+    pub HCINT12: RWRegister<u32>,
 
     /// OTG_HS host channel-12 interrupt mask register
-    pub OTG_HS_HCINTMSK12: RWRegister<u32>,
+    pub HCINTMSK12: RWRegister<u32>,
 
     /// OTG_HS host channel-12 transfer size register
-    pub OTG_HS_HCTSIZ12: RWRegister<u32>,
+    pub HCTSIZ12: RWRegister<u32>,
 
     /// OTG_HS host channel-12 DMA address register
-    pub OTG_HS_HCDMA12: RWRegister<u32>,
+    pub HCDMA12: UnsafeRWRegister<u32>,
 
     /// OTG_HS host channel-13 characteristics register
-    pub OTG_HS_HCCHAR13: RWRegister<u32>,
+    pub HCCHAR13: RWRegister<u32>,
 
     /// OTG_HS host channel-13 split control register
-    pub OTG_HS_HCSPLT13: RWRegister<u32>,
+    pub HCSPLT13: RWRegister<u32>,
 
     /// OTG_HS host channel-13 interrupt register
-    pub OTG_HS_HCINT13: RWRegister<u32>,
+    pub HCINT13: RWRegister<u32>,
 
     /// OTG_HS host channel-13 interrupt mask register
-    pub OTG_HS_HCINTMSK13: RWRegister<u32>,
+    pub HCINTMSK13: RWRegister<u32>,
 
     /// OTG_HS host channel-13 transfer size register
-    pub OTG_HS_HCTSIZ13: RWRegister<u32>,
+    pub HCTSIZ13: RWRegister<u32>,
 
     /// OTG_HS host channel-13 DMA address register
-    pub OTG_HS_HCDMA13: RWRegister<u32>,
+    pub HCDMA13: UnsafeRWRegister<u32>,
 
     /// OTG_HS host channel-14 characteristics register
-    pub OTG_HS_HCCHAR14: RWRegister<u32>,
+    pub HCCHAR14: RWRegister<u32>,
 
     /// OTG_HS host channel-14 split control register
-    pub OTG_HS_HCSPLT14: RWRegister<u32>,
+    pub HCSPLT14: RWRegister<u32>,
 
     /// OTG_HS host channel-14 interrupt register
-    pub OTG_HS_HCINT14: RWRegister<u32>,
+    pub HCINT14: RWRegister<u32>,
 
     /// OTG_HS host channel-14 interrupt mask register
-    pub OTG_HS_HCINTMSK14: RWRegister<u32>,
+    pub HCINTMSK14: RWRegister<u32>,
 
     /// OTG_HS host channel-14 transfer size register
-    pub OTG_HS_HCTSIZ14: RWRegister<u32>,
+    pub HCTSIZ14: RWRegister<u32>,
 
     /// OTG_HS host channel-14 DMA address register
-    pub OTG_HS_HCDMA14: RWRegister<u32>,
+    pub HCDMA14: UnsafeRWRegister<u32>,
 
     /// OTG_HS host channel-15 characteristics register
-    pub OTG_HS_HCCHAR15: RWRegister<u32>,
+    pub HCCHAR15: RWRegister<u32>,
 
     /// OTG_HS host channel-15 split control register
-    pub OTG_HS_HCSPLT15: RWRegister<u32>,
+    pub HCSPLT15: RWRegister<u32>,
 
     /// OTG_HS host channel-15 interrupt register
-    pub OTG_HS_HCINT15: RWRegister<u32>,
+    pub HCINT15: RWRegister<u32>,
 
     /// OTG_HS host channel-15 interrupt mask register
-    pub OTG_HS_HCINTMSK15: RWRegister<u32>,
+    pub HCINTMSK15: RWRegister<u32>,
 
     /// OTG_HS host channel-15 transfer size register
-    pub OTG_HS_HCTSIZ15: RWRegister<u32>,
+    pub HCTSIZ15: RWRegister<u32>,
 
     /// OTG_HS host channel-15 DMA address register
-    pub OTG_HS_HCDMA15: RWRegister<u32>,
+    pub HCDMA15: UnsafeRWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_HS_HCFG: u32,
-    pub OTG_HS_HFIR: u32,
-    pub OTG_HS_HFNUM: u32,
-    pub OTG_HS_HPTXSTS: u32,
-    pub OTG_HS_HAINT: u32,
-    pub OTG_HS_HAINTMSK: u32,
-    pub OTG_HS_HPRT: u32,
-    pub OTG_HS_HCCHAR0: u32,
-    pub OTG_HS_HCSPLT0: u32,
-    pub OTG_HS_HCINT0: u32,
-    pub OTG_HS_HCINTMSK0: u32,
-    pub OTG_HS_HCTSIZ0: u32,
-    pub OTG_HS_HCDMA0: u32,
-    pub OTG_HS_HCCHAR1: u32,
-    pub OTG_HS_HCSPLT1: u32,
-    pub OTG_HS_HCINT1: u32,
-    pub OTG_HS_HCINTMSK1: u32,
-    pub OTG_HS_HCTSIZ1: u32,
-    pub OTG_HS_HCDMA1: u32,
-    pub OTG_HS_HCCHAR2: u32,
-    pub OTG_HS_HCSPLT2: u32,
-    pub OTG_HS_HCINT2: u32,
-    pub OTG_HS_HCINTMSK2: u32,
-    pub OTG_HS_HCTSIZ2: u32,
-    pub OTG_HS_HCDMA2: u32,
-    pub OTG_HS_HCCHAR3: u32,
-    pub OTG_HS_HCSPLT3: u32,
-    pub OTG_HS_HCINT3: u32,
-    pub OTG_HS_HCINTMSK3: u32,
-    pub OTG_HS_HCTSIZ3: u32,
-    pub OTG_HS_HCDMA3: u32,
-    pub OTG_HS_HCCHAR4: u32,
-    pub OTG_HS_HCSPLT4: u32,
-    pub OTG_HS_HCINT4: u32,
-    pub OTG_HS_HCINTMSK4: u32,
-    pub OTG_HS_HCTSIZ4: u32,
-    pub OTG_HS_HCDMA4: u32,
-    pub OTG_HS_HCCHAR5: u32,
-    pub OTG_HS_HCSPLT5: u32,
-    pub OTG_HS_HCINT5: u32,
-    pub OTG_HS_HCINTMSK5: u32,
-    pub OTG_HS_HCTSIZ5: u32,
-    pub OTG_HS_HCDMA5: u32,
-    pub OTG_HS_HCCHAR6: u32,
-    pub OTG_HS_HCSPLT6: u32,
-    pub OTG_HS_HCINT6: u32,
-    pub OTG_HS_HCINTMSK6: u32,
-    pub OTG_HS_HCTSIZ6: u32,
-    pub OTG_HS_HCDMA6: u32,
-    pub OTG_HS_HCCHAR7: u32,
-    pub OTG_HS_HCSPLT7: u32,
-    pub OTG_HS_HCINT7: u32,
-    pub OTG_HS_HCINTMSK7: u32,
-    pub OTG_HS_HCTSIZ7: u32,
-    pub OTG_HS_HCDMA7: u32,
-    pub OTG_HS_HCCHAR8: u32,
-    pub OTG_HS_HCSPLT8: u32,
-    pub OTG_HS_HCINT8: u32,
-    pub OTG_HS_HCINTMSK8: u32,
-    pub OTG_HS_HCTSIZ8: u32,
-    pub OTG_HS_HCDMA8: u32,
-    pub OTG_HS_HCCHAR9: u32,
-    pub OTG_HS_HCSPLT9: u32,
-    pub OTG_HS_HCINT9: u32,
-    pub OTG_HS_HCINTMSK9: u32,
-    pub OTG_HS_HCTSIZ9: u32,
-    pub OTG_HS_HCDMA9: u32,
-    pub OTG_HS_HCCHAR10: u32,
-    pub OTG_HS_HCSPLT10: u32,
-    pub OTG_HS_HCINT10: u32,
-    pub OTG_HS_HCINTMSK10: u32,
-    pub OTG_HS_HCTSIZ10: u32,
-    pub OTG_HS_HCDMA10: u32,
-    pub OTG_HS_HCCHAR11: u32,
-    pub OTG_HS_HCSPLT11: u32,
-    pub OTG_HS_HCINT11: u32,
-    pub OTG_HS_HCINTMSK11: u32,
-    pub OTG_HS_HCTSIZ11: u32,
-    pub OTG_HS_HCDMA11: u32,
-    pub OTG_HS_HCCHAR12: u32,
-    pub OTG_HS_HCSPLT12: u32,
-    pub OTG_HS_HCINT12: u32,
-    pub OTG_HS_HCINTMSK12: u32,
-    pub OTG_HS_HCTSIZ12: u32,
-    pub OTG_HS_HCDMA12: u32,
-    pub OTG_HS_HCCHAR13: u32,
-    pub OTG_HS_HCSPLT13: u32,
-    pub OTG_HS_HCINT13: u32,
-    pub OTG_HS_HCINTMSK13: u32,
-    pub OTG_HS_HCTSIZ13: u32,
-    pub OTG_HS_HCDMA13: u32,
-    pub OTG_HS_HCCHAR14: u32,
-    pub OTG_HS_HCSPLT14: u32,
-    pub OTG_HS_HCINT14: u32,
-    pub OTG_HS_HCINTMSK14: u32,
-    pub OTG_HS_HCTSIZ14: u32,
-    pub OTG_HS_HCDMA14: u32,
-    pub OTG_HS_HCCHAR15: u32,
-    pub OTG_HS_HCSPLT15: u32,
-    pub OTG_HS_HCINT15: u32,
-    pub OTG_HS_HCINTMSK15: u32,
-    pub OTG_HS_HCTSIZ15: u32,
-    pub OTG_HS_HCDMA15: u32,
+    pub HCFG: u32,
+    pub HFIR: u32,
+    pub HFNUM: u32,
+    pub HPTXSTS: u32,
+    pub HAINT: u32,
+    pub HAINTMSK: u32,
+    pub HPRT: u32,
+    pub HCCHAR0: u32,
+    pub HCSPLT0: u32,
+    pub HCINT0: u32,
+    pub HCINTMSK0: u32,
+    pub HCTSIZ0: u32,
+    pub HCDMA0: u32,
+    pub HCCHAR1: u32,
+    pub HCSPLT1: u32,
+    pub HCINT1: u32,
+    pub HCINTMSK1: u32,
+    pub HCTSIZ1: u32,
+    pub HCDMA1: u32,
+    pub HCCHAR2: u32,
+    pub HCSPLT2: u32,
+    pub HCINT2: u32,
+    pub HCINTMSK2: u32,
+    pub HCTSIZ2: u32,
+    pub HCDMA2: u32,
+    pub HCCHAR3: u32,
+    pub HCSPLT3: u32,
+    pub HCINT3: u32,
+    pub HCINTMSK3: u32,
+    pub HCTSIZ3: u32,
+    pub HCDMA3: u32,
+    pub HCCHAR4: u32,
+    pub HCSPLT4: u32,
+    pub HCINT4: u32,
+    pub HCINTMSK4: u32,
+    pub HCTSIZ4: u32,
+    pub HCDMA4: u32,
+    pub HCCHAR5: u32,
+    pub HCSPLT5: u32,
+    pub HCINT5: u32,
+    pub HCINTMSK5: u32,
+    pub HCTSIZ5: u32,
+    pub HCDMA5: u32,
+    pub HCCHAR6: u32,
+    pub HCSPLT6: u32,
+    pub HCINT6: u32,
+    pub HCINTMSK6: u32,
+    pub HCTSIZ6: u32,
+    pub HCDMA6: u32,
+    pub HCCHAR7: u32,
+    pub HCSPLT7: u32,
+    pub HCINT7: u32,
+    pub HCINTMSK7: u32,
+    pub HCTSIZ7: u32,
+    pub HCDMA7: u32,
+    pub HCCHAR8: u32,
+    pub HCSPLT8: u32,
+    pub HCINT8: u32,
+    pub HCINTMSK8: u32,
+    pub HCTSIZ8: u32,
+    pub HCDMA8: u32,
+    pub HCCHAR9: u32,
+    pub HCSPLT9: u32,
+    pub HCINT9: u32,
+    pub HCINTMSK9: u32,
+    pub HCTSIZ9: u32,
+    pub HCDMA9: u32,
+    pub HCCHAR10: u32,
+    pub HCSPLT10: u32,
+    pub HCINT10: u32,
+    pub HCINTMSK10: u32,
+    pub HCTSIZ10: u32,
+    pub HCDMA10: u32,
+    pub HCCHAR11: u32,
+    pub HCSPLT11: u32,
+    pub HCINT11: u32,
+    pub HCINTMSK11: u32,
+    pub HCTSIZ11: u32,
+    pub HCDMA11: u32,
+    pub HCCHAR12: u32,
+    pub HCSPLT12: u32,
+    pub HCINT12: u32,
+    pub HCINTMSK12: u32,
+    pub HCTSIZ12: u32,
+    pub HCDMA12: u32,
+    pub HCCHAR13: u32,
+    pub HCSPLT13: u32,
+    pub HCINT13: u32,
+    pub HCINTMSK13: u32,
+    pub HCTSIZ13: u32,
+    pub HCDMA13: u32,
+    pub HCCHAR14: u32,
+    pub HCSPLT14: u32,
+    pub HCINT14: u32,
+    pub HCINTMSK14: u32,
+    pub HCTSIZ14: u32,
+    pub HCDMA14: u32,
+    pub HCCHAR15: u32,
+    pub HCSPLT15: u32,
+    pub HCINT15: u32,
+    pub HCINTMSK15: u32,
+    pub HCTSIZ15: u32,
+    pub HCDMA15: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -2527,6 +2527,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the OTG1_HS_HOST peripheral instance
 pub mod OTG1_HS_HOST {
@@ -2546,109 +2548,109 @@ pub mod OTG1_HS_HOST {
 
     /// Reset values for each field in OTG1_HS_HOST
     pub const reset: ResetValues = ResetValues {
-        OTG_HS_HCFG: 0x00000000,
-        OTG_HS_HFIR: 0x0000EA60,
-        OTG_HS_HFNUM: 0x00003FFF,
-        OTG_HS_HPTXSTS: 0x00080100,
-        OTG_HS_HAINT: 0x00000000,
-        OTG_HS_HAINTMSK: 0x00000000,
-        OTG_HS_HPRT: 0x00000000,
-        OTG_HS_HCCHAR0: 0x00000000,
-        OTG_HS_HCCHAR1: 0x00000000,
-        OTG_HS_HCCHAR2: 0x00000000,
-        OTG_HS_HCCHAR3: 0x00000000,
-        OTG_HS_HCCHAR4: 0x00000000,
-        OTG_HS_HCCHAR5: 0x00000000,
-        OTG_HS_HCCHAR6: 0x00000000,
-        OTG_HS_HCCHAR7: 0x00000000,
-        OTG_HS_HCCHAR8: 0x00000000,
-        OTG_HS_HCCHAR9: 0x00000000,
-        OTG_HS_HCCHAR10: 0x00000000,
-        OTG_HS_HCCHAR11: 0x00000000,
-        OTG_HS_HCSPLT0: 0x00000000,
-        OTG_HS_HCSPLT1: 0x00000000,
-        OTG_HS_HCSPLT2: 0x00000000,
-        OTG_HS_HCSPLT3: 0x00000000,
-        OTG_HS_HCSPLT4: 0x00000000,
-        OTG_HS_HCSPLT5: 0x00000000,
-        OTG_HS_HCSPLT6: 0x00000000,
-        OTG_HS_HCSPLT7: 0x00000000,
-        OTG_HS_HCSPLT8: 0x00000000,
-        OTG_HS_HCSPLT9: 0x00000000,
-        OTG_HS_HCSPLT10: 0x00000000,
-        OTG_HS_HCSPLT11: 0x00000000,
-        OTG_HS_HCINT0: 0x00000000,
-        OTG_HS_HCINT1: 0x00000000,
-        OTG_HS_HCINT2: 0x00000000,
-        OTG_HS_HCINT3: 0x00000000,
-        OTG_HS_HCINT4: 0x00000000,
-        OTG_HS_HCINT5: 0x00000000,
-        OTG_HS_HCINT6: 0x00000000,
-        OTG_HS_HCINT7: 0x00000000,
-        OTG_HS_HCINT8: 0x00000000,
-        OTG_HS_HCINT9: 0x00000000,
-        OTG_HS_HCINT10: 0x00000000,
-        OTG_HS_HCINT11: 0x00000000,
-        OTG_HS_HCINTMSK0: 0x00000000,
-        OTG_HS_HCINTMSK1: 0x00000000,
-        OTG_HS_HCINTMSK2: 0x00000000,
-        OTG_HS_HCINTMSK3: 0x00000000,
-        OTG_HS_HCINTMSK4: 0x00000000,
-        OTG_HS_HCINTMSK5: 0x00000000,
-        OTG_HS_HCINTMSK6: 0x00000000,
-        OTG_HS_HCINTMSK7: 0x00000000,
-        OTG_HS_HCINTMSK8: 0x00000000,
-        OTG_HS_HCINTMSK9: 0x00000000,
-        OTG_HS_HCINTMSK10: 0x00000000,
-        OTG_HS_HCINTMSK11: 0x00000000,
-        OTG_HS_HCTSIZ0: 0x00000000,
-        OTG_HS_HCTSIZ1: 0x00000000,
-        OTG_HS_HCTSIZ2: 0x00000000,
-        OTG_HS_HCTSIZ3: 0x00000000,
-        OTG_HS_HCTSIZ4: 0x00000000,
-        OTG_HS_HCTSIZ5: 0x00000000,
-        OTG_HS_HCTSIZ6: 0x00000000,
-        OTG_HS_HCTSIZ7: 0x00000000,
-        OTG_HS_HCTSIZ8: 0x00000000,
-        OTG_HS_HCTSIZ9: 0x00000000,
-        OTG_HS_HCTSIZ10: 0x00000000,
-        OTG_HS_HCTSIZ11: 0x00000000,
-        OTG_HS_HCDMA0: 0x00000000,
-        OTG_HS_HCDMA1: 0x00000000,
-        OTG_HS_HCDMA2: 0x00000000,
-        OTG_HS_HCDMA3: 0x00000000,
-        OTG_HS_HCDMA4: 0x00000000,
-        OTG_HS_HCDMA5: 0x00000000,
-        OTG_HS_HCDMA6: 0x00000000,
-        OTG_HS_HCDMA7: 0x00000000,
-        OTG_HS_HCDMA8: 0x00000000,
-        OTG_HS_HCDMA9: 0x00000000,
-        OTG_HS_HCDMA10: 0x00000000,
-        OTG_HS_HCDMA11: 0x00000000,
-        OTG_HS_HCCHAR12: 0x00000000,
-        OTG_HS_HCSPLT12: 0x00000000,
-        OTG_HS_HCINT12: 0x00000000,
-        OTG_HS_HCINTMSK12: 0x00000000,
-        OTG_HS_HCTSIZ12: 0x00000000,
-        OTG_HS_HCDMA12: 0x00000000,
-        OTG_HS_HCCHAR13: 0x00000000,
-        OTG_HS_HCSPLT13: 0x00000000,
-        OTG_HS_HCINT13: 0x00000000,
-        OTG_HS_HCINTMSK13: 0x00000000,
-        OTG_HS_HCTSIZ13: 0x00000000,
-        OTG_HS_HCDMA13: 0x00000000,
-        OTG_HS_HCCHAR14: 0x00000000,
-        OTG_HS_HCSPLT14: 0x00000000,
-        OTG_HS_HCINT14: 0x00000000,
-        OTG_HS_HCINTMSK14: 0x00000000,
-        OTG_HS_HCTSIZ14: 0x00000000,
-        OTG_HS_HCDMA14: 0x00000000,
-        OTG_HS_HCCHAR15: 0x00000000,
-        OTG_HS_HCSPLT15: 0x00000000,
-        OTG_HS_HCINT15: 0x00000000,
-        OTG_HS_HCINTMSK15: 0x00000000,
-        OTG_HS_HCTSIZ15: 0x00000000,
-        OTG_HS_HCDMA15: 0x00000000,
+        HCFG: 0x00000000,
+        HFIR: 0x0000EA60,
+        HFNUM: 0x00003FFF,
+        HPTXSTS: 0x00080100,
+        HAINT: 0x00000000,
+        HAINTMSK: 0x00000000,
+        HPRT: 0x00000000,
+        HCCHAR0: 0x00000000,
+        HCCHAR1: 0x00000000,
+        HCCHAR2: 0x00000000,
+        HCCHAR3: 0x00000000,
+        HCCHAR4: 0x00000000,
+        HCCHAR5: 0x00000000,
+        HCCHAR6: 0x00000000,
+        HCCHAR7: 0x00000000,
+        HCCHAR8: 0x00000000,
+        HCCHAR9: 0x00000000,
+        HCCHAR10: 0x00000000,
+        HCCHAR11: 0x00000000,
+        HCSPLT0: 0x00000000,
+        HCSPLT1: 0x00000000,
+        HCSPLT2: 0x00000000,
+        HCSPLT3: 0x00000000,
+        HCSPLT4: 0x00000000,
+        HCSPLT5: 0x00000000,
+        HCSPLT6: 0x00000000,
+        HCSPLT7: 0x00000000,
+        HCSPLT8: 0x00000000,
+        HCSPLT9: 0x00000000,
+        HCSPLT10: 0x00000000,
+        HCSPLT11: 0x00000000,
+        HCINT0: 0x00000000,
+        HCINT1: 0x00000000,
+        HCINT2: 0x00000000,
+        HCINT3: 0x00000000,
+        HCINT4: 0x00000000,
+        HCINT5: 0x00000000,
+        HCINT6: 0x00000000,
+        HCINT7: 0x00000000,
+        HCINT8: 0x00000000,
+        HCINT9: 0x00000000,
+        HCINT10: 0x00000000,
+        HCINT11: 0x00000000,
+        HCINTMSK0: 0x00000000,
+        HCINTMSK1: 0x00000000,
+        HCINTMSK2: 0x00000000,
+        HCINTMSK3: 0x00000000,
+        HCINTMSK4: 0x00000000,
+        HCINTMSK5: 0x00000000,
+        HCINTMSK6: 0x00000000,
+        HCINTMSK7: 0x00000000,
+        HCINTMSK8: 0x00000000,
+        HCINTMSK9: 0x00000000,
+        HCINTMSK10: 0x00000000,
+        HCINTMSK11: 0x00000000,
+        HCTSIZ0: 0x00000000,
+        HCTSIZ1: 0x00000000,
+        HCTSIZ2: 0x00000000,
+        HCTSIZ3: 0x00000000,
+        HCTSIZ4: 0x00000000,
+        HCTSIZ5: 0x00000000,
+        HCTSIZ6: 0x00000000,
+        HCTSIZ7: 0x00000000,
+        HCTSIZ8: 0x00000000,
+        HCTSIZ9: 0x00000000,
+        HCTSIZ10: 0x00000000,
+        HCTSIZ11: 0x00000000,
+        HCDMA0: 0x00000000,
+        HCDMA1: 0x00000000,
+        HCDMA2: 0x00000000,
+        HCDMA3: 0x00000000,
+        HCDMA4: 0x00000000,
+        HCDMA5: 0x00000000,
+        HCDMA6: 0x00000000,
+        HCDMA7: 0x00000000,
+        HCDMA8: 0x00000000,
+        HCDMA9: 0x00000000,
+        HCDMA10: 0x00000000,
+        HCDMA11: 0x00000000,
+        HCCHAR12: 0x00000000,
+        HCSPLT12: 0x00000000,
+        HCINT12: 0x00000000,
+        HCINTMSK12: 0x00000000,
+        HCTSIZ12: 0x00000000,
+        HCDMA12: 0x00000000,
+        HCCHAR13: 0x00000000,
+        HCSPLT13: 0x00000000,
+        HCINT13: 0x00000000,
+        HCINTMSK13: 0x00000000,
+        HCTSIZ13: 0x00000000,
+        HCDMA13: 0x00000000,
+        HCCHAR14: 0x00000000,
+        HCSPLT14: 0x00000000,
+        HCINT14: 0x00000000,
+        HCINTMSK14: 0x00000000,
+        HCTSIZ14: 0x00000000,
+        HCDMA14: 0x00000000,
+        HCCHAR15: 0x00000000,
+        HCSPLT15: 0x00000000,
+        HCINT15: 0x00000000,
+        HCINTMSK15: 0x00000000,
+        HCTSIZ15: 0x00000000,
+        HCDMA15: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -2699,6 +2701,18 @@ pub mod OTG1_HS_HOST {
             }
         });
     }
+
+    /// Unsafely steal OTG1_HS_HOST
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG1_HS_HOST_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to OTG1_HS_HOST
@@ -2730,109 +2744,109 @@ pub mod OTG2_HS_HOST {
 
     /// Reset values for each field in OTG2_HS_HOST
     pub const reset: ResetValues = ResetValues {
-        OTG_HS_HCFG: 0x00000000,
-        OTG_HS_HFIR: 0x0000EA60,
-        OTG_HS_HFNUM: 0x00003FFF,
-        OTG_HS_HPTXSTS: 0x00080100,
-        OTG_HS_HAINT: 0x00000000,
-        OTG_HS_HAINTMSK: 0x00000000,
-        OTG_HS_HPRT: 0x00000000,
-        OTG_HS_HCCHAR0: 0x00000000,
-        OTG_HS_HCCHAR1: 0x00000000,
-        OTG_HS_HCCHAR2: 0x00000000,
-        OTG_HS_HCCHAR3: 0x00000000,
-        OTG_HS_HCCHAR4: 0x00000000,
-        OTG_HS_HCCHAR5: 0x00000000,
-        OTG_HS_HCCHAR6: 0x00000000,
-        OTG_HS_HCCHAR7: 0x00000000,
-        OTG_HS_HCCHAR8: 0x00000000,
-        OTG_HS_HCCHAR9: 0x00000000,
-        OTG_HS_HCCHAR10: 0x00000000,
-        OTG_HS_HCCHAR11: 0x00000000,
-        OTG_HS_HCSPLT0: 0x00000000,
-        OTG_HS_HCSPLT1: 0x00000000,
-        OTG_HS_HCSPLT2: 0x00000000,
-        OTG_HS_HCSPLT3: 0x00000000,
-        OTG_HS_HCSPLT4: 0x00000000,
-        OTG_HS_HCSPLT5: 0x00000000,
-        OTG_HS_HCSPLT6: 0x00000000,
-        OTG_HS_HCSPLT7: 0x00000000,
-        OTG_HS_HCSPLT8: 0x00000000,
-        OTG_HS_HCSPLT9: 0x00000000,
-        OTG_HS_HCSPLT10: 0x00000000,
-        OTG_HS_HCSPLT11: 0x00000000,
-        OTG_HS_HCINT0: 0x00000000,
-        OTG_HS_HCINT1: 0x00000000,
-        OTG_HS_HCINT2: 0x00000000,
-        OTG_HS_HCINT3: 0x00000000,
-        OTG_HS_HCINT4: 0x00000000,
-        OTG_HS_HCINT5: 0x00000000,
-        OTG_HS_HCINT6: 0x00000000,
-        OTG_HS_HCINT7: 0x00000000,
-        OTG_HS_HCINT8: 0x00000000,
-        OTG_HS_HCINT9: 0x00000000,
-        OTG_HS_HCINT10: 0x00000000,
-        OTG_HS_HCINT11: 0x00000000,
-        OTG_HS_HCINTMSK0: 0x00000000,
-        OTG_HS_HCINTMSK1: 0x00000000,
-        OTG_HS_HCINTMSK2: 0x00000000,
-        OTG_HS_HCINTMSK3: 0x00000000,
-        OTG_HS_HCINTMSK4: 0x00000000,
-        OTG_HS_HCINTMSK5: 0x00000000,
-        OTG_HS_HCINTMSK6: 0x00000000,
-        OTG_HS_HCINTMSK7: 0x00000000,
-        OTG_HS_HCINTMSK8: 0x00000000,
-        OTG_HS_HCINTMSK9: 0x00000000,
-        OTG_HS_HCINTMSK10: 0x00000000,
-        OTG_HS_HCINTMSK11: 0x00000000,
-        OTG_HS_HCTSIZ0: 0x00000000,
-        OTG_HS_HCTSIZ1: 0x00000000,
-        OTG_HS_HCTSIZ2: 0x00000000,
-        OTG_HS_HCTSIZ3: 0x00000000,
-        OTG_HS_HCTSIZ4: 0x00000000,
-        OTG_HS_HCTSIZ5: 0x00000000,
-        OTG_HS_HCTSIZ6: 0x00000000,
-        OTG_HS_HCTSIZ7: 0x00000000,
-        OTG_HS_HCTSIZ8: 0x00000000,
-        OTG_HS_HCTSIZ9: 0x00000000,
-        OTG_HS_HCTSIZ10: 0x00000000,
-        OTG_HS_HCTSIZ11: 0x00000000,
-        OTG_HS_HCDMA0: 0x00000000,
-        OTG_HS_HCDMA1: 0x00000000,
-        OTG_HS_HCDMA2: 0x00000000,
-        OTG_HS_HCDMA3: 0x00000000,
-        OTG_HS_HCDMA4: 0x00000000,
-        OTG_HS_HCDMA5: 0x00000000,
-        OTG_HS_HCDMA6: 0x00000000,
-        OTG_HS_HCDMA7: 0x00000000,
-        OTG_HS_HCDMA8: 0x00000000,
-        OTG_HS_HCDMA9: 0x00000000,
-        OTG_HS_HCDMA10: 0x00000000,
-        OTG_HS_HCDMA11: 0x00000000,
-        OTG_HS_HCCHAR12: 0x00000000,
-        OTG_HS_HCSPLT12: 0x00000000,
-        OTG_HS_HCINT12: 0x00000000,
-        OTG_HS_HCINTMSK12: 0x00000000,
-        OTG_HS_HCTSIZ12: 0x00000000,
-        OTG_HS_HCDMA12: 0x00000000,
-        OTG_HS_HCCHAR13: 0x00000000,
-        OTG_HS_HCSPLT13: 0x00000000,
-        OTG_HS_HCINT13: 0x00000000,
-        OTG_HS_HCINTMSK13: 0x00000000,
-        OTG_HS_HCTSIZ13: 0x00000000,
-        OTG_HS_HCDMA13: 0x00000000,
-        OTG_HS_HCCHAR14: 0x00000000,
-        OTG_HS_HCSPLT14: 0x00000000,
-        OTG_HS_HCINT14: 0x00000000,
-        OTG_HS_HCINTMSK14: 0x00000000,
-        OTG_HS_HCTSIZ14: 0x00000000,
-        OTG_HS_HCDMA14: 0x00000000,
-        OTG_HS_HCCHAR15: 0x00000000,
-        OTG_HS_HCSPLT15: 0x00000000,
-        OTG_HS_HCINT15: 0x00000000,
-        OTG_HS_HCINTMSK15: 0x00000000,
-        OTG_HS_HCTSIZ15: 0x00000000,
-        OTG_HS_HCDMA15: 0x00000000,
+        HCFG: 0x00000000,
+        HFIR: 0x0000EA60,
+        HFNUM: 0x00003FFF,
+        HPTXSTS: 0x00080100,
+        HAINT: 0x00000000,
+        HAINTMSK: 0x00000000,
+        HPRT: 0x00000000,
+        HCCHAR0: 0x00000000,
+        HCCHAR1: 0x00000000,
+        HCCHAR2: 0x00000000,
+        HCCHAR3: 0x00000000,
+        HCCHAR4: 0x00000000,
+        HCCHAR5: 0x00000000,
+        HCCHAR6: 0x00000000,
+        HCCHAR7: 0x00000000,
+        HCCHAR8: 0x00000000,
+        HCCHAR9: 0x00000000,
+        HCCHAR10: 0x00000000,
+        HCCHAR11: 0x00000000,
+        HCSPLT0: 0x00000000,
+        HCSPLT1: 0x00000000,
+        HCSPLT2: 0x00000000,
+        HCSPLT3: 0x00000000,
+        HCSPLT4: 0x00000000,
+        HCSPLT5: 0x00000000,
+        HCSPLT6: 0x00000000,
+        HCSPLT7: 0x00000000,
+        HCSPLT8: 0x00000000,
+        HCSPLT9: 0x00000000,
+        HCSPLT10: 0x00000000,
+        HCSPLT11: 0x00000000,
+        HCINT0: 0x00000000,
+        HCINT1: 0x00000000,
+        HCINT2: 0x00000000,
+        HCINT3: 0x00000000,
+        HCINT4: 0x00000000,
+        HCINT5: 0x00000000,
+        HCINT6: 0x00000000,
+        HCINT7: 0x00000000,
+        HCINT8: 0x00000000,
+        HCINT9: 0x00000000,
+        HCINT10: 0x00000000,
+        HCINT11: 0x00000000,
+        HCINTMSK0: 0x00000000,
+        HCINTMSK1: 0x00000000,
+        HCINTMSK2: 0x00000000,
+        HCINTMSK3: 0x00000000,
+        HCINTMSK4: 0x00000000,
+        HCINTMSK5: 0x00000000,
+        HCINTMSK6: 0x00000000,
+        HCINTMSK7: 0x00000000,
+        HCINTMSK8: 0x00000000,
+        HCINTMSK9: 0x00000000,
+        HCINTMSK10: 0x00000000,
+        HCINTMSK11: 0x00000000,
+        HCTSIZ0: 0x00000000,
+        HCTSIZ1: 0x00000000,
+        HCTSIZ2: 0x00000000,
+        HCTSIZ3: 0x00000000,
+        HCTSIZ4: 0x00000000,
+        HCTSIZ5: 0x00000000,
+        HCTSIZ6: 0x00000000,
+        HCTSIZ7: 0x00000000,
+        HCTSIZ8: 0x00000000,
+        HCTSIZ9: 0x00000000,
+        HCTSIZ10: 0x00000000,
+        HCTSIZ11: 0x00000000,
+        HCDMA0: 0x00000000,
+        HCDMA1: 0x00000000,
+        HCDMA2: 0x00000000,
+        HCDMA3: 0x00000000,
+        HCDMA4: 0x00000000,
+        HCDMA5: 0x00000000,
+        HCDMA6: 0x00000000,
+        HCDMA7: 0x00000000,
+        HCDMA8: 0x00000000,
+        HCDMA9: 0x00000000,
+        HCDMA10: 0x00000000,
+        HCDMA11: 0x00000000,
+        HCCHAR12: 0x00000000,
+        HCSPLT12: 0x00000000,
+        HCINT12: 0x00000000,
+        HCINTMSK12: 0x00000000,
+        HCTSIZ12: 0x00000000,
+        HCDMA12: 0x00000000,
+        HCCHAR13: 0x00000000,
+        HCSPLT13: 0x00000000,
+        HCINT13: 0x00000000,
+        HCINTMSK13: 0x00000000,
+        HCTSIZ13: 0x00000000,
+        HCDMA13: 0x00000000,
+        HCCHAR14: 0x00000000,
+        HCSPLT14: 0x00000000,
+        HCINT14: 0x00000000,
+        HCINTMSK14: 0x00000000,
+        HCTSIZ14: 0x00000000,
+        HCDMA14: 0x00000000,
+        HCCHAR15: 0x00000000,
+        HCSPLT15: 0x00000000,
+        HCINT15: 0x00000000,
+        HCINTMSK15: 0x00000000,
+        HCTSIZ15: 0x00000000,
+        HCDMA15: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -2882,6 +2896,18 @@ pub mod OTG2_HS_HOST {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal OTG2_HS_HOST
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG2_HS_HOST_TAKEN = true;
+        INSTANCE
     }
 }
 

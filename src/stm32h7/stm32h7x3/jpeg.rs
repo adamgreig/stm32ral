@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister, WORegister};
 
 /// JPEG codec control register
-pub mod JPEG_CONFR0 {
+pub mod CONFR0 {
 
     /// Start This bit start or stop the encoding or decoding process. Read this register always return 0.
     pub mod START {
@@ -25,7 +25,7 @@ pub mod JPEG_CONFR0 {
 }
 
 /// JPEG codec configuration register 1
-pub mod JPEG_CONFR1 {
+pub mod CONFR1 {
 
     /// Number of color components This field defines the number of color components minus 1.
     pub mod NF {
@@ -113,7 +113,7 @@ pub mod JPEG_CONFR1 {
 }
 
 /// JPEG codec configuration register 2
-pub mod JPEG_CONFR2 {
+pub mod CONFR2 {
 
     /// Number of MCU For encoding: this field defines the number of MCU units minus 1 to encode. For decoding: this field indicates the number of complete MCU units minus 1 to be decoded (this field is updated after the JPEG header parsing). If the decoded image size has not a X or Y size multiple of 8 or 16 (depending on the sub-sampling process), the resulting incomplete or empty MCU must be added to this value to get the total number of MCU generated.
     pub mod NMCU {
@@ -131,7 +131,7 @@ pub mod JPEG_CONFR2 {
 }
 
 /// JPEG codec configuration register 3
-pub mod JPEG_CONFR3 {
+pub mod CONFR3 {
 
     /// X size This field defines the number of pixels per line.
     pub mod XSIZE {
@@ -149,7 +149,7 @@ pub mod JPEG_CONFR3 {
 }
 
 /// JPEG codec configuration register 4-7
-pub mod JPEG_CONFRN1 {
+pub mod CONFRN1 {
 
     /// Huffman DC Selects the Huffman table for encoding the DC coefficients.
     pub mod HD {
@@ -237,37 +237,37 @@ pub mod JPEG_CONFRN1 {
 }
 
 /// JPEG codec configuration register 4-7
-pub mod JPEG_CONFRN2 {
-    pub use super::JPEG_CONFRN1::HA;
-    pub use super::JPEG_CONFRN1::HD;
-    pub use super::JPEG_CONFRN1::HSF;
-    pub use super::JPEG_CONFRN1::NB;
-    pub use super::JPEG_CONFRN1::QT;
-    pub use super::JPEG_CONFRN1::VSF;
+pub mod CONFRN2 {
+    pub use super::CONFRN1::HA;
+    pub use super::CONFRN1::HD;
+    pub use super::CONFRN1::HSF;
+    pub use super::CONFRN1::NB;
+    pub use super::CONFRN1::QT;
+    pub use super::CONFRN1::VSF;
 }
 
 /// JPEG codec configuration register 4-7
-pub mod JPEG_CONFRN3 {
-    pub use super::JPEG_CONFRN1::HA;
-    pub use super::JPEG_CONFRN1::HD;
-    pub use super::JPEG_CONFRN1::HSF;
-    pub use super::JPEG_CONFRN1::NB;
-    pub use super::JPEG_CONFRN1::QT;
-    pub use super::JPEG_CONFRN1::VSF;
+pub mod CONFRN3 {
+    pub use super::CONFRN1::HA;
+    pub use super::CONFRN1::HD;
+    pub use super::CONFRN1::HSF;
+    pub use super::CONFRN1::NB;
+    pub use super::CONFRN1::QT;
+    pub use super::CONFRN1::VSF;
 }
 
 /// JPEG codec configuration register 4-7
-pub mod JPEG_CONFRN4 {
-    pub use super::JPEG_CONFRN1::HA;
-    pub use super::JPEG_CONFRN1::HD;
-    pub use super::JPEG_CONFRN1::HSF;
-    pub use super::JPEG_CONFRN1::NB;
-    pub use super::JPEG_CONFRN1::QT;
-    pub use super::JPEG_CONFRN1::VSF;
+pub mod CONFRN4 {
+    pub use super::CONFRN1::HA;
+    pub use super::CONFRN1::HD;
+    pub use super::CONFRN1::HSF;
+    pub use super::CONFRN1::NB;
+    pub use super::CONFRN1::QT;
+    pub use super::CONFRN1::VSF;
 }
 
 /// JPEG control register
-pub mod JPEG_CR {
+pub mod CR {
 
     /// JPEG Core Enable Enable the JPEG codec Core.
     pub mod JCEN {
@@ -425,7 +425,7 @@ pub mod JPEG_CR {
 }
 
 /// JPEG status register
-pub mod JPEG_SR {
+pub mod SR {
 
     /// Input FIFO Threshold Flag This bit is set when the input FIFO is not full and is bellow its threshold.
     pub mod IFTF {
@@ -527,7 +527,7 @@ pub mod JPEG_SR {
 }
 
 /// JPEG clear flag register
-pub mod JPEG_CFR {
+pub mod CFR {
 
     /// Clear End of Conversion Flag Writing 1 clears the End of Conversion Flag of the JPEG Status Register.
     pub mod CEOCF {
@@ -559,7 +559,7 @@ pub mod JPEG_CFR {
 }
 
 /// JPEG data input register
-pub mod JPEG_DIR {
+pub mod DIR {
 
     /// Data Input FIFO Input FIFO data register.
     pub mod DATAIN {
@@ -577,7 +577,7 @@ pub mod JPEG_DIR {
 }
 
 /// JPEG data output register
-pub mod JPEG_DOR {
+pub mod DOR {
 
     /// Data Output FIFO Output FIFO data register.
     pub mod DATAOUT {
@@ -595,62 +595,62 @@ pub mod JPEG_DOR {
 }
 pub struct RegisterBlock {
     /// JPEG codec control register
-    pub JPEG_CONFR0: WORegister<u32>,
+    pub CONFR0: WORegister<u32>,
 
     /// JPEG codec configuration register 1
-    pub JPEG_CONFR1: RWRegister<u32>,
+    pub CONFR1: RWRegister<u32>,
 
     /// JPEG codec configuration register 2
-    pub JPEG_CONFR2: RWRegister<u32>,
+    pub CONFR2: RWRegister<u32>,
 
     /// JPEG codec configuration register 3
-    pub JPEG_CONFR3: RWRegister<u32>,
+    pub CONFR3: RWRegister<u32>,
 
     /// JPEG codec configuration register 4-7
-    pub JPEG_CONFRN1: RWRegister<u32>,
+    pub CONFRN1: RWRegister<u32>,
 
     /// JPEG codec configuration register 4-7
-    pub JPEG_CONFRN2: RWRegister<u32>,
+    pub CONFRN2: RWRegister<u32>,
 
     /// JPEG codec configuration register 4-7
-    pub JPEG_CONFRN3: RWRegister<u32>,
+    pub CONFRN3: RWRegister<u32>,
 
     /// JPEG codec configuration register 4-7
-    pub JPEG_CONFRN4: RWRegister<u32>,
+    pub CONFRN4: RWRegister<u32>,
 
     _reserved1: [u32; 4],
 
     /// JPEG control register
-    pub JPEG_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// JPEG status register
-    pub JPEG_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// JPEG clear flag register
-    pub JPEG_CFR: RWRegister<u32>,
+    pub CFR: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// JPEG data input register
-    pub JPEG_DIR: WORegister<u32>,
+    pub DIR: WORegister<u32>,
 
     /// JPEG data output register
-    pub JPEG_DOR: RORegister<u32>,
+    pub DOR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub JPEG_CONFR0: u32,
-    pub JPEG_CONFR1: u32,
-    pub JPEG_CONFR2: u32,
-    pub JPEG_CONFR3: u32,
-    pub JPEG_CONFRN1: u32,
-    pub JPEG_CONFRN2: u32,
-    pub JPEG_CONFRN3: u32,
-    pub JPEG_CONFRN4: u32,
-    pub JPEG_CR: u32,
-    pub JPEG_SR: u32,
-    pub JPEG_CFR: u32,
-    pub JPEG_DIR: u32,
-    pub JPEG_DOR: u32,
+    pub CONFR0: u32,
+    pub CONFR1: u32,
+    pub CONFR2: u32,
+    pub CONFR3: u32,
+    pub CONFRN1: u32,
+    pub CONFRN2: u32,
+    pub CONFRN3: u32,
+    pub CONFRN4: u32,
+    pub CR: u32,
+    pub SR: u32,
+    pub CFR: u32,
+    pub DIR: u32,
+    pub DOR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -665,6 +665,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the JPEG peripheral instance
 pub mod JPEG {
@@ -684,19 +686,19 @@ pub mod JPEG {
 
     /// Reset values for each field in JPEG
     pub const reset: ResetValues = ResetValues {
-        JPEG_CONFR0: 0x00000000,
-        JPEG_CONFR1: 0x00000000,
-        JPEG_CONFR2: 0x00000000,
-        JPEG_CONFR3: 0x00000000,
-        JPEG_CONFRN1: 0x00000000,
-        JPEG_CONFRN2: 0x00000000,
-        JPEG_CONFRN3: 0x00000000,
-        JPEG_CONFRN4: 0x00000000,
-        JPEG_CR: 0x00000000,
-        JPEG_SR: 0x00000006,
-        JPEG_CFR: 0x00000000,
-        JPEG_DIR: 0x00000000,
-        JPEG_DOR: 0x00000000,
+        CONFR0: 0x00000000,
+        CONFR1: 0x00000000,
+        CONFR2: 0x00000000,
+        CONFR3: 0x00000000,
+        CONFRN1: 0x00000000,
+        CONFRN2: 0x00000000,
+        CONFRN3: 0x00000000,
+        CONFRN4: 0x00000000,
+        CR: 0x00000000,
+        SR: 0x00000006,
+        CFR: 0x00000000,
+        DIR: 0x00000000,
+        DOR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -746,6 +748,18 @@ pub mod JPEG {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal JPEG
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        JPEG_TAKEN = true;
+        INSTANCE
     }
 }
 

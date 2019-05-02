@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister, WORegister};
 
 /// DAC control register
-pub mod DAC_CR {
+pub mod CR {
 
     /// DAC channel1 enable This bit is set and cleared by software to enable/disable DAC channel1.
     pub mod EN1 {
@@ -235,7 +235,7 @@ pub mod DAC_CR {
 }
 
 /// DAC software trigger register
-pub mod DAC_SWTRGR {
+pub mod SWTRGR {
 
     /// DAC channel1 software trigger This bit is set by software to trigger the DAC in software trigger mode. Note: This bit is cleared by hardware (one APB1 clock cycle later) once the DAC_DHR1 register value has been loaded into the DAC_DOR1 register.
     pub mod SWTRIG1 {
@@ -267,7 +267,7 @@ pub mod DAC_SWTRGR {
 }
 
 /// DAC channel1 12-bit right-aligned data holding register
-pub mod DAC_DHR12R1 {
+pub mod DHR12R1 {
 
     /// DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
     pub mod DACC1DHR {
@@ -285,7 +285,7 @@ pub mod DAC_DHR12R1 {
 }
 
 /// DAC channel1 12-bit left aligned data holding register
-pub mod DAC_DHR12L1 {
+pub mod DHR12L1 {
 
     /// DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
     pub mod DACC1DHR {
@@ -303,7 +303,7 @@ pub mod DAC_DHR12L1 {
 }
 
 /// DAC channel1 8-bit right aligned data holding register
-pub mod DAC_DHR8R1 {
+pub mod DHR8R1 {
 
     /// DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
     pub mod DACC1DHR {
@@ -321,7 +321,7 @@ pub mod DAC_DHR8R1 {
 }
 
 /// DAC channel2 12-bit right aligned data holding register
-pub mod DAC_DHR12R2 {
+pub mod DHR12R2 {
 
     /// DAC channel2 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel2.
     pub mod DACC2DHR {
@@ -339,7 +339,7 @@ pub mod DAC_DHR12R2 {
 }
 
 /// DAC channel2 12-bit left aligned data holding register
-pub mod DAC_DHR12L2 {
+pub mod DHR12L2 {
 
     /// DAC channel2 12-bit left-aligned data These bits are written by software which specify 12-bit data for DAC channel2.
     pub mod DACC2DHR {
@@ -357,7 +357,7 @@ pub mod DAC_DHR12L2 {
 }
 
 /// DAC channel2 8-bit right-aligned data holding register
-pub mod DAC_DHR8R2 {
+pub mod DHR8R2 {
 
     /// DAC channel2 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel2.
     pub mod DACC2DHR {
@@ -375,7 +375,7 @@ pub mod DAC_DHR8R2 {
 }
 
 /// Dual DAC 12-bit right-aligned data holding register
-pub mod DAC_DHR12RD {
+pub mod DHR12RD {
 
     /// DAC channel1 12-bit right-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
     pub mod DACC1DHR {
@@ -407,7 +407,7 @@ pub mod DAC_DHR12RD {
 }
 
 /// DUAL DAC 12-bit left aligned data holding register
-pub mod DAC_DHR12LD {
+pub mod DHR12LD {
 
     /// DAC channel1 12-bit left-aligned data These bits are written by software which specifies 12-bit data for DAC channel1.
     pub mod DACC1DHR {
@@ -439,7 +439,7 @@ pub mod DAC_DHR12LD {
 }
 
 /// DUAL DAC 8-bit right aligned data holding register
-pub mod DAC_DHR8RD {
+pub mod DHR8RD {
 
     /// DAC channel1 8-bit right-aligned data These bits are written by software which specifies 8-bit data for DAC channel1.
     pub mod DACC1DHR {
@@ -471,7 +471,7 @@ pub mod DAC_DHR8RD {
 }
 
 /// DAC channel1 data output register
-pub mod DAC_DOR1 {
+pub mod DOR1 {
 
     /// DAC channel1 data output These bits are read-only, they contain data output for DAC channel1.
     pub mod DACC1DOR {
@@ -489,7 +489,7 @@ pub mod DAC_DOR1 {
 }
 
 /// DAC channel2 data output register
-pub mod DAC_DOR2 {
+pub mod DOR2 {
 
     /// DAC channel2 data output These bits are read-only, they contain data output for DAC channel2.
     pub mod DACC2DOR {
@@ -507,7 +507,7 @@ pub mod DAC_DOR2 {
 }
 
 /// DAC status register
-pub mod DAC_SR {
+pub mod SR {
 
     /// DAC channel1 DMA underrun flag This bit is set by hardware and cleared by software (by writing it to 1).
     pub mod DMAUDR1 {
@@ -595,7 +595,7 @@ pub mod DAC_SR {
 }
 
 /// DAC calibration control register
-pub mod DAC_CCR {
+pub mod CCR {
 
     /// DAC Channel 1 offset trimming value
     pub mod OTRIM1 {
@@ -627,7 +627,7 @@ pub mod DAC_CCR {
 }
 
 /// DAC mode control register
-pub mod DAC_MCR {
+pub mod MCR {
 
     /// DAC Channel 1 mode These bits can be written only when the DAC is disabled and not in the calibration mode (when bit EN1=0 and bit CEN1 =0 in the DAC_CR register). If EN1=1 or CEN1 =1 the write operation is ignored. They can be set and cleared by software to select the DAC Channel 1 mode: DAC Channel 1 in normal Mode DAC Channel 1 in sample &amp; hold mode
     pub mod MODE1 {
@@ -659,7 +659,7 @@ pub mod DAC_MCR {
 }
 
 /// DAC Sample and Hold sample time register 1
-pub mod DAC_SHSR1 {
+pub mod SHSR1 {
 
     /// DAC Channel 1 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel1 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, If BWSTx=1, the write operation is ignored.
     pub mod TSAMPLE1 {
@@ -677,7 +677,7 @@ pub mod DAC_SHSR1 {
 }
 
 /// DAC Sample and Hold sample time register 2
-pub mod DAC_SHSR2 {
+pub mod SHSR2 {
 
     /// DAC Channel 2 sample Time (only valid in sample &amp; hold mode) These bits can be written when the DAC channel2 is disabled or also during normal operation. in the latter case, the write can be done only when BWSTx of DAC_SR register is low, if BWSTx=1, the write operation is ignored.
     pub mod TSAMPLE2 {
@@ -695,7 +695,7 @@ pub mod DAC_SHSR2 {
 }
 
 /// DAC Sample and Hold hold time register
-pub mod DAC_SHHR {
+pub mod SHHR {
 
     /// DAC Channel 1 hold Time (only valid in sample &amp; hold mode) Hold time= (THOLD\[9:0\]) x T LSI
     pub mod THOLD1 {
@@ -727,7 +727,7 @@ pub mod DAC_SHHR {
 }
 
 /// DAC Sample and Hold refresh time register
-pub mod DAC_SHRR {
+pub mod SHRR {
 
     /// DAC Channel 1 refresh Time (only valid in sample &amp; hold mode) Refresh time= (TREFRESH\[7:0\]) x T LSI
     pub mod TREFRESH1 {
@@ -759,86 +759,86 @@ pub mod DAC_SHRR {
 }
 pub struct RegisterBlock {
     /// DAC control register
-    pub DAC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// DAC software trigger register
-    pub DAC_SWTRGR: WORegister<u32>,
+    pub SWTRGR: WORegister<u32>,
 
     /// DAC channel1 12-bit right-aligned data holding register
-    pub DAC_DHR12R1: RWRegister<u32>,
+    pub DHR12R1: RWRegister<u32>,
 
     /// DAC channel1 12-bit left aligned data holding register
-    pub DAC_DHR12L1: RWRegister<u32>,
+    pub DHR12L1: RWRegister<u32>,
 
     /// DAC channel1 8-bit right aligned data holding register
-    pub DAC_DHR8R1: RWRegister<u32>,
+    pub DHR8R1: RWRegister<u32>,
 
     /// DAC channel2 12-bit right aligned data holding register
-    pub DAC_DHR12R2: RWRegister<u32>,
+    pub DHR12R2: RWRegister<u32>,
 
     /// DAC channel2 12-bit left aligned data holding register
-    pub DAC_DHR12L2: RWRegister<u32>,
+    pub DHR12L2: RWRegister<u32>,
 
     /// DAC channel2 8-bit right-aligned data holding register
-    pub DAC_DHR8R2: RWRegister<u32>,
+    pub DHR8R2: RWRegister<u32>,
 
     /// Dual DAC 12-bit right-aligned data holding register
-    pub DAC_DHR12RD: RWRegister<u32>,
+    pub DHR12RD: RWRegister<u32>,
 
     /// DUAL DAC 12-bit left aligned data holding register
-    pub DAC_DHR12LD: RWRegister<u32>,
+    pub DHR12LD: RWRegister<u32>,
 
     /// DUAL DAC 8-bit right aligned data holding register
-    pub DAC_DHR8RD: RWRegister<u32>,
+    pub DHR8RD: RWRegister<u32>,
 
     /// DAC channel1 data output register
-    pub DAC_DOR1: RORegister<u32>,
+    pub DOR1: RORegister<u32>,
 
     /// DAC channel2 data output register
-    pub DAC_DOR2: RORegister<u32>,
+    pub DOR2: RORegister<u32>,
 
     /// DAC status register
-    pub DAC_SR: RWRegister<u32>,
+    pub SR: RWRegister<u32>,
 
     /// DAC calibration control register
-    pub DAC_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 
     /// DAC mode control register
-    pub DAC_MCR: RWRegister<u32>,
+    pub MCR: RWRegister<u32>,
 
     /// DAC Sample and Hold sample time register 1
-    pub DAC_SHSR1: RWRegister<u32>,
+    pub SHSR1: RWRegister<u32>,
 
     /// DAC Sample and Hold sample time register 2
-    pub DAC_SHSR2: RWRegister<u32>,
+    pub SHSR2: RWRegister<u32>,
 
     /// DAC Sample and Hold hold time register
-    pub DAC_SHHR: RWRegister<u32>,
+    pub SHHR: RWRegister<u32>,
 
     /// DAC Sample and Hold refresh time register
-    pub DAC_SHRR: RWRegister<u32>,
+    pub SHRR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub DAC_CR: u32,
-    pub DAC_SWTRGR: u32,
-    pub DAC_DHR12R1: u32,
-    pub DAC_DHR12L1: u32,
-    pub DAC_DHR8R1: u32,
-    pub DAC_DHR12R2: u32,
-    pub DAC_DHR12L2: u32,
-    pub DAC_DHR8R2: u32,
-    pub DAC_DHR12RD: u32,
-    pub DAC_DHR12LD: u32,
-    pub DAC_DHR8RD: u32,
-    pub DAC_DOR1: u32,
-    pub DAC_DOR2: u32,
-    pub DAC_SR: u32,
-    pub DAC_CCR: u32,
-    pub DAC_MCR: u32,
-    pub DAC_SHSR1: u32,
-    pub DAC_SHSR2: u32,
-    pub DAC_SHHR: u32,
-    pub DAC_SHRR: u32,
+    pub CR: u32,
+    pub SWTRGR: u32,
+    pub DHR12R1: u32,
+    pub DHR12L1: u32,
+    pub DHR8R1: u32,
+    pub DHR12R2: u32,
+    pub DHR12L2: u32,
+    pub DHR8R2: u32,
+    pub DHR12RD: u32,
+    pub DHR12LD: u32,
+    pub DHR8RD: u32,
+    pub DOR1: u32,
+    pub DOR2: u32,
+    pub SR: u32,
+    pub CCR: u32,
+    pub MCR: u32,
+    pub SHSR1: u32,
+    pub SHSR2: u32,
+    pub SHHR: u32,
+    pub SHRR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -853,6 +853,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the DAC peripheral instance
 pub mod DAC {
@@ -872,26 +874,26 @@ pub mod DAC {
 
     /// Reset values for each field in DAC
     pub const reset: ResetValues = ResetValues {
-        DAC_CR: 0x00000000,
-        DAC_SWTRGR: 0x00000000,
-        DAC_DHR12R1: 0x00000000,
-        DAC_DHR12L1: 0x00000000,
-        DAC_DHR8R1: 0x00000000,
-        DAC_DHR12R2: 0x00000000,
-        DAC_DHR12L2: 0x00000000,
-        DAC_DHR8R2: 0x00000000,
-        DAC_DHR12RD: 0x00000000,
-        DAC_DHR12LD: 0x00000000,
-        DAC_DHR8RD: 0x00000000,
-        DAC_DOR1: 0x00000000,
-        DAC_DOR2: 0x00000000,
-        DAC_SR: 0x00000000,
-        DAC_CCR: 0x00000000,
-        DAC_MCR: 0x00000000,
-        DAC_SHSR1: 0x00000000,
-        DAC_SHSR2: 0x00000000,
-        DAC_SHHR: 0x00010001,
-        DAC_SHRR: 0x00010001,
+        CR: 0x00000000,
+        SWTRGR: 0x00000000,
+        DHR12R1: 0x00000000,
+        DHR12L1: 0x00000000,
+        DHR8R1: 0x00000000,
+        DHR12R2: 0x00000000,
+        DHR12L2: 0x00000000,
+        DHR8R2: 0x00000000,
+        DHR12RD: 0x00000000,
+        DHR12LD: 0x00000000,
+        DHR8RD: 0x00000000,
+        DOR1: 0x00000000,
+        DOR2: 0x00000000,
+        SR: 0x00000000,
+        CCR: 0x00000000,
+        MCR: 0x00000000,
+        SHSR1: 0x00000000,
+        SHSR2: 0x00000000,
+        SHHR: 0x00010001,
+        SHRR: 0x00010001,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -941,6 +943,18 @@ pub mod DAC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DAC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DAC_TAKEN = true;
+        INSTANCE
     }
 }
 

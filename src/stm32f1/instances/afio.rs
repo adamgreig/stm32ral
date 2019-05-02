@@ -84,6 +84,18 @@ pub mod AFIO {
             }
         });
     }
+
+    /// Unsafely steal AFIO
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        AFIO_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to AFIO

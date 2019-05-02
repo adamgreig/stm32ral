@@ -40,6 +40,7 @@ extern "C" {
     fn SPI2();
     fn USART1();
     fn USART2();
+    fn USART3();
     fn EXTI15_10();
     fn RTCAlarm();
     fn USBWakeup();
@@ -132,7 +133,7 @@ pub static __INTERRUPTS: [Vector; 60] = [
     Vector { _handler: SPI2 },
     Vector { _handler: USART1 },
     Vector { _handler: USART2 },
-    Vector { _reserved: 0 },
+    Vector { _handler: USART3 },
     Vector {
         _handler: EXTI15_10,
     },
@@ -252,6 +253,8 @@ pub enum Interrupt {
     USART1 = 37,
     /// 38: USART2 global interrupt
     USART2 = 38,
+    /// 39: USART3 global interrupt
+    USART3 = 39,
     /// 40: EXTI Line\[15:10\] interrupts
     EXTI15_10 = 40,
     /// 41: RTC Alarms through EXTI line interrupt

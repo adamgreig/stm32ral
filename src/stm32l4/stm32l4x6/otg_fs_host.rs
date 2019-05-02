@@ -1363,6 +1363,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the OTG_FS_HOST peripheral instance
 pub mod OTG_FS_HOST {
@@ -1470,6 +1472,18 @@ pub mod OTG_FS_HOST {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal OTG_FS_HOST
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG_FS_HOST_TAKEN = true;
+        INSTANCE
     }
 }
 

@@ -3,9 +3,9 @@
 //! Universal asynchronous receiver transmitter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::uart4::Instance;
-pub use stm32f1::peripherals::uart4::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::uart4::{BRR, CR1, CR2, CR3, DR, SR};
+pub use stm32f1::peripherals::uart::Instance;
+pub use stm32f1::peripherals::uart::{RegisterBlock, ResetValues};
+pub use stm32f1::peripherals::uart::{BRR, CR1, CR2, CR3, DR, SR};
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {
@@ -80,6 +80,18 @@ pub mod UART4 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal UART4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        UART4_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -167,6 +179,18 @@ pub mod UART5 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal UART5
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        UART5_TAKEN = true;
+        INSTANCE
     }
 }
 

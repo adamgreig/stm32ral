@@ -83,6 +83,18 @@ pub mod FLASH {
             }
         });
     }
+
+    /// Unsafely steal FLASH
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FLASH_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to FLASH

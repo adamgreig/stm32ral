@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Advanced encryption standard hardware accelerator
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -441,3 +441,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use RWRegister;
 
 /// Power and clock gating control register
-pub mod OTG_HS_PCGCR {
+pub mod PCGCR {
 
     /// Stop PHY clock
     pub mod STPPCLK {
@@ -53,10 +53,10 @@ pub mod OTG_HS_PCGCR {
 }
 pub struct RegisterBlock {
     /// Power and clock gating control register
-    pub OTG_HS_PCGCR: RWRegister<u32>,
+    pub PCGCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_HS_PCGCR: u32,
+    pub PCGCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -71,6 +71,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the OTG1_HS_PWRCLK peripheral instance
 pub mod OTG1_HS_PWRCLK {
@@ -89,9 +91,7 @@ pub mod OTG1_HS_PWRCLK {
     };
 
     /// Reset values for each field in OTG1_HS_PWRCLK
-    pub const reset: ResetValues = ResetValues {
-        OTG_HS_PCGCR: 0x00000000,
-    };
+    pub const reset: ResetValues = ResetValues { PCGCR: 0x00000000 };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]
@@ -141,6 +141,18 @@ pub mod OTG1_HS_PWRCLK {
             }
         });
     }
+
+    /// Unsafely steal OTG1_HS_PWRCLK
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG1_HS_PWRCLK_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to OTG1_HS_PWRCLK
@@ -171,9 +183,7 @@ pub mod OTG2_HS_PWRCLK {
     };
 
     /// Reset values for each field in OTG2_HS_PWRCLK
-    pub const reset: ResetValues = ResetValues {
-        OTG_HS_PCGCR: 0x00000000,
-    };
+    pub const reset: ResetValues = ResetValues { PCGCR: 0x00000000 };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]
@@ -222,6 +232,18 @@ pub mod OTG2_HS_PWRCLK {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal OTG2_HS_PWRCLK
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG2_HS_PWRCLK_TAKEN = true;
+        INSTANCE
     }
 }
 

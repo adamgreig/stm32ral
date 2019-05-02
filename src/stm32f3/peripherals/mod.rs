@@ -25,7 +25,7 @@ pub mod tim16_v1;
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod usart;
 
-#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303"))]
+#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f3x4"))]
 pub mod spi_v1;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f3x8"))]
@@ -76,9 +76,6 @@ pub mod dac1;
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod dbgmcu;
 
-#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
-pub mod syscfg_comp_opamp;
-
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod nvic;
 
@@ -102,6 +99,9 @@ pub mod fpu_cpacr;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod scb_actrl;
+
+#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f3x4"))]
+pub mod opamp_v1;
 
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x4"))]
 pub mod flash_v1;
@@ -148,6 +148,15 @@ pub mod adc_common;
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x8"))]
 pub mod fmc;
 
+#[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
+pub mod syscfg;
+
+#[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
+pub mod opamp_v2;
+
+#[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
+pub mod comp;
+
 #[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
 pub mod gpio_v2;
 
@@ -158,12 +167,9 @@ pub mod gpioc;
 pub mod flash_v2;
 
 #[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
-pub mod rcc;
-
-#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
 pub mod tim2_v2;
 
-#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
+#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
 pub mod spi_v2;
 
 #[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]

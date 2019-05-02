@@ -596,7 +596,7 @@ pub mod TSR {
 pub mod RF0R {
 
     /// RFOM0
-    pub mod RFOM0 {
+    pub mod RFOM {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -610,7 +610,7 @@ pub mod RF0R {
     }
 
     /// FOVR0
-    pub mod FOVR0 {
+    pub mod FOVR {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -624,7 +624,7 @@ pub mod RF0R {
     }
 
     /// FULL0
-    pub mod FULL0 {
+    pub mod FULL {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -638,7 +638,7 @@ pub mod RF0R {
     }
 
     /// FMP0
-    pub mod FMP0 {
+    pub mod FMP {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (2 bits: 0b11 << 0)
@@ -652,64 +652,12 @@ pub mod RF0R {
     }
 }
 
-/// receive FIFO 1 register
+/// receive FIFO 0 register
 pub mod RF1R {
-
-    /// RFOM1
-    pub mod RFOM1 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FOVR1
-    pub mod FOVR1 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FULL1
-    pub mod FULL1 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FMP1
-    pub mod FMP1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::RF0R::FMP;
+    pub use super::RF0R::FOVR;
+    pub use super::RF0R::FULL;
+    pub use super::RF0R::RFOM;
 }
 
 /// interrupt enable register
@@ -1086,567 +1034,6 @@ pub mod BTR {
         /// Read-write values (empty)
         pub mod RW {}
     }
-}
-
-/// TX mailbox identifier register
-pub mod TI0R {
-
-    /// STID
-    pub mod STID {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (11 bits: 0x7ff << 21)
-        pub const mask: u32 = 0x7ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EXID
-    pub mod EXID {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (18 bits: 0x3ffff << 3)
-        pub const mask: u32 = 0x3ffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// IDE
-    pub mod IDE {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// RTR
-    pub mod RTR {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TXRQ
-    pub mod TXRQ {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox data length control and time stamp register
-pub mod TDT0R {
-
-    /// TIME
-    pub mod TIME {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TGT
-    pub mod TGT {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DLC
-    pub mod DLC {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox data low register
-pub mod TDL0R {
-
-    /// DATA3
-    pub mod DATA3 {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (8 bits: 0xff << 24)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA2
-    pub mod DATA2 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA1
-    pub mod DATA1 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA0
-    pub mod DATA0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (8 bits: 0xff << 0)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox data high register
-pub mod TDH0R {
-
-    /// DATA7
-    pub mod DATA7 {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (8 bits: 0xff << 24)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA6
-    pub mod DATA6 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA5
-    pub mod DATA5 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA4
-    pub mod DATA4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (8 bits: 0xff << 0)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox identifier register
-pub mod TI1R {
-    pub use super::TI0R::EXID;
-    pub use super::TI0R::IDE;
-    pub use super::TI0R::RTR;
-    pub use super::TI0R::STID;
-    pub use super::TI0R::TXRQ;
-}
-
-/// mailbox data length control and time stamp register
-pub mod TDT1R {
-    pub use super::TDT0R::DLC;
-    pub use super::TDT0R::TGT;
-    pub use super::TDT0R::TIME;
-}
-
-/// mailbox data low register
-pub mod TDL1R {
-    pub use super::TDL0R::DATA0;
-    pub use super::TDL0R::DATA1;
-    pub use super::TDL0R::DATA2;
-    pub use super::TDL0R::DATA3;
-}
-
-/// mailbox data high register
-pub mod TDH1R {
-    pub use super::TDH0R::DATA4;
-    pub use super::TDH0R::DATA5;
-    pub use super::TDH0R::DATA6;
-    pub use super::TDH0R::DATA7;
-}
-
-/// mailbox identifier register
-pub mod TI2R {
-    pub use super::TI0R::EXID;
-    pub use super::TI0R::IDE;
-    pub use super::TI0R::RTR;
-    pub use super::TI0R::STID;
-    pub use super::TI0R::TXRQ;
-}
-
-/// mailbox data length control and time stamp register
-pub mod TDT2R {
-    pub use super::TDT0R::DLC;
-    pub use super::TDT0R::TGT;
-    pub use super::TDT0R::TIME;
-}
-
-/// mailbox data low register
-pub mod TDL2R {
-    pub use super::TDL0R::DATA0;
-    pub use super::TDL0R::DATA1;
-    pub use super::TDL0R::DATA2;
-    pub use super::TDL0R::DATA3;
-}
-
-/// mailbox data high register
-pub mod TDH2R {
-    pub use super::TDH0R::DATA4;
-    pub use super::TDH0R::DATA5;
-    pub use super::TDH0R::DATA6;
-    pub use super::TDH0R::DATA7;
-}
-
-/// receive FIFO mailbox identifier register
-pub mod RI0R {
-
-    /// STID
-    pub mod STID {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (11 bits: 0x7ff << 21)
-        pub const mask: u32 = 0x7ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EXID
-    pub mod EXID {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (18 bits: 0x3ffff << 3)
-        pub const mask: u32 = 0x3ffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// IDE
-    pub mod IDE {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// RTR
-    pub mod RTR {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox data high register
-pub mod RDT0R {
-
-    /// TIME
-    pub mod TIME {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// FMI
-    pub mod FMI {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DLC
-    pub mod DLC {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox data high register
-pub mod RDL0R {
-
-    /// DATA3
-    pub mod DATA3 {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (8 bits: 0xff << 24)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA2
-    pub mod DATA2 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA1
-    pub mod DATA1 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA0
-    pub mod DATA0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (8 bits: 0xff << 0)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// receive FIFO mailbox data high register
-pub mod RDH0R {
-
-    /// DATA7
-    pub mod DATA7 {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (8 bits: 0xff << 24)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA6
-    pub mod DATA6 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA5
-    pub mod DATA5 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DATA4
-    pub mod DATA4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (8 bits: 0xff << 0)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// mailbox data high register
-pub mod RI1R {
-    pub use super::RI0R::EXID;
-    pub use super::RI0R::IDE;
-    pub use super::RI0R::RTR;
-    pub use super::RI0R::STID;
-}
-
-/// mailbox data high register
-pub mod RDT1R {
-    pub use super::RDT0R::DLC;
-    pub use super::RDT0R::FMI;
-    pub use super::RDT0R::TIME;
-}
-
-/// mailbox data high register
-pub mod RDL1R {
-    pub use super::RDL0R::DATA0;
-    pub use super::RDL0R::DATA1;
-    pub use super::RDL0R::DATA2;
-    pub use super::RDL0R::DATA3;
-}
-
-/// mailbox data high register
-pub mod RDH1R {
-    pub use super::RDH0R::DATA4;
-    pub use super::RDH0R::DATA5;
-    pub use super::RDH0R::DATA6;
-    pub use super::RDH0R::DATA7;
 }
 
 /// filter master register
@@ -3265,8 +2652,569 @@ pub mod FA1R {
     }
 }
 
+/// TX mailbox identifier register
+pub mod TIR0 {
+
+    /// STID
+    pub mod STID {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (11 bits: 0x7ff << 21)
+        pub const mask: u32 = 0x7ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// EXID
+    pub mod EXID {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (18 bits: 0x3ffff << 3)
+        pub const mask: u32 = 0x3ffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// IDE
+    pub mod IDE {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RTR
+    pub mod RTR {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TXRQ
+    pub mod TXRQ {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// mailbox data length control and time stamp register
+pub mod TDTR0 {
+
+    /// TIME
+    pub mod TIME {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (16 bits: 0xffff << 16)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TGT
+    pub mod TGT {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DLC
+    pub mod DLC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// mailbox data low register
+pub mod TDLR0 {
+
+    /// DATA3
+    pub mod DATA3 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA2
+    pub mod DATA2 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA1
+    pub mod DATA1 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA0
+    pub mod DATA0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// mailbox data high register
+pub mod TDHR0 {
+
+    /// DATA7
+    pub mod DATA7 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA6
+    pub mod DATA6 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA5
+    pub mod DATA5 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA4
+    pub mod DATA4 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// TX mailbox identifier register
+pub mod TIR1 {
+    pub use super::TIR0::EXID;
+    pub use super::TIR0::IDE;
+    pub use super::TIR0::RTR;
+    pub use super::TIR0::STID;
+    pub use super::TIR0::TXRQ;
+}
+
+/// mailbox data length control and time stamp register
+pub mod TDTR1 {
+    pub use super::TDTR0::DLC;
+    pub use super::TDTR0::TGT;
+    pub use super::TDTR0::TIME;
+}
+
+/// mailbox data low register
+pub mod TDLR1 {
+    pub use super::TDLR0::DATA0;
+    pub use super::TDLR0::DATA1;
+    pub use super::TDLR0::DATA2;
+    pub use super::TDLR0::DATA3;
+}
+
+/// mailbox data high register
+pub mod TDHR1 {
+    pub use super::TDHR0::DATA4;
+    pub use super::TDHR0::DATA5;
+    pub use super::TDHR0::DATA6;
+    pub use super::TDHR0::DATA7;
+}
+
+/// TX mailbox identifier register
+pub mod TIR2 {
+    pub use super::TIR0::EXID;
+    pub use super::TIR0::IDE;
+    pub use super::TIR0::RTR;
+    pub use super::TIR0::STID;
+    pub use super::TIR0::TXRQ;
+}
+
+/// mailbox data length control and time stamp register
+pub mod TDTR2 {
+    pub use super::TDTR0::DLC;
+    pub use super::TDTR0::TGT;
+    pub use super::TDTR0::TIME;
+}
+
+/// mailbox data low register
+pub mod TDLR2 {
+    pub use super::TDLR0::DATA0;
+    pub use super::TDLR0::DATA1;
+    pub use super::TDLR0::DATA2;
+    pub use super::TDLR0::DATA3;
+}
+
+/// mailbox data high register
+pub mod TDHR2 {
+    pub use super::TDHR0::DATA4;
+    pub use super::TDHR0::DATA5;
+    pub use super::TDHR0::DATA6;
+    pub use super::TDHR0::DATA7;
+}
+
+/// receive FIFO mailbox identifier register
+pub mod RIR0 {
+
+    /// STID
+    pub mod STID {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (11 bits: 0x7ff << 21)
+        pub const mask: u32 = 0x7ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// EXID
+    pub mod EXID {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (18 bits: 0x3ffff << 3)
+        pub const mask: u32 = 0x3ffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// IDE
+    pub mod IDE {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RTR
+    pub mod RTR {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// mailbox data high register
+pub mod RDTR0 {
+
+    /// TIME
+    pub mod TIME {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (16 bits: 0xffff << 16)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FMI
+    pub mod FMI {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DLC
+    pub mod DLC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// mailbox data high register
+pub mod RDLR0 {
+
+    /// DATA3
+    pub mod DATA3 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA2
+    pub mod DATA2 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA1
+    pub mod DATA1 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA0
+    pub mod DATA0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// receive FIFO mailbox data high register
+pub mod RDHR0 {
+
+    /// DATA7
+    pub mod DATA7 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA6
+    pub mod DATA6 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA5
+    pub mod DATA5 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DATA4
+    pub mod DATA4 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// receive FIFO mailbox identifier register
+pub mod RIR1 {
+    pub use super::RIR0::EXID;
+    pub use super::RIR0::IDE;
+    pub use super::RIR0::RTR;
+    pub use super::RIR0::STID;
+}
+
+/// mailbox data high register
+pub mod RDTR1 {
+    pub use super::RDTR0::DLC;
+    pub use super::RDTR0::FMI;
+    pub use super::RDTR0::TIME;
+}
+
+/// mailbox data high register
+pub mod RDLR1 {
+    pub use super::RDLR0::DATA0;
+    pub use super::RDLR0::DATA1;
+    pub use super::RDLR0::DATA2;
+    pub use super::RDLR0::DATA3;
+}
+
+/// receive FIFO mailbox data high register
+pub mod RDHR1 {
+    pub use super::RDHR0::DATA4;
+    pub use super::RDHR0::DATA5;
+    pub use super::RDHR0::DATA6;
+    pub use super::RDHR0::DATA7;
+}
+
 /// Filter bank 0 register 1
-pub mod F0R1 {
+pub mod FR10 {
 
     /// Filter bits
     pub mod FB {
@@ -3284,278 +3232,278 @@ pub mod F0R1 {
 }
 
 /// Filter bank 0 register 2
-pub mod F0R2 {
-    pub use super::F0R1::FB;
+pub mod FR20 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 1 register 1
-pub mod F1R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR11 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 1 register 2
-pub mod F1R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR21 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 2 register 1
-pub mod F2R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR12 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 2 register 2
-pub mod F2R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR22 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 3 register 1
-pub mod F3R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR13 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 3 register 2
-pub mod F3R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR23 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 4 register 1
-pub mod F4R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR14 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 4 register 2
-pub mod F4R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR24 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 5 register 1
-pub mod F5R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR15 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 5 register 2
-pub mod F5R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR25 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 6 register 1
-pub mod F6R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR16 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 6 register 2
-pub mod F6R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR26 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 7 register 1
-pub mod F7R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR17 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 7 register 2
-pub mod F7R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR27 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 8 register 1
-pub mod F8R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR18 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 8 register 2
-pub mod F8R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR28 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 9 register 1
-pub mod F9R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR19 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 9 register 2
-pub mod F9R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR29 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 10 register 1
-pub mod F10R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR110 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 10 register 2
-pub mod F10R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR210 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 11 register 1
-pub mod F11R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR111 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 11 register 2
-pub mod F11R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR211 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 4 register 1
-pub mod F12R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR112 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 12 register 2
-pub mod F12R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR212 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 13 register 1
-pub mod F13R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR113 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 13 register 2
-pub mod F13R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR213 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 14 register 1
-pub mod F14R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR114 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 14 register 2
-pub mod F14R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR214 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 15 register 1
-pub mod F15R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR115 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 15 register 2
-pub mod F15R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR215 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 16 register 1
-pub mod F16R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR116 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 16 register 2
-pub mod F16R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR216 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 17 register 1
-pub mod F17R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR117 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 17 register 2
-pub mod F17R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR217 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 18 register 1
-pub mod F18R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR118 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 18 register 2
-pub mod F18R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR218 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 19 register 1
-pub mod F19R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR119 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 19 register 2
-pub mod F19R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR219 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 20 register 1
-pub mod F20R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR120 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 20 register 2
-pub mod F20R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR220 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 21 register 1
-pub mod F21R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR121 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 21 register 2
-pub mod F21R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR221 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 22 register 1
-pub mod F22R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR122 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 22 register 2
-pub mod F22R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR222 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 23 register 1
-pub mod F23R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR123 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 23 register 2
-pub mod F23R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR223 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 24 register 1
-pub mod F24R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR124 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 24 register 2
-pub mod F24R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR224 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 25 register 1
-pub mod F25R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR125 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 25 register 2
-pub mod F25R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR225 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 26 register 1
-pub mod F26R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR126 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 26 register 2
-pub mod F26R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR226 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 27 register 1
-pub mod F27R1 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 1
+pub mod FR127 {
+    pub use super::FR10::FB;
 }
 
-/// Filter bank 27 register 2
-pub mod F27R2 {
-    pub use super::F0R1::FB;
+/// Filter bank 0 register 2
+pub mod FR227 {
+    pub use super::FR10::FB;
 }
 pub struct RegisterBlock {
     /// master control register
@@ -3570,7 +3518,7 @@ pub struct RegisterBlock {
     /// receive FIFO 0 register
     pub RF0R: RWRegister<u32>,
 
-    /// receive FIFO 1 register
+    /// receive FIFO 0 register
     pub RF1R: RWRegister<u32>,
 
     /// interrupt enable register
@@ -3585,64 +3533,64 @@ pub struct RegisterBlock {
     _reserved1: [u32; 88],
 
     /// TX mailbox identifier register
-    pub TI0R: RWRegister<u32>,
+    pub TIR0: RWRegister<u32>,
 
     /// mailbox data length control and time stamp register
-    pub TDT0R: RWRegister<u32>,
+    pub TDTR0: RWRegister<u32>,
 
     /// mailbox data low register
-    pub TDL0R: RWRegister<u32>,
+    pub TDLR0: RWRegister<u32>,
 
     /// mailbox data high register
-    pub TDH0R: RWRegister<u32>,
+    pub TDHR0: RWRegister<u32>,
 
-    /// mailbox identifier register
-    pub TI1R: RWRegister<u32>,
+    /// TX mailbox identifier register
+    pub TIR1: RWRegister<u32>,
 
     /// mailbox data length control and time stamp register
-    pub TDT1R: RWRegister<u32>,
+    pub TDTR1: RWRegister<u32>,
 
     /// mailbox data low register
-    pub TDL1R: RWRegister<u32>,
+    pub TDLR1: RWRegister<u32>,
 
     /// mailbox data high register
-    pub TDH1R: RWRegister<u32>,
+    pub TDHR1: RWRegister<u32>,
 
-    /// mailbox identifier register
-    pub TI2R: RWRegister<u32>,
+    /// TX mailbox identifier register
+    pub TIR2: RWRegister<u32>,
 
     /// mailbox data length control and time stamp register
-    pub TDT2R: RWRegister<u32>,
+    pub TDTR2: RWRegister<u32>,
 
     /// mailbox data low register
-    pub TDL2R: RWRegister<u32>,
+    pub TDLR2: RWRegister<u32>,
 
     /// mailbox data high register
-    pub TDH2R: RWRegister<u32>,
+    pub TDHR2: RWRegister<u32>,
 
     /// receive FIFO mailbox identifier register
-    pub RI0R: RORegister<u32>,
+    pub RIR0: RORegister<u32>,
 
     /// mailbox data high register
-    pub RDT0R: RORegister<u32>,
+    pub RDTR0: RORegister<u32>,
 
     /// mailbox data high register
-    pub RDL0R: RORegister<u32>,
+    pub RDLR0: RORegister<u32>,
 
     /// receive FIFO mailbox data high register
-    pub RDH0R: RORegister<u32>,
+    pub RDHR0: RORegister<u32>,
+
+    /// receive FIFO mailbox identifier register
+    pub RIR1: RORegister<u32>,
 
     /// mailbox data high register
-    pub RI1R: RORegister<u32>,
+    pub RDTR1: RORegister<u32>,
 
     /// mailbox data high register
-    pub RDT1R: RORegister<u32>,
+    pub RDLR1: RORegister<u32>,
 
-    /// mailbox data high register
-    pub RDL1R: RORegister<u32>,
-
-    /// mailbox data high register
-    pub RDH1R: RORegister<u32>,
+    /// receive FIFO mailbox data high register
+    pub RDHR1: RORegister<u32>,
 
     _reserved2: [u32; 12],
 
@@ -3670,172 +3618,172 @@ pub struct RegisterBlock {
     _reserved6: [u32; 8],
 
     /// Filter bank 0 register 1
-    pub F0R1: RWRegister<u32>,
+    pub FR10: RWRegister<u32>,
 
     /// Filter bank 0 register 2
-    pub F0R2: RWRegister<u32>,
+    pub FR20: RWRegister<u32>,
 
-    /// Filter bank 1 register 1
-    pub F1R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR11: RWRegister<u32>,
 
-    /// Filter bank 1 register 2
-    pub F1R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR21: RWRegister<u32>,
 
-    /// Filter bank 2 register 1
-    pub F2R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR12: RWRegister<u32>,
 
-    /// Filter bank 2 register 2
-    pub F2R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR22: RWRegister<u32>,
 
-    /// Filter bank 3 register 1
-    pub F3R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR13: RWRegister<u32>,
 
-    /// Filter bank 3 register 2
-    pub F3R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR23: RWRegister<u32>,
 
-    /// Filter bank 4 register 1
-    pub F4R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR14: RWRegister<u32>,
 
-    /// Filter bank 4 register 2
-    pub F4R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR24: RWRegister<u32>,
 
-    /// Filter bank 5 register 1
-    pub F5R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR15: RWRegister<u32>,
 
-    /// Filter bank 5 register 2
-    pub F5R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR25: RWRegister<u32>,
 
-    /// Filter bank 6 register 1
-    pub F6R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR16: RWRegister<u32>,
 
-    /// Filter bank 6 register 2
-    pub F6R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR26: RWRegister<u32>,
 
-    /// Filter bank 7 register 1
-    pub F7R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR17: RWRegister<u32>,
 
-    /// Filter bank 7 register 2
-    pub F7R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR27: RWRegister<u32>,
 
-    /// Filter bank 8 register 1
-    pub F8R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR18: RWRegister<u32>,
 
-    /// Filter bank 8 register 2
-    pub F8R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR28: RWRegister<u32>,
 
-    /// Filter bank 9 register 1
-    pub F9R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR19: RWRegister<u32>,
 
-    /// Filter bank 9 register 2
-    pub F9R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR29: RWRegister<u32>,
 
-    /// Filter bank 10 register 1
-    pub F10R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR110: RWRegister<u32>,
 
-    /// Filter bank 10 register 2
-    pub F10R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR210: RWRegister<u32>,
 
-    /// Filter bank 11 register 1
-    pub F11R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR111: RWRegister<u32>,
 
-    /// Filter bank 11 register 2
-    pub F11R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR211: RWRegister<u32>,
 
-    /// Filter bank 4 register 1
-    pub F12R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR112: RWRegister<u32>,
 
-    /// Filter bank 12 register 2
-    pub F12R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR212: RWRegister<u32>,
 
-    /// Filter bank 13 register 1
-    pub F13R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR113: RWRegister<u32>,
 
-    /// Filter bank 13 register 2
-    pub F13R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR213: RWRegister<u32>,
 
-    /// Filter bank 14 register 1
-    pub F14R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR114: RWRegister<u32>,
 
-    /// Filter bank 14 register 2
-    pub F14R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR214: RWRegister<u32>,
 
-    /// Filter bank 15 register 1
-    pub F15R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR115: RWRegister<u32>,
 
-    /// Filter bank 15 register 2
-    pub F15R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR215: RWRegister<u32>,
 
-    /// Filter bank 16 register 1
-    pub F16R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR116: RWRegister<u32>,
 
-    /// Filter bank 16 register 2
-    pub F16R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR216: RWRegister<u32>,
 
-    /// Filter bank 17 register 1
-    pub F17R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR117: RWRegister<u32>,
 
-    /// Filter bank 17 register 2
-    pub F17R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR217: RWRegister<u32>,
 
-    /// Filter bank 18 register 1
-    pub F18R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR118: RWRegister<u32>,
 
-    /// Filter bank 18 register 2
-    pub F18R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR218: RWRegister<u32>,
 
-    /// Filter bank 19 register 1
-    pub F19R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR119: RWRegister<u32>,
 
-    /// Filter bank 19 register 2
-    pub F19R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR219: RWRegister<u32>,
 
-    /// Filter bank 20 register 1
-    pub F20R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR120: RWRegister<u32>,
 
-    /// Filter bank 20 register 2
-    pub F20R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR220: RWRegister<u32>,
 
-    /// Filter bank 21 register 1
-    pub F21R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR121: RWRegister<u32>,
 
-    /// Filter bank 21 register 2
-    pub F21R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR221: RWRegister<u32>,
 
-    /// Filter bank 22 register 1
-    pub F22R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR122: RWRegister<u32>,
 
-    /// Filter bank 22 register 2
-    pub F22R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR222: RWRegister<u32>,
 
-    /// Filter bank 23 register 1
-    pub F23R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR123: RWRegister<u32>,
 
-    /// Filter bank 23 register 2
-    pub F23R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR223: RWRegister<u32>,
 
-    /// Filter bank 24 register 1
-    pub F24R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR124: RWRegister<u32>,
 
-    /// Filter bank 24 register 2
-    pub F24R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR224: RWRegister<u32>,
 
-    /// Filter bank 25 register 1
-    pub F25R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR125: RWRegister<u32>,
 
-    /// Filter bank 25 register 2
-    pub F25R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR225: RWRegister<u32>,
 
-    /// Filter bank 26 register 1
-    pub F26R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR126: RWRegister<u32>,
 
-    /// Filter bank 26 register 2
-    pub F26R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR226: RWRegister<u32>,
 
-    /// Filter bank 27 register 1
-    pub F27R1: RWRegister<u32>,
+    /// Filter bank 0 register 1
+    pub FR127: RWRegister<u32>,
 
-    /// Filter bank 27 register 2
-    pub F27R2: RWRegister<u32>,
+    /// Filter bank 0 register 2
+    pub FR227: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub MCR: u32,
@@ -3846,87 +3794,87 @@ pub struct ResetValues {
     pub IER: u32,
     pub ESR: u32,
     pub BTR: u32,
-    pub TI0R: u32,
-    pub TDT0R: u32,
-    pub TDL0R: u32,
-    pub TDH0R: u32,
-    pub TI1R: u32,
-    pub TDT1R: u32,
-    pub TDL1R: u32,
-    pub TDH1R: u32,
-    pub TI2R: u32,
-    pub TDT2R: u32,
-    pub TDL2R: u32,
-    pub TDH2R: u32,
-    pub RI0R: u32,
-    pub RDT0R: u32,
-    pub RDL0R: u32,
-    pub RDH0R: u32,
-    pub RI1R: u32,
-    pub RDT1R: u32,
-    pub RDL1R: u32,
-    pub RDH1R: u32,
+    pub TIR0: u32,
+    pub TDTR0: u32,
+    pub TDLR0: u32,
+    pub TDHR0: u32,
+    pub TIR1: u32,
+    pub TDTR1: u32,
+    pub TDLR1: u32,
+    pub TDHR1: u32,
+    pub TIR2: u32,
+    pub TDTR2: u32,
+    pub TDLR2: u32,
+    pub TDHR2: u32,
+    pub RIR0: u32,
+    pub RDTR0: u32,
+    pub RDLR0: u32,
+    pub RDHR0: u32,
+    pub RIR1: u32,
+    pub RDTR1: u32,
+    pub RDLR1: u32,
+    pub RDHR1: u32,
     pub FMR: u32,
     pub FM1R: u32,
     pub FS1R: u32,
     pub FFA1R: u32,
     pub FA1R: u32,
-    pub F0R1: u32,
-    pub F0R2: u32,
-    pub F1R1: u32,
-    pub F1R2: u32,
-    pub F2R1: u32,
-    pub F2R2: u32,
-    pub F3R1: u32,
-    pub F3R2: u32,
-    pub F4R1: u32,
-    pub F4R2: u32,
-    pub F5R1: u32,
-    pub F5R2: u32,
-    pub F6R1: u32,
-    pub F6R2: u32,
-    pub F7R1: u32,
-    pub F7R2: u32,
-    pub F8R1: u32,
-    pub F8R2: u32,
-    pub F9R1: u32,
-    pub F9R2: u32,
-    pub F10R1: u32,
-    pub F10R2: u32,
-    pub F11R1: u32,
-    pub F11R2: u32,
-    pub F12R1: u32,
-    pub F12R2: u32,
-    pub F13R1: u32,
-    pub F13R2: u32,
-    pub F14R1: u32,
-    pub F14R2: u32,
-    pub F15R1: u32,
-    pub F15R2: u32,
-    pub F16R1: u32,
-    pub F16R2: u32,
-    pub F17R1: u32,
-    pub F17R2: u32,
-    pub F18R1: u32,
-    pub F18R2: u32,
-    pub F19R1: u32,
-    pub F19R2: u32,
-    pub F20R1: u32,
-    pub F20R2: u32,
-    pub F21R1: u32,
-    pub F21R2: u32,
-    pub F22R1: u32,
-    pub F22R2: u32,
-    pub F23R1: u32,
-    pub F23R2: u32,
-    pub F24R1: u32,
-    pub F24R2: u32,
-    pub F25R1: u32,
-    pub F25R2: u32,
-    pub F26R1: u32,
-    pub F26R2: u32,
-    pub F27R1: u32,
-    pub F27R2: u32,
+    pub FR10: u32,
+    pub FR20: u32,
+    pub FR11: u32,
+    pub FR21: u32,
+    pub FR12: u32,
+    pub FR22: u32,
+    pub FR13: u32,
+    pub FR23: u32,
+    pub FR14: u32,
+    pub FR24: u32,
+    pub FR15: u32,
+    pub FR25: u32,
+    pub FR16: u32,
+    pub FR26: u32,
+    pub FR17: u32,
+    pub FR27: u32,
+    pub FR18: u32,
+    pub FR28: u32,
+    pub FR19: u32,
+    pub FR29: u32,
+    pub FR110: u32,
+    pub FR210: u32,
+    pub FR111: u32,
+    pub FR211: u32,
+    pub FR112: u32,
+    pub FR212: u32,
+    pub FR113: u32,
+    pub FR213: u32,
+    pub FR114: u32,
+    pub FR214: u32,
+    pub FR115: u32,
+    pub FR215: u32,
+    pub FR116: u32,
+    pub FR216: u32,
+    pub FR117: u32,
+    pub FR217: u32,
+    pub FR118: u32,
+    pub FR218: u32,
+    pub FR119: u32,
+    pub FR219: u32,
+    pub FR120: u32,
+    pub FR220: u32,
+    pub FR121: u32,
+    pub FR221: u32,
+    pub FR122: u32,
+    pub FR222: u32,
+    pub FR123: u32,
+    pub FR223: u32,
+    pub FR124: u32,
+    pub FR224: u32,
+    pub FR125: u32,
+    pub FR225: u32,
+    pub FR126: u32,
+    pub FR226: u32,
+    pub FR127: u32,
+    pub FR227: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -3941,6 +3889,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the CAN1 peripheral instance
 pub mod CAN1 {
@@ -3968,87 +3918,87 @@ pub mod CAN1 {
         IER: 0x00000000,
         ESR: 0x00000000,
         BTR: 0x00000000,
-        TI0R: 0x00000000,
-        TDT0R: 0x00000000,
-        TDL0R: 0x00000000,
-        TDH0R: 0x00000000,
-        TI1R: 0x00000000,
-        TDT1R: 0x00000000,
-        TDL1R: 0x00000000,
-        TDH1R: 0x00000000,
-        TI2R: 0x00000000,
-        TDT2R: 0x00000000,
-        TDL2R: 0x00000000,
-        TDH2R: 0x00000000,
-        RI0R: 0x00000000,
-        RDT0R: 0x00000000,
-        RDL0R: 0x00000000,
-        RDH0R: 0x00000000,
-        RI1R: 0x00000000,
-        RDT1R: 0x00000000,
-        RDL1R: 0x00000000,
-        RDH1R: 0x00000000,
         FMR: 0x2A1C0E01,
         FM1R: 0x00000000,
         FS1R: 0x00000000,
         FFA1R: 0x00000000,
         FA1R: 0x00000000,
-        F0R1: 0x00000000,
-        F0R2: 0x00000000,
-        F1R1: 0x00000000,
-        F1R2: 0x00000000,
-        F2R1: 0x00000000,
-        F2R2: 0x00000000,
-        F3R1: 0x00000000,
-        F3R2: 0x00000000,
-        F4R1: 0x00000000,
-        F4R2: 0x00000000,
-        F5R1: 0x00000000,
-        F5R2: 0x00000000,
-        F6R1: 0x00000000,
-        F6R2: 0x00000000,
-        F7R1: 0x00000000,
-        F7R2: 0x00000000,
-        F8R1: 0x00000000,
-        F8R2: 0x00000000,
-        F9R1: 0x00000000,
-        F9R2: 0x00000000,
-        F10R1: 0x00000000,
-        F10R2: 0x00000000,
-        F11R1: 0x00000000,
-        F11R2: 0x00000000,
-        F12R1: 0x00000000,
-        F12R2: 0x00000000,
-        F13R1: 0x00000000,
-        F13R2: 0x00000000,
-        F14R1: 0x00000000,
-        F14R2: 0x00000000,
-        F15R1: 0x00000000,
-        F15R2: 0x00000000,
-        F16R1: 0x00000000,
-        F16R2: 0x00000000,
-        F17R1: 0x00000000,
-        F17R2: 0x00000000,
-        F18R1: 0x00000000,
-        F18R2: 0x00000000,
-        F19R1: 0x00000000,
-        F19R2: 0x00000000,
-        F20R1: 0x00000000,
-        F20R2: 0x00000000,
-        F21R1: 0x00000000,
-        F21R2: 0x00000000,
-        F22R1: 0x00000000,
-        F22R2: 0x00000000,
-        F23R1: 0x00000000,
-        F23R2: 0x00000000,
-        F24R1: 0x00000000,
-        F24R2: 0x00000000,
-        F25R1: 0x00000000,
-        F25R2: 0x00000000,
-        F26R1: 0x00000000,
-        F26R2: 0x00000000,
-        F27R1: 0x00000000,
-        F27R2: 0x00000000,
+        TIR0: 0x00000000,
+        TDTR0: 0x00000000,
+        TDLR0: 0x00000000,
+        TDHR0: 0x00000000,
+        TIR1: 0x00000000,
+        TDTR1: 0x00000000,
+        TDLR1: 0x00000000,
+        TDHR1: 0x00000000,
+        TIR2: 0x00000000,
+        TDTR2: 0x00000000,
+        TDLR2: 0x00000000,
+        TDHR2: 0x00000000,
+        RIR0: 0x00000000,
+        RDTR0: 0x00000000,
+        RDLR0: 0x00000000,
+        RDHR0: 0x00000000,
+        RIR1: 0x00000000,
+        RDTR1: 0x00000000,
+        RDLR1: 0x00000000,
+        RDHR1: 0x00000000,
+        FR10: 0x00000000,
+        FR20: 0x00000000,
+        FR11: 0x00000000,
+        FR21: 0x00000000,
+        FR12: 0x00000000,
+        FR22: 0x00000000,
+        FR13: 0x00000000,
+        FR23: 0x00000000,
+        FR14: 0x00000000,
+        FR24: 0x00000000,
+        FR15: 0x00000000,
+        FR25: 0x00000000,
+        FR16: 0x00000000,
+        FR26: 0x00000000,
+        FR17: 0x00000000,
+        FR27: 0x00000000,
+        FR18: 0x00000000,
+        FR28: 0x00000000,
+        FR19: 0x00000000,
+        FR29: 0x00000000,
+        FR110: 0x00000000,
+        FR210: 0x00000000,
+        FR111: 0x00000000,
+        FR211: 0x00000000,
+        FR112: 0x00000000,
+        FR212: 0x00000000,
+        FR113: 0x00000000,
+        FR213: 0x00000000,
+        FR114: 0x00000000,
+        FR214: 0x00000000,
+        FR115: 0x00000000,
+        FR215: 0x00000000,
+        FR116: 0x00000000,
+        FR216: 0x00000000,
+        FR117: 0x00000000,
+        FR217: 0x00000000,
+        FR118: 0x00000000,
+        FR218: 0x00000000,
+        FR119: 0x00000000,
+        FR219: 0x00000000,
+        FR120: 0x00000000,
+        FR220: 0x00000000,
+        FR121: 0x00000000,
+        FR221: 0x00000000,
+        FR122: 0x00000000,
+        FR222: 0x00000000,
+        FR123: 0x00000000,
+        FR223: 0x00000000,
+        FR124: 0x00000000,
+        FR224: 0x00000000,
+        FR125: 0x00000000,
+        FR225: 0x00000000,
+        FR126: 0x00000000,
+        FR226: 0x00000000,
+        FR127: 0x00000000,
+        FR227: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -4099,6 +4049,18 @@ pub mod CAN1 {
             }
         });
     }
+
+    /// Unsafely steal CAN1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN1
@@ -4138,87 +4100,87 @@ pub mod CAN2 {
         IER: 0x00000000,
         ESR: 0x00000000,
         BTR: 0x00000000,
-        TI0R: 0x00000000,
-        TDT0R: 0x00000000,
-        TDL0R: 0x00000000,
-        TDH0R: 0x00000000,
-        TI1R: 0x00000000,
-        TDT1R: 0x00000000,
-        TDL1R: 0x00000000,
-        TDH1R: 0x00000000,
-        TI2R: 0x00000000,
-        TDT2R: 0x00000000,
-        TDL2R: 0x00000000,
-        TDH2R: 0x00000000,
-        RI0R: 0x00000000,
-        RDT0R: 0x00000000,
-        RDL0R: 0x00000000,
-        RDH0R: 0x00000000,
-        RI1R: 0x00000000,
-        RDT1R: 0x00000000,
-        RDL1R: 0x00000000,
-        RDH1R: 0x00000000,
         FMR: 0x2A1C0E01,
         FM1R: 0x00000000,
         FS1R: 0x00000000,
         FFA1R: 0x00000000,
         FA1R: 0x00000000,
-        F0R1: 0x00000000,
-        F0R2: 0x00000000,
-        F1R1: 0x00000000,
-        F1R2: 0x00000000,
-        F2R1: 0x00000000,
-        F2R2: 0x00000000,
-        F3R1: 0x00000000,
-        F3R2: 0x00000000,
-        F4R1: 0x00000000,
-        F4R2: 0x00000000,
-        F5R1: 0x00000000,
-        F5R2: 0x00000000,
-        F6R1: 0x00000000,
-        F6R2: 0x00000000,
-        F7R1: 0x00000000,
-        F7R2: 0x00000000,
-        F8R1: 0x00000000,
-        F8R2: 0x00000000,
-        F9R1: 0x00000000,
-        F9R2: 0x00000000,
-        F10R1: 0x00000000,
-        F10R2: 0x00000000,
-        F11R1: 0x00000000,
-        F11R2: 0x00000000,
-        F12R1: 0x00000000,
-        F12R2: 0x00000000,
-        F13R1: 0x00000000,
-        F13R2: 0x00000000,
-        F14R1: 0x00000000,
-        F14R2: 0x00000000,
-        F15R1: 0x00000000,
-        F15R2: 0x00000000,
-        F16R1: 0x00000000,
-        F16R2: 0x00000000,
-        F17R1: 0x00000000,
-        F17R2: 0x00000000,
-        F18R1: 0x00000000,
-        F18R2: 0x00000000,
-        F19R1: 0x00000000,
-        F19R2: 0x00000000,
-        F20R1: 0x00000000,
-        F20R2: 0x00000000,
-        F21R1: 0x00000000,
-        F21R2: 0x00000000,
-        F22R1: 0x00000000,
-        F22R2: 0x00000000,
-        F23R1: 0x00000000,
-        F23R2: 0x00000000,
-        F24R1: 0x00000000,
-        F24R2: 0x00000000,
-        F25R1: 0x00000000,
-        F25R2: 0x00000000,
-        F26R1: 0x00000000,
-        F26R2: 0x00000000,
-        F27R1: 0x00000000,
-        F27R2: 0x00000000,
+        TIR0: 0x00000000,
+        TDTR0: 0x00000000,
+        TDLR0: 0x00000000,
+        TDHR0: 0x00000000,
+        TIR1: 0x00000000,
+        TDTR1: 0x00000000,
+        TDLR1: 0x00000000,
+        TDHR1: 0x00000000,
+        TIR2: 0x00000000,
+        TDTR2: 0x00000000,
+        TDLR2: 0x00000000,
+        TDHR2: 0x00000000,
+        RIR0: 0x00000000,
+        RDTR0: 0x00000000,
+        RDLR0: 0x00000000,
+        RDHR0: 0x00000000,
+        RIR1: 0x00000000,
+        RDTR1: 0x00000000,
+        RDLR1: 0x00000000,
+        RDHR1: 0x00000000,
+        FR10: 0x00000000,
+        FR20: 0x00000000,
+        FR11: 0x00000000,
+        FR21: 0x00000000,
+        FR12: 0x00000000,
+        FR22: 0x00000000,
+        FR13: 0x00000000,
+        FR23: 0x00000000,
+        FR14: 0x00000000,
+        FR24: 0x00000000,
+        FR15: 0x00000000,
+        FR25: 0x00000000,
+        FR16: 0x00000000,
+        FR26: 0x00000000,
+        FR17: 0x00000000,
+        FR27: 0x00000000,
+        FR18: 0x00000000,
+        FR28: 0x00000000,
+        FR19: 0x00000000,
+        FR29: 0x00000000,
+        FR110: 0x00000000,
+        FR210: 0x00000000,
+        FR111: 0x00000000,
+        FR211: 0x00000000,
+        FR112: 0x00000000,
+        FR212: 0x00000000,
+        FR113: 0x00000000,
+        FR213: 0x00000000,
+        FR114: 0x00000000,
+        FR214: 0x00000000,
+        FR115: 0x00000000,
+        FR215: 0x00000000,
+        FR116: 0x00000000,
+        FR216: 0x00000000,
+        FR117: 0x00000000,
+        FR217: 0x00000000,
+        FR118: 0x00000000,
+        FR218: 0x00000000,
+        FR119: 0x00000000,
+        FR219: 0x00000000,
+        FR120: 0x00000000,
+        FR220: 0x00000000,
+        FR121: 0x00000000,
+        FR221: 0x00000000,
+        FR122: 0x00000000,
+        FR222: 0x00000000,
+        FR123: 0x00000000,
+        FR223: 0x00000000,
+        FR124: 0x00000000,
+        FR224: 0x00000000,
+        FR125: 0x00000000,
+        FR225: 0x00000000,
+        FR126: 0x00000000,
+        FR226: 0x00000000,
+        FR127: 0x00000000,
+        FR227: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -4268,6 +4230,18 @@ pub mod CAN2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CAN2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN2_TAKEN = true;
+        INSTANCE
     }
 }
 

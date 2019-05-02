@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f412, stm32f413
+//! Used by: stm32f405, stm32f407, stm32f427, stm32f429
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -1417,63 +1417,7 @@ pub mod FS_GNPTXSTS {
 /// OTG_FS general core configuration register (OTG_FS_GCCFG)
 pub mod FS_GCCFG {
 
-    /// DCDET
-    pub mod DCDET {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PDET
-    pub mod PDET {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SDET
-    pub mod SDET {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PS2DET
-    pub mod PS2DET {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PWRDWN
+    /// Power down
     pub mod PWRDWN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1487,22 +1431,8 @@ pub mod FS_GCCFG {
         pub mod RW {}
     }
 
-    /// BCDEN
-    pub mod BCDEN {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DCDEN
-    pub mod DCDEN {
+    /// Enable the VBUS sensing device
+    pub mod VBUSASEN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1515,8 +1445,8 @@ pub mod FS_GCCFG {
         pub mod RW {}
     }
 
-    /// PDEN
-    pub mod PDEN {
+    /// Enable the VBUS sensing device
+    pub mod VBUSBSEN {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1529,25 +1459,11 @@ pub mod FS_GCCFG {
         pub mod RW {}
     }
 
-    /// SDEN
-    pub mod SDEN {
+    /// SOF output enable
+    pub mod SOFOUTEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// VBDEN
-    pub mod VBDEN {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1651,6 +1567,96 @@ pub mod FS_DIEPTXF3 {
     pub use super::FS_DIEPTXF1::INEPTXFD;
     pub use super::FS_DIEPTXF1::INEPTXSA;
 }
+
+/// GRXSTSP_Device and GRXSTSP_Host
+/// GRXSTSP_Device: OTG status read and pop (device mode)
+/// GRXSTSP_Host: OTG status read and pop (host mode)
+pub mod GRXSTSP {
+
+    /// Frame number
+    pub mod FRMNUM {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (4 bits: 0b1111 << 21)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Packet status
+    pub mod PKTSTS {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (4 bits: 0b1111 << 17)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data PID
+    pub mod DPID {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (2 bits: 0b11 << 15)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Byte count
+    pub mod BCNT {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (11 bits: 0x7ff << 4)
+        pub const mask: u32 = 0x7ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Endpoint number
+    pub mod EPNUM {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel number
+    pub mod CHNUM {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
     pub FS_GOTGCTL: RWRegister<u32>,
@@ -1678,7 +1684,10 @@ pub struct RegisterBlock {
     /// FS_GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
     pub FS_GRXSTSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    /// GRXSTSP_Device and GRXSTSP_Host
+    /// GRXSTSP_Device: OTG status read and pop (device mode)
+    /// GRXSTSP_Host: OTG status read and pop (host mode)
+    pub GRXSTSP: RWRegister<u32>,
 
     /// OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
     pub FS_GRXFSIZ: RWRegister<u32>,
@@ -1691,7 +1700,7 @@ pub struct RegisterBlock {
     /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
     pub FS_GNPTXSTS: RORegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved1: [u32; 2],
 
     /// OTG_FS general core configuration register (OTG_FS_GCCFG)
     pub FS_GCCFG: RWRegister<u32>,
@@ -1699,7 +1708,7 @@ pub struct RegisterBlock {
     /// core ID register
     pub FS_CID: RWRegister<u32>,
 
-    _reserved3: [u32; 48],
+    _reserved2: [u32; 48],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
     pub FS_HPTXFSIZ: RWRegister<u32>,
@@ -1722,6 +1731,7 @@ pub struct ResetValues {
     pub FS_GINTSTS: u32,
     pub FS_GINTMSK: u32,
     pub FS_GRXSTSR: u32,
+    pub GRXSTSP: u32,
     pub FS_GRXFSIZ: u32,
     pub FS_GNPTXFSIZ: u32,
     pub FS_GNPTXSTS: u32,
@@ -1745,3 +1755,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

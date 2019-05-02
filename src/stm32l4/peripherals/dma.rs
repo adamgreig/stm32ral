@@ -1305,49 +1305,49 @@ pub mod CSELR {
             pub const NoMapping: u32 = 0b0000;
 
             /// 0b0001: Mapping 1
-            pub const Map_1: u32 = 0b0001;
+            pub const Map1: u32 = 0b0001;
 
             /// 0b0010: Mapping 2
-            pub const Map_2: u32 = 0b0010;
+            pub const Map2: u32 = 0b0010;
 
             /// 0b0011: Mapping 3
-            pub const Map_3: u32 = 0b0011;
+            pub const Map3: u32 = 0b0011;
 
             /// 0b0100: Mapping 4
-            pub const Map_4: u32 = 0b0100;
+            pub const Map4: u32 = 0b0100;
 
             /// 0b0101: Mapping 5
-            pub const Map_5: u32 = 0b0101;
+            pub const Map5: u32 = 0b0101;
 
             /// 0b0110: Mapping 6
-            pub const Map_6: u32 = 0b0110;
+            pub const Map6: u32 = 0b0110;
 
             /// 0b0111: Mapping 7
-            pub const Map_7: u32 = 0b0111;
+            pub const Map7: u32 = 0b0111;
 
             /// 0b1000: Mapping 8
-            pub const Map_8: u32 = 0b1000;
+            pub const Map8: u32 = 0b1000;
 
             /// 0b1001: Mapping 9
-            pub const Map_9: u32 = 0b1001;
+            pub const Map9: u32 = 0b1001;
 
             /// 0b1010: Mapping 10
-            pub const Map_10: u32 = 0b1010;
+            pub const Map10: u32 = 0b1010;
 
             /// 0b1011: Mapping 11
-            pub const Map_11: u32 = 0b1011;
+            pub const Map11: u32 = 0b1011;
 
             /// 0b1100: Mapping 12
-            pub const Map_12: u32 = 0b1100;
+            pub const Map12: u32 = 0b1100;
 
             /// 0b1101: Mapping 13
-            pub const Map_13: u32 = 0b1101;
+            pub const Map13: u32 = 0b1101;
 
             /// 0b1110: Mapping 14
-            pub const Map_14: u32 = 0b1110;
+            pub const Map14: u32 = 0b1110;
 
             /// 0b1111: Mapping 15
-            pub const Map_15: u32 = 0b1111;
+            pub const Map15: u32 = 0b1111;
         }
     }
 
@@ -1583,3 +1583,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

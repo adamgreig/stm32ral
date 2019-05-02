@@ -19,8 +19,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 0 wait states
+            pub const WS0: u32 = 0b000;
+
+            /// 0b001: 1 wait state
+            pub const WS1: u32 = 0b001;
+        }
     }
 
     /// PRFTBE
@@ -33,8 +40,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Prefetch is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Prefetch is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// PRFTBS
@@ -43,8 +57,15 @@ pub mod ACR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Prefetch buffer is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Prefetch buffer is enabled
+            pub const Enabled: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -101,8 +122,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No EOP operation occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: An EOP event occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Write protection error
@@ -115,8 +143,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No write protection error occurred
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: A write protection error occurred
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// Programming error
@@ -129,8 +164,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No programming error occurred
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: A programming error occurred
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// Busy
@@ -139,8 +181,15 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No write/erase operation is in progress
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: No write/erase operation is in progress
+            pub const Active: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -161,8 +210,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Force option byte loading inactive
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: Force option byte loading active
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// End of operation interrupt enable
@@ -175,8 +231,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of operation interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of operation interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt enable
@@ -189,8 +252,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Error interrupt generation disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Error interrupt generation enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Option bytes write enable
@@ -203,8 +273,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Option byte write enabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Option byte write disabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Lock
@@ -217,8 +294,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FLASH_CR register is unlocked
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: FLASH_CR register is locked
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Start
@@ -231,8 +315,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Trigger an erase operation
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// Option byte erase
@@ -245,8 +333,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Erase option byte activated
+            pub const OptionByteErase: u32 = 0b1;
+        }
     }
 
     /// Option byte programming
@@ -259,8 +351,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Program option byte activated
+            pub const OptionByteProgramming: u32 = 0b1;
+        }
     }
 
     /// Mass erase
@@ -273,8 +369,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Erase activated for all user sectors
+            pub const MassErase: u32 = 0b1;
+        }
     }
 
     /// Page erase
@@ -287,8 +387,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Erase activated for selected page
+            pub const PageErase: u32 = 0b1;
+        }
     }
 
     /// Programming
@@ -301,8 +405,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Flash programming activated
+            pub const Program: u32 = 0b1;
+        }
     }
 }
 
@@ -337,8 +445,12 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: The loaded option byte and its complement do not match
+            pub const OptionByteError: u32 = 0b1;
+        }
     }
 
     /// Read protection level status
@@ -351,8 +463,18 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Level 0
+            pub const Level0: u32 = 0b00;
+
+            /// 0b01: Level 1
+            pub const Level1: u32 = 0b01;
+
+            /// 0b11: Level 2
+            pub const Level2: u32 = 0b11;
+        }
     }
 
     /// WDG_SW
@@ -365,8 +487,15 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Hardware watchdog
+            pub const Hardware: u32 = 0b0;
+
+            /// 0b1: Software watchdog
+            pub const Software: u32 = 0b1;
+        }
     }
 
     /// nRST_STOP
@@ -379,8 +508,15 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Reset generated when entering Stop mode
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: No reset generated
+            pub const NoReset: u32 = 0b1;
+        }
     }
 
     /// nRST_STDBY
@@ -393,8 +529,15 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Reset generated when entering Standby mode
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: No reset generated
+            pub const NoReset: u32 = 0b1;
+        }
     }
 
     /// BOOT1
@@ -407,8 +550,15 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Together with BOOT0, select the device boot mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Together with BOOT0, select the device boot mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// VDDA_MONITOR
@@ -421,12 +571,19 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: VDDA power supply supervisor disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: VDDA power supply supervisor enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RAM_PARITY_CHECK
-    pub mod RAM_PARITY_CHECK_ {
+    pub mod RAM_PARITY_CHECK {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -435,8 +592,15 @@ pub mod OBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: RAM parity check disabled
+            pub const Disabled: u32 = 0b1;
+
+            /// 0b0: RAM parity check enabled
+            pub const Enabled: u32 = 0b0;
+        }
     }
 
     /// Data0
@@ -535,6 +699,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the Flash peripheral instance
 pub mod Flash {
@@ -611,6 +777,18 @@ pub mod Flash {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal Flash
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        Flash_TAKEN = true;
+        INSTANCE
     }
 }
 

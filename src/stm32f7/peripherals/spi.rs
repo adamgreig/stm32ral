@@ -168,8 +168,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 0 is forced onto the NSS pin and the I/O value of the NSS pin is ignored
+            pub const SlaveSelected: u32 = 0b0;
+
+            /// 0b1: 1 is forced onto the NSS pin and the I/O value of the NSS pin is ignored
+            pub const SlaveNotSelected: u32 = 0b1;
+        }
     }
 
     /// Frame format
@@ -1237,3 +1244,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

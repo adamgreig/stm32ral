@@ -215,8 +215,45 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: range 0 around 100 kHz
+            pub const Range100K: u32 = 0b0000;
+
+            /// 0b0001: range 1 around 200 kHz
+            pub const Range200K: u32 = 0b0001;
+
+            /// 0b0010: range 2 around 400 kHz
+            pub const Range400K: u32 = 0b0010;
+
+            /// 0b0011: range 3 around 800 kHz
+            pub const Range800K: u32 = 0b0011;
+
+            /// 0b0100: range 4 around 1 MHz
+            pub const Range1M: u32 = 0b0100;
+
+            /// 0b0101: range 5 around 2 MHz
+            pub const Range2M: u32 = 0b0101;
+
+            /// 0b0110: range 6 around 4 MHz
+            pub const Range4M: u32 = 0b0110;
+
+            /// 0b0111: range 7 around 8 MHz
+            pub const Range8M: u32 = 0b0111;
+
+            /// 0b1000: range 8 around 16 MHz
+            pub const Range16M: u32 = 0b1000;
+
+            /// 0b1001: range 9 around 24 MHz
+            pub const Range24M: u32 = 0b1001;
+
+            /// 0b1010: range 10 around 32 MHz
+            pub const Range32M: u32 = 0b1010;
+
+            /// 0b1011: range 11 around 48 MHz
+            pub const Range48M: u32 = 0b1011;
+        }
     }
 
     /// MSI clock range selection
@@ -2419,8 +2456,8 @@ pub mod APB1ENR1 {
         pub mod RW {}
     }
 
-    /// SPI3 clock enable
-    pub mod SP3EN {
+    /// SPI peripheral 3 clock enable
+    pub mod SPI3EN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -2550,6 +2587,20 @@ pub mod APB1ENR1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Enables the real time clock (RTC) peripheral
+    pub mod RTCAPBEN {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3408,6 +3459,20 @@ pub mod APB1SMENR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// RTC APB clock enable during Sleep and Stop modes
+    pub mod RTCAPBSMEN {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// APB1 peripheral clocks enable in Sleep and Stop modes register 2
@@ -4199,6 +4264,52 @@ pub mod CSR {
         pub mod RW {}
     }
 }
+
+/// Clock recovery RC register
+pub mod CRRCR {
+
+    /// These bits are initialized at startup with the factory-programmed HSI48 calibration trim value.
+    pub mod HSI48CAL {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (9 bits: 0x1ff << 7)
+        pub const mask: u32 = 0x1ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Set by hardware to indicate that HSI48 oscillator is stable. This bit is set only when HSI48 is enabled by software by setting HSI48ON.
+    pub mod HSI48RDY {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Set and cleared by software. Cleared by hardware to stop the HSI48 when entering in Stop, Standby or Shutdown modes.
+    pub mod HSI48ON {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,
@@ -4305,6 +4416,9 @@ pub struct RegisterBlock {
 
     /// CSR
     pub CSR: RWRegister<u32>,
+
+    /// Clock recovery RC register
+    pub CRRCR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR: u32,
@@ -4337,6 +4451,7 @@ pub struct ResetValues {
     pub CCIPR: u32,
     pub BDCR: u32,
     pub CSR: u32,
+    pub CRRCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -4351,6 +4466,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the RCC peripheral instance
 pub mod RCC {
@@ -4400,6 +4517,7 @@ pub mod RCC {
         CCIPR: 0x00000000,
         BDCR: 0x00000000,
         CSR: 0x0C000600,
+        CRRCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -4449,6 +4567,18 @@ pub mod RCC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal RCC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        RCC_TAKEN = true;
+        INSTANCE
     }
 }
 

@@ -5,15 +5,14 @@
 //! Used by: stm32f102, stm32f103
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::can::Instance;
-pub use stm32f1::peripherals::can::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::can::{
-    CAN_BTR, CAN_ESR, CAN_FA1R, CAN_FFA1R, CAN_FM1R, CAN_FMR, CAN_FS1R, CAN_IER, CAN_MCR, CAN_MSR,
-    CAN_RDH0R, CAN_RDH1R, CAN_RDL0R, CAN_RDL1R, CAN_RDT0R, CAN_RDT1R, CAN_RF0R, CAN_RF1R, CAN_RI0R,
-    CAN_RI1R, CAN_TDH0R, CAN_TDH1R, CAN_TDH2R, CAN_TDL0R, CAN_TDL1R, CAN_TDL2R, CAN_TDT0R,
-    CAN_TDT1R, CAN_TDT2R, CAN_TI0R, CAN_TI1R, CAN_TI2R, CAN_TSR, F0R1, F0R2, F10R1, F10R2, F11R1,
-    F11R2, F12R1, F12R2, F13R1, F13R2, F1R1, F1R2, F2R1, F2R2, F3R1, F3R2, F4R1, F4R2, F5R1, F5R2,
-    F6R1, F6R2, F7R1, F7R2, F8R1, F8R2, F9R1, F9R2,
+pub use stm32f1::peripherals::can_v2::Instance;
+pub use stm32f1::peripherals::can_v2::{RegisterBlock, ResetValues};
+pub use stm32f1::peripherals::can_v2::{
+    BTR, ESR, FA1R, FFA1R, FM1R, FMR, FR10, FR11, FR110, FR111, FR112, FR113, FR12, FR13, FR14,
+    FR15, FR16, FR17, FR18, FR19, FR20, FR21, FR210, FR211, FR212, FR213, FR22, FR23, FR24, FR25,
+    FR26, FR27, FR28, FR29, FS1R, IER, MCR, MSR, RDHR0, RDHR1, RDLR0, RDLR1, RDTR0, RDTR1, RF0R,
+    RF1R, RIR0, RIR1, TDHR0, TDHR1, TDHR2, TDLR0, TDLR1, TDLR2, TDTR0, TDTR1, TDTR2, TIR0, TIR1,
+    TIR2, TSR,
 };
 
 /// Access functions for the CAN1 peripheral instance
@@ -34,67 +33,67 @@ pub mod CAN1 {
 
     /// Reset values for each field in CAN1
     pub const reset: ResetValues = ResetValues {
-        CAN_MCR: 0x00000000,
-        CAN_MSR: 0x00000000,
-        CAN_TSR: 0x00000000,
-        CAN_RF0R: 0x00000000,
-        CAN_RF1R: 0x00000000,
-        CAN_IER: 0x00000000,
-        CAN_ESR: 0x00000000,
-        CAN_BTR: 0x00000000,
-        CAN_TI0R: 0x00000000,
-        CAN_TDT0R: 0x00000000,
-        CAN_TDL0R: 0x00000000,
-        CAN_TDH0R: 0x00000000,
-        CAN_TI1R: 0x00000000,
-        CAN_TDT1R: 0x00000000,
-        CAN_TDL1R: 0x00000000,
-        CAN_TDH1R: 0x00000000,
-        CAN_TI2R: 0x00000000,
-        CAN_TDT2R: 0x00000000,
-        CAN_TDL2R: 0x00000000,
-        CAN_TDH2R: 0x00000000,
-        CAN_RI0R: 0x00000000,
-        CAN_RDT0R: 0x00000000,
-        CAN_RDL0R: 0x00000000,
-        CAN_RDH0R: 0x00000000,
-        CAN_RI1R: 0x00000000,
-        CAN_RDT1R: 0x00000000,
-        CAN_RDL1R: 0x00000000,
-        CAN_RDH1R: 0x00000000,
-        CAN_FMR: 0x00000000,
-        CAN_FM1R: 0x00000000,
-        CAN_FS1R: 0x00000000,
-        CAN_FFA1R: 0x00000000,
-        CAN_FA1R: 0x00000000,
-        F0R1: 0x00000000,
-        F0R2: 0x00000000,
-        F1R1: 0x00000000,
-        F1R2: 0x00000000,
-        F2R1: 0x00000000,
-        F2R2: 0x00000000,
-        F3R1: 0x00000000,
-        F3R2: 0x00000000,
-        F4R1: 0x00000000,
-        F4R2: 0x00000000,
-        F5R1: 0x00000000,
-        F5R2: 0x00000000,
-        F6R1: 0x00000000,
-        F6R2: 0x00000000,
-        F7R1: 0x00000000,
-        F7R2: 0x00000000,
-        F8R1: 0x00000000,
-        F8R2: 0x00000000,
-        F9R1: 0x00000000,
-        F9R2: 0x00000000,
-        F10R1: 0x00000000,
-        F10R2: 0x00000000,
-        F11R1: 0x00000000,
-        F11R2: 0x00000000,
-        F12R1: 0x00000000,
-        F12R2: 0x00000000,
-        F13R1: 0x00000000,
-        F13R2: 0x00000000,
+        MCR: 0x00000000,
+        MSR: 0x00000000,
+        TSR: 0x00000000,
+        RF0R: 0x00000000,
+        RF1R: 0x00000000,
+        IER: 0x00000000,
+        ESR: 0x00000000,
+        BTR: 0x00000000,
+        FMR: 0x00000000,
+        FM1R: 0x00000000,
+        FS1R: 0x00000000,
+        FFA1R: 0x00000000,
+        FA1R: 0x00000000,
+        TIR0: 0x00000000,
+        TDTR0: 0x00000000,
+        TDLR0: 0x00000000,
+        TDHR0: 0x00000000,
+        TIR1: 0x00000000,
+        TDTR1: 0x00000000,
+        TDLR1: 0x00000000,
+        TDHR1: 0x00000000,
+        TIR2: 0x00000000,
+        TDTR2: 0x00000000,
+        TDLR2: 0x00000000,
+        TDHR2: 0x00000000,
+        RIR0: 0x00000000,
+        RDTR0: 0x00000000,
+        RDLR0: 0x00000000,
+        RDHR0: 0x00000000,
+        RIR1: 0x00000000,
+        RDTR1: 0x00000000,
+        RDLR1: 0x00000000,
+        RDHR1: 0x00000000,
+        FR10: 0x00000000,
+        FR20: 0x00000000,
+        FR11: 0x00000000,
+        FR21: 0x00000000,
+        FR12: 0x00000000,
+        FR22: 0x00000000,
+        FR13: 0x00000000,
+        FR23: 0x00000000,
+        FR14: 0x00000000,
+        FR24: 0x00000000,
+        FR15: 0x00000000,
+        FR25: 0x00000000,
+        FR16: 0x00000000,
+        FR26: 0x00000000,
+        FR17: 0x00000000,
+        FR27: 0x00000000,
+        FR18: 0x00000000,
+        FR28: 0x00000000,
+        FR19: 0x00000000,
+        FR29: 0x00000000,
+        FR110: 0x00000000,
+        FR210: 0x00000000,
+        FR111: 0x00000000,
+        FR211: 0x00000000,
+        FR112: 0x00000000,
+        FR212: 0x00000000,
+        FR113: 0x00000000,
+        FR213: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -145,6 +144,18 @@ pub mod CAN1 {
             }
         });
     }
+
+    /// Unsafely steal CAN1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN1
@@ -176,67 +187,67 @@ pub mod CAN2 {
 
     /// Reset values for each field in CAN2
     pub const reset: ResetValues = ResetValues {
-        CAN_MCR: 0x00000000,
-        CAN_MSR: 0x00000000,
-        CAN_TSR: 0x00000000,
-        CAN_RF0R: 0x00000000,
-        CAN_RF1R: 0x00000000,
-        CAN_IER: 0x00000000,
-        CAN_ESR: 0x00000000,
-        CAN_BTR: 0x00000000,
-        CAN_TI0R: 0x00000000,
-        CAN_TDT0R: 0x00000000,
-        CAN_TDL0R: 0x00000000,
-        CAN_TDH0R: 0x00000000,
-        CAN_TI1R: 0x00000000,
-        CAN_TDT1R: 0x00000000,
-        CAN_TDL1R: 0x00000000,
-        CAN_TDH1R: 0x00000000,
-        CAN_TI2R: 0x00000000,
-        CAN_TDT2R: 0x00000000,
-        CAN_TDL2R: 0x00000000,
-        CAN_TDH2R: 0x00000000,
-        CAN_RI0R: 0x00000000,
-        CAN_RDT0R: 0x00000000,
-        CAN_RDL0R: 0x00000000,
-        CAN_RDH0R: 0x00000000,
-        CAN_RI1R: 0x00000000,
-        CAN_RDT1R: 0x00000000,
-        CAN_RDL1R: 0x00000000,
-        CAN_RDH1R: 0x00000000,
-        CAN_FMR: 0x00000000,
-        CAN_FM1R: 0x00000000,
-        CAN_FS1R: 0x00000000,
-        CAN_FFA1R: 0x00000000,
-        CAN_FA1R: 0x00000000,
-        F0R1: 0x00000000,
-        F0R2: 0x00000000,
-        F1R1: 0x00000000,
-        F1R2: 0x00000000,
-        F2R1: 0x00000000,
-        F2R2: 0x00000000,
-        F3R1: 0x00000000,
-        F3R2: 0x00000000,
-        F4R1: 0x00000000,
-        F4R2: 0x00000000,
-        F5R1: 0x00000000,
-        F5R2: 0x00000000,
-        F6R1: 0x00000000,
-        F6R2: 0x00000000,
-        F7R1: 0x00000000,
-        F7R2: 0x00000000,
-        F8R1: 0x00000000,
-        F8R2: 0x00000000,
-        F9R1: 0x00000000,
-        F9R2: 0x00000000,
-        F10R1: 0x00000000,
-        F10R2: 0x00000000,
-        F11R1: 0x00000000,
-        F11R2: 0x00000000,
-        F12R1: 0x00000000,
-        F12R2: 0x00000000,
-        F13R1: 0x00000000,
-        F13R2: 0x00000000,
+        MCR: 0x00000000,
+        MSR: 0x00000000,
+        TSR: 0x00000000,
+        RF0R: 0x00000000,
+        RF1R: 0x00000000,
+        IER: 0x00000000,
+        ESR: 0x00000000,
+        BTR: 0x00000000,
+        FMR: 0x00000000,
+        FM1R: 0x00000000,
+        FS1R: 0x00000000,
+        FFA1R: 0x00000000,
+        FA1R: 0x00000000,
+        TIR0: 0x00000000,
+        TDTR0: 0x00000000,
+        TDLR0: 0x00000000,
+        TDHR0: 0x00000000,
+        TIR1: 0x00000000,
+        TDTR1: 0x00000000,
+        TDLR1: 0x00000000,
+        TDHR1: 0x00000000,
+        TIR2: 0x00000000,
+        TDTR2: 0x00000000,
+        TDLR2: 0x00000000,
+        TDHR2: 0x00000000,
+        RIR0: 0x00000000,
+        RDTR0: 0x00000000,
+        RDLR0: 0x00000000,
+        RDHR0: 0x00000000,
+        RIR1: 0x00000000,
+        RDTR1: 0x00000000,
+        RDLR1: 0x00000000,
+        RDHR1: 0x00000000,
+        FR10: 0x00000000,
+        FR20: 0x00000000,
+        FR11: 0x00000000,
+        FR21: 0x00000000,
+        FR12: 0x00000000,
+        FR22: 0x00000000,
+        FR13: 0x00000000,
+        FR23: 0x00000000,
+        FR14: 0x00000000,
+        FR24: 0x00000000,
+        FR15: 0x00000000,
+        FR25: 0x00000000,
+        FR16: 0x00000000,
+        FR26: 0x00000000,
+        FR17: 0x00000000,
+        FR27: 0x00000000,
+        FR18: 0x00000000,
+        FR28: 0x00000000,
+        FR19: 0x00000000,
+        FR29: 0x00000000,
+        FR110: 0x00000000,
+        FR210: 0x00000000,
+        FR111: 0x00000000,
+        FR211: 0x00000000,
+        FR112: 0x00000000,
+        FR212: 0x00000000,
+        FR113: 0x00000000,
+        FR213: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -286,6 +297,18 @@ pub mod CAN2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CAN2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN2_TAKEN = true;
+        INSTANCE
     }
 }
 

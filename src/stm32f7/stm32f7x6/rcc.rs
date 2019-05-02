@@ -15,8 +15,15 @@ pub mod CR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Clock not ready
+            pub const NotReady: u32 = 0b0;
+
+            /// 0b1: Clock ready
+            pub const Ready: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -33,8 +40,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Clock Off
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: Clock On
+            pub const On: u32 = 0b1;
+        }
     }
 
     /// Main PLL (PLL) clock ready flag
@@ -43,8 +57,7 @@ pub mod CR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLI2SRDY::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -61,8 +74,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLI2SON::RW;
     }
 
     /// Clock security system enable
@@ -75,8 +87,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLI2SON::RW;
     }
 
     /// HSE clock bypass
@@ -89,8 +100,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: HSE crystal oscillator not bypassed
+            pub const NotBypassed: u32 = 0b0;
+
+            /// 0b1: HSE crystal oscillator bypassed with external clock
+            pub const Bypassed: u32 = 0b1;
+        }
     }
 
     /// HSE clock ready flag
@@ -99,8 +117,7 @@ pub mod CR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLI2SRDY::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -117,8 +134,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLI2SON::RW;
     }
 
     /// Internal high-speed clock calibration
@@ -155,8 +171,7 @@ pub mod CR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLI2SRDY::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -173,8 +188,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLI2SON::RW;
     }
 
     /// PLLSAI clock ready flag
@@ -183,8 +197,7 @@ pub mod CR {
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLI2SRDY::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -201,8 +214,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLI2SON::RW;
     }
 }
 
@@ -272,16 +284,16 @@ pub mod PLLCFGR {
         pub mod RW {
 
             /// 0b00: PLLP=2
-            pub const DIV2: u32 = 0b00;
+            pub const Div2: u32 = 0b00;
 
             /// 0b01: PLLP=4
-            pub const DIV4: u32 = 0b01;
+            pub const Div4: u32 = 0b01;
 
             /// 0b10: PLLP=6
-            pub const DIV6: u32 = 0b10;
+            pub const Div6: u32 = 0b10;
 
             /// 0b11: PLLP=8
-            pub const DIV8: u32 = 0b11;
+            pub const Div8: u32 = 0b11;
         }
     }
 
@@ -344,19 +356,19 @@ pub mod CFGR {
         pub mod RW {
 
             /// 0b000: No division
-            pub const DIV1: u32 = 0b000;
+            pub const Div1: u32 = 0b000;
 
             /// 0b100: Division by 2
-            pub const DIV2: u32 = 0b100;
+            pub const Div2: u32 = 0b100;
 
             /// 0b101: Division by 3
-            pub const DIV3: u32 = 0b101;
+            pub const Div3: u32 = 0b101;
 
             /// 0b110: Division by 4
-            pub const DIV4: u32 = 0b110;
+            pub const Div4: u32 = 0b110;
 
             /// 0b111: Division by 5
-            pub const DIV5: u32 = 0b111;
+            pub const Div5: u32 = 0b111;
         }
     }
 
@@ -448,20 +460,20 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b000: AHB clock not divided
-            pub const DIV1: u32 = 0b000;
+            /// 0b000: HCLK not divided
+            pub const Div1: u32 = 0b000;
 
-            /// 0b100: AHB clock divided by 2
-            pub const DIV2: u32 = 0b100;
+            /// 0b100: HCLK divided by 2
+            pub const Div2: u32 = 0b100;
 
-            /// 0b101: AHB clock divided by 4
-            pub const DIV4: u32 = 0b101;
+            /// 0b101: HCLK divided by 4
+            pub const Div4: u32 = 0b101;
 
-            /// 0b110: AHB clock divided by 8
-            pub const DIV8: u32 = 0b110;
+            /// 0b110: HCLK divided by 8
+            pub const Div8: u32 = 0b110;
 
-            /// 0b111: AHB clock divided by 16
-            pub const DIV16: u32 = 0b111;
+            /// 0b111: HCLK divided by 16
+            pub const Div16: u32 = 0b111;
         }
     }
 
@@ -491,32 +503,32 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0000: system clock not divided
-            pub const DIV1: u32 = 0b0000;
+            /// 0b0000: SYSCLK not divided
+            pub const Div1: u32 = 0b0000;
 
-            /// 0b1000: system clock divided by 2
-            pub const DIV2: u32 = 0b1000;
+            /// 0b1000: SYSCLK divided by 2
+            pub const Div2: u32 = 0b1000;
 
-            /// 0b1001: system clock divided by 4
-            pub const DIV4: u32 = 0b1001;
+            /// 0b1001: SYSCLK divided by 4
+            pub const Div4: u32 = 0b1001;
 
-            /// 0b1010: system clock divided by 8
-            pub const DIV8: u32 = 0b1010;
+            /// 0b1010: SYSCLK divided by 8
+            pub const Div8: u32 = 0b1010;
 
-            /// 0b1011: system clock divided by 16
-            pub const DIV16: u32 = 0b1011;
+            /// 0b1011: SYSCLK divided by 16
+            pub const Div16: u32 = 0b1011;
 
-            /// 0b1100: system clock divided by 64
-            pub const DIV64: u32 = 0b1100;
+            /// 0b1100: SYSCLK divided by 64
+            pub const Div64: u32 = 0b1100;
 
-            /// 0b1101: system clock divided by 128
-            pub const DIV128: u32 = 0b1101;
+            /// 0b1101: SYSCLK divided by 128
+            pub const Div128: u32 = 0b1101;
 
-            /// 0b1110: system clock divided by 256
-            pub const DIV256: u32 = 0b1110;
+            /// 0b1110: SYSCLK divided by 256
+            pub const Div256: u32 = 0b1110;
 
-            /// 0b1111: system clock divided by 512
-            pub const DIV512: u32 = 0b1111;
+            /// 0b1111: SYSCLK divided by 512
+            pub const Div512: u32 = 0b1111;
         }
     }
 
@@ -533,10 +545,10 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00: HSI oscillator selected as system clock
+            /// 0b00: HSI selected as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSE oscillator selected as system clock
+            /// 0b01: HSE selected as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL selected as system clock
@@ -553,13 +565,13 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSI oscillator used as the system clock
+            /// 0b00: HSE oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSE oscillator used as the system clock
+            /// 0b01: HSI oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
-            /// 0b10: PLL used as the system clock
+            /// 0b10: PLL used as system clock
             pub const PLL: u32 = 0b10;
         }
         /// Write-only values (empty)
@@ -580,8 +592,12 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear CSSF flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -594,8 +610,12 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear interrupt flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -608,8 +628,7 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PLLSAIRDYC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -622,8 +641,7 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PLLSAIRDYC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -636,8 +654,7 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PLLSAIRDYC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -650,8 +667,7 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PLLSAIRDYC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -664,8 +680,7 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PLLSAIRDYC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -678,8 +693,7 @@ pub mod CIR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PLLSAIRDYC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -694,8 +708,15 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// PLLI2S ready interrupt enable
@@ -708,8 +729,7 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLSAIRDYIE::RW;
     }
 
     /// Main PLL (PLL) ready interrupt enable
@@ -722,8 +742,7 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLSAIRDYIE::RW;
     }
 
     /// HSE ready interrupt enable
@@ -736,8 +755,7 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLSAIRDYIE::RW;
     }
 
     /// HSI ready interrupt enable
@@ -750,8 +768,7 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLSAIRDYIE::RW;
     }
 
     /// LSE ready interrupt enable
@@ -764,8 +781,7 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLSAIRDYIE::RW;
     }
 
     /// LSI ready interrupt enable
@@ -778,8 +794,7 @@ pub mod CIR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PLLSAIRDYIE::RW;
     }
 
     /// Clock security system interrupt flag
@@ -788,8 +803,15 @@ pub mod CIR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No clock security interrupt caused by HSE clock failure
+            pub const NotInterrupted: u32 = 0b0;
+
+            /// 0b1: Clock security interrupt caused by HSE clock failure
+            pub const Interrupted: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -802,8 +824,15 @@ pub mod CIR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No clock ready interrupt
+            pub const NotInterrupted: u32 = 0b0;
+
+            /// 0b1: Clock ready interrupt
+            pub const Interrupted: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -816,8 +845,7 @@ pub mod CIR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLSAIRDYF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -830,8 +858,7 @@ pub mod CIR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLSAIRDYF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -844,8 +871,7 @@ pub mod CIR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLSAIRDYF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -858,8 +884,7 @@ pub mod CIR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLSAIRDYF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -872,8 +897,7 @@ pub mod CIR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLSAIRDYF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -886,8 +910,7 @@ pub mod CIR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::PLLSAIRDYF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -2587,7 +2610,7 @@ pub mod APB1ENR {
     }
 
     /// UART7 clock enable
-    pub mod UART7ENR {
+    pub mod UART7EN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
@@ -2596,12 +2619,11 @@ pub mod APB1ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIM2EN::RW;
     }
 
     /// UART8 clock enable
-    pub mod UART8ENR {
+    pub mod UART8EN {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -2610,8 +2632,7 @@ pub mod APB1ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIM2EN::RW;
     }
 
     /// SPDIF-RX clock enable
@@ -2783,7 +2804,7 @@ pub mod APB2ENR {
     }
 
     /// SPI4 clock enable
-    pub mod SPI4ENR {
+    pub mod SPI4EN {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -2792,8 +2813,7 @@ pub mod APB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIM1EN::RW;
     }
 
     /// System configuration controller clock enable
@@ -2849,7 +2869,7 @@ pub mod APB2ENR {
     }
 
     /// SPI5 clock enable
-    pub mod SPI5ENR {
+    pub mod SPI5EN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -2858,12 +2878,11 @@ pub mod APB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIM1EN::RW;
     }
 
     /// SPI6 clock enable
-    pub mod SPI6ENR {
+    pub mod SPI6EN {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -2872,8 +2891,7 @@ pub mod APB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIM1EN::RW;
     }
 
     /// SAI1 clock enable
@@ -4058,8 +4076,11 @@ pub mod BDCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Resets the entire Backup domain
-            pub const Reset: u32 = 0b1;
+            /// 0b0: Reset not activated
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Reset the entire RTC domain
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -4097,10 +4118,10 @@ pub mod BDCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: LSE oscillator not bypassed
+            /// 0b0: LSE crystal oscillator not bypassed
             pub const NotBypassed: u32 = 0b0;
 
-            /// 0b1: LSE oscillator bypassed
+            /// 0b1: LSE crystal oscillator bypassed with external clock
             pub const Bypassed: u32 = 0b1;
         }
     }
@@ -4114,10 +4135,10 @@ pub mod BDCR {
         /// Read-only values
         pub mod R {
 
-            /// 0b0: LSE clock not ready
+            /// 0b0: LSE oscillator not ready
             pub const NotReady: u32 = 0b0;
 
-            /// 0b1: LSE clock ready
+            /// 0b1: LSE oscillator ready
             pub const Ready: u32 = 0b1;
         }
         /// Write-only values (empty)
@@ -4139,11 +4160,11 @@ pub mod BDCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: LSE clock OFF
-            pub const Disabled: u32 = 0b0;
+            /// 0b0: LSE oscillator Off
+            pub const Off: u32 = 0b0;
 
-            /// 0b1: LSE clock ON
-            pub const Enabled: u32 = 0b1;
+            /// 0b1: LSE oscillator On
+            pub const On: u32 = 0b1;
         }
     }
 
@@ -4157,8 +4178,21 @@ pub mod BDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Low drive capacity
+            pub const Low: u32 = 0b00;
+
+            /// 0b01: Medium-high drive capacity
+            pub const MediumHigh: u32 = 0b01;
+
+            /// 0b10: Medium-low drive capacity
+            pub const MediumLow: u32 = 0b10;
+
+            /// 0b11: High drive capacity
+            pub const High: u32 = 0b11;
+        }
     }
 
     /// RTC clock source selection
@@ -4177,13 +4211,13 @@ pub mod BDCR {
             /// 0b00: No clock
             pub const NoClock: u32 = 0b00;
 
-            /// 0b01: LSE oscillator clock used as the RTC clock
+            /// 0b01: LSE oscillator clock used as RTC clock
             pub const LSE: u32 = 0b01;
 
-            /// 0b10: LSI oscillator clock used as the RTC clock
+            /// 0b10: LSI oscillator clock used as RTC clock
             pub const LSI: u32 = 0b10;
 
-            /// 0b11: HSE oscillator clock divided by a programmable prescaler used as the RTC clock
+            /// 0b11: HSE oscillator clock divided by a prescaler used as RTC clock
             pub const HSE: u32 = 0b11;
         }
     }
@@ -4198,8 +4232,15 @@ pub mod CSR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No reset has occured
+            pub const NoReset: u32 = 0b0;
+
+            /// 0b1: A reset has occured
+            pub const Reset: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4212,8 +4253,7 @@ pub mod CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LPWRRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4226,8 +4266,7 @@ pub mod CSR {
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LPWRRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4240,8 +4279,7 @@ pub mod CSR {
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LPWRRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4254,8 +4292,7 @@ pub mod CSR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LPWRRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4268,8 +4305,7 @@ pub mod CSR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LPWRRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4282,8 +4318,7 @@ pub mod CSR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LPWRRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4298,8 +4333,12 @@ pub mod CSR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the reset flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -4310,8 +4349,15 @@ pub mod CSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: LSI oscillator not ready
+            pub const NotReady: u32 = 0b0;
+
+            /// 0b1: LSI oscillator ready
+            pub const Ready: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4328,8 +4374,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LSI oscillator Off
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: LSI oscillator On
+            pub const On: u32 = 0b1;
+        }
     }
 }
 
@@ -4346,8 +4399,15 @@ pub mod SSCGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Spread spectrum modulation disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Spread spectrum modulation enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Spread Select
@@ -4360,8 +4420,15 @@ pub mod SSCGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Center spread
+            pub const Center: u32 = 0b0;
+
+            /// 0b1: Down spread
+            pub const Down: u32 = 0b1;
+        }
     }
 
     /// Incrementation step
@@ -4437,6 +4504,33 @@ pub mod PLLI2SCFGR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// PLLI2S division factor for SPDIFRX clock
+    pub mod PLLI2SP {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (2 bits: 0b11 << 16)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PLL*P=2
+            pub const Div2: u32 = 0b00;
+
+            /// 0b01: PLL*P=4
+            pub const Div4: u32 = 0b01;
+
+            /// 0b10: PLL*P=6
+            pub const Div6: u32 = 0b10;
+
+            /// 0b11: PLL*P=8
+            pub const Div8: u32 = 0b11;
+        }
+    }
 }
 
 /// PLL configuration register
@@ -4466,8 +4560,21 @@ pub mod PLLSAICFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PLL*P=2
+            pub const Div2: u32 = 0b00;
+
+            /// 0b01: PLL*P=4
+            pub const Div4: u32 = 0b01;
+
+            /// 0b10: PLL*P=6
+            pub const Div6: u32 = 0b10;
+
+            /// 0b11: PLL*P=8
+            pub const Div8: u32 = 0b11;
+        }
     }
 
     /// PLLSAI division factor for SAI clock
@@ -4500,10 +4607,10 @@ pub mod PLLSAICFGR {
 }
 
 /// dedicated clocks configuration register
-pub mod DKCFGR1 {
+pub mod DCKCFGR1 {
 
     /// PLLI2S division factor for SAI1 clock
-    pub mod PLLI2SDIV {
+    pub mod PLLI2SDIVQ {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (5 bits: 0b11111 << 0)
@@ -4512,8 +4619,105 @@ pub mod DKCFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00000: PLLI2SDIVQ = /1
+            pub const Div1: u32 = 0b00000;
+
+            /// 0b00001: PLLI2SDIVQ = /2
+            pub const Div2: u32 = 0b00001;
+
+            /// 0b00010: PLLI2SDIVQ = /3
+            pub const Div3: u32 = 0b00010;
+
+            /// 0b00011: PLLI2SDIVQ = /4
+            pub const Div4: u32 = 0b00011;
+
+            /// 0b00100: PLLI2SDIVQ = /5
+            pub const Div5: u32 = 0b00100;
+
+            /// 0b00101: PLLI2SDIVQ = /6
+            pub const Div6: u32 = 0b00101;
+
+            /// 0b00110: PLLI2SDIVQ = /7
+            pub const Div7: u32 = 0b00110;
+
+            /// 0b00111: PLLI2SDIVQ = /8
+            pub const Div8: u32 = 0b00111;
+
+            /// 0b01000: PLLI2SDIVQ = /9
+            pub const Div9: u32 = 0b01000;
+
+            /// 0b01001: PLLI2SDIVQ = /10
+            pub const Div10: u32 = 0b01001;
+
+            /// 0b01010: PLLI2SDIVQ = /11
+            pub const Div11: u32 = 0b01010;
+
+            /// 0b01011: PLLI2SDIVQ = /12
+            pub const Div12: u32 = 0b01011;
+
+            /// 0b01100: PLLI2SDIVQ = /13
+            pub const Div13: u32 = 0b01100;
+
+            /// 0b01101: PLLI2SDIVQ = /14
+            pub const Div14: u32 = 0b01101;
+
+            /// 0b01110: PLLI2SDIVQ = /15
+            pub const Div15: u32 = 0b01110;
+
+            /// 0b01111: PLLI2SDIVQ = /16
+            pub const Div16: u32 = 0b01111;
+
+            /// 0b10000: PLLI2SDIVQ = /17
+            pub const Div17: u32 = 0b10000;
+
+            /// 0b10001: PLLI2SDIVQ = /18
+            pub const Div18: u32 = 0b10001;
+
+            /// 0b10010: PLLI2SDIVQ = /19
+            pub const Div19: u32 = 0b10010;
+
+            /// 0b10011: PLLI2SDIVQ = /20
+            pub const Div20: u32 = 0b10011;
+
+            /// 0b10100: PLLI2SDIVQ = /21
+            pub const Div21: u32 = 0b10100;
+
+            /// 0b10101: PLLI2SDIVQ = /22
+            pub const Div22: u32 = 0b10101;
+
+            /// 0b10110: PLLI2SDIVQ = /23
+            pub const Div23: u32 = 0b10110;
+
+            /// 0b10111: PLLI2SDIVQ = /24
+            pub const Div24: u32 = 0b10111;
+
+            /// 0b11000: PLLI2SDIVQ = /25
+            pub const Div25: u32 = 0b11000;
+
+            /// 0b11001: PLLI2SDIVQ = /26
+            pub const Div26: u32 = 0b11001;
+
+            /// 0b11010: PLLI2SDIVQ = /27
+            pub const Div27: u32 = 0b11010;
+
+            /// 0b11011: PLLI2SDIVQ = /28
+            pub const Div28: u32 = 0b11011;
+
+            /// 0b11100: PLLI2SDIVQ = /29
+            pub const Div29: u32 = 0b11100;
+
+            /// 0b11101: PLLI2SDIVQ = /30
+            pub const Div30: u32 = 0b11101;
+
+            /// 0b11110: PLLI2SDIVQ = /31
+            pub const Div31: u32 = 0b11110;
+
+            /// 0b11111: PLLI2SDIVQ = /32
+            pub const Div32: u32 = 0b11111;
+        }
     }
 
     /// PLLSAI division factor for SAI1 clock
@@ -4526,8 +4730,105 @@ pub mod DKCFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00000: PLLSAIDIVQ = /1
+            pub const Div1: u32 = 0b00000;
+
+            /// 0b00001: PLLSAIDIVQ = /2
+            pub const Div2: u32 = 0b00001;
+
+            /// 0b00010: PLLSAIDIVQ = /3
+            pub const Div3: u32 = 0b00010;
+
+            /// 0b00011: PLLSAIDIVQ = /4
+            pub const Div4: u32 = 0b00011;
+
+            /// 0b00100: PLLSAIDIVQ = /5
+            pub const Div5: u32 = 0b00100;
+
+            /// 0b00101: PLLSAIDIVQ = /6
+            pub const Div6: u32 = 0b00101;
+
+            /// 0b00110: PLLSAIDIVQ = /7
+            pub const Div7: u32 = 0b00110;
+
+            /// 0b00111: PLLSAIDIVQ = /8
+            pub const Div8: u32 = 0b00111;
+
+            /// 0b01000: PLLSAIDIVQ = /9
+            pub const Div9: u32 = 0b01000;
+
+            /// 0b01001: PLLSAIDIVQ = /10
+            pub const Div10: u32 = 0b01001;
+
+            /// 0b01010: PLLSAIDIVQ = /11
+            pub const Div11: u32 = 0b01010;
+
+            /// 0b01011: PLLSAIDIVQ = /12
+            pub const Div12: u32 = 0b01011;
+
+            /// 0b01100: PLLSAIDIVQ = /13
+            pub const Div13: u32 = 0b01100;
+
+            /// 0b01101: PLLSAIDIVQ = /14
+            pub const Div14: u32 = 0b01101;
+
+            /// 0b01110: PLLSAIDIVQ = /15
+            pub const Div15: u32 = 0b01110;
+
+            /// 0b01111: PLLSAIDIVQ = /16
+            pub const Div16: u32 = 0b01111;
+
+            /// 0b10000: PLLSAIDIVQ = /17
+            pub const Div17: u32 = 0b10000;
+
+            /// 0b10001: PLLSAIDIVQ = /18
+            pub const Div18: u32 = 0b10001;
+
+            /// 0b10010: PLLSAIDIVQ = /19
+            pub const Div19: u32 = 0b10010;
+
+            /// 0b10011: PLLSAIDIVQ = /20
+            pub const Div20: u32 = 0b10011;
+
+            /// 0b10100: PLLSAIDIVQ = /21
+            pub const Div21: u32 = 0b10100;
+
+            /// 0b10101: PLLSAIDIVQ = /22
+            pub const Div22: u32 = 0b10101;
+
+            /// 0b10110: PLLSAIDIVQ = /23
+            pub const Div23: u32 = 0b10110;
+
+            /// 0b10111: PLLSAIDIVQ = /24
+            pub const Div24: u32 = 0b10111;
+
+            /// 0b11000: PLLSAIDIVQ = /25
+            pub const Div25: u32 = 0b11000;
+
+            /// 0b11001: PLLSAIDIVQ = /26
+            pub const Div26: u32 = 0b11001;
+
+            /// 0b11010: PLLSAIDIVQ = /27
+            pub const Div27: u32 = 0b11010;
+
+            /// 0b11011: PLLSAIDIVQ = /28
+            pub const Div28: u32 = 0b11011;
+
+            /// 0b11100: PLLSAIDIVQ = /29
+            pub const Div29: u32 = 0b11100;
+
+            /// 0b11101: PLLSAIDIVQ = /30
+            pub const Div30: u32 = 0b11101;
+
+            /// 0b11110: PLLSAIDIVQ = /31
+            pub const Div31: u32 = 0b11110;
+
+            /// 0b11111: PLLSAIDIVQ = /32
+            pub const Div32: u32 = 0b11111;
+        }
     }
 
     /// division factor for LCD_CLK
@@ -4540,8 +4841,21 @@ pub mod DKCFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PLLSAIDIVR = /2
+            pub const Div2: u32 = 0b00;
+
+            /// 0b01: PLLSAIDIVR = /4
+            pub const Div4: u32 = 0b01;
+
+            /// 0b10: PLLSAIDIVR = /8
+            pub const Div8: u32 = 0b10;
+
+            /// 0b11: PLLSAIDIVR = /16
+            pub const Div16: u32 = 0b11;
+        }
     }
 
     /// SAI1 clock source selection
@@ -4554,8 +4868,21 @@ pub mod DKCFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: SAI1 clock frequency = f(PLLSAI_Q) / PLLSAIDIVQ
+            pub const PLLSAI: u32 = 0b00;
+
+            /// 0b01: SAI1 clock frequency = f(PLLI2S_Q) / PLLI2SDIVQ
+            pub const PLLI2S: u32 = 0b01;
+
+            /// 0b10: SAI1 clock frequency = Alternate function input frequency
+            pub const AFIF: u32 = 0b10;
+
+            /// 0b11: SAI1 clock frequency = HSI or HSE
+            pub const HSI_HSE: u32 = 0b11;
+        }
     }
 
     /// SAI2 clock source selection
@@ -4568,8 +4895,21 @@ pub mod DKCFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: SAI2 clock frequency = f(PLLSAI_Q) / PLLSAIDIVQ
+            pub const PLLSAI: u32 = 0b00;
+
+            /// 0b01: SAI2 clock frequency = f(PLLI2S_Q) / PLLI2SDIVQ
+            pub const PLLI2S: u32 = 0b01;
+
+            /// 0b10: SAI2 clock frequency = Alternate function input frequency
+            pub const AFIF: u32 = 0b10;
+
+            /// 0b11: SAI2 clock frequency = HSI or HSE
+            pub const HSI_HSE: u32 = 0b11;
+        }
     }
 
     /// Timers clocks prescalers selection
@@ -4582,13 +4922,20 @@ pub mod DKCFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: If the APB prescaler is configured 1, TIMxCLK = PCLKx. Otherwise, TIMxCLK = 2xPCLKx
+            pub const Mul2: u32 = 0b0;
+
+            /// 0b1: If the APB prescaler is configured 1, 2 or 4, TIMxCLK = HCLK. Otherwise, TIMxCLK = 4xPCLKx
+            pub const Mul4: u32 = 0b1;
+        }
     }
 }
 
 /// dedicated clocks configuration register
-pub mod DKCFGR2 {
+pub mod DCKCFGR2 {
 
     /// USART 1 clock source selection
     pub mod USART1SEL {
@@ -4600,8 +4947,21 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: APB2 clock (PCLK2) is selected as USART clock
+            pub const APB2: u32 = 0b00;
+
+            /// 0b01: System clock is selected as USART clock
+            pub const SYSCLK: u32 = 0b01;
+
+            /// 0b10: HSI clock is selected as USART clock
+            pub const HSI: u32 = 0b10;
+
+            /// 0b11: LSE clock is selected as USART clock
+            pub const LSE: u32 = 0b11;
+        }
     }
 
     /// USART 2 clock source selection
@@ -4614,8 +4974,21 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: APB1 clock (PCLK1) is selected as USART clock
+            pub const APB1: u32 = 0b00;
+
+            /// 0b01: System clock is selected as USART clock
+            pub const SYSCLK: u32 = 0b01;
+
+            /// 0b10: HSI clock is selected as USART clock
+            pub const HSI: u32 = 0b10;
+
+            /// 0b11: LSE clock is selected as USART clock
+            pub const LSE: u32 = 0b11;
+        }
     }
 
     /// USART 3 clock source selection
@@ -4628,8 +5001,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::USART2SEL::RW;
     }
 
     /// UART 4 clock source selection
@@ -4642,8 +5014,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::USART2SEL::RW;
     }
 
     /// UART 5 clock source selection
@@ -4656,8 +5027,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::USART2SEL::RW;
     }
 
     /// USART 6 clock source selection
@@ -4670,8 +5040,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::USART1SEL::RW;
     }
 
     /// UART 7 clock source selection
@@ -4684,8 +5053,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::USART2SEL::RW;
     }
 
     /// UART 8 clock source selection
@@ -4698,8 +5066,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::USART2SEL::RW;
     }
 
     /// I2C1 clock source selection
@@ -4712,8 +5079,18 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: APB1 clock (PCLK1) is selected as I2C clock
+            pub const APB1: u32 = 0b00;
+
+            /// 0b01: System clock is selected as I2C clock
+            pub const SYSCLK: u32 = 0b01;
+
+            /// 0b10: HSI clock is selected as I2C clock
+            pub const HSI: u32 = 0b10;
+        }
     }
 
     /// I2C2 clock source selection
@@ -4726,8 +5103,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::I2C1SEL::RW;
     }
 
     /// I2C3 clock source selection
@@ -4740,8 +5116,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::I2C1SEL::RW;
     }
 
     /// I2C4 clock source selection
@@ -4754,8 +5129,7 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::I2C1SEL::RW;
     }
 
     /// Low power timer 1 clock source selection
@@ -4768,8 +5142,21 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: APB1 clock (PCLK1) selected as LPTILM1 clock
+            pub const APB1: u32 = 0b00;
+
+            /// 0b01: LSI clock is selected as LPTILM1 clock
+            pub const LSI: u32 = 0b01;
+
+            /// 0b10: HSI clock is selected as LPTILM1 clock
+            pub const HSI: u32 = 0b10;
+
+            /// 0b11: LSE clock is selected as LPTILM1 clock
+            pub const LSE: u32 = 0b11;
+        }
     }
 
     /// HDMI-CEC clock source selection
@@ -4782,8 +5169,15 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LSE clock is selected as HDMI-CEC clock
+            pub const LSE: u32 = 0b0;
+
+            /// 0b1: HSI divided by 488 clock is selected as HDMI-CEC clock
+            pub const HSI_Div488: u32 = 0b1;
+        }
     }
 
     /// 48MHz clock source selection
@@ -4796,12 +5190,19 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 48MHz clock from PLL is selected
+            pub const PLL: u32 = 0b0;
+
+            /// 0b1: 48MHz clock from PLLSAI is selected
+            pub const PLLSAI: u32 = 0b1;
+        }
     }
 
     /// SDMMC clock source selection
-    pub mod SDMMCSEL {
+    pub mod SDMMC1SEL {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
@@ -4810,8 +5211,15 @@ pub mod DKCFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 48 MHz clock is selected as SD clock
+            pub const CK48M: u32 = 0b0;
+
+            /// 0b1: System clock is selected as SD clock
+            pub const SYSCLK: u32 = 0b1;
+        }
     }
 }
 pub struct RegisterBlock {
@@ -4902,10 +5310,10 @@ pub struct RegisterBlock {
     pub PLLSAICFGR: RWRegister<u32>,
 
     /// dedicated clocks configuration register
-    pub DKCFGR1: RWRegister<u32>,
+    pub DCKCFGR1: RWRegister<u32>,
 
     /// dedicated clocks configuration register
-    pub DKCFGR2: RWRegister<u32>,
+    pub DCKCFGR2: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR: u32,
@@ -4932,8 +5340,8 @@ pub struct ResetValues {
     pub SSCGR: u32,
     pub PLLI2SCFGR: u32,
     pub PLLSAICFGR: u32,
-    pub DKCFGR1: u32,
-    pub DKCFGR2: u32,
+    pub DCKCFGR1: u32,
+    pub DCKCFGR2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -4948,6 +5356,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the RCC peripheral instance
 pub mod RCC {
@@ -4991,8 +5401,8 @@ pub mod RCC {
         SSCGR: 0x00000000,
         PLLI2SCFGR: 0x20003000,
         PLLSAICFGR: 0x20003000,
-        DKCFGR1: 0x20003000,
-        DKCFGR2: 0x20003000,
+        DCKCFGR1: 0x20003000,
+        DCKCFGR2: 0x20003000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -5042,6 +5452,18 @@ pub mod RCC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal RCC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        RCC_TAKEN = true;
+        INSTANCE
     }
 }
 

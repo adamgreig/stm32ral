@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use {RORegister, RWRegister, WORegister};
 
 /// CEC control register
-pub mod CEC_CR {
+pub mod CR {
 
     /// CEC Enable The CECEN bit is set and cleared by software. CECEN=1 starts message reception and enables the TXSOM control. CECEN=0 disables the CEC peripheral, clears all bits of CEC_CR register and aborts any on-going reception or transmission.
     pub mod CECEN {
@@ -53,7 +53,7 @@ pub mod CEC_CR {
 }
 
 /// This register is used to configure the HDMI-CEC controller. It is mandatory to write CEC_CFGR only when CECEN=0.
-pub mod CEC_CFGR {
+pub mod CFGR {
 
     /// Signal Free Time SFT bits are set by software. In the SFT=0x0 configuration the number of nominal data bit periods waited before transmission is ruled by hardware according to the transmission history. In all the other configurations the SFT number is determined by software. * 0x0 ** 2.5 Data-Bit periods if CEC is the last bus initiator with unsuccessful transmission (ARBLST=1, TXERR=1, TXUDR=1 or TXACKE= 1) ** 4 Data-Bit periods if CEC is the new bus initiator ** 6 Data-Bit periods if CEC is the last bus initiator with successful transmission (TXEOM=1) * 0x1: 0.5 nominal data bit periods * 0x2: 1.5 nominal data bit periods * 0x3: 2.5 nominal data bit periods * 0x4: 3.5 nominal data bit periods * 0x5: 4.5 nominal data bit periods * 0x6: 5.5 nominal data bit periods * 0x7: 6.5 nominal data bit periods
     pub mod SFT {
@@ -183,7 +183,7 @@ pub mod CEC_CFGR {
 }
 
 /// CEC Tx data register
-pub mod CEC_TXDR {
+pub mod TXDR {
 
     /// Tx Data register. TXD is a write-only register containing the data byte to be transmitted. Note: TXD must be written when TXSTART=1
     pub mod TXD {
@@ -201,7 +201,7 @@ pub mod CEC_TXDR {
 }
 
 /// CEC Rx Data Register
-pub mod CEC_RXDR {
+pub mod RXDR {
 
     /// Rx Data register. RXD is read-only and contains the last data byte which has been received from the CEC line.
     pub mod RXD {
@@ -219,7 +219,7 @@ pub mod CEC_RXDR {
 }
 
 /// CEC Interrupt and Status Register
-pub mod CEC_ISR {
+pub mod ISR {
 
     /// Rx-Byte Received The RXBR bit is set by hardware to inform application that a new byte has been received from the CEC line and stored into the RXD buffer. RXBR is cleared by software write at 1.
     pub mod RXBR {
@@ -405,7 +405,7 @@ pub mod CEC_ISR {
 }
 
 /// CEC interrupt enable register
-pub mod CEC_IER {
+pub mod IER {
 
     /// Rx-Byte Received Interrupt Enable The RXBRIE bit is set and cleared by software.
     pub mod RXBRIE {
@@ -591,30 +591,30 @@ pub mod CEC_IER {
 }
 pub struct RegisterBlock {
     /// CEC control register
-    pub CEC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// This register is used to configure the HDMI-CEC controller. It is mandatory to write CEC_CFGR only when CECEN=0.
-    pub CEC_CFGR: RWRegister<u32>,
+    pub CFGR: RWRegister<u32>,
 
     /// CEC Tx data register
-    pub CEC_TXDR: WORegister<u32>,
+    pub TXDR: WORegister<u32>,
 
     /// CEC Rx Data Register
-    pub CEC_RXDR: RORegister<u32>,
+    pub RXDR: RORegister<u32>,
 
     /// CEC Interrupt and Status Register
-    pub CEC_ISR: RWRegister<u32>,
+    pub ISR: RWRegister<u32>,
 
     /// CEC interrupt enable register
-    pub CEC_IER: RWRegister<u32>,
+    pub IER: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub CEC_CR: u32,
-    pub CEC_CFGR: u32,
-    pub CEC_TXDR: u32,
-    pub CEC_RXDR: u32,
-    pub CEC_ISR: u32,
-    pub CEC_IER: u32,
+    pub CR: u32,
+    pub CFGR: u32,
+    pub TXDR: u32,
+    pub RXDR: u32,
+    pub ISR: u32,
+    pub IER: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -629,6 +629,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the CEC peripheral instance
 pub mod CEC {
@@ -648,12 +650,12 @@ pub mod CEC {
 
     /// Reset values for each field in CEC
     pub const reset: ResetValues = ResetValues {
-        CEC_CR: 0x00000000,
-        CEC_CFGR: 0x00000000,
-        CEC_TXDR: 0x00000000,
-        CEC_RXDR: 0x00000000,
-        CEC_ISR: 0x00000000,
-        CEC_IER: 0x00000000,
+        CR: 0x00000000,
+        CFGR: 0x00000000,
+        TXDR: 0x00000000,
+        RXDR: 0x00000000,
+        ISR: 0x00000000,
+        IER: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -703,6 +705,18 @@ pub mod CEC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CEC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CEC_TAKEN = true;
+        INSTANCE
     }
 }
 

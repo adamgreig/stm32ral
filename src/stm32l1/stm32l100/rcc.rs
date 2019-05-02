@@ -185,16 +185,16 @@ pub mod CR {
         pub mod RW {
 
             /// 0b00: HSE divided by 2
-            pub const DIV2: u32 = 0b00;
+            pub const Div2: u32 = 0b00;
 
             /// 0b01: HSE divided by 4
-            pub const DIV4: u32 = 0b01;
+            pub const Div4: u32 = 0b01;
 
             /// 0b10: HSE divided by 8
-            pub const DIV8: u32 = 0b10;
+            pub const Div8: u32 = 0b10;
 
             /// 0b11: HSE divided by 16
-            pub const DIV16: u32 = 0b11;
+            pub const Div16: u32 = 0b11;
         }
     }
 }
@@ -290,19 +290,19 @@ pub mod CFGR {
         pub mod RW {
 
             /// 0b000: No division
-            pub const DIV1: u32 = 0b000;
+            pub const Div1: u32 = 0b000;
 
             /// 0b001: Division by 2
-            pub const DIV2: u32 = 0b001;
+            pub const Div2: u32 = 0b001;
 
             /// 0b010: Division by 4
-            pub const DIV4: u32 = 0b010;
+            pub const Div4: u32 = 0b010;
 
             /// 0b011: Division by 8
-            pub const DIV8: u32 = 0b011;
+            pub const Div8: u32 = 0b011;
 
             /// 0b100: Division by 16
-            pub const DIV16: u32 = 0b100;
+            pub const Div16: u32 = 0b100;
         }
     }
 
@@ -359,13 +359,13 @@ pub mod CFGR {
         pub mod RW {
 
             /// 0b01: PLLVCO / 2
-            pub const DIV2: u32 = 0b01;
+            pub const Div2: u32 = 0b01;
 
             /// 0b10: PLLVCO / 3
-            pub const DIV3: u32 = 0b10;
+            pub const Div3: u32 = 0b10;
 
             /// 0b11: PLLVCO / 4
-            pub const DIV4: u32 = 0b11;
+            pub const Div4: u32 = 0b11;
         }
     }
 
@@ -383,31 +383,31 @@ pub mod CFGR {
         pub mod RW {
 
             /// 0b0000: PLL clock entry x 3
-            pub const MUL3: u32 = 0b0000;
+            pub const Mul3: u32 = 0b0000;
 
             /// 0b0001: PLL clock entry x 4
-            pub const MUL4: u32 = 0b0001;
+            pub const Mul4: u32 = 0b0001;
 
             /// 0b0010: PLL clock entry x 6
-            pub const MUL6: u32 = 0b0010;
+            pub const Mul6: u32 = 0b0010;
 
             /// 0b0011: PLL clock entry x 8
-            pub const MUL8: u32 = 0b0011;
+            pub const Mul8: u32 = 0b0011;
 
             /// 0b0100: PLL clock entry x 12
-            pub const MUL12: u32 = 0b0100;
+            pub const Mul12: u32 = 0b0100;
 
             /// 0b0101: PLL clock entry x 16
-            pub const MUL16: u32 = 0b0101;
+            pub const Mul16: u32 = 0b0101;
 
             /// 0b0110: PLL clock entry x 24
-            pub const MUL24: u32 = 0b0110;
+            pub const Mul24: u32 = 0b0110;
 
             /// 0b0111: PLL clock entry x 32
-            pub const MUL32: u32 = 0b0111;
+            pub const Mul32: u32 = 0b0111;
 
             /// 0b1000: PLL clock entry x 48
-            pub const MUL48: u32 = 0b1000;
+            pub const Mul48: u32 = 0b1000;
         }
     }
 
@@ -446,19 +446,19 @@ pub mod CFGR {
         pub mod RW {
 
             /// 0b000: HCLK not divided
-            pub const DIV1: u32 = 0b000;
+            pub const Div1: u32 = 0b000;
 
             /// 0b100: HCLK divided by 2
-            pub const DIV2: u32 = 0b100;
+            pub const Div2: u32 = 0b100;
 
             /// 0b101: HCLK divided by 4
-            pub const DIV4: u32 = 0b101;
+            pub const Div4: u32 = 0b101;
 
             /// 0b110: HCLK divided by 8
-            pub const DIV8: u32 = 0b110;
+            pub const Div8: u32 = 0b110;
 
             /// 0b111: HCLK divided by 16
-            pub const DIV16: u32 = 0b111;
+            pub const Div16: u32 = 0b111;
         }
     }
 
@@ -489,31 +489,31 @@ pub mod CFGR {
         pub mod RW {
 
             /// 0b0000: system clock not divided
-            pub const DIV1: u32 = 0b0000;
+            pub const Div1: u32 = 0b0000;
 
             /// 0b1000: system clock divided by 2
-            pub const DIV2: u32 = 0b1000;
+            pub const Div2: u32 = 0b1000;
 
             /// 0b1001: system clock divided by 4
-            pub const DIV4: u32 = 0b1001;
+            pub const Div4: u32 = 0b1001;
 
             /// 0b1010: system clock divided by 8
-            pub const DIV8: u32 = 0b1010;
+            pub const Div8: u32 = 0b1010;
 
             /// 0b1011: system clock divided by 16
-            pub const DIV16: u32 = 0b1011;
+            pub const Div16: u32 = 0b1011;
 
             /// 0b1100: system clock divided by 64
-            pub const DIV64: u32 = 0b1100;
+            pub const Div64: u32 = 0b1100;
 
             /// 0b1101: system clock divided by 128
-            pub const DIV128: u32 = 0b1101;
+            pub const Div128: u32 = 0b1101;
 
             /// 0b1110: system clock divided by 256
-            pub const DIV256: u32 = 0b1110;
+            pub const Div256: u32 = 0b1110;
 
             /// 0b1111: system clock divided by 512
-            pub const DIV512: u32 = 0b1111;
+            pub const Div512: u32 = 0b1111;
         }
     }
 
@@ -2980,6 +2980,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the RCC peripheral instance
 pub mod RCC {
@@ -3062,6 +3064,18 @@ pub mod RCC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal RCC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        RCC_TAKEN = true;
+        INSTANCE
     }
 }
 

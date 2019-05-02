@@ -98,6 +98,18 @@ pub mod TIM5 {
             }
         });
     }
+
+    /// Unsafely steal TIM5
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        TIM5_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to TIM5

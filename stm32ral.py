@@ -51,7 +51,6 @@ pub use cortex_m_rt::interrupt;
 
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
-
 """
 
 
@@ -69,8 +68,8 @@ keywords = ["stm32", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
 
-# Change version in stm32ral.py, not here!
-version = "0.1.1"
+# Change version in stm32ral.py, not in Cargo.toml!
+version = "0.1.2"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -85,6 +84,7 @@ cortex-m-rt = { version="0.6.8", optional=true }
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["cortex-m/inline-asm"]
+rtfm = []
 default = []
 nosync = []
 doc = []
@@ -682,6 +682,18 @@ class PeripheralInstance(Node):
                     }}
                 }});
             }}
+
+            /// Unsafely steal {self.name}
+            ///
+            /// This function is similar to take() but forcibly takes the
+            /// Instance, marking it as taken irregardless of its previous
+            /// state.
+            #[cfg(not(feature="nosync"))]
+            #[inline]
+            pub unsafe fn steal() -> Instance {{
+                {self.name}_TAKEN = true;
+                INSTANCE
+            }}
         }}
 
         /// Raw pointer to {self.name}
@@ -789,6 +801,8 @@ class PeripheralPrototype(Node):
                 unsafe { &*(self.addr as *const _) }
             }
         }
+        #[cfg(feature="rtfm")]
+        unsafe impl Send for Instance {}
 
         """
 
@@ -832,6 +846,20 @@ class PeripheralPrototype(Node):
 
     def to_parent_entry(self):
         return f"pub mod {self.name};\n"
+
+    def to_struct_entry(self):
+        lines = []
+        for instance in self.instances:
+            lines.append(f"pub {instance.name}: {self.name}::Instance,")
+        return "\n".join(lines)
+
+    def to_struct_steal(self):
+        lines = []
+        for instance in self.instances:
+            lines.append(
+                f"{instance.name}: "
+                f"{self.name}::{instance.name}::steal(),")
+        return "\n".join(lines) + "\n"
 
     @classmethod
     def from_svd(cls, svd, node, register_ctx):
@@ -982,6 +1010,24 @@ class PeripheralPrototypeLink(Node):
     def to_parent_entry(self):
         return f"pub mod {self.name};\n"
 
+    def to_struct_entry(self, usename=None):
+        if usename is None:
+            usename = self.name
+        lines = []
+        for instance in self.instances:
+            lines.append(f"pub {instance.name}: {usename}::Instance,")
+        return "\n".join(lines)
+
+    def to_struct_steal(self, usename=None):
+        if usename is None:
+            usename = self.name
+        lines = []
+        for instance in self.instances:
+            lines.append(
+                f"{instance.name}: "
+                f"{usename}::{instance.name}::steal(),")
+        return "\n".join(lines)
+
     @classmethod
     def from_peripherals(cls, p1, p2, path):
         plink = cls(p2.name, p1, path)
@@ -1021,6 +1067,12 @@ class PeripheralSharedInstanceLink(Node):
         else:
             return (f"pub use super::instances::{self.usename} "
                     f"as {self.name};\n")
+
+    def to_struct_entry(self):
+        return self.prototype.to_struct_entry(self.name)
+
+    def to_struct_steal(self):
+        return self.prototype.to_struct_steal(self.name)
 
     def to_rust_file(self, path):
         pass
@@ -1201,9 +1253,30 @@ class Device(Node):
                 f.write("/// Interrupt-related magic for this device\n")
                 f.write("pub mod interrupts;\n")
                 f.write("pub use self::interrupts::Interrupt;\n")
-                f.write("pub use self::interrupts::Interrupt as interrupt;\n\n")
+                f.write("pub use self::interrupts::Interrupt as interrupt;\n")
+                f.write("\n\n")
             for peripheral in self.peripherals:
                 f.write(peripheral.to_parent_entry())
+            f.write("\n\n")
+            f.write("#[cfg(all(feature=\"rtfm\", not(feature=\"nosync\")))]")
+            f.write("\n#[allow(non_snake_case)]\n")
+            f.write("pub struct Peripherals {\n")
+            for peripheral in self.peripherals:
+                f.write("    " + peripheral.to_struct_entry())
+            f.write("}\n\n")
+            f.write("#[cfg(all(feature=\"rtfm\", feature=\"nosync\"))]\n")
+            f.write("#[allow(non_snake_case)]\n")
+            f.write("pub struct Peripherals {}\n\n")
+            f.write("#[cfg(all(feature=\"rtfm\", not(feature=\"nosync\")))]")
+            f.write("\nimpl Peripherals {\n")
+            f.write("    pub unsafe fn steal() -> Self {\n")
+            f.write("        Peripherals {\n")
+            for peripheral in self.peripherals:
+                f.write("        " + peripheral.to_struct_steal())
+            f.write("        }\n    }\n}\n\n")
+            f.write("#[cfg(all(feature=\"rtfm\", feature=\"nosync\"))]\n")
+            f.write("impl Peripherals {\n    pub fn steal() -> Self {\n")
+            f.write("        Peripherals {}\n    }\n}")
         rustfmt(mname)
         if not self.special:
             dname = os.path.join(devicepath, "device.x")

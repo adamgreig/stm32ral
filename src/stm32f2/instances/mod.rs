@@ -56,10 +56,7 @@ pub mod wwdg;
 pub mod rtc;
 
 #[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
-pub mod uart4;
-
-#[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
-pub mod uart5;
+pub mod uart;
 
 #[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
 pub mod adc_common;

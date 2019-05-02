@@ -4,10 +4,10 @@
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
+use {RORegister, RWRegister, UnsafeRWRegister};
 
 /// DMA2D control register
-pub mod DMA2D_CR {
+pub mod CR {
 
     /// Start This bit can be used to launch the DMA2D according to the parameters loaded in the various configuration registers
     pub mod START {
@@ -151,7 +151,7 @@ pub mod DMA2D_CR {
 }
 
 /// DMA2D Interrupt Status Register
-pub mod DMA2D_ISR {
+pub mod ISR {
 
     /// Transfer error interrupt flag This bit is set when an error occurs during a DMA transfer (data transfer or automatic CLUT loading).
     pub mod TEIF {
@@ -239,7 +239,7 @@ pub mod DMA2D_ISR {
 }
 
 /// DMA2D interrupt flag clear register
-pub mod DMA2D_IFCR {
+pub mod IFCR {
 
     /// Clear Transfer error interrupt flag Programming this bit to 1 clears the TEIF flag in the DMA2D_ISR register
     pub mod CTEIF {
@@ -327,7 +327,7 @@ pub mod DMA2D_IFCR {
 }
 
 /// DMA2D foreground memory address register
-pub mod DMA2D_FGMAR {
+pub mod FGMAR {
 
     /// Memory address Address of the data used for the foreground image. This register can only be written when data transfers are disabled. Once the data transfer has started, this register is read-only. The address alignment must match the image format selected e.g. a 32-bit per pixel format must be 32-bit aligned, a 16-bit per pixel format must be 16-bit aligned and a 4-bit per pixel format must be 8-bit aligned.
     pub mod MA {
@@ -345,7 +345,7 @@ pub mod DMA2D_FGMAR {
 }
 
 /// DMA2D foreground offset register
-pub mod DMA2D_FGOR {
+pub mod FGOR {
 
     /// Line offset Line offset used for the foreground expressed in pixel. This value is used to generate the address. It is added at the end of each line to determine the starting address of the next line. These bits can only be written when data transfers are disabled. Once a data transfer has started, they become read-only. If the image format is 4-bit per pixel, the line offset must be even.
     pub mod LO {
@@ -363,17 +363,17 @@ pub mod DMA2D_FGOR {
 }
 
 /// DMA2D background memory address register
-pub mod DMA2D_BGMAR {
-    pub use super::DMA2D_FGMAR::MA;
+pub mod BGMAR {
+    pub use super::FGMAR::MA;
 }
 
 /// DMA2D background offset register
-pub mod DMA2D_BGOR {
-    pub use super::DMA2D_FGOR::LO;
+pub mod BGOR {
+    pub use super::FGOR::LO;
 }
 
 /// DMA2D foreground PFC control register
-pub mod DMA2D_FGPFCCR {
+pub mod FGPFCCR {
 
     /// Color mode These bits defines the color format of the foreground image. They can only be written when data transfers are disabled. Once the transfer has started, they are read-only. others: meaningless
     pub mod CM {
@@ -503,7 +503,7 @@ pub mod DMA2D_FGPFCCR {
 }
 
 /// DMA2D foreground color register
-pub mod DMA2D_FGCOLR {
+pub mod FGCOLR {
 
     /// Blue Value These bits defines the blue value for the A4 or A8 mode of the foreground image. They can only be written when data transfers are disabled. Once the transfer has started, They are read-only.
     pub mod BLUE {
@@ -549,7 +549,7 @@ pub mod DMA2D_FGCOLR {
 }
 
 /// DMA2D background PFC control register
-pub mod DMA2D_BGPFCCR {
+pub mod BGPFCCR {
 
     /// Color mode These bits define the color format of the foreground image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only. others: meaningless
     pub mod CM {
@@ -665,24 +665,24 @@ pub mod DMA2D_BGPFCCR {
 }
 
 /// DMA2D background color register
-pub mod DMA2D_BGCOLR {
-    pub use super::DMA2D_FGCOLR::BLUE;
-    pub use super::DMA2D_FGCOLR::GREEN;
-    pub use super::DMA2D_FGCOLR::RED;
+pub mod BGCOLR {
+    pub use super::FGCOLR::BLUE;
+    pub use super::FGCOLR::GREEN;
+    pub use super::FGCOLR::RED;
 }
 
 /// DMA2D foreground CLUT memory address register
-pub mod DMA2D_FGCMAR {
-    pub use super::DMA2D_FGMAR::MA;
+pub mod FGCMAR {
+    pub use super::FGMAR::MA;
 }
 
 /// DMA2D background CLUT memory address register
-pub mod DMA2D_BGCMAR {
-    pub use super::DMA2D_FGMAR::MA;
+pub mod BGCMAR {
+    pub use super::FGMAR::MA;
 }
 
 /// DMA2D output PFC control register
-pub mod DMA2D_OPFCCR {
+pub mod OPFCCR {
 
     /// Color mode These bits define the color format of the output image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only. others: meaningless
     pub mod CM {
@@ -728,7 +728,7 @@ pub mod DMA2D_OPFCCR {
 }
 
 /// DMA2D output color register
-pub mod DMA2D_OCOLR {
+pub mod OCOLR {
 
     /// Blue Value These bits define the blue value of the output image. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
     pub mod BLUE {
@@ -788,17 +788,17 @@ pub mod DMA2D_OCOLR {
 }
 
 /// DMA2D output memory address register
-pub mod DMA2D_OMAR {
-    pub use super::DMA2D_FGMAR::MA;
+pub mod OMAR {
+    pub use super::FGMAR::MA;
 }
 
 /// DMA2D output offset register
-pub mod DMA2D_OOR {
-    pub use super::DMA2D_FGOR::LO;
+pub mod OOR {
+    pub use super::FGOR::LO;
 }
 
 /// DMA2D number of line register
-pub mod DMA2D_NLR {
+pub mod NLR {
 
     /// Number of lines Number of lines of the area to be transferred. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
     pub mod NL {
@@ -830,7 +830,7 @@ pub mod DMA2D_NLR {
 }
 
 /// DMA2D line watermark register
-pub mod DMA2D_LWR {
+pub mod LWR {
 
     /// Line watermark These bits allow to configure the line watermark for interrupt generation. An interrupt is raised when the last pixel of the watermarked line has been transferred. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
     pub mod LW {
@@ -848,7 +848,7 @@ pub mod DMA2D_LWR {
 }
 
 /// DMA2D AXI master timer configuration register
-pub mod DMA2D_AMTCR {
+pub mod AMTCR {
 
     /// Enable Enables the dead time functionality.
     pub mod EN {
@@ -880,86 +880,86 @@ pub mod DMA2D_AMTCR {
 }
 pub struct RegisterBlock {
     /// DMA2D control register
-    pub DMA2D_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// DMA2D Interrupt Status Register
-    pub DMA2D_ISR: RORegister<u32>,
+    pub ISR: RORegister<u32>,
 
     /// DMA2D interrupt flag clear register
-    pub DMA2D_IFCR: RWRegister<u32>,
+    pub IFCR: RWRegister<u32>,
 
     /// DMA2D foreground memory address register
-    pub DMA2D_FGMAR: RWRegister<u32>,
+    pub FGMAR: UnsafeRWRegister<u32>,
 
     /// DMA2D foreground offset register
-    pub DMA2D_FGOR: RWRegister<u32>,
+    pub FGOR: RWRegister<u32>,
 
     /// DMA2D background memory address register
-    pub DMA2D_BGMAR: RWRegister<u32>,
+    pub BGMAR: UnsafeRWRegister<u32>,
 
     /// DMA2D background offset register
-    pub DMA2D_BGOR: RWRegister<u32>,
+    pub BGOR: RWRegister<u32>,
 
     /// DMA2D foreground PFC control register
-    pub DMA2D_FGPFCCR: RWRegister<u32>,
+    pub FGPFCCR: RWRegister<u32>,
 
     /// DMA2D foreground color register
-    pub DMA2D_FGCOLR: RWRegister<u32>,
+    pub FGCOLR: RWRegister<u32>,
 
     /// DMA2D background PFC control register
-    pub DMA2D_BGPFCCR: RWRegister<u32>,
+    pub BGPFCCR: RWRegister<u32>,
 
     /// DMA2D background color register
-    pub DMA2D_BGCOLR: RWRegister<u32>,
+    pub BGCOLR: RWRegister<u32>,
 
     /// DMA2D foreground CLUT memory address register
-    pub DMA2D_FGCMAR: RWRegister<u32>,
+    pub FGCMAR: UnsafeRWRegister<u32>,
 
     /// DMA2D background CLUT memory address register
-    pub DMA2D_BGCMAR: RWRegister<u32>,
+    pub BGCMAR: UnsafeRWRegister<u32>,
 
     /// DMA2D output PFC control register
-    pub DMA2D_OPFCCR: RWRegister<u32>,
+    pub OPFCCR: RWRegister<u32>,
 
     /// DMA2D output color register
-    pub DMA2D_OCOLR: RWRegister<u32>,
+    pub OCOLR: RWRegister<u32>,
 
     /// DMA2D output memory address register
-    pub DMA2D_OMAR: RWRegister<u32>,
+    pub OMAR: UnsafeRWRegister<u32>,
 
     /// DMA2D output offset register
-    pub DMA2D_OOR: RWRegister<u32>,
+    pub OOR: RWRegister<u32>,
 
     /// DMA2D number of line register
-    pub DMA2D_NLR: RWRegister<u32>,
+    pub NLR: RWRegister<u32>,
 
     /// DMA2D line watermark register
-    pub DMA2D_LWR: RWRegister<u32>,
+    pub LWR: RWRegister<u32>,
 
     /// DMA2D AXI master timer configuration register
-    pub DMA2D_AMTCR: RWRegister<u32>,
+    pub AMTCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub DMA2D_CR: u32,
-    pub DMA2D_ISR: u32,
-    pub DMA2D_IFCR: u32,
-    pub DMA2D_FGMAR: u32,
-    pub DMA2D_FGOR: u32,
-    pub DMA2D_BGMAR: u32,
-    pub DMA2D_BGOR: u32,
-    pub DMA2D_FGPFCCR: u32,
-    pub DMA2D_FGCOLR: u32,
-    pub DMA2D_BGPFCCR: u32,
-    pub DMA2D_BGCOLR: u32,
-    pub DMA2D_FGCMAR: u32,
-    pub DMA2D_BGCMAR: u32,
-    pub DMA2D_OPFCCR: u32,
-    pub DMA2D_OCOLR: u32,
-    pub DMA2D_OMAR: u32,
-    pub DMA2D_OOR: u32,
-    pub DMA2D_NLR: u32,
-    pub DMA2D_LWR: u32,
-    pub DMA2D_AMTCR: u32,
+    pub CR: u32,
+    pub ISR: u32,
+    pub IFCR: u32,
+    pub FGMAR: u32,
+    pub FGOR: u32,
+    pub BGMAR: u32,
+    pub BGOR: u32,
+    pub FGPFCCR: u32,
+    pub FGCOLR: u32,
+    pub BGPFCCR: u32,
+    pub BGCOLR: u32,
+    pub FGCMAR: u32,
+    pub BGCMAR: u32,
+    pub OPFCCR: u32,
+    pub OCOLR: u32,
+    pub OMAR: u32,
+    pub OOR: u32,
+    pub NLR: u32,
+    pub LWR: u32,
+    pub AMTCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -974,6 +974,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the DMA2D peripheral instance
 pub mod DMA2D {
@@ -993,26 +995,26 @@ pub mod DMA2D {
 
     /// Reset values for each field in DMA2D
     pub const reset: ResetValues = ResetValues {
-        DMA2D_CR: 0x00000000,
-        DMA2D_ISR: 0x00000000,
-        DMA2D_IFCR: 0x00000000,
-        DMA2D_FGMAR: 0x00000000,
-        DMA2D_FGOR: 0x00000000,
-        DMA2D_BGMAR: 0x00000000,
-        DMA2D_BGOR: 0x00000000,
-        DMA2D_FGPFCCR: 0x00000000,
-        DMA2D_FGCOLR: 0x00000000,
-        DMA2D_BGPFCCR: 0x00000000,
-        DMA2D_BGCOLR: 0x00000000,
-        DMA2D_FGCMAR: 0x00000000,
-        DMA2D_BGCMAR: 0x00000000,
-        DMA2D_OPFCCR: 0x00000000,
-        DMA2D_OCOLR: 0x00000000,
-        DMA2D_OMAR: 0x00000000,
-        DMA2D_OOR: 0x00000000,
-        DMA2D_NLR: 0x00000000,
-        DMA2D_LWR: 0x00000000,
-        DMA2D_AMTCR: 0x00000000,
+        CR: 0x00000000,
+        ISR: 0x00000000,
+        IFCR: 0x00000000,
+        FGMAR: 0x00000000,
+        FGOR: 0x00000000,
+        BGMAR: 0x00000000,
+        BGOR: 0x00000000,
+        FGPFCCR: 0x00000000,
+        FGCOLR: 0x00000000,
+        BGPFCCR: 0x00000000,
+        BGCOLR: 0x00000000,
+        FGCMAR: 0x00000000,
+        BGCMAR: 0x00000000,
+        OPFCCR: 0x00000000,
+        OCOLR: 0x00000000,
+        OMAR: 0x00000000,
+        OOR: 0x00000000,
+        NLR: 0x00000000,
+        LWR: 0x00000000,
+        AMTCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -1062,6 +1064,18 @@ pub mod DMA2D {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DMA2D
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DMA2D_TAKEN = true;
+        INSTANCE
     }
 }
 

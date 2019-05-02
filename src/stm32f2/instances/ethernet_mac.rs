@@ -101,6 +101,18 @@ pub mod Ethernet_MAC {
             }
         });
     }
+
+    /// Unsafely steal Ethernet_MAC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        Ethernet_MAC_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to Ethernet_MAC

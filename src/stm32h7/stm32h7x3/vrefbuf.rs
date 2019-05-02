@@ -7,7 +7,7 @@ use core::marker::PhantomData;
 use RWRegister;
 
 /// VREFBUF control and status register
-pub mod VREFBUF_CSR {
+pub mod CSR {
 
     /// Voltage reference buffer mode enable This bit is used to enable the voltage reference buffer mode.
     pub mod ENVR {
@@ -67,7 +67,7 @@ pub mod VREFBUF_CSR {
 }
 
 /// VREFBUF calibration control register
-pub mod VREFBUF_CCR {
+pub mod CCR {
 
     /// Trimming code These bits are automatically initialized after reset with the trimming value stored in the Flash memory during the production test. Writing into these bits allows to tune the internal reference buffer voltage.
     pub mod TRIM {
@@ -85,14 +85,14 @@ pub mod VREFBUF_CCR {
 }
 pub struct RegisterBlock {
     /// VREFBUF control and status register
-    pub VREFBUF_CSR: RWRegister<u32>,
+    pub CSR: RWRegister<u32>,
 
     /// VREFBUF calibration control register
-    pub VREFBUF_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub VREFBUF_CSR: u32,
-    pub VREFBUF_CCR: u32,
+    pub CSR: u32,
+    pub CCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -107,6 +107,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the VREFBUF peripheral instance
 pub mod VREFBUF {
@@ -126,8 +128,8 @@ pub mod VREFBUF {
 
     /// Reset values for each field in VREFBUF
     pub const reset: ResetValues = ResetValues {
-        VREFBUF_CSR: 0x00000002,
-        VREFBUF_CCR: 0x00000000,
+        CSR: 0x00000002,
+        CCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -177,6 +179,18 @@ pub mod VREFBUF {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal VREFBUF
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        VREFBUF_TAKEN = true;
+        INSTANCE
     }
 }
 

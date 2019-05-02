@@ -194,49 +194,49 @@ pub mod CR1 {
             pub const NoFilter: u32 = 0b0000;
 
             /// 0b0001: Digital filter enabled and filtering capability up to 1 tI2CCLK
-            pub const Filter_1: u32 = 0b0001;
+            pub const Filter1: u32 = 0b0001;
 
             /// 0b0010: Digital filter enabled and filtering capability up to 2 tI2CCLK
-            pub const Filter_2: u32 = 0b0010;
+            pub const Filter2: u32 = 0b0010;
 
             /// 0b0011: Digital filter enabled and filtering capability up to 3 tI2CCLK
-            pub const Filter_3: u32 = 0b0011;
+            pub const Filter3: u32 = 0b0011;
 
             /// 0b0100: Digital filter enabled and filtering capability up to 4 tI2CCLK
-            pub const Filter_4: u32 = 0b0100;
+            pub const Filter4: u32 = 0b0100;
 
             /// 0b0101: Digital filter enabled and filtering capability up to 5 tI2CCLK
-            pub const Filter_5: u32 = 0b0101;
+            pub const Filter5: u32 = 0b0101;
 
             /// 0b0110: Digital filter enabled and filtering capability up to 6 tI2CCLK
-            pub const Filter_6: u32 = 0b0110;
+            pub const Filter6: u32 = 0b0110;
 
             /// 0b0111: Digital filter enabled and filtering capability up to 7 tI2CCLK
-            pub const Filter_7: u32 = 0b0111;
+            pub const Filter7: u32 = 0b0111;
 
             /// 0b1000: Digital filter enabled and filtering capability up to 8 tI2CCLK
-            pub const Filter_8: u32 = 0b1000;
+            pub const Filter8: u32 = 0b1000;
 
             /// 0b1001: Digital filter enabled and filtering capability up to 9 tI2CCLK
-            pub const Filter_9: u32 = 0b1001;
+            pub const Filter9: u32 = 0b1001;
 
             /// 0b1010: Digital filter enabled and filtering capability up to 10 tI2CCLK
-            pub const Filter_10: u32 = 0b1010;
+            pub const Filter10: u32 = 0b1010;
 
             /// 0b1011: Digital filter enabled and filtering capability up to 11 tI2CCLK
-            pub const Filter_11: u32 = 0b1011;
+            pub const Filter11: u32 = 0b1011;
 
             /// 0b1100: Digital filter enabled and filtering capability up to 12 tI2CCLK
-            pub const Filter_12: u32 = 0b1100;
+            pub const Filter12: u32 = 0b1100;
 
             /// 0b1101: Digital filter enabled and filtering capability up to 13 tI2CCLK
-            pub const Filter_13: u32 = 0b1101;
+            pub const Filter13: u32 = 0b1101;
 
             /// 0b1110: Digital filter enabled and filtering capability up to 14 tI2CCLK
-            pub const Filter_14: u32 = 0b1110;
+            pub const Filter14: u32 = 0b1110;
 
             /// 0b1111: Digital filter enabled and filtering capability up to 15 tI2CCLK
-            pub const Filter_15: u32 = 0b1111;
+            pub const Filter15: u32 = 0b1111;
         }
     }
 
@@ -510,10 +510,10 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b0: The master operates in 7-bit addressing mode
-            pub const Bit_7: u32 = 0b0;
+            pub const Bit7: u32 = 0b0;
 
             /// 0b1: The master operates in 10-bit addressing mode
-            pub const Bit_10: u32 = 0b1;
+            pub const Bit10: u32 = 0b1;
         }
     }
 
@@ -724,10 +724,10 @@ pub mod OAR1 {
         pub mod RW {
 
             /// 0b0: Own address 1 is a 7-bit address
-            pub const Bit_7: u32 = 0b0;
+            pub const Bit7: u32 = 0b0;
 
             /// 0b1: Own address 1 is a 10-bit address
-            pub const Bit_10: u32 = 0b1;
+            pub const Bit10: u32 = 0b1;
         }
     }
 
@@ -787,25 +787,25 @@ pub mod OAR2 {
             pub const NoMask: u32 = 0b000;
 
             /// 0b001: OA2\[1\] is masked and don’t care. Only OA2\[7:2\] are compared
-            pub const Mask_1: u32 = 0b001;
+            pub const Mask1: u32 = 0b001;
 
             /// 0b010: OA2\[2:1\] are masked and don’t care. Only OA2\[7:3\] are compared
-            pub const Mask_2: u32 = 0b010;
+            pub const Mask2: u32 = 0b010;
 
             /// 0b011: OA2\[3:1\] are masked and don’t care. Only OA2\[7:4\] are compared
-            pub const Mask_3: u32 = 0b011;
+            pub const Mask3: u32 = 0b011;
 
             /// 0b100: OA2\[4:1\] are masked and don’t care. Only OA2\[7:5\] are compared
-            pub const Mask_4: u32 = 0b100;
+            pub const Mask4: u32 = 0b100;
 
             /// 0b101: OA2\[5:1\] are masked and don’t care. Only OA2\[7:6\] are compared
-            pub const Mask_5: u32 = 0b101;
+            pub const Mask5: u32 = 0b101;
 
             /// 0b110: OA2\[6:1\] are masked and don’t care. Only OA2\[7\] is compared.
-            pub const Mask_6: u32 = 0b110;
+            pub const Mask6: u32 = 0b110;
 
             /// 0b111: OA2\[7:1\] are masked and don’t care. No comparison is done, and all (except reserved) 7-bit received addresses are acknowledged
-            pub const Mask_7: u32 = 0b111;
+            pub const Mask7: u32 = 0b111;
         }
     }
 
@@ -1625,6 +1625,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the I2C1 peripheral instance
 pub mod I2C1 {
@@ -1704,6 +1706,18 @@ pub mod I2C1 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal I2C1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C1_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -1797,6 +1811,18 @@ pub mod I2C2 {
             }
         });
     }
+
+    /// Unsafely steal I2C2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to I2C2
@@ -1889,6 +1915,18 @@ pub mod I2C3 {
             }
         });
     }
+
+    /// Unsafely steal I2C3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C3_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to I2C3
@@ -1980,6 +2018,18 @@ pub mod I2C4 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal I2C4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C4_TAKEN = true;
+        INSTANCE
     }
 }
 

@@ -37,6 +37,7 @@ PROVIDE(SPI1 = DefaultHandler);
 PROVIDE(SPI2 = DefaultHandler);
 PROVIDE(USART1 = DefaultHandler);
 PROVIDE(USART2 = DefaultHandler);
+PROVIDE(USART3 = DefaultHandler);
 PROVIDE(EXTI15_10 = DefaultHandler);
 PROVIDE(RTCAlarm = DefaultHandler);
 PROVIDE(USBWakeup = DefaultHandler);

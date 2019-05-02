@@ -8,8 +8,8 @@
 pub use stm32f4::peripherals::sai1::Instance;
 pub use stm32f4::peripherals::sai1::{RegisterBlock, ResetValues};
 pub use stm32f4::peripherals::sai1::{
-    SAI_ACLRFR, SAI_ACR1, SAI_ACR2, SAI_ADR, SAI_AFRCR, SAI_AIM, SAI_ASLOTR, SAI_ASR, SAI_BCLRFR,
-    SAI_BCR1, SAI_BCR2, SAI_BDR, SAI_BFRCR, SAI_BIM, SAI_BSLOTR, SAI_BSR,
+    CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, IMA, IMB, SLOTRA, SLOTRB, SRA,
+    SRB,
 };
 
 /// Access functions for the SAI1 peripheral instance
@@ -30,22 +30,22 @@ pub mod SAI1 {
 
     /// Reset values for each field in SAI1
     pub const reset: ResetValues = ResetValues {
-        SAI_ACR1: 0x00000040,
-        SAI_BCR1: 0x00000040,
-        SAI_ACR2: 0x00000040,
-        SAI_BCR2: 0x00000040,
-        SAI_AFRCR: 0x00000007,
-        SAI_BFRCR: 0x00000007,
-        SAI_ASLOTR: 0x00000000,
-        SAI_BSLOTR: 0x00000000,
-        SAI_AIM: 0x00000000,
-        SAI_BIM: 0x00000000,
-        SAI_ASR: 0x00000008,
-        SAI_BSR: 0x00000008,
-        SAI_ACLRFR: 0x00000000,
-        SAI_BCLRFR: 0x00000000,
-        SAI_ADR: 0x00000000,
-        SAI_BDR: 0x00000000,
+        CR1A: 0x00000040,
+        CR2A: 0x00000040,
+        FRCRA: 0x00000007,
+        SLOTRA: 0x00000000,
+        IMA: 0x00000000,
+        SRA: 0x00000008,
+        CLRFRA: 0x00000000,
+        DRA: 0x00000000,
+        CR1B: 0x00000040,
+        CR2B: 0x00000040,
+        FRCRB: 0x00000007,
+        SLOTRB: 0x00000000,
+        IMB: 0x00000000,
+        SRB: 0x00000008,
+        CLRFRB: 0x00000000,
+        DRB: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -95,6 +95,18 @@ pub mod SAI1 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SAI1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SAI1_TAKEN = true;
+        INSTANCE
     }
 }
 

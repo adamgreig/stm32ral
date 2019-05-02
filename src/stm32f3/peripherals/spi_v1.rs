@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface/Inter-IC sound
 //!
-//! Used by: stm32f301, stm32f302, stm32f303
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f3x4
 
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
@@ -168,8 +168,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 0 is forced onto the NSS pin and the I/O value of the NSS pin is ignored
+            pub const SlaveSelected: u32 = 0b0;
+
+            /// 0b1: 1 is forced onto the NSS pin and the I/O value of the NSS pin is ignored
+            pub const SlaveNotSelected: u32 = 0b1;
+        }
     }
 
     /// Frame format
@@ -1223,3 +1230,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

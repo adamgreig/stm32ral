@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Cyclic redundancy check calculation unit
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32l0::peripherals::crc::Instance;
@@ -81,6 +81,18 @@ pub mod CRC {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CRC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CRC_TAKEN = true;
+        INSTANCE
     }
 }
 

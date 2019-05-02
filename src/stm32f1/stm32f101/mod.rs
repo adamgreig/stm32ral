@@ -8,14 +8,14 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::fsmc_f101_f103_f107 as fsmc;
+pub use super::instances::fsmc;
 pub use super::instances::pwr;
 pub mod rcc;
 pub use super::instances::afio;
 pub use super::instances::bkp;
 pub use super::instances::crc;
 pub use super::instances::dac_f101_f103_f107 as dac;
-pub use super::instances::dbg;
+pub use super::instances::dbgmcu;
 pub use super::instances::dma;
 pub use super::instances::exti;
 pub use super::instances::flash;
@@ -36,8 +36,7 @@ pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim9;
-pub use super::instances::uart4;
-pub use super::instances::uart5;
+pub use super::instances::uart;
 pub use super::instances::usart;
 pub use super::instances::wwdg;
 pub mod adc1;
@@ -52,12 +51,170 @@ pub use super::instances::ethernet_mmc;
 pub use super::instances::ethernet_ptp;
 pub use super::instances::usb;
 pub mod adc;
+pub use super::instances::tim1_f100_f101_f102 as tim1;
+pub use super::instances::tim8;
+pub mod sdio;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
-pub use super::instances::sdio_f101_f103 as sdio;
 pub use super::instances::stk;
-pub use super::instances::tim1_f100_f101_f102 as tim1;
-pub use super::instances::tim8;
+
+#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[allow(non_snake_case)]
+pub struct Peripherals {
+    pub FSMC: fsmc::Instance,
+    pub PWR: pwr::Instance,
+    pub RCC: rcc::Instance,
+    pub GPIOA: gpio::Instance,
+    pub GPIOB: gpio::Instance,
+    pub GPIOC: gpio::Instance,
+    pub GPIOD: gpio::Instance,
+    pub GPIOE: gpio::Instance,
+    pub GPIOF: gpio::Instance,
+    pub GPIOG: gpio::Instance,
+    pub AFIO: afio::Instance,
+    pub EXTI: exti::Instance,
+    pub DMA1: dma::Instance,
+    pub DMA2: dma::Instance,
+    pub RTC: rtc::Instance,
+    pub IWDG: iwdg::Instance,
+    pub WWDG: wwdg::Instance,
+    pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
+    pub TIM5: tim5::Instance,
+    pub TIM9: tim9::Instance,
+    pub TIM12: tim12::Instance,
+    pub TIM10: tim10::Instance,
+    pub TIM11: tim11::Instance,
+    pub TIM13: tim13::Instance,
+    pub TIM14: tim14::Instance,
+    pub TIM6: tim6::Instance,
+    pub TIM7: tim7::Instance,
+    pub I2C1: i2c::Instance,
+    pub I2C2: i2c::Instance,
+    pub SPI1: spi::Instance,
+    pub SPI2: spi::Instance,
+    pub SPI3: spi::Instance,
+    pub USART1: usart::Instance,
+    pub USART2: usart::Instance,
+    pub USART3: usart::Instance,
+    pub DAC: dac::Instance,
+    pub DBGMCU: dbgmcu::Instance,
+    pub UART4: uart::Instance,
+    pub UART5: uart::Instance,
+    pub CRC: crc::Instance,
+    pub FLASH: flash::Instance,
+    pub BKP: bkp::Instance,
+    pub ADC1: adc1::Instance,
+    pub OTG_FS_DEVICE: otg_fs_device::Instance,
+    pub OTG_FS_GLOBAL: otg_fs_global::Instance,
+    pub OTG_FS_HOST: otg_fs_host::Instance,
+    pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
+    pub CAN1: can::Instance,
+    pub CAN2: can::Instance,
+    pub Ethernet_MMC: ethernet_mmc::Instance,
+    pub Ethernet_MAC: ethernet_mac::Instance,
+    pub Ethernet_PTP: ethernet_ptp::Instance,
+    pub Ethernet_DMA: ethernet_dma::Instance,
+    pub USB: usb::Instance,
+    pub ADC2: adc::Instance,
+    pub ADC3: adc::Instance,
+    pub TIM1: tim1::Instance,
+    pub TIM8: tim8::Instance,
+    pub SDIO: sdio::Instance,
+    pub NVIC: nvic::Instance,
+    pub MPU: mpu::Instance,
+    pub SCB_ACTRL: scb_actrl::Instance,
+    pub NVIC_STIR: nvic_stir::Instance,
+    pub SCB: scb::Instance,
+    pub STK: stk::Instance,
+}
+
+#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[allow(non_snake_case)]
+pub struct Peripherals {}
+
+#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+impl Peripherals {
+    pub unsafe fn steal() -> Self {
+        Peripherals {
+            FSMC: fsmc::FSMC::steal(),
+            PWR: pwr::PWR::steal(),
+            RCC: rcc::RCC::steal(),
+            GPIOA: gpio::GPIOA::steal(),
+            GPIOB: gpio::GPIOB::steal(),
+            GPIOC: gpio::GPIOC::steal(),
+            GPIOD: gpio::GPIOD::steal(),
+            GPIOE: gpio::GPIOE::steal(),
+            GPIOF: gpio::GPIOF::steal(),
+            GPIOG: gpio::GPIOG::steal(),
+            AFIO: afio::AFIO::steal(),
+            EXTI: exti::EXTI::steal(),
+            DMA1: dma::DMA1::steal(),
+            DMA2: dma::DMA2::steal(),
+            RTC: rtc::RTC::steal(),
+            IWDG: iwdg::IWDG::steal(),
+            WWDG: wwdg::WWDG::steal(),
+            TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
+            TIM5: tim5::TIM5::steal(),
+            TIM9: tim9::TIM9::steal(),
+            TIM12: tim12::TIM12::steal(),
+            TIM10: tim10::TIM10::steal(),
+            TIM11: tim11::TIM11::steal(),
+            TIM13: tim13::TIM13::steal(),
+            TIM14: tim14::TIM14::steal(),
+            TIM6: tim6::TIM6::steal(),
+            TIM7: tim7::TIM7::steal(),
+            I2C1: i2c::I2C1::steal(),
+            I2C2: i2c::I2C2::steal(),
+            SPI1: spi::SPI1::steal(),
+            SPI2: spi::SPI2::steal(),
+            SPI3: spi::SPI3::steal(),
+            USART1: usart::USART1::steal(),
+            USART2: usart::USART2::steal(),
+            USART3: usart::USART3::steal(),
+            DAC: dac::DAC::steal(),
+            DBGMCU: dbgmcu::DBGMCU::steal(),
+            UART4: uart::UART4::steal(),
+            UART5: uart::UART5::steal(),
+            CRC: crc::CRC::steal(),
+            FLASH: flash::FLASH::steal(),
+            BKP: bkp::BKP::steal(),
+            ADC1: adc1::ADC1::steal(),
+            OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
+            OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
+            OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
+            OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),
+            CAN1: can::CAN1::steal(),
+            CAN2: can::CAN2::steal(),
+            Ethernet_MMC: ethernet_mmc::Ethernet_MMC::steal(),
+            Ethernet_MAC: ethernet_mac::Ethernet_MAC::steal(),
+            Ethernet_PTP: ethernet_ptp::Ethernet_PTP::steal(),
+            Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
+            USB: usb::USB::steal(),
+            ADC2: adc::ADC2::steal(),
+            ADC3: adc::ADC3::steal(),
+            TIM1: tim1::TIM1::steal(),
+            TIM8: tim8::TIM8::steal(),
+            SDIO: sdio::SDIO::steal(),
+            NVIC: nvic::NVIC::steal(),
+            MPU: mpu::MPU::steal(),
+            SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
+            SCB: scb::SCB::steal(),
+            STK: stk::STK::steal(),
+        }
+    }
+}
+
+#[cfg(all(feature = "rtfm", feature = "nosync"))]
+impl Peripherals {
+    pub fn steal() -> Self {
+        Peripherals {}
+    }
+}

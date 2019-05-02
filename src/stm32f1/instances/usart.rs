@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32f100, stm32f101, stm32f103, stm32f107
+//! Used by: stm32f100, stm32f101, stm32f102, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
 pub use stm32f1::peripherals::usart::Instance;
@@ -83,6 +83,18 @@ pub mod USART1 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USART1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART1_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -172,6 +184,18 @@ pub mod USART2 {
             }
         });
     }
+
+    /// Unsafely steal USART2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USART2
@@ -259,6 +283,18 @@ pub mod USART3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USART3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART3_TAKEN = true;
+        INSTANCE
     }
 }
 

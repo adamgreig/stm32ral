@@ -335,7 +335,7 @@ pub mod MISR {
 }
 
 /// key registers
-pub mod K0LR {
+pub mod KLR0 {
 
     /// b224
     pub mod b2 {
@@ -353,7 +353,7 @@ pub mod K0LR {
 }
 
 /// key registers
-pub mod K0RR {
+pub mod KRR0 {
 
     /// b192
     pub mod b {
@@ -371,50 +371,37 @@ pub mod K0RR {
 }
 
 /// key registers
-pub mod K1LR {
-
-    /// b160
-    pub mod b1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod KLR1 {
+    pub use super::KLR0::b2;
 }
 
 /// key registers
-pub mod K1RR {
-    pub use super::K1LR::b1;
+pub mod KRR1 {
+    pub use super::KRR0::b;
 }
 
 /// key registers
-pub mod K2LR {
-    pub use super::K0RR::b;
+pub mod KLR2 {
+    pub use super::KLR0::b2;
 }
 
 /// key registers
-pub mod K2RR {
-    pub use super::K0RR::b;
+pub mod KRR2 {
+    pub use super::KRR0::b;
 }
 
 /// key registers
-pub mod K3LR {
-    pub use super::K0RR::b;
+pub mod KLR3 {
+    pub use super::KLR0::b2;
 }
 
 /// key registers
-pub mod K3RR {
-    pub use super::K0RR::b;
+pub mod KRR3 {
+    pub use super::KRR0::b;
 }
 
 /// initialization vector registers
-pub mod IV0LR {
+pub mod IVLR0 {
 
     /// IV31
     pub mod IV {
@@ -432,18 +419,18 @@ pub mod IV0LR {
 }
 
 /// initialization vector registers
-pub mod IV0RR {
-    pub use super::IV0LR::IV;
+pub mod IVRR0 {
+    pub use super::IVLR0::IV;
 }
 
 /// initialization vector registers
-pub mod IV1LR {
-    pub use super::IV0LR::IV;
+pub mod IVLR1 {
+    pub use super::IVLR0::IV;
 }
 
 /// initialization vector registers
-pub mod IV1RR {
-    pub use super::IV0LR::IV;
+pub mod IVRR1 {
+    pub use super::IVLR0::IV;
 }
 pub struct RegisterBlock {
     /// control register
@@ -471,40 +458,40 @@ pub struct RegisterBlock {
     pub MISR: RORegister<u32>,
 
     /// key registers
-    pub K0LR: WORegister<u32>,
+    pub KLR0: WORegister<u32>,
 
     /// key registers
-    pub K0RR: WORegister<u32>,
+    pub KRR0: WORegister<u32>,
 
     /// key registers
-    pub K1LR: WORegister<u32>,
+    pub KLR1: WORegister<u32>,
 
     /// key registers
-    pub K1RR: WORegister<u32>,
+    pub KRR1: WORegister<u32>,
 
     /// key registers
-    pub K2LR: WORegister<u32>,
+    pub KLR2: WORegister<u32>,
 
     /// key registers
-    pub K2RR: WORegister<u32>,
+    pub KRR2: WORegister<u32>,
 
     /// key registers
-    pub K3LR: WORegister<u32>,
+    pub KLR3: WORegister<u32>,
 
     /// key registers
-    pub K3RR: WORegister<u32>,
+    pub KRR3: WORegister<u32>,
 
     /// initialization vector registers
-    pub IV0LR: RWRegister<u32>,
+    pub IVLR0: RWRegister<u32>,
 
     /// initialization vector registers
-    pub IV0RR: RWRegister<u32>,
+    pub IVRR0: RWRegister<u32>,
 
     /// initialization vector registers
-    pub IV1LR: RWRegister<u32>,
+    pub IVLR1: RWRegister<u32>,
 
     /// initialization vector registers
-    pub IV1RR: RWRegister<u32>,
+    pub IVRR1: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR: u32,
@@ -515,18 +502,18 @@ pub struct ResetValues {
     pub IMSCR: u32,
     pub RISR: u32,
     pub MISR: u32,
-    pub K0LR: u32,
-    pub K0RR: u32,
-    pub K1LR: u32,
-    pub K1RR: u32,
-    pub K2LR: u32,
-    pub K2RR: u32,
-    pub K3LR: u32,
-    pub K3RR: u32,
-    pub IV0LR: u32,
-    pub IV0RR: u32,
-    pub IV1LR: u32,
-    pub IV1RR: u32,
+    pub KLR0: u32,
+    pub KRR0: u32,
+    pub KLR1: u32,
+    pub KRR1: u32,
+    pub KLR2: u32,
+    pub KRR2: u32,
+    pub KLR3: u32,
+    pub KRR3: u32,
+    pub IVLR0: u32,
+    pub IVRR0: u32,
+    pub IVLR1: u32,
+    pub IVRR1: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -541,3 +528,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

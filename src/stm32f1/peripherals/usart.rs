@@ -215,8 +215,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: USART prescaler and outputs disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Word length
@@ -229,8 +236,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 8 data bits
+            pub const M8: u32 = 0b0;
+
+            /// 0b1: 9 data bits
+            pub const M9: u32 = 0b1;
+        }
     }
 
     /// Wakeup method
@@ -243,8 +257,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: USART wakeup on idle line
+            pub const IdleLine: u32 = 0b0;
+
+            /// 0b1: USART wakeup on address mark
+            pub const AddressMark: u32 = 0b1;
+        }
     }
 
     /// Parity control enable
@@ -257,8 +278,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Parity control disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Parity control enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Parity selection
@@ -271,8 +299,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Even parity
+            pub const Even: u32 = 0b0;
+
+            /// 0b1: Odd parity
+            pub const Odd: u32 = 0b1;
+        }
     }
 
     /// PE interrupt enable
@@ -285,8 +320,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: PE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// TXE interrupt enable
@@ -299,8 +341,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TXE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TXE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transmission complete interrupt enable
@@ -313,8 +362,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RXNE interrupt enable
@@ -327,8 +383,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RXNE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: RXNE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// IDLE interrupt enable
@@ -341,8 +404,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: IDLE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: IDLE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transmitter enable
@@ -355,8 +425,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transmitter disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Transmitted enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Receiver enable
@@ -369,8 +446,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receiver disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Receiver enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Receiver wakeup
@@ -383,8 +467,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receiver in active mode
+            pub const Active: u32 = 0b0;
+
+            /// 0b1: Receiver in mute mode
+            pub const Mute: u32 = 0b1;
+        }
     }
 
     /// Send break
@@ -397,8 +488,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No break character is transmitted
+            pub const NoBreak: u32 = 0b0;
+
+            /// 0b1: Break character transmitted
+            pub const Break: u32 = 0b1;
+        }
     }
 }
 
@@ -415,8 +513,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LIN mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: LIN mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// STOP bits
@@ -429,8 +534,21 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 1 stop bit
+            pub const Stop1: u32 = 0b00;
+
+            /// 0b01: 0.5 stop bits
+            pub const Stop0p5: u32 = 0b01;
+
+            /// 0b10: 2 stop bits
+            pub const Stop2: u32 = 0b10;
+
+            /// 0b11: 1.5 stop bits
+            pub const Stop1p5: u32 = 0b11;
+        }
     }
 
     /// Clock enable
@@ -443,8 +561,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CK pin disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CK pin enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Clock polarity
@@ -457,8 +582,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Steady low value on CK pin outside transmission window
+            pub const Low: u32 = 0b0;
+
+            /// 0b1: Steady high value on CK pin outside transmission window
+            pub const High: u32 = 0b1;
+        }
     }
 
     /// Clock phase
@@ -471,8 +603,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The first clock transition is the first data capture edge
+            pub const First: u32 = 0b0;
+
+            /// 0b1: The second clock transition is the first data capture edge
+            pub const Second: u32 = 0b1;
+        }
     }
 
     /// Last bit clock pulse
@@ -499,8 +638,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LIN break detection interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: LIN break detection interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// lin break detection length
@@ -513,8 +659,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 10-bit break detection
+            pub const LBDL10: u32 = 0b0;
+
+            /// 0b1: 11-bit break detection
+            pub const LBDL11: u32 = 0b1;
+        }
     }
 
     /// Address of the USART node
@@ -545,8 +698,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CTS interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CTS interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CTS enable
@@ -559,8 +719,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CTS hardware flow control disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CTS hardware flow control enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RTS enable
@@ -573,8 +740,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RTS hardware flow control disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: RTS hardware flow control enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMA enable transmitter
@@ -587,8 +761,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA mode is disabled for transmission
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA mode is enabled for transmission
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMA enable receiver
@@ -601,8 +782,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA mode is disabled for reception
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA mode is enabled for reception
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Smartcard mode enable
@@ -615,8 +803,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Smartcard mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Smartcard mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Smartcard NACK enable
@@ -629,8 +824,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: NACK transmission in case of parity error is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: NACK transmission during parity error is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Half-duplex selection
@@ -643,8 +845,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Half duplex mode is not selected
+            pub const FullDuplex: u32 = 0b0;
+
+            /// 0b1: Half duplex mode is selected
+            pub const HalfDuplex: u32 = 0b1;
+        }
     }
 
     /// IrDA low-power
@@ -657,8 +866,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal mode
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Low-power mode
+            pub const LowPower: u32 = 0b1;
+        }
     }
 
     /// IrDA mode enable
@@ -671,8 +887,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: IrDA disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: IrDA enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt enable
@@ -685,8 +908,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Error interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Error interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -765,3 +995,5 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}

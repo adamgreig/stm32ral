@@ -8,8 +8,8 @@
 pub use stm32l4::peripherals::sai1::Instance;
 pub use stm32l4::peripherals::sai1::{RegisterBlock, ResetValues};
 pub use stm32l4::peripherals::sai1::{
-    ACLRFR, ACR1, ACR2, ADR, AFRCR, AIM, ASLOTR, ASR, BCLRFR, BCR1, BCR2, BDR, BFRCR, BIM, BSLOTR,
-    BSR,
+    CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, IMA, IMB, SLOTRA, SLOTRB, SRA,
+    SRB,
 };
 
 /// Access functions for the SAI1 peripheral instance
@@ -30,22 +30,22 @@ pub mod SAI1 {
 
     /// Reset values for each field in SAI1
     pub const reset: ResetValues = ResetValues {
-        BCR1: 0x00000040,
-        BCR2: 0x00000000,
-        BFRCR: 0x00000007,
-        BSLOTR: 0x00000000,
-        BIM: 0x00000000,
-        BSR: 0x00000000,
-        BCLRFR: 0x00000000,
-        BDR: 0x00000000,
-        ACR1: 0x00000040,
-        ACR2: 0x00000000,
-        AFRCR: 0x00000007,
-        ASLOTR: 0x00000000,
-        AIM: 0x00000000,
-        ASR: 0x00000000,
-        ACLRFR: 0x00000000,
-        ADR: 0x00000000,
+        CR1A: 0x00000040,
+        CR2A: 0x00000000,
+        FRCRA: 0x00000007,
+        SLOTRA: 0x00000000,
+        IMA: 0x00000000,
+        SRA: 0x00000000,
+        CLRFRA: 0x00000000,
+        DRA: 0x00000000,
+        CR1B: 0x00000040,
+        CR2B: 0x00000000,
+        FRCRB: 0x00000007,
+        SLOTRB: 0x00000000,
+        IMB: 0x00000000,
+        SRB: 0x00000000,
+        CLRFRB: 0x00000000,
+        DRB: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -96,6 +96,18 @@ pub mod SAI1 {
             }
         });
     }
+
+    /// Unsafely steal SAI1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SAI1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SAI1
@@ -127,22 +139,22 @@ pub mod SAI2 {
 
     /// Reset values for each field in SAI2
     pub const reset: ResetValues = ResetValues {
-        BCR1: 0x00000040,
-        BCR2: 0x00000000,
-        BFRCR: 0x00000007,
-        BSLOTR: 0x00000000,
-        BIM: 0x00000000,
-        BSR: 0x00000000,
-        BCLRFR: 0x00000000,
-        BDR: 0x00000000,
-        ACR1: 0x00000040,
-        ACR2: 0x00000000,
-        AFRCR: 0x00000007,
-        ASLOTR: 0x00000000,
-        AIM: 0x00000000,
-        ASR: 0x00000000,
-        ACLRFR: 0x00000000,
-        ADR: 0x00000000,
+        CR1A: 0x00000040,
+        CR2A: 0x00000000,
+        FRCRA: 0x00000007,
+        SLOTRA: 0x00000000,
+        IMA: 0x00000000,
+        SRA: 0x00000000,
+        CLRFRA: 0x00000000,
+        DRA: 0x00000000,
+        CR1B: 0x00000040,
+        CR2B: 0x00000000,
+        FRCRB: 0x00000007,
+        SLOTRB: 0x00000000,
+        IMB: 0x00000000,
+        SRB: 0x00000000,
+        CLRFRB: 0x00000000,
+        DRB: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -192,6 +204,18 @@ pub mod SAI2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SAI2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SAI2_TAKEN = true;
+        INSTANCE
     }
 }
 

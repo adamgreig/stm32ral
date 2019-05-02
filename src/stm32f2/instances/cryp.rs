@@ -8,8 +8,8 @@
 pub use stm32f2::peripherals::cryp::Instance;
 pub use stm32f2::peripherals::cryp::{RegisterBlock, ResetValues};
 pub use stm32f2::peripherals::cryp::{
-    CR, DIN, DMACR, DOUT, IMSCR, IV0LR, IV0RR, IV1LR, IV1RR, K0LR, K0RR, K1LR, K1RR, K2LR, K2RR,
-    K3LR, K3RR, MISR, RISR, SR,
+    CR, DIN, DMACR, DOUT, IMSCR, IVLR0, IVLR1, IVRR0, IVRR1, KLR0, KLR1, KLR2, KLR3, KRR0, KRR1,
+    KRR2, KRR3, MISR, RISR, SR,
 };
 
 /// Access functions for the CRYP peripheral instance
@@ -38,18 +38,18 @@ pub mod CRYP {
         IMSCR: 0x00000000,
         RISR: 0x00000001,
         MISR: 0x00000000,
-        K0LR: 0x00000000,
-        K0RR: 0x00000000,
-        K1LR: 0x00000000,
-        K1RR: 0x00000000,
-        K2LR: 0x00000000,
-        K2RR: 0x00000000,
-        K3LR: 0x00000000,
-        K3RR: 0x00000000,
-        IV0LR: 0x00000000,
-        IV0RR: 0x00000000,
-        IV1LR: 0x00000000,
-        IV1RR: 0x00000000,
+        KLR0: 0x00000000,
+        KRR0: 0x00000000,
+        KLR1: 0x00000000,
+        KRR1: 0x00000000,
+        KLR2: 0x00000000,
+        KRR2: 0x00000000,
+        KLR3: 0x00000000,
+        KRR3: 0x00000000,
+        IVLR0: 0x00000000,
+        IVRR0: 0x00000000,
+        IVLR1: 0x00000000,
+        IVRR1: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -99,6 +99,18 @@ pub mod CRYP {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CRYP
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CRYP_TAKEN = true;
+        INSTANCE
     }
 }
 
