@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32l4x3, stm32l4x5, stm32l4x6
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Comparator 1 control and status register
 pub mod COMP1_CSR {

@@ -5,9 +5,9 @@
 //! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::otg_fs_host_v2::Instance;
-pub use stm32f7::peripherals::otg_fs_host_v2::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::otg_fs_host_v2::{
+pub use crate::stm32f7::peripherals::otg_fs_host_v2::Instance;
+pub use crate::stm32f7::peripherals::otg_fs_host_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::otg_fs_host_v2::{
     OTG_FS_HAINT, OTG_FS_HAINTMSK, OTG_FS_HCCHAR0, OTG_FS_HCCHAR1, OTG_FS_HCCHAR10,
     OTG_FS_HCCHAR11, OTG_FS_HCCHAR2, OTG_FS_HCCHAR3, OTG_FS_HCCHAR4, OTG_FS_HCCHAR5,
     OTG_FS_HCCHAR6, OTG_FS_HCCHAR7, OTG_FS_HCCHAR8, OTG_FS_HCCHAR9, OTG_FS_HCFG, OTG_FS_HCINT0,
@@ -22,9 +22,6 @@ pub use stm32f7::peripherals::otg_fs_host_v2::{
 
 /// Access functions for the OTG_FS_HOST peripheral instance
 pub mod OTG_FS_HOST {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,15 +5,12 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::rng::Instance;
-pub use stm32l4::peripherals::rng::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::rng::{CR, DR, SR};
+pub use crate::stm32l4::peripherals::rng::Instance;
+pub use crate::stm32l4::peripherals::rng::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::rng::{CR, DR, SR};
 
 /// Access functions for the RNG peripheral instance
 pub mod RNG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

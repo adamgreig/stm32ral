@@ -5,15 +5,12 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::lptim::Instance;
-pub use stm32l0::peripherals::lptim::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::lptim::{ARR, CFGR, CMP, CNT, CR, ICR, IER, ISR};
+pub use crate::stm32l0::peripherals::lptim::Instance;
+pub use crate::stm32l0::peripherals::lptim::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::lptim::{ARR, CFGR, CMP, CNT, CR, ICR, IER, ISR};
 
 /// Access functions for the LPTIM peripheral instance
 pub mod LPTIM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! DMAMUX
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// DMAMux - DMA request line multiplexer channel x control register
 pub mod CCR0 {
@@ -500,9 +500,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DMAMUX2 peripheral instance
 pub mod DMAMUX2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

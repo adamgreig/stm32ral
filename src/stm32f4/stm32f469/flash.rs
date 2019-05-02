@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! FLASH
 
+use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RWRegister, WORegister};
 
 /// Flash access control register
 pub mod ACR {
@@ -614,9 +614,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the FLASH peripheral instance
 pub mod FLASH {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

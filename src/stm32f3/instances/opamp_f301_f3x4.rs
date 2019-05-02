@@ -5,15 +5,12 @@
 //! Used by: stm32f301, stm32f3x4
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::opamp_v1::Instance;
-pub use stm32f3::peripherals::opamp_v1::OPAMP2_CSR;
-pub use stm32f3::peripherals::opamp_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::opamp_v1::Instance;
+pub use crate::stm32f3::peripherals::opamp_v1::OPAMP2_CSR;
+pub use crate::stm32f3::peripherals::opamp_v1::{RegisterBlock, ResetValues};
 
 /// Access functions for the OPAMP peripheral instance
 pub mod OPAMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

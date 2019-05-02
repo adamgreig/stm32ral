@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f303, stm32f3x8
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// configuration register 1
 pub mod CFGR1 {

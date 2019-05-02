@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Analog to digital converter
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// ADC interrupt and status register
 pub mod ISR {
@@ -2263,9 +2263,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the ADC peripheral instance
 pub mod ADC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

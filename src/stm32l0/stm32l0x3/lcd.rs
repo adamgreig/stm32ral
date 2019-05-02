@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Liquid crystal display controller
 
+use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RWRegister, WORegister};
 
 /// control register
 pub mod CR {
@@ -1520,9 +1520,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the LCD peripheral instance
 pub mod LCD {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

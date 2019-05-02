@@ -5,18 +5,15 @@
 //! Used by: stm32f215, stm32f217
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f2::peripherals::cryp::Instance;
-pub use stm32f2::peripherals::cryp::{RegisterBlock, ResetValues};
-pub use stm32f2::peripherals::cryp::{
+pub use crate::stm32f2::peripherals::cryp::Instance;
+pub use crate::stm32f2::peripherals::cryp::{RegisterBlock, ResetValues};
+pub use crate::stm32f2::peripherals::cryp::{
     CR, DIN, DMACR, DOUT, IMSCR, IVLR0, IVLR1, IVRR0, IVRR1, KLR0, KLR1, KLR2, KLR3, KRR0, KRR1,
     KRR2, KRR3, MISR, RISR, SR,
 };
 
 /// Access functions for the CRYP peripheral instance
 pub mod CRYP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

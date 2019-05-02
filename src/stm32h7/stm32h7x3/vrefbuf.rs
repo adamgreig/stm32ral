@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! VREFBUF
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// VREFBUF control and status register
 pub mod CSR {
@@ -112,9 +112,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the VREFBUF peripheral instance
 pub mod VREFBUF {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

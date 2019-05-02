@@ -5,9 +5,9 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::dmamux::Instance;
-pub use stm32g0::peripherals::dmamux::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::dmamux::{
+pub use crate::stm32g0::peripherals::dmamux::Instance;
+pub use crate::stm32g0::peripherals::dmamux::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::dmamux::{
     DMAMUX_C0CR, DMAMUX_C1CR, DMAMUX_C2CR, DMAMUX_C3CR, DMAMUX_C4CR, DMAMUX_C5CR, DMAMUX_C6CR,
     DMAMUX_CFR, DMAMUX_CSR, DMAMUX_HWCFGR1, DMAMUX_HWCFGR2, DMAMUX_IPIDR, DMAMUX_RG0CR,
     DMAMUX_RG1CR, DMAMUX_RG2CR, DMAMUX_RG3CR, DMAMUX_RGCFR, DMAMUX_RGSR, DMAMUX_SIDR, DMAMUX_VERR,
@@ -15,9 +15,6 @@ pub use stm32g0::peripherals::dmamux::{
 
 /// Access functions for the DMAMUX peripheral instance
 pub mod DMAMUX {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

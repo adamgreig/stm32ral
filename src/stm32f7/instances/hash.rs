@@ -5,9 +5,9 @@
 //! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::hash::Instance;
-pub use stm32f7::peripherals::hash::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::hash::{
+pub use crate::stm32f7::peripherals::hash::Instance;
+pub use crate::stm32f7::peripherals::hash::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::hash::{
     CR, CSR0, CSR1, CSR10, CSR11, CSR12, CSR13, CSR14, CSR15, CSR16, CSR17, CSR18, CSR19, CSR2,
     CSR20, CSR21, CSR22, CSR23, CSR24, CSR25, CSR26, CSR27, CSR28, CSR29, CSR3, CSR30, CSR31,
     CSR32, CSR33, CSR34, CSR35, CSR36, CSR37, CSR38, CSR39, CSR4, CSR40, CSR41, CSR42, CSR43,
@@ -18,9 +18,6 @@ pub use stm32f7::peripherals::hash::{
 
 /// Access functions for the HASH peripheral instance
 pub mod HASH {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

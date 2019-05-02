@@ -37,20 +37,17 @@ CRATE_LIB_PREAMBLE = """\
 
 #![no_std]
 
-#[cfg(not(feature="nosync"))]
-extern crate cortex_m as external_cortex_m;
-
 #[cfg(feature="rt")]
 extern crate cortex_m_rt;
 
-#[macro_use]
 mod register;
 
 #[cfg(feature="rt")]
 pub use cortex_m_rt::interrupt;
 
-pub use register::{RORegister, WORegister, RWRegister};
-pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
+pub use crate::register::{RORegister, UnsafeRORegister};
+pub use crate::register::{WORegister, UnsafeWORegister};
+pub use crate::register::{RWRegister, UnsafeRWRegister};
 """
 
 
@@ -67,6 +64,7 @@ readme = "README.md"
 keywords = ["stm32", "embedded", "no_std"]
 categories = ["embedded", "no-std"]
 license = "MIT/Apache-2.0"
+edition = "2018"
 
 # Change version in stm32ral.py, not in Cargo.toml!
 version = "0.1.2"
@@ -78,12 +76,12 @@ no-default-features = true
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
 bare-metal = "0.2.4"
-cortex-m = "0.6.0"
-cortex-m-rt = { version="0.6.8", optional=true }
+external_cortex_m = { package = "cortex-m", version = "0.6.0" }
+cortex-m-rt = { version = "0.6.8", optional = true }
 
 [features]
 rt = ["cortex-m-rt/device"]
-inline-asm = ["cortex-m/inline-asm"]
+inline-asm = ["external_cortex_m/inline-asm"]
 rtfm = []
 default = []
 nosync = []
@@ -615,9 +613,6 @@ class PeripheralInstance(Node):
         return f"""
         /// Access functions for the {self.name} peripheral instance
         pub mod {self.name} {{
-            #[cfg(not(feature="nosync"))]
-            use external_cortex_m;
-
             use super::ResetValues;
 
             #[cfg(not(feature="nosync"))]
@@ -828,7 +823,7 @@ class PeripheralPrototype(Node):
             "",
             "#[cfg(not(feature=\"nosync\"))]",
             "use core::marker::PhantomData;",
-            f"use {{{regtypes}}};",
+            f"use crate::{{{regtypes}}};",
             "",
         ])
         modules = "\n".join(r.to_rust_mod() for r in self.registers)
@@ -990,13 +985,13 @@ class PeripheralPrototypeLink(Node):
             "#![allow(non_camel_case_types)]",
             f"//! {desc}",
             "",
-            f"pub use {self.path}::{{RegisterBlock, ResetValues}};",
+            f"pub use crate::{self.path}::{{RegisterBlock, ResetValues}};",
             "#[cfg(not(feature = \"nosync\"))]",
-            f"pub use {self.path}::{{Instance}};",
+            f"pub use crate::{self.path}::{{Instance}};",
             "",
         ])
         registers = ", ".join(m.name for m in self.prototype.registers)
-        registers = f"pub use {self.path}::{{{registers}}};\n"
+        registers = f"pub use crate::{self.path}::{{{registers}}};\n"
         instances = "\n".join(i.to_rust(self.registers)
                               for i in sorted(self.instances))
         fname = os.path.join(path, f"{self.name}.rs")

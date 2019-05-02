@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! General-purpose I/Os
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// GPIO port mode register
 pub mod MODER {
@@ -2612,9 +2612,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the GPIOI peripheral instance
 pub mod GPIOI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

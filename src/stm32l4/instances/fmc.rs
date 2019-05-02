@@ -5,18 +5,15 @@
 //! Used by: stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::fmc::Instance;
-pub use stm32l4::peripherals::fmc::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::fmc::{
+pub use crate::stm32l4::peripherals::fmc::Instance;
+pub use crate::stm32l4::peripherals::fmc::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::fmc::{
     BCR1, BCR2, BCR3, BCR4, BTR1, BTR2, BTR3, BTR4, BWTR1, BWTR2, BWTR3, BWTR4, ECCR, PATT, PCR,
     PMEM, SR,
 };
 
 /// Access functions for the FMC peripheral instance
 pub mod FMC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

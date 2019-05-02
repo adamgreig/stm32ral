@@ -5,9 +5,9 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::dac::Instance;
-pub use stm32g0::peripherals::dac::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::dac::{
+pub use crate::stm32g0::peripherals::dac::Instance;
+pub use crate::stm32g0::peripherals::dac::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::dac::{
     DAC_CCR, DAC_CR, DAC_DHR12L1, DAC_DHR12L2, DAC_DHR12LD, DAC_DHR12R1, DAC_DHR12R2, DAC_DHR12RD,
     DAC_DHR8R1, DAC_DHR8R2, DAC_DHR8RD, DAC_DOR1, DAC_DOR2, DAC_MCR, DAC_SHHR, DAC_SHRR, DAC_SHSR1,
     DAC_SHSR2, DAC_SR, DAC_SWTRGR, IPIDR, IP_HWCFGR0, SIDR, VERR,
@@ -15,9 +15,6 @@ pub use stm32g0::peripherals::dac::{
 
 /// Access functions for the DAC peripheral instance
 pub mod DAC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

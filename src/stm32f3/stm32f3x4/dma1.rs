@@ -3,18 +3,15 @@
 //! DMA controller 1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::dma::Instance;
-pub use stm32f3::peripherals::dma::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::dma::{
+pub use crate::stm32f3::peripherals::dma::Instance;
+pub use crate::stm32f3::peripherals::dma::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::dma::{
     CR1, CR2, CR3, CR4, CR5, CR6, CR7, IFCR, ISR, MAR1, MAR2, MAR3, MAR4, MAR5, MAR6, MAR7, NDTR1,
     NDTR2, NDTR3, NDTR4, NDTR5, NDTR6, NDTR7, PAR1, PAR2, PAR3, PAR4, PAR5, PAR6, PAR7,
 };
 
 /// Access functions for the DMA1 peripheral instance
 pub mod DMA1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

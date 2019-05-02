@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! DSI Host
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// DSI Host Version Register
 pub mod DSI_VR {
@@ -4658,9 +4658,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DSIHOST peripheral instance
 pub mod DSIHOST {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

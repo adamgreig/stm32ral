@@ -5,18 +5,15 @@
 //! Used by: stm32f413, stm32f429
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::sai::Instance;
-pub use stm32f4::peripherals::sai::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::sai::{
+pub use crate::stm32f4::peripherals::sai::Instance;
+pub use crate::stm32f4::peripherals::sai::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::sai::{
     CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, IMA, IMB, SLOTRA, SLOTRB, SRA,
     SRB,
 };
 
 /// Access functions for the SAI peripheral instance
 pub mod SAI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

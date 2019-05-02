@@ -5,18 +5,15 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::adc::Instance;
-pub use stm32g0::peripherals::adc::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::adc::{
+pub use crate::stm32g0::peripherals::adc::Instance;
+pub use crate::stm32g0::peripherals::adc::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::adc::{
     AWD1TR, AWD2CR, AWD2TR, AWD3CR, AWD3TR, CALFACT, CCR, CFGR1, CFGR2, CHSELR, CR, DR, HWCFGR0,
     HWCFGR1, HWCFGR2, HWCFGR3, HWCFGR4, HWCFGR5, HWCFGR6, IER, IPIDR, ISR, SIDR, SMPR, VERR,
 };
 
 /// Access functions for the ADC peripheral instance
 pub mod ADC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

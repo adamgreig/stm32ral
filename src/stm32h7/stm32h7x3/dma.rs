@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! DMA controller
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
 
 /// low interrupt status register
 pub mod LISR {
@@ -2362,9 +2362,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DMA1 peripheral instance
 pub mod DMA1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2507,9 +2504,6 @@ pub const DMA1: *const RegisterBlock = 0x40020000 as *const _;
 
 /// Access functions for the DMA2 peripheral instance
 pub mod DMA2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

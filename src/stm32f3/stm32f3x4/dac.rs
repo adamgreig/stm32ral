@@ -3,18 +3,15 @@
 //! Digital-to-analog converter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::dac1::Instance;
-pub use stm32f3::peripherals::dac1::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::dac1::{
+pub use crate::stm32f3::peripherals::dac1::Instance;
+pub use crate::stm32f3::peripherals::dac1::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::dac1::{
     CR, DHR12L1, DHR12L2, DHR12LD, DHR12R1, DHR12R2, DHR12RD, DHR8R1, DHR8R2, DHR8RD, DOR1, DOR2,
     SR, SWTRIGR,
 };
 
 /// Access functions for the DAC1 peripheral instance
 pub mod DAC1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -119,9 +116,6 @@ pub const DAC1: *const RegisterBlock = 0x40007400 as *const _;
 
 /// Access functions for the DAC2 peripheral instance
 pub mod DAC2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

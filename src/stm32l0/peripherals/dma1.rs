@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
 
 /// interrupt status register
 pub mod ISR {

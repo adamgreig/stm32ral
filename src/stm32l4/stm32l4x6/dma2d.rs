@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! DMA2D controller
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister};
 
 /// control register
 pub mod CR {
@@ -889,9 +889,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DMA2D peripheral instance
 pub mod DMA2D {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

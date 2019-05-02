@@ -5,15 +5,14 @@
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::dcmi::Instance;
-pub use stm32f4::peripherals::dcmi::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::dcmi::{CR, CWSIZE, CWSTRT, DR, ESCR, ESUR, ICR, IER, MIS, RIS, SR};
+pub use crate::stm32f4::peripherals::dcmi::Instance;
+pub use crate::stm32f4::peripherals::dcmi::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::dcmi::{
+    CR, CWSIZE, CWSTRT, DR, ESCR, ESUR, ICR, IER, MIS, RIS, SR,
+};
 
 /// Access functions for the DCMI peripheral instance
 pub mod DCMI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

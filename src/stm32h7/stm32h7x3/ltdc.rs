@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! LCD-TFT Controller
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
 
 /// Synchronization Size Configuration Register
 pub mod SSCR {
@@ -1306,9 +1306,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the LTDC peripheral instance
 pub mod LTDC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -38,8 +38,7 @@ Please consider trying it out and contributing or leaving feedback!
 ## Quick Example
 
 ```rust
-#[macro_use]
-extern crate stm32ral;
+use stm32ral::{read_reg, write_reg, modify_reg, reset_reg};
 use stm32ral::{rcc, gpio};
 
 // For safe access we have to first `take()` the peripheral instance.

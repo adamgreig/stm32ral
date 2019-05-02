@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// RTC time register
 pub mod TR {
@@ -2205,9 +2205,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the RTC peripheral instance
 pub mod RTC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

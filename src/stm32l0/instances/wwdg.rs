@@ -5,15 +5,12 @@
 //! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::wwdg::Instance;
-pub use stm32l0::peripherals::wwdg::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::wwdg::{CFR, CR, SR};
+pub use crate::stm32l0::peripherals::wwdg::Instance;
+pub use crate::stm32l0::peripherals::wwdg::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::wwdg::{CFR, CR, SR};
 
 /// Access functions for the WWDG peripheral instance
 pub mod WWDG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

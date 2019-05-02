@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! HSEM
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// HSEM register HSEM_R0 HSEM_R31
 pub mod R0 {
@@ -1860,9 +1860,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the HSEM peripheral instance
 pub mod HSEM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! AXI interconnect registers
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// AXI interconnect - peripheral ID4 register
 pub mod PERIPH_ID_4 {
@@ -787,9 +787,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the AXI peripheral instance
 pub mod AXI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

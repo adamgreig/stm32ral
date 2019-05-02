@@ -5,9 +5,9 @@
 //! Used by: stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::dsi::Instance;
-pub use stm32f7::peripherals::dsi::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::dsi::{
+pub use crate::stm32f7::peripherals::dsi::Instance;
+pub use crate::stm32f7::peripherals::dsi::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::dsi::{
     DSI_CCR, DSI_CLCR, DSI_CLTCR, DSI_CMCR, DSI_CR, DSI_DLTCR, DSI_FIR0, DSI_FIR1, DSI_GHCR,
     DSI_GPDR, DSI_GPSR, DSI_GVCIDR, DSI_IER0, DSI_IER1, DSI_ISR0, DSI_ISR1, DSI_LCCCR, DSI_LCCR,
     DSI_LCOLCR, DSI_LCVCIDR, DSI_LPCR, DSI_LPMCCR, DSI_LPMCR, DSI_LVCIDR, DSI_MCR, DSI_PCONFR,
@@ -21,9 +21,6 @@ pub use stm32f7::peripherals::dsi::{
 
 /// Access functions for the DSI peripheral instance
 pub mod DSI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

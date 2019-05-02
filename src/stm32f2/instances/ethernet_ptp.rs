@@ -5,18 +5,15 @@
 //! Used by: stm32f215, stm32f217
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f2::peripherals::ethernet_ptp::Instance;
-pub use stm32f2::peripherals::ethernet_ptp::{RegisterBlock, ResetValues};
-pub use stm32f2::peripherals::ethernet_ptp::{
+pub use crate::stm32f2::peripherals::ethernet_ptp::Instance;
+pub use crate::stm32f2::peripherals::ethernet_ptp::{RegisterBlock, ResetValues};
+pub use crate::stm32f2::peripherals::ethernet_ptp::{
     PTPPPSCR, PTPSSIR, PTPTSAR, PTPTSCR, PTPTSHR, PTPTSHUR, PTPTSLR, PTPTSLUR, PTPTSSR, PTPTTHR,
     PTPTTLR,
 };
 
 /// Access functions for the Ethernet_PTP peripheral instance
 pub mod Ethernet_PTP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

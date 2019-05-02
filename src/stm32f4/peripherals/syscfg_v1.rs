@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f401, stm32f411
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// memory remap register
 pub mod MEMRM {

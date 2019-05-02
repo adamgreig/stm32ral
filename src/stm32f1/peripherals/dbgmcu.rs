@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f100, stm32f101
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// DBGMCU_IDCODE
 pub mod IDCODE {

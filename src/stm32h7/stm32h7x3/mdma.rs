@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! MDMA
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// MDMA Global Interrupt/Status Register
 pub mod GISR0 {
@@ -5755,9 +5755,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the MDMA peripheral instance
 pub mod MDMA {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

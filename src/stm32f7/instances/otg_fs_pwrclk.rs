@@ -5,15 +5,12 @@
 //! Used by: stm32f7x2, stm32f7x3, stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::otg_fs_pwrclk::Instance;
-pub use stm32f7::peripherals::otg_fs_pwrclk::OTG_FS_PCGCCTL;
-pub use stm32f7::peripherals::otg_fs_pwrclk::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::otg_fs_pwrclk::Instance;
+pub use crate::stm32f7::peripherals::otg_fs_pwrclk::OTG_FS_PCGCCTL;
+pub use crate::stm32f7::peripherals::otg_fs_pwrclk::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG_FS_PWRCLK peripheral instance
 pub mod OTG_FS_PWRCLK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

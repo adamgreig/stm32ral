@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f412, stm32f413
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// OTG_FS control and status register (OTG_FS_GOTGCTL)
 pub mod FS_GOTGCTL {

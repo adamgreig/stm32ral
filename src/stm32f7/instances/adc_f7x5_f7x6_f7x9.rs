@@ -5,18 +5,15 @@
 //! Used by: stm32f7x5, stm32f7x6, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::adc_v2::Instance;
-pub use stm32f7::peripherals::adc_v2::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::adc_v2::{
+pub use crate::stm32f7::peripherals::adc_v2::Instance;
+pub use crate::stm32f7::peripherals::adc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::adc_v2::{
     CR1, CR2, DR, HTR, JDR1, JDR2, JDR3, JDR4, JOFR1, JOFR2, JOFR3, JOFR4, JSQR, LTR, SMPR1, SMPR2,
     SQR1, SQR2, SQR3, SR,
 };
 
 /// Access functions for the ADC1 peripheral instance
 pub mod ADC1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -127,9 +124,6 @@ pub const ADC1: *const RegisterBlock = 0x40012000 as *const _;
 
 /// Access functions for the ADC2 peripheral instance
 pub mod ADC2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -240,9 +234,6 @@ pub const ADC2: *const RegisterBlock = 0x40012100 as *const _;
 
 /// Access functions for the ADC3 peripheral instance
 pub mod ADC3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Memory protection unit
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// MPU type register
 pub mod MPU_TYPER {
@@ -332,9 +332,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the MPU peripheral instance
 pub mod MPU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

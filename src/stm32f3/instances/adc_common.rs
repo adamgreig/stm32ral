@@ -5,15 +5,12 @@
 //! Used by: stm32f302, stm32f303
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::adc_common::Instance;
-pub use stm32f3::peripherals::adc_common::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::adc_common::{CCR, CDR, CSR};
+pub use crate::stm32f3::peripherals::adc_common::Instance;
+pub use crate::stm32f3::peripherals::adc_common::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::adc_common::{CCR, CDR, CSR};
 
 /// Access functions for the ADC1_2 peripheral instance
 pub mod ADC1_2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -107,9 +104,6 @@ pub const ADC1_2: *const RegisterBlock = 0x50000300 as *const _;
 
 /// Access functions for the ADC3_4 peripheral instance
 pub mod ADC3_4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

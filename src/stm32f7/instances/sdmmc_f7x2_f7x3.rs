@@ -5,18 +5,15 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::sdmmc::Instance;
-pub use stm32f7::peripherals::sdmmc::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::sdmmc::{
+pub use crate::stm32f7::peripherals::sdmmc::Instance;
+pub use crate::stm32f7::peripherals::sdmmc::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::sdmmc::{
     ARG, CLKCR, CMD, DCOUNT, DCTRL, DLEN, DTIMER, FIFO, FIFOCNT, ICR, MASK, POWER, RESP1, RESP2,
     RESP3, RESP4, RESPCMD, STA,
 };
 
 /// Access functions for the SDMMC1 peripheral instance
 pub mod SDMMC1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -125,9 +122,6 @@ pub const SDMMC1: *const RegisterBlock = 0x40012c00 as *const _;
 
 /// Access functions for the SDMMC2 peripheral instance
 pub mod SDMMC2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

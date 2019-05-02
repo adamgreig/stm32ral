@@ -5,9 +5,9 @@
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::otg_fs_device_v2::Instance;
-pub use stm32f4::peripherals::otg_fs_device_v2::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::otg_fs_device_v2::{
+pub use crate::stm32f4::peripherals::otg_fs_device_v2::Instance;
+pub use crate::stm32f4::peripherals::otg_fs_device_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::otg_fs_device_v2::{
     DAINT, DAINTMSK, DIEPCTL0, DIEPCTL1, DIEPCTL2, DIEPCTL3, DIEPEMPMSK, DIEPINT0, DIEPINT1,
     DIEPINT2, DIEPINT3, DIEPMSK, DIEPTSIZ0, DIEPTSIZ1, DIEPTSIZ2, DIEPTSIZ3, DOEPCTL0, DOEPCTL1,
     DOEPCTL2, DOEPCTL3, DOEPINT0, DOEPINT1, DOEPINT2, DOEPINT3, DOEPMSK, DOEPTSIZ0, DOEPTSIZ1,
@@ -17,9 +17,6 @@ pub use stm32f4::peripherals::otg_fs_device_v2::{
 
 /// Access functions for the OTG_FS_DEVICE peripheral instance
 pub mod OTG_FS_DEVICE {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

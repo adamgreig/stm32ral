@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Nested vectored interrupt controller
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Software trigger interrupt register
 pub mod STIR {
@@ -48,9 +48,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the NVIC_STIR peripheral instance
 pub mod NVIC_STIR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

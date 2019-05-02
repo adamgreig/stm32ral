@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// OTG_FS power and clock gating control register (OTG_FS_PCGCCTL)
 pub mod FS_PCGCCTL {
@@ -76,9 +76,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the OTG_FS_PWRCLK peripheral instance
 pub mod OTG_FS_PWRCLK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Digital camera interface
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// control register 1
 pub mod CR {
@@ -870,9 +870,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DCMI peripheral instance
 pub mod DCMI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

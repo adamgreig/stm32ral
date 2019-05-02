@@ -5,15 +5,12 @@
 //! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x4, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::fpu::Instance;
-pub use stm32f3::peripherals::fpu::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::fpu::{FPCAR, FPCCR, FPSCR};
+pub use crate::stm32f3::peripherals::fpu::Instance;
+pub use crate::stm32f3::peripherals::fpu::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::fpu::{FPCAR, FPCCR, FPSCR};
 
 /// Access functions for the FPU peripheral instance
 pub mod FPU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

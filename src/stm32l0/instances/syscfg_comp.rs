@@ -5,17 +5,14 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::syscfg_comp::Instance;
-pub use stm32l0::peripherals::syscfg_comp::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::syscfg_comp::{
+pub use crate::stm32l0::peripherals::syscfg_comp::Instance;
+pub use crate::stm32l0::peripherals::syscfg_comp::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::syscfg_comp::{
     CFGR1, CFGR2, CFGR3, COMP1_CSR, COMP2_CSR, EXTICR1, EXTICR2, EXTICR3, EXTICR4,
 };
 
 /// Access functions for the SYSCFG_COMP peripheral instance
 pub mod SYSCFG_COMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

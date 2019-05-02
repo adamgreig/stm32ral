@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f100, stm32f102
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control register (DAC_CR)
 pub mod CR {

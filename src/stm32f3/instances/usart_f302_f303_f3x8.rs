@@ -5,15 +5,14 @@
 //! Used by: stm32f302, stm32f303, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::usart::Instance;
-pub use stm32f3::peripherals::usart::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::usart::{BRR, CR1, CR2, CR3, GTPR, ICR, ISR, RDR, RQR, RTOR, TDR};
+pub use crate::stm32f3::peripherals::usart::Instance;
+pub use crate::stm32f3::peripherals::usart::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::usart::{
+    BRR, CR1, CR2, CR3, GTPR, ICR, ISR, RDR, RQR, RTOR, TDR,
+};
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -115,9 +114,6 @@ pub const UART4: *const RegisterBlock = 0x40004c00 as *const _;
 
 /// Access functions for the UART5 peripheral instance
 pub mod UART5 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -219,9 +215,6 @@ pub const UART5: *const RegisterBlock = 0x40005000 as *const _;
 
 /// Access functions for the USART1 peripheral instance
 pub mod USART1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -323,9 +316,6 @@ pub const USART1: *const RegisterBlock = 0x40013800 as *const _;
 
 /// Access functions for the USART2 peripheral instance
 pub mod USART2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -427,9 +417,6 @@ pub const USART2: *const RegisterBlock = 0x40004400 as *const _;
 
 /// Access functions for the USART3 peripheral instance
 pub mod USART3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

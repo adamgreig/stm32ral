@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! JPEG
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// JPEG codec control register
 pub mod CONFR0 {
@@ -670,9 +670,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the JPEG peripheral instance
 pub mod JPEG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

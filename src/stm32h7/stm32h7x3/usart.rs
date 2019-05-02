@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control register 1
 pub mod CR1 {
@@ -2319,9 +2319,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2424,9 +2421,6 @@ pub const UART4: *const RegisterBlock = 0x40004c00 as *const _;
 
 /// Access functions for the UART5 peripheral instance
 pub mod UART5 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2529,9 +2523,6 @@ pub const UART5: *const RegisterBlock = 0x40005000 as *const _;
 
 /// Access functions for the UART7 peripheral instance
 pub mod UART7 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2634,9 +2625,6 @@ pub const UART7: *const RegisterBlock = 0x40007800 as *const _;
 
 /// Access functions for the UART8 peripheral instance
 pub mod UART8 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2739,9 +2727,6 @@ pub const UART8: *const RegisterBlock = 0x40007c00 as *const _;
 
 /// Access functions for the USART1 peripheral instance
 pub mod USART1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2844,9 +2829,6 @@ pub const USART1: *const RegisterBlock = 0x40011000 as *const _;
 
 /// Access functions for the USART2 peripheral instance
 pub mod USART2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2949,9 +2931,6 @@ pub const USART2: *const RegisterBlock = 0x40004400 as *const _;
 
 /// Access functions for the USART3 peripheral instance
 pub mod USART3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -3054,9 +3033,6 @@ pub const USART3: *const RegisterBlock = 0x40004800 as *const _;
 
 /// Access functions for the USART6 peripheral instance
 pub mod USART6 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,15 +5,12 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::crc::Instance;
-pub use stm32l4::peripherals::crc::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::crc::{CR, DR, IDR, INIT, POL};
+pub use crate::stm32l4::peripherals::crc::Instance;
+pub use crate::stm32l4::peripherals::crc::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::crc::{CR, DR, IDR, INIT, POL};
 
 /// Access functions for the CRC peripheral instance
 pub mod CRC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

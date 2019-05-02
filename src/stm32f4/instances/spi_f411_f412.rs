@@ -5,15 +5,14 @@
 //! Used by: stm32f411, stm32f412
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::spi::Instance;
-pub use stm32f4::peripherals::spi::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::spi::{CR1, CR2, CRCPR, DR, I2SCFGR, I2SPR, RXCRCR, SR, TXCRCR};
+pub use crate::stm32f4::peripherals::spi::Instance;
+pub use crate::stm32f4::peripherals::spi::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::spi::{
+    CR1, CR2, CRCPR, DR, I2SCFGR, I2SPR, RXCRCR, SR, TXCRCR,
+};
 
 /// Access functions for the I2S2ext peripheral instance
 pub mod I2S2ext {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -113,9 +112,6 @@ pub const I2S2ext: *const RegisterBlock = 0x40003400 as *const _;
 
 /// Access functions for the I2S3ext peripheral instance
 pub mod I2S3ext {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -215,9 +211,6 @@ pub const I2S3ext: *const RegisterBlock = 0x40004000 as *const _;
 
 /// Access functions for the SPI1 peripheral instance
 pub mod SPI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -317,9 +310,6 @@ pub const SPI1: *const RegisterBlock = 0x40013000 as *const _;
 
 /// Access functions for the SPI2 peripheral instance
 pub mod SPI2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -419,9 +409,6 @@ pub const SPI2: *const RegisterBlock = 0x40003800 as *const _;
 
 /// Access functions for the SPI3 peripheral instance
 pub mod SPI3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -521,9 +508,6 @@ pub const SPI3: *const RegisterBlock = 0x40003c00 as *const _;
 
 /// Access functions for the SPI4 peripheral instance
 pub mod SPI4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -623,9 +607,6 @@ pub const SPI4: *const RegisterBlock = 0x40013400 as *const _;
 
 /// Access functions for the SPI5 peripheral instance
 pub mod SPI5 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

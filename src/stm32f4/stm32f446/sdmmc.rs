@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! SDMMC
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// SDMMC power control register
 pub mod SDMMC_POWER {
@@ -1976,9 +1976,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SDMMC peripheral instance
 pub mod SDMMC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

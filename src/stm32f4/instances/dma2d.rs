@@ -5,18 +5,15 @@
 //! Used by: stm32f429, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::dma2d::Instance;
-pub use stm32f4::peripherals::dma2d::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::dma2d::{
+pub use crate::stm32f4::peripherals::dma2d::Instance;
+pub use crate::stm32f4::peripherals::dma2d::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::dma2d::{
     AMTCR, BGCLUT, BGCMAR, BGCOLR, BGMAR, BGOR, BGPFCCR, CR, FGCLUT, FGCMAR, FGCOLR, FGMAR, FGOR,
     FGPFCCR, IFCR, ISR, LWR, NLR, OCOLR, OMAR, OOR, OPFCCR,
 };
 
 /// Access functions for the DMA2D peripheral instance
 pub mod DMA2D {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

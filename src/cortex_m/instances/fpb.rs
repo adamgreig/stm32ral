@@ -5,18 +5,15 @@
 //! Used by: armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::fpb::Instance;
-pub use cortex_m::peripherals::fpb::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::fpb::{
+pub use crate::cortex_m::peripherals::fpb::Instance;
+pub use crate::cortex_m::peripherals::fpb::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::fpb::{
     COMP0, COMP1, COMP10, COMP11, COMP12, COMP13, COMP14, COMP15, COMP2, COMP3, COMP4, COMP5,
     COMP6, COMP7, COMP8, COMP9, CTRL, LAR, LSR, REMAP,
 };
 
 /// Access functions for the FPB peripheral instance
 pub mod FPB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

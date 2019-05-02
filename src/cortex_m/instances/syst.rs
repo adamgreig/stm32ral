@@ -5,15 +5,12 @@
 //! Used by: armv6_m, armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::syst::Instance;
-pub use cortex_m::peripherals::syst::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::syst::{CALIB, CSR, CVR, RVR};
+pub use crate::cortex_m::peripherals::syst::Instance;
+pub use crate::cortex_m::peripherals::syst::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::syst::{CALIB, CSR, CVR, RVR};
 
 /// Access functions for the SYST peripheral instance
 pub mod SYST {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

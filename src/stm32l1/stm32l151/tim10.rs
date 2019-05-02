@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! General-purpose timers
 
+use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RWRegister, WORegister};
 
 /// control register 1
 pub mod CR1 {
@@ -685,9 +685,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the TIM10 peripheral instance
 pub mod TIM10 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,18 +5,15 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::tamp::Instance;
-pub use stm32g0::peripherals::tamp::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::tamp::{
+pub use crate::stm32g0::peripherals::tamp::Instance;
+pub use crate::stm32g0::peripherals::tamp::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::tamp::{
     BKP0R, BKP1R, BKP2R, BKP3R, BKP4R, CR1, CR2, FLTCR, HWCFGR1, HWCFGR2, IER, IPIDR, MISR, SCR,
     SIDR, SR, VERR,
 };
 
 /// Access functions for the TAMP peripheral instance
 pub mod TAMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

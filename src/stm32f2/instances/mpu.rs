@@ -5,15 +5,12 @@
 //! Used by: stm32f215, stm32f217
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f2::peripherals::mpu::Instance;
-pub use stm32f2::peripherals::mpu::{RegisterBlock, ResetValues};
-pub use stm32f2::peripherals::mpu::{MPU_CTRL, MPU_RASR, MPU_RBAR, MPU_RNR, MPU_TYPER};
+pub use crate::stm32f2::peripherals::mpu::Instance;
+pub use crate::stm32f2::peripherals::mpu::{RegisterBlock, ResetValues};
+pub use crate::stm32f2::peripherals::mpu::{MPU_CTRL, MPU_RASR, MPU_RBAR, MPU_RNR, MPU_TYPER};
 
 /// Access functions for the MPU peripheral instance
 pub mod MPU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

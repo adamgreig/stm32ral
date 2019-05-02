@@ -5,9 +5,9 @@
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::otg_hs_global::Instance;
-pub use stm32f4::peripherals::otg_hs_global::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::otg_hs_global::{
+pub use crate::stm32f4::peripherals::otg_hs_global::Instance;
+pub use crate::stm32f4::peripherals::otg_hs_global::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::otg_hs_global::{
     OTG_HS, OTG_HS_CID, OTG_HS_DIEPTXF1, OTG_HS_DIEPTXF2, OTG_HS_DIEPTXF3, OTG_HS_DIEPTXF4,
     OTG_HS_DIEPTXF5, OTG_HS_DIEPTXF6, OTG_HS_DIEPTXF7, OTG_HS_GAHBCFG, OTG_HS_GCCFG,
     OTG_HS_GINTMSK, OTG_HS_GINTSTS, OTG_HS_GNPTXSTS, OTG_HS_GOTGCTL, OTG_HS_GOTGINT,
@@ -17,9 +17,6 @@ pub use stm32f4::peripherals::otg_hs_global::{
 
 /// Access functions for the OTG_HS_GLOBAL peripheral instance
 pub mod OTG_HS_GLOBAL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -4,9 +4,9 @@
 //!
 //! Used by: armv6_m, armv7_m, armv7e_m
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// SysTick Control and Status Register
 pub mod CSR {}

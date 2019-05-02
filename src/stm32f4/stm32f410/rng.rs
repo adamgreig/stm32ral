@@ -3,15 +3,12 @@
 //! Random number generator
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::rng::Instance;
-pub use stm32f4::peripherals::rng::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::rng::{CR, DR, SR};
+pub use crate::stm32f4::peripherals::rng::Instance;
+pub use crate::stm32f4::peripherals::rng::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::rng::{CR, DR, SR};
 
 /// Access functions for the RNG peripheral instance
 pub mod RNG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Cyclic redundancy check calculation unit
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Data register
 pub mod DR {
@@ -217,9 +217,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the CRC peripheral instance
 pub mod CRC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

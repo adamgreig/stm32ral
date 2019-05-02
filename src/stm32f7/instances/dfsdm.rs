@@ -5,9 +5,9 @@
 //! Used by: stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::dfsdm::Instance;
-pub use stm32f7::peripherals::dfsdm::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::dfsdm::{
+pub use crate::stm32f7::peripherals::dfsdm::Instance;
+pub use crate::stm32f7::peripherals::dfsdm::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::dfsdm::{
     DFSDM0_AWCFR, DFSDM0_AWHTR, DFSDM0_AWLTR, DFSDM0_AWSR, DFSDM0_CNVTIMR, DFSDM0_CR1, DFSDM0_CR2,
     DFSDM0_EXMAX, DFSDM0_EXMIN, DFSDM0_FCR, DFSDM0_ICR, DFSDM0_ISR, DFSDM0_JCHGR, DFSDM0_JDATAR,
     DFSDM0_RDATAR, DFSDM1_AWCFR, DFSDM1_AWHTR, DFSDM1_AWLTR, DFSDM1_AWSR, DFSDM1_CNVTIMR,
@@ -28,9 +28,6 @@ pub use stm32f7::peripherals::dfsdm::{
 
 /// Access functions for the DFSDM peripheral instance
 pub mod DFSDM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

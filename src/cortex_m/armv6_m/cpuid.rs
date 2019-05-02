@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! CPUID
 
+use crate::RORegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RORegister;
 
 /// Provides identification information for the processor
 pub mod Base {
@@ -112,9 +112,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the CPUID peripheral instance
 pub mod CPUID {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

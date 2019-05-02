@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// control register 1
 pub mod CR1 {
@@ -900,9 +900,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SPI1 peripheral instance
 pub mod SPI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

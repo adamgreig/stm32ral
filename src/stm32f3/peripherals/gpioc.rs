@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f373, stm32f3x8
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// GPIO port mode register
 pub mod MODER {

@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Power and clock gating control register
 pub mod OTG_HS_PCGCR {

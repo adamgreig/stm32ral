@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f469
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// Ethernet PTP time stamp control register
 pub mod PTPTSCR {

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! General purpose comparators
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// control and status register
 pub mod COMP2_CSR {
@@ -392,9 +392,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the COMP peripheral instance
 pub mod COMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Global configuration register
 pub mod GCR {
@@ -955,9 +955,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SAI1 peripheral instance
 pub mod SAI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1065,9 +1062,6 @@ pub const SAI1: *const RegisterBlock = 0x40015800 as *const _;
 
 /// Access functions for the SAI2 peripheral instance
 pub mod SAI2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

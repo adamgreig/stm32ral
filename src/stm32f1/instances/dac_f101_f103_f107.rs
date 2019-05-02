@@ -5,18 +5,15 @@
 //! Used by: stm32f101, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::dac_v2::Instance;
-pub use stm32f1::peripherals::dac_v2::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::dac_v2::{
+pub use crate::stm32f1::peripherals::dac_v2::Instance;
+pub use crate::stm32f1::peripherals::dac_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::dac_v2::{
     CR, DHR12L1, DHR12L2, DHR12LD, DHR12R1, DHR12R2, DHR12RD, DHR8R1, DHR8R2, DHR8RD, DOR1, DOR2,
     SWTRIGR,
 };
 
 /// Access functions for the DAC peripheral instance
 pub mod DAC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! I2C
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Access: No wait states, except if a write access occurs while a write access to this register is ongoing. In this case, wait states are inserted in the second write access until the previous one is completed. The latency of the second write access can be up to 2 x PCLK1 + 6 x I2CCLK.
 pub mod CR1 {
@@ -1630,9 +1630,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the I2C1 peripheral instance
 pub mod I2C1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1734,9 +1731,6 @@ pub const I2C1: *const RegisterBlock = 0x40005400 as *const _;
 
 /// Access functions for the I2C2 peripheral instance
 pub mod I2C2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1838,9 +1832,6 @@ pub const I2C2: *const RegisterBlock = 0x40005800 as *const _;
 
 /// Access functions for the I2C3 peripheral instance
 pub mod I2C3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1942,9 +1933,6 @@ pub const I2C3: *const RegisterBlock = 0x40005c00 as *const _;
 
 /// Access functions for the I2C4 peripheral instance
 pub mod I2C4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Nested Vectored Interrupt Controller
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// Interrupt Set-Enable Register
 pub mod ISER0 {
@@ -540,9 +540,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the NVIC peripheral instance
 pub mod NVIC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

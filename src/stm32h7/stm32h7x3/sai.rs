@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! SAI
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Global configuration register
 pub mod GCR {
@@ -1182,9 +1182,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SAI1 peripheral instance
 pub mod SAI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1294,9 +1291,6 @@ pub const SAI1: *const RegisterBlock = 0x40015800 as *const _;
 
 /// Access functions for the SAI2 peripheral instance
 pub mod SAI2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1406,9 +1400,6 @@ pub const SAI2: *const RegisterBlock = 0x40015c00 as *const _;
 
 /// Access functions for the SAI3 peripheral instance
 pub mod SAI3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1518,9 +1509,6 @@ pub const SAI3: *const RegisterBlock = 0x40016000 as *const _;
 
 /// Access functions for the SAI4 peripheral instance
 pub mod SAI4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,15 +5,12 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::swpmi1::Instance;
-pub use stm32l4::peripherals::swpmi1::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::swpmi1::{BRR, CR, ICR, IER, ISR, RDR, RFL, TDR};
+pub use crate::stm32l4::peripherals::swpmi1::Instance;
+pub use crate::stm32l4::peripherals::swpmi1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::swpmi1::{BRR, CR, ICR, IER, ISR, RDR, RFL, TDR};
 
 /// Access functions for the SWPMI1 peripheral instance
 pub mod SWPMI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

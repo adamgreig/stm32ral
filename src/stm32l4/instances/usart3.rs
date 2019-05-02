@@ -5,15 +5,14 @@
 //! Used by: stm32l4x1, stm32l4x2
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::usart3::Instance;
-pub use stm32l4::peripherals::usart3::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::usart3::{BRR, CR1, CR2, CR3, GTPR, ICR, ISR, RDR, RQR, RTOR, TDR};
+pub use crate::stm32l4::peripherals::usart3::Instance;
+pub use crate::stm32l4::peripherals::usart3::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::usart3::{
+    BRR, CR1, CR2, CR3, GTPR, ICR, ISR, RDR, RQR, RTOR, TDR,
+};
 
 /// Access functions for the USART3 peripheral instance
 pub mod USART3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

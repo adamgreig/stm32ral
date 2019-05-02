@@ -5,18 +5,15 @@
 //! Used by: stm32f0x1, stm32f0x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f0::peripherals::rcc::Instance;
-pub use stm32f0::peripherals::rcc::{RegisterBlock, ResetValues};
-pub use stm32f0::peripherals::rcc::{
+pub use crate::stm32f0::peripherals::rcc::Instance;
+pub use crate::stm32f0::peripherals::rcc::{RegisterBlock, ResetValues};
+pub use crate::stm32f0::peripherals::rcc::{
     AHBENR, AHBRSTR, APB1ENR, APB1RSTR, APB2ENR, APB2RSTR, BDCR, CFGR, CFGR2, CFGR3, CIR, CR, CR2,
     CSR,
 };
 
 /// Access functions for the RCC peripheral instance
 pub mod RCC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,18 +5,15 @@
 //! Used by: stm32f101, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::ethernet_mac::Instance;
-pub use stm32f1::peripherals::ethernet_mac::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::ethernet_mac::{
+pub use crate::stm32f1::peripherals::ethernet_mac::Instance;
+pub use crate::stm32f1::peripherals::ethernet_mac::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::ethernet_mac::{
     MACA0HR, MACA0LR, MACA1HR, MACA1LR, MACA2HR, MACA2LR, MACA3HR, MACA3LR, MACCR, MACFCR, MACFFR,
     MACHTHR, MACHTLR, MACIMR, MACMIIAR, MACMIIDR, MACPMTCSR, MACRWUFFR, MACSR, MACVLANTR,
 };
 
 /// Access functions for the Ethernet_MAC peripheral instance
 pub mod Ethernet_MAC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

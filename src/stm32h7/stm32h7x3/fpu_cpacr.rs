@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Floating point unit CPACR
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Coprocessor access control register
 pub mod CPACR {
@@ -48,9 +48,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the FPU_CPACR peripheral instance
 pub mod FPU_CPACR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Backup registers
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Backup data register (BKP_DR)
 pub mod DR1 {
@@ -597,9 +597,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the BKP peripheral instance
 pub mod BKP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

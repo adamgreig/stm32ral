@@ -5,15 +5,12 @@
 //! Used by: stm32f405, stm32f407
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::uart::Instance;
-pub use stm32f4::peripherals::uart::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::uart::{BRR, CR1, CR2, CR3, DR, SR};
+pub use crate::stm32f4::peripherals::uart::Instance;
+pub use crate::stm32f4::peripherals::uart::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::uart::{BRR, CR1, CR2, CR3, DR, SR};
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -110,9 +107,6 @@ pub const UART4: *const RegisterBlock = 0x40004c00 as *const _;
 
 /// Access functions for the UART5 peripheral instance
 pub mod UART5 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -209,9 +203,6 @@ pub const UART5: *const RegisterBlock = 0x40005000 as *const _;
 
 /// Access functions for the UART7 peripheral instance
 pub mod UART7 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -308,9 +299,6 @@ pub const UART7: *const RegisterBlock = 0x40007800 as *const _;
 
 /// Access functions for the UART8 peripheral instance
 pub mod UART8 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

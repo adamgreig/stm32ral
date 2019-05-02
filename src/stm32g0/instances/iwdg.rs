@@ -5,15 +5,12 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::iwdg::Instance;
-pub use stm32g0::peripherals::iwdg::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::iwdg::{HWCFGR, IPIDR, KR, PR, RLR, SIDR, SR, VERR, WINR};
+pub use crate::stm32g0::peripherals::iwdg::Instance;
+pub use crate::stm32g0::peripherals::iwdg::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::iwdg::{HWCFGR, IPIDR, KR, PR, RLR, SIDR, SR, VERR, WINR};
 
 /// Access functions for the IWDG peripheral instance
 pub mod IWDG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

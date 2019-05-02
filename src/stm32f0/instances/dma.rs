@@ -5,18 +5,15 @@
 //! Used by: stm32f0x1, stm32f0x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f0::peripherals::dma1::Instance;
-pub use stm32f0::peripherals::dma1::{RegisterBlock, ResetValues};
-pub use stm32f0::peripherals::dma1::{
+pub use crate::stm32f0::peripherals::dma1::Instance;
+pub use crate::stm32f0::peripherals::dma1::{RegisterBlock, ResetValues};
+pub use crate::stm32f0::peripherals::dma1::{
     CR1, CR2, CR3, CR4, CR5, CR6, CR7, IFCR, ISR, MAR1, MAR2, MAR3, MAR4, MAR5, MAR6, MAR7, NDTR1,
     NDTR2, NDTR3, NDTR4, NDTR5, NDTR6, NDTR7, PAR1, PAR2, PAR3, PAR4, PAR5, PAR6, PAR7,
 };
 
 /// Access functions for the DMA1 peripheral instance
 pub mod DMA1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -137,9 +134,6 @@ pub const DMA1: *const RegisterBlock = 0x40020000 as *const _;
 
 /// Access functions for the DMA2 peripheral instance
 pub mod DMA2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

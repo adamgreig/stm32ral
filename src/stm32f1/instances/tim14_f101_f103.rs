@@ -5,15 +5,14 @@
 //! Used by: stm32f101, stm32f103
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::tim10::Instance;
-pub use stm32f1::peripherals::tim10::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::tim10::{ARR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DIER, EGR, PSC, SR};
+pub use crate::stm32f1::peripherals::tim10::Instance;
+pub use crate::stm32f1::peripherals::tim10::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::tim10::{
+    ARR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DIER, EGR, PSC, SR,
+};
 
 /// Access functions for the TIM14 peripheral instance
 pub mod TIM14 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

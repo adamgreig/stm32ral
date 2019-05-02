@@ -5,18 +5,15 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::flash::Instance;
-pub use stm32l4::peripherals::flash::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::flash::{
+pub use crate::stm32l4::peripherals::flash::Instance;
+pub use crate::stm32l4::peripherals::flash::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::flash::{
     ACR, CR, ECCR, KEYR, OPTKEYR, OPTR, PCROP1ER, PCROP1SR, PCROP2ER, PCROP2SR, PDKEYR, SR, WRP1AR,
     WRP1BR, WRP2AR, WRP2BR,
 };
 
 /// Access functions for the FLASH peripheral instance
 pub mod FLASH {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

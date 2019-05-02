@@ -5,9 +5,9 @@
 //! Used by: stm32f401, stm32f405, stm32f407, stm32f410, stm32f411, stm32f412, stm32f413
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::nvic_v1::Instance;
-pub use stm32f4::peripherals::nvic_v1::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::nvic_v1::{
+pub use crate::stm32f4::peripherals::nvic_v1::Instance;
+pub use crate::stm32f4::peripherals::nvic_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::nvic_v1::{
     IABR0, IABR1, IABR2, ICER0, ICER1, ICER2, ICPR0, ICPR1, ICPR2, IPR0, IPR1, IPR10, IPR11, IPR12,
     IPR13, IPR14, IPR15, IPR16, IPR17, IPR18, IPR19, IPR2, IPR3, IPR4, IPR5, IPR6, IPR7, IPR8,
     IPR9, ISER0, ISER1, ISER2, ISPR0, ISPR1, ISPR2,
@@ -15,9 +15,6 @@ pub use stm32f4::peripherals::nvic_v1::{
 
 /// Access functions for the NVIC peripheral instance
 pub mod NVIC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

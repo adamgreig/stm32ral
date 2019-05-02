@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! DELAY_Block_SDMMC1
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// DLYB control register
 pub mod CR {
@@ -126,9 +126,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DELAY_Block_QUADSPI peripheral instance
 pub mod DELAY_Block_QUADSPI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -221,9 +218,6 @@ pub const DELAY_Block_QUADSPI: *const RegisterBlock = 0x52006000 as *const _;
 
 /// Access functions for the DELAY_Block_SDMMC1 peripheral instance
 pub mod DELAY_Block_SDMMC1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -316,9 +310,6 @@ pub const DELAY_Block_SDMMC1: *const RegisterBlock = 0x52008000 as *const _;
 
 /// Access functions for the DELAY_Block_SDMMC2 peripheral instance
 pub mod DELAY_Block_SDMMC2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

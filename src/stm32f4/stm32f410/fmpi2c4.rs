@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Inter-integrated circuit
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control register 1
 pub mod CR1 {
@@ -1178,9 +1178,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the FMPI2C4 peripheral instance
 pub mod FMPI2C4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

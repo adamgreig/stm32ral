@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f7x2, stm32f7x3
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// OTG_HS host configuration register
 pub mod OTG_HS_HCFG {

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Operational Amplifier
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// OPAMP2 control register
 pub mod OPAMP2_CSR {
@@ -492,9 +492,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the OPAMP peripheral instance
 pub mod OPAMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Cryptographic processor
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// control register
 pub mod CR {
@@ -924,9 +924,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the CRYP peripheral instance
 pub mod CRYP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

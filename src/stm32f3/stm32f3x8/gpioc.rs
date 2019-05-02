@@ -3,17 +3,14 @@
 //! General-purpose I/Os
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::gpioc::Instance;
-pub use stm32f3::peripherals::gpioc::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::gpioc::{
+pub use crate::stm32f3::peripherals::gpioc::Instance;
+pub use crate::stm32f3::peripherals::gpioc::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::gpioc::{
     AFRH, AFRL, BRR, BSRR, IDR, MODER, ODR, OSPEEDR, OTYPER, PUPDR,
 };
 
 /// Access functions for the GPIOC peripheral instance
 pub mod GPIOC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -114,9 +111,6 @@ pub const GPIOC: *const RegisterBlock = 0x48000800 as *const _;
 
 /// Access functions for the GPIOE peripheral instance
 pub mod GPIOE {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -217,9 +211,6 @@ pub const GPIOE: *const RegisterBlock = 0x48001000 as *const _;
 
 /// Access functions for the GPIOF peripheral instance
 pub mod GPIOF {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -320,9 +311,6 @@ pub const GPIOF: *const RegisterBlock = 0x48001400 as *const _;
 
 /// Access functions for the GPIOG peripheral instance
 pub mod GPIOG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

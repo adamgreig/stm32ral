@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! FDCAN1
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// FDCAN Core Release Register
 pub mod CREL {
@@ -6070,9 +6070,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the CAN_CCU peripheral instance
 pub mod CAN_CCU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -6227,9 +6224,6 @@ pub const CAN_CCU: *const RegisterBlock = 0x4000a800 as *const _;
 
 /// Access functions for the CAN_Msg_RAM peripheral instance
 pub mod CAN_Msg_RAM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -6384,9 +6378,6 @@ pub const CAN_Msg_RAM: *const RegisterBlock = 0x4000ac00 as *const _;
 
 /// Access functions for the FDCAN1 peripheral instance
 pub mod FDCAN1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -6541,9 +6532,6 @@ pub const FDCAN1: *const RegisterBlock = 0x4000a000 as *const _;
 
 /// Access functions for the FDCAN2 peripheral instance
 pub mod FDCAN2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

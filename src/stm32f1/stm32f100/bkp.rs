@@ -3,9 +3,9 @@
 //! Backup registers
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::bkp::Instance;
-pub use stm32f1::peripherals::bkp::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::bkp::{
+pub use crate::stm32f1::peripherals::bkp::Instance;
+pub use crate::stm32f1::peripherals::bkp::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::bkp::{
     CR, CSR, DR1, DR10, DR11, DR12, DR13, DR14, DR15, DR16, DR17, DR18, DR19, DR2, DR20, DR21,
     DR22, DR23, DR24, DR25, DR26, DR27, DR28, DR29, DR3, DR30, DR31, DR32, DR33, DR34, DR35, DR36,
     DR37, DR38, DR39, DR4, DR40, DR41, DR42, DR5, DR6, DR7, DR8, DR9, RTCCR,
@@ -13,9 +13,6 @@ pub use stm32f1::peripherals::bkp::{
 
 /// Access functions for the BKP peripheral instance
 pub mod BKP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

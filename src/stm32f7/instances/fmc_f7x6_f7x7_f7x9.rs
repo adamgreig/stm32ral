@@ -5,18 +5,15 @@
 //! Used by: stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::fmc_v2::Instance;
-pub use stm32f7::peripherals::fmc_v2::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::fmc_v2::{
+pub use crate::stm32f7::peripherals::fmc_v2::Instance;
+pub use crate::stm32f7::peripherals::fmc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::fmc_v2::{
     BCR1, BCR2, BCR3, BCR4, BTR1, BTR2, BTR3, BTR4, BWTR1, BWTR2, BWTR3, BWTR4, ECCR, PATT, PCR,
     PMEM, SDCMR, SDCR1, SDCR2, SDRTR, SDSR, SDTR1, SDTR2, SR,
 };
 
 /// Access functions for the FMC peripheral instance
 pub mod FMC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

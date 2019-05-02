@@ -5,18 +5,15 @@
 //! Used by: stm32f101, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::ethernet_mmc::Instance;
-pub use stm32f1::peripherals::ethernet_mmc::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::ethernet_mmc::{
+pub use crate::stm32f1::peripherals::ethernet_mmc::Instance;
+pub use crate::stm32f1::peripherals::ethernet_mmc::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::ethernet_mmc::{
     MMCCR, MMCRFAECR, MMCRFCECR, MMCRGUFCR, MMCRIMR, MMCRIR, MMCTGFCR, MMCTGFMSCCR, MMCTGFSCCR,
     MMCTIMR, MMCTIR,
 };
 
 /// Access functions for the Ethernet_MMC peripheral instance
 pub mod Ethernet_MMC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

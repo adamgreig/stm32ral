@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32g0x0, stm32g0x1
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// VREFBUF control and status register
 pub mod VREFBUF_CSR {

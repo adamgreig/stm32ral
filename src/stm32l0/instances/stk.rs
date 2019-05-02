@@ -5,15 +5,12 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::stk::Instance;
-pub use stm32l0::peripherals::stk::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::stk::{CALIB, CSR, CVR, RVR};
+pub use crate::stm32l0::peripherals::stk::Instance;
+pub use crate::stm32l0::peripherals::stk::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::stk::{CALIB, CSR, CVR, RVR};
 
 /// Access functions for the STK peripheral instance
 pub mod STK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

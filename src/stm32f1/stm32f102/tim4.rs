@@ -3,18 +3,15 @@
 //! General purpose timer
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::tim4::Instance;
-pub use stm32f1::peripherals::tim4::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::tim4::{
+pub use crate::stm32f1::peripherals::tim4::Instance;
+pub use crate::stm32f1::peripherals::tim4::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::tim4::{
     ARR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC,
     SMCR, SR,
 };
 
 /// Access functions for the TIM4 peripheral instance
 pub mod TIM4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

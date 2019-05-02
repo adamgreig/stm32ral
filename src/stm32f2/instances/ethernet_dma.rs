@@ -5,18 +5,15 @@
 //! Used by: stm32f215, stm32f217
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f2::peripherals::ethernet_dma::Instance;
-pub use stm32f2::peripherals::ethernet_dma::{RegisterBlock, ResetValues};
-pub use stm32f2::peripherals::ethernet_dma::{
+pub use crate::stm32f2::peripherals::ethernet_dma::Instance;
+pub use crate::stm32f2::peripherals::ethernet_dma::{RegisterBlock, ResetValues};
+pub use crate::stm32f2::peripherals::ethernet_dma::{
     DMABMR, DMACHRBAR, DMACHRDR, DMACHTBAR, DMACHTDR, DMAIER, DMAMFBOCR, DMAOMR, DMARDLAR, DMARPDR,
     DMARSWTR, DMASR, DMATDLAR, DMATPDR,
 };
 
 /// Access functions for the Ethernet_DMA peripheral instance
 pub mod Ethernet_DMA {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

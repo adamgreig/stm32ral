@@ -3,9 +3,9 @@
 //! Controller area network
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::can::Instance;
-pub use stm32f4::peripherals::can::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::can::{
+pub use crate::stm32f4::peripherals::can::Instance;
+pub use crate::stm32f4::peripherals::can::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::can::{
     BTR, ESR, FA1R, FFA1R, FM1R, FMR, FR10, FR11, FR110, FR111, FR112, FR113, FR114, FR115, FR116,
     FR117, FR118, FR119, FR12, FR120, FR121, FR122, FR123, FR124, FR125, FR126, FR127, FR13, FR14,
     FR15, FR16, FR17, FR18, FR19, FR20, FR21, FR210, FR211, FR212, FR213, FR214, FR215, FR216,
@@ -17,9 +17,6 @@ pub use stm32f4::peripherals::can::{
 
 /// Access functions for the CAN1 peripheral instance
 pub mod CAN1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -199,9 +196,6 @@ pub const CAN1: *const RegisterBlock = 0x40006400 as *const _;
 
 /// Access functions for the CAN2 peripheral instance
 pub mod CAN2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -381,9 +375,6 @@ pub const CAN2: *const RegisterBlock = 0x40006800 as *const _;
 
 /// Access functions for the CAN3 peripheral instance
 pub mod CAN3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

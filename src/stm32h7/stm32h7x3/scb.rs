@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! System control block
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// CPUID base register
 pub mod CPUID {
@@ -1205,9 +1205,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SCB peripheral instance
 pub mod SCB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

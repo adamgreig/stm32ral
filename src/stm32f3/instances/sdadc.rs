@@ -5,18 +5,15 @@
 //! Used by: stm32f301, stm32f373, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::sdadc::Instance;
-pub use stm32f3::peripherals::sdadc::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::sdadc::{
+pub use crate::stm32f3::peripherals::sdadc::Instance;
+pub use crate::stm32f3::peripherals::sdadc::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::sdadc::{
     CLRISR, CONF0R, CONF1R, CONF2R, CONFCHR1, CONFCHR2, CR1, CR2, ISR, JCHGR, JDATA12R, JDATA13R,
     JDATAR, RDATA12R, RDATA13R, RDATAR,
 };
 
 /// Access functions for the SDADC1 peripheral instance
 pub mod SDADC1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -123,9 +120,6 @@ pub const SDADC1: *const RegisterBlock = 0x40016000 as *const _;
 
 /// Access functions for the SDADC2 peripheral instance
 pub mod SDADC2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -232,9 +226,6 @@ pub const SDADC2: *const RegisterBlock = 0x40016400 as *const _;
 
 /// Access functions for the SDADC3 peripheral instance
 pub mod SDADC3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

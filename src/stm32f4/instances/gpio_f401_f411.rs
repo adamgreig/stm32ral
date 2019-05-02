@@ -5,17 +5,14 @@
 //! Used by: stm32f401, stm32f411
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::gpio::Instance;
-pub use stm32f4::peripherals::gpio::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::gpio::{
+pub use crate::stm32f4::peripherals::gpio::Instance;
+pub use crate::stm32f4::peripherals::gpio::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::gpio::{
     AFRH, AFRL, BSRR, IDR, LCKR, MODER, ODR, OSPEEDR, OTYPER, PUPDR,
 };
 
 /// Access functions for the GPIOA peripheral instance
 pub mod GPIOA {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -116,9 +113,6 @@ pub const GPIOA: *const RegisterBlock = 0x40020000 as *const _;
 
 /// Access functions for the GPIOB peripheral instance
 pub mod GPIOB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -219,9 +213,6 @@ pub const GPIOB: *const RegisterBlock = 0x40020400 as *const _;
 
 /// Access functions for the GPIOC peripheral instance
 pub mod GPIOC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -322,9 +313,6 @@ pub const GPIOC: *const RegisterBlock = 0x40020800 as *const _;
 
 /// Access functions for the GPIOD peripheral instance
 pub mod GPIOD {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -425,9 +413,6 @@ pub const GPIOD: *const RegisterBlock = 0x40020c00 as *const _;
 
 /// Access functions for the GPIOE peripheral instance
 pub mod GPIOE {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -528,9 +513,6 @@ pub const GPIOE: *const RegisterBlock = 0x40021000 as *const _;
 
 /// Access functions for the GPIOH peripheral instance
 pub mod GPIOH {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

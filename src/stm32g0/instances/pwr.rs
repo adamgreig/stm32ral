@@ -5,18 +5,15 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::pwr::Instance;
-pub use stm32g0::peripherals::pwr::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::pwr::{
+pub use crate::stm32g0::peripherals::pwr::Instance;
+pub use crate::stm32g0::peripherals::pwr::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::pwr::{
     CR1, CR2, CR3, CR4, PDCRA, PDCRB, PDCRC, PDCRD, PDCRF, PUCRA, PUCRB, PUCRC, PUCRD, PUCRF, SCR,
     SR1, SR2,
 };
 
 /// Access functions for the PWR peripheral instance
 pub mod PWR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

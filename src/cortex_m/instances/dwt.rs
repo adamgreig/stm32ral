@@ -5,9 +5,9 @@
 //! Used by: armv6_m, armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::dwt::Instance;
-pub use cortex_m::peripherals::dwt::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::dwt::{
+pub use crate::cortex_m::peripherals::dwt::Instance;
+pub use crate::cortex_m::peripherals::dwt::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::dwt::{
     COMP0, COMP1, COMP10, COMP11, COMP12, COMP13, COMP14, COMP15, COMP2, COMP3, COMP4, COMP5,
     COMP6, COMP7, COMP8, COMP9, CPICNT, CTRL, CYCCNT, EXCCNT, FOLDCNT, FUNCTION0, FUNCTION1,
     FUNCTION10, FUNCTION11, FUNCTION12, FUNCTION13, FUNCTION14, FUNCTION15, FUNCTION2, FUNCTION3,
@@ -18,9 +18,6 @@ pub use cortex_m::peripherals::dwt::{
 
 /// Access functions for the DWT peripheral instance
 pub mod DWT {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

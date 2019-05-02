@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Controller area network
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// master control register
 pub mod MCR {
@@ -3894,9 +3894,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the CAN1 peripheral instance
 pub mod CAN1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -4076,9 +4073,6 @@ pub const CAN1: *const RegisterBlock = 0x40006400 as *const _;
 
 /// Access functions for the CAN2 peripheral instance
 pub mod CAN2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

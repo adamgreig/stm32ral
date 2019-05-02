@@ -4,9 +4,9 @@
 //!
 //! Used by: armv7_m, armv7e_m
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// Provides identification information for the processor
 pub mod Base {

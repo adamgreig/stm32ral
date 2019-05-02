@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! High Resolution Timer: TIME
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Timerx Control Register
 pub mod TIMECR {
@@ -4072,9 +4072,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the HRTIM_TIME peripheral instance
 pub mod HRTIM_TIME {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

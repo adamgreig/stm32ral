@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! High Resolution Timer: Master Timers
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Master Timer Control Register
 pub mod MCR {
@@ -872,9 +872,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the HRTIM_Master peripheral instance
 pub mod HRTIM_Master {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

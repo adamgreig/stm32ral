@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f0x0, stm32f0x1, stm32f0x2, stm32f0x8
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// endpoint 0 register
 pub mod EP0R {

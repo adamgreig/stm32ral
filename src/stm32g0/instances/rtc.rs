@@ -5,18 +5,15 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::rtc::Instance;
-pub use stm32g0::peripherals::rtc::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::rtc::{
+pub use crate::stm32g0::peripherals::rtc::Instance;
+pub use crate::stm32g0::peripherals::rtc::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::rtc::{
     ALRMAR, ALRMASSR, ALRMBR, ALRMBSSR, CALR, CR, DR, HWCFGR, ICSR, IPIDR, MISR, PRER, SCR, SHIFTR,
     SIDR, SR, SSR, TR, TSDR, TSSSR, TSTR, VERR, WPR, WUTR,
 };
 
 /// Access functions for the RTC peripheral instance
 pub mod RTC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

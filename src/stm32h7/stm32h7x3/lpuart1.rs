@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! LPUART1
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control register 1
 pub mod CR1 {
@@ -1368,9 +1368,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the LPUART1 peripheral instance
 pub mod LPUART1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -3,15 +3,12 @@
 //! USB on the go full speed
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::otg_fs_pwrclk::Instance;
-pub use stm32f1::peripherals::otg_fs_pwrclk::FS_PCGCCTL;
-pub use stm32f1::peripherals::otg_fs_pwrclk::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::otg_fs_pwrclk::Instance;
+pub use crate::stm32f1::peripherals::otg_fs_pwrclk::FS_PCGCCTL;
+pub use crate::stm32f1::peripherals::otg_fs_pwrclk::{RegisterBlock, ResetValues};
 
 /// Access functions for the USB_OTG_PWRCLK peripheral instance
 pub mod USB_OTG_PWRCLK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,15 +5,12 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::fpu_cpacr::Instance;
-pub use stm32l4::peripherals::fpu_cpacr::CPACR;
-pub use stm32l4::peripherals::fpu_cpacr::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::fpu_cpacr::Instance;
+pub use crate::stm32l4::peripherals::fpu_cpacr::CPACR;
+pub use crate::stm32l4::peripherals::fpu_cpacr::{RegisterBlock, ResetValues};
 
 /// Access functions for the FPU_CPACR peripheral instance
 pub mod FPU_CPACR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

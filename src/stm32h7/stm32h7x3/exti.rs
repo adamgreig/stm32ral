@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! External interrupt/event controller
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// EXTI rising trigger selection register
 pub mod RTSR1 {
@@ -3983,9 +3983,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the EXTI peripheral instance
 pub mod EXTI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

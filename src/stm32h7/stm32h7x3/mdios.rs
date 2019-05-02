@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Management data input/output slave
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// MDIOS configuration register
 pub mod CR {
@@ -1714,9 +1714,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the MDIOS peripheral instance
 pub mod MDIOS {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

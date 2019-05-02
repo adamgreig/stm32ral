@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Access control
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Instruction and Data Tightly-Coupled Memory Control Registers
 pub mod ITCMCR {
@@ -332,9 +332,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the AC peripheral instance
 pub mod AC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

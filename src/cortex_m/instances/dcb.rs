@@ -5,15 +5,12 @@
 //! Used by: armv6_m, armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::dcb::Instance;
-pub use cortex_m::peripherals::dcb::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::dcb::{DCRDR, DCRSR, DEMCR, DHCSR};
+pub use crate::cortex_m::peripherals::dcb::Instance;
+pub use crate::cortex_m::peripherals::dcb::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::dcb::{DCRDR, DCRSR, DEMCR, DHCSR};
 
 /// Access functions for the DCB peripheral instance
 pub mod DCB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

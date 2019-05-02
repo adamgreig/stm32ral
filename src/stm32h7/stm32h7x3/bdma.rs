@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! BDMA
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
 
 /// DMA interrupt status register
 pub mod ISR {
@@ -1523,9 +1523,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the BDMA peripheral instance
 pub mod BDMA {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

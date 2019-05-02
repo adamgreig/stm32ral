@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! WWDG
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Control register
 pub mod CR {
@@ -169,9 +169,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the WWDG peripheral instance
 pub mod WWDG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

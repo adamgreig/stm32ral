@@ -5,17 +5,14 @@
 //! Used by: stm32l100, stm32l151, stm32l162
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l1::peripherals::tim9::Instance;
-pub use stm32l1::peripherals::tim9::{RegisterBlock, ResetValues};
-pub use stm32l1::peripherals::tim9::{
+pub use crate::stm32l1::peripherals::tim9::Instance;
+pub use crate::stm32l1::peripherals::tim9::{RegisterBlock, ResetValues};
+pub use crate::stm32l1::peripherals::tim9::{
     ARR, CCMR1, CCR1, CCR2, CNT, CR1, CR2, DIER, EGR, OR, PSC, SMCR, SR,
 };
 
 /// Access functions for the TIM9 peripheral instance
 pub mod TIM9 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

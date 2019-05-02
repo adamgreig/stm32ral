@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::dma_v1::Instance;
-pub use stm32f7::peripherals::dma_v1::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::dma_v1::{
+pub use crate::stm32f7::peripherals::dma_v1::Instance;
+pub use crate::stm32f7::peripherals::dma_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::dma_v1::{
     HIFCR, HISR, LIFCR, LISR, S0CR, S0FCR, S0M0AR, S0M1AR, S0NDTR, S0PAR, S1CR, S1FCR, S1M0AR,
     S1M1AR, S1NDTR, S1PAR, S2CR, S2FCR, S2M0AR, S2M1AR, S2NDTR, S2PAR, S3CR, S3FCR, S3M0AR, S3M1AR,
     S3NDTR, S3PAR, S4CR, S4FCR, S4M0AR, S4M1AR, S4NDTR, S4PAR, S5CR, S5FCR, S5M0AR, S5M1AR, S5NDTR,
@@ -16,9 +16,6 @@ pub use stm32f7::peripherals::dma_v1::{
 
 /// Access functions for the DMA1 peripheral instance
 pub mod DMA1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -161,9 +158,6 @@ pub const DMA1: *const RegisterBlock = 0x40026000 as *const _;
 
 /// Access functions for the DMA2 peripheral instance
 pub mod DMA2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -4,9 +4,9 @@
 //!
 //! Used by: armv6_m, armv7_m, armv7e_m
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control Register
 pub mod CTRL {}

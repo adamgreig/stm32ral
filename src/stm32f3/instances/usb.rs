@@ -5,17 +5,14 @@
 //! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::usb::Instance;
-pub use stm32f3::peripherals::usb::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::usb::{
+pub use crate::stm32f3::peripherals::usb::Instance;
+pub use crate::stm32f3::peripherals::usb::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::usb::{
     BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR,
 };
 
 /// Access functions for the USB peripheral instance
 pub mod USB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f0x2, stm32f0x8
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// MCU Device ID Code Register
 pub mod IDCODE {

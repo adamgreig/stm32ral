@@ -5,18 +5,15 @@
 //! Used by: stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::jpeg::Instance;
-pub use stm32f7::peripherals::jpeg::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::jpeg::{
+pub use crate::stm32f7::peripherals::jpeg::Instance;
+pub use crate::stm32f7::peripherals::jpeg::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::jpeg::{
     JPEG_CFR, JPEG_CONFR0, JPEG_CONFR1, JPEG_CONFR2, JPEG_CONFR3, JPEG_CONFR4, JPEG_CONFR5,
     JPEG_CONFR6, JPEG_CONFR7, JPEG_CR, JPEG_DIR, JPEG_DOR, JPEG_SR,
 };
 
 /// Access functions for the JPEG peripheral instance
 pub mod JPEG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

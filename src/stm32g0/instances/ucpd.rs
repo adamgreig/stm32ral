@@ -5,18 +5,15 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::ucpd::Instance;
-pub use stm32g0::peripherals::ucpd::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::ucpd::{
+pub use crate::stm32g0::peripherals::ucpd::Instance;
+pub use crate::stm32g0::peripherals::ucpd::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::ucpd::{
     CFG1, CFG2, CFG3, CR, ICR, IMR, IPID, IPVER, MID, RXDR, RX_ORDEXT1, RX_ORDEXT2, RX_ORDSET,
     RX_PAYSZ, SR, TXDR, TX_ORDSET, TX_PAYSZ,
 };
 
 /// Access functions for the UCPD1 peripheral instance
 pub mod UCPD1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -125,9 +122,6 @@ pub const UCPD1: *const RegisterBlock = 0x4000a000 as *const _;
 
 /// Access functions for the UCPD2 peripheral instance
 pub mod UCPD2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

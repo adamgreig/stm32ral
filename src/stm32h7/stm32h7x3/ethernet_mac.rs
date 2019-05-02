@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: Media Access Control
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// Ethernet MAC Operating mode configuration register
 pub mod MACCR {
@@ -4688,9 +4688,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the Ethernet_MAC peripheral instance
 pub mod Ethernet_MAC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

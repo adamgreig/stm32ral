@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! FMC
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
 pub mod BCR1 {
@@ -1458,9 +1458,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the FMC peripheral instance
 pub mod FMC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,15 +5,12 @@
 //! Used by: stm32f100, stm32f101, stm32f102, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::i2c::Instance;
-pub use stm32f1::peripherals::i2c::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::i2c::{CCR, CR1, CR2, DR, OAR1, OAR2, SR1, SR2, TRISE};
+pub use crate::stm32f1::peripherals::i2c::Instance;
+pub use crate::stm32f1::peripherals::i2c::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::i2c::{CCR, CR1, CR2, DR, OAR1, OAR2, SR1, SR2, TRISE};
 
 /// Access functions for the I2C1 peripheral instance
 pub mod I2C1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -113,9 +110,6 @@ pub const I2C1: *const RegisterBlock = 0x40005400 as *const _;
 
 /// Access functions for the I2C2 peripheral instance
 pub mod I2C2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

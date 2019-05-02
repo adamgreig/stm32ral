@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f101, stm32f103, stm32f107
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister};
 
 /// Ethernet DMA bus mode register
 pub mod DMABMR {

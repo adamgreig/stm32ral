@@ -5,15 +5,12 @@
 //! Used by: stm32l100, stm32l151, stm32l162
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l1::peripherals::ri::Instance;
-pub use stm32l1::peripherals::ri::{RegisterBlock, ResetValues};
-pub use stm32l1::peripherals::ri::{ASCR1, ASCR2, HYSCR1, HYSCR2, HYSCR3, HYSCR4, ICR};
+pub use crate::stm32l1::peripherals::ri::Instance;
+pub use crate::stm32l1::peripherals::ri::{RegisterBlock, ResetValues};
+pub use crate::stm32l1::peripherals::ri::{ASCR1, ASCR2, HYSCR1, HYSCR2, HYSCR3, HYSCR4, ICR};
 
 /// Access functions for the RI peripheral instance
 pub mod RI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

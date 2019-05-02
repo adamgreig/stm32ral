@@ -5,15 +5,14 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::hdmi_cec::Instance;
-pub use stm32g0::peripherals::hdmi_cec::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::hdmi_cec::{CEC_CFGR, CEC_CR, CEC_IER, CEC_ISR, CEC_RXDR, CEC_TXDR};
+pub use crate::stm32g0::peripherals::hdmi_cec::Instance;
+pub use crate::stm32g0::peripherals::hdmi_cec::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::hdmi_cec::{
+    CEC_CFGR, CEC_CR, CEC_IER, CEC_ISR, CEC_RXDR, CEC_TXDR,
+};
 
 /// Access functions for the HDMI_CEC peripheral instance
 pub mod HDMI_CEC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

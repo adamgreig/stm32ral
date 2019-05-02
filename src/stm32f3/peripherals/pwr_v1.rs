@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f301, stm32f373
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// power control register
 pub mod CR {

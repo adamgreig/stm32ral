@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Receiver Interface
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control register
 pub mod CR {
@@ -712,9 +712,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SPDIFRX peripheral instance
 pub mod SPDIFRX {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

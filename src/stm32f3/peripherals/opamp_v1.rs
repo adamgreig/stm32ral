@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f301, stm32f3x4
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// OPAMP2 control register
 pub mod OPAMP2_CSR {

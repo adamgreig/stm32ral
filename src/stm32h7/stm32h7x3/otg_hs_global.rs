@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! USB 1 on the go high speed
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// OTG_HS control and status register
 pub mod GOTGCTL {
@@ -2278,9 +2278,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the OTG1_HS_GLOBAL peripheral instance
 pub mod OTG1_HS_GLOBAL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -2394,9 +2391,6 @@ pub const OTG1_HS_GLOBAL: *const RegisterBlock = 0x40040000 as *const _;
 
 /// Access functions for the OTG2_HS_GLOBAL peripheral instance
 pub mod OTG2_HS_GLOBAL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

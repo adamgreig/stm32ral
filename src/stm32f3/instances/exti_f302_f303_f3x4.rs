@@ -5,17 +5,14 @@
 //! Used by: stm32f302, stm32f303, stm32f3x4
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::exti_v2::Instance;
-pub use stm32f3::peripherals::exti_v2::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::exti_v2::{
+pub use crate::stm32f3::peripherals::exti_v2::Instance;
+pub use crate::stm32f3::peripherals::exti_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::exti_v2::{
     EMR1, EMR2, FTSR1, FTSR2, IMR1, IMR2, PR1, PR2, RTSR1, RTSR2, SWIER1, SWIER2,
 };
 
 /// Access functions for the EXTI peripheral instance
 pub mod EXTI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

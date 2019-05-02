@@ -5,18 +5,15 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::tsc::Instance;
-pub use stm32l0::peripherals::tsc::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::tsc::{
+pub use crate::stm32l0::peripherals::tsc::Instance;
+pub use crate::stm32l0::peripherals::tsc::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::tsc::{
     CR, ICR, IER, IOASCR, IOCCR, IOG1CR, IOG2CR, IOG3CR, IOG4CR, IOG5CR, IOG6CR, IOG7CR, IOG8CR,
     IOGCSR, IOHCR, IOSCR, ISR,
 };
 
 /// Access functions for the TSC peripheral instance
 pub mod TSC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

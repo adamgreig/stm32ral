@@ -5,15 +5,12 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::scb::Instance;
-pub use stm32g0::peripherals::scb::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::scb::{AIRCR, CCR, CPUID, ICSR, SCR, SHPR2, SHPR3, VTOR};
+pub use crate::stm32g0::peripherals::scb::Instance;
+pub use crate::stm32g0::peripherals::scb::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::scb::{AIRCR, CCR, CPUID, ICSR, SCR, SHPR2, SHPR3, VTOR};
 
 /// Access functions for the SCB peripheral instance
 pub mod SCB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

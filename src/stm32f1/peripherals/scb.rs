@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f100, stm32f101, stm32f102, stm32f103, stm32f107
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// CPUID base register
 pub mod CPUID {

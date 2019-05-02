@@ -3,9 +3,9 @@
 //! USB on the go full speed
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::otg_fs_device::Instance;
-pub use stm32f1::peripherals::otg_fs_device::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::otg_fs_device::{
+pub use crate::stm32f1::peripherals::otg_fs_device::Instance;
+pub use crate::stm32f1::peripherals::otg_fs_device::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::otg_fs_device::{
     DIEPCTL1, DIEPCTL2, DIEPCTL3, DIEPEMPMSK, DIEPINT0, DIEPINT1, DIEPINT2, DIEPINT3, DIEPTSIZ0,
     DIEPTSIZ1, DIEPTSIZ2, DIEPTSIZ3, DOEPCTL0, DOEPCTL1, DOEPCTL2, DOEPCTL3, DOEPINT0, DOEPINT1,
     DOEPINT2, DOEPINT3, DOEPTSIZ0, DOEPTSIZ1, DOEPTSIZ2, DOEPTSIZ3, DTXFSTS0, DTXFSTS1, DTXFSTS2,
@@ -15,9 +15,6 @@ pub use stm32f1::peripherals::otg_fs_device::{
 
 /// Access functions for the USB_OTG_DEVICE peripheral instance
 pub mod USB_OTG_DEVICE {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

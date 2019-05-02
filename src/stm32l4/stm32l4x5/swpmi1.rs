@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Single Wire Protocol Master Interface
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// SWPMI Configuration/Control register
 pub mod CR {
@@ -660,9 +660,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SWPMI1 peripheral instance
 pub mod SWPMI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

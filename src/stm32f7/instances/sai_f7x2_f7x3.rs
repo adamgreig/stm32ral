@@ -5,18 +5,15 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::sai_v1::Instance;
-pub use stm32f7::peripherals::sai_v1::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::sai_v1::{
+pub use crate::stm32f7::peripherals::sai_v1::Instance;
+pub use crate::stm32f7::peripherals::sai_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::sai_v1::{
     CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, GCR, IMA, IMB, SLOTRA, SLOTRB,
     SRA, SRB,
 };
 
 /// Access functions for the SAI1 peripheral instance
 pub mod SAI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -124,9 +121,6 @@ pub const SAI1: *const RegisterBlock = 0x40015800 as *const _;
 
 /// Access functions for the SAI2 peripheral instance
 pub mod SAI2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

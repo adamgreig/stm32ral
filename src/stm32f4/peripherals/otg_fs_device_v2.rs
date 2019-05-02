@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// OTG_FS device configuration register (OTG_FS_DCFG)
 pub mod FS_DCFG {

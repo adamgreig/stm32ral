@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// ADC Common status register
 pub mod CSR {
@@ -500,9 +500,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the ADC123_Common peripheral instance
 pub mod ADC123_Common {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

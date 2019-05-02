@@ -5,9 +5,9 @@
 //! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::ltdc::Instance;
-pub use stm32f7::peripherals::ltdc::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::ltdc::{
+pub use crate::stm32f7::peripherals::ltdc::Instance;
+pub use crate::stm32f7::peripherals::ltdc::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::ltdc::{
     AWCR, BCCR, BFCR1, BFCR2, BPCR, CACR1, CACR2, CDSR, CFBAR1, CFBAR2, CFBLNR1, CFBLNR2, CFBLR1,
     CFBLR2, CKCR1, CKCR2, CLUTWR1, CLUTWR2, CPSR, CR1, CR2, DCCR1, DCCR2, GCR, ICR, IER, ISR,
     LIPCR, PFCR1, PFCR2, SRCR, SSCR, TWCR, WHPCR1, WHPCR2, WVPCR1, WVPCR2,
@@ -15,9 +15,6 @@ pub use stm32f7::peripherals::ltdc::{
 
 /// Access functions for the LTDC peripheral instance
 pub mod LTDC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32g0x0, stm32g0x1
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Interrupt Set Enable Register
 pub mod ISER {

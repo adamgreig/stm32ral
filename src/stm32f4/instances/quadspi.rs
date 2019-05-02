@@ -5,17 +5,14 @@
 //! Used by: stm32f412, stm32f413, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::quadspi::Instance;
-pub use stm32f4::peripherals::quadspi::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::quadspi::{
+pub use crate::stm32f4::peripherals::quadspi::Instance;
+pub use crate::stm32f4::peripherals::quadspi::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::quadspi::{
     ABR, AR, CCR, CR, DCR, DLR, DR, FCR, LPTR, PIR, PSMAR, PSMKR, SR,
 };
 
 /// Access functions for the QUADSPI peripheral instance
 pub mod QUADSPI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

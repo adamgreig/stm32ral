@@ -5,15 +5,12 @@
 //! Used by: stm32f301, stm32f373
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::cec::Instance;
-pub use stm32f3::peripherals::cec::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::cec::{CFGR, CR, IER, ISR, RXDR, TXDR};
+pub use crate::stm32f3::peripherals::cec::Instance;
+pub use crate::stm32f3::peripherals::cec::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::cec::{CFGR, CR, IER, ISR, RXDR, TXDR};
 
 /// Access functions for the CEC peripheral instance
 pub mod CEC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

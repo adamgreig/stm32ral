@@ -5,15 +5,12 @@
 //! Used by: stm32l100, stm32l151, stm32l162
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l1::peripherals::scb_actrl::Instance;
-pub use stm32l1::peripherals::scb_actrl::ACTRL;
-pub use stm32l1::peripherals::scb_actrl::{RegisterBlock, ResetValues};
+pub use crate::stm32l1::peripherals::scb_actrl::Instance;
+pub use crate::stm32l1::peripherals::scb_actrl::ACTRL;
+pub use crate::stm32l1::peripherals::scb_actrl::{RegisterBlock, ResetValues};
 
 /// Access functions for the SCB_ACTRL peripheral instance
 pub mod SCB_ACTRL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

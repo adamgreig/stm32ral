@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Processor features
 
+use crate::RORegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RORegister;
 
 /// Cache Level ID register
 pub mod CLIDR {
@@ -358,9 +358,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the PF peripheral instance
 pub mod PF {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! USB 1 on the go high speed
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Power and clock gating control register
 pub mod PCGCR {
@@ -76,9 +76,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the OTG1_HS_PWRCLK peripheral instance
 pub mod OTG1_HS_PWRCLK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -168,9 +165,6 @@ pub const OTG1_HS_PWRCLK: *const RegisterBlock = 0x40040e00 as *const _;
 
 /// Access functions for the OTG2_HS_PWRCLK peripheral instance
 pub mod OTG2_HS_PWRCLK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

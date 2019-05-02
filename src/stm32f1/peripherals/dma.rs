@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f100, stm32f101, stm32f102, stm32f103, stm32f107
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// DMA interrupt status register (DMA_ISR)
 pub mod ISR {

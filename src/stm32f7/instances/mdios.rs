@@ -5,9 +5,9 @@
 //! Used by: stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::mdios::Instance;
-pub use stm32f7::peripherals::mdios::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::mdios::{
+pub use crate::stm32f7::peripherals::mdios::Instance;
+pub use crate::stm32f7::peripherals::mdios::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::mdios::{
     CLRFR, CR, CRDFR, CWRFR, DINR0, DINR1, DINR10, DINR11, DINR12, DINR13, DINR14, DINR15, DINR16,
     DINR17, DINR18, DINR19, DINR2, DINR20, DINR21, DINR22, DINR23, DINR24, DINR25, DINR26, DINR27,
     DINR28, DINR29, DINR3, DINR30, DINR31, DINR4, DINR5, DINR6, DINR7, DINR8, DINR9, DOUTR0,
@@ -19,9 +19,6 @@ pub use stm32f7::peripherals::mdios::{
 
 /// Access functions for the MDIOS peripheral instance
 pub mod MDIOS {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

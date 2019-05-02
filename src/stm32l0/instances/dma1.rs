@@ -5,9 +5,9 @@
 //! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::dma1::Instance;
-pub use stm32l0::peripherals::dma1::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::dma1::{
+pub use crate::stm32l0::peripherals::dma1::Instance;
+pub use crate::stm32l0::peripherals::dma1::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::dma1::{
     CCR1, CCR2, CCR3, CCR4, CCR5, CCR6, CCR7, CMAR1, CMAR2, CMAR3, CMAR4, CMAR5, CMAR6, CMAR7,
     CNDTR1, CNDTR2, CNDTR3, CNDTR4, CNDTR5, CNDTR6, CNDTR7, CPAR1, CPAR2, CPAR3, CPAR4, CPAR5,
     CPAR6, CPAR7, CSELR, IFCR, ISR,
@@ -15,9 +15,6 @@ pub use stm32l0::peripherals::dma1::{
 
 /// Access functions for the DMA1 peripheral instance
 pub mod DMA1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

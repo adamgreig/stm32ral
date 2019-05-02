@@ -5,17 +5,14 @@
 //! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::gpio_v2::Instance;
-pub use stm32f7::peripherals::gpio_v2::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::gpio_v2::{
+pub use crate::stm32f7::peripherals::gpio_v2::Instance;
+pub use crate::stm32f7::peripherals::gpio_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::gpio_v2::{
     AFRH, AFRL, BRR, BSRR, IDR, LCKR, MODER, ODR, OSPEEDR, OTYPER, PUPDR,
 };
 
 /// Access functions for the GPIOA peripheral instance
 pub mod GPIOA {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -117,9 +114,6 @@ pub const GPIOA: *const RegisterBlock = 0x40020000 as *const _;
 
 /// Access functions for the GPIOB peripheral instance
 pub mod GPIOB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -221,9 +215,6 @@ pub const GPIOB: *const RegisterBlock = 0x40020400 as *const _;
 
 /// Access functions for the GPIOC peripheral instance
 pub mod GPIOC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -325,9 +316,6 @@ pub const GPIOC: *const RegisterBlock = 0x40020800 as *const _;
 
 /// Access functions for the GPIOD peripheral instance
 pub mod GPIOD {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -429,9 +417,6 @@ pub const GPIOD: *const RegisterBlock = 0x40020c00 as *const _;
 
 /// Access functions for the GPIOE peripheral instance
 pub mod GPIOE {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -533,9 +518,6 @@ pub const GPIOE: *const RegisterBlock = 0x40021000 as *const _;
 
 /// Access functions for the GPIOF peripheral instance
 pub mod GPIOF {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -637,9 +619,6 @@ pub const GPIOF: *const RegisterBlock = 0x40021400 as *const _;
 
 /// Access functions for the GPIOG peripheral instance
 pub mod GPIOG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -741,9 +720,6 @@ pub const GPIOG: *const RegisterBlock = 0x40021800 as *const _;
 
 /// Access functions for the GPIOH peripheral instance
 pub mod GPIOH {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -845,9 +821,6 @@ pub const GPIOH: *const RegisterBlock = 0x40021c00 as *const _;
 
 /// Access functions for the GPIOI peripheral instance
 pub mod GPIOI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -949,9 +922,6 @@ pub const GPIOI: *const RegisterBlock = 0x40022000 as *const _;
 
 /// Access functions for the GPIOJ peripheral instance
 pub mod GPIOJ {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -1053,9 +1023,6 @@ pub const GPIOJ: *const RegisterBlock = 0x40022400 as *const _;
 
 /// Access functions for the GPIOK peripheral instance
 pub mod GPIOK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

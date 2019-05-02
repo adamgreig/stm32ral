@@ -5,17 +5,14 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::aes::Instance;
-pub use stm32l0::peripherals::aes::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::aes::{
+pub use crate::stm32l0::peripherals::aes::Instance;
+pub use crate::stm32l0::peripherals::aes::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::aes::{
     CR, DINR, DOUTR, IVR0, IVR1, IVR2, IVR3, KEYR0, KEYR1, KEYR2, KEYR3, SR,
 };
 
 /// Access functions for the AES peripheral instance
 pub mod AES {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

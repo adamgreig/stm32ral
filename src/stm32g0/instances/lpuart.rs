@@ -5,17 +5,14 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::lpuart::Instance;
-pub use stm32g0::peripherals::lpuart::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::lpuart::{
+pub use crate::stm32g0::peripherals::lpuart::Instance;
+pub use crate::stm32g0::peripherals::lpuart::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::lpuart::{
     BRR, CR1, CR2, CR3, HWCFGR1, HWCFGR2, ICR, IPIDR, ISR, PRESC, RDR, RQR, SIDR, TDR, VERR,
 };
 
 /// Access functions for the LPUART peripheral instance
 pub mod LPUART {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

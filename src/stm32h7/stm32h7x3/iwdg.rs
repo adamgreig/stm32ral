@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! IWDG
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Key register
 pub mod KR {
@@ -199,9 +199,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the IWDG peripheral instance
 pub mod IWDG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

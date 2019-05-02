@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! High Resolution Timer: Common functions
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Control Register 1
 pub mod CR1 {
@@ -4197,9 +4197,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the HRTIM_Common peripheral instance
 pub mod HRTIM_Common {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

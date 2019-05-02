@@ -5,17 +5,14 @@
 //! Used by: armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::cpb::Instance;
-pub use cortex_m::peripherals::cpb::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::cpb::{
+pub use crate::cortex_m::peripherals::cpb::Instance;
+pub use crate::cortex_m::peripherals::cpb::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::cpb::{
     BPIALL, DCCIMVAC, DCCISW, DCCMVAC, DCCMVAU, DCCSW, DCIMVAC, DCISW, ICIALLU, ICIMVAU,
 };
 
 /// Access functions for the CPB peripheral instance
 pub mod CPB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,17 +5,14 @@
 //! Used by: stm32l100, stm32l151, stm32l162
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l1::peripherals::usb::Instance;
-pub use stm32l1::peripherals::usb::{RegisterBlock, ResetValues};
-pub use stm32l1::peripherals::usb::{
+pub use crate::stm32l1::peripherals::usb::Instance;
+pub use crate::stm32l1::peripherals::usb::{RegisterBlock, ResetValues};
+pub use crate::stm32l1::peripherals::usb::{
     BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR,
 };
 
 /// Access functions for the USB peripheral instance
 pub mod USB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -119,9 +116,6 @@ pub const USB: *const RegisterBlock = 0x40005c00 as *const _;
 
 /// Access functions for the USB_SRAM peripheral instance
 pub mod USB_SRAM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -4,9 +4,9 @@
 //!
 //! Used by: armv7_m, armv7e_m
 
+use crate::UnsafeWORegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use UnsafeWORegister;
 
 /// I-cache invalidate all to PoU
 pub mod ICIALLU {}

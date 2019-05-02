@@ -5,18 +5,15 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::lcd::Instance;
-pub use stm32l4::peripherals::lcd::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::lcd::{
+pub use crate::stm32l4::peripherals::lcd::Instance;
+pub use crate::stm32l4::peripherals::lcd::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::lcd::{
     CLR, CR, FCR, RAM_COM0, RAM_COM1, RAM_COM2, RAM_COM3, RAM_COM4, RAM_COM5, RAM_COM6, RAM_COM7,
     SR,
 };
 
 /// Access functions for the LCD peripheral instance
 pub mod LCD {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

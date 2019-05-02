@@ -5,15 +5,12 @@
 //! Used by: stm32f401, stm32f410, stm32f411, stm32f412, stm32f413
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::adc_common_v1::Instance;
-pub use stm32f4::peripherals::adc_common_v1::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::adc_common_v1::{CCR, CSR};
+pub use crate::stm32f4::peripherals::adc_common_v1::Instance;
+pub use crate::stm32f4::peripherals::adc_common_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::adc_common_v1::{CCR, CSR};
 
 /// Access functions for the ADC_Common peripheral instance
 pub mod ADC_Common {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,18 +5,15 @@
 //! Used by: stm32f401, stm32f405, stm32f407, stm32f410, stm32f411, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::scb::Instance;
-pub use stm32f4::peripherals::scb::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::scb::{
+pub use crate::stm32f4::peripherals::scb::Instance;
+pub use crate::stm32f4::peripherals::scb::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::scb::{
     AFSR, AIRCR, BFAR, CCR, CFSR_UFSR_BFSR_MMFSR, CPUID, HFSR, ICSR, MMFAR, SCR, SHCRS, SHPR1,
     SHPR2, SHPR3, VTOR,
 };
 
 /// Access functions for the SCB peripheral instance
 pub mod SCB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

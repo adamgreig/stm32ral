@@ -5,15 +5,14 @@
 //! Used by: stm32f405, stm32f407
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::syscfg_v2::Instance;
-pub use stm32f4::peripherals::syscfg_v2::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::syscfg_v2::{CMPCR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, MEMRM, PMC};
+pub use crate::stm32f4::peripherals::syscfg_v2::Instance;
+pub use crate::stm32f4::peripherals::syscfg_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::syscfg_v2::{
+    CMPCR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, MEMRM, PMC,
+};
 
 /// Access functions for the SYSCFG peripheral instance
 pub mod SYSCFG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

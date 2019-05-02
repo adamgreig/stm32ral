@@ -3,18 +3,15 @@
 //! Analog-to-Digital Converter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::adc::Instance;
-pub use stm32l4::peripherals::adc::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::adc::{
+pub use crate::stm32l4::peripherals::adc::Instance;
+pub use crate::stm32l4::peripherals::adc::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::adc::{
     AWD2CR, AWD3CR, CALFACT, CFGR, CFGR2, CR, DIFSEL, DR, IER, ISR, JDR1, JDR2, JDR3, JDR4, JSQR,
     OFR1, OFR2, OFR3, OFR4, SMPR1, SMPR2, SQR1, SQR2, SQR3, SQR4, TR1, TR2, TR3,
 };
 
 /// Access functions for the ADC1 peripheral instance
 pub mod ADC1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -133,9 +130,6 @@ pub const ADC1: *const RegisterBlock = 0x50040000 as *const _;
 
 /// Access functions for the ADC2 peripheral instance
 pub mod ADC2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -254,9 +248,6 @@ pub const ADC2: *const RegisterBlock = 0x50040100 as *const _;
 
 /// Access functions for the ADC3 peripheral instance
 pub mod ADC3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

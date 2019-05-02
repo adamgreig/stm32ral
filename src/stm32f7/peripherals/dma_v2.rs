@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister, WORegister};
 
 /// low interrupt status register
 pub mod LISR {

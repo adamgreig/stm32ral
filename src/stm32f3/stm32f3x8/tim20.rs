@@ -3,17 +3,14 @@
 //! General-purpose-timers
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::tim16_v1::Instance;
-pub use stm32f3::peripherals::tim16_v1::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::tim16_v1::{
+pub use crate::stm32f3::peripherals::tim16_v1::Instance;
+pub use crate::stm32f3::peripherals::tim16_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::tim16_v1::{
     ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SR,
 };
 
 /// Access functions for the TIM20 peripheral instance
 pub mod TIM20 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

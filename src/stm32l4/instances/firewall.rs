@@ -5,15 +5,12 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::firewall::Instance;
-pub use stm32l4::peripherals::firewall::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::firewall::{CR, CSL, CSSA, NVDSL, NVDSSA, VDSL, VDSSA};
+pub use crate::stm32l4::peripherals::firewall::Instance;
+pub use crate::stm32l4::peripherals::firewall::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::firewall::{CR, CSL, CSSA, NVDSL, NVDSSA, VDSL, VDSSA};
 
 /// Access functions for the FIREWALL peripheral instance
 pub mod FIREWALL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

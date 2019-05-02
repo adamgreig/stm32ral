@@ -5,9 +5,9 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x5
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::dfsdm::Instance;
-pub use stm32l4::peripherals::dfsdm::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::dfsdm::{
+pub use crate::stm32l4::peripherals::dfsdm::Instance;
+pub use crate::stm32l4::peripherals::dfsdm::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::dfsdm::{
     AWCFR0, AWCFR1, AWCFR2, AWCFR3, AWHTR0, AWHTR1, AWHTR2, AWHTR3, AWLTR0, AWLTR1, AWLTR2, AWLTR3,
     AWSCDR0, AWSCDR1, AWSCDR2, AWSCDR3, AWSCDR4, AWSCDR5, AWSCDR6, AWSCDR7, AWSR0, AWSR1, AWSR2,
     AWSR3, CFGR10, CFGR11, CFGR12, CFGR13, CFGR14, CFGR15, CFGR16, CFGR17, CFGR20, CFGR21, CFGR22,
@@ -21,9 +21,6 @@ pub use stm32l4::peripherals::dfsdm::{
 
 /// Access functions for the DFSDM peripheral instance
 pub mod DFSDM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

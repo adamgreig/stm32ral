@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f301, stm32f3x8
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Interrupt mask register (EXTI_IMR)
 pub mod IMR {

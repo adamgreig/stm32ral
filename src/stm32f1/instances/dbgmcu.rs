@@ -5,15 +5,12 @@
 //! Used by: stm32f100, stm32f101
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::dbgmcu::Instance;
-pub use stm32f1::peripherals::dbgmcu::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::dbgmcu::{CR, IDCODE};
+pub use crate::stm32f1::peripherals::dbgmcu::Instance;
+pub use crate::stm32f1::peripherals::dbgmcu::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::dbgmcu::{CR, IDCODE};
 
 /// Access functions for the DBGMCU peripheral instance
 pub mod DBGMCU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

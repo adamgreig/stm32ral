@@ -5,15 +5,12 @@
 //! Used by: stm32f373, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::flash_v2::Instance;
-pub use stm32f3::peripherals::flash_v2::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::flash_v2::{ACR, AR, CR, KEYR, OBR, OPTKEYR, SR, WRPR};
+pub use crate::stm32f3::peripherals::flash_v2::Instance;
+pub use crate::stm32f3::peripherals::flash_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::flash_v2::{ACR, AR, CR, KEYR, OBR, OPTKEYR, SR, WRPR};
 
 /// Access functions for the Flash peripheral instance
 pub mod Flash {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

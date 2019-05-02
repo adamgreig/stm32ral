@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32l4x5, stm32l4x6
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// SRAM/NOR-Flash chip-select control register 1
 pub mod BCR1 {

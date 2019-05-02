@@ -5,15 +5,12 @@
 //! Used by: stm32f7x2, stm32f7x3, stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::fpu_cpacr::Instance;
-pub use stm32f7::peripherals::fpu_cpacr::CPACR;
-pub use stm32f7::peripherals::fpu_cpacr::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::fpu_cpacr::Instance;
+pub use crate::stm32f7::peripherals::fpu_cpacr::CPACR;
+pub use crate::stm32f7::peripherals::fpu_cpacr::{RegisterBlock, ResetValues};
 
 /// Access functions for the FPU_CPACR peripheral instance
 pub mod FPU_CPACR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,9 +5,9 @@
 //! Used by: stm32f215, stm32f217
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f2::peripherals::otg_fs_global::Instance;
-pub use stm32f2::peripherals::otg_fs_global::{RegisterBlock, ResetValues};
-pub use stm32f2::peripherals::otg_fs_global::{
+pub use crate::stm32f2::peripherals::otg_fs_global::Instance;
+pub use crate::stm32f2::peripherals::otg_fs_global::{RegisterBlock, ResetValues};
+pub use crate::stm32f2::peripherals::otg_fs_global::{
     FS_CID, FS_DIEPTXF1, FS_DIEPTXF2, FS_DIEPTXF3, FS_GAHBCFG, FS_GCCFG, FS_GINTMSK, FS_GINTSTS,
     FS_GNPTXFSIZ, FS_GNPTXSTS, FS_GOTGCTL, FS_GOTGINT, FS_GRSTCTL, FS_GRXFSIZ, FS_GRXSTSR,
     FS_GUSBCFG, FS_HPTXFSIZ,
@@ -15,9 +15,6 @@ pub use stm32f2::peripherals::otg_fs_global::{
 
 /// Access functions for the OTG_FS_GLOBAL peripheral instance
 pub mod OTG_FS_GLOBAL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -3,18 +3,15 @@
 //! Analog to digital converter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::adc_v2::Instance;
-pub use stm32f3::peripherals::adc_v2::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::adc_v2::{
+pub use crate::stm32f3::peripherals::adc_v2::Instance;
+pub use crate::stm32f3::peripherals::adc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::adc_v2::{
     CR1, CR2, DR, HTR, JDR1, JDR2, JDR3, JDR4, JOFR1, JOFR2, JOFR3, JOFR4, JSQR, LTR, SMPR1, SMPR2,
     SQR1, SQR2, SQR3, SR,
 };
 
 /// Access functions for the ADC peripheral instance
 pub mod ADC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

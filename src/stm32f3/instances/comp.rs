@@ -5,17 +5,14 @@
 //! Used by: stm32f303, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f3::peripherals::comp::Instance;
-pub use stm32f3::peripherals::comp::{RegisterBlock, ResetValues};
-pub use stm32f3::peripherals::comp::{
+pub use crate::stm32f3::peripherals::comp::Instance;
+pub use crate::stm32f3::peripherals::comp::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::comp::{
     COMP1_CSR, COMP2_CSR, COMP3_CSR, COMP4_CSR, COMP5_CSR, COMP6_CSR, COMP7_CSR,
 };
 
 /// Access functions for the COMP peripheral instance
 pub mod COMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

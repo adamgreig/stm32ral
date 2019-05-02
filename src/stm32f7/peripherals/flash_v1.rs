@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f7x2, stm32f7x3
 
+use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RWRegister, WORegister};
 
 /// Flash access control register
 pub mod ACR {

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Secure digital input/output interface
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// Bits 1:0 = PWRCTRL: Power supply control bits
 pub mod POWER {
@@ -1520,9 +1520,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SDIO peripheral instance
 pub mod SDIO {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

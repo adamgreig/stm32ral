@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f7x7, stm32f7x9
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// JPEG codec configuration register 0
 pub mod JPEG_CONFR0 {

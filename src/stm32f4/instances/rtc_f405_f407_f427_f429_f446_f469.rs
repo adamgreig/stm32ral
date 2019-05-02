@@ -5,9 +5,9 @@
 //! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::rtc_v2::Instance;
-pub use stm32f4::peripherals::rtc_v2::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::rtc_v2::{
+pub use crate::stm32f4::peripherals::rtc_v2::Instance;
+pub use crate::stm32f4::peripherals::rtc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::rtc_v2::{
     ALRMAR, ALRMASSR, ALRMBR, ALRMBSSR, BKP0R, BKP10R, BKP11R, BKP12R, BKP13R, BKP14R, BKP15R,
     BKP16R, BKP17R, BKP18R, BKP19R, BKP1R, BKP2R, BKP3R, BKP4R, BKP5R, BKP6R, BKP7R, BKP8R, BKP9R,
     CALIBR, CALR, CR, DR, ISR, PRER, SHIFTR, SSR, TAFCR, TR, TSDR, TSSSR, TSTR, WPR, WUTR,
@@ -15,9 +15,6 @@ pub use stm32f4::peripherals::rtc_v2::{
 
 /// Access functions for the RTC peripheral instance
 pub mod RTC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

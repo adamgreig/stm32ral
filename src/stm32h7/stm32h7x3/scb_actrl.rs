@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! System control block ACTLR
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Auxiliary control register
 pub mod ACTRL {
@@ -90,9 +90,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SCB_ACTRL peripheral instance
 pub mod SCB_ACTRL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

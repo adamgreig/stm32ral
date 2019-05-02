@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f101, stm32f102, stm32f103
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Event Control Register (AFIO_EVCR)
 pub mod EVCR {

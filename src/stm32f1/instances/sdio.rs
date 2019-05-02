@@ -5,18 +5,15 @@
 //! Used by: stm32f102, stm32f107
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::sdio::Instance;
-pub use stm32f1::peripherals::sdio::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::sdio::{
+pub use crate::stm32f1::peripherals::sdio::Instance;
+pub use crate::stm32f1::peripherals::sdio::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::sdio::{
     ARG, CLKCR, CMD, DCOUNT, DCTRL, DLEN, DTIMER, FIFO, FIFOCNT, ICR, MASK, POWER, RESP1, RESP2,
     RESP3, RESP4, RESPCMD, STA,
 };
 
 /// Access functions for the SDIO peripheral instance
 pub mod SDIO {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

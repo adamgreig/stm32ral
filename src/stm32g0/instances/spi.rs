@@ -5,17 +5,14 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::spi::Instance;
-pub use stm32g0::peripherals::spi::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::spi::{
+pub use crate::stm32g0::peripherals::spi::Instance;
+pub use crate::stm32g0::peripherals::spi::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::spi::{
     CR1, CR2, CRCPR, DR, HWCFGR, I2SCFGR, I2SPR, IPIDR, RXCRCR, SIDR, SR, TXCRCR, VERR,
 };
 
 /// Access functions for the SPI1 peripheral instance
 pub mod SPI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -119,9 +116,6 @@ pub const SPI1: *const RegisterBlock = 0x40013000 as *const _;
 
 /// Access functions for the SPI2 peripheral instance
 pub mod SPI2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

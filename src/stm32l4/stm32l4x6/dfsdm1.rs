@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Digital filter for sigma delta modulators
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// channel configuration y register
 pub mod CHCFG0R1 {
@@ -2337,9 +2337,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DFSDM1 peripheral instance
 pub mod DFSDM1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

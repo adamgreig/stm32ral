@@ -5,17 +5,14 @@
 //! Used by: stm32l4x1, stm32l4x2
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::i2c::Instance;
-pub use stm32l4::peripherals::i2c::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::i2c::{
+pub use crate::stm32l4::peripherals::i2c::Instance;
+pub use crate::stm32l4::peripherals::i2c::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::i2c::{
     CR1, CR2, ICR, ISR, OAR1, OAR2, PECR, RXDR, TIMEOUTR, TIMINGR, TXDR,
 };
 
 /// Access functions for the I2C1 peripheral instance
 pub mod I2C1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -117,9 +114,6 @@ pub const I2C1: *const RegisterBlock = 0x40005400 as *const _;
 
 /// Access functions for the I2C2 peripheral instance
 pub mod I2C2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -221,9 +215,6 @@ pub const I2C2: *const RegisterBlock = 0x40005800 as *const _;
 
 /// Access functions for the I2C3 peripheral instance
 pub mod I2C3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -325,9 +316,6 @@ pub const I2C3: *const RegisterBlock = 0x40005c00 as *const _;
 
 /// Access functions for the I2C4 peripheral instance
 pub mod I2C4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

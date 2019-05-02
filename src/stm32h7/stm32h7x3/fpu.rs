@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Floting point unit
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Floating-point context control register
 pub mod FPCCR {
@@ -386,9 +386,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the FPU peripheral instance
 pub mod FPU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

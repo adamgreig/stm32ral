@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32l100, stm32l151, stm32l162
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// control/status register
 pub mod CSR {

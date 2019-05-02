@@ -5,17 +5,14 @@
 //! Used by: stm32f0x0, stm32f0x1, stm32f0x2, stm32f0x8
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f0::peripherals::tim16::Instance;
-pub use stm32f0::peripherals::tim16::{RegisterBlock, ResetValues};
-pub use stm32f0::peripherals::tim16::{
+pub use crate::stm32f0::peripherals::tim16::Instance;
+pub use crate::stm32f0::peripherals::tim16::{RegisterBlock, ResetValues};
+pub use crate::stm32f0::peripherals::tim16::{
     ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SR,
 };
 
 /// Access functions for the TIM16 peripheral instance
 pub mod TIM16 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

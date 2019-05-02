@@ -5,15 +5,12 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::lptim::Instance;
-pub use stm32g0::peripherals::lptim::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::lptim::{ARR, CFGR, CFGR2, CMP, CNT, CR, ICR, IER, ISR};
+pub use crate::stm32g0::peripherals::lptim::Instance;
+pub use crate::stm32g0::peripherals::lptim::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::lptim::{ARR, CFGR, CFGR2, CMP, CNT, CR, ICR, IER, ISR};
 
 /// Access functions for the LPTIM1 peripheral instance
 pub mod LPTIM1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -113,9 +110,6 @@ pub const LPTIM1: *const RegisterBlock = 0x40007c00 as *const _;
 
 /// Access functions for the LPTIM2 peripheral instance
 pub mod LPTIM2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

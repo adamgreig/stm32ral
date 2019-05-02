@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f302, stm32f303
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// ADC Common status register
 pub mod CSR {

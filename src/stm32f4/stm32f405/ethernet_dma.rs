@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: DMA controller operation
 
+use crate::{RORegister, RWRegister, UnsafeRWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, UnsafeRWRegister};
 
 /// Ethernet DMA bus mode register
 pub mod DMABMR {
@@ -1162,9 +1162,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the Ethernet_DMA peripheral instance
 pub mod Ethernet_DMA {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

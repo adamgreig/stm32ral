@@ -3,17 +3,14 @@
 //! Universal serial bus full-speed device interface
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::usb_v1::Instance;
-pub use stm32l4::peripherals::usb_v1::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::usb_v1::{
+pub use crate::stm32l4::peripherals::usb_v1::Instance;
+pub use crate::stm32l4::peripherals::usb_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::usb_v1::{
     BCDR, BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR, LPMCSR,
 };
 
 /// Access functions for the USB peripheral instance
 pub mod USB {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

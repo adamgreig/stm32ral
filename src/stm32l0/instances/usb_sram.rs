@@ -5,17 +5,14 @@
 //! Used by: stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l0::peripherals::usb_sram::Instance;
-pub use stm32l0::peripherals::usb_sram::{RegisterBlock, ResetValues};
-pub use stm32l0::peripherals::usb_sram::{
+pub use crate::stm32l0::peripherals::usb_sram::Instance;
+pub use crate::stm32l0::peripherals::usb_sram::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::usb_sram::{
     BCDR, BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR, LPMCSR,
 };
 
 /// Access functions for the USB_SRAM peripheral instance
 pub mod USB_SRAM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

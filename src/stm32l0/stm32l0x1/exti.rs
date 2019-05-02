@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! External interrupt/event controller
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Interrupt mask register (EXTI_IMR)
 pub mod IMR {
@@ -2000,9 +2000,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the EXTI peripheral instance
 pub mod EXTI {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

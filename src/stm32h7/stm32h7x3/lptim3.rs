@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Low power timer
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Interrupt and Status Register
 pub mod ISR {
@@ -702,9 +702,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the LPTIM3 peripheral instance
 pub mod LPTIM3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -804,9 +801,6 @@ pub const LPTIM3: *const RegisterBlock = 0x58002800 as *const _;
 
 /// Access functions for the LPTIM4 peripheral instance
 pub mod LPTIM4 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -906,9 +900,6 @@ pub const LPTIM4: *const RegisterBlock = 0x58002c00 as *const _;
 
 /// Access functions for the LPTIM5 peripheral instance
 pub mod LPTIM5 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

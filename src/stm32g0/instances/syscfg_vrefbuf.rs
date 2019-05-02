@@ -5,9 +5,9 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::syscfg_vrefbuf::Instance;
-pub use stm32g0::peripherals::syscfg_vrefbuf::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::syscfg_vrefbuf::{
+pub use crate::stm32g0::peripherals::syscfg_vrefbuf::Instance;
+pub use crate::stm32g0::peripherals::syscfg_vrefbuf::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::syscfg_vrefbuf::{
     CFGR1, CFGR2, ITLINE0, ITLINE1, ITLINE10, ITLINE11, ITLINE12, ITLINE13, ITLINE14, ITLINE15,
     ITLINE16, ITLINE17, ITLINE18, ITLINE19, ITLINE2, ITLINE20, ITLINE21, ITLINE22, ITLINE23,
     ITLINE24, ITLINE25, ITLINE26, ITLINE27, ITLINE28, ITLINE29, ITLINE3, ITLINE30, ITLINE31,
@@ -16,9 +16,6 @@ pub use stm32g0::peripherals::syscfg_vrefbuf::{
 
 /// Access functions for the SYSCFG_VREFBUF peripheral instance
 pub mod SYSCFG_VREFBUF {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

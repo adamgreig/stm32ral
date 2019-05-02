@@ -3,15 +3,14 @@
 //! Serial peripheral interface
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::spi::Instance;
-pub use stm32f4::peripherals::spi::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::spi::{CR1, CR2, CRCPR, DR, I2SCFGR, I2SPR, RXCRCR, SR, TXCRCR};
+pub use crate::stm32f4::peripherals::spi::Instance;
+pub use crate::stm32f4::peripherals::spi::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::spi::{
+    CR1, CR2, CRCPR, DR, I2SCFGR, I2SPR, RXCRCR, SR, TXCRCR,
+};
 
 /// Access functions for the SPI1 peripheral instance
 pub mod SPI1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -111,9 +110,6 @@ pub const SPI1: *const RegisterBlock = 0x40013000 as *const _;
 
 /// Access functions for the SPI2 peripheral instance
 pub mod SPI2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -213,9 +209,6 @@ pub const SPI2: *const RegisterBlock = 0x40003800 as *const _;
 
 /// Access functions for the SPI5 peripheral instance
 pub mod SPI5 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

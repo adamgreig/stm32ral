@@ -19,20 +19,17 @@
 
 #![no_std]
 
-#[cfg(not(feature="nosync"))]
-extern crate cortex_m as external_cortex_m;
-
 #[cfg(feature="rt")]
 extern crate cortex_m_rt;
 
-#[macro_use]
 mod register;
 
 #[cfg(feature="rt")]
 pub use cortex_m_rt::interrupt;
 
-pub use register::{RORegister, WORegister, RWRegister};
-pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
+pub use crate::register::{RORegister, UnsafeRORegister};
+pub use crate::register::{WORegister, UnsafeWORegister};
+pub use crate::register::{RWRegister, UnsafeRWRegister};
 #[cfg(any(feature="doc", feature="armv6_m", feature="armv7e_m", feature="armv7_m"))]
 pub mod cortex_m;
 

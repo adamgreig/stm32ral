@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! HDMI-CEC controller
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// CEC control register
 pub mod CEC_CR {
@@ -634,9 +634,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the HDMI_CEC peripheral instance
 pub mod HDMI_CEC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

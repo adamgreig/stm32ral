@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f0x0, stm32f0x1, stm32f0x2
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// time register
 pub mod TR {

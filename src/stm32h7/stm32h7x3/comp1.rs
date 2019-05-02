@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! COMP1
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// Comparator status register
 pub mod SR {
@@ -500,9 +500,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the COMP1 peripheral instance
 pub mod COMP1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

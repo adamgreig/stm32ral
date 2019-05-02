@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! PWR
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// PWR control register 1
 pub mod CR1 {
@@ -984,9 +984,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the PWR peripheral instance
 pub mod PWR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

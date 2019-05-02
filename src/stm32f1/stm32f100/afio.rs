@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Alternate function I/O
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// Event Control Register (AFIO_EVCR)
 pub mod EVCR {
@@ -672,9 +672,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the AFIO peripheral instance
 pub mod AFIO {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! System configuration controller
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// configuration register 1
 pub mod CFGR1 {
@@ -778,9 +778,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the SYSCFG peripheral instance
 pub mod SYSCFG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

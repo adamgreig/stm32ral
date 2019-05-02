@@ -5,15 +5,12 @@
 //! Used by: stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::comp_v2::Instance;
-pub use stm32l4::peripherals::comp_v2::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::comp_v2::{COMP1_CSR, COMP2_CSR};
+pub use crate::stm32l4::peripherals::comp_v2::Instance;
+pub use crate::stm32l4::peripherals::comp_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::comp_v2::{COMP1_CSR, COMP2_CSR};
 
 /// Access functions for the COMP peripheral instance
 pub mod COMP {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

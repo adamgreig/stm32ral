@@ -3,18 +3,15 @@
 //! Digital-to-analog converter
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::dac1::Instance;
-pub use stm32l4::peripherals::dac1::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::dac1::{
+pub use crate::stm32l4::peripherals::dac1::Instance;
+pub use crate::stm32l4::peripherals::dac1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::dac1::{
     CCR, CR, DHR12L1, DHR12L2, DHR12LD, DHR12R1, DHR12R2, DHR12RD, DHR8R1, DHR8R2, DHR8RD, DOR1,
     DOR2, MCR, SHHR, SHRR, SHSR1, SHSR2, SR, SWTRIGR,
 };
 
 /// Access functions for the DAC peripheral instance
 pub mod DAC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

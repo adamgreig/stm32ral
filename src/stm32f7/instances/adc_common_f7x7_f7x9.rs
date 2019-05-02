@@ -5,15 +5,12 @@
 //! Used by: stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::adc_common_v3::Instance;
-pub use stm32f7::peripherals::adc_common_v3::{RegisterBlock, ResetValues};
-pub use stm32f7::peripherals::adc_common_v3::{CCR, CDR, CSR};
+pub use crate::stm32f7::peripherals::adc_common_v3::Instance;
+pub use crate::stm32f7::peripherals::adc_common_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::adc_common_v3::{CCR, CDR, CSR};
 
 /// Access functions for the ADC_Common peripheral instance
 pub mod ADC_Common {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

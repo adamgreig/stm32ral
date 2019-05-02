@@ -5,18 +5,15 @@
 //! Used by: armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::cpuid::Instance;
-pub use cortex_m::peripherals::cpuid::{
+pub use crate::cortex_m::peripherals::cpuid::Instance;
+pub use crate::cortex_m::peripherals::cpuid::{
     Base, AFR0, CCSIDR, CLIDR, CSSELR, CTR, DFR0, ISAR0, ISAR1, ISAR2, ISAR3, ISAR4, MMFR0, MMFR1,
     MMFR2, MMFR3, PFR0, PFR1,
 };
-pub use cortex_m::peripherals::cpuid::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::cpuid::{RegisterBlock, ResetValues};
 
 /// Access functions for the CPUID peripheral instance
 pub mod CPUID {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

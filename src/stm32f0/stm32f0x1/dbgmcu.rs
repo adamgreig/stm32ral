@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Debug support
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// MCU Device ID Code Register
 pub mod IDCODE {
@@ -324,9 +324,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the DBGMCU peripheral instance
 pub mod DBGMCU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -4,9 +4,9 @@
 //!
 //! Used by: armv6_m, armv7_m, armv7e_m
 
+use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RWRegister, WORegister};
 
 /// Debug Halting Control and Status Register
 pub mod DHCSR {}

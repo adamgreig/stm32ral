@@ -4,9 +4,9 @@
 //!
 //! Used by: stm32f405, stm32f407
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// IDCODE
 pub mod IDCODE {

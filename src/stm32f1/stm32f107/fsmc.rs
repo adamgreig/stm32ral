@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Flexible static memory controller
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// SRAM/NOR-Flash chip-select control register 1
 pub mod BCR1 {
@@ -1326,9 +1326,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the FSMC peripheral instance
 pub mod FSMC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

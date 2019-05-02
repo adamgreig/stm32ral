@@ -5,15 +5,12 @@
 //! Used by: stm32g0x0, stm32g0x1
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32g0::peripherals::dbg::Instance;
-pub use stm32g0::peripherals::dbg::{RegisterBlock, ResetValues};
-pub use stm32g0::peripherals::dbg::{APB_FZ1, APB_FZ2, CR, IDCODE};
+pub use crate::stm32g0::peripherals::dbg::Instance;
+pub use crate::stm32g0::peripherals::dbg::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::dbg::{APB_FZ1, APB_FZ2, CR, IDCODE};
 
 /// Access functions for the DBG peripheral instance
 pub mod DBG {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

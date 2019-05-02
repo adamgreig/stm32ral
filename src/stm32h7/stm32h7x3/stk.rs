@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! SysTick timer
 
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use RWRegister;
 
 /// SysTick control and status register
 pub mod CSR {
@@ -184,9 +184,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the STK peripheral instance
 pub mod STK {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

@@ -5,15 +5,12 @@
 //! Used by: stm32l100, stm32l151, stm32l162
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l1::peripherals::nvic_stir::Instance;
-pub use stm32l1::peripherals::nvic_stir::STIR;
-pub use stm32l1::peripherals::nvic_stir::{RegisterBlock, ResetValues};
+pub use crate::stm32l1::peripherals::nvic_stir::Instance;
+pub use crate::stm32l1::peripherals::nvic_stir::STIR;
+pub use crate::stm32l1::peripherals::nvic_stir::{RegisterBlock, ResetValues};
 
 /// Access functions for the NVIC_STIR peripheral instance
 pub mod NVIC_STIR {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

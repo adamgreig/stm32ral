@@ -5,9 +5,9 @@
 //! Used by: armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::itm::Instance;
-pub use cortex_m::peripherals::itm::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::itm::{
+pub use crate::cortex_m::peripherals::itm::Instance;
+pub use crate::cortex_m::peripherals::itm::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::itm::{
     LAR, LSR, STIM0, STIM1, STIM10, STIM100, STIM101, STIM102, STIM103, STIM104, STIM105, STIM106,
     STIM107, STIM108, STIM109, STIM11, STIM110, STIM111, STIM112, STIM113, STIM114, STIM115,
     STIM116, STIM117, STIM118, STIM119, STIM12, STIM120, STIM121, STIM122, STIM123, STIM124,
@@ -37,9 +37,6 @@ pub use cortex_m::peripherals::itm::{
 
 /// Access functions for the ITM peripheral instance
 pub mod ITM {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

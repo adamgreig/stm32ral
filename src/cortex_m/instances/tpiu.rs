@@ -5,15 +5,12 @@
 //! Used by: armv7_m, armv7e_m
 
 #[cfg(not(feature = "nosync"))]
-pub use cortex_m::peripherals::tpiu::Instance;
-pub use cortex_m::peripherals::tpiu::{RegisterBlock, ResetValues};
-pub use cortex_m::peripherals::tpiu::{ACPR, CSPSR, LAR, LSR, SPPR, SSPSR, TYPE};
+pub use crate::cortex_m::peripherals::tpiu::Instance;
+pub use crate::cortex_m::peripherals::tpiu::{RegisterBlock, ResetValues};
+pub use crate::cortex_m::peripherals::tpiu::{ACPR, CSPSR, LAR, LSR, SPPR, SSPSR, TYPE};
 
 /// Access functions for the TPIU peripheral instance
 pub mod TPIU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

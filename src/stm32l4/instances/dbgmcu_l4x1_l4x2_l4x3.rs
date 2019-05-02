@@ -5,15 +5,12 @@
 //! Used by: stm32l4x1, stm32l4x2, stm32l4x3
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32l4::peripherals::dbgmcu_v1::Instance;
-pub use stm32l4::peripherals::dbgmcu_v1::{RegisterBlock, ResetValues};
-pub use stm32l4::peripherals::dbgmcu_v1::{APB1FZR1, APB1FZR2, APB2FZR, CR, IDCODE};
+pub use crate::stm32l4::peripherals::dbgmcu_v1::Instance;
+pub use crate::stm32l4::peripherals::dbgmcu_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::dbgmcu_v1::{APB1FZR1, APB1FZR2, APB2FZR, CR, IDCODE};
 
 /// Access functions for the DBGMCU peripheral instance
 pub mod DBGMCU {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

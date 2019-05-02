@@ -5,15 +5,14 @@
 //! Used by: stm32f101, stm32f102, stm32f103
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f1::peripherals::afio::Instance;
-pub use stm32f1::peripherals::afio::{RegisterBlock, ResetValues};
-pub use stm32f1::peripherals::afio::{EVCR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, MAPR, MAPR2};
+pub use crate::stm32f1::peripherals::afio::Instance;
+pub use crate::stm32f1::peripherals::afio::{RegisterBlock, ResetValues};
+pub use crate::stm32f1::peripherals::afio::{
+    EVCR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, MAPR, MAPR2,
+};
 
 /// Access functions for the AFIO peripheral instance
 pub mod AFIO {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

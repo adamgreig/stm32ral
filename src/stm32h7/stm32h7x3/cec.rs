@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! CEC
 
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister, WORegister};
 
 /// CEC control register
 pub mod CR {
@@ -634,9 +634,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the CEC peripheral instance
 pub mod CEC {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

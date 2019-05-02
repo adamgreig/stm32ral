@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
-use {RORegister, RWRegister};
 
 /// OTG_FS device configuration register (OTG_FS_DCFG)
 pub mod FS_DCFG {
@@ -2131,9 +2131,6 @@ unsafe impl Send for Instance {}
 
 /// Access functions for the OTG_FS_DEVICE peripheral instance
 pub mod OTG_FS_DEVICE {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

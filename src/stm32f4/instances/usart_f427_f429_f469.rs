@@ -5,15 +5,12 @@
 //! Used by: stm32f427, stm32f429, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f4::peripherals::usart::Instance;
-pub use stm32f4::peripherals::usart::{RegisterBlock, ResetValues};
-pub use stm32f4::peripherals::usart::{BRR, CR1, CR2, CR3, DR, GTPR, SR};
+pub use crate::stm32f4::peripherals::usart::Instance;
+pub use crate::stm32f4::peripherals::usart::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::usart::{BRR, CR1, CR2, CR3, DR, GTPR, SR};
 
 /// Access functions for the UART7 peripheral instance
 pub mod UART7 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -111,9 +108,6 @@ pub const UART7: *const RegisterBlock = 0x40007800 as *const _;
 
 /// Access functions for the UART8 peripheral instance
 pub mod UART8 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -211,9 +205,6 @@ pub const UART8: *const RegisterBlock = 0x40007c00 as *const _;
 
 /// Access functions for the USART1 peripheral instance
 pub mod USART1 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -311,9 +302,6 @@ pub const USART1: *const RegisterBlock = 0x40011000 as *const _;
 
 /// Access functions for the USART2 peripheral instance
 pub mod USART2 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -411,9 +399,6 @@ pub const USART2: *const RegisterBlock = 0x40004400 as *const _;
 
 /// Access functions for the USART3 peripheral instance
 pub mod USART3 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -511,9 +496,6 @@ pub const USART3: *const RegisterBlock = 0x40004800 as *const _;
 
 /// Access functions for the USART6 peripheral instance
 pub mod USART6 {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]

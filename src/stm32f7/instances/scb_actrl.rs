@@ -5,15 +5,12 @@
 //! Used by: stm32f7x2, stm32f7x3, stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use stm32f7::peripherals::scb_actrl::Instance;
-pub use stm32f7::peripherals::scb_actrl::ACTRL;
-pub use stm32f7::peripherals::scb_actrl::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::scb_actrl::Instance;
+pub use crate::stm32f7::peripherals::scb_actrl::ACTRL;
+pub use crate::stm32f7::peripherals::scb_actrl::{RegisterBlock, ResetValues};
 
 /// Access functions for the SCB_ACTRL peripheral instance
 pub mod SCB_ACTRL {
-    #[cfg(not(feature = "nosync"))]
-    use external_cortex_m;
-
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
