@@ -1229,6 +1229,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the FMPI2C4 peripheral instance
 pub mod FMPI2C4 {
@@ -1308,6 +1310,18 @@ pub mod FMPI2C4 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal FMPI2C4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FMPI2C4_TAKEN = true;
+        INSTANCE
     }
 }
 

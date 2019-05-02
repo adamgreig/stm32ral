@@ -93,6 +93,18 @@ pub mod JPEG {
             }
         });
     }
+
+    /// Unsafely steal JPEG
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        JPEG_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to JPEG

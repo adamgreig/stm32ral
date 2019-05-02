@@ -85,6 +85,18 @@ pub mod I2C1 {
             }
         });
     }
+
+    /// Unsafely steal I2C1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to I2C1
@@ -176,6 +188,18 @@ pub mod I2C2 {
             }
         });
     }
+
+    /// Unsafely steal I2C2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to I2C2
@@ -266,6 +290,18 @@ pub mod I2C3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal I2C3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C3_TAKEN = true;
+        INSTANCE
     }
 }
 

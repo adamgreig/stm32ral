@@ -121,6 +121,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the DELAY_Block_QUADSPI peripheral instance
 pub mod DELAY_Block_QUADSPI {
@@ -191,6 +193,18 @@ pub mod DELAY_Block_QUADSPI {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DELAY_Block_QUADSPI
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DELAY_Block_QUADSPI_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -275,6 +289,18 @@ pub mod DELAY_Block_SDMMC1 {
             }
         });
     }
+
+    /// Unsafely steal DELAY_Block_SDMMC1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DELAY_Block_SDMMC1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to DELAY_Block_SDMMC1
@@ -357,6 +383,18 @@ pub mod DELAY_Block_SDMMC2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal DELAY_Block_SDMMC2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DELAY_Block_SDMMC2_TAKEN = true;
+        INSTANCE
     }
 }
 

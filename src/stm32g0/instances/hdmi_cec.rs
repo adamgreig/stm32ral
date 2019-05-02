@@ -83,6 +83,18 @@ pub mod HDMI_CEC {
             }
         });
     }
+
+    /// Unsafely steal HDMI_CEC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        HDMI_CEC_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to HDMI_CEC

@@ -6065,6 +6065,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the CAN_CCU peripheral instance
 pub mod CAN_CCU {
@@ -6197,6 +6199,18 @@ pub mod CAN_CCU {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CAN_CCU
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN_CCU_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -6343,6 +6357,18 @@ pub mod CAN_Msg_RAM {
             }
         });
     }
+
+    /// Unsafely steal CAN_Msg_RAM
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN_Msg_RAM_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN_Msg_RAM
@@ -6488,6 +6514,18 @@ pub mod FDCAN1 {
             }
         });
     }
+
+    /// Unsafely steal FDCAN1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FDCAN1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to FDCAN1
@@ -6632,6 +6670,18 @@ pub mod FDCAN2 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal FDCAN2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        FDCAN2_TAKEN = true;
+        INSTANCE
     }
 }
 

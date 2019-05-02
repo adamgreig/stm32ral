@@ -33,17 +33,6 @@ pub use cortex_m_rt::interrupt;
 
 pub use register::{RORegister, WORegister, RWRegister};
 pub use register::{UnsafeRORegister, UnsafeRWRegister, UnsafeWORegister};
-
-#[cfg(feature="rtfm")]
-pub struct Peripherals {}
-
-#[cfg(feature="rtfm")]
-impl Peripherals {
-    pub fn steal() -> Self {
-        Peripherals {}
-    }
-}
-
 #[cfg(any(feature="doc", feature="armv6_m", feature="armv7e_m", feature="armv7_m"))]
 pub mod cortex_m;
 

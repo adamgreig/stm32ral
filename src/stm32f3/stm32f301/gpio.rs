@@ -88,6 +88,18 @@ pub mod GPIOA {
             }
         });
     }
+
+    /// Unsafely steal GPIOA
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        GPIOA_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to GPIOA
@@ -179,6 +191,18 @@ pub mod GPIOB {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal GPIOB
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        GPIOB_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -272,6 +296,18 @@ pub mod GPIOC {
             }
         });
     }
+
+    /// Unsafely steal GPIOC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        GPIOC_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to GPIOC
@@ -363,6 +399,18 @@ pub mod GPIOD {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal GPIOD
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        GPIOD_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -456,6 +504,18 @@ pub mod GPIOE {
             }
         });
     }
+
+    /// Unsafely steal GPIOE
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        GPIOE_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to GPIOE
@@ -547,6 +607,18 @@ pub mod GPIOF {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal GPIOF
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        GPIOF_TAKEN = true;
+        INSTANCE
     }
 }
 

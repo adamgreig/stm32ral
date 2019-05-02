@@ -1625,6 +1625,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the I2C1 peripheral instance
 pub mod I2C1 {
@@ -1704,6 +1706,18 @@ pub mod I2C1 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal I2C1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C1_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -1797,6 +1811,18 @@ pub mod I2C2 {
             }
         });
     }
+
+    /// Unsafely steal I2C2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to I2C2
@@ -1889,6 +1915,18 @@ pub mod I2C3 {
             }
         });
     }
+
+    /// Unsafely steal I2C3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C3_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to I2C3
@@ -1980,6 +2018,18 @@ pub mod I2C4 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal I2C4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        I2C4_TAKEN = true;
+        INSTANCE
     }
 }
 

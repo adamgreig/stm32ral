@@ -91,6 +91,18 @@ pub mod Ethernet_MMC {
             }
         });
     }
+
+    /// Unsafely steal Ethernet_MMC
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        Ethernet_MMC_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to Ethernet_MMC

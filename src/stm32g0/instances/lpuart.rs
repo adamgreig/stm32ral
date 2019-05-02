@@ -94,6 +94,18 @@ pub mod LPUART {
             }
         });
     }
+
+    /// Unsafely steal LPUART
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        LPUART_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to LPUART

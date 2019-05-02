@@ -88,6 +88,18 @@ pub mod USART1 {
             }
         });
     }
+
+    /// Unsafely steal USART1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USART1
@@ -180,6 +192,18 @@ pub mod USART2 {
             }
         });
     }
+
+    /// Unsafely steal USART2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USART2
@@ -271,6 +295,18 @@ pub mod USART3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USART3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USART3_TAKEN = true;
+        INSTANCE
     }
 }
 

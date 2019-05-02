@@ -697,6 +697,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the LPTIM3 peripheral instance
 pub mod LPTIM3 {
@@ -774,6 +776,18 @@ pub mod LPTIM3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal LPTIM3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        LPTIM3_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -865,6 +879,18 @@ pub mod LPTIM4 {
             }
         });
     }
+
+    /// Unsafely steal LPTIM4
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        LPTIM4_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to LPTIM4
@@ -954,6 +980,18 @@ pub mod LPTIM5 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal LPTIM5
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        LPTIM5_TAKEN = true;
+        INSTANCE
     }
 }
 

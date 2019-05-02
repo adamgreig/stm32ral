@@ -76,6 +76,18 @@ pub mod SCB_ACTRL {
             }
         });
     }
+
+    /// Unsafely steal SCB_ACTRL
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SCB_ACTRL_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SCB_ACTRL

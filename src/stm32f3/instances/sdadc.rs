@@ -96,6 +96,18 @@ pub mod SDADC1 {
             }
         });
     }
+
+    /// Unsafely steal SDADC1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SDADC1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SDADC1
@@ -193,6 +205,18 @@ pub mod SDADC2 {
             }
         });
     }
+
+    /// Unsafely steal SDADC2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SDADC2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SDADC2
@@ -289,6 +313,18 @@ pub mod SDADC3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal SDADC3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SDADC3_TAKEN = true;
+        INSTANCE
     }
 }
 

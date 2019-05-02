@@ -111,6 +111,18 @@ pub mod DMA {
             }
         });
     }
+
+    /// Unsafely steal DMA
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DMA_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to DMA

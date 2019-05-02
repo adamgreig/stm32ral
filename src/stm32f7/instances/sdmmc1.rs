@@ -98,6 +98,18 @@ pub mod SDMMC1 {
             }
         });
     }
+
+    /// Unsafely steal SDMMC1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        SDMMC1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to SDMMC1

@@ -48,3 +48,133 @@ pub use super::instances::sdio;
 pub use super::instances::stk;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
+
+#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[allow(non_snake_case)]
+pub struct Peripherals {
+    pub AES: aes::Instance,
+    pub COMP: comp::Instance,
+    pub CRC: crc::Instance,
+    pub DAC: dac::Instance,
+    pub DMA1: dma::Instance,
+    pub DMA2: dma::Instance,
+    pub EXTI: exti::Instance,
+    pub Flash: flash::Instance,
+    pub FSMC: fsmc::Instance,
+    pub GPIOA: gpio::Instance,
+    pub GPIOB: gpio::Instance,
+    pub GPIOC: gpio::Instance,
+    pub GPIOD: gpio::Instance,
+    pub GPIOH: gpio::Instance,
+    pub I2C1: i2c::Instance,
+    pub I2C2: i2c::Instance,
+    pub IWDG: iwdg::Instance,
+    pub LCD: lcd::Instance,
+    pub OPAMP: opamp::Instance,
+    pub PWR: pwr::Instance,
+    pub RCC: rcc::Instance,
+    pub RI: ri::Instance,
+    pub RTC: rtc::Instance,
+    pub SPI1: spi::Instance,
+    pub SPI2: spi::Instance,
+    pub SPI3: spi::Instance,
+    pub SYSCFG: syscfg::Instance,
+    pub TIM10: tim10::Instance,
+    pub TIM11: tim11::Instance,
+    pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
+    pub TIM5: tim5::Instance,
+    pub TIM6: tim6::Instance,
+    pub TIM7: tim7::Instance,
+    pub TIM9: tim9::Instance,
+    pub USART1: usart::Instance,
+    pub USART2: usart::Instance,
+    pub USART3: usart::Instance,
+    pub USART4: usart::Instance,
+    pub USART5: usart::Instance,
+    pub USB: usb::Instance,
+    pub USB_SRAM: usb::Instance,
+    pub WWDG: wwdg::Instance,
+    pub ADC: adc::Instance,
+    pub NVIC: nvic::Instance,
+    pub DBGMCU: dbgmcu::Instance,
+    pub SDIO: sdio::Instance,
+    pub MPU: mpu::Instance,
+    pub SCB_ACTRL: scb_actrl::Instance,
+    pub NVIC_STIR: nvic_stir::Instance,
+    pub SCB: scb::Instance,
+    pub STK: stk::Instance,
+}
+
+#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[allow(non_snake_case)]
+pub struct Peripherals {}
+
+#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+impl Peripherals {
+    pub unsafe fn steal() -> Self {
+        Peripherals {
+            AES: aes::AES::steal(),
+            COMP: comp::COMP::steal(),
+            CRC: crc::CRC::steal(),
+            DAC: dac::DAC::steal(),
+            DMA1: dma::DMA1::steal(),
+            DMA2: dma::DMA2::steal(),
+            EXTI: exti::EXTI::steal(),
+            Flash: flash::Flash::steal(),
+            FSMC: fsmc::FSMC::steal(),
+            GPIOA: gpio::GPIOA::steal(),
+            GPIOB: gpio::GPIOB::steal(),
+            GPIOC: gpio::GPIOC::steal(),
+            GPIOD: gpio::GPIOD::steal(),
+            GPIOH: gpio::GPIOH::steal(),
+            I2C1: i2c::I2C1::steal(),
+            I2C2: i2c::I2C2::steal(),
+            IWDG: iwdg::IWDG::steal(),
+            LCD: lcd::LCD::steal(),
+            OPAMP: opamp::OPAMP::steal(),
+            PWR: pwr::PWR::steal(),
+            RCC: rcc::RCC::steal(),
+            RI: ri::RI::steal(),
+            RTC: rtc::RTC::steal(),
+            SPI1: spi::SPI1::steal(),
+            SPI2: spi::SPI2::steal(),
+            SPI3: spi::SPI3::steal(),
+            SYSCFG: syscfg::SYSCFG::steal(),
+            TIM10: tim10::TIM10::steal(),
+            TIM11: tim11::TIM11::steal(),
+            TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
+            TIM5: tim5::TIM5::steal(),
+            TIM6: tim6::TIM6::steal(),
+            TIM7: tim7::TIM7::steal(),
+            TIM9: tim9::TIM9::steal(),
+            USART1: usart::USART1::steal(),
+            USART2: usart::USART2::steal(),
+            USART3: usart::USART3::steal(),
+            USART4: usart::USART4::steal(),
+            USART5: usart::USART5::steal(),
+            USB: usb::USB::steal(),
+            USB_SRAM: usb::USB_SRAM::steal(),
+            WWDG: wwdg::WWDG::steal(),
+            ADC: adc::ADC::steal(),
+            NVIC: nvic::NVIC::steal(),
+            DBGMCU: dbgmcu::DBGMCU::steal(),
+            SDIO: sdio::SDIO::steal(),
+            MPU: mpu::MPU::steal(),
+            SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
+            SCB: scb::SCB::steal(),
+            STK: stk::STK::steal(),
+        }
+    }
+}
+
+#[cfg(all(feature = "rtfm", feature = "nosync"))]
+impl Peripherals {
+    pub fn steal() -> Self {
+        Peripherals {}
+    }
+}

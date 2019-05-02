@@ -172,6 +172,18 @@ pub mod CAN1 {
             }
         });
     }
+
+    /// Unsafely steal CAN1
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN1_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN1
@@ -342,6 +354,18 @@ pub mod CAN2 {
             }
         });
     }
+
+    /// Unsafely steal CAN2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN2_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to CAN2
@@ -511,6 +535,18 @@ pub mod CAN3 {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal CAN3
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        CAN3_TAKEN = true;
+        INSTANCE
     }
 }
 

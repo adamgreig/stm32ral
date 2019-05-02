@@ -94,6 +94,8 @@ a more complete example that should build out of the box.
 * Quick to compile (~2s build time)
 * Covers [all STM32 devices](supported_devices.md) in one crate
 * Supports `cortex-m-rt` via the `rt` feature, including interrupts
+* Supports `cortex-m-rtfm` via the `rtfm` feature, exposing a `device`
+  with all peripherals taken
 * Doesn't get in your way
 * A bit like what you're used to from C header files
 
@@ -122,7 +124,7 @@ In your `Cargo.toml`:
 
 ```toml
 [dependencies.stm32ral]
-version = "0.1.0"
+version = "0.1.2"
 features = ["stm32f405"]
 ```
 Replace `stm32f405` with the required chip name. See
@@ -157,6 +159,13 @@ modify_reg!(stm32ral::gpio, gpioa, MODER, MODER1: Input, MODER2: Output, MODER3:
   Especially useful if enabled by a HAL crate which will perform its own
   synchronisation but can still permit unsafe direct access to peripherals by
   users (which is why this is a 'negative' feature).
+* `rtfm`: adds a `Peripherals` struct to each device module which contains
+  a `Instance` for each device peripheral, and has a `steal()` method to
+  unsafely create it while taking all the peripherals; this feature adds
+  compatibility for using stm32ral as a cortex-m-rtfm device crate.
+  If `nosync` is also enabled, the `Peripherals` struct will be empty and
+  have an empty `steal()` method, retaining compatibility (but only direct
+  unsafe access to peripherals is possible).
 * CPU features like `armv7em`: brings in peripherals from the CPU core itself,
   the relevant one is automatically included by the device features.
 * Device features: one per supported device, for example, `stm32f405`.

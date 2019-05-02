@@ -3075,6 +3075,8 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
+#[cfg(feature = "rtfm")]
+unsafe impl Send for Instance {}
 
 /// Access functions for the OTG1_HS_DEVICE peripheral instance
 pub mod OTG1_HS_DEVICE {
@@ -3215,6 +3217,18 @@ pub mod OTG1_HS_DEVICE {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal OTG1_HS_DEVICE
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG1_HS_DEVICE_TAKEN = true;
+        INSTANCE
     }
 }
 
@@ -3368,6 +3382,18 @@ pub mod OTG2_HS_DEVICE {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal OTG2_HS_DEVICE
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG2_HS_DEVICE_TAKEN = true;
+        INSTANCE
     }
 }
 

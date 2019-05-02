@@ -92,6 +92,18 @@ pub mod USB_FS {
             }
         });
     }
+
+    /// Unsafely steal USB_FS
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USB_FS_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to USB_FS
@@ -187,6 +199,18 @@ pub mod USB_SRAM {
                 panic!("Released a peripheral which was not taken");
             }
         });
+    }
+
+    /// Unsafely steal USB_SRAM
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        USB_SRAM_TAKEN = true;
+        INSTANCE
     }
 }
 

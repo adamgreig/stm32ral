@@ -172,6 +172,18 @@ pub mod OTG_HS_HOST {
             }
         });
     }
+
+    /// Unsafely steal OTG_HS_HOST
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG_HS_HOST_TAKEN = true;
+        INSTANCE
+    }
 }
 
 /// Raw pointer to OTG_HS_HOST
