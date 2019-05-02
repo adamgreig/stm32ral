@@ -17,6 +17,7 @@ buildall:
 		cargo check --features `basename $$device .yaml` || break 0;\
 		cargo check --features `basename $$device .yaml`,nosync || break 0;\
 		cargo check --features `basename $$device .yaml`,rt  || break 0;\
+		cargo check --features `basename $$device .yaml`,rtfm  || break 0;\
 	done
 
 doc:
