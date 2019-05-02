@@ -123,7 +123,7 @@ In your `Cargo.toml`:
 
 ```toml
 [dependencies.stm32ral]
-version = "0.1.2"
+version = "0.2.0"
 features = ["stm32f405"]
 ```
 Replace `stm32f405` with the required chip name. See

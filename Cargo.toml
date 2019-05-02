@@ -13,7 +13,7 @@ license = "MIT/Apache-2.0"
 edition = "2018"
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.1.2"
+version = "0.2.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
