@@ -6,8 +6,8 @@ matrix:
   include:
     - name: Rust Stable
       env: RUST_TOOLCHAIN="stable"
-    - name: Rust Nightly
-      env: RUST_TOOLCHAIN="nightly"
+    - name: Rust Beta
+      env: RUST_TOOLCHAIN="beta"
 
 install:
   - pip install pyyaml
