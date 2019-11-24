@@ -1280,9 +1280,9 @@ class Device(Node):
                     f.write(f"PROVIDE({interrupt.name} = DefaultHandler);\n")
 
     @classmethod
-    def from_svd(cls, svd):
+    def from_svd(cls, svd, device_name):
         """Load a Device node and children from a parsed SVD XML file."""
-        name = get_string(svd, 'name')
+        name = device_name
         cpu = CPU.from_svd(svd, svd.find('cpu'))
         device = cls(name, cpu)
         register_ctx = RegisterCtx.empty()
@@ -1305,8 +1305,9 @@ class Device(Node):
 
     @classmethod
     def from_svdfile(cls, svdfile):
+        device_name = os.path.basename(svdfile).split('.')[0]
         svd = ET.parse(svdfile)
-        return cls.from_svd(svd)
+        return cls.from_svd(svd, device_name)
 
     def refactor_peripheral_instances(self):
         """
@@ -1599,7 +1600,7 @@ class Crate:
             lib_f.write(f'pub mod {fname};\n\n')
             for device in family.devices:
                 dname = device.name
-                arch = device.cpu.get_architecture().lower().replace("-", "_")
+                arch = device.cpu.get_architecture().lower().replace("-", "")
                 if device.special:
                     cargo_f.write(f'{dname} = []\n')
                 else:
