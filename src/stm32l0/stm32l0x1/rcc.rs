@@ -1135,7 +1135,7 @@ pub mod IOPRSTR {
 pub mod AHBRSTR {
 
     /// Crypto module reset
-    pub mod CRYPTRST {
+    pub mod CRYPRST {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -1160,7 +1160,7 @@ pub mod AHBRSTR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::CRYPTRST::W;
+        pub use super::CRYPRST::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1173,7 +1173,7 @@ pub mod AHBRSTR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::CRYPTRST::W;
+        pub use super::CRYPRST::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1186,7 +1186,7 @@ pub mod AHBRSTR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::CRYPTRST::W;
+        pub use super::CRYPRST::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1922,9 +1922,9 @@ pub mod APB1ENR {
 
     /// Timer 3 clock enbale bit
     pub mod TIM3EN {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2540,7 +2540,18 @@ pub mod CCIPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LPTIM1SEL::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: APB clock selected as peripheral clock
+            pub const APB: u32 = 0b00;
+
+            /// 0b01: System clock selected as peripheral clock
+            pub const SYSTEM: u32 = 0b01;
+
+            /// 0b10: HSI16 clock selected as peripheral clock
+            pub const HSI16: u32 = 0b10;
+        }
     }
 
     /// I2C1 clock source selection bits
@@ -2553,7 +2564,7 @@ pub mod CCIPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LPTIM1SEL::RW;
+        pub use super::I2C3SEL::RW;
     }
 
     /// LPUART1 clock source selection bits
@@ -2566,7 +2577,21 @@ pub mod CCIPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LPTIM1SEL::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: APB clock selected as peripheral clock
+            pub const APB: u32 = 0b00;
+
+            /// 0b01: System clock selected as peripheral clock
+            pub const SYSTEM: u32 = 0b01;
+
+            /// 0b10: HSI16 clock selected as peripheral clock
+            pub const HSI16: u32 = 0b10;
+
+            /// 0b11: LSE clock selected as peripheral clock
+            pub const LSE: u32 = 0b11;
+        }
     }
 
     /// USART2 clock source selection bits
@@ -2579,7 +2604,7 @@ pub mod CCIPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LPTIM1SEL::RW;
+        pub use super::LPUART1SEL::RW;
     }
 
     /// USART1 clock source selection bits
@@ -2592,7 +2617,7 @@ pub mod CCIPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LPTIM1SEL::RW;
+        pub use super::LPUART1SEL::RW;
     }
 }
 

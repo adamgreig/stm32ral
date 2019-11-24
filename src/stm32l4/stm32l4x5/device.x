@@ -70,5 +70,6 @@ PROVIDE(SAI2 = DefaultHandler);
 PROVIDE(SWPMI1 = DefaultHandler);
 PROVIDE(TSC = DefaultHandler);
 PROVIDE(LCD = DefaultHandler);
+PROVIDE(AES = DefaultHandler);
 PROVIDE(RNG = DefaultHandler);
 PROVIDE(FPU = DefaultHandler);

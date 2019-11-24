@@ -2,11 +2,11 @@
 #![allow(non_camel_case_types)]
 //! USB on the go high speed
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::otg_hs_pwrclk::Instance;
-pub use crate::stm32f4::peripherals::otg_hs_pwrclk::OTG_HS_PCGCR;
+pub use crate::stm32f4::peripherals::otg_hs_pwrclk::PCGCR;
 pub use crate::stm32f4::peripherals::otg_hs_pwrclk::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG_HS_PWRCLK peripheral instance
@@ -23,9 +23,7 @@ pub mod OTG_HS_PWRCLK {
     };
 
     /// Reset values for each field in OTG_HS_PWRCLK
-    pub const reset: ResetValues = ResetValues {
-        OTG_HS_PCGCR: 0x00000000,
-    };
+    pub const reset: ResetValues = ResetValues { PCGCR: 0x00000000 };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]

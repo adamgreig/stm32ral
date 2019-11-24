@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! DSI Host
 //!
-//! Used by: stm32f7x7, stm32f7x9
+//! Used by: stm32f765, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

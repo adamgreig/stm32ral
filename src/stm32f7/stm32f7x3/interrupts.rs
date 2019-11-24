@@ -417,7 +417,7 @@ pub enum Interrupt {
     AES = 79,
     /// 80: Rng global interrupt
     RNG = 80,
-    /// 81: FPU global interrupt
+    /// 81: Floating point unit interrupt
     FPU = 81,
     /// 82: UART7 global interrupt
     UART7 = 82,

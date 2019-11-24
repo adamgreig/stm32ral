@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::otg_hs_host_v1::Instance;
-pub use crate::stm32f7::peripherals::otg_hs_host_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::otg_hs_host_v1::{
+pub use crate::stm32f7::peripherals::otg_hs_host_v2::Instance;
+pub use crate::stm32f7::peripherals::otg_hs_host_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::otg_hs_host_v2::{
     OTG_HS_HAINT, OTG_HS_HAINTMSK, OTG_HS_HCCHAR0, OTG_HS_HCCHAR1, OTG_HS_HCCHAR10,
     OTG_HS_HCCHAR11, OTG_HS_HCCHAR12, OTG_HS_HCCHAR13, OTG_HS_HCCHAR14, OTG_HS_HCCHAR15,
     OTG_HS_HCCHAR2, OTG_HS_HCCHAR3, OTG_HS_HCCHAR4, OTG_HS_HCCHAR5, OTG_HS_HCCHAR6, OTG_HS_HCCHAR7,

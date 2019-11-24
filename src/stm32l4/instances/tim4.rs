@@ -5,9 +5,9 @@
 //! Used by: stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::tim2::Instance;
-pub use crate::stm32l4::peripherals::tim2::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::tim2::{
+pub use crate::stm32l4::peripherals::tim3::Instance;
+pub use crate::stm32l4::peripherals::tim3::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::tim3::{
     ARR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, OR, PSC,
     SMCR, SR,
 };

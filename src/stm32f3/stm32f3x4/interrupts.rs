@@ -41,14 +41,14 @@ extern "C" {
     fn RTCAlarm();
     fn TIM6_DAC1();
     fn TIM7_DAC2();
-    fn FPU();
-    fn HRTIM1_MST();
-    fn HRTIM1_TIMA();
+    fn HRTIM_MST();
+    fn HRTIM_TIMA();
     fn HRTIM_TIMB();
-    fn HRTIM1_TIMC();
-    fn HRTIM1_TIMD();
+    fn HRTIM_TIMC();
+    fn HRTIM_TIMD();
     fn HRTIM_TIME();
-    fn HRTIM1_FLT();
+    fn HRTIM_FLT();
+    fn FPU();
 }
 
 #[doc(hidden)]
@@ -61,7 +61,7 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
-pub static __INTERRUPTS: [Vector; 110] = [
+pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: WWDG },
     Vector { _handler: PVD },
     Vector {
@@ -157,13 +157,27 @@ pub static __INTERRUPTS: [Vector; 110] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: HRTIM_MST,
+    },
+    Vector {
+        _handler: HRTIM_TIMA,
+    },
+    Vector {
+        _handler: HRTIM_TIMB,
+    },
+    Vector {
+        _handler: HRTIM_TIMC,
+    },
+    Vector {
+        _handler: HRTIM_TIMD,
+    },
+    Vector {
+        _handler: HRTIM_TIME,
+    },
+    Vector {
+        _handler: HRTIM_FLT,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -172,48 +186,6 @@ pub static __INTERRUPTS: [Vector; 110] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: FPU },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector {
-        _handler: HRTIM1_MST,
-    },
-    Vector {
-        _handler: HRTIM1_TIMA,
-    },
-    Vector {
-        _handler: HRTIM_TIMB,
-    },
-    Vector {
-        _handler: HRTIM1_TIMC,
-    },
-    Vector {
-        _handler: HRTIM1_TIMD,
-    },
-    Vector {
-        _handler: HRTIM_TIME,
-    },
-    Vector {
-        _handler: HRTIM1_FLT,
-    },
 ];
 
 /// Available interrupts for this device
@@ -301,22 +273,22 @@ pub enum Interrupt {
     TIM6_DAC1 = 54,
     /// 55: TIM7 global interrupt
     TIM7_DAC2 = 55,
-    /// 81: Floating point unit interrupt
+    /// 67: HRTIM1 master timer interrupt
+    HRTIM_MST = 67,
+    /// 68: HRTIM1 timer A interrupt
+    HRTIM_TIMA = 68,
+    /// 69: HRTIM1 timer B interrupt
+    HRTIM_TIMB = 69,
+    /// 70: HRTIM1 timer C interrupt
+    HRTIM_TIMC = 70,
+    /// 71: HRTIM1 timer D interrupt
+    HRTIM_TIMD = 71,
+    /// 72: HRTIM1 timer E interrupt
+    HRTIM_TIME = 72,
+    /// 73: HRTIM1 fault interrupt
+    HRTIM_FLT = 73,
+    /// 81: Floating point unit
     FPU = 81,
-    /// 103: HRTIM1 master timer interrupt
-    HRTIM1_MST = 103,
-    /// 104: HRTIM1 timer A interrupt
-    HRTIM1_TIMA = 104,
-    /// 105: HRTIM1 timer B interrupt
-    HRTIM_TIMB = 105,
-    /// 106: HRTIM1 timer C interrupt
-    HRTIM1_TIMC = 106,
-    /// 107: HRTIM1 timer D interrupt
-    HRTIM1_TIMD = 107,
-    /// 108: HRTIM1 timer E interrupt
-    HRTIM_TIME = 108,
-    /// 109: HRTIM1 fault interrupt
-    HRTIM1_FLT = 109,
 }
 unsafe impl bare_metal::Nr for Interrupt {
     #[inline]

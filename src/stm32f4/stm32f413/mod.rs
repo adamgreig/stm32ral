@@ -10,8 +10,8 @@ pub use self::interrupts::Interrupt as interrupt;
 
 pub mod aes;
 pub use super::instances::adc1;
-pub use super::instances::tim1;
-pub use super::instances::tim8;
+pub use super::instances::tim1_f401_f405_f407_f413_f427_f429_f446_f469 as tim1;
+pub use super::instances::tim8_f401_f405_f407_f413_f427_f429_f446_f469 as tim8;
 pub mod can;
 pub mod tim6;
 pub mod tim7;

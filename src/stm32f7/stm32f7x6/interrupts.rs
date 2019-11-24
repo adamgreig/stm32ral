@@ -89,12 +89,12 @@ extern "C" {
     fn SPI5();
     fn SPI6();
     fn SAI1();
-    fn LCD_TFT();
+    fn LTDC();
     fn LTDC_ER();
     fn DMA2D();
     fn SAI2();
     fn QuadSPI();
-    fn LP_Timer1();
+    fn LPTimer1();
     fn HDMI_CEC();
     fn I2C4_EV();
     fn I2C4_ER();
@@ -258,14 +258,12 @@ pub static __INTERRUPTS: [Vector; 98] = [
     Vector { _handler: SPI5 },
     Vector { _handler: SPI6 },
     Vector { _handler: SAI1 },
-    Vector { _handler: LCD_TFT },
+    Vector { _handler: LTDC },
     Vector { _handler: LTDC_ER },
     Vector { _handler: DMA2D },
     Vector { _handler: SAI2 },
     Vector { _handler: QuadSPI },
-    Vector {
-        _handler: LP_Timer1,
-    },
+    Vector { _handler: LPTimer1 },
     Vector { _handler: HDMI_CEC },
     Vector { _handler: I2C4_EV },
     Vector { _handler: I2C4_ER },
@@ -327,7 +325,7 @@ pub enum Interrupt {
     EXTI9_5 = 23,
     /// 24: TIM1 Break interrupt and TIM9 global interrupt
     TIM1_BRK_TIM9 = 24,
-    /// 25: TIM1 Update interrupt and TIM10 global interrupt
+    /// 25: TIM1 Update interrupt and TIM10
     TIM1_UP_TIM10 = 25,
     /// 26: TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
     TIM1_TRG_COM_TIM11 = 26,
@@ -454,8 +452,8 @@ pub enum Interrupt {
     /// 87: SAI1 global interrupt
     SAI1 = 87,
     /// 88: LTDC global interrupt
-    LCD_TFT = 88,
-    /// 89: LTDC Error global interrupt
+    LTDC = 88,
+    /// 89: LTDC global error interrupt
     LTDC_ER = 89,
     /// 90: DMA2D global interrupt
     DMA2D = 90,
@@ -464,7 +462,7 @@ pub enum Interrupt {
     /// 92: QuadSPI global interrupt
     QuadSPI = 92,
     /// 93: LP Timer1 global interrupt
-    LP_Timer1 = 93,
+    LPTimer1 = 93,
     /// 94: HDMI-CEC global interrupt
     HDMI_CEC = 94,
     /// 95: I2C4 event interrupt

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose I/Os
 //!
-//! Used by: stm32l0x2, stm32l0x3
+//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,21 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Input mode (reset state)
+            pub const Input: u32 = 0b00;
+
+            /// 0b01: General purpose output mode
+            pub const Output: u32 = 0b01;
+
+            /// 0b10: Alternate function mode
+            pub const Alternate: u32 = 0b10;
+
+            /// 0b11: Analog mode
+            pub const Analog: u32 = 0b11;
+        }
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -35,8 +48,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -49,8 +61,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -63,8 +74,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -77,8 +87,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -91,8 +100,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -105,8 +113,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -119,8 +126,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -133,8 +139,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -147,8 +152,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -161,8 +165,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -175,8 +178,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -189,8 +191,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -203,8 +204,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -217,8 +217,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -231,8 +230,7 @@ pub mod MODER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODE0::RW;
     }
 }
 
@@ -249,8 +247,15 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output push-pull (reset state)
+            pub const PushPull: u32 = 0b0;
+
+            /// 0b1: Output open-drain
+            pub const OpenDrain: u32 = 0b1;
+        }
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -263,8 +268,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -277,8 +281,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -291,8 +294,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -305,8 +307,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -319,8 +320,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -333,8 +333,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -347,8 +346,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -361,8 +359,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -375,8 +372,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -389,8 +385,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -403,8 +398,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -417,8 +411,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -431,8 +424,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -445,8 +437,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -459,8 +450,7 @@ pub mod OTYPER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OT15::RW;
     }
 }
 
@@ -477,8 +467,21 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Low speed
+            pub const LowSpeed: u32 = 0b00;
+
+            /// 0b01: Medium speed
+            pub const MediumSpeed: u32 = 0b01;
+
+            /// 0b10: High speed
+            pub const HighSpeed: u32 = 0b10;
+
+            /// 0b11: Very high speed
+            pub const VeryHighSpeed: u32 = 0b11;
+        }
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -491,8 +494,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -505,8 +507,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -519,8 +520,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -533,8 +533,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -547,8 +546,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -561,8 +559,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -575,8 +572,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -589,8 +585,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -603,8 +598,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -617,8 +611,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -631,8 +624,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -645,8 +637,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -659,8 +650,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -673,8 +663,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -687,8 +676,7 @@ pub mod OSPEEDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OSPEED15::RW;
     }
 }
 
@@ -705,8 +693,18 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No pull-up, pull-down
+            pub const Floating: u32 = 0b00;
+
+            /// 0b01: Pull-up
+            pub const PullUp: u32 = 0b01;
+
+            /// 0b10: Pull-down
+            pub const PullDown: u32 = 0b10;
+        }
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -719,8 +717,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -733,8 +730,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -747,8 +743,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -761,8 +756,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -775,8 +769,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -789,8 +782,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -803,8 +795,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -817,8 +808,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -831,8 +821,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -845,8 +834,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -859,8 +847,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -873,8 +860,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -887,8 +873,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -901,8 +886,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 
     /// Port x configuration bits (y = 0..15)
@@ -915,8 +899,7 @@ pub mod PUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PUPD15::RW;
     }
 }
 
@@ -933,8 +916,15 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Input is logic high
+            pub const High: u32 = 0b1;
+
+            /// 0b0: Input is logic low
+            pub const Low: u32 = 0b0;
+        }
     }
 
     /// Port input data bit (y = 0..15)
@@ -947,8 +937,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -961,8 +950,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -975,8 +963,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -989,8 +976,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1003,8 +989,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1017,8 +1002,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1031,8 +1015,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1045,8 +1028,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1059,8 +1041,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1073,8 +1054,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1087,8 +1067,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1101,8 +1080,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1115,8 +1093,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1129,8 +1106,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 
     /// Port input data bit (y = 0..15)
@@ -1143,8 +1119,7 @@ pub mod IDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ID15::RW;
     }
 }
 
@@ -1161,8 +1136,15 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Set output to logic high
+            pub const High: u32 = 0b1;
+
+            /// 0b0: Set output to logic low
+            pub const Low: u32 = 0b0;
+        }
     }
 
     /// Port output data bit (y = 0..15)
@@ -1175,8 +1157,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1189,8 +1170,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1203,8 +1183,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1217,8 +1196,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1231,8 +1209,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1245,8 +1222,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1259,8 +1235,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1273,8 +1248,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1287,8 +1261,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1301,8 +1274,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1315,8 +1287,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1329,8 +1300,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1343,8 +1313,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1357,8 +1326,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 
     /// Port output data bit (y = 0..15)
@@ -1371,8 +1339,7 @@ pub mod ODR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OD15::RW;
     }
 }
 
@@ -1387,8 +1354,12 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Resets the corresponding ODx bit
+            pub const Reset: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1401,8 +1372,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1415,8 +1385,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1429,8 +1398,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1443,8 +1411,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1457,8 +1424,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1471,8 +1437,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1485,8 +1450,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1499,8 +1463,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1513,8 +1476,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1527,8 +1489,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1541,8 +1502,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1555,8 +1515,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1569,8 +1528,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1583,8 +1541,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1597,8 +1554,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1611,8 +1567,12 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Sets the corresponding ODx bit
+            pub const Set: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1625,8 +1585,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1639,8 +1598,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1653,8 +1611,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1667,8 +1624,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1681,8 +1637,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1695,8 +1650,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1709,8 +1663,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1723,8 +1676,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1737,8 +1689,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1751,8 +1702,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1765,8 +1715,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1779,8 +1728,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1793,8 +1741,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1807,8 +1754,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1821,8 +1767,7 @@ pub mod BSRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BS15::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1841,8 +1786,15 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Port configuration lock key not active
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Port configuration lock key active
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1855,8 +1807,15 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Port configuration not locked
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Port configuration locked
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1869,8 +1828,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1883,8 +1841,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1897,8 +1854,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1911,8 +1867,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1925,8 +1880,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1939,8 +1893,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1953,8 +1906,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1967,8 +1919,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1981,8 +1932,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1995,8 +1945,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -2009,8 +1958,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -2023,8 +1971,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -2037,8 +1984,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -2051,8 +1997,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -2065,8 +2010,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 }
 
@@ -2083,8 +2027,57 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: AF0
+            pub const AF0: u32 = 0b0000;
+
+            /// 0b0001: AF1
+            pub const AF1: u32 = 0b0001;
+
+            /// 0b0010: AF2
+            pub const AF2: u32 = 0b0010;
+
+            /// 0b0011: AF3
+            pub const AF3: u32 = 0b0011;
+
+            /// 0b0100: AF4
+            pub const AF4: u32 = 0b0100;
+
+            /// 0b0101: AF5
+            pub const AF5: u32 = 0b0101;
+
+            /// 0b0110: AF6
+            pub const AF6: u32 = 0b0110;
+
+            /// 0b0111: AF7
+            pub const AF7: u32 = 0b0111;
+
+            /// 0b1000: AF8
+            pub const AF8: u32 = 0b1000;
+
+            /// 0b1001: AF9
+            pub const AF9: u32 = 0b1001;
+
+            /// 0b1010: AF10
+            pub const AF10: u32 = 0b1010;
+
+            /// 0b1011: AF11
+            pub const AF11: u32 = 0b1011;
+
+            /// 0b1100: AF12
+            pub const AF12: u32 = 0b1100;
+
+            /// 0b1101: AF13
+            pub const AF13: u32 = 0b1101;
+
+            /// 0b1110: AF14
+            pub const AF14: u32 = 0b1110;
+
+            /// 0b1111: AF15
+            pub const AF15: u32 = 0b1111;
+        }
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2097,8 +2090,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2111,8 +2103,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2125,8 +2116,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2139,8 +2129,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2153,8 +2142,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2167,8 +2155,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 0..7)
@@ -2181,8 +2168,7 @@ pub mod AFRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL7::RW;
     }
 }
 
@@ -2199,8 +2185,57 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: AF0
+            pub const AF0: u32 = 0b0000;
+
+            /// 0b0001: AF1
+            pub const AF1: u32 = 0b0001;
+
+            /// 0b0010: AF2
+            pub const AF2: u32 = 0b0010;
+
+            /// 0b0011: AF3
+            pub const AF3: u32 = 0b0011;
+
+            /// 0b0100: AF4
+            pub const AF4: u32 = 0b0100;
+
+            /// 0b0101: AF5
+            pub const AF5: u32 = 0b0101;
+
+            /// 0b0110: AF6
+            pub const AF6: u32 = 0b0110;
+
+            /// 0b0111: AF7
+            pub const AF7: u32 = 0b0111;
+
+            /// 0b1000: AF8
+            pub const AF8: u32 = 0b1000;
+
+            /// 0b1001: AF9
+            pub const AF9: u32 = 0b1001;
+
+            /// 0b1010: AF10
+            pub const AF10: u32 = 0b1010;
+
+            /// 0b1011: AF11
+            pub const AF11: u32 = 0b1011;
+
+            /// 0b1100: AF12
+            pub const AF12: u32 = 0b1100;
+
+            /// 0b1101: AF13
+            pub const AF13: u32 = 0b1101;
+
+            /// 0b1110: AF14
+            pub const AF14: u32 = 0b1110;
+
+            /// 0b1111: AF15
+            pub const AF15: u32 = 0b1111;
+        }
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2213,8 +2248,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2227,8 +2261,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2241,8 +2274,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2255,8 +2287,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2269,8 +2300,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2283,8 +2313,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 
     /// Alternate function selection for port x pin y (y = 8..15)
@@ -2297,8 +2326,7 @@ pub mod AFRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AFSEL15::RW;
     }
 }
 

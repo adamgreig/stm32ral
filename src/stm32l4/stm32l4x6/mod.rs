@@ -38,8 +38,6 @@ pub use super::instances::tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
 pub use super::instances::tim2;
-pub use super::instances::tim3;
-pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
@@ -57,10 +55,10 @@ pub mod otg_fs_global;
 pub mod otg_fs_host;
 pub mod otg_fs_pwrclk;
 pub mod swpmi1;
-pub use super::instances::crs;
-pub use super::instances::fmc;
-pub use super::instances::nvic;
 pub use super::instances::opamp;
+pub mod fmc;
+pub use super::instances::crs;
+pub use super::instances::nvic;
 pub mod dcmi;
 pub mod dma2d;
 pub mod hash;
@@ -71,6 +69,8 @@ pub use super::instances::nvic_stir;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
+pub use super::instances::tim3;
+pub use super::instances::tim4;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -114,8 +114,6 @@ pub struct Peripherals {
     pub SAI1: sai::Instance,
     pub SAI2: sai::Instance,
     pub TIM2: tim2::Instance,
-    pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
     pub TIM5: tim5::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
@@ -160,6 +158,8 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -209,8 +209,6 @@ impl Peripherals {
             SAI1: sai::SAI1::steal(),
             SAI2: sai::SAI2::steal(),
             TIM2: tim2::TIM2::steal(),
-            TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
             TIM5: tim5::TIM5::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
@@ -255,6 +253,8 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
         }
     }
 }

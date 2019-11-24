@@ -22,15 +22,14 @@ pub use super::instances::tim3;
 pub use super::instances::wwdg;
 pub mod spi1;
 pub use super::instances::usart;
-pub mod adc;
+pub mod adc1;
 pub use super::instances::crc;
 pub use super::instances::flash;
 pub mod dbgmcu;
-pub use super::instances::bkp;
-pub mod fsmc;
 pub use super::instances::adc2;
-pub use super::instances::can;
+pub use super::instances::bkp;
 pub use super::instances::dac_f100_f102 as dac;
+pub use super::instances::fsmc_f100_f102 as fsmc;
 pub use super::instances::otg_fs_device;
 pub use super::instances::otg_fs_global;
 pub use super::instances::otg_fs_host;
@@ -42,11 +41,11 @@ pub use super::instances::tim12;
 pub use super::instances::tim1_f100_f101_f102 as tim1;
 pub use super::instances::tim8;
 pub use super::instances::tim9;
+pub mod can;
 pub use super::instances::usb;
 pub mod spi;
-pub mod tim4;
-pub mod tim5;
 pub mod uart;
+pub use super::instances::adc3;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
@@ -55,6 +54,8 @@ pub use super::instances::scb_actrl;
 pub use super::instances::stk;
 pub use super::instances::tim13_f100_f102_f107 as tim13;
 pub use super::instances::tim14_f100_f102_f107 as tim14;
+pub use super::instances::tim4_f100_f102 as tim4;
+pub use super::instances::tim5_f100_f102 as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 
@@ -85,8 +86,7 @@ pub struct Peripherals {
     pub USART1: usart::Instance,
     pub USART2: usart::Instance,
     pub USART3: usart::Instance,
-    pub ADC1: adc::Instance,
-    pub ADC3: adc::Instance,
+    pub ADC1: adc1::Instance,
     pub CRC: crc::Instance,
     pub FLASH: flash::Instance,
     pub DBGMCU: dbgmcu::Instance,
@@ -124,6 +124,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
+    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -158,8 +159,7 @@ impl Peripherals {
             USART1: usart::USART1::steal(),
             USART2: usart::USART2::steal(),
             USART3: usart::USART3::steal(),
-            ADC1: adc::ADC1::steal(),
-            ADC3: adc::ADC3::steal(),
+            ADC1: adc1::ADC1::steal(),
             CRC: crc::CRC::steal(),
             FLASH: flash::FLASH::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
@@ -197,6 +197,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
+            ADC3: adc3::ADC3::steal(),
         }
     }
 }

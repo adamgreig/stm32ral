@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,18 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: t_DTS = t_CK_INT
+            pub const Div1: u32 = 0b00;
+
+            /// 0b01: t_DTS = 2 × t_CK_INT
+            pub const Div2: u32 = 0b01;
+
+            /// 0b10: t_DTS = 4 × t_CK_INT
+            pub const Div4: u32 = 0b10;
+        }
     }
 
     /// Auto-reload preload enable
@@ -512,34 +522,6 @@ pub mod CCMR1 {
         pub const offset: u32 = 0;
         /// Mask (2 bits: 0b11 << 0)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Output Compare 2 mode - bit 3
-    pub mod OC2M_3 {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Output Compare 1 mode - bit 3
-    pub mod OC1M_3 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

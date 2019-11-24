@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Basic timers
 //!
-//! Used by: stm32g0x0, stm32g0x1
+//! Used by: stm32g07x, stm32g081
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

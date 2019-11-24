@@ -11,11 +11,11 @@ pub use self::interrupts::Interrupt as interrupt;
 pub use super::instances::ac;
 pub use super::instances::adc_common_f7x2_f7x3 as adc_common;
 pub use super::instances::adc_f7x2_f7x3 as adc;
+pub use super::instances::aes;
 pub use super::instances::can1;
 pub use super::instances::crc_f7x2_f7x3 as crc;
-pub use super::instances::cryp_f7x2_f7x3 as cryp;
 pub use super::instances::dac;
-pub use super::instances::dbgmcu_f7x2_f7x3_f7x5_f7x6 as dbgmcu;
+pub use super::instances::dbgmcu_f745_f765_f7x2_f7x3_f7x6 as dbgmcu;
 pub use super::instances::dma_f7x2_f7x3 as dma;
 pub use super::instances::exti_f7x2_f7x3 as exti;
 pub use super::instances::flash_f7x2_f7x3 as flash;
@@ -27,7 +27,7 @@ pub use super::instances::i2c_f7x2_f7x3 as i2c;
 pub use super::instances::iwdg_f7x2_f7x3 as iwdg;
 pub use super::instances::lptim1;
 pub use super::instances::mpu;
-pub use super::instances::nvic;
+pub use super::instances::nvic_f7x2_f7x3 as nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::otg_fs_device_f7x2_f7x3 as otg_fs_device;
 pub use super::instances::otg_fs_global_f7x2_f7x3 as otg_fs_global;
@@ -65,6 +65,7 @@ pub use super::instances::tim7_f7x2_f7x3 as tim7;
 pub use super::instances::tim8_f7x2_f7x3 as tim8;
 pub use super::instances::tim9_f7x2_f7x3 as tim9;
 pub use super::instances::usart_f7x2_f7x3 as usart;
+pub use super::instances::usbphyc;
 pub use super::instances::wwdg;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
@@ -80,7 +81,6 @@ pub struct Peripherals {
     pub ADC_Common: adc_common::Instance,
     pub CAN1: can1::Instance,
     pub CRC: crc::Instance,
-    pub CRYP: cryp::Instance,
     pub DBGMCU: dbgmcu::Instance,
     pub DAC: dac::Instance,
     pub DMA2: dma::Instance,
@@ -154,6 +154,8 @@ pub struct Peripherals {
     pub SCB: scb::Instance,
     pub PF: pf::Instance,
     pub AC: ac::Instance,
+    pub AES: aes::Instance,
+    pub USBPHYC: usbphyc::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -174,7 +176,6 @@ impl Peripherals {
             ADC_Common: adc_common::ADC_Common::steal(),
             CAN1: can1::CAN1::steal(),
             CRC: crc::CRC::steal(),
-            CRYP: cryp::CRYP::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
             DAC: dac::DAC::steal(),
             DMA2: dma::DMA2::steal(),
@@ -248,6 +249,8 @@ impl Peripherals {
             SCB: scb::SCB::steal(),
             PF: pf::PF::steal(),
             AC: ac::AC::steal(),
+            AES: aes::AES::steal(),
+            USBPHYC: usbphyc::USBPHYC::steal(),
         }
     }
 }

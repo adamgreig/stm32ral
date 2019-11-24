@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32l0x2, stm32l0x3
+//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l0::peripherals::tim2_v2::Instance;
-pub use crate::stm32l0::peripherals::tim2_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32l0::peripherals::tim2_v2::{
+pub use crate::stm32l0::peripherals::tim2::Instance;
+pub use crate::stm32l0::peripherals::tim2::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::tim2::{
     ARR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, OR, PSC,
     SMCR, SR,
 };
@@ -36,16 +36,16 @@ pub mod TIM3 {
         CCMR1: 0x00000000,
         CCMR2: 0x00000000,
         CCER: 0x00000000,
-        CNT: 0x00000000,
         PSC: 0x00000000,
-        ARR: 0x00000000,
+        DCR: 0x00000000,
+        DMAR: 0x00000000,
+        OR: 0x00000000,
+        CNT: 0x00000000,
+        ARR: 0x0000FFFF,
         CCR1: 0x00000000,
         CCR2: 0x00000000,
         CCR3: 0x00000000,
         CCR4: 0x00000000,
-        DCR: 0x00000000,
-        DMAR: 0x00000000,
-        OR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

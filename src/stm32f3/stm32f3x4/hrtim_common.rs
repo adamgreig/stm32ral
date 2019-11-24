@@ -19,8 +19,27 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: ADC trigger update from master timer
+            pub const Master: u32 = 0b000;
+
+            /// 0b001: ADC trigger update from timer A
+            pub const TimerA: u32 = 0b001;
+
+            /// 0b010: ADC trigger update from timer B
+            pub const TimerB: u32 = 0b010;
+
+            /// 0b011: ADC trigger update from timer C
+            pub const TimerC: u32 = 0b011;
+
+            /// 0b100: ADC trigger update from timer D
+            pub const TimerD: u32 = 0b100;
+
+            /// 0b101: ADC trigger update from timer E
+            pub const TimerE: u32 = 0b101;
+        }
     }
 
     /// ADC Trigger 3 Update Source
@@ -33,8 +52,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD4USRC::RW;
     }
 
     /// ADC Trigger 2 Update Source
@@ -47,8 +65,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD4USRC::RW;
     }
 
     /// ADC Trigger 1 Update Source
@@ -61,8 +78,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD4USRC::RW;
     }
 
     /// Timer E Update Disable
@@ -75,8 +91,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer update enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Timer update disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// Timer D Update Disable
@@ -89,8 +112,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEUDIS::RW;
     }
 
     /// Timer C Update Disable
@@ -103,8 +125,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEUDIS::RW;
     }
 
     /// Timer B Update Disable
@@ -117,8 +138,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEUDIS::RW;
     }
 
     /// Timer A Update Disable
@@ -131,8 +151,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEUDIS::RW;
     }
 
     /// Master Update Disable
@@ -145,8 +164,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEUDIS::RW;
     }
 }
 
@@ -163,8 +181,12 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Reset timer
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// Timer D counter software reset
@@ -177,8 +199,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TERST::RW;
     }
 
     /// Timer C counter software reset
@@ -191,8 +212,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TERST::RW;
     }
 
     /// Timer B counter software reset
@@ -205,8 +225,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TERST::RW;
     }
 
     /// Timer A counter software reset
@@ -219,8 +238,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TERST::RW;
     }
 
     /// Master Counter software reset
@@ -233,8 +251,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TERST::RW;
     }
 
     /// Timer E Software Update
@@ -247,8 +264,12 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Force immediate update
+            pub const Update: u32 = 0b1;
+        }
     }
 
     /// Timer D Software Update
@@ -261,8 +282,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TESWU::RW;
     }
 
     /// Timer C Software Update
@@ -275,8 +295,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TESWU::RW;
     }
 
     /// Timer B Software Update
@@ -289,8 +308,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TESWU::RW;
     }
 
     /// Timer A Software update
@@ -303,8 +321,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TESWU::RW;
     }
 
     /// Master Timer Software update
@@ -317,8 +334,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TESWU::RW;
     }
 }
 
@@ -331,10 +347,21 @@ pub mod ISR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No burst mode period interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Burst mode period interrupt occured
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear burst mode period interrupt
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -345,10 +372,21 @@ pub mod ISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No DLL calibration ready interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: DLL calibration ready interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear DLL calibration interrupt
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -359,10 +397,21 @@ pub mod ISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No fault interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Fault interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear fault interrupt
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -373,10 +422,8 @@ pub mod ISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SYSFLT::R;
+        pub use super::SYSFLT::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -387,10 +434,8 @@ pub mod ISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SYSFLT::R;
+        pub use super::SYSFLT::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -401,10 +446,8 @@ pub mod ISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SYSFLT::R;
+        pub use super::SYSFLT::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -415,10 +458,8 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SYSFLT::R;
+        pub use super::SYSFLT::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -429,10 +470,8 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SYSFLT::R;
+        pub use super::SYSFLT::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -451,8 +490,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears BMPER flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// DLL Ready Interrupt flag Clear
@@ -465,8 +508,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears DLL ready flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// System Fault Interrupt Flag Clear
@@ -479,8 +526,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears SYSFLT flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Fault 5 Interrupt Flag Clear
@@ -493,8 +544,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears FLTx flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Fault 4 Interrupt Flag Clear
@@ -507,8 +562,7 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5C::RW;
     }
 
     /// Fault 3 Interrupt Flag Clear
@@ -521,8 +575,7 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5C::RW;
     }
 
     /// Fault 2 Interrupt Flag Clear
@@ -535,8 +588,7 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5C::RW;
     }
 
     /// Fault 1 Interrupt Flag Clear
@@ -549,8 +601,7 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5C::RW;
     }
 }
 
@@ -567,8 +618,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Burst mode period interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Burst mode period interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DLL Ready Interrupt Enable
@@ -581,12 +639,19 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DLL ready interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DLL Ready interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// System Fault Interrupt Enable
-    pub mod SYSFLTE {
+    pub mod SYSFLTIE {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -595,8 +660,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Fault interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Fault 5 Interrupt Enable
@@ -609,8 +681,7 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SYSFLTIE::RW;
     }
 
     /// Fault 4 Interrupt Enable
@@ -623,8 +694,7 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SYSFLTIE::RW;
     }
 
     /// Fault 3 Interrupt Enable
@@ -637,8 +707,7 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SYSFLTIE::RW;
     }
 
     /// Fault 2 Interrupt Enable
@@ -651,8 +720,7 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SYSFLTIE::RW;
     }
 
     /// Fault 1 Interrupt Enable
@@ -665,8 +733,7 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SYSFLTIE::RW;
     }
 }
 
@@ -679,10 +746,21 @@ pub mod OENR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Output disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Output enabled
+            pub const Enabled: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Enable output
+            pub const Enable: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -693,10 +771,8 @@ pub mod OENR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -707,10 +783,8 @@ pub mod OENR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -721,10 +795,8 @@ pub mod OENR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -735,10 +807,8 @@ pub mod OENR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -749,10 +819,8 @@ pub mod OENR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -763,10 +831,8 @@ pub mod OENR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -777,10 +843,8 @@ pub mod OENR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -791,10 +855,8 @@ pub mod OENR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -805,10 +867,8 @@ pub mod OENR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TE2OEN::R;
+        pub use super::TE2OEN::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -827,8 +887,12 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Disable output
+            pub const Disable: u32 = 0b1;
+        }
     }
 
     /// TE1ODIS
@@ -841,8 +905,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TD2ODIS
@@ -855,8 +918,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TD1ODIS
@@ -869,8 +931,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TC2ODIS
@@ -883,8 +944,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TC1ODIS
@@ -897,8 +957,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TB2ODIS
@@ -911,8 +970,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TB1ODIS
@@ -925,8 +983,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TA2ODIS
@@ -939,8 +996,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 
     /// TA1ODIS
@@ -953,8 +1009,7 @@ pub mod ODISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODIS::RW;
     }
 }
 
@@ -971,8 +1026,15 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output disabled in idle state
+            pub const Idle: u32 = 0b0;
+
+            /// 0b1: Output disabled in fault state
+            pub const Fault: u32 = 0b1;
+        }
     }
 
     /// Timer E Output 1 disable status
@@ -985,8 +1047,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer D Output 2 disable status
@@ -999,8 +1060,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer D Output 1 disable status
@@ -1013,8 +1073,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer C Output 2 disable status
@@ -1027,8 +1086,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer C Output 1 disable status
@@ -1041,8 +1099,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer B Output 2 disable status
@@ -1055,8 +1112,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer B Output 1 disable status
@@ -1069,8 +1125,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer A Output 2 disable status
@@ -1083,8 +1138,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 
     /// Timer A Output 1 disable status
@@ -1097,8 +1151,7 @@ pub mod ODSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE2ODS::RW;
     }
 }
 
@@ -1111,10 +1164,21 @@ pub mod BMCR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Normal operation
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Burst operation ongoing
+            pub const Burst: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Terminate burst mode
+            pub const Cancel: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1129,8 +1193,15 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter clock is maintained and timer operates normally
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Counter clock is stopped and counter is reset
+            pub const Stopped: u32 = 0b1;
+        }
     }
 
     /// Timer D Burst Mode
@@ -1143,8 +1214,7 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEBM::RW;
     }
 
     /// Timer C Burst Mode
@@ -1157,8 +1227,7 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEBM::RW;
     }
 
     /// Timer B Burst Mode
@@ -1171,8 +1240,7 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEBM::RW;
     }
 
     /// Timer A Burst Mode
@@ -1185,8 +1253,7 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEBM::RW;
     }
 
     /// Master Timer Burst Mode
@@ -1199,8 +1266,7 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEBM::RW;
     }
 
     /// Burst Mode Preload Enable
@@ -1213,8 +1279,15 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload disabled: the write access is directly done into active registers
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload enabled: the write access is done into preload registers
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Burst Mode Prescaler
@@ -1227,8 +1300,57 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Clock not divided
+            pub const Div1: u32 = 0b0000;
+
+            /// 0b0001: Division by 2
+            pub const Div2: u32 = 0b0001;
+
+            /// 0b0010: Division by 4
+            pub const Div4: u32 = 0b0010;
+
+            /// 0b0011: Division by 8
+            pub const Div8: u32 = 0b0011;
+
+            /// 0b0100: Division by 16
+            pub const Div16: u32 = 0b0100;
+
+            /// 0b0101: Division by 32
+            pub const Div32: u32 = 0b0101;
+
+            /// 0b0110: Division by 64
+            pub const Div64: u32 = 0b0110;
+
+            /// 0b0111: Division by 128
+            pub const Div128: u32 = 0b0111;
+
+            /// 0b1000: Division by 256
+            pub const Div256: u32 = 0b1000;
+
+            /// 0b1001: Division by 512
+            pub const Div512: u32 = 0b1001;
+
+            /// 0b1010: Division by 1024
+            pub const Div1024: u32 = 0b1010;
+
+            /// 0b1011: Division by 2048
+            pub const Div2048: u32 = 0b1011;
+
+            /// 0b1100: Division by 4096
+            pub const Div4096: u32 = 0b1100;
+
+            /// 0b1101: Division by 8192
+            pub const Div8192: u32 = 0b1101;
+
+            /// 0b1110: Division by 16384
+            pub const Div16384: u32 = 0b1110;
+
+            /// 0b1111: Division by 32768
+            pub const Div32768: u32 = 0b1111;
+        }
     }
 
     /// Burst Mode Clock source
@@ -1241,8 +1363,42 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Master timer reset/roll-over
+            pub const Master: u32 = 0b0000;
+
+            /// 0b0001: Timer A counter reset/roll-over
+            pub const TimerA: u32 = 0b0001;
+
+            /// 0b0010: Timer B counter reset/roll-over
+            pub const TimerB: u32 = 0b0010;
+
+            /// 0b0011: Timer C counter reset/roll-over
+            pub const TimerC: u32 = 0b0011;
+
+            /// 0b0100: Timer D counter reset/roll-over
+            pub const TimerD: u32 = 0b0100;
+
+            /// 0b0101: Timer E counter reset/roll-over
+            pub const TimerE: u32 = 0b0101;
+
+            /// 0b0110: On-chip Event 1 (BMClk\[1\]), acting as a burst mode counter clock
+            pub const Event1: u32 = 0b0110;
+
+            /// 0b0111: On-chip Event 2 (BMClk\[2\]), acting as a burst mode counter clock
+            pub const Event2: u32 = 0b0111;
+
+            /// 0b1000: On-chip Event 3 (BMClk\[3\]), acting as a burst mode counter clock
+            pub const Event3: u32 = 0b1000;
+
+            /// 0b1001: On-chip Event 4 (BMClk\[4\]), acting as a burst mode counter clock
+            pub const Event4: u32 = 0b1001;
+
+            /// 0b1010: Prescaled f_HRTIM clock (as per BMPRSC\[3:0\] setting
+            pub const Clock: u32 = 0b1010;
+        }
     }
 
     /// Burst Mode operating mode
@@ -1255,8 +1411,15 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Single-shot mode
+            pub const SingleShot: u32 = 0b0;
+
+            /// 0b1: Continuous operation
+            pub const Continuous: u32 = 0b1;
+        }
     }
 
     /// Burst Mode enable
@@ -1269,8 +1432,15 @@ pub mod BMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Burst mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Burst mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -1287,8 +1457,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Rising edge on an on-chip event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Rising edge on an on-chip event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// EEV8
@@ -1301,8 +1478,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event X has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event X triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// EEV7
@@ -1315,8 +1499,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EEV8::RW;
     }
 
     /// TDEEV8
@@ -1329,8 +1512,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// TAEEV7
@@ -1343,8 +1533,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TDEEV8::RW;
     }
 
     /// TECMP2
@@ -1357,8 +1546,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X compare Y event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X compare Y event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// TECMP1
@@ -1371,8 +1567,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X compare Y has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X compare Y triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 
     /// TEREP
@@ -1385,8 +1588,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X repetition event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X repetition event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// TERST
@@ -1399,8 +1609,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X reset/roll-over event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X reset/roll-over event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// TDCMP2
@@ -1413,8 +1630,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TDCMP1
@@ -1427,8 +1643,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TDREP
@@ -1441,8 +1656,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEREP::RW;
     }
 
     /// TDRST
@@ -1455,8 +1669,12 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Reset timer
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// TCCMP2
@@ -1469,8 +1687,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TCCMP1
@@ -1483,8 +1700,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TCREP
@@ -1497,8 +1713,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEREP::RW;
     }
 
     /// TCRST
@@ -1511,8 +1726,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TDRST::RW;
     }
 
     /// TBCMP2
@@ -1525,8 +1739,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TBCMP1
@@ -1539,8 +1752,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TBREP
@@ -1553,8 +1765,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEREP::RW;
     }
 
     /// TBRST
@@ -1567,8 +1778,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TDRST::RW;
     }
 
     /// TACMP2
@@ -1581,8 +1791,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TACMP1
@@ -1595,8 +1804,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP1::RW;
     }
 
     /// TAREP
@@ -1609,8 +1817,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEREP::RW;
     }
 
     /// TARST
@@ -1623,8 +1830,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TDRST::RW;
     }
 
     /// MSTCMP4
@@ -1637,8 +1843,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare X event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare X event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// MSTCMP3
@@ -1651,8 +1864,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// MSTCMP2
@@ -1665,8 +1885,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP3::RW;
     }
 
     /// MSTCMP1
@@ -1679,8 +1898,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP3::RW;
     }
 
     /// MSTREP
@@ -1693,8 +1911,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer repetition event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer repetition event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// MSTRST
@@ -1707,8 +1932,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer reset/roll-over event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer reset/roll-over event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// SW
@@ -1721,8 +1953,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Trigger immediate burst mode operation
+            pub const Trigger: u32 = 0b1;
+        }
     }
 }
 
@@ -1775,8 +2014,15 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event is re-synchronised by the HRTIM logic before acting on outputs
+            pub const Resynchronized: u32 = 0b0;
+
+            /// 0b1: External event is acting asynchronously on outputs (low-latency mode)
+            pub const Asynchronous: u32 = 0b1;
+        }
     }
 
     /// External Event 5 Sensitivity
@@ -1789,8 +2035,21 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: On active level defined by EExPOL bit
+            pub const Active: u32 = 0b00;
+
+            /// 0b01: Rising edge
+            pub const Rising: u32 = 0b01;
+
+            /// 0b10: Falling edge
+            pub const Falling: u32 = 0b10;
+
+            /// 0b11: Both edges
+            pub const Both: u32 = 0b11;
+        }
     }
 
     /// External Event 5 Polarity
@@ -1803,8 +2062,15 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event is active high
+            pub const ActiveHigh: u32 = 0b0;
+
+            /// 0b1: External event is active low
+            pub const ActiveLow: u32 = 0b1;
+        }
     }
 
     /// External Event 5 Source
@@ -1817,8 +2083,21 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Source 1
+            pub const Src1: u32 = 0b00;
+
+            /// 0b01: Source 2
+            pub const Src2: u32 = 0b01;
+
+            /// 0b10: Source 3
+            pub const Src3: u32 = 0b10;
+
+            /// 0b11: Source 4
+            pub const Src4: u32 = 0b11;
+        }
     }
 
     /// External Event 4 Fast mode
@@ -1831,8 +2110,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FAST::RW;
     }
 
     /// External Event 4 Sensitivity
@@ -1845,8 +2123,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SNS::RW;
     }
 
     /// External Event 4 Polarity
@@ -1859,8 +2136,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5POL::RW;
     }
 
     /// External Event 4 Source
@@ -1873,8 +2149,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SRC::RW;
     }
 
     /// External Event 3 Fast mode
@@ -1887,8 +2162,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FAST::RW;
     }
 
     /// External Event 3 Sensitivity
@@ -1901,8 +2175,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SNS::RW;
     }
 
     /// External Event 3 Polarity
@@ -1915,8 +2188,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5POL::RW;
     }
 
     /// External Event 3 Source
@@ -1929,8 +2201,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SRC::RW;
     }
 
     /// External Event 2 Fast mode
@@ -1943,8 +2214,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FAST::RW;
     }
 
     /// External Event 2 Sensitivity
@@ -1957,8 +2227,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SNS::RW;
     }
 
     /// External Event 2 Polarity
@@ -1971,8 +2240,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5POL::RW;
     }
 
     /// External Event 2 Source
@@ -1985,8 +2253,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SRC::RW;
     }
 
     /// External Event 1 Fast mode
@@ -1999,8 +2266,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FAST::RW;
     }
 
     /// External Event 1 Sensitivity
@@ -2013,8 +2279,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SNS::RW;
     }
 
     /// External Event 1 Polarity
@@ -2027,8 +2292,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5POL::RW;
     }
 
     /// External Event 1 Source
@@ -2041,8 +2305,7 @@ pub mod EECR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5SRC::RW;
     }
 }
 
@@ -2059,8 +2322,21 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: On active level defined by EExPOL bit
+            pub const Active: u32 = 0b00;
+
+            /// 0b01: Rising edge
+            pub const Rising: u32 = 0b01;
+
+            /// 0b10: Falling edge
+            pub const Falling: u32 = 0b10;
+
+            /// 0b11: Both edges
+            pub const Both: u32 = 0b11;
+        }
     }
 
     /// External Event 10 Polarity
@@ -2073,8 +2349,15 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event is active high
+            pub const ActiveHigh: u32 = 0b0;
+
+            /// 0b1: External event is active low
+            pub const ActiveLow: u32 = 0b1;
+        }
     }
 
     /// External Event 10 Source
@@ -2087,8 +2370,21 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Source 1
+            pub const Src1: u32 = 0b00;
+
+            /// 0b01: Source 2
+            pub const Src2: u32 = 0b01;
+
+            /// 0b10: Source 3
+            pub const Src3: u32 = 0b10;
+
+            /// 0b11: Source 4
+            pub const Src4: u32 = 0b11;
+        }
     }
 
     /// External Event 9 Sensitivity
@@ -2101,8 +2397,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SNS::RW;
     }
 
     /// External Event 9 Polarity
@@ -2115,8 +2410,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10POL::RW;
     }
 
     /// External Event 9 Source
@@ -2129,8 +2423,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SRC::RW;
     }
 
     /// External Event 8 Sensitivity
@@ -2143,8 +2436,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SNS::RW;
     }
 
     /// External Event 8 Polarity
@@ -2157,8 +2449,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10POL::RW;
     }
 
     /// External Event 8 Source
@@ -2171,8 +2462,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SRC::RW;
     }
 
     /// External Event 7 Sensitivity
@@ -2185,8 +2475,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SNS::RW;
     }
 
     /// External Event 7 Polarity
@@ -2199,8 +2488,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10POL::RW;
     }
 
     /// External Event 7 Source
@@ -2213,8 +2501,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SRC::RW;
     }
 
     /// External Event 6 Sensitivity
@@ -2227,8 +2514,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SNS::RW;
     }
 
     /// External Event 6 Polarity
@@ -2241,8 +2527,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10POL::RW;
     }
 
     /// External Event 6 Source
@@ -2255,8 +2540,7 @@ pub mod EECR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10SRC::RW;
     }
 }
 
@@ -2273,8 +2557,21 @@ pub mod EECR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: f_EEVS=f_HRTIM
+            pub const Div1: u32 = 0b00;
+
+            /// 0b01: f_EEVS=f_HRTIM/2
+            pub const Div2: u32 = 0b01;
+
+            /// 0b10: f_EEVS=f_HRTIM/4
+            pub const Div4: u32 = 0b10;
+
+            /// 0b11: f_EEVS=f_HRTIM/8
+            pub const Div8: u32 = 0b11;
+        }
     }
 
     /// EE10F
@@ -2287,8 +2584,57 @@ pub mod EECR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Filter disabled
+            pub const Disabled: u32 = 0b0000;
+
+            /// 0b0001: f_SAMPLING=f_HRTIM, N=2
+            pub const Div1_N2: u32 = 0b0001;
+
+            /// 0b0010: f_SAMPLING=f_HRTIM, N=4
+            pub const Div1_N4: u32 = 0b0010;
+
+            /// 0b0011: f_SAMPLING=f_HRTIM, N=8
+            pub const Div1_N8: u32 = 0b0011;
+
+            /// 0b0100: f_SAMPLING=f_HRTIM/2, N=6
+            pub const Div2_N6: u32 = 0b0100;
+
+            /// 0b0101: f_SAMPLING=f_HRTIM/2, N=8
+            pub const Div2_N8: u32 = 0b0101;
+
+            /// 0b0110: f_SAMPLING=f_HRTIM/4, N=6
+            pub const Div4_N6: u32 = 0b0110;
+
+            /// 0b0111: f_SAMPLING=f_HRTIM/4, N=8
+            pub const Div4_N8: u32 = 0b0111;
+
+            /// 0b1000: f_SAMPLING=f_HRTIM/8, N=6
+            pub const Div8_N6: u32 = 0b1000;
+
+            /// 0b1001: f_SAMPLING=f_HRTIM/8, N=8
+            pub const Div8_N8: u32 = 0b1001;
+
+            /// 0b1010: f_SAMPLING=f_HRTIM/16, N=5
+            pub const Div16_N5: u32 = 0b1010;
+
+            /// 0b1011: f_SAMPLING=f_HRTIM/16, N=6
+            pub const Div16_N6: u32 = 0b1011;
+
+            /// 0b1100: f_SAMPLING=f_HRTIM/16, N=8
+            pub const Div16_N8: u32 = 0b1100;
+
+            /// 0b1101: f_SAMPLING=f_HRTIM/32, N=5
+            pub const Div32_N5: u32 = 0b1101;
+
+            /// 0b1110: f_SAMPLING=f_HRTIM/32, N=6
+            pub const Div32_N6: u32 = 0b1110;
+
+            /// 0b1111: f_SAMPLING=f_HRTIM/32, N=8
+            pub const Div32_N8: u32 = 0b1111;
+        }
     }
 
     /// EE9F
@@ -2301,8 +2647,7 @@ pub mod EECR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10F::RW;
     }
 
     /// EE8F
@@ -2315,8 +2660,7 @@ pub mod EECR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10F::RW;
     }
 
     /// EE7F
@@ -2329,8 +2673,7 @@ pub mod EECR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10F::RW;
     }
 
     /// EE6F
@@ -2343,8 +2686,7 @@ pub mod EECR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10F::RW;
     }
 }
 
@@ -2361,8 +2703,15 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on timer period event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on timer period event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 1 on Timer E compare 4
@@ -2375,8 +2724,15 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on timer compare event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on timer compare event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 1 on Timer E compare 3
@@ -2389,8 +2745,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer E compare 2
@@ -2403,8 +2758,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer D Period
@@ -2417,8 +2771,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEPER::RW;
     }
 
     /// ADC trigger 1 on Timer D compare 4
@@ -2431,8 +2784,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer D compare 3
@@ -2445,8 +2797,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer D compare 2
@@ -2459,8 +2810,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer C Period
@@ -2473,8 +2823,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEPER::RW;
     }
 
     /// ADC trigger 1 on Timer C compare 4
@@ -2487,8 +2836,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer C compare 3
@@ -2501,8 +2849,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer C compare 2
@@ -2515,8 +2862,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer B Reset
@@ -2529,8 +2875,15 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on timer reset and roll-over
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on timer reset and roll-over
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 1 on Timer B Period
@@ -2543,8 +2896,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEPER::RW;
     }
 
     /// ADC trigger 1 on Timer B compare 4
@@ -2557,8 +2909,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer B compare 3
@@ -2571,8 +2922,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer B compare 2
@@ -2585,8 +2935,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer A Reset
@@ -2599,8 +2948,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TBRST::RW;
     }
 
     /// ADC trigger 1 on Timer A Period
@@ -2613,8 +2961,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEPER::RW;
     }
 
     /// ADC trigger 1 on Timer A compare 4
@@ -2627,8 +2974,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer A compare 3
@@ -2641,8 +2987,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on Timer A compare 2
@@ -2655,8 +3000,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEC4::RW;
     }
 
     /// ADC trigger 1 on External Event 5
@@ -2669,8 +3013,15 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on external event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on external event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 1 on External Event 4
@@ -2683,8 +3034,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1EEV5::RW;
     }
 
     /// ADC trigger 1 on External Event 3
@@ -2697,8 +3047,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1EEV5::RW;
     }
 
     /// ADC trigger 1 on External Event 2
@@ -2711,8 +3060,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1EEV5::RW;
     }
 
     /// ADC trigger 1 on External Event 1
@@ -2725,8 +3073,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1EEV5::RW;
     }
 
     /// ADC trigger 1 on Master Period
@@ -2739,8 +3086,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1TEPER::RW;
     }
 
     /// ADC trigger 1 on Master Compare 4
@@ -2753,8 +3099,15 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on master compare event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on master compare event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 1 on Master Compare 3
@@ -2767,8 +3120,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1MC4::RW;
     }
 
     /// ADC trigger 1 on Master Compare 2
@@ -2781,8 +3133,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1MC4::RW;
     }
 
     /// ADC trigger 1 on Master Compare 1
@@ -2795,8 +3146,7 @@ pub mod ADC1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD1MC4::RW;
     }
 }
 
@@ -2813,8 +3163,15 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on timer reset and roll-over
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on timer reset and roll-over
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 2 on Timer E compare 4
@@ -2827,8 +3184,15 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on timer compare event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on timer compare event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 2 on Timer E compare 3
@@ -2841,8 +3205,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer E compare 2
@@ -2855,8 +3218,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer D Reset
@@ -2869,8 +3231,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TERST::RW;
     }
 
     /// ADC trigger 2 on Timer D Period
@@ -2883,8 +3244,15 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on timer period event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on timer period event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 2 on Timer D compare 4
@@ -2897,8 +3265,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer D compare 3
@@ -2911,8 +3278,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer D compare 2
@@ -2925,8 +3291,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer C Reset
@@ -2939,8 +3304,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TERST::RW;
     }
 
     /// ADC trigger 2 on Timer C Period
@@ -2953,8 +3317,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TDPER::RW;
     }
 
     /// ADC trigger 2 on Timer C compare 4
@@ -2967,8 +3330,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer C compare 3
@@ -2981,8 +3343,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer C compare 2
@@ -2995,8 +3356,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer B Period
@@ -3009,8 +3369,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TDPER::RW;
     }
 
     /// ADC trigger 2 on Timer B compare 4
@@ -3023,8 +3382,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer B compare 3
@@ -3037,8 +3395,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer B compare 2
@@ -3051,8 +3408,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer A Period
@@ -3065,8 +3421,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TDPER::RW;
     }
 
     /// ADC trigger 2 on Timer A compare 4
@@ -3079,8 +3434,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer A compare 3
@@ -3093,8 +3447,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on Timer A compare 2
@@ -3107,8 +3460,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TEC4::RW;
     }
 
     /// ADC trigger 2 on External Event 10
@@ -3121,8 +3473,15 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on external event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on external event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 2 on External Event 9
@@ -3135,8 +3494,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2EEV10::RW;
     }
 
     /// ADC trigger 2 on External Event 8
@@ -3149,8 +3507,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2EEV10::RW;
     }
 
     /// ADC trigger 2 on External Event 7
@@ -3163,8 +3520,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2EEV10::RW;
     }
 
     /// ADC trigger 2 on External Event 6
@@ -3177,8 +3533,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2EEV10::RW;
     }
 
     /// ADC trigger 2 on Master Period
@@ -3191,8 +3546,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2TDPER::RW;
     }
 
     /// ADC trigger 2 on Master Compare 4
@@ -3205,8 +3559,15 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No generation of ADC trigger on master compare event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Generation of ADC trigger on master compare event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC trigger 2 on Master Compare 3
@@ -3219,8 +3580,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2MC4::RW;
     }
 
     /// ADC trigger 2 on Master Compare 2
@@ -3233,8 +3593,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2MC4::RW;
     }
 
     /// ADC trigger 2 on Master Compare 1
@@ -3247,8 +3606,7 @@ pub mod ADC2R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AD2MC4::RW;
     }
 }
 
@@ -3337,8 +3695,21 @@ pub mod DLLCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 1048576*t_HRTIM (7.3ms)
+            pub const Millis7_3: u32 = 0b00;
+
+            /// 0b01: 131072*t_HRTIM (910µs)
+            pub const Micros910: u32 = 0b01;
+
+            /// 0b10: 16384*t_HRTIM (114µs)
+            pub const Micros114: u32 = 0b10;
+
+            /// 0b11: 2048*t_HRTIM (14µs)
+            pub const Micros14: u32 = 0b11;
+        }
     }
 
     /// DLL Calibration Enable
@@ -3351,8 +3722,15 @@ pub mod DLLCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Periodic calibration disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Calibration is performed periodically, as per CALRTE setting
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DLL Calibration Start
@@ -3365,8 +3743,12 @@ pub mod DLLCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Calibration start
+            pub const Start: u32 = 0b1;
+        }
     }
 }
 
@@ -3379,10 +3761,21 @@ pub mod FLTINR1 {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Fault bits are read/write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Fault bits are read-only
+            pub const Locked: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Lock corresponding fault bits
+            pub const Lock: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -3397,8 +3790,57 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filter, FLTx acts asynchronously
+            pub const Disabled: u32 = 0b0000;
+
+            /// 0b0001: f_SAMPLING=f_HRTIM, N=2
+            pub const Div1_N2: u32 = 0b0001;
+
+            /// 0b0010: f_SAMPLING=f_HRTIM, N=4
+            pub const Div1_N4: u32 = 0b0010;
+
+            /// 0b0011: f_SAMPLING=f_HRTIM, N=8
+            pub const Div1_N8: u32 = 0b0011;
+
+            /// 0b0100: f_SAMPLING=f_HRTIM/2, N=6
+            pub const Div2_N6: u32 = 0b0100;
+
+            /// 0b0101: f_SAMPLING=f_HRTIM/2, N=8
+            pub const Div2_N8: u32 = 0b0101;
+
+            /// 0b0110: f_SAMPLING=f_HRTIM/4, N=6
+            pub const Div4_N6: u32 = 0b0110;
+
+            /// 0b0111: f_SAMPLING=f_HRTIM/4, N=8
+            pub const Div4_N8: u32 = 0b0111;
+
+            /// 0b1000: f_SAMPLING=f_HRTIM/8, N=6
+            pub const Div8_N6: u32 = 0b1000;
+
+            /// 0b1001: f_SAMPLING=f_HRTIM/8, N=8
+            pub const Div8_N8: u32 = 0b1001;
+
+            /// 0b1010: f_SAMPLING=f_HRTIM/16, N=5
+            pub const Div16_N5: u32 = 0b1010;
+
+            /// 0b1011: f_SAMPLING=f_HRTIM/16, N=6
+            pub const Div16_N6: u32 = 0b1011;
+
+            /// 0b1100: f_SAMPLING=f_HRTIM/16, N=8
+            pub const Div16_N8: u32 = 0b1100;
+
+            /// 0b1101: f_SAMPLING=f_HRTIM/32, N=5
+            pub const Div32_N5: u32 = 0b1101;
+
+            /// 0b1110: f_SAMPLING=f_HRTIM/32, N=6
+            pub const Div32_N6: u32 = 0b1110;
+
+            /// 0b1111: f_SAMPLING=f_HRTIM/32, N=8
+            pub const Div32_N8: u32 = 0b1111;
+        }
     }
 
     /// FLT4SRC
@@ -3411,8 +3853,15 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input is FLTx input pin
+            pub const Input: u32 = 0b0;
+
+            /// 0b1: Fault input is FLTn_Int signal
+            pub const Internal: u32 = 0b1;
+        }
     }
 
     /// FLT4P
@@ -3425,8 +3874,15 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Fault input is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// FLT4E
@@ -3439,8 +3895,15 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Fault input enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FLT3LCK
@@ -3449,10 +3912,8 @@ pub mod FLTINR1 {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::FLT4LCK::R;
+        pub use super::FLT4LCK::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -3467,8 +3928,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4F::RW;
     }
 
     /// FLT3SRC
@@ -3481,8 +3941,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4SRC::RW;
     }
 
     /// FLT3P
@@ -3495,8 +3954,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4P::RW;
     }
 
     /// FLT3E
@@ -3509,8 +3967,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4E::RW;
     }
 
     /// FLT2LCK
@@ -3519,10 +3976,8 @@ pub mod FLTINR1 {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::FLT4LCK::R;
+        pub use super::FLT4LCK::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -3537,8 +3992,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4F::RW;
     }
 
     /// FLT2SRC
@@ -3551,8 +4005,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4SRC::RW;
     }
 
     /// FLT2P
@@ -3565,8 +4018,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4P::RW;
     }
 
     /// FLT2E
@@ -3579,8 +4031,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4E::RW;
     }
 
     /// FLT1LCK
@@ -3589,10 +4040,8 @@ pub mod FLTINR1 {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::FLT4LCK::R;
+        pub use super::FLT4LCK::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -3607,8 +4056,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4F::RW;
     }
 
     /// FLT1SRC
@@ -3621,8 +4069,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4SRC::RW;
     }
 
     /// FLT1P
@@ -3635,8 +4082,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4P::RW;
     }
 
     /// FLT1E
@@ -3649,8 +4095,7 @@ pub mod FLTINR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT4E::RW;
     }
 }
 
@@ -3667,8 +4112,21 @@ pub mod FLTINR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: f_FLTS=f_HRTIM
+            pub const Div1: u32 = 0b00;
+
+            /// 0b01: f_FLTS=f_HRTIM/2
+            pub const Div2: u32 = 0b01;
+
+            /// 0b10: f_FLTS=f_HRTIM/4
+            pub const Div4: u32 = 0b10;
+
+            /// 0b11: f_FLTS=f_HRTIM/8
+            pub const Div8: u32 = 0b11;
+        }
     }
 
     /// FLT5LCK
@@ -3677,10 +4135,21 @@ pub mod FLTINR2 {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Fault bits are read/write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Fault bits are read-only
+            pub const Locked: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Lock corresponding fault bits
+            pub const Lock: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -3695,8 +4164,57 @@ pub mod FLTINR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filter, FLTx acts asynchronously
+            pub const Disabled: u32 = 0b0000;
+
+            /// 0b0001: f_SAMPLING=f_HRTIM, N=2
+            pub const Div1_N2: u32 = 0b0001;
+
+            /// 0b0010: f_SAMPLING=f_HRTIM, N=4
+            pub const Div1_N4: u32 = 0b0010;
+
+            /// 0b0011: f_SAMPLING=f_HRTIM, N=8
+            pub const Div1_N8: u32 = 0b0011;
+
+            /// 0b0100: f_SAMPLING=f_HRTIM/2, N=6
+            pub const Div2_N6: u32 = 0b0100;
+
+            /// 0b0101: f_SAMPLING=f_HRTIM/2, N=8
+            pub const Div2_N8: u32 = 0b0101;
+
+            /// 0b0110: f_SAMPLING=f_HRTIM/4, N=6
+            pub const Div4_N6: u32 = 0b0110;
+
+            /// 0b0111: f_SAMPLING=f_HRTIM/4, N=8
+            pub const Div4_N8: u32 = 0b0111;
+
+            /// 0b1000: f_SAMPLING=f_HRTIM/8, N=6
+            pub const Div8_N6: u32 = 0b1000;
+
+            /// 0b1001: f_SAMPLING=f_HRTIM/8, N=8
+            pub const Div8_N8: u32 = 0b1001;
+
+            /// 0b1010: f_SAMPLING=f_HRTIM/16, N=5
+            pub const Div16_N5: u32 = 0b1010;
+
+            /// 0b1011: f_SAMPLING=f_HRTIM/16, N=6
+            pub const Div16_N6: u32 = 0b1011;
+
+            /// 0b1100: f_SAMPLING=f_HRTIM/16, N=8
+            pub const Div16_N8: u32 = 0b1100;
+
+            /// 0b1101: f_SAMPLING=f_HRTIM/32, N=5
+            pub const Div32_N5: u32 = 0b1101;
+
+            /// 0b1110: f_SAMPLING=f_HRTIM/32, N=6
+            pub const Div32_N6: u32 = 0b1110;
+
+            /// 0b1111: f_SAMPLING=f_HRTIM/32, N=8
+            pub const Div32_N8: u32 = 0b1111;
+        }
     }
 
     /// FLT5SRC
@@ -3709,8 +4227,15 @@ pub mod FLTINR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input is FLTx input pin
+            pub const Input: u32 = 0b0;
+
+            /// 0b1: Fault input is FLTn_Int signal
+            pub const Internal: u32 = 0b1;
+        }
     }
 
     /// FLT5P
@@ -3723,8 +4248,15 @@ pub mod FLTINR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Fault input is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// FLT5E
@@ -3737,13 +4269,20 @@ pub mod FLTINR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Fault input enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// BDMUPDR
-pub mod BDMUPDR {
+pub mod BDMUPR {
 
     /// MCMP4
     pub mod MCMP4 {
@@ -3755,8 +4294,15 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Register not updated by burst DMA access
+            pub const NotUpdated: u32 = 0b0;
+
+            /// 0b1: Register updated by burst DMA access
+            pub const Updated: u32 = 0b1;
+        }
     }
 
     /// MCMP3
@@ -3769,8 +4315,15 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No master compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Master compare interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// MCMP2
@@ -3783,8 +4336,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MCMP1
@@ -3797,8 +4349,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MREP
@@ -3811,8 +4362,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MPER
@@ -3825,8 +4375,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MCNT
@@ -3839,8 +4388,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MDIER
@@ -3853,8 +4401,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MICR
@@ -3867,8 +4414,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 
     /// MCR
@@ -3881,8 +4427,7 @@ pub mod BDMUPDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP3::RW;
     }
 }
 
@@ -3899,8 +4444,15 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Register not updated by burst DMA access
+            pub const NotUpdated: u32 = 0b0;
+
+            /// 0b1: Register updated by burst DMA access
+            pub const Updated: u32 = 0b1;
+        }
     }
 
     /// HRTIM_OUTxR register update enable
@@ -3913,8 +4465,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_CHPxR register update enable
@@ -3927,8 +4478,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_RSTxR register update enable
@@ -3941,8 +4491,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_EEFxR2 register update enable
@@ -3955,8 +4504,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_EEFxR1 register update enable
@@ -3969,8 +4517,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_RST2xR register update enable
@@ -3983,8 +4530,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_SET2xR register update enable
@@ -3997,8 +4543,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_RST1xR register update enable
@@ -4011,8 +4556,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_SET1xR register update enable
@@ -4025,8 +4569,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_DTxR register update enable
@@ -4039,8 +4582,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_CMP4xR register update enable
@@ -4053,8 +4595,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_CMP3xR register update enable
@@ -4067,8 +4608,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_CMP2xR register update enable
@@ -4081,8 +4621,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_CMP1xR register update enable
@@ -4095,8 +4634,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_REPxR register update enable
@@ -4109,8 +4647,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_PERxR register update enable
@@ -4123,8 +4660,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_CNTxR register update enable
@@ -4137,8 +4673,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_TIMxDIER register update enable
@@ -4151,8 +4686,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_TIMxICR register update enable
@@ -4165,8 +4699,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 
     /// HRTIM_TIMxCR register update enable
@@ -4179,8 +4712,7 @@ pub mod BDTAUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMxFLTR::RW;
     }
 }
 
@@ -4312,7 +4844,7 @@ pub struct RegisterBlock {
     pub ISR: RWRegister<u32>,
 
     /// Interrupt Clear Register
-    pub ICR: RWRegister<u32>,
+    pub ICR: WORegister<u32>,
 
     /// Interrupt Enable Register
     pub IER: RWRegister<u32>,
@@ -4369,7 +4901,7 @@ pub struct RegisterBlock {
     pub FLTINR2: RWRegister<u32>,
 
     /// BDMUPDR
-    pub BDMUPDR: RWRegister<u32>,
+    pub BDMUPR: RWRegister<u32>,
 
     /// Burst DMA Timerx update Register
     pub BDTAUPR: RWRegister<u32>,
@@ -4412,7 +4944,7 @@ pub struct ResetValues {
     pub DLLCR: u32,
     pub FLTINR1: u32,
     pub FLTINR2: u32,
-    pub BDMUPDR: u32,
+    pub BDMUPR: u32,
     pub BDTAUPR: u32,
     pub BDTBUPR: u32,
     pub BDTCUPR: u32,
@@ -4473,7 +5005,7 @@ pub mod HRTIM_Common {
         DLLCR: 0x00000000,
         FLTINR1: 0x00000000,
         FLTINR2: 0x00000000,
-        BDMUPDR: 0x00000000,
+        BDMUPR: 0x00000000,
         BDTAUPR: 0x00000000,
         BDTBUPR: 0x00000000,
         BDTCUPR: 0x00000000,

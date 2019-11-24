@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// OTG_FS power and clock gating control register
-pub mod FS_PCGCCTL {
+pub mod PCGCCTL {
 
     /// Stop PHY clock
     pub mod STPPCLK {
@@ -55,10 +55,10 @@ pub mod FS_PCGCCTL {
 }
 pub struct RegisterBlock {
     /// OTG_FS power and clock gating control register
-    pub FS_PCGCCTL: RWRegister<u32>,
+    pub PCGCCTL: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub FS_PCGCCTL: u32,
+    pub PCGCCTL: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

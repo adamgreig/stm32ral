@@ -5,12 +5,11 @@
 //! Used by: stm32f412, stm32f413
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::otg_fs_global_v3::Instance;
-pub use crate::stm32f4::peripherals::otg_fs_global_v3::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::otg_fs_global_v3::{
-    FS_CID, FS_DIEPTXF1, FS_DIEPTXF2, FS_DIEPTXF3, FS_GAHBCFG, FS_GCCFG, FS_GINTMSK, FS_GINTSTS,
-    FS_GNPTXFSIZ, FS_GNPTXSTS, FS_GOTGCTL, FS_GOTGINT, FS_GRSTCTL, FS_GRXFSIZ, FS_GRXSTSR,
-    FS_GUSBCFG, FS_HPTXFSIZ,
+pub use crate::stm32f4::peripherals::otg_fs_global_v2::Instance;
+pub use crate::stm32f4::peripherals::otg_fs_global_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::otg_fs_global_v2::{
+    CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, GAHBCFG, GCCFG, GINTMSK, GINTSTS, GNPTXFSIZ, GNPTXSTS,
+    GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSR, GUSBCFG, HPTXFSIZ,
 };
 
 /// Access functions for the OTG_FS_GLOBAL peripheral instance
@@ -28,23 +27,23 @@ pub mod OTG_FS_GLOBAL {
 
     /// Reset values for each field in OTG_FS_GLOBAL
     pub const reset: ResetValues = ResetValues {
-        FS_GOTGCTL: 0x00000800,
-        FS_GOTGINT: 0x00000000,
-        FS_GAHBCFG: 0x00000000,
-        FS_GUSBCFG: 0x00000A00,
-        FS_GRSTCTL: 0x20000000,
-        FS_GINTSTS: 0x04000020,
-        FS_GINTMSK: 0x00000000,
-        FS_GRXSTSR: 0x00000000,
-        FS_GRXFSIZ: 0x00000200,
-        FS_GNPTXFSIZ: 0x00000200,
-        FS_GNPTXSTS: 0x00080200,
-        FS_GCCFG: 0x00000000,
-        FS_CID: 0x00001000,
-        FS_HPTXFSIZ: 0x02000600,
-        FS_DIEPTXF1: 0x02000400,
-        FS_DIEPTXF2: 0x02000400,
-        FS_DIEPTXF3: 0x02000400,
+        GOTGCTL: 0x00000800,
+        GOTGINT: 0x00000000,
+        GAHBCFG: 0x00000000,
+        GUSBCFG: 0x00000A00,
+        GRSTCTL: 0x20000000,
+        GINTSTS: 0x04000020,
+        GINTMSK: 0x00000000,
+        GRXSTSR: 0x00000000,
+        GRXFSIZ: 0x00000200,
+        GNPTXFSIZ: 0x00000200,
+        GNPTXSTS: 0x00080200,
+        GCCFG: 0x00000000,
+        CID: 0x00001000,
+        HPTXFSIZ: 0x02000600,
+        DIEPTXF1: 0x02000400,
+        DIEPTXF2: 0x02000400,
+        DIEPTXF3: 0x02000400,
     };
 
     #[cfg(not(feature = "nosync"))]

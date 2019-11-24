@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::sai_v1::Instance;
-pub use crate::stm32f7::peripherals::sai_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::sai_v1::{
+pub use crate::stm32f7::peripherals::sai_v2::Instance;
+pub use crate::stm32f7::peripherals::sai_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::sai_v2::{
     CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, GCR, IMA, IMB, SLOTRA, SLOTRB,
     SRA, SRB,
 };

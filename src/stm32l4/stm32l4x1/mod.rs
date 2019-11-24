@@ -42,7 +42,6 @@ pub use super::instances::tim1;
 pub use super::instances::tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim2;
-pub use super::instances::tim3;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::usart;
@@ -59,6 +58,7 @@ pub use super::instances::quadspi;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
+pub use super::instances::tim3;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -92,7 +92,6 @@ pub struct Peripherals {
     pub GPIOH: gpio::Instance,
     pub SAI1: sai1::Instance,
     pub TIM2: tim2::Instance,
-    pub TIM3: tim3::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
     pub TIM1: tim1::Instance,
@@ -129,6 +128,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
+    pub TIM3: tim3::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -168,7 +168,6 @@ impl Peripherals {
             GPIOH: gpio::GPIOH::steal(),
             SAI1: sai1::SAI1::steal(),
             TIM2: tim2::TIM2::steal(),
-            TIM3: tim3::TIM3::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
             TIM1: tim1::TIM1::steal(),
@@ -205,6 +204,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            TIM3: tim3::TIM3::steal(),
         }
     }
 }

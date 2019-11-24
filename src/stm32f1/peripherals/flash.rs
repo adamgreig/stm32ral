@@ -21,8 +21,18 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Zero wait state, if 0 < SYSCLK≤ 24 MHz
+            pub const WS0: u32 = 0b000;
+
+            /// 0b001: One wait state, if 24 MHz < SYSCLK ≤ 48 MHz
+            pub const WS1: u32 = 0b001;
+
+            /// 0b010: Two wait states, if 48 MHz < SYSCLK ≤ 72 MHz
+            pub const WS2: u32 = 0b010;
+        }
     }
 
     /// Flash half cycle access enable

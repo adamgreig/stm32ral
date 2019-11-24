@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! LCD-TFT Controller
 //!
-//! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -75,8 +75,8 @@ pub mod BPCR {
 /// Active Width Configuration Register
 pub mod AWCR {
 
-    /// AAV
-    pub mod AAV {
+    /// Accumulated Active Width (in units of pixel clock period)
+    pub mod AAW {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (10 bits: 0x3ff << 16)

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Instrumentation Trace Macrocell
 //!
-//! Used by: armv7_m, armv7e_m
+//! Used by: armv7em, armv7m
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::cortex_m::peripherals::itm::Instance;

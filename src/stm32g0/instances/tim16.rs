@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32g0x0, stm32g0x1
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g07x, stm32g081
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g0::peripherals::tim16::Instance;

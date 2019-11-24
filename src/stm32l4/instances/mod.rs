@@ -61,14 +61,8 @@ pub mod sai;
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod tim2;
 
-#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x5", feature="stm32l4x6"))]
-pub mod tim3;
-
 #[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod tim5;
-
-#[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
-pub mod tim4;
 
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod tim15;
@@ -163,6 +157,12 @@ pub mod fpu_cpacr;
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod scb_actrl;
 
+#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x5", feature="stm32l4x6"))]
+pub mod tim3;
+
+#[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
+pub mod tim4;
+
 #[cfg(any(feature="doc", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod comp_l4x3_l4x5_l4x6;
 
@@ -171,9 +171,6 @@ pub mod can1_l4x3_l4x5;
 
 #[cfg(any(feature="doc", feature="stm32l4x3", feature="stm32l4x5"))]
 pub mod usb;
-
-#[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
-pub mod fmc;
 
 #[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod tim8;

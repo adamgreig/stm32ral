@@ -21,8 +21,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OPAMP2 is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: OPAMP2 is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FORCE_VP
@@ -35,8 +42,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal operating mode
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Calibration mode. Non-inverting input connected to calibration reference
+            pub const Calibration: u32 = 0b1;
+        }
     }
 
     /// OPAMP Non inverting input selection
@@ -49,8 +63,18 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b01: PB14 used as OPAMP2 non-inverting input
+            pub const PB14: u32 = 0b01;
+
+            /// 0b10: PB0 used as OPAMP2 non-inverting input
+            pub const PB0: u32 = 0b10;
+
+            /// 0b11: PA7 used as OPAMP2 non-invertign input
+            pub const PA7: u32 = 0b11;
+        }
     }
 
     /// OPAMP inverting input selection
@@ -63,8 +87,21 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PC5 (VM0) used as OPAMP2 inverting input
+            pub const PC5: u32 = 0b00;
+
+            /// 0b01: PA5 (VM1) used as OPAMP2 inverting input
+            pub const PA5: u32 = 0b01;
+
+            /// 0b10: Resistor feedback output (PGA mode)
+            pub const PGA: u32 = 0b10;
+
+            /// 0b11: Follower mode
+            pub const Follower: u32 = 0b11;
+        }
     }
 
     /// Timer controlled Mux mode enable
@@ -77,8 +114,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer controlled mux disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Timer controlled mux enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// OPAMP inverting input secondary selection
@@ -91,8 +135,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PC5 (VM0) used as OPAMP2 inverting input when TCM_EN=1
+            pub const PC5: u32 = 0b0;
+
+            /// 0b1: PA5 (VM1) used as OPAMP2 inverting input when TCM_EN=1
+            pub const PA5: u32 = 0b1;
+        }
     }
 
     /// OPAMP Non inverting input secondary selection
@@ -105,8 +156,18 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b01: PB14 used as OPAMP2 non-inverting input when TCM_EN=1
+            pub const PB14: u32 = 0b01;
+
+            /// 0b10: PB0 used as OPAMP2 non-inverting input when TCM_EN=1
+            pub const PB0: u32 = 0b10;
+
+            /// 0b11: PA7 used as OPAMP2 non-invertign input when TCM_EN=1
+            pub const PA7: u32 = 0b11;
+        }
     }
 
     /// Calibration mode enable
@@ -119,8 +180,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Calibration mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Calibration mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Calibration selection
@@ -133,8 +201,21 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: VREFOPAMP=3.3% VDDA
+            pub const Percent3_3: u32 = 0b00;
+
+            /// 0b01: VREFOPAMP=10% VDDA
+            pub const Percent10: u32 = 0b01;
+
+            /// 0b10: VREFOPAMP=50% VDDA
+            pub const Percent50: u32 = 0b10;
+
+            /// 0b11: VREFOPAMP=90% VDDA
+            pub const Percent90: u32 = 0b11;
+        }
     }
 
     /// Gain in PGA mode
@@ -147,8 +228,45 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Gain 2
+            pub const Gain2: u32 = 0b0000;
+
+            /// 0b0001: Gain 4
+            pub const Gain4: u32 = 0b0001;
+
+            /// 0b0010: Gain 8
+            pub const Gain8: u32 = 0b0010;
+
+            /// 0b0100: Gain 16
+            pub const Gain16: u32 = 0b0100;
+
+            /// 0b1000: Gain 2, feedback connected to VM0
+            pub const Gain2_VM0: u32 = 0b1000;
+
+            /// 0b1001: Gain 4, feedback connected to VM0
+            pub const Gain4_VM0: u32 = 0b1001;
+
+            /// 0b1010: Gain 8, feedback connected to VM0
+            pub const Gain8_VM0: u32 = 0b1010;
+
+            /// 0b1011: Gain 16, feedback connected to VM0
+            pub const Gain16_VM0: u32 = 0b1011;
+
+            /// 0b1100: Gain 2, feedback connected to VM1
+            pub const Gain2_VM1: u32 = 0b1100;
+
+            /// 0b1101: Gain 4, feedback connected to VM1
+            pub const Gain4_VM1: u32 = 0b1101;
+
+            /// 0b1110: Gain 8, feedback connected to VM1
+            pub const Gain8_VM1: u32 = 0b1110;
+
+            /// 0b1111: Gain 16, feedback connected to VM1
+            pub const Gain16_VM1: u32 = 0b1111;
+        }
     }
 
     /// User trimming enable
@@ -161,8 +279,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: User trimming disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: User trimming enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Offset trimming value (PMOS)
@@ -203,8 +328,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: VREFOPAMP2 is output
+            pub const Output: u32 = 0b0;
+
+            /// 0b1: VREFOPAMP2 is not output
+            pub const NotOutput: u32 = 0b1;
+        }
     }
 
     /// OPAMP ouput status flag
@@ -217,8 +349,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Non-inverting < inverting
+            pub const Low: u32 = 0b0;
+
+            /// 0b1: Non-inverting > inverting
+            pub const High: u32 = 0b1;
+        }
     }
 
     /// OPAMP lock
@@ -231,8 +370,15 @@ pub mod OPAMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator CSR bits are read-write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Comparator CSR bits are read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 }
 

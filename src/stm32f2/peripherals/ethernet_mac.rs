@@ -327,8 +327,8 @@ pub mod MACFFR {
     pub mod PCF {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
+        /// Mask (2 bits: 0b11 << 6)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1150,7 +1150,7 @@ pub mod MACA1HR {
 pub mod MACA1LR {
 
     /// MAC address1 low
-    pub mod MACA1LR {
+    pub mod MACA1L {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -1168,7 +1168,7 @@ pub mod MACA1LR {
 pub mod MACA2HR {
 
     /// MAC address2 high
-    pub mod MAC2AH {
+    pub mod MACA2H {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -1231,8 +1231,8 @@ pub mod MACA2LR {
     pub mod MACA2L {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (31 bits: 0x7fffffff << 0)
-        pub const mask: u32 = 0x7fffffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1306,7 +1306,7 @@ pub mod MACA3HR {
 pub mod MACA3LR {
 
     /// MAC address3 low
-    pub mod MBCA3L {
+    pub mod MACA3L {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)

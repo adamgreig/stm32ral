@@ -4753,7 +4753,7 @@ pub mod DCKCFGR {
     }
 
     /// 48 MHz clock source selection
-    pub mod _48MSEL {
+    pub mod CK48MSEL {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)

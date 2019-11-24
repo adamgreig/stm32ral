@@ -122,25 +122,25 @@ pub mod CR {
         pub mod RW {
 
             /// 0b000: 1.9 V
-            pub const _1_9V: u32 = 0b000;
+            pub const V1_9: u32 = 0b000;
 
             /// 0b001: 2.1 V
-            pub const _2_1V: u32 = 0b001;
+            pub const V2_1: u32 = 0b001;
 
             /// 0b010: 2.3 V
-            pub const _2_3V: u32 = 0b010;
+            pub const V2_3: u32 = 0b010;
 
             /// 0b011: 2.5 V
-            pub const _2_5V: u32 = 0b011;
+            pub const V2_5: u32 = 0b011;
 
             /// 0b100: 2.7 V
-            pub const _2_7V: u32 = 0b100;
+            pub const V2_7: u32 = 0b100;
 
             /// 0b101: 2.9 V
-            pub const _2_9V: u32 = 0b101;
+            pub const V2_9: u32 = 0b101;
 
             /// 0b110: 3.1 V
-            pub const _3_1V: u32 = 0b110;
+            pub const V3_1: u32 = 0b110;
 
             /// 0b111: External input analog voltage (Compare internally to VREFINT)
             pub const External: u32 = 0b111;
@@ -224,13 +224,13 @@ pub mod CR {
         pub mod RW {
 
             /// 0b01: 1.8 V (range 1)
-            pub const _1_8V: u32 = 0b01;
+            pub const V1_8: u32 = 0b01;
 
             /// 0b10: 1.5 V (range 2)
-            pub const _1_5V: u32 = 0b10;
+            pub const V1_5: u32 = 0b10;
 
             /// 0b11: 1.2 V (range 3)
-            pub const _1_2V: u32 = 0b11;
+            pub const V1_2: u32 = 0b11;
         }
     }
 

@@ -24,10 +24,10 @@ pub use super::instances::fsmc;
 pub use super::instances::gpio_f405_f407_f427 as gpio;
 pub use super::instances::i2c_f401_f405_f407_f411_f412 as i2c;
 pub use super::instances::iwdg;
-pub use super::instances::otg_fs_device_f405_f407_f427_f429 as otg_fs_device;
-pub use super::instances::otg_fs_global_f405_f407_f427_f429 as otg_fs_global;
+pub use super::instances::otg_fs_device_f401_f405_f407_f411_f427_f429 as otg_fs_device;
+pub use super::instances::otg_fs_global_f401_f405_f407_f411_f427_f429 as otg_fs_global;
 pub use super::instances::otg_fs_host;
-pub use super::instances::otg_fs_pwrclk;
+pub use super::instances::otg_s_pwrclk;
 pub use super::instances::pwr_f405_f407 as pwr;
 pub use super::instances::rcc;
 pub use super::instances::rng;
@@ -35,19 +35,19 @@ pub use super::instances::rtc_f405_f407_f427_f429_f446_f469 as rtc;
 pub use super::instances::sdio;
 pub use super::instances::spi_f405_f407_f427_f429_f469 as spi;
 pub use super::instances::syscfg_f405_f407 as syscfg;
-pub use super::instances::tim1;
 pub use super::instances::tim10_f405_f407 as tim10;
 pub use super::instances::tim11_f405_f407 as tim11;
 pub use super::instances::tim12_f405_f407_f427_f429_f446 as tim12;
 pub use super::instances::tim13_f405_f407 as tim13;
 pub use super::instances::tim14_f405_f407 as tim14;
+pub use super::instances::tim1_f401_f405_f407_f413_f427_f429_f446_f469 as tim1;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
-pub use super::instances::tim8;
+pub use super::instances::tim8_f401_f405_f407_f413_f427_f429_f446_f469 as tim8;
 pub use super::instances::tim9;
 pub use super::instances::uart_f405_f407 as uart;
 pub use super::instances::usart_f405_f407_f446 as usart;
@@ -62,10 +62,9 @@ pub use super::instances::ltdc;
 pub use super::instances::mpu;
 pub use super::instances::nvic_f401_f405_f407_f410_f411_f412_f413 as nvic;
 pub use super::instances::nvic_stir;
-pub use super::instances::otg_hs_device;
-pub use super::instances::otg_hs_global;
+pub use super::instances::otg_hs_device_f405_f407_f427_f429 as otg_hs_device;
+pub use super::instances::otg_hs_global_f405_f407_f427_f429 as otg_hs_global;
 pub use super::instances::otg_hs_host;
-pub use super::instances::otg_hs_pwrclk;
 pub use super::instances::sai1;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
@@ -144,7 +143,8 @@ pub struct Peripherals {
     pub OTG_FS_GLOBAL: otg_fs_global::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
     pub OTG_FS_DEVICE: otg_fs_device::Instance,
-    pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
+    pub OTG_FS_PWRCLK: otg_s_pwrclk::Instance,
+    pub OTG_HS_PWRCLK: otg_s_pwrclk::Instance,
     pub CAN1: can::Instance,
     pub CAN2: can::Instance,
     pub FLASH: flash::Instance,
@@ -152,7 +152,6 @@ pub struct Peripherals {
     pub OTG_HS_GLOBAL: otg_hs_global::Instance,
     pub OTG_HS_HOST: otg_hs_host::Instance,
     pub OTG_HS_DEVICE: otg_hs_device::Instance,
-    pub OTG_HS_PWRCLK: otg_hs_pwrclk::Instance,
     pub NVIC: nvic::Instance,
     pub SAI1: sai1::Instance,
     pub LTDC: ltdc::Instance,
@@ -245,7 +244,8 @@ impl Peripherals {
             OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
             OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
-            OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),
+            OTG_FS_PWRCLK: otg_s_pwrclk::OTG_FS_PWRCLK::steal(),
+            OTG_HS_PWRCLK: otg_s_pwrclk::OTG_HS_PWRCLK::steal(),
             CAN1: can::CAN1::steal(),
             CAN2: can::CAN2::steal(),
             FLASH: flash::FLASH::steal(),
@@ -253,7 +253,6 @@ impl Peripherals {
             OTG_HS_GLOBAL: otg_hs_global::OTG_HS_GLOBAL::steal(),
             OTG_HS_HOST: otg_hs_host::OTG_HS_HOST::steal(),
             OTG_HS_DEVICE: otg_hs_device::OTG_HS_DEVICE::steal(),
-            OTG_HS_PWRCLK: otg_hs_pwrclk::OTG_HS_PWRCLK::steal(),
             NVIC: nvic::NVIC::steal(),
             SAI1: sai1::SAI1::steal(),
             LTDC: ltdc::LTDC::steal(),

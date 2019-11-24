@@ -73,6 +73,7 @@ extern "C" {
     fn SWPMI1();
     fn TSC();
     fn LCD();
+    fn AES();
     fn RNG();
     fn FPU();
 }
@@ -205,8 +206,8 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: SWPMI1 },
     Vector { _handler: TSC },
     Vector { _handler: LCD },
+    Vector { _handler: AES },
     Vector { _handler: RNG },
-    Vector { _reserved: 0 },
     Vector { _handler: FPU },
 ];
 
@@ -359,8 +360,10 @@ pub enum Interrupt {
     TSC = 77,
     /// 78: LCD global interrupt
     LCD = 78,
-    /// 79: RNG global interrupt
-    RNG = 79,
+    /// 79: AES global interrupt
+    AES = 79,
+    /// 80: RNG global interrupt
+    RNG = 80,
     /// 81: Floating point interrupt
     FPU = 81,
 }

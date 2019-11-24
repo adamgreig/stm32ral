@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Advanced encryption standard hardware accelerator
 //!
-//! Used by: stm32l0x2, stm32l0x3
+//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable DMA Output
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enabled DMA Output
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Enable DMA management of data input phase
@@ -35,8 +42,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable DMA Input
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable DMA Input
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt enable
@@ -49,8 +63,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable (mask) error interrupt
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable error interrupt
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CCF flag interrupt enable
@@ -63,8 +84,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable (mask) CCF interrupt
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable CCF interrupt
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error clear
@@ -75,8 +103,12 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear RDERR and WRERR flags
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -89,8 +121,12 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear computation complete flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -105,8 +141,18 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Electronic codebook (ECB)
+            pub const ECB: u32 = 0b00;
+
+            /// 0b01: Cipher-Block Chaining (CBC)
+            pub const CBC: u32 = 0b01;
+
+            /// 0b10: Counter Mode (CTR)
+            pub const CTR: u32 = 0b10;
+        }
     }
 
     /// AES operating mode
@@ -119,8 +165,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Mode 1: encryption
+            pub const Mode1: u32 = 0b00;
+
+            /// 0b01: Mode 2: key derivation (or key preparation for ECB/CBC decryption)
+            pub const Mode2: u32 = 0b01;
+
+            /// 0b10: Mode 3: decryption
+            pub const Mode3: u32 = 0b10;
+
+            /// 0b11: Mode 4: key derivation then single decryption
+            pub const Mode4: u32 = 0b11;
+        }
     }
 
     /// Data type selection (for data in and data out to/from the cryptographic block)
@@ -133,8 +192,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Word
+            pub const None: u32 = 0b00;
+
+            /// 0b01: Half-word (16-bit)
+            pub const HalfWord: u32 = 0b01;
+
+            /// 0b10: Byte (8-bit)
+            pub const Byte: u32 = 0b10;
+
+            /// 0b11: Bit
+            pub const Bit: u32 = 0b11;
+        }
     }
 
     /// AES enable
@@ -147,8 +219,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable AES
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable AES
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -165,8 +244,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Write error not detected
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Write error detected
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// Read error flag
@@ -179,8 +265,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Read error not detected
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Read error detected
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// Computation complete flag
@@ -193,8 +286,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Computation complete
+            pub const Complete: u32 = 0b0;
+
+            /// 0b1: Computation not complete
+            pub const NotComplete: u32 = 0b1;
+        }
     }
 }
 
@@ -202,7 +302,7 @@ pub mod SR {
 pub mod DINR {
 
     /// Data Input Register.
-    pub mod AES_DINR {
+    pub mod DIN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -220,7 +320,7 @@ pub mod DINR {
 pub mod DOUTR {
 
     /// Data output register
-    pub mod AES_DOUTR {
+    pub mod DOUT {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -238,7 +338,7 @@ pub mod DOUTR {
 pub mod KEYR0 {
 
     /// Data Output Register (LSB key \[31:0\])
-    pub mod AES_KEYR0 {
+    pub mod KEY0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -256,7 +356,7 @@ pub mod KEYR0 {
 pub mod KEYR1 {
 
     /// AES key register (key \[63:32\])
-    pub mod AES_KEYR1 {
+    pub mod KEY1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -274,7 +374,7 @@ pub mod KEYR1 {
 pub mod KEYR2 {
 
     /// AES key register (key \[95:64\])
-    pub mod AES_KEYR2 {
+    pub mod KEY2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -292,7 +392,7 @@ pub mod KEYR2 {
 pub mod KEYR3 {
 
     /// AES key register (MSB key \[127:96\])
-    pub mod AES_KEYR3 {
+    pub mod KEY3 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -310,7 +410,7 @@ pub mod KEYR3 {
 pub mod IVR0 {
 
     /// initialization vector register (LSB IVR \[31:0\])
-    pub mod AES_IVR0 {
+    pub mod IV0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -328,7 +428,7 @@ pub mod IVR0 {
 pub mod IVR1 {
 
     /// Initialization Vector Register (IVR \[63:32\])
-    pub mod AES_IVR1 {
+    pub mod IV1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -346,7 +446,7 @@ pub mod IVR1 {
 pub mod IVR2 {
 
     /// Initialization Vector Register (IVR \[95:64\])
-    pub mod AES_IVR2 {
+    pub mod IV2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -364,7 +464,7 @@ pub mod IVR2 {
 pub mod IVR3 {
 
     /// Initialization Vector Register (MSB IVR \[127:96\])
-    pub mod AES_IVR3 {
+    pub mod IV3 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)

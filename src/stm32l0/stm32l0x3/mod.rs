@@ -1,7 +1,7 @@
 //! stm32ral module for stm32l0x3
 
 /// Number of priority bits implemented by the NVIC
-pub const NVIC_PRIO_BITS: u8 = 3;
+pub const NVIC_PRIO_BITS: u8 = 2;
 
 /// Interrupt-related magic for this device
 pub mod interrupts;
@@ -13,11 +13,11 @@ pub use super::instances::aes;
 pub use super::instances::crc;
 pub use super::instances::crs;
 pub use super::instances::dac;
-pub use super::instances::dbgmcu;
+pub use super::instances::dbg;
 pub use super::instances::dma1;
 pub use super::instances::exti;
-pub use super::instances::firewall;
 pub use super::instances::flash;
+pub use super::instances::fw;
 pub use super::instances::gpio;
 pub use super::instances::i2c;
 pub use super::instances::iwdg;
@@ -29,7 +29,7 @@ pub use super::instances::rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;
 pub use super::instances::spi;
-pub use super::instances::syscfg_comp;
+pub use super::instances::syscfg;
 pub use super::instances::tim2;
 pub use super::instances::tim21;
 pub use super::instances::tim22;
@@ -39,7 +39,6 @@ pub use super::instances::tim7;
 pub use super::instances::tsc;
 pub use super::instances::usart;
 pub use super::instances::usb;
-pub use super::instances::usb_sram;
 pub use super::instances::wwdg;
 pub mod lcd;
 pub use super::instances::mpu;
@@ -71,19 +70,19 @@ pub struct Peripherals {
     pub WWDG: wwdg::Instance,
     pub USB: usb::Instance,
     pub CRS: crs::Instance,
-    pub Firewall: firewall::Instance,
+    pub FW: fw::Instance,
     pub RCC: rcc::Instance,
-    pub SYSCFG_COMP: syscfg_comp::Instance,
+    pub SYSCFG: syscfg::Instance,
     pub SPI1: spi::Instance,
     pub SPI2: spi::Instance,
     pub I2C1: i2c::Instance,
     pub I2C2: i2c::Instance,
     pub I2C3: i2c::Instance,
     pub PWR: pwr::Instance,
-    pub Flash: flash::Instance,
+    pub FLASH: flash::Instance,
     pub EXTI: exti::Instance,
     pub ADC: adc::Instance,
-    pub DBGMCU: dbgmcu::Instance,
+    pub DBG: dbg::Instance,
     pub TIM2: tim2::Instance,
     pub TIM3: tim3::Instance,
     pub TIM6: tim6::Instance,
@@ -92,7 +91,6 @@ pub struct Peripherals {
     pub TIM22: tim22::Instance,
     pub LPUART1: lpuart1::Instance,
     pub NVIC: nvic::Instance,
-    pub USB_SRAM: usb_sram::Instance,
     pub LCD: lcd::Instance,
     pub MPU: mpu::Instance,
     pub STK: stk::Instance,
@@ -129,19 +127,19 @@ impl Peripherals {
             WWDG: wwdg::WWDG::steal(),
             USB: usb::USB::steal(),
             CRS: crs::CRS::steal(),
-            Firewall: firewall::Firewall::steal(),
+            FW: fw::FW::steal(),
             RCC: rcc::RCC::steal(),
-            SYSCFG_COMP: syscfg_comp::SYSCFG_COMP::steal(),
+            SYSCFG: syscfg::SYSCFG::steal(),
             SPI1: spi::SPI1::steal(),
             SPI2: spi::SPI2::steal(),
             I2C1: i2c::I2C1::steal(),
             I2C2: i2c::I2C2::steal(),
             I2C3: i2c::I2C3::steal(),
             PWR: pwr::PWR::steal(),
-            Flash: flash::Flash::steal(),
+            FLASH: flash::FLASH::steal(),
             EXTI: exti::EXTI::steal(),
             ADC: adc::ADC::steal(),
-            DBGMCU: dbgmcu::DBGMCU::steal(),
+            DBG: dbg::DBG::steal(),
             TIM2: tim2::TIM2::steal(),
             TIM3: tim3::TIM3::steal(),
             TIM6: tim6::TIM6::steal(),
@@ -150,7 +148,6 @@ impl Peripherals {
             TIM22: tim22::TIM22::steal(),
             LPUART1: lpuart1::LPUART1::steal(),
             NVIC: nvic::NVIC::steal(),
-            USB_SRAM: usb_sram::USB_SRAM::steal(),
             LCD: lcd::LCD::steal(),
             MPU: mpu::MPU::steal(),
             STK: stk::STK::steal(),

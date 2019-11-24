@@ -774,27 +774,6 @@ pub mod EXTICR4 {
 /// SYSCFG configuration register 3
 pub mod CFGR3 {
 
-    /// REF_CTRL lock bit
-    pub mod REF_LOCK {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: SYSCFG_CFGR3\[31:0\] bits are read/write
-            pub const ReadWrite: u32 = 0b0;
-
-            /// 0b1: SYSCFG_CFGR3\[31:0\] bits are read-only
-            pub const ReadOnly: u32 = 0b1;
-        }
-    }
-
     /// VREFINT ready flag
     pub mod VREFINT_RDYF {
         /// Offset (30 bits)
@@ -861,6 +840,27 @@ pub mod CFGR3 {
 
             /// 0b11: PB0 and PB1 connected
             pub const Both: u32 = 0b11;
+        }
+    }
+
+    /// SYSCFG_CFGR3 lock bit
+    pub mod REF_LOCK {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SYSCFG_CFGR3\[31:0\] bits are read/write
+            pub const ReadWrite: u32 = 0b0;
+
+            /// 0b1: SYSCFG_CFGR3\[31:0\] bits are read-only
+            pub const ReadOnly: u32 = 0b1;
         }
     }
 

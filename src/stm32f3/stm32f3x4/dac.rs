@@ -3,9 +3,9 @@
 //! Digital-to-analog converter
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f3::peripherals::dac1::Instance;
-pub use crate::stm32f3::peripherals::dac1::{RegisterBlock, ResetValues};
-pub use crate::stm32f3::peripherals::dac1::{
+pub use crate::stm32f3::peripherals::dac::Instance;
+pub use crate::stm32f3::peripherals::dac::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::dac::{
     CR, DHR12L1, DHR12L2, DHR12LD, DHR12R1, DHR12R2, DHR12RD, DHR8R1, DHR8R2, DHR8RD, DOR1, DOR2,
     SR, SWTRIGR,
 };

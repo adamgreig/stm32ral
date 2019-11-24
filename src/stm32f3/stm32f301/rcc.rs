@@ -399,8 +399,11 @@ pub mod CFGR {
             /// 0b1101: PLL input clock x15
             pub const Mul15: u32 = 0b1101;
 
+            /// 0b1110: PLL input clock x16
+            pub const Mul16: u32 = 0b1110;
+
             /// 0b1111: PLL input clock x16
-            pub const Mul16: u32 = 0b1111;
+            pub const Mul16x: u32 = 0b1111;
         }
     }
 

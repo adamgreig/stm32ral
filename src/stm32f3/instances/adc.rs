@@ -5,9 +5,9 @@
 //! Used by: stm32f302, stm32f303
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f3::peripherals::adc_v1::Instance;
-pub use crate::stm32f3::peripherals::adc_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f3::peripherals::adc_v1::{
+pub use crate::stm32f3::peripherals::adc::Instance;
+pub use crate::stm32f3::peripherals::adc::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::adc::{
     AWD2CR, AWD3CR, CALFACT, CFGR, CR, DIFSEL, DR, IER, ISR, JDR1, JDR2, JDR3, JDR4, JSQR, OFR1,
     OFR2, OFR3, OFR4, SMPR1, SMPR2, SQR1, SQR2, SQR3, SQR4, TR1, TR2, TR3,
 };

@@ -4,7 +4,7 @@
 //!
 //! Used by: stm32f401, stm32f405, stm32f407, stm32f410, stm32f411, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
-use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -1194,59 +1194,6 @@ pub mod HIFCR {
     }
 }
 
-/// stream x peripheral address register
-pub mod S0PAR {
-
-    /// Peripheral address
-    pub mod PA {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// stream x peripheral address register
-pub mod S1PAR {
-    pub use super::S0PAR::PA;
-}
-
-/// stream x peripheral address register
-pub mod S2PAR {
-    pub use super::S0PAR::PA;
-}
-
-/// stream x peripheral address register
-pub mod S3PAR {
-    pub use super::S0PAR::PA;
-}
-
-/// stream x peripheral address register
-pub mod S4PAR {
-    pub use super::S0PAR::PA;
-}
-
-/// stream x peripheral address register
-pub mod S5PAR {
-    pub use super::S0PAR::PA;
-}
-
-/// stream x peripheral address register
-pub mod S6PAR {
-    pub use super::S0PAR::PA;
-}
-
-/// stream x peripheral address register
-pub mod S7PAR {
-    pub use super::S0PAR::PA;
-}
-
 /// stream x configuration register
 pub mod CR0 {
 
@@ -1408,13 +1355,13 @@ pub mod CR0 {
         pub mod RW {
 
             /// 0b00: Byte (8-bit)
-            pub const Byte: u32 = 0b00;
+            pub const Bits8: u32 = 0b00;
 
             /// 0b01: Half-word (16-bit)
-            pub const HalfWord: u32 = 0b01;
+            pub const Bits16: u32 = 0b01;
 
             /// 0b10: Word (32-bit)
-            pub const Word: u32 = 0b10;
+            pub const Bits32: u32 = 0b10;
         }
     }
 
@@ -1655,6 +1602,24 @@ pub mod NDTR0 {
     }
 }
 
+/// stream x peripheral address register
+pub mod PAR0 {
+
+    /// Peripheral address
+    pub mod PA {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// stream x memory 0 address register
 pub mod M0AR0 {
 
@@ -1729,16 +1694,16 @@ pub mod FCR0 {
         pub mod RW {
 
             /// 0b000: 0 < fifo_level < 1/4
-            pub const FirstQuarter: u32 = 0b000;
+            pub const Quarter1: u32 = 0b000;
 
             /// 0b001: 1/4 <= fifo_level < 1/2
-            pub const SecondQuarter: u32 = 0b001;
+            pub const Quarter2: u32 = 0b001;
 
             /// 0b010: 1/2 <= fifo_level < 3/4
-            pub const ThirdQuarter: u32 = 0b010;
+            pub const Quarter3: u32 = 0b010;
 
             /// 0b011: 3/4 <= fifo_level < full
-            pub const FourthQuarter: u32 = 0b011;
+            pub const Quarter4: u32 = 0b011;
 
             /// 0b100: FIFO is empty
             pub const Empty: u32 = 0b100;
@@ -1825,6 +1790,11 @@ pub mod NDTR1 {
     pub use super::NDTR0::NDT;
 }
 
+/// stream x peripheral address register
+pub mod PAR1 {
+    pub use super::PAR0::PA;
+}
+
 /// stream x memory 0 address register
 pub mod M0AR1 {
     pub use super::M0AR0::M0A;
@@ -1869,6 +1839,11 @@ pub mod CR2 {
 /// stream x number of data register
 pub mod NDTR2 {
     pub use super::NDTR0::NDT;
+}
+
+/// stream x peripheral address register
+pub mod PAR2 {
+    pub use super::PAR0::PA;
 }
 
 /// stream x memory 0 address register
@@ -1917,6 +1892,11 @@ pub mod NDTR3 {
     pub use super::NDTR0::NDT;
 }
 
+/// stream x peripheral address register
+pub mod PAR3 {
+    pub use super::PAR0::PA;
+}
+
 /// stream x memory 0 address register
 pub mod M0AR3 {
     pub use super::M0AR0::M0A;
@@ -1961,6 +1941,11 @@ pub mod CR4 {
 /// stream x number of data register
 pub mod NDTR4 {
     pub use super::NDTR0::NDT;
+}
+
+/// stream x peripheral address register
+pub mod PAR4 {
+    pub use super::PAR0::PA;
 }
 
 /// stream x memory 0 address register
@@ -2009,6 +1994,11 @@ pub mod NDTR5 {
     pub use super::NDTR0::NDT;
 }
 
+/// stream x peripheral address register
+pub mod PAR5 {
+    pub use super::PAR0::PA;
+}
+
 /// stream x memory 0 address register
 pub mod M0AR5 {
     pub use super::M0AR0::M0A;
@@ -2053,6 +2043,11 @@ pub mod CR6 {
 /// stream x number of data register
 pub mod NDTR6 {
     pub use super::NDTR0::NDT;
+}
+
+/// stream x peripheral address register
+pub mod PAR6 {
+    pub use super::PAR0::PA;
 }
 
 /// stream x memory 0 address register
@@ -2101,6 +2096,11 @@ pub mod NDTR7 {
     pub use super::NDTR0::NDT;
 }
 
+/// stream x peripheral address register
+pub mod PAR7 {
+    pub use super::PAR0::PA;
+}
+
 /// stream x memory 0 address register
 pub mod M0AR7 {
     pub use super::M0AR0::M0A;
@@ -2138,7 +2138,7 @@ pub struct RegisterBlock {
     pub NDTR0: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S0PAR: UnsafeRWRegister<u32>,
+    pub PAR0: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR0: RWRegister<u32>,
@@ -2156,7 +2156,7 @@ pub struct RegisterBlock {
     pub NDTR1: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S1PAR: UnsafeRWRegister<u32>,
+    pub PAR1: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR1: RWRegister<u32>,
@@ -2174,7 +2174,7 @@ pub struct RegisterBlock {
     pub NDTR2: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S2PAR: UnsafeRWRegister<u32>,
+    pub PAR2: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR2: RWRegister<u32>,
@@ -2192,7 +2192,7 @@ pub struct RegisterBlock {
     pub NDTR3: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S3PAR: UnsafeRWRegister<u32>,
+    pub PAR3: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR3: RWRegister<u32>,
@@ -2210,7 +2210,7 @@ pub struct RegisterBlock {
     pub NDTR4: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S4PAR: UnsafeRWRegister<u32>,
+    pub PAR4: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR4: RWRegister<u32>,
@@ -2228,7 +2228,7 @@ pub struct RegisterBlock {
     pub NDTR5: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S5PAR: UnsafeRWRegister<u32>,
+    pub PAR5: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR5: RWRegister<u32>,
@@ -2246,7 +2246,7 @@ pub struct RegisterBlock {
     pub NDTR6: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S6PAR: UnsafeRWRegister<u32>,
+    pub PAR6: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR6: RWRegister<u32>,
@@ -2264,7 +2264,7 @@ pub struct RegisterBlock {
     pub NDTR7: RWRegister<u32>,
 
     /// stream x peripheral address register
-    pub S7PAR: UnsafeRWRegister<u32>,
+    pub PAR7: RWRegister<u32>,
 
     /// stream x memory 0 address register
     pub M0AR7: RWRegister<u32>,
@@ -2282,49 +2282,49 @@ pub struct ResetValues {
     pub HIFCR: u32,
     pub CR0: u32,
     pub NDTR0: u32,
-    pub S0PAR: u32,
+    pub PAR0: u32,
     pub M0AR0: u32,
     pub M1AR0: u32,
     pub FCR0: u32,
     pub CR1: u32,
     pub NDTR1: u32,
-    pub S1PAR: u32,
+    pub PAR1: u32,
     pub M0AR1: u32,
     pub M1AR1: u32,
     pub FCR1: u32,
     pub CR2: u32,
     pub NDTR2: u32,
-    pub S2PAR: u32,
+    pub PAR2: u32,
     pub M0AR2: u32,
     pub M1AR2: u32,
     pub FCR2: u32,
     pub CR3: u32,
     pub NDTR3: u32,
-    pub S3PAR: u32,
+    pub PAR3: u32,
     pub M0AR3: u32,
     pub M1AR3: u32,
     pub FCR3: u32,
     pub CR4: u32,
     pub NDTR4: u32,
-    pub S4PAR: u32,
+    pub PAR4: u32,
     pub M0AR4: u32,
     pub M1AR4: u32,
     pub FCR4: u32,
     pub CR5: u32,
     pub NDTR5: u32,
-    pub S5PAR: u32,
+    pub PAR5: u32,
     pub M0AR5: u32,
     pub M1AR5: u32,
     pub FCR5: u32,
     pub CR6: u32,
     pub NDTR6: u32,
-    pub S6PAR: u32,
+    pub PAR6: u32,
     pub M0AR6: u32,
     pub M1AR6: u32,
     pub FCR6: u32,
     pub CR7: u32,
     pub NDTR7: u32,
-    pub S7PAR: u32,
+    pub PAR7: u32,
     pub M0AR7: u32,
     pub M1AR7: u32,
     pub FCR7: u32,

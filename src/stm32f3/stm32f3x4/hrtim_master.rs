@@ -19,8 +19,18 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Update done independently from the DMA burst transfer completion
+            pub const Independent: u32 = 0b00;
+
+            /// 0b01: Update done when the DMA burst transfer is completed
+            pub const Completion: u32 = 0b01;
+
+            /// 0b10: Update done on master timer roll-over following a DMA burst transfer completion
+            pub const Rollover: u32 = 0b10;
+        }
     }
 
     /// Master Timer Repetition update
@@ -33,8 +43,15 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update on repetition disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update on repetition enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Preload enable
@@ -47,8 +64,15 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload disabled: the write access is directly done into the active register
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload enabled: the write access is done into the preload register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// AC Synchronization
@@ -61,8 +85,21 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No DAC trigger generated
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Trigger generated on DACSync1
+            pub const DACSync1: u32 = 0b01;
+
+            /// 0b10: Trigger generated on DACSync2
+            pub const DACSync2: u32 = 0b10;
+
+            /// 0b11: Trigger generated on DACSync3
+            pub const DACSync3: u32 = 0b11;
+        }
     }
 
     /// Timer E counter enable
@@ -75,8 +112,15 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer counter disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Timer counter enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Timer D counter enable
@@ -89,8 +133,7 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECEN::RW;
     }
 
     /// Timer C counter enable
@@ -103,8 +146,7 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECEN::RW;
     }
 
     /// Timer B counter enable
@@ -117,8 +159,7 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECEN::RW;
     }
 
     /// Timer A counter enable
@@ -131,8 +172,7 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECEN::RW;
     }
 
     /// Master Counter enable
@@ -145,12 +185,19 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer counter disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Master timer counter enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Synchronization source
-    pub mod SYNC_SRC {
+    pub mod SYNCSRC {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (2 bits: 0b11 << 14)
@@ -159,12 +206,25 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Master timer Start
+            pub const MasterStart: u32 = 0b00;
+
+            /// 0b01: Master timer Compare 1 event
+            pub const MasterCompare1: u32 = 0b01;
+
+            /// 0b10: Timer A start/reset
+            pub const TimerAStart: u32 = 0b10;
+
+            /// 0b11: Timer A Compare 1 event
+            pub const TimerACompare1: u32 = 0b11;
+        }
     }
 
     /// Synchronization output
-    pub mod SYNC_OUT {
+    pub mod SYNCOUT {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (2 bits: 0b11 << 12)
@@ -173,8 +233,18 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b10: Positive pulse on SCOUT output (16x f_HRTIM clock cycles)
+            pub const PositivePulse: u32 = 0b10;
+
+            /// 0b11: Negative pulse on SCOUT output (16x f_HRTIM clock cycles)
+            pub const NegativePulse: u32 = 0b11;
+        }
     }
 
     /// Synchronization Starts Master
@@ -187,8 +257,15 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect on the master timer
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: A synchroniation input event starts the master timer
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Synchronization Resets Master
@@ -201,12 +278,19 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect on the master timer
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: A synchroniation input event resets the master timer
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ynchronization input
-    pub mod SYNC_IN {
+    pub mod SYNCIN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (2 bits: 0b11 << 8)
@@ -215,8 +299,18 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Disabled. HRTIM is not synchronized and runs in standalone mode
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b10: Internal event: the HRTIM is synchronized with the on-chip timer
+            pub const Internal: u32 = 0b10;
+
+            /// 0b11: External event: a positive pulse on HRTIM_SCIN input triggers the HRTIM
+            pub const External: u32 = 0b11;
+        }
     }
 
     /// Half mode enable
@@ -229,8 +323,15 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Half mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Half mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Master Re-triggerable mode
@@ -243,8 +344,15 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The timer is not re-triggerable: a counter reset can be done only if the counter is stopped
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The timer is retriggerable: a counter reset is done whatever the counter state
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Master Continuous mode
@@ -257,12 +365,19 @@ pub mod MCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The timer operates in single-shot mode and stops when it reaches the MPER value
+            pub const SingleShot: u32 = 0b0;
+
+            /// 0b1: The timer operates in continuous (free-running) mode and rolls over to zero when it reaches the MPER value
+            pub const Continuous: u32 = 0b1;
+        }
     }
 
     /// HRTIM Master Clock prescaler
-    pub mod CK_PSC {
+    pub mod CKPSC {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (3 bits: 0b111 << 0)
@@ -289,8 +404,15 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No master update interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Master update interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Sync Input Interrupt Flag
@@ -303,8 +425,15 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No sync input interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Sync input interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Master Repetition Interrupt Flag
@@ -317,8 +446,15 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No master repetition interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Master repetition interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Master Compare 4 Interrupt Flag
@@ -331,8 +467,15 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No master compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Master compare interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Master Compare 3 Interrupt Flag
@@ -345,8 +488,7 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP4::RW;
     }
 
     /// Master Compare 2 Interrupt Flag
@@ -359,8 +501,7 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP4::RW;
     }
 
     /// Master Compare 1 Interrupt Flag
@@ -373,8 +514,7 @@ pub mod MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MCMP4::RW;
     }
 }
 
@@ -391,8 +531,12 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears flag in MISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Sync Input Interrupt flag clear
@@ -405,8 +549,7 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDC::RW;
     }
 
     /// Repetition Interrupt flag clear
@@ -419,8 +562,7 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDC::RW;
     }
 
     /// Master Compare 4 Interrupt flag clear
@@ -433,8 +575,7 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDC::RW;
     }
 
     /// Master Compare 3 Interrupt flag clear
@@ -447,8 +588,7 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDC::RW;
     }
 
     /// Master Compare 2 Interrupt flag clear
@@ -461,8 +601,7 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDC::RW;
     }
 
     /// Master Compare 1 Interrupt flag clear
@@ -475,13 +614,12 @@ pub mod MICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDC::RW;
     }
 }
 
 /// MDIER4
-pub mod MDIER4 {
+pub mod MDIER {
 
     /// MUPDDE
     pub mod MUPDDE {
@@ -493,8 +631,15 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SYNCDE
@@ -507,8 +652,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDDE::RW;
     }
 
     /// MREPDE
@@ -521,8 +665,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDDE::RW;
     }
 
     /// MCMP4DE
@@ -535,8 +678,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDDE::RW;
     }
 
     /// MCMP3DE
@@ -549,8 +691,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDDE::RW;
     }
 
     /// MCMP2DE
@@ -563,8 +704,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDDE::RW;
     }
 
     /// MCMP1DE
@@ -577,8 +717,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDDE::RW;
     }
 
     /// MUPDIE
@@ -591,8 +730,15 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SYNCIE
@@ -605,8 +751,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDIE::RW;
     }
 
     /// MREPIE
@@ -619,8 +764,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDIE::RW;
     }
 
     /// MCMP4IE
@@ -633,8 +777,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDIE::RW;
     }
 
     /// MCMP3IE
@@ -647,8 +790,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDIE::RW;
     }
 
     /// MCMP2IE
@@ -661,8 +803,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDIE::RW;
     }
 
     /// MCMP1IE
@@ -675,8 +816,7 @@ pub mod MDIER4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MUPDIE::RW;
     }
 }
 
@@ -816,7 +956,7 @@ pub struct RegisterBlock {
     pub MICR: WORegister<u32>,
 
     /// MDIER4
-    pub MDIER4: RWRegister<u32>,
+    pub MDIER: RWRegister<u32>,
 
     /// Master Timer Counter Register
     pub MCNTR: RWRegister<u32>,
@@ -845,7 +985,7 @@ pub struct ResetValues {
     pub MCR: u32,
     pub MISR: u32,
     pub MICR: u32,
-    pub MDIER4: u32,
+    pub MDIER: u32,
     pub MCNTR: u32,
     pub MPER: u32,
     pub MREP: u32,
@@ -888,7 +1028,7 @@ pub mod HRTIM_Master {
         MCR: 0x00000000,
         MISR: 0x00000000,
         MICR: 0x00000000,
-        MDIER4: 0x00000000,
+        MDIER: 0x00000000,
         MCNTR: 0x00000000,
         MPER: 0x0000FFFF,
         MREP: 0x00000000,
