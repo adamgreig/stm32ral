@@ -374,7 +374,7 @@ let val = read_reg!(stm32ral::gpio, gpioa, IDR);
 let idr2 = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2);
 
 // Get the value of IDR2 and IDR3
-let (idr2, idr3) = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2, IDR);
+let (idr2, idr3) = read_reg!(stm32ral::gpio, gpioa, IDR, IDR2, IDR3);
 ```
 
 #### `read_reg!(peripheral, instance, REGISTER, FIELD EXPRESSION)`
