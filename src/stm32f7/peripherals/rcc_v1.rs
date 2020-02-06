@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Reset and clock control
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f765, stm32f7x9
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -242,6 +242,20 @@ pub mod PLLCFGR {
             /// 0b1: HSE oscillator clock selected as PLL and PLLI2S clock entry
             pub const HSE: u32 = 0b1;
         }
+    }
+
+    /// PLL division factor for DSI clock
+    pub mod PLLR {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (3 bits: 0b111 << 28)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
@@ -941,6 +955,32 @@ pub mod AHB1RSTR {
         }
     }
 
+    /// Ethernet MAC reset
+    pub mod ETHMACRST {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSRST::RW;
+    }
+
+    /// DMA2D reset
+    pub mod DMA2DRST {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSRST::RW;
+    }
+
     /// DMA2 reset
     pub mod DMA2RST {
         /// Offset (22 bits)
@@ -972,6 +1012,32 @@ pub mod AHB1RSTR {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSRST::RW;
+    }
+
+    /// IO port K reset
+    pub mod GPIOKRST {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSRST::RW;
+    }
+
+    /// IO port J reset
+    pub mod GPIOJRST {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1132,11 +1198,37 @@ pub mod AHB2RSTR {
         pub use super::OTGFSRST::RW;
     }
 
-    /// AES module reset
-    pub mod AESRST {
+    /// Hash module reset
+    pub mod HSAHRST {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGFSRST::RW;
+    }
+
+    /// Cryptographic module reset
+    pub mod CRYPRST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGFSRST::RW;
+    }
+
+    /// Camera interface reset
+    pub mod DCMIRST {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1449,6 +1541,19 @@ pub mod APB1RSTR {
         pub use super::TIM2RST::RW;
     }
 
+    /// CAN2 reset
+    pub mod CAN2RST {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2RST::RW;
+    }
+
     /// Power interface reset
     pub mod PWRRST {
         /// Offset (28 bits)
@@ -1501,6 +1606,19 @@ pub mod APB1RSTR {
         pub use super::TIM2RST::RW;
     }
 
+    /// SPDIF-RX reset
+    pub mod SPDIFRXRST {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2RST::RW;
+    }
+
     /// HDMI-CEC reset
     pub mod CECRST {
         /// Offset (27 bits)
@@ -1519,6 +1637,19 @@ pub mod APB1RSTR {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2RST::RW;
+    }
+
+    /// I2C 4 reset
+    pub mod I2C4RST {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1692,11 +1823,37 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
+    /// SPI6 reset
+    pub mod SPI6RST {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1RST::RW;
+    }
+
     /// SAI1 reset
     pub mod SAI1RST {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1RST::RW;
+    }
+
+    /// LTDC reset
+    pub mod LTDCRST {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1723,32 +1880,6 @@ pub mod APB2RSTR {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1RST::RW;
-    }
-
-    /// SDMMC2 reset
-    pub mod SDMMC2RST {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1RST::RW;
-    }
-
-    /// USB OTG HS PHY controller reset
-    pub mod USBPHYCRST {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1795,6 +1926,71 @@ pub mod AHB1ENR {
         pub use super::OTGHSULPIEN::RW;
     }
 
+    /// Ethernet PTP clock enable
+    pub mod ETHMACPTPEN {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (1 bit: 1 << 28)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
+    /// Ethernet Reception clock enable
+    pub mod ETHMACRXEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
+    /// Ethernet Transmission clock enable
+    pub mod ETHMACTXEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
+    /// Ethernet MAC clock enable
+    pub mod ETHMACEN {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
+    /// DMA2D clock enable
+    pub mod DMA2DEN {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
     /// DMA2 clock enable
     pub mod DMA2EN {
         /// Offset (22 bits)
@@ -1822,7 +2018,7 @@ pub mod AHB1ENR {
     }
 
     /// CCM data RAM clock enable
-    pub mod DTCMRAMEN {
+    pub mod CCMDATARAMEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -1852,6 +2048,32 @@ pub mod AHB1ENR {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
+    /// IO port K clock enable
+    pub mod GPIOKEN {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGHSULPIEN::RW;
+    }
+
+    /// IO port J clock enable
+    pub mod GPIOJEN {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2015,11 +2237,37 @@ pub mod AHB2ENR {
         pub use super::OTGFSEN::RW;
     }
 
-    /// AES module clock enable
-    pub mod AESEN {
+    /// Hash modules clock enable
+    pub mod HASHEN {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGFSEN::RW;
+    }
+
+    /// Cryptographic modules clock enable
+    pub mod CRYPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGFSEN::RW;
+    }
+
+    /// Camera interface enable
+    pub mod DCMIEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2338,6 +2586,19 @@ pub mod APB1ENR {
         pub use super::TIM2EN::RW;
     }
 
+    /// CAN 2 clock enable
+    pub mod CAN2EN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2EN::RW;
+    }
+
     /// Power interface clock enable
     pub mod PWREN {
         /// Offset (28 bits)
@@ -2390,8 +2651,34 @@ pub mod APB1ENR {
         pub use super::TIM2EN::RW;
     }
 
+    /// SPDIF-RX clock enable
+    pub mod SPDIFRXEN {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2EN::RW;
+    }
+
+    /// HDMI-CEN clock enable
+    pub mod CECEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2EN::RW;
+    }
+
     /// Low power timer 1 clock enable
-    pub mod LPTIM1EN {
+    pub mod LPTMI1EN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -2403,11 +2690,11 @@ pub mod APB1ENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// RTCAPB clock enable
-    pub mod RTCAPBEN {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
+    /// I2C4 clock enable
+    pub mod I2C4EN {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2610,11 +2897,37 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
+    /// SPI6 clock enable
+    pub mod SPI6EN {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
+
     /// SAI1 clock enable
     pub mod SAI1EN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
+
+    /// LTDC clock enable
+    pub mod LTDCEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2641,32 +2954,6 @@ pub mod APB2ENR {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1EN::RW;
-    }
-
-    /// SDMMC2 clock enable
-    pub mod SDMMC2EN {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1EN::RW;
-    }
-
-    /// USB OTG HS PHY controller clock enable
-    pub mod USBPHYCEN {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3024,32 +3311,6 @@ pub mod AHB1LPENR {
         pub mod W {}
         pub use super::GPIOALPEN::RW;
     }
-
-    /// AXI to AHB bridge clock enable during Sleep mode
-    pub mod AXILPEN {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (1 bit: 1 << 13)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// DTCM RAM interface clock enable during Sleep mode
-    pub mod DTCMLPEN {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
 }
 
 /// AHB2 peripheral clock enable in low power mode register
@@ -3089,11 +3350,37 @@ pub mod AHB2LPENR {
         pub use super::OTGFSLPEN::RW;
     }
 
-    /// AES module clock enable during Sleep mode
-    pub mod AESLPEN {
+    /// Hash modules clock enable during Sleep mode
+    pub mod HASHLPEN {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGFSLPEN::RW;
+    }
+
+    /// Cryptography modules clock enable during Sleep mode
+    pub mod CRYPLPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OTGFSLPEN::RW;
+    }
+
+    /// Camera interface enable during Sleep mode
+    pub mod DCMILPEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3477,11 +3764,50 @@ pub mod APB1LPENR {
         pub use super::TIM2LPEN::RW;
     }
 
+    /// SPDIF-RX clock enable during sleep mode
+    pub mod SPDIFRXLPEN {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2LPEN::RW;
+    }
+
+    /// HDMI-CEN clock enable during Sleep mode
+    pub mod CECLPEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2LPEN::RW;
+    }
+
     /// low power timer 1 clock enable during Sleep mode
     pub mod LPTIM1LPEN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM2LPEN::RW;
+    }
+
+    /// I2C4 clock enable during Sleep mode
+    pub mod I2C4LPEN {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3684,11 +4010,37 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
+    /// SPI 6 clock enable during Sleep mode
+    pub mod SPI6LPEN {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1LPEN::RW;
+    }
+
     /// SAI1 clock enable during sleep mode
     pub mod SAI1LPEN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1LPEN::RW;
+    }
+
+    /// LTDC clock enable during sleep mode
+    pub mod LTDCLPEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3715,19 +4067,6 @@ pub mod APB2LPENR {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1LPEN::RW;
-    }
-
-    /// SDMMC2 clock enable during Sleep mode
-    pub mod SDMMC2LPEN {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4181,6 +4520,33 @@ pub mod PLLI2SCFGR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// PLLI2S division factor for SPDIFRX clock
+    pub mod PLLI2SP {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (2 bits: 0b11 << 16)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PLL*P=2
+            pub const Div2: u32 = 0b00;
+
+            /// 0b01: PLL*P=4
+            pub const Div4: u32 = 0b01;
+
+            /// 0b10: PLL*P=6
+            pub const Div6: u32 = 0b10;
+
+            /// 0b11: PLL*P=8
+            pub const Div8: u32 = 0b11;
+        }
+    }
 }
 
 /// PLL configuration register
@@ -4233,6 +4599,20 @@ pub mod PLLSAICFGR {
         pub const offset: u32 = 24;
         /// Mask (4 bits: 0b1111 << 24)
         pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PLLSAI division factor for LCD clock
+    pub mod PLLSAIR {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (3 bits: 0b111 << 28)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -4467,6 +4847,33 @@ pub mod DCKCFGR1 {
         }
     }
 
+    /// division factor for LCD_CLK
+    pub mod PLLSAIDIVR {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (2 bits: 0b11 << 16)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PLLSAIDIVR = /2
+            pub const Div2: u32 = 0b00;
+
+            /// 0b01: PLLSAIDIVR = /4
+            pub const Div4: u32 = 0b01;
+
+            /// 0b10: PLLSAIDIVR = /8
+            pub const Div8: u32 = 0b10;
+
+            /// 0b11: PLLSAIDIVR = /16
+            pub const Div16: u32 = 0b11;
+        }
+    }
+
     /// SAI1 clock source selection
     pub mod SAI1SEL {
         /// Offset (20 bits)
@@ -4539,6 +4946,48 @@ pub mod DCKCFGR1 {
 
             /// 0b1: If the APB prescaler is configured 1, 2 or 4, TIMxCLK = HCLK. Otherwise, TIMxCLK = 4xPCLKx
             pub const Mul4: u32 = 0b1;
+        }
+    }
+
+    /// DFSDM1 clock source selection
+    pub mod DFSDM1SEL {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: APB2 clock (PCLK2) selected as DFSDM1 Kernel clock source
+            pub const APB2: u32 = 0b0;
+
+            /// 0b1: System clock (SYSCLK) clock selected as DFSDM1 Kernel clock source
+            pub const SYSCLK: u32 = 0b1;
+        }
+    }
+
+    /// DFSDM1 AUDIO clock source selection
+    pub mod ADFSDM1SEL {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SAI1 clock selected as DFSDM1 Audio clock source
+            pub const SAI1: u32 = 0b0;
+
+            /// 0b1: SAI2 clock selected as DFSDM1 Audio clock source
+            pub const SAI2: u32 = 0b1;
         }
     }
 }
@@ -4728,6 +5177,19 @@ pub mod DCKCFGR2 {
         pub use super::I2C1SEL::RW;
     }
 
+    /// I2C4 clock source selection
+    pub mod I2C4SEL {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (2 bits: 0b11 << 22)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::I2C1SEL::RW;
+    }
+
     /// Low power timer 1 clock source selection
     pub mod LPTIM1SEL {
         /// Offset (24 bits)
@@ -4755,6 +5217,27 @@ pub mod DCKCFGR2 {
         }
     }
 
+    /// HDMI-CEC clock source selection
+    pub mod CECSEL {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LSE clock is selected as HDMI-CEC clock
+            pub const LSE: u32 = 0b0;
+
+            /// 0b1: HSI divided by 488 clock is selected as HDMI-CEC clock
+            pub const HSI_Div488: u32 = 0b1;
+        }
+    }
+
     /// 48MHz clock source selection
     pub mod CK48MSEL {
         /// Offset (27 bits)
@@ -4776,7 +5259,7 @@ pub mod DCKCFGR2 {
         }
     }
 
-    /// SDMMC1 clock source selection
+    /// SDMMC clock source selection
     pub mod SDMMC1SEL {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -4808,6 +5291,27 @@ pub mod DCKCFGR2 {
         /// Write-only values (empty)
         pub mod W {}
         pub use super::SDMMC1SEL::RW;
+    }
+
+    /// DSI clock source selection
+    pub mod DSISEL {
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DSI-PHY used as DSI byte lane clock source (usual case)
+            pub const DSI_PHY: u32 = 0b0;
+
+            /// 0b1: PLLR used as DSI byte lane clock source, used in case DSI PLL and DSI-PHY are off (low power mode)
+            pub const PLLR: u32 = 0b1;
+        }
     }
 }
 pub struct RegisterBlock {

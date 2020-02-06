@@ -14,9 +14,6 @@ pub mod iwdg;
 pub mod wwdg;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
-pub mod tim1;
-
-#[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x2", feature="stm32f0x8", feature="stm32f0x8"))]
 pub mod tim3;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
@@ -60,6 +57,12 @@ pub mod spi;
 
 #[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod pwr;
+
+#[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
+pub mod tim1;
+
+#[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
+pub mod tim2;
 
 #[cfg(any(feature="doc", feature="stm32f0x1", feature="stm32f0x8"))]
 pub mod rcc;

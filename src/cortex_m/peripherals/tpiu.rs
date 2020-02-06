@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Trace Port Interface Unit
 //!
-//! Used by: armv7_m, armv7e_m
+//! Used by: armv7em, armv7m
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

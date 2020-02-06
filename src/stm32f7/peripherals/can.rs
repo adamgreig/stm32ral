@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Controller area network
 //!
-//! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -605,8 +605,12 @@ pub mod RF0R {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Set by software to release the output mailbox of the FIFO
+            pub const Release: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -617,10 +621,21 @@ pub mod RF0R {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No FIFO x overrun
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: FIFO x overrun
+            pub const Overrun: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -631,10 +646,16 @@ pub mod RF0R {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: FIFO x is not full
+            pub const NotFull: u32 = 0b0;
+
+            /// 0b1: FIFO x is full
+            pub const Full: u32 = 0b1;
+        }
+        pub use super::FOVR::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -675,8 +696,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt when SLAKI bit is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when SLAKI bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WKUIE
@@ -689,8 +717,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt when WKUI is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when WKUI bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ERRIE
@@ -703,8 +738,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt will be generated when an error condition is pending in the CAN_ESR
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An interrupt will be generation when an error condition is pending in the CAN_ESR
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// LECIE
@@ -717,8 +759,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ERRI bit will not be set when the error code in LEC\[2:0\] is set by hardware on error detection
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ERRI bit will be set when the error code in LEC\[2:0\] is set by hardware on error detection
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// BOFIE
@@ -731,8 +780,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ERRI bit will not be set when BOFF is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ERRI bit will be set when BOFF is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// EPVIE
@@ -745,8 +801,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ERRI bit will not be set when EPVF is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ERRI bit will be set when EPVF is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// EWGIE
@@ -759,8 +822,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ERRI bit will not be set when EWGF is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ERRI bit will be set when EWGF is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FOVIE1
@@ -773,8 +843,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt when FOVR is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generation when FOVR is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FFIE1
@@ -787,8 +864,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt when FULL bit is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when FULL bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FMPIE1
@@ -801,8 +885,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt generated when state of FMP\[1:0\] bits are not 00b
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when state of FMP\[1:0\] bits are not 00b
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FOVIE0
@@ -815,8 +906,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt when FOVR bit is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when FOVR bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FFIE0
@@ -829,8 +927,7 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FFIE1::RW;
     }
 
     /// FMPIE0
@@ -843,8 +940,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt generated when state of FMP\[1:0\] bits are not 00
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when state of FMP\[1:0\] bits are not 00b
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// TMEIE
@@ -857,8 +961,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt when RQCPx bit is set
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generated when RQCPx bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -903,8 +1014,33 @@ pub mod ESR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: No Error
+            pub const NoError: u32 = 0b000;
+
+            /// 0b001: Stuff Error
+            pub const Stuff: u32 = 0b001;
+
+            /// 0b010: Form Error
+            pub const Form: u32 = 0b010;
+
+            /// 0b011: Acknowledgment Error
+            pub const Ack: u32 = 0b011;
+
+            /// 0b100: Bit recessive Error
+            pub const BitRecessive: u32 = 0b100;
+
+            /// 0b101: Bit dominant Error
+            pub const BitDominant: u32 = 0b101;
+
+            /// 0b110: CRC Error
+            pub const Crc: u32 = 0b110;
+
+            /// 0b111: Set by software
+            pub const Custom: u32 = 0b111;
+        }
     }
 
     /// BOFF
@@ -963,8 +1099,15 @@ pub mod BTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal operation
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Silent Mode
+            pub const Silent: u32 = 0b1;
+        }
     }
 
     /// LBKM
@@ -977,8 +1120,15 @@ pub mod BTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Loop Back Mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Loop Back Mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SJW
@@ -2695,8 +2845,15 @@ pub mod TIR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Standard identifier
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: Extended identifier
+            pub const Extended: u32 = 0b1;
+        }
     }
 
     /// RTR
@@ -2709,8 +2866,15 @@ pub mod TIR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data frame
+            pub const Data: u32 = 0b0;
+
+            /// 0b1: Remote frame
+            pub const Remote: u32 = 0b1;
+        }
     }
 
     /// TXRQ
@@ -2999,8 +3163,15 @@ pub mod RIR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Standard identifier
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: Extended identifier
+            pub const Extended: u32 = 0b1;
+        }
     }
 
     /// RTR
@@ -3013,8 +3184,15 @@ pub mod RIR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data frame
+            pub const Data: u32 = 0b0;
+
+            /// 0b1: Remote frame
+            pub const Remote: u32 = 0b1;
+        }
     }
 }
 

@@ -30,17 +30,17 @@ pub use cortex_m_rt::interrupt;
 pub use crate::register::{RORegister, UnsafeRORegister};
 pub use crate::register::{WORegister, UnsafeWORegister};
 pub use crate::register::{RWRegister, UnsafeRWRegister};
-#[cfg(any(feature="doc", feature="armv6_m", feature="armv7e_m", feature="armv7_m"))]
+#[cfg(any(feature="doc", feature="armv6m", feature="armv7em", feature="armv7m"))]
 pub mod cortex_m;
 
-#[cfg(feature="armv6_m")]
-pub use cortex_m::armv6_m::*;
+#[cfg(feature="armv6m")]
+pub use cortex_m::armv6m::*;
 
-#[cfg(feature="armv7e_m")]
-pub use cortex_m::armv7e_m::*;
+#[cfg(feature="armv7em")]
+pub use cortex_m::armv7em::*;
 
-#[cfg(feature="armv7_m")]
-pub use cortex_m::armv7_m::*;
+#[cfg(feature="armv7m")]
+pub use cortex_m::armv7m::*;
 
 #[cfg(any(feature="doc", feature="stm32f0x0", feature="stm32f0x1", feature="stm32f0x2", feature="stm32f0x8"))]
 pub mod stm32f0;
@@ -141,17 +141,20 @@ pub use stm32f4::stm32f446::*;
 #[cfg(feature="stm32f469")]
 pub use stm32f4::stm32f469::*;
 
-#[cfg(any(feature="doc", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x5", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
+#[cfg(any(feature="doc", feature="stm32f745", feature="stm32f765", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod stm32f7;
+
+#[cfg(feature="stm32f745")]
+pub use stm32f7::stm32f745::*;
+
+#[cfg(feature="stm32f765")]
+pub use stm32f7::stm32f765::*;
 
 #[cfg(feature="stm32f7x2")]
 pub use stm32f7::stm32f7x2::*;
 
 #[cfg(feature="stm32f7x3")]
 pub use stm32f7::stm32f7x3::*;
-
-#[cfg(feature="stm32f7x5")]
-pub use stm32f7::stm32f7x5::*;
 
 #[cfg(feature="stm32f7x6")]
 pub use stm32f7::stm32f7x6::*;
@@ -162,20 +165,68 @@ pub use stm32f7::stm32f7x7::*;
 #[cfg(feature="stm32f7x9")]
 pub use stm32f7::stm32f7x9::*;
 
-#[cfg(any(feature="doc", feature="stm32g0x0", feature="stm32g0x1"))]
+#[cfg(any(feature="doc", feature="stm32g030", feature="stm32g031", feature="stm32g041", feature="stm32g07x", feature="stm32g081"))]
 pub mod stm32g0;
 
-#[cfg(feature="stm32g0x0")]
-pub use stm32g0::stm32g0x0::*;
+#[cfg(feature="stm32g030")]
+pub use stm32g0::stm32g030::*;
 
-#[cfg(feature="stm32g0x1")]
-pub use stm32g0::stm32g0x1::*;
+#[cfg(feature="stm32g031")]
+pub use stm32g0::stm32g031::*;
 
-#[cfg(any(feature="doc", feature="stm32h7x3"))]
+#[cfg(feature="stm32g041")]
+pub use stm32g0::stm32g041::*;
+
+#[cfg(feature="stm32g07x")]
+pub use stm32g0::stm32g07x::*;
+
+#[cfg(feature="stm32g081")]
+pub use stm32g0::stm32g081::*;
+
+#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484"))]
+pub mod stm32g4;
+
+#[cfg(feature="stm32g431")]
+pub use stm32g4::stm32g431::*;
+
+#[cfg(feature="stm32g441")]
+pub use stm32g4::stm32g441::*;
+
+#[cfg(feature="stm32g471")]
+pub use stm32g4::stm32g471::*;
+
+#[cfg(feature="stm32g473")]
+pub use stm32g4::stm32g473::*;
+
+#[cfg(feature="stm32g474")]
+pub use stm32g4::stm32g474::*;
+
+#[cfg(feature="stm32g483")]
+pub use stm32g4::stm32g483::*;
+
+#[cfg(feature="stm32g484")]
+pub use stm32g4::stm32g484::*;
+
+#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h757cm7"))]
 pub mod stm32h7;
 
-#[cfg(feature="stm32h7x3")]
-pub use stm32h7::stm32h7x3::*;
+#[cfg(feature="stm32h743")]
+pub use stm32h7::stm32h743::*;
+
+#[cfg(feature="stm32h743v")]
+pub use stm32h7::stm32h743v::*;
+
+#[cfg(feature="stm32h747cm7")]
+pub use stm32h7::stm32h747cm7::*;
+
+#[cfg(feature="stm32h753")]
+pub use stm32h7::stm32h753::*;
+
+#[cfg(feature="stm32h753v")]
+pub use stm32h7::stm32h753v::*;
+
+#[cfg(feature="stm32h757cm7")]
+pub use stm32h7::stm32h757cm7::*;
 
 #[cfg(any(feature="doc", feature="stm32l0x1", feature="stm32l0x2", feature="stm32l0x3"))]
 pub mod stm32l0;

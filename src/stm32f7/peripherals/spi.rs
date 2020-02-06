@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface
 //!
-//! Used by: stm32f7x2, stm32f7x3, stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f765, stm32f7x2, stm32f7x3, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -616,7 +616,7 @@ pub mod CR2 {
 /// status register
 pub mod SR {
 
-    /// frame format error
+    /// Frame format error
     pub mod FRE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;

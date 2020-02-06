@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429
+//! Used by: stm32f412, stm32f413
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// OTG_FS control and status register (OTG_FS_GOTGCTL)
-pub mod FS_GOTGCTL {
+pub mod GOTGCTL {
 
     /// Session request success
     pub mod SRQSCS {
@@ -153,7 +153,7 @@ pub mod FS_GOTGCTL {
 }
 
 /// OTG_FS interrupt register (OTG_FS_GOTGINT)
-pub mod FS_GOTGINT {
+pub mod GOTGINT {
 
     /// Session end detected
     pub mod SEDET {
@@ -241,7 +241,7 @@ pub mod FS_GOTGINT {
 }
 
 /// OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-pub mod FS_GAHBCFG {
+pub mod GAHBCFG {
 
     /// Global interrupt mask
     pub mod GINT {
@@ -287,7 +287,7 @@ pub mod FS_GAHBCFG {
 }
 
 /// OTG_FS USB configuration register (OTG_FS_GUSBCFG)
-pub mod FS_GUSBCFG {
+pub mod GUSBCFG {
 
     /// FS timeout calibration
     pub mod TOCAL {
@@ -403,7 +403,7 @@ pub mod FS_GUSBCFG {
 }
 
 /// OTG_FS reset register (OTG_FS_GRSTCTL)
-pub mod FS_GRSTCTL {
+pub mod GRSTCTL {
 
     /// Core soft reset
     pub mod CSRST {
@@ -505,7 +505,7 @@ pub mod FS_GRSTCTL {
 }
 
 /// OTG_FS core interrupt register (OTG_FS_GINTSTS)
-pub mod FS_GINTSTS {
+pub mod GINTSTS {
 
     /// Current mode of operation
     pub mod CMOD {
@@ -859,7 +859,7 @@ pub mod FS_GINTSTS {
 }
 
 /// OTG_FS interrupt mask register (OTG_FS_GINTMSK)
-pub mod FS_GINTMSK {
+pub mod GINTMSK {
 
     /// Mode mismatch interrupt mask
     pub mod MMISM {
@@ -1212,10 +1212,10 @@ pub mod FS_GINTMSK {
     }
 }
 
-/// FS_GRXSTSR_Device and FS_GRXSTSR_Host
-/// FS_GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
-/// FS_GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
-pub mod FS_GRXSTSR {
+/// GRXSTSR_Device and GRXSTSR_Host
+/// GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
+/// GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
+pub mod GRXSTSR {
 
     /// Endpoint number
     pub mod EPNUM {
@@ -1289,7 +1289,7 @@ pub mod FS_GRXSTSR {
 }
 
 /// OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
-pub mod FS_GRXFSIZ {
+pub mod GRXFSIZ {
 
     /// RxFIFO depth
     pub mod RXFD {
@@ -1306,10 +1306,10 @@ pub mod FS_GRXFSIZ {
     }
 }
 
-/// FS_GNPTXFSIZ_Device and FS_GNPTXFSIZ_Host
-/// FS_GNPTXFSIZ_Device: OTG_FS non-periodic transmit FIFO size register (Device mode)
-/// FS_GNPTXFSIZ_Host: OTG_FS non-periodic transmit FIFO size register (Host mode)
-pub mod FS_GNPTXFSIZ {
+/// GNPTXFSIZ_Device and GNPTXFSIZ_Host
+/// GNPTXFSIZ_Device: OTG_FS non-periodic transmit FIFO size register (Device mode)
+/// GNPTXFSIZ_Host: OTG_FS non-periodic transmit FIFO size register (Host mode)
+pub mod GNPTXFSIZ {
 
     /// Endpoint 0 transmit RAM start address
     pub mod TX0FSA {
@@ -1369,7 +1369,7 @@ pub mod FS_GNPTXFSIZ {
 }
 
 /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
-pub mod FS_GNPTXSTS {
+pub mod GNPTXSTS {
 
     /// Non-periodic TxFIFO space available
     pub mod NPTXFSAV {
@@ -1415,9 +1415,65 @@ pub mod FS_GNPTXSTS {
 }
 
 /// OTG_FS general core configuration register (OTG_FS_GCCFG)
-pub mod FS_GCCFG {
+pub mod GCCFG {
 
-    /// Power down
+    /// DCDET
+    pub mod DCDET {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PDET
+    pub mod PDET {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SDET
+    pub mod SDET {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PS2DET
+    pub mod PS2DET {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PWRDWN
     pub mod PWRDWN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1431,8 +1487,22 @@ pub mod FS_GCCFG {
         pub mod RW {}
     }
 
-    /// Enable the VBUS sensing device
-    pub mod VBUSASEN {
+    /// BCDEN
+    pub mod BCDEN {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DCDEN
+    pub mod DCDEN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1445,8 +1515,8 @@ pub mod FS_GCCFG {
         pub mod RW {}
     }
 
-    /// Enable the VBUS sensing device
-    pub mod VBUSBSEN {
+    /// PDEN
+    pub mod PDEN {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1459,8 +1529,8 @@ pub mod FS_GCCFG {
         pub mod RW {}
     }
 
-    /// SOF output enable
-    pub mod SOFOUTEN {
+    /// SDEN
+    pub mod SDEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -1472,10 +1542,24 @@ pub mod FS_GCCFG {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// VBDEN
+    pub mod VBDEN {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// core ID register
-pub mod FS_CID {
+pub mod CID {
 
     /// Product ID field
     pub mod PRODUCT_ID {
@@ -1493,7 +1577,7 @@ pub mod FS_CID {
 }
 
 /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
-pub mod FS_HPTXFSIZ {
+pub mod HPTXFSIZ {
 
     /// Host periodic TxFIFO start address
     pub mod PTXSA {
@@ -1525,7 +1609,7 @@ pub mod FS_HPTXFSIZ {
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
-pub mod FS_DIEPTXF1 {
+pub mod DIEPTXF1 {
 
     /// IN endpoint FIFO2 transmit RAM start address
     pub mod INEPTXSA {
@@ -1557,190 +1641,96 @@ pub mod FS_DIEPTXF1 {
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF3)
-pub mod FS_DIEPTXF2 {
-    pub use super::FS_DIEPTXF1::INEPTXFD;
-    pub use super::FS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF2 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF4)
-pub mod FS_DIEPTXF3 {
-    pub use super::FS_DIEPTXF1::INEPTXFD;
-    pub use super::FS_DIEPTXF1::INEPTXSA;
-}
-
-/// GRXSTSP_Device and GRXSTSP_Host
-/// GRXSTSP_Device: OTG status read and pop (device mode)
-/// GRXSTSP_Host: OTG status read and pop (host mode)
-pub mod GRXSTSP {
-
-    /// Frame number
-    pub mod FRMNUM {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (4 bits: 0b1111 << 21)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Packet status
-    pub mod PKTSTS {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (4 bits: 0b1111 << 17)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Data PID
-    pub mod DPID {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (2 bits: 0b11 << 15)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Byte count
-    pub mod BCNT {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (11 bits: 0x7ff << 4)
-        pub const mask: u32 = 0x7ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Endpoint number
-    pub mod EPNUM {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel number
-    pub mod CHNUM {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod DIEPTXF3 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
-    pub FS_GOTGCTL: RWRegister<u32>,
+    pub GOTGCTL: RWRegister<u32>,
 
     /// OTG_FS interrupt register (OTG_FS_GOTGINT)
-    pub FS_GOTGINT: RWRegister<u32>,
+    pub GOTGINT: RWRegister<u32>,
 
     /// OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-    pub FS_GAHBCFG: RWRegister<u32>,
+    pub GAHBCFG: RWRegister<u32>,
 
     /// OTG_FS USB configuration register (OTG_FS_GUSBCFG)
-    pub FS_GUSBCFG: RWRegister<u32>,
+    pub GUSBCFG: RWRegister<u32>,
 
     /// OTG_FS reset register (OTG_FS_GRSTCTL)
-    pub FS_GRSTCTL: RWRegister<u32>,
+    pub GRSTCTL: RWRegister<u32>,
 
     /// OTG_FS core interrupt register (OTG_FS_GINTSTS)
-    pub FS_GINTSTS: RWRegister<u32>,
+    pub GINTSTS: RWRegister<u32>,
 
     /// OTG_FS interrupt mask register (OTG_FS_GINTMSK)
-    pub FS_GINTMSK: RWRegister<u32>,
+    pub GINTMSK: RWRegister<u32>,
 
-    /// FS_GRXSTSR_Device and FS_GRXSTSR_Host
-    /// FS_GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
-    /// FS_GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
-    pub FS_GRXSTSR: RWRegister<u32>,
+    /// GRXSTSR_Device and GRXSTSR_Host
+    /// GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
+    /// GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
+    pub GRXSTSR: RWRegister<u32>,
 
-    /// GRXSTSP_Device and GRXSTSP_Host
-    /// GRXSTSP_Device: OTG status read and pop (device mode)
-    /// GRXSTSP_Host: OTG status read and pop (host mode)
-    pub GRXSTSP: RWRegister<u32>,
+    _reserved1: [u32; 1],
 
     /// OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
-    pub FS_GRXFSIZ: RWRegister<u32>,
+    pub GRXFSIZ: RWRegister<u32>,
 
-    /// FS_GNPTXFSIZ_Device and FS_GNPTXFSIZ_Host
-    /// FS_GNPTXFSIZ_Device: OTG_FS non-periodic transmit FIFO size register (Device mode)
-    /// FS_GNPTXFSIZ_Host: OTG_FS non-periodic transmit FIFO size register (Host mode)
-    pub FS_GNPTXFSIZ: RWRegister<u32>,
+    /// GNPTXFSIZ_Device and GNPTXFSIZ_Host
+    /// GNPTXFSIZ_Device: OTG_FS non-periodic transmit FIFO size register (Device mode)
+    /// GNPTXFSIZ_Host: OTG_FS non-periodic transmit FIFO size register (Host mode)
+    pub GNPTXFSIZ: RWRegister<u32>,
 
     /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
-    pub FS_GNPTXSTS: RORegister<u32>,
+    pub GNPTXSTS: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved2: [u32; 2],
 
     /// OTG_FS general core configuration register (OTG_FS_GCCFG)
-    pub FS_GCCFG: RWRegister<u32>,
+    pub GCCFG: RWRegister<u32>,
 
     /// core ID register
-    pub FS_CID: RWRegister<u32>,
+    pub CID: RWRegister<u32>,
 
-    _reserved2: [u32; 48],
+    _reserved3: [u32; 48],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
-    pub FS_HPTXFSIZ: RWRegister<u32>,
+    pub HPTXFSIZ: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
-    pub FS_DIEPTXF1: RWRegister<u32>,
+    pub DIEPTXF1: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF3)
-    pub FS_DIEPTXF2: RWRegister<u32>,
+    pub DIEPTXF2: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF4)
-    pub FS_DIEPTXF3: RWRegister<u32>,
+    pub DIEPTXF3: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub FS_GOTGCTL: u32,
-    pub FS_GOTGINT: u32,
-    pub FS_GAHBCFG: u32,
-    pub FS_GUSBCFG: u32,
-    pub FS_GRSTCTL: u32,
-    pub FS_GINTSTS: u32,
-    pub FS_GINTMSK: u32,
-    pub FS_GRXSTSR: u32,
-    pub GRXSTSP: u32,
-    pub FS_GRXFSIZ: u32,
-    pub FS_GNPTXFSIZ: u32,
-    pub FS_GNPTXSTS: u32,
-    pub FS_GCCFG: u32,
-    pub FS_CID: u32,
-    pub FS_HPTXFSIZ: u32,
-    pub FS_DIEPTXF1: u32,
-    pub FS_DIEPTXF2: u32,
-    pub FS_DIEPTXF3: u32,
+    pub GOTGCTL: u32,
+    pub GOTGINT: u32,
+    pub GAHBCFG: u32,
+    pub GUSBCFG: u32,
+    pub GRSTCTL: u32,
+    pub GINTSTS: u32,
+    pub GINTMSK: u32,
+    pub GRXSTSR: u32,
+    pub GRXFSIZ: u32,
+    pub GNPTXFSIZ: u32,
+    pub GNPTXSTS: u32,
+    pub GCCFG: u32,
+    pub CID: u32,
+    pub HPTXFSIZ: u32,
+    pub DIEPTXF1: u32,
+    pub DIEPTXF2: u32,
+    pub DIEPTXF3: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flexible memory controller
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: The FMC_CLK is only generated during the synchronous memory access (read/write transaction)
+            pub const Enabled: u32 = 0b1;
+
+            /// 0b0: The FMC_CLK is generated continuously during asynchronous and synchronous access. The FMC_CLK clock is activated when the CCLKEN is set
+            pub const Disabled: u32 = 0b0;
+        }
     }
 
     /// CBURSTRW
@@ -35,8 +42,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
+
+            /// 0b0: Write operations are always performed in asynchronous mode
+            pub const Disabled: u32 = 0b0;
+        }
     }
 
     /// ASYNCWAIT
@@ -49,8 +63,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wait signal not used in asynchronous mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wait signal used even in asynchronous mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// EXTMOD
@@ -63,8 +84,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Values inside the FMC_BWTR are not taken into account
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Values inside the FMC_BWTR are taken into account
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WAITEN
@@ -77,8 +105,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Values inside the FMC_BWTR are taken into account
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: NWAIT signal enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WREN
@@ -91,8 +126,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Write operations disabled for the bank by the FMC
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations enabled for the bank by the FMC
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WAITCFG
@@ -105,8 +147,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: NWAIT signal is active one data cycle before wait state
+            pub const BeforeWaitState: u32 = 0b0;
+
+            /// 0b1: NWAIT signal is active during wait state
+            pub const DuringWaitState: u32 = 0b1;
+        }
     }
 
     /// WAITPOL
@@ -119,8 +168,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: NWAIT active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: NWAIT active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// BURSTEN
@@ -133,8 +189,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Burst mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Burst mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FACCEN
@@ -147,8 +210,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Corresponding NOR Flash memory access is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Corresponding NOR Flash memory access is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// MWID
@@ -161,8 +231,18 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Memory data bus width 8 bits
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: Memory data bus width 16 bits
+            pub const Bits16: u32 = 0b01;
+
+            /// 0b10: Memory data bus width 32 bits
+            pub const Bits32: u32 = 0b10;
+        }
     }
 
     /// MTYP
@@ -175,8 +255,18 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: SRAM memory type
+            pub const SRAM: u32 = 0b00;
+
+            /// 0b01: PSRAM (CRAM) memory type
+            pub const PSRAM: u32 = 0b01;
+
+            /// 0b10: NOR Flash/OneNAND Flash
+            pub const Flash: u32 = 0b10;
+        }
     }
 
     /// MUXEN
@@ -189,8 +279,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Address/Data non-multiplexed
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Address/Data multiplexed on databus
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// MBKEN
@@ -203,11 +300,32 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Corresponding memory bank is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Corresponding memory bank is enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// WRAPMOD
+    pub mod WRAPMOD {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Write FIFO Disable
+    /// Write FIFO disable
     pub mod WFDIS {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -217,8 +335,15 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Write FIFO enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Write FIFO disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// CRAM page size
@@ -231,8 +356,24 @@ pub mod BCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: No burst split when crossing page boundary
+            pub const NoBurstSplit: u32 = 0b000;
+
+            /// 0b001: 128 bytes CRAM page size
+            pub const Bytes128: u32 = 0b001;
+
+            /// 0b010: 256 bytes CRAM page size
+            pub const Bytes256: u32 = 0b010;
+
+            /// 0b011: 512 bytes CRAM page size
+            pub const Bytes512: u32 = 0b011;
+
+            /// 0b100: 1024 bytes CRAM page size
+            pub const Bytes1024: u32 = 0b100;
+        }
     }
 }
 
@@ -249,8 +390,21 @@ pub mod BTR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Access mode A
+            pub const A: u32 = 0b00;
+
+            /// 0b01: Access mode B
+            pub const B: u32 = 0b01;
+
+            /// 0b10: Access mode C
+            pub const C: u32 = 0b10;
+
+            /// 0b11: Access mode D
+            pub const D: u32 = 0b11;
+        }
     }
 
     /// DATLAT
@@ -338,6 +492,39 @@ pub mod BTR1 {
     }
 }
 
+/// SRAM/NOR-Flash chip-select timing register 1
+pub mod BTR2 {
+    pub use super::BTR1::ACCMOD;
+    pub use super::BTR1::ADDHLD;
+    pub use super::BTR1::ADDSET;
+    pub use super::BTR1::BUSTURN;
+    pub use super::BTR1::CLKDIV;
+    pub use super::BTR1::DATAST;
+    pub use super::BTR1::DATLAT;
+}
+
+/// SRAM/NOR-Flash chip-select timing register 1
+pub mod BTR3 {
+    pub use super::BTR1::ACCMOD;
+    pub use super::BTR1::ADDHLD;
+    pub use super::BTR1::ADDSET;
+    pub use super::BTR1::BUSTURN;
+    pub use super::BTR1::CLKDIV;
+    pub use super::BTR1::DATAST;
+    pub use super::BTR1::DATLAT;
+}
+
+/// SRAM/NOR-Flash chip-select timing register 1
+pub mod BTR4 {
+    pub use super::BTR1::ACCMOD;
+    pub use super::BTR1::ADDHLD;
+    pub use super::BTR1::ADDSET;
+    pub use super::BTR1::BUSTURN;
+    pub use super::BTR1::CLKDIV;
+    pub use super::BTR1::DATAST;
+    pub use super::BTR1::DATLAT;
+}
+
 /// SRAM/NOR-Flash chip-select control register 2
 pub mod BCR2 {
 
@@ -351,8 +538,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
+
+            /// 0b0: Write operations are always performed in asynchronous mode
+            pub const Disabled: u32 = 0b0;
+        }
     }
 
     /// ASYNCWAIT
@@ -365,8 +559,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wait signal not used in asynchronous mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wait signal used even in asynchronous mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// EXTMOD
@@ -379,8 +580,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Values inside the FMC_BWTR are not taken into account
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Values inside the FMC_BWTR are taken into account
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WAITEN
@@ -393,8 +601,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Values inside the FMC_BWTR are taken into account
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: NWAIT signal enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WREN
@@ -407,8 +622,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Write operations disabled for the bank by the FMC
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations enabled for the bank by the FMC
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// WAITCFG
@@ -416,6 +638,27 @@ pub mod BCR2 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: NWAIT signal is active one data cycle before wait state
+            pub const BeforeWaitState: u32 = 0b0;
+
+            /// 0b1: NWAIT signal is active during wait state
+            pub const DuringWaitState: u32 = 0b1;
+        }
+    }
+
+    /// WRAPMOD
+    pub mod WRAPMOD {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -435,8 +678,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: NWAIT active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: NWAIT active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// BURSTEN
@@ -449,8 +699,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Burst mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Burst mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FACCEN
@@ -463,8 +720,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Corresponding NOR Flash memory access is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Corresponding NOR Flash memory access is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// MWID
@@ -477,8 +741,18 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Memory data bus width 8 bits
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: Memory data bus width 16 bits
+            pub const Bits16: u32 = 0b01;
+
+            /// 0b10: Memory data bus width 32 bits
+            pub const Bits32: u32 = 0b10;
+        }
     }
 
     /// MTYP
@@ -491,8 +765,18 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: SRAM memory type
+            pub const SRAM: u32 = 0b00;
+
+            /// 0b01: PSRAM (CRAM) memory type
+            pub const PSRAM: u32 = 0b01;
+
+            /// 0b10: NOR Flash/OneNAND Flash
+            pub const Flash: u32 = 0b10;
+        }
     }
 
     /// MUXEN
@@ -505,8 +789,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Address/Data non-multiplexed
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Address/Data multiplexed on databus
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// MBKEN
@@ -519,8 +810,15 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Corresponding memory bank is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Corresponding memory bank is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CRAM page size
@@ -533,23 +831,28 @@ pub mod BCR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: No burst split when crossing page boundary
+            pub const NoBurstSplit: u32 = 0b000;
+
+            /// 0b001: 128 bytes CRAM page size
+            pub const Bytes128: u32 = 0b001;
+
+            /// 0b010: 256 bytes CRAM page size
+            pub const Bytes256: u32 = 0b010;
+
+            /// 0b011: 512 bytes CRAM page size
+            pub const Bytes512: u32 = 0b011;
+
+            /// 0b100: 1024 bytes CRAM page size
+            pub const Bytes1024: u32 = 0b100;
+        }
     }
 }
 
-/// SRAM/NOR-Flash chip-select timing register 2
-pub mod BTR2 {
-    pub use super::BTR1::ACCMOD;
-    pub use super::BTR1::ADDHLD;
-    pub use super::BTR1::ADDSET;
-    pub use super::BTR1::BUSTURN;
-    pub use super::BTR1::CLKDIV;
-    pub use super::BTR1::DATAST;
-    pub use super::BTR1::DATLAT;
-}
-
-/// SRAM/NOR-Flash chip-select control register 3
+/// SRAM/NOR-Flash chip-select control register 2
 pub mod BCR3 {
     pub use super::BCR2::ASYNCWAIT;
     pub use super::BCR2::BURSTEN;
@@ -564,21 +867,11 @@ pub mod BCR3 {
     pub use super::BCR2::WAITCFG;
     pub use super::BCR2::WAITEN;
     pub use super::BCR2::WAITPOL;
+    pub use super::BCR2::WRAPMOD;
     pub use super::BCR2::WREN;
 }
 
-/// SRAM/NOR-Flash chip-select timing register 3
-pub mod BTR3 {
-    pub use super::BTR1::ACCMOD;
-    pub use super::BTR1::ADDHLD;
-    pub use super::BTR1::ADDSET;
-    pub use super::BTR1::BUSTURN;
-    pub use super::BTR1::CLKDIV;
-    pub use super::BTR1::DATAST;
-    pub use super::BTR1::DATLAT;
-}
-
-/// SRAM/NOR-Flash chip-select control register 4
+/// SRAM/NOR-Flash chip-select control register 2
 pub mod BCR4 {
     pub use super::BCR2::ASYNCWAIT;
     pub use super::BCR2::BURSTEN;
@@ -593,18 +886,8 @@ pub mod BCR4 {
     pub use super::BCR2::WAITCFG;
     pub use super::BCR2::WAITEN;
     pub use super::BCR2::WAITPOL;
+    pub use super::BCR2::WRAPMOD;
     pub use super::BCR2::WREN;
-}
-
-/// SRAM/NOR-Flash chip-select timing register 4
-pub mod BTR4 {
-    pub use super::BTR1::ACCMOD;
-    pub use super::BTR1::ADDHLD;
-    pub use super::BTR1::ADDSET;
-    pub use super::BTR1::BUSTURN;
-    pub use super::BTR1::CLKDIV;
-    pub use super::BTR1::DATAST;
-    pub use super::BTR1::DATLAT;
 }
 
 /// PC Card/NAND Flash control register
@@ -620,8 +903,27 @@ pub mod PCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: ECC page size 256 bytes
+            pub const Bytes256: u32 = 0b000;
+
+            /// 0b001: ECC page size 512 bytes
+            pub const Bytes512: u32 = 0b001;
+
+            /// 0b010: ECC page size 1024 bytes
+            pub const Bytes1024: u32 = 0b010;
+
+            /// 0b011: ECC page size 2048 bytes
+            pub const Bytes2048: u32 = 0b011;
+
+            /// 0b100: ECC page size 4096 bytes
+            pub const Bytes4096: u32 = 0b100;
+
+            /// 0b101: ECC page size 8192 bytes
+            pub const Bytes8192: u32 = 0b101;
+        }
     }
 
     /// TAR
@@ -662,8 +964,15 @@ pub mod PCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ECC logic is disabled and reset
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ECC logic is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// PWID
@@ -676,8 +985,15 @@ pub mod PCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: External memory device width 8 bits
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: External memory device width 16 bits
+            pub const Bits16: u32 = 0b01;
+        }
     }
 
     /// PTYP
@@ -690,8 +1006,12 @@ pub mod PCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: NAND Flash
+            pub const NANDFlash: u32 = 0b1;
+        }
     }
 
     /// PBKEN
@@ -704,8 +1024,15 @@ pub mod PCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Corresponding memory bank is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Corresponding memory bank is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// PWAITEN
@@ -718,8 +1045,15 @@ pub mod PCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wait feature disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wait feature enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -736,8 +1070,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FIFO not empty
+            pub const NotEmpty: u32 = 0b0;
+
+            /// 0b1: FIFO empty
+            pub const Empty: u32 = 0b1;
+        }
     }
 
     /// IFEN
@@ -750,8 +1091,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt falling edge detection request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt falling edge detection request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ILEN
@@ -764,8 +1112,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt high-level detection request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt high-level detection request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// IREN
@@ -778,8 +1133,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt rising edge detection request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt rising edge detection request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// IFS
@@ -792,8 +1154,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt falling edge did not occur
+            pub const DidNotOccur: u32 = 0b0;
+
+            /// 0b1: Interrupt falling edge occurred
+            pub const Occurred: u32 = 0b1;
+        }
     }
 
     /// ILS
@@ -806,8 +1175,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt high-level did not occur
+            pub const DidNotOccur: u32 = 0b0;
+
+            /// 0b1: Interrupt high-level occurred
+            pub const Occurred: u32 = 0b1;
+        }
     }
 
     /// IRS
@@ -820,8 +1196,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt rising edge did not occur
+            pub const DidNotOccur: u32 = 0b0;
+
+            /// 0b1: Interrupt rising edge occurred
+            pub const Occurred: u32 = 0b1;
+        }
     }
 }
 
@@ -829,7 +1212,7 @@ pub mod SR {
 pub mod PMEM {
 
     /// MEMHIZx
-    pub mod MEMHIZx {
+    pub mod MEMHIZ {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (8 bits: 0xff << 24)
@@ -843,7 +1226,7 @@ pub mod PMEM {
     }
 
     /// MEMHOLDx
-    pub mod MEMHOLDx {
+    pub mod MEMHOLD {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (8 bits: 0xff << 16)
@@ -857,7 +1240,7 @@ pub mod PMEM {
     }
 
     /// MEMWAITx
-    pub mod MEMWAITx {
+    pub mod MEMWAIT {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (8 bits: 0xff << 8)
@@ -871,7 +1254,7 @@ pub mod PMEM {
     }
 
     /// MEMSETx
-    pub mod MEMSETx {
+    pub mod MEMSET {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (8 bits: 0xff << 0)
@@ -889,7 +1272,7 @@ pub mod PMEM {
 pub mod PATT {
 
     /// ATTHIZx
-    pub mod ATTHIZx {
+    pub mod ATTHIZ {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (8 bits: 0xff << 24)
@@ -903,7 +1286,7 @@ pub mod PATT {
     }
 
     /// ATTHOLDx
-    pub mod ATTHOLDx {
+    pub mod ATTHOLD {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (8 bits: 0xff << 16)
@@ -917,7 +1300,7 @@ pub mod PATT {
     }
 
     /// ATTWAITx
-    pub mod ATTWAITx {
+    pub mod ATTWAIT {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (8 bits: 0xff << 8)
@@ -931,7 +1314,7 @@ pub mod PATT {
     }
 
     /// ATTSETx
-    pub mod ATTSETx {
+    pub mod ATTSET {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (8 bits: 0xff << 0)
@@ -949,7 +1332,7 @@ pub mod PATT {
 pub mod ECCR {
 
     /// ECCx
-    pub mod ECCx {
+    pub mod ECC {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -972,6 +1355,47 @@ pub mod BWTR1 {
         pub const offset: u32 = 28;
         /// Mask (2 bits: 0b11 << 28)
         pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Access mode A
+            pub const A: u32 = 0b00;
+
+            /// 0b01: Access mode B
+            pub const B: u32 = 0b01;
+
+            /// 0b10: Access mode C
+            pub const C: u32 = 0b10;
+
+            /// 0b11: Access mode D
+            pub const D: u32 = 0b11;
+        }
+    }
+
+    /// DATLAT
+    pub mod DATLAT {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (4 bits: 0b1111 << 24)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// CLKDIV
+    pub mod CLKDIV {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (4 bits: 0b1111 << 20)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1037,31 +1461,37 @@ pub mod BWTR1 {
     }
 }
 
-/// SRAM/NOR-Flash write timing registers 2
+/// SRAM/NOR-Flash write timing registers 1
 pub mod BWTR2 {
     pub use super::BWTR1::ACCMOD;
     pub use super::BWTR1::ADDHLD;
     pub use super::BWTR1::ADDSET;
     pub use super::BWTR1::BUSTURN;
+    pub use super::BWTR1::CLKDIV;
     pub use super::BWTR1::DATAST;
+    pub use super::BWTR1::DATLAT;
 }
 
-/// SRAM/NOR-Flash write timing registers 3
+/// SRAM/NOR-Flash write timing registers 1
 pub mod BWTR3 {
     pub use super::BWTR1::ACCMOD;
     pub use super::BWTR1::ADDHLD;
     pub use super::BWTR1::ADDSET;
     pub use super::BWTR1::BUSTURN;
+    pub use super::BWTR1::CLKDIV;
     pub use super::BWTR1::DATAST;
+    pub use super::BWTR1::DATLAT;
 }
 
-/// SRAM/NOR-Flash write timing registers 4
+/// SRAM/NOR-Flash write timing registers 1
 pub mod BWTR4 {
     pub use super::BWTR1::ACCMOD;
     pub use super::BWTR1::ADDHLD;
     pub use super::BWTR1::ADDSET;
     pub use super::BWTR1::BUSTURN;
+    pub use super::BWTR1::CLKDIV;
     pub use super::BWTR1::DATAST;
+    pub use super::BWTR1::DATLAT;
 }
 
 /// SDRAM Control Register 1
@@ -1077,8 +1507,21 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 8 bits
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: 9 bits
+            pub const Bits9: u32 = 0b01;
+
+            /// 0b10: 10 bits
+            pub const Bits10: u32 = 0b10;
+
+            /// 0b11: 11 bits
+            pub const Bits11: u32 = 0b11;
+        }
     }
 
     /// Number of row address bits
@@ -1091,8 +1534,18 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 11 bits
+            pub const Bits11: u32 = 0b00;
+
+            /// 0b01: 12 bits
+            pub const Bits12: u32 = 0b01;
+
+            /// 0b10: 13 bits
+            pub const Bits13: u32 = 0b10;
+        }
     }
 
     /// Memory data bus width
@@ -1105,8 +1558,18 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Memory data bus width 8 bits
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: Memory data bus width 16 bits
+            pub const Bits16: u32 = 0b01;
+
+            /// 0b10: Memory data bus width 32 bits
+            pub const Bits32: u32 = 0b10;
+        }
     }
 
     /// Number of internal banks
@@ -1119,8 +1582,15 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Two internal Banks
+            pub const NB2: u32 = 0b0;
+
+            /// 0b1: Four internal Banks
+            pub const NB4: u32 = 0b1;
+        }
     }
 
     /// CAS latency
@@ -1133,8 +1603,18 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b01: 1 cycle
+            pub const Clocks1: u32 = 0b01;
+
+            /// 0b10: 2 cycles
+            pub const Clocks2: u32 = 0b10;
+
+            /// 0b11: 3 cycles
+            pub const Clocks3: u32 = 0b11;
+        }
     }
 
     /// Write protection
@@ -1147,8 +1627,15 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Write accesses allowed
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write accesses ignored
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SDRAM clock configuration
@@ -1161,8 +1648,18 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: SDCLK clock disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b10: SDCLK period = 2 x HCLK period
+            pub const Div2: u32 = 0b10;
+
+            /// 0b11: SDCLK period = 3 x HCLK period
+            pub const Div3: u32 = 0b11;
+        }
     }
 
     /// Burst read
@@ -1175,8 +1672,15 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Single read requests are not managed as bursts
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Single read requests are always managed as bursts
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Read pipe
@@ -1189,125 +1693,32 @@ pub mod SDCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No clock cycle delay
+            pub const NoDelay: u32 = 0b00;
+
+            /// 0b01: One clock cycle delay
+            pub const Clocks1: u32 = 0b01;
+
+            /// 0b10: Two clock cycles delay
+            pub const Clocks2: u32 = 0b10;
+        }
     }
 }
 
-/// SDRAM Control Register 2
+/// SDRAM Control Register 1
 pub mod SDCR2 {
-
-    /// Number of column address bits
-    pub mod NC {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Number of row address bits
-    pub mod NR {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (2 bits: 0b11 << 2)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Memory data bus width
-    pub mod MWID {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Number of internal banks
-    pub mod NB {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CAS latency
-    pub mod CAS {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (2 bits: 0b11 << 7)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Write protection
-    pub mod WP {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SDRAM clock configuration
-    pub mod SDCLK {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (2 bits: 0b11 << 10)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Burst read
-    pub mod RBURST {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::SDCR1::CAS;
+    pub use super::SDCR1::MWID;
+    pub use super::SDCR1::NB;
+    pub use super::SDCR1::NC;
+    pub use super::SDCR1::NR;
+    pub use super::SDCR1::RBURST;
+    pub use super::SDCR1::RPIPE;
+    pub use super::SDCR1::SDCLK;
+    pub use super::SDCR1::WP;
 }
 
 /// SDRAM Timing register 1
@@ -1412,7 +1823,7 @@ pub mod SDTR1 {
     }
 }
 
-/// SDRAM Timing register 2
+/// SDRAM Timing register 1
 pub mod SDTR2 {
     pub use super::SDTR1::TMRD;
     pub use super::SDTR1::TRAS;
@@ -1436,8 +1847,30 @@ pub mod SDCMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Normal Mode
+            pub const Normal: u32 = 0b000;
+
+            /// 0b001: Clock Configuration Enable
+            pub const ClockConfigurationEnable: u32 = 0b001;
+
+            /// 0b010: PALL (All Bank Precharge) command
+            pub const PALL: u32 = 0b010;
+
+            /// 0b011: Auto-refresh command
+            pub const AutoRefreshCommand: u32 = 0b011;
+
+            /// 0b100: Load Mode Resgier
+            pub const LoadModeRegister: u32 = 0b100;
+
+            /// 0b101: Self-refresh command
+            pub const SelfRefreshCommand: u32 = 0b101;
+
+            /// 0b110: Power-down command
+            pub const PowerDownCommand: u32 = 0b110;
+        }
     }
 
     /// Command target bank 2
@@ -1450,8 +1883,15 @@ pub mod SDCMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command not issued to SDRAM Bank 1
+            pub const NotIssued: u32 = 0b0;
+
+            /// 0b1: Command issued to SDRAM Bank 1
+            pub const Issued: u32 = 0b1;
+        }
     }
 
     /// Command target bank 1
@@ -1464,8 +1904,7 @@ pub mod SDCMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTB2::RW;
     }
 
     /// Number of Auto-refresh
@@ -1510,8 +1949,12 @@ pub mod SDRTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Refresh Error Flag is cleared
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Refresh Timer Count
@@ -1538,13 +1981,41 @@ pub mod SDRTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated if RE = 1
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// SDRAM Status register
 pub mod SDSR {
+
+    /// Refresh error flag
+    pub mod RE {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No refresh error has been detected
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: A refresh error has been detected
+            pub const Error: u32 = 0b1;
+        }
+    }
 
     /// Status Mode for Bank 1
     pub mod MODES1 {
@@ -1556,8 +2027,18 @@ pub mod SDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Normal Mode
+            pub const Normal: u32 = 0b00;
+
+            /// 0b01: Self-refresh mode
+            pub const SelfRefresh: u32 = 0b01;
+
+            /// 0b10: Power-down mode
+            pub const PowerDown: u32 = 0b10;
+        }
     }
 
     /// Status Mode for Bank 2
@@ -1570,8 +2051,7 @@ pub mod SDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MODES1::RW;
     }
 
     /// Busy status
@@ -1584,8 +2064,15 @@ pub mod SDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SDRAM Controller is ready to accept a new request
+            pub const NotBusy: u32 = 0b0;
+
+            /// 0b1: SDRAM Controller is not ready to accept a new request
+            pub const Busy: u32 = 0b1;
+        }
     }
 }
 pub struct RegisterBlock {
@@ -1598,19 +2085,19 @@ pub struct RegisterBlock {
     /// SRAM/NOR-Flash chip-select control register 2
     pub BCR2: RWRegister<u32>,
 
-    /// SRAM/NOR-Flash chip-select timing register 2
+    /// SRAM/NOR-Flash chip-select timing register 1
     pub BTR2: RWRegister<u32>,
 
-    /// SRAM/NOR-Flash chip-select control register 3
+    /// SRAM/NOR-Flash chip-select control register 2
     pub BCR3: RWRegister<u32>,
 
-    /// SRAM/NOR-Flash chip-select timing register 3
+    /// SRAM/NOR-Flash chip-select timing register 1
     pub BTR3: RWRegister<u32>,
 
-    /// SRAM/NOR-Flash chip-select control register 4
+    /// SRAM/NOR-Flash chip-select control register 2
     pub BCR4: RWRegister<u32>,
 
-    /// SRAM/NOR-Flash chip-select timing register 4
+    /// SRAM/NOR-Flash chip-select timing register 1
     pub BTR4: RWRegister<u32>,
 
     _reserved1: [u32; 24],
@@ -1639,17 +2126,17 @@ pub struct RegisterBlock {
 
     _reserved4: [u32; 1],
 
-    /// SRAM/NOR-Flash write timing registers 2
+    /// SRAM/NOR-Flash write timing registers 1
     pub BWTR2: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
-    /// SRAM/NOR-Flash write timing registers 3
+    /// SRAM/NOR-Flash write timing registers 1
     pub BWTR3: RWRegister<u32>,
 
     _reserved6: [u32; 1],
 
-    /// SRAM/NOR-Flash write timing registers 4
+    /// SRAM/NOR-Flash write timing registers 1
     pub BWTR4: RWRegister<u32>,
 
     _reserved7: [u32; 8],
@@ -1657,13 +2144,13 @@ pub struct RegisterBlock {
     /// SDRAM Control Register 1
     pub SDCR1: RWRegister<u32>,
 
-    /// SDRAM Control Register 2
+    /// SDRAM Control Register 1
     pub SDCR2: RWRegister<u32>,
 
     /// SDRAM Timing register 1
     pub SDTR1: RWRegister<u32>,
 
-    /// SDRAM Timing register 2
+    /// SDRAM Timing register 1
     pub SDTR2: RWRegister<u32>,
 
     /// SDRAM Command Mode register

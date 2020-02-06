@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::otg_fs_global_v1::Instance;
-pub use crate::stm32f7::peripherals::otg_fs_global_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::otg_fs_global_v1::{
+pub use crate::stm32f7::peripherals::otg_fs_global_v2::Instance;
+pub use crate::stm32f7::peripherals::otg_fs_global_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::otg_fs_global_v2::{
     OTG_FS, OTG_FS_CID, OTG_FS_DIEPTXF1, OTG_FS_DIEPTXF2, OTG_FS_DIEPTXF3, OTG_FS_DIEPTXF4,
     OTG_FS_DIEPTXF5, OTG_FS_GAHBCFG, OTG_FS_GCCFG, OTG_FS_GI2CCTL, OTG_FS_GINTMSK, OTG_FS_GINTSTS,
     OTG_FS_GLPMCFG, OTG_FS_GOTGCTL, OTG_FS_GOTGINT, OTG_FS_GRSTCTL, OTG_FS_GRXFSIZ, OTG_FS_GRXSTSP,

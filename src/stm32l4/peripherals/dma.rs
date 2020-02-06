@@ -46,7 +46,7 @@ pub mod ISR {
         pub mod RW {
 
             /// 0b0: No half transfer event
-            pub const NotHalt: u32 = 0b0;
+            pub const NotHalf: u32 = 0b0;
 
             /// 0b1: A half transfer event has occured
             pub const Half: u32 = 0b1;
@@ -861,13 +861,13 @@ pub mod CCR1 {
         pub mod RW {
 
             /// 0b00: 8-bit size
-            pub const Bit8: u32 = 0b00;
+            pub const Bits8: u32 = 0b00;
 
             /// 0b01: 16-bit size
-            pub const Bit16: u32 = 0b01;
+            pub const Bits16: u32 = 0b01;
 
             /// 0b10: 32-bit size
-            pub const Bit32: u32 = 0b10;
+            pub const Bits32: u32 = 0b10;
         }
     }
 

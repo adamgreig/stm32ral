@@ -8,7 +8,7 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::fsmc;
+pub use super::instances::fsmc_f101_f103 as fsmc;
 pub use super::instances::pwr;
 pub mod rcc;
 pub use super::instances::afio;
@@ -31,8 +31,8 @@ pub use super::instances::tim13_f101_f103 as tim13;
 pub use super::instances::tim14_f101_f103 as tim14;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
-pub use super::instances::tim4;
-pub use super::instances::tim5;
+pub use super::instances::tim4_f101_f103_f107 as tim4;
+pub use super::instances::tim5_f101_f103_f107 as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim9;
@@ -50,7 +50,7 @@ pub use super::instances::ethernet_mac;
 pub use super::instances::ethernet_mmc;
 pub use super::instances::ethernet_ptp;
 pub use super::instances::usb;
-pub mod adc;
+pub mod adc2;
 pub use super::instances::tim1_f100_f101_f102 as tim1;
 pub use super::instances::tim8;
 pub mod sdio;
@@ -60,6 +60,7 @@ pub use super::instances::nvic_stir;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
+pub mod adc3;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -120,8 +121,7 @@ pub struct Peripherals {
     pub Ethernet_PTP: ethernet_ptp::Instance,
     pub Ethernet_DMA: ethernet_dma::Instance,
     pub USB: usb::Instance,
-    pub ADC2: adc::Instance,
-    pub ADC3: adc::Instance,
+    pub ADC2: adc2::Instance,
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
     pub SDIO: sdio::Instance,
@@ -131,6 +131,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
+    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -197,8 +198,7 @@ impl Peripherals {
             Ethernet_PTP: ethernet_ptp::Ethernet_PTP::steal(),
             Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
             USB: usb::USB::steal(),
-            ADC2: adc::ADC2::steal(),
-            ADC3: adc::ADC3::steal(),
+            ADC2: adc2::ADC2::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
             SDIO: sdio::SDIO::steal(),
@@ -208,6 +208,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
+            ADC3: adc3::ADC3::steal(),
         }
     }
 }

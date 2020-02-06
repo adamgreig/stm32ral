@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Power control
 //!
-//! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f7x2, stm32f7x3
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -346,6 +346,20 @@ pub mod CSR1 {
         pub const offset: u32 = 18;
         /// Mask (2 bits: 0b11 << 18)
         pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Enable internal wakeup
+    pub mod EIWUP {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

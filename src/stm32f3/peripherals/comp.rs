@@ -21,8 +21,15 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Comparator enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Comparator 2 inverting input selection
@@ -35,8 +42,30 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 1/4 of VRefint
+            pub const OneQuarterVRef: u32 = 0b000;
+
+            /// 0b001: 1/2 of VRefint
+            pub const OneHalfVRef: u32 = 0b001;
+
+            /// 0b010: 3/4 of VRefint
+            pub const ThreeQuarterVRef: u32 = 0b010;
+
+            /// 0b011: VRefint
+            pub const VRef: u32 = 0b011;
+
+            /// 0b100: PA4 or DAC1_CH1 output if enabled
+            pub const PA4_DAC1_CH1: u32 = 0b100;
+
+            /// 0b101: DAC1_CH2
+            pub const DAC1_CH2: u32 = 0b101;
+
+            /// 0b110: PA2
+            pub const PA2: u32 = 0b110;
+        }
     }
 
     /// Comparator 2 output selection
@@ -49,8 +78,36 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No selection
+            pub const NoSelection: u32 = 0b0000;
+
+            /// 0b0001: Timer 1 break input
+            pub const Timer1BreakInput: u32 = 0b0001;
+
+            /// 0b0010: Timer 1 break input 2
+            pub const Timer1BreakInput2: u32 = 0b0010;
+
+            /// 0b0110: Timer 1 OCREF_CLR input
+            pub const Timer1OCRefClearInput: u32 = 0b0110;
+
+            /// 0b0111: Timer 1 input capture 1
+            pub const Timer1InputCapture1: u32 = 0b0111;
+
+            /// 0b1000: Timer 2 input capture 4
+            pub const Timer2InputCapture4: u32 = 0b1000;
+
+            /// 0b1001: Timer 2 OCREF_CLR input
+            pub const Timer2OCRefClearInput: u32 = 0b1001;
+
+            /// 0b1010: Timer 3 input capture 1
+            pub const Timer3InputCapture1: u32 = 0b1010;
+
+            /// 0b1011: Timer 3 OCREF_CLR input
+            pub const Timer3OCRefClearInput: u32 = 0b1011;
+        }
     }
 
     /// Comparator 2 output polarity
@@ -63,8 +120,15 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output is not inverted
+            pub const NotInverted: u32 = 0b0;
+
+            /// 0b1: Output is inverted
+            pub const Inverted: u32 = 0b1;
+        }
     }
 
     /// Comparator 2 blanking source
@@ -77,8 +141,21 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: No blanking
+            pub const NoBlanking: u32 = 0b000;
+
+            /// 0b001: TIM1 OC5 selected as blanking source
+            pub const TIM1OC5: u32 = 0b001;
+
+            /// 0b010: TIM2 OC3 selected as blanking source
+            pub const TIM2OC3: u32 = 0b010;
+
+            /// 0b011: TIM3 OC3 selected as blanking source
+            pub const TIM3OC3: u32 = 0b011;
+        }
     }
 
     /// Comparator 2 output
@@ -91,8 +168,15 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Non-inverting input below inverting input
+            pub const Low: u32 = 0b0;
+
+            /// 0b1: Non-inverting input above inverting input
+            pub const High: u32 = 0b1;
+        }
     }
 
     /// Comparator 2 lock
@@ -105,8 +189,15 @@ pub mod COMP2_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator CSR bits are read-write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Comparator CSR bits are read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Comparator 2 mode
@@ -193,8 +284,15 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Comparator enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Comparator 4 inverting input selection
@@ -207,8 +305,30 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 1/4 of VRefint
+            pub const OneQuarterVRef: u32 = 0b000;
+
+            /// 0b001: 1/2 of VRefint
+            pub const OneHalfVRef: u32 = 0b001;
+
+            /// 0b010: 3/4 of VRefint
+            pub const ThreeQuarterVRef: u32 = 0b010;
+
+            /// 0b011: VRefint
+            pub const VRef: u32 = 0b011;
+
+            /// 0b100: PA4 or DAC1_CH1 output if enabled
+            pub const PA4_DAC1_CH1: u32 = 0b100;
+
+            /// 0b101: DAC1_CH2
+            pub const DAC1_CH2: u32 = 0b101;
+
+            /// 0b111: PB2
+            pub const PB2: u32 = 0b111;
+        }
     }
 
     /// Comparator 4 output selection
@@ -221,8 +341,30 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No selection
+            pub const NoSelection: u32 = 0b0000;
+
+            /// 0b0001: Timer 1 break input
+            pub const Timer1BreakInput: u32 = 0b0001;
+
+            /// 0b0010: Timer 1 break input 2
+            pub const Timer1BreakInput2: u32 = 0b0010;
+
+            /// 0b0110: Timer 3 input capture 3
+            pub const Timer3InputCapture3: u32 = 0b0110;
+
+            /// 0b1000: Timer 15 input capture 2
+            pub const Timer15InputCapture2: u32 = 0b1000;
+
+            /// 0b1010: Timer 15 OCREF_CLR input
+            pub const Timer15OCRefClearInput: u32 = 0b1010;
+
+            /// 0b1011: Timer 3 OCREF_CLR input
+            pub const Timer3OCRefClearInput: u32 = 0b1011;
+        }
     }
 
     /// Comparator 4 output polarity
@@ -235,8 +377,15 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output is not inverted
+            pub const NotInverted: u32 = 0b0;
+
+            /// 0b1: Output is inverted
+            pub const Inverted: u32 = 0b1;
+        }
     }
 
     /// Comparator 4 blanking source
@@ -249,8 +398,18 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: No blanking
+            pub const NoBlanking: u32 = 0b000;
+
+            /// 0b001: TIM3 OC4 selected as blanking source
+            pub const TIM3OC4: u32 = 0b001;
+
+            /// 0b011: TIM15 OC1 selected as blanking source
+            pub const TIM15OC1: u32 = 0b011;
+        }
     }
 
     /// Comparator 4 output
@@ -263,8 +422,15 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Non-inverting input below inverting input
+            pub const Low: u32 = 0b0;
+
+            /// 0b1: Non-inverting input above inverting input
+            pub const High: u32 = 0b1;
+        }
     }
 
     /// Comparator 4 lock
@@ -277,8 +443,15 @@ pub mod COMP4_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator CSR bits are read-write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Comparator CSR bits are read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Comparator 4 window mode
@@ -365,8 +538,15 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Comparator enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Comparator 6 inverting input selection
@@ -379,8 +559,30 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 1/4 of VRefint
+            pub const OneQuarterVRef: u32 = 0b000;
+
+            /// 0b001: 1/2 of VRefint
+            pub const OneHalfVRef: u32 = 0b001;
+
+            /// 0b010: 3/4 of VRefint
+            pub const ThreeQuarterVRef: u32 = 0b010;
+
+            /// 0b011: VRefint
+            pub const VRef: u32 = 0b011;
+
+            /// 0b100: PA4 or DAC1_CH1 output if enabled
+            pub const PA4_DAC1_CH1: u32 = 0b100;
+
+            /// 0b101: DAC1_CH2
+            pub const DAC1_CH2: u32 = 0b101;
+
+            /// 0b111: PB15
+            pub const PB15: u32 = 0b111;
+        }
     }
 
     /// Comparator 6 output selection
@@ -393,8 +595,30 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No selection
+            pub const NoSelection: u32 = 0b0000;
+
+            /// 0b0001: Timer 1 break input
+            pub const Timer1BreakInput: u32 = 0b0001;
+
+            /// 0b0010: Timer 1 break input 2
+            pub const Timer1BreakInput2: u32 = 0b0010;
+
+            /// 0b0110: Timer 2 input capture 2
+            pub const Timer2InputCapture2: u32 = 0b0110;
+
+            /// 0b1000: Timer 2 OCREF_CLR input
+            pub const Timer2OCRefClearInput: u32 = 0b1000;
+
+            /// 0b1001: Timer 16 OCREF_CLR input
+            pub const Timer16OCRefClearInput: u32 = 0b1001;
+
+            /// 0b1010: Timer 16 input capture 1
+            pub const Timer16InputCapture1: u32 = 0b1010;
+        }
     }
 
     /// Comparator 6 output polarity
@@ -407,8 +631,15 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output is not inverted
+            pub const NotInverted: u32 = 0b0;
+
+            /// 0b1: Output is inverted
+            pub const Inverted: u32 = 0b1;
+        }
     }
 
     /// Comparator 6 blanking source
@@ -421,8 +652,18 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: No blanking
+            pub const NoBlanking: u32 = 0b000;
+
+            /// 0b011: TIM2 OC4 selected as blanking source
+            pub const TIM2OC4: u32 = 0b011;
+
+            /// 0b100: TIM15 OC2 selected as blanking source
+            pub const TIM15OC2: u32 = 0b100;
+        }
     }
 
     /// Comparator 6 output
@@ -435,8 +676,15 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Non-inverting input below inverting input
+            pub const Low: u32 = 0b0;
+
+            /// 0b1: Non-inverting input above inverting input
+            pub const High: u32 = 0b1;
+        }
     }
 
     /// Comparator 6 lock
@@ -449,8 +697,15 @@ pub mod COMP6_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Comparator CSR bits are read-write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Comparator CSR bits are read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Comparator 6 window mode

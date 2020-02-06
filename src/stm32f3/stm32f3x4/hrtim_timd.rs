@@ -19,8 +19,36 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Update occurs independently from the DMA burst transfer
+            pub const Independent: u32 = 0b0000;
+
+            /// 0b0001: Update occurs when the DMA burst transfer is completed
+            pub const DMABurst: u32 = 0b0001;
+
+            /// 0b0010: Update occurs on the update event following DMA burst transfer completion
+            pub const DMABurst_Update: u32 = 0b0010;
+
+            /// 0b0011: Update occurs on a rising edge of HRTIM update enable input 1
+            pub const Input1: u32 = 0b0011;
+
+            /// 0b0100: Update occurs on a rising edge of HRTIM update enable input 2
+            pub const Input2: u32 = 0b0100;
+
+            /// 0b0101: Update occurs on a rising edge of HRTIM update enable input 3
+            pub const Input3: u32 = 0b0101;
+
+            /// 0b0110: Update occurs on the update event following a rising edge of HRTIM update enable input 1
+            pub const Input1_Update: u32 = 0b0110;
+
+            /// 0b0111: Update occurs on the update event following a rising edge of HRTIM update enable input 2
+            pub const Input2_Update: u32 = 0b0111;
+
+            /// 0b1000: Update occurs on the update event following a rising edge of HRTIM update enable input 3
+            pub const Input3_Update: u32 = 0b1000;
+        }
     }
 
     /// Preload enable
@@ -33,8 +61,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload disabled: the write access is directly done into the active register
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload enabled: the write access is done into the preload register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// AC Synchronization
@@ -47,8 +82,21 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No DAC trigger generated
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Trigger generated on DACSync1
+            pub const DACSync1: u32 = 0b01;
+
+            /// 0b10: Trigger generated on DACSync2
+            pub const DACSync2: u32 = 0b10;
+
+            /// 0b11: Trigger generated on DACSync3
+            pub const DACSync3: u32 = 0b11;
+        }
     }
 
     /// Master Timer update
@@ -61,8 +109,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update by master timer disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update by master timer enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// TEU
@@ -75,8 +130,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update by timer x disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update by timer x enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// TDU
@@ -89,8 +151,7 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEU::RW;
     }
 
     /// TCU
@@ -103,8 +164,7 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEU::RW;
     }
 
     /// TBU
@@ -117,8 +177,7 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEU::RW;
     }
 
     /// Timerx reset update
@@ -131,8 +190,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update by timer x reset/roll-over disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update by timer x reset/roll-over enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Timer x Repetition update
@@ -145,8 +211,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update by timer x repetition disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update by timer x repetition enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Delayed CMP4 mode
@@ -159,8 +232,21 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CMP4 register is always active (standard compare mode)
+            pub const Standard: u32 = 0b00;
+
+            /// 0b01: CMP4 is recomputed and is active following a capture 2 event
+            pub const Capture2: u32 = 0b01;
+
+            /// 0b10: CMP4 is recomputed and is active following a capture 2 event or a Compare 1 match
+            pub const Capture2_Compare1: u32 = 0b10;
+
+            /// 0b11: CMP4 is recomputed and is active following a capture event or a Compare 3 match
+            pub const Capture_Compare3: u32 = 0b11;
+        }
     }
 
     /// Delayed CMP2 mode
@@ -173,8 +259,21 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CMP2 register is always active (standard compare mode)
+            pub const Standard: u32 = 0b00;
+
+            /// 0b01: CMP2 is recomputed and is active following a capture 1 event
+            pub const Capture1: u32 = 0b01;
+
+            /// 0b10: CMP2 is recomputed and is active following a capture 1 event or a Compare 1 match
+            pub const Capture1_Compare1: u32 = 0b10;
+
+            /// 0b11: CMP2 is recomputed and is active following a capture 1 event or a Compare 3 match
+            pub const Capture1_Compare3: u32 = 0b11;
+        }
     }
 
     /// Synchronization Starts Timer x
@@ -187,8 +286,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Synchronization event has no effect on Timer x
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Synchronization event starts Timer x
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// Synchronization Resets Timer x
@@ -201,8 +307,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Synchronization event has no effect on Timer x
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Synchronization event resets Timer x
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// Push-Pull mode enable
@@ -215,8 +328,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Push-pull mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Push-pull mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Half mode enable
@@ -229,8 +349,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Half mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Half mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Re-triggerable mode
@@ -243,8 +370,15 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The timer is not re-triggerable: a counter reset can be done only if the counter is stopped
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The timer is retriggerable: a counter reset is done whatever the counter state
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Continuous mode
@@ -257,12 +391,19 @@ pub mod TIMDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The timer operates in single-shot mode and stops when it reaches the MPER value
+            pub const SingleShot: u32 = 0b0;
+
+            /// 0b1: The timer operates in continuous (free-running) mode and rolls over to zero when it reaches the MPER value
+            pub const Continuous: u32 = 0b1;
+        }
     }
 
     /// HRTIM Timer x Clock prescaler
-    pub mod CK_PSCx {
+    pub mod CKPSCx {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (3 bits: 0b111 << 0)
@@ -289,8 +430,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output is inactive
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: Output is active
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Output 1 Copy
@@ -303,8 +451,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::O2CPY::RW;
     }
 
     /// Output 2 State
@@ -317,8 +464,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output was inactive
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: Output was active
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Output 1 State
@@ -331,8 +485,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::O2STAT::RW;
     }
 
     /// Idle Push Pull Status
@@ -345,8 +498,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Protection occurred when the output 1 was active and output 2 forced inactive
+            pub const Output1Active: u32 = 0b0;
+
+            /// 0b1: Protection occurred when the output 2 was active and output 1 forced inactive
+            pub const Output2Active: u32 = 0b1;
+        }
     }
 
     /// Current Push Pull Status
@@ -359,8 +519,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Signal applied on output 1 and output 2 forced inactive
+            pub const Output1Active: u32 = 0b0;
+
+            /// 0b1: Signal applied on output 2 and output 1 forced inactive
+            pub const Output2Active: u32 = 0b1;
+        }
     }
 
     /// Delayed Protection Flag
@@ -373,8 +540,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Not in delayed idle or balanced idle mode
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: Delayed idle or balanced idle mode entry
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Reset Interrupt Flag
@@ -387,8 +561,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No TIMx counter reset/roll-over interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: TIMx counter reset/roll-over interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Output 2 Reset Interrupt Flag
@@ -401,8 +582,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Tx output reset interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Tx output reset interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Output 2 Set Interrupt Flag
@@ -415,8 +603,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Tx output set interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Tx output set interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Output 1 Reset Interrupt Flag
@@ -429,8 +624,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RSTx2::RW;
     }
 
     /// Output 1 Set Interrupt Flag
@@ -443,8 +637,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SETx2::RW;
     }
 
     /// Capture2 Interrupt Flag
@@ -457,8 +650,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No timer x capture reset interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Timer x capture reset interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Capture1 Interrupt Flag
@@ -471,8 +671,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CPT2::RW;
     }
 
     /// Update Interrupt Flag
@@ -485,8 +684,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No timer update interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Timer update interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Repetition Interrupt Flag
@@ -499,8 +705,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No timer repetition interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Timer repetition interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Compare 4 Interrupt Flag
@@ -513,8 +726,15 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Compare interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Compare 3 Interrupt Flag
@@ -527,8 +747,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4::RW;
     }
 
     /// Compare 2 Interrupt Flag
@@ -541,8 +760,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4::RW;
     }
 
     /// Compare 1 Interrupt Flag
@@ -555,8 +773,7 @@ pub mod TIMDISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4::RW;
     }
 }
 
@@ -573,8 +790,12 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears associated flag in ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Reset Interrupt flag Clear
@@ -587,8 +808,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Output 2 Reset flag Clear
@@ -601,8 +821,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Output 2 Set flag Clear
@@ -615,8 +834,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Output 1 Reset flag Clear
@@ -629,8 +847,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Output 1 Set flag Clear
@@ -643,8 +860,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Capture2 Interrupt flag Clear
@@ -657,8 +873,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Capture1 Interrupt flag Clear
@@ -671,8 +886,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Update Interrupt flag Clear
@@ -685,8 +899,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Repetition Interrupt flag Clear
@@ -699,8 +912,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Compare 4 Interrupt flag Clear
@@ -713,8 +925,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Compare 3 Interrupt flag Clear
@@ -727,8 +938,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Compare 2 Interrupt flag Clear
@@ -741,8 +951,7 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 
     /// Compare 1 Interrupt flag Clear
@@ -755,13 +964,12 @@ pub mod TIMDICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DLYPRTC::RW;
     }
 }
 
 /// TIMxDIER5
-pub mod TIMDDIER5 {
+pub mod TIMDDIER {
 
     /// DLYPRTDE
     pub mod DLYPRTDE {
@@ -773,8 +981,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Delayed protection DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Delayed protection DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RSTDE
@@ -787,8 +1002,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer x counter reset/roll-over DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Timer x counter reset/roll-over DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RSTx2DE
@@ -801,8 +1023,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tx output reset DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tx output reset DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SETx2DE
@@ -815,8 +1044,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tx output set DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tx output set DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RSTx1DE
@@ -829,12 +1065,11 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RSTx2DE::RW;
     }
 
     /// SET1xDE
-    pub mod SET1xDE {
+    pub mod SETx1DE {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -843,8 +1078,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SETx2DE::RW;
     }
 
     /// CPT2DE
@@ -857,8 +1091,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Capture DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Capture DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CPT1DE
@@ -871,8 +1112,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CPT2DE::RW;
     }
 
     /// UPDDE
@@ -885,8 +1125,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// REPDE
@@ -899,8 +1146,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Repetition DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Repetition DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CMP4DE
@@ -913,8 +1167,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Compare DMA request disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Compare DMA request enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CMP3DE
@@ -927,8 +1188,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4DE::RW;
     }
 
     /// CMP2DE
@@ -941,8 +1201,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4DE::RW;
     }
 
     /// CMP1DE
@@ -955,8 +1214,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4DE::RW;
     }
 
     /// DLYPRTIE
@@ -969,8 +1227,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Delayed protection interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Delayed protection interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RSTIE
@@ -983,8 +1248,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer x counter/reset roll-over interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Timer x counter/reset roll-over interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RSTx2IE
@@ -997,8 +1269,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tx output reset interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tx output reset interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SETx2IE
@@ -1011,8 +1290,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tx output set interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tx output set interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RSTx1IE
@@ -1025,12 +1311,11 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RSTx2IE::RW;
     }
 
     /// SET1xIE
-    pub mod SET1xIE {
+    pub mod SETx1IE {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -1039,8 +1324,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SETx2IE::RW;
     }
 
     /// CPT2IE
@@ -1053,8 +1337,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Capture interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Capture interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CPT1IE
@@ -1067,8 +1358,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CPT2IE::RW;
     }
 
     /// UPDIE
@@ -1081,8 +1371,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// REPIE
@@ -1095,8 +1392,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Repetition interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Repetition interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CMP4IE
@@ -1109,8 +1413,15 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Compare interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Compare interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CMP3IE
@@ -1123,8 +1434,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4IE::RW;
     }
 
     /// CMP2IE
@@ -1137,8 +1447,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4IE::RW;
     }
 
     /// CMP1IE
@@ -1151,8 +1460,7 @@ pub mod TIMDDIER5 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP4IE::RW;
     }
 }
 
@@ -1363,8 +1671,15 @@ pub mod DTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Deadtime falling value and sign is writable
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Deadtime falling value and sign is read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Deadtime Falling Sign Lock
@@ -1377,8 +1692,15 @@ pub mod DTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Deadtime falling sign is writable
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Deadtime falling sign is read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Sign Deadtime Falling value
@@ -1391,8 +1713,15 @@ pub mod DTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Positive deadtime on falling edge
+            pub const Positive: u32 = 0b0;
+
+            /// 0b1: Negative deadtime on falling edge
+            pub const Negative: u32 = 0b1;
+        }
     }
 
     /// Deadtime Falling value
@@ -1419,8 +1748,15 @@ pub mod DTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Deadtime rising value and sign is writable
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Deadtime rising value and sign is read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Deadtime Rising Sign Lock
@@ -1433,8 +1769,15 @@ pub mod DTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Deadtime rising sign is writable
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Deadtime rising sign is read-only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Deadtime Prescaler
@@ -1461,8 +1804,15 @@ pub mod DTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Positive deadtime on rising edge
+            pub const Positive: u32 = 0b0;
+
+            /// 0b1: Negative deadtime on rising edge
+            pub const Negative: u32 = 0b1;
+        }
     }
 
     /// Deadtime Rising value
@@ -1493,8 +1843,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Register update event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Register update event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// External Event 10
@@ -1507,8 +1864,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// External Event 9
@@ -1521,8 +1885,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 8
@@ -1535,8 +1898,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 7
@@ -1549,8 +1911,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 6
@@ -1563,8 +1924,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 5
@@ -1577,8 +1937,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 4
@@ -1591,8 +1950,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 3
@@ -1605,8 +1963,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 2
@@ -1619,8 +1976,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 1
@@ -1633,8 +1989,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT10::RW;
     }
 
     /// Timer Event 9
@@ -1647,8 +2002,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Timer Event 8
@@ -1661,8 +2023,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 7
@@ -1675,8 +2036,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 6
@@ -1689,8 +2049,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 5
@@ -1703,8 +2062,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 4
@@ -1717,8 +2075,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 3
@@ -1731,8 +2088,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 2
@@ -1745,8 +2101,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Timer Event 1
@@ -1759,8 +2114,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT9::RW;
     }
 
     /// Master Compare 4
@@ -1773,8 +2127,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Master Compare 3
@@ -1787,8 +2148,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP4::RW;
     }
 
     /// Master Compare 2
@@ -1801,8 +2161,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP4::RW;
     }
 
     /// Master Compare 1
@@ -1815,8 +2174,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP4::RW;
     }
 
     /// Master Period
@@ -1829,8 +2187,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer counter roll-over/reset has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer counter roll-over/reset forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Timer A compare 4
@@ -1843,8 +2208,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Timer A compare 3
@@ -1857,8 +2229,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Compare interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Timer A compare 2
@@ -1871,8 +2250,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP3::RW;
     }
 
     /// Timer A compare 1
@@ -1885,8 +2263,7 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP3::RW;
     }
 
     /// Timer A Period
@@ -1899,8 +2276,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer period event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer period event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Timer A resynchronizaton
@@ -1913,8 +2297,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer reset event coming solely from software or SYNC input event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer reset event coming solely from software or SYNC input event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Software Set trigger
@@ -1927,8 +2318,15 @@ pub mod SETD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Force output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 }
 
@@ -1945,8 +2343,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Register update event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Register update event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// EXTEVNT10
@@ -1959,8 +2364,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// EXTEVNT9
@@ -1973,8 +2385,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// EXTEVNT8
@@ -1987,8 +2406,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT7
@@ -2001,8 +2419,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT6
@@ -2015,8 +2432,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT5
@@ -2029,8 +2445,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT4
@@ -2043,8 +2458,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT3
@@ -2057,8 +2471,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT2
@@ -2071,8 +2484,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// EXTEVNT1
@@ -2085,8 +2497,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// TIMEVNT9
@@ -2099,8 +2510,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// TIMEVNT8
@@ -2113,8 +2531,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// TIMEVNT7
@@ -2127,8 +2552,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// TIMEVNT6
@@ -2141,8 +2565,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// TIMEVNT5
@@ -2155,8 +2578,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// TIMEVNT4
@@ -2169,8 +2591,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// TIMEVNT3
@@ -2183,8 +2604,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// TIMEVNT2
@@ -2197,8 +2617,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// TIMEVNT1
@@ -2211,8 +2630,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMEVNT8::RW;
     }
 
     /// MSTCMP4
@@ -2225,8 +2643,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// MSTCMP3
@@ -2239,8 +2664,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// MSTCMP2
@@ -2253,8 +2685,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP3::RW;
     }
 
     /// MSTCMP1
@@ -2267,8 +2698,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP3::RW;
     }
 
     /// MSTPER
@@ -2281,8 +2711,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer counter roll-over/reset has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer counter roll-over/reset forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// CMP4
@@ -2295,8 +2732,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer compare event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// CMP3
@@ -2309,8 +2753,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Compare interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// CMP2
@@ -2323,8 +2774,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP3::RW;
     }
 
     /// CMP1
@@ -2337,8 +2787,7 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CMP3::RW;
     }
 
     /// PER
@@ -2351,8 +2800,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer period event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer period event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// RESYNC
@@ -2365,8 +2821,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer reset event coming solely from software or SYNC input event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer reset event coming solely from software or SYNC input event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// SRT
@@ -2379,8 +2842,15 @@ pub mod RSTD1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Force output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 }
 
@@ -2469,8 +2939,57 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filtering
+            pub const Disabled: u32 = 0b0000;
+
+            /// 0b0001: Blanking from counter reset/roll-over to Compare 1
+            pub const BlankResetToCompare1: u32 = 0b0001;
+
+            /// 0b0010: Blanking from counter reset/roll-over to Compare 2
+            pub const BlankResetToCompare2: u32 = 0b0010;
+
+            /// 0b0011: Blanking from counter reset/roll-over to Compare 3
+            pub const BlankResetToCompare3: u32 = 0b0011;
+
+            /// 0b0100: Blanking from counter reset/roll-over to Compare 4
+            pub const BlankResetToCompare4: u32 = 0b0100;
+
+            /// 0b0101: Blanking from another timing unit: TIMFLTR1 source
+            pub const BlankTIMFLTR1: u32 = 0b0101;
+
+            /// 0b0110: Blanking from another timing unit: TIMFLTR2 source
+            pub const BlankTIMFLTR2: u32 = 0b0110;
+
+            /// 0b0111: Blanking from another timing unit: TIMFLTR3 source
+            pub const BlankTIMFLTR3: u32 = 0b0111;
+
+            /// 0b1000: Blanking from another timing unit: TIMFLTR4 source
+            pub const BlankTIMFLTR4: u32 = 0b1000;
+
+            /// 0b1001: Blanking from another timing unit: TIMFLTR5 source
+            pub const BlankTIMFLTR5: u32 = 0b1001;
+
+            /// 0b1010: Blanking from another timing unit: TIMFLTR6 source
+            pub const BlankTIMFLTR6: u32 = 0b1010;
+
+            /// 0b1011: Blanking from another timing unit: TIMFLTR7 source
+            pub const BlankTIMFLTR7: u32 = 0b1011;
+
+            /// 0b1100: Blanking from another timing unit: TIMFLTR8 source
+            pub const BlankTIMFLTR8: u32 = 0b1100;
+
+            /// 0b1101: Windowing from counter reset/roll-over to compare 2
+            pub const WindowResetToCompare2: u32 = 0b1101;
+
+            /// 0b1110: Windowing from counter reset/roll-over to compare 3
+            pub const WindowResetToCompare3: u32 = 0b1110;
+
+            /// 0b1111: Windowing from another timing unit: TIMWIN source
+            pub const WindowTIMWIN: u32 = 0b1111;
+        }
     }
 
     /// External Event 5 latch
@@ -2483,8 +3002,15 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Event is ignored if it happens during a blank, or passed through during a window
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Event is latched and delayed till the end of the blanking or windowing period
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// External Event 4 filter
@@ -2497,8 +3023,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FLTR::RW;
     }
 
     /// External Event 4 latch
@@ -2511,8 +3036,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5LTCH::RW;
     }
 
     /// External Event 3 filter
@@ -2525,8 +3049,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FLTR::RW;
     }
 
     /// External Event 3 latch
@@ -2539,8 +3062,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5LTCH::RW;
     }
 
     /// External Event 2 filter
@@ -2553,8 +3075,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FLTR::RW;
     }
 
     /// External Event 2 latch
@@ -2567,8 +3088,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5LTCH::RW;
     }
 
     /// External Event 1 filter
@@ -2581,8 +3101,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5FLTR::RW;
     }
 
     /// External Event 1 latch
@@ -2595,8 +3114,7 @@ pub mod EEFDR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE5LTCH::RW;
     }
 }
 
@@ -2613,8 +3131,57 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filtering
+            pub const Disabled: u32 = 0b0000;
+
+            /// 0b0001: Blanking from counter reset/roll-over to Compare 1
+            pub const BlankResetToCompare1: u32 = 0b0001;
+
+            /// 0b0010: Blanking from counter reset/roll-over to Compare 2
+            pub const BlankResetToCompare2: u32 = 0b0010;
+
+            /// 0b0011: Blanking from counter reset/roll-over to Compare 3
+            pub const BlankResetToCompare3: u32 = 0b0011;
+
+            /// 0b0100: Blanking from counter reset/roll-over to Compare 4
+            pub const BlankResetToCompare4: u32 = 0b0100;
+
+            /// 0b0101: Blanking from another timing unit: TIMFLTR1 source
+            pub const BlankTIMFLTR1: u32 = 0b0101;
+
+            /// 0b0110: Blanking from another timing unit: TIMFLTR2 source
+            pub const BlankTIMFLTR2: u32 = 0b0110;
+
+            /// 0b0111: Blanking from another timing unit: TIMFLTR3 source
+            pub const BlankTIMFLTR3: u32 = 0b0111;
+
+            /// 0b1000: Blanking from another timing unit: TIMFLTR4 source
+            pub const BlankTIMFLTR4: u32 = 0b1000;
+
+            /// 0b1001: Blanking from another timing unit: TIMFLTR5 source
+            pub const BlankTIMFLTR5: u32 = 0b1001;
+
+            /// 0b1010: Blanking from another timing unit: TIMFLTR6 source
+            pub const BlankTIMFLTR6: u32 = 0b1010;
+
+            /// 0b1011: Blanking from another timing unit: TIMFLTR7 source
+            pub const BlankTIMFLTR7: u32 = 0b1011;
+
+            /// 0b1100: Blanking from another timing unit: TIMFLTR8 source
+            pub const BlankTIMFLTR8: u32 = 0b1100;
+
+            /// 0b1101: Windowing from counter reset/roll-over to compare 2
+            pub const WindowResetToCompare2: u32 = 0b1101;
+
+            /// 0b1110: Windowing from counter reset/roll-over to compare 3
+            pub const WindowResetToCompare3: u32 = 0b1110;
+
+            /// 0b1111: Windowing from another timing unit: TIMWIN source
+            pub const WindowTIMWIN: u32 = 0b1111;
+        }
     }
 
     /// External Event 10 latch
@@ -2627,8 +3194,15 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Event is ignored if it happens during a blank, or passed through during a window
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Event is latched and delayed till the end of the blanking or windowing period
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// External Event 9 filter
@@ -2641,8 +3215,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10FLTR::RW;
     }
 
     /// External Event 9 latch
@@ -2655,8 +3228,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10LTCH::RW;
     }
 
     /// External Event 8 filter
@@ -2669,8 +3241,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10FLTR::RW;
     }
 
     /// External Event 8 latch
@@ -2683,8 +3254,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10LTCH::RW;
     }
 
     /// External Event 7 filter
@@ -2697,8 +3267,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10FLTR::RW;
     }
 
     /// External Event 7 latch
@@ -2711,8 +3280,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10LTCH::RW;
     }
 
     /// External Event 6 filter
@@ -2725,8 +3293,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10FLTR::RW;
     }
 
     /// External Event 6 latch
@@ -2739,8 +3306,7 @@ pub mod EEFDR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EE10LTCH::RW;
     }
 }
 
@@ -2757,8 +3323,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer Y compare Z event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon timer Y compare Z event
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// Timer E Compare 2
@@ -2771,8 +3344,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer E Compare 1
@@ -2785,8 +3357,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer C Compare 4
@@ -2799,8 +3370,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer C Compare 2
@@ -2813,8 +3383,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer C Compare 1
@@ -2827,8 +3396,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer B Compare 4
@@ -2841,8 +3409,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer B Compare 2
@@ -2855,8 +3422,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer B Compare 1
@@ -2869,8 +3435,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer A Compare 4
@@ -2883,8 +3448,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer A Compare 2
@@ -2897,8 +3461,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// Timer A Compare 1
@@ -2911,8 +3474,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TIMECMP4::RW;
     }
 
     /// External Event 10
@@ -2925,8 +3487,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event Z has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon external event Z
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// External Event 9
@@ -2939,8 +3508,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// External Event 8
@@ -2953,8 +3529,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 7
@@ -2967,8 +3542,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 6
@@ -2981,8 +3555,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 5
@@ -2995,8 +3568,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 4
@@ -3009,8 +3581,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 3
@@ -3023,8 +3594,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 2
@@ -3037,8 +3607,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// External Event 1
@@ -3051,8 +3620,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTEVNT9::RW;
     }
 
     /// Master compare 4
@@ -3065,8 +3633,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare Z event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon master timer compare Z event
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// Master compare 3
@@ -3079,8 +3654,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Master compare 2
@@ -3093,8 +3675,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP3::RW;
     }
 
     /// Master compare 1
@@ -3107,8 +3688,7 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSTCMP3::RW;
     }
 
     /// Master timer Period
@@ -3121,8 +3701,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer period event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon master timer period event
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// Timer A compare 4 reset
@@ -3135,8 +3722,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X compare Z event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon timer X compare Z event
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// Timer A compare 2 reset
@@ -3149,8 +3743,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Compare interrupt occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Timer A Update reset
@@ -3163,8 +3764,15 @@ pub mod RSTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon update event
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 }
 
@@ -3186,7 +3794,7 @@ pub mod CHPDR {
     }
 
     /// Timerx chopper duty cycle value
-    pub mod CHPDTY {
+    pub mod CARDTY {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (3 bits: 0b111 << 4)
@@ -3200,7 +3808,7 @@ pub mod CHPDR {
     }
 
     /// Timerx carrier frequency value
-    pub mod CHPFRQ {
+    pub mod CARFRQ {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (4 bits: 0b1111 << 0)
@@ -3227,8 +3835,15 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X compare Y has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X compare Y triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 
     /// Timer E Compare 1
@@ -3241,8 +3856,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer E output 1 Reset
@@ -3255,8 +3869,15 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X output Y active to inactive transition has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X output Y active to inactive transition triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 
     /// Timer E output 1 Set
@@ -3269,8 +3890,15 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X output Y inactive to active transition has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X output Y inactive to active transition triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 
     /// Timer C Compare 2
@@ -3283,8 +3911,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer C Compare 1
@@ -3297,8 +3924,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer C output 1 Reset
@@ -3311,8 +3937,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE1RST::RW;
     }
 
     /// Timer C output 1 Set
@@ -3325,8 +3950,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE1SET::RW;
     }
 
     /// Timer B Compare 2
@@ -3339,8 +3963,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer B Compare 1
@@ -3353,8 +3976,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer B output 1 Reset
@@ -3367,8 +3989,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE1RST::RW;
     }
 
     /// Timer B output 1 Set
@@ -3381,8 +4002,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE1SET::RW;
     }
 
     /// Timer A Compare 2
@@ -3395,8 +4015,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer A Compare 1
@@ -3409,8 +4028,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TECMP2::RW;
     }
 
     /// Timer A output 1 Reset
@@ -3423,8 +4041,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE1RST::RW;
     }
 
     /// Timer A output 1 Set
@@ -3437,8 +4054,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TE1SET::RW;
     }
 
     /// External Event 10 Capture
@@ -3451,8 +4067,15 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event Y has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event Y triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 
     /// External Event 9 Capture
@@ -3465,8 +4088,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 8 Capture
@@ -3479,8 +4101,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 7 Capture
@@ -3493,8 +4114,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 6 Capture
@@ -3507,8 +4127,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 5 Capture
@@ -3521,8 +4140,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 4 Capture
@@ -3535,8 +4153,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 3 Capture
@@ -3549,8 +4166,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 2 Capture
@@ -3563,8 +4179,7 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// External Event 1 Capture
@@ -3577,12 +4192,11 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXEV10CPT::RW;
     }
 
     /// Update Capture
-    pub mod UDPCPT {
+    pub mod UPDCPT {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -3591,8 +4205,15 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Update event triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 
     /// Software Capture
@@ -3605,8 +4226,15 @@ pub mod CPT1DCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Force capture Z
+            pub const TriggerCapture: u32 = 0b1;
+        }
     }
 }
 
@@ -3639,7 +4267,7 @@ pub mod CPT2DCR {
     pub use super::CPT1DCR::TE1SET;
     pub use super::CPT1DCR::TECMP1;
     pub use super::CPT1DCR::TECMP2;
-    pub use super::CPT1DCR::UDPCPT;
+    pub use super::CPT1DCR::UPDCPT;
 }
 
 /// Timerx Output Register
@@ -3655,8 +4283,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The programmed idle state is applied immediately to the output
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Deadtime (inactive level) is inserted on output before entering the idle mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output 2 Chopper enable
@@ -3669,8 +4304,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output signal not altered
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Output signal is chopped by a carrier signal
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output 2 Fault state
@@ -3683,8 +4325,21 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No action: the output is not affected by the fault input and stays in run mode
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Output goes to active state after a fault event
+            pub const SetActive: u32 = 0b01;
+
+            /// 0b10: Output goes to inactive state after a fault event
+            pub const SetInactive: u32 = 0b10;
+
+            /// 0b11: Output goes to high-z state after a fault event
+            pub const SetHighZ: u32 = 0b11;
+        }
     }
 
     /// Output 2 Idle State
@@ -3697,8 +4352,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output idle state is inactive
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: Output idle state is active
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Output 2 Idle mode
@@ -3711,8 +4373,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No action: the output is not affected by the burst mode operation
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: The output is in idle state when requested by the burst mode controller
+            pub const SetIdle: u32 = 0b1;
+        }
     }
 
     /// Output 2 polarity
@@ -3725,8 +4394,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Positive polarity (output active high)
+            pub const ActiveHigh: u32 = 0b0;
+
+            /// 0b1: Negative polarity (output active low)
+            pub const ActiveLow: u32 = 0b1;
+        }
     }
 
     /// Delayed Protection
@@ -3739,8 +4415,33 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Output 1 delayed idle on external event 8
+            pub const Output1_EE8: u32 = 0b000;
+
+            /// 0b001: Output 2 delayed idle on external event 8
+            pub const Output2_EE8: u32 = 0b001;
+
+            /// 0b010: Output 1 and 2 delayed idle on external event 8
+            pub const Output1_2_EE8: u32 = 0b010;
+
+            /// 0b011: Balanced idle on external event 8
+            pub const Balanced_EE8: u32 = 0b011;
+
+            /// 0b100: Output 1 delayed idle on external event 9
+            pub const Output1_EE9: u32 = 0b100;
+
+            /// 0b101: Output 2 delayed idle on external event 9
+            pub const Output2_EE9: u32 = 0b101;
+
+            /// 0b110: Output 1 and 2 delayed idle on external event 9
+            pub const Output1_2_EE9: u32 = 0b110;
+
+            /// 0b111: Balanced idle on external event 9
+            pub const Balanced_EE9: u32 = 0b111;
+        }
     }
 
     /// Delayed Protection Enable
@@ -3753,8 +4454,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No action
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Delayed protection is enabled, as per DLYPRT bits
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Deadtime enable
@@ -3767,8 +4475,15 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output 1 and 2 signals are independent
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Deadtime is inserted between output 1 and output 2
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output 1 Deadtime upon burst mode Idle entry
@@ -3781,8 +4496,7 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DIDL2::RW;
     }
 
     /// Output 1 Chopper enable
@@ -3795,8 +4509,7 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHP2::RW;
     }
 
     /// Output 1 Fault state
@@ -3809,8 +4522,7 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FAULT2::RW;
     }
 
     /// Output 1 Idle State
@@ -3823,8 +4535,7 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IDLES2::RW;
     }
 
     /// Output 1 Idle mode
@@ -3837,8 +4548,7 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IDLEM2::RW;
     }
 
     /// Output 1 polarity
@@ -3851,8 +4561,7 @@ pub mod OUTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::POL2::RW;
     }
 }
 
@@ -3869,8 +4578,15 @@ pub mod FLTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FLT1EN..FLT5EN bits are read/write
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: FLT1EN..FLT5EN bits are read only
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Fault 5 enable
@@ -3883,8 +4599,15 @@ pub mod FLTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fault input ignored
+            pub const Ignored: u32 = 0b0;
+
+            /// 0b1: Fault input is active and can disable HRTIM outputs
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Fault 4 enable
@@ -3897,8 +4620,7 @@ pub mod FLTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5EN::RW;
     }
 
     /// Fault 3 enable
@@ -3911,8 +4633,7 @@ pub mod FLTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5EN::RW;
     }
 
     /// Fault 2 enable
@@ -3925,8 +4646,7 @@ pub mod FLTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5EN::RW;
     }
 
     /// Fault 1 enable
@@ -3939,8 +4659,7 @@ pub mod FLTDR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FLT5EN::RW;
     }
 }
 pub struct RegisterBlock {
@@ -3954,7 +4673,7 @@ pub struct RegisterBlock {
     pub TIMDICR: WORegister<u32>,
 
     /// TIMxDIER5
-    pub TIMDDIER5: RWRegister<u32>,
+    pub TIMDDIER: RWRegister<u32>,
 
     /// Timerx Counter Register
     pub CNTDR: RWRegister<u32>,
@@ -4029,7 +4748,7 @@ pub struct ResetValues {
     pub TIMDCR: u32,
     pub TIMDISR: u32,
     pub TIMDICR: u32,
-    pub TIMDDIER5: u32,
+    pub TIMDDIER: u32,
     pub CNTDR: u32,
     pub PERDR: u32,
     pub REPDR: u32,
@@ -4088,7 +4807,7 @@ pub mod HRTIM_TIMD {
         TIMDCR: 0x00000000,
         TIMDISR: 0x00000000,
         TIMDICR: 0x00000000,
-        TIMDDIER5: 0x00000000,
+        TIMDDIER: 0x00000000,
         CNTDR: 0x00000000,
         PERDR: 0x0000FFFF,
         REPDR: 0x00000000,

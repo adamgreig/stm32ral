@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Cache and branch predictor maintenance operations
 //!
-//! Used by: armv7_m, armv7e_m
+//! Used by: armv7em, armv7m
 
 use crate::UnsafeWORegister;
 #[cfg(not(feature = "nosync"))]

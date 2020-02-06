@@ -27,23 +27,23 @@ pub mod adc;
 pub mod spi;
 pub use super::instances::can;
 pub use super::instances::cec;
-pub use super::instances::dac1;
-pub use super::instances::dac2;
-pub use super::instances::dbgmcu;
 pub use super::instances::exti_f301_f3x8 as exti;
 pub use super::instances::i2c;
 pub use super::instances::iwdg;
 pub use super::instances::pwr_f301_f373 as pwr;
 pub use super::instances::rtc_f301_f373_f3x8 as rtc;
 pub use super::instances::sdadc;
+pub use super::instances::usb;
+pub use super::instances::wwdg;
+pub mod dac2;
 pub use super::instances::tim12;
 pub use super::instances::tim13;
 pub use super::instances::tim14;
 pub use super::instances::tim18;
 pub use super::instances::tim6_f301_f373_f3x8 as tim6;
 pub use super::instances::tim7_f301_f373_f3x8 as tim7;
-pub use super::instances::usb;
-pub use super::instances::wwdg;
+pub mod dac1;
+pub use super::instances::dbgmcu;
 pub mod syscfg;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
@@ -54,6 +54,7 @@ pub use super::instances::opamp_f301_f3x4 as opamp;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
+pub use super::instances::tim1;
 pub mod comp;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
@@ -120,6 +121,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
+    pub TIM1: tim1::Instance,
     pub OPAMP: opamp::Instance,
     pub COMP: comp::Instance,
 }
@@ -193,6 +195,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            TIM1: tim1::TIM1::steal(),
             OPAMP: opamp::OPAMP::steal(),
             COMP: comp::COMP::steal(),
         }

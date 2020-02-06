@@ -5,12 +5,12 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::tim1_v1::Instance;
-pub use crate::stm32f7::peripherals::tim1_v1::{
+pub use crate::stm32f7::peripherals::tim1_v2::Instance;
+pub use crate::stm32f7::peripherals::tim1_v2::{
     CCMR3_Output, ARR, BDTR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CCR5, CCR6, CNT, CR1, CR2,
     DCR, DIER, DMAR, EGR, PSC, RCR, SMCR, SR,
 };
-pub use crate::stm32f7::peripherals::tim1_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::tim1_v2::{RegisterBlock, ResetValues};
 
 /// Access functions for the TIM1 peripheral instance
 pub mod TIM1 {

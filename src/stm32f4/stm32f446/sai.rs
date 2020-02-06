@@ -65,8 +65,15 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master clock generator is enabled
+            pub const MasterClock: u32 = 0b0;
+
+            /// 0b1: No divider used in the clock generator (in this case Master Clock Divider bit has no effect)
+            pub const NoDiv: u32 = 0b1;
+        }
     }
 
     /// DMA enable
@@ -79,12 +86,19 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Audio block A enable
-    pub mod SAIAEN {
+    pub mod SAIEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -93,12 +107,19 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SAI audio block disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SAI audio block enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output drive
-    pub mod OutDri {
+    pub mod OUTDRIV {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -107,8 +128,15 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Audio block output driven when SAIEN is set
+            pub const OnStart: u32 = 0b0;
+
+            /// 0b1: Audio block output driven immediately after the setting of this bit
+            pub const Immediately: u32 = 0b1;
+        }
     }
 
     /// Mono mode
@@ -121,8 +149,15 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Stereo mode
+            pub const Stereo: u32 = 0b0;
+
+            /// 0b1: Mono mode
+            pub const Mono: u32 = 0b1;
+        }
     }
 
     /// Synchronization enable
@@ -135,8 +170,18 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: audio sub-block in asynchronous mode
+            pub const Asynchronous: u32 = 0b00;
+
+            /// 0b01: audio sub-block is synchronous with the other internal audio sub-block. In this case, the audio sub-block must be configured in slave mode
+            pub const Internal: u32 = 0b01;
+
+            /// 0b10: audio sub-block is synchronous with an external SAI embedded peripheral. In this case the audio sub-block should be configured in Slave mode
+            pub const External: u32 = 0b10;
+        }
     }
 
     /// Clock strobing edge
@@ -149,8 +194,15 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data strobing edge is falling edge of SCK
+            pub const FallingEdge: u32 = 0b0;
+
+            /// 0b1: Data strobing edge is rising edge of SCK
+            pub const RisingEdge: u32 = 0b1;
+        }
     }
 
     /// Least significant bit first
@@ -163,8 +215,15 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data are transferred with MSB first
+            pub const MsbFirst: u32 = 0b0;
+
+            /// 0b1: Data are transferred with LSB first
+            pub const LsbFirst: u32 = 0b1;
+        }
     }
 
     /// Data size
@@ -177,8 +236,27 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b010: 8 bits
+            pub const Bit8: u32 = 0b010;
+
+            /// 0b011: 10 bits
+            pub const Bit10: u32 = 0b011;
+
+            /// 0b100: 16 bits
+            pub const Bit16: u32 = 0b100;
+
+            /// 0b101: 20 bits
+            pub const Bit20: u32 = 0b101;
+
+            /// 0b110: 24 bits
+            pub const Bit24: u32 = 0b110;
+
+            /// 0b111: 32 bits
+            pub const Bit32: u32 = 0b111;
+        }
     }
 
     /// Protocol configuration
@@ -191,8 +269,18 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Free protocol. Free protocol allows to use the powerful configuration of the audio block to address a specific audio protocol
+            pub const Free: u32 = 0b00;
+
+            /// 0b01: SPDIF protocol
+            pub const Spdif: u32 = 0b01;
+
+            /// 0b10: AC’97 protocol
+            pub const Ac97: u32 = 0b10;
+        }
     }
 
     /// Audio block mode
@@ -205,8 +293,21 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Master transmitter
+            pub const MasterTx: u32 = 0b00;
+
+            /// 0b01: Master receiver
+            pub const MasterRx: u32 = 0b01;
+
+            /// 0b10: Slave transmitter
+            pub const SlaveTx: u32 = 0b10;
+
+            /// 0b11: Slave receiver
+            pub const SlaveRx: u32 = 0b11;
+        }
     }
 }
 
@@ -223,8 +324,18 @@ pub mod CR2A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No companding algorithm
+            pub const NoCompanding: u32 = 0b00;
+
+            /// 0b10: μ-Law algorithm
+            pub const MuLaw: u32 = 0b10;
+
+            /// 0b11: A-Law algorithm
+            pub const ALaw: u32 = 0b11;
+        }
     }
 
     /// Complement bit
@@ -237,8 +348,15 @@ pub mod CR2A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 1’s complement representation
+            pub const OnesComplement: u32 = 0b0;
+
+            /// 0b1: 2’s complement representation
+            pub const TwosComplement: u32 = 0b1;
+        }
     }
 
     /// Mute counter
@@ -265,8 +383,15 @@ pub mod CR2A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bit value 0 is sent during the mute mode
+            pub const SendZero: u32 = 0b0;
+
+            /// 0b1: Last values are sent during the mute mode
+            pub const SendLast: u32 = 0b1;
+        }
     }
 
     /// Mute
@@ -279,8 +404,15 @@ pub mod CR2A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No mute mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Mute mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Tristate management on data line
@@ -298,7 +430,7 @@ pub mod CR2A {
     }
 
     /// FIFO flush
-    pub mod FFLUS {
+    pub mod FFLUSH {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -307,8 +439,15 @@ pub mod CR2A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No FIFO flush
+            pub const NoFlush: u32 = 0b0;
+
+            /// 0b1: FIFO flush. Programming this bit to 1 triggers the FIFO Flush. All the internal FIFO pointers (read and write) are cleared
+            pub const Flush: u32 = 0b1;
+        }
     }
 
     /// FIFO threshold
@@ -321,8 +460,24 @@ pub mod CR2A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: FIFO empty
+            pub const Empty: u32 = 0b000;
+
+            /// 0b001: 1⁄4 FIFO
+            pub const Quarter1: u32 = 0b001;
+
+            /// 0b010: 1⁄2 FIFO
+            pub const Quarter2: u32 = 0b010;
+
+            /// 0b011: 3⁄4 FIFO
+            pub const Quarter3: u32 = 0b011;
+
+            /// 0b100: FIFO full
+            pub const Full: u32 = 0b100;
+        }
     }
 }
 
@@ -339,8 +494,15 @@ pub mod FRCRA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FS is asserted on the first bit of the slot 0
+            pub const OnFirst: u32 = 0b0;
+
+            /// 0b1: FS is asserted one bit before the first bit of the slot 0
+            pub const BeforeFirst: u32 = 0b1;
+        }
     }
 
     /// Frame synchronization polarity
@@ -353,8 +515,15 @@ pub mod FRCRA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FS is active low (falling edge)
+            pub const FallingEdge: u32 = 0b0;
+
+            /// 0b1: FS is active high (rising edge)
+            pub const RisingEdge: u32 = 0b1;
+        }
     }
 
     /// Frame synchronization definition
@@ -413,8 +582,15 @@ pub mod SLOTRA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000000000000000: Inactive slot
+            pub const Inactive: u32 = 0b0000000000000000;
+
+            /// 0b0000000000000001: Active slot
+            pub const Active: u32 = 0b0000000000000001;
+        }
     }
 
     /// Number of slots in an audio frame
@@ -441,8 +617,18 @@ pub mod SLOTRA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: The slot size is equivalent to the data size (specified in DS\[3:0\] in the SAI_xCR1 register)
+            pub const DataSize: u32 = 0b00;
+
+            /// 0b01: 16-bit
+            pub const Bit16: u32 = 0b01;
+
+            /// 0b10: 32-bit
+            pub const Bit32: u32 = 0b10;
+        }
     }
 
     /// First bit offset
@@ -464,7 +650,7 @@ pub mod SLOTRA {
 pub mod IMA {
 
     /// Late frame synchronization detection interrupt enable
-    pub mod LFSDET {
+    pub mod LFSDETIE {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -473,8 +659,15 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Anticipated frame synchronization detection interrupt enable
@@ -487,8 +680,7 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LFSDETIE::RW;
     }
 
     /// Codec not ready interrupt enable
@@ -501,8 +693,7 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LFSDETIE::RW;
     }
 
     /// FIFO request interrupt enable
@@ -515,12 +706,11 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LFSDETIE::RW;
     }
 
     /// Wrong clock configuration interrupt enable
-    pub mod WCKCFG {
+    pub mod WCKCFGIE {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -529,12 +719,11 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LFSDETIE::RW;
     }
 
     /// Mute detection interrupt enable
-    pub mod MUTEDET {
+    pub mod MUTEDETIE {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -543,8 +732,7 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LFSDETIE::RW;
     }
 
     /// Overrun/underrun interrupt enable
@@ -557,8 +745,7 @@ pub mod IMA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LFSDETIE::RW;
     }
 }
 
@@ -571,8 +758,27 @@ pub mod SRA {
         pub const offset: u32 = 16;
         /// Mask (3 bits: 0b111 << 16)
         pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b000: FIFO empty
+            pub const Empty: u32 = 0b000;
+
+            /// 0b001: FIFO <= 1⁄4 but not empty
+            pub const Quarter1: u32 = 0b001;
+
+            /// 0b010: 1⁄4 < FIFO <= 1⁄2
+            pub const Quarter2: u32 = 0b010;
+
+            /// 0b011: 1⁄2 < FIFO <= 3⁄4
+            pub const Quarter3: u32 = 0b011;
+
+            /// 0b100: 3⁄4 < FIFO but not full
+            pub const Quarter4: u32 = 0b100;
+
+            /// 0b101: FIFO full
+            pub const Full: u32 = 0b101;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -585,8 +791,15 @@ pub mod SRA {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No error
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Frame synchronization signal is not present at the right time
+            pub const NoSync: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -599,8 +812,15 @@ pub mod SRA {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No error
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Frame synchronization signal is detected earlier than expected
+            pub const EarlySync: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -613,8 +833,15 @@ pub mod SRA {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: External AC’97 Codec is ready
+            pub const Ready: u32 = 0b0;
+
+            /// 0b1: External AC’97 Codec is not ready
+            pub const NotReady: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -627,8 +854,15 @@ pub mod SRA {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No FIFO request
+            pub const NoRequest: u32 = 0b0;
+
+            /// 0b1: FIFO request to read or to write the SAI_xDR
+            pub const Request: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -641,8 +875,15 @@ pub mod SRA {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Clock configuration is correct
+            pub const Correct: u32 = 0b0;
+
+            /// 0b1: Clock configuration does not respect the rule concerning the frame length specification
+            pub const Wrong: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -655,8 +896,15 @@ pub mod SRA {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No MUTE detection on the SD input line
+            pub const NoMute: u32 = 0b0;
+
+            /// 0b1: MUTE value detected on the SD input line (0 value) for a specified number of consecutive audio frame
+            pub const Mute: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -669,8 +917,15 @@ pub mod SRA {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No overrun/underrun error
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Overrun/underrun error detection
+            pub const Overrun: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -682,15 +937,19 @@ pub mod SRA {
 pub mod CLRFRA {
 
     /// Clear late frame synchronization detection flag
-    pub mod LFSDET {
+    pub mod CLFSDET {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the LFSDET flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -703,64 +962,84 @@ pub mod CLRFRA {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the AFSDET flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
     /// Clear codec not ready flag
-    pub mod CNRDY {
+    pub mod CCNRDY {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the CNRDY flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
     /// Clear wrong clock configuration flag
-    pub mod WCKCFG {
+    pub mod CWCKCFG {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the WCKCFG flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
     /// Mute detection flag
-    pub mod MUTEDET {
+    pub mod CMUTEDET {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the MUTEDET flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
     /// Clear overrun / underrun
-    pub mod OVRUDR {
+    pub mod COVRUDR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the OVRUDR flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -786,7 +1065,6 @@ pub mod DRA {
 
 /// AConfiguration register 1
 pub mod CR1B {
-    pub use super::CR1A::OutDri;
     pub use super::CR1A::CKSTR;
     pub use super::CR1A::DMAEN;
     pub use super::CR1A::DS;
@@ -795,8 +1073,9 @@ pub mod CR1B {
     pub use super::CR1A::MODE;
     pub use super::CR1A::MONO;
     pub use super::CR1A::NODIV;
+    pub use super::CR1A::OUTDRIV;
     pub use super::CR1A::PRTCFG;
-    pub use super::CR1A::SAIAEN;
+    pub use super::CR1A::SAIEN;
     pub use super::CR1A::SYNCEN;
 }
 
@@ -804,7 +1083,7 @@ pub mod CR1B {
 pub mod CR2B {
     pub use super::CR2A::COMP;
     pub use super::CR2A::CPL;
-    pub use super::CR2A::FFLUS;
+    pub use super::CR2A::FFLUSH;
     pub use super::CR2A::FTH;
     pub use super::CR2A::MUTE;
     pub use super::CR2A::MUTECN;
@@ -834,10 +1113,10 @@ pub mod IMB {
     pub use super::IMA::AFSDETIE;
     pub use super::IMA::CNRDYIE;
     pub use super::IMA::FREQIE;
-    pub use super::IMA::LFSDET;
-    pub use super::IMA::MUTEDET;
+    pub use super::IMA::LFSDETIE;
+    pub use super::IMA::MUTEDETIE;
     pub use super::IMA::OVRUDRIE;
-    pub use super::IMA::WCKCFG;
+    pub use super::IMA::WCKCFGIE;
 }
 
 /// AStatus register
@@ -855,11 +1134,11 @@ pub mod SRB {
 /// AClear flag register
 pub mod CLRFRB {
     pub use super::CLRFRA::CAFSDET;
-    pub use super::CLRFRA::CNRDY;
-    pub use super::CLRFRA::LFSDET;
-    pub use super::CLRFRA::MUTEDET;
-    pub use super::CLRFRA::OVRUDR;
-    pub use super::CLRFRA::WCKCFG;
+    pub use super::CLRFRA::CCNRDY;
+    pub use super::CLRFRA::CLFSDET;
+    pub use super::CLRFRA::CMUTEDET;
+    pub use super::CLRFRA::COVRUDR;
+    pub use super::CLRFRA::CWCKCFG;
 }
 
 /// AData register

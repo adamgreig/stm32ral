@@ -82,7 +82,7 @@ pub mod DMABMR {
     }
 
     /// Rx Tx priority ratio
-    pub mod RTPR {
+    pub mod PM {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (2 bits: 0b11 << 14)

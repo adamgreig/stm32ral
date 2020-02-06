@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// OTG_FS device configuration register (OTG_FS_DCFG)
-pub mod FS_DCFG {
+pub mod DCFG {
 
     /// Device speed
     pub mod DSPD {
@@ -67,7 +67,7 @@ pub mod FS_DCFG {
 }
 
 /// OTG_FS device control register (OTG_FS_DCTL)
-pub mod FS_DCTL {
+pub mod DCTL {
 
     /// Remote wakeup signaling
     pub mod RWUSIG {
@@ -211,7 +211,7 @@ pub mod FS_DCTL {
 }
 
 /// OTG_FS device status register (OTG_FS_DSTS)
-pub mod FS_DSTS {
+pub mod DSTS {
 
     /// Suspend status
     pub mod SUSPSTS {
@@ -285,7 +285,7 @@ pub mod FS_DSTS {
 }
 
 /// OTG_FS device IN endpoint common interrupt mask register (OTG_FS_DIEPMSK)
-pub mod FS_DIEPMSK {
+pub mod DIEPMSK {
 
     /// Transfer completed interrupt mask
     pub mod XFRCM {
@@ -373,7 +373,7 @@ pub mod FS_DIEPMSK {
 }
 
 /// OTG_FS device OUT endpoint common interrupt mask register (OTG_FS_DOEPMSK)
-pub mod FS_DOEPMSK {
+pub mod DOEPMSK {
 
     /// Transfer completed interrupt mask
     pub mod XFRCM {
@@ -433,7 +433,7 @@ pub mod FS_DOEPMSK {
 }
 
 /// OTG_FS device all endpoints interrupt register (OTG_FS_DAINT)
-pub mod FS_DAINT {
+pub mod DAINT {
 
     /// IN endpoint interrupt bits
     pub mod IEPINT {
@@ -465,7 +465,7 @@ pub mod FS_DAINT {
 }
 
 /// OTG_FS all endpoints interrupt mask register (OTG_FS_DAINTMSK)
-pub mod FS_DAINTMSK {
+pub mod DAINTMSK {
 
     /// IN EP interrupt mask bits
     pub mod IEPM {
@@ -551,7 +551,7 @@ pub mod DIEPEMPMSK {
 }
 
 /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
-pub mod FS_DIEPCTL0 {
+pub mod DIEPCTL0 {
 
     /// Maximum packet size
     pub mod MPSIZ {
@@ -1898,27 +1898,27 @@ pub mod DOEPTSIZ3 {
 }
 pub struct RegisterBlock {
     /// OTG_FS device configuration register (OTG_FS_DCFG)
-    pub FS_DCFG: RWRegister<u32>,
+    pub DCFG: RWRegister<u32>,
 
     /// OTG_FS device control register (OTG_FS_DCTL)
-    pub FS_DCTL: RWRegister<u32>,
+    pub DCTL: RWRegister<u32>,
 
     /// OTG_FS device status register (OTG_FS_DSTS)
-    pub FS_DSTS: RORegister<u32>,
+    pub DSTS: RORegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// OTG_FS device IN endpoint common interrupt mask register (OTG_FS_DIEPMSK)
-    pub FS_DIEPMSK: RWRegister<u32>,
+    pub DIEPMSK: RWRegister<u32>,
 
     /// OTG_FS device OUT endpoint common interrupt mask register (OTG_FS_DOEPMSK)
-    pub FS_DOEPMSK: RWRegister<u32>,
+    pub DOEPMSK: RWRegister<u32>,
 
     /// OTG_FS device all endpoints interrupt register (OTG_FS_DAINT)
-    pub FS_DAINT: RORegister<u32>,
+    pub DAINT: RORegister<u32>,
 
     /// OTG_FS all endpoints interrupt mask register (OTG_FS_DAINTMSK)
-    pub FS_DAINTMSK: RWRegister<u32>,
+    pub DAINTMSK: RWRegister<u32>,
 
     _reserved2: [u32; 2],
 
@@ -1936,7 +1936,7 @@ pub struct RegisterBlock {
     _reserved4: [u32; 50],
 
     /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
-    pub FS_DIEPCTL0: RWRegister<u32>,
+    pub DIEPCTL0: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
@@ -2074,17 +2074,17 @@ pub struct RegisterBlock {
     pub DOEPTSIZ3: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub FS_DCFG: u32,
-    pub FS_DCTL: u32,
-    pub FS_DSTS: u32,
-    pub FS_DIEPMSK: u32,
-    pub FS_DOEPMSK: u32,
-    pub FS_DAINT: u32,
-    pub FS_DAINTMSK: u32,
+    pub DCFG: u32,
+    pub DCTL: u32,
+    pub DSTS: u32,
+    pub DIEPMSK: u32,
+    pub DOEPMSK: u32,
+    pub DAINT: u32,
+    pub DAINTMSK: u32,
     pub DVBUSDIS: u32,
     pub DVBUSPULSE: u32,
     pub DIEPEMPMSK: u32,
-    pub FS_DIEPCTL0: u32,
+    pub DIEPCTL0: u32,
     pub DIEPINT0: u32,
     pub DIEPTSIZ0: u32,
     pub DTXFSTS0: u32,
@@ -2144,17 +2144,17 @@ pub mod OTG_FS_DEVICE {
 
     /// Reset values for each field in OTG_FS_DEVICE
     pub const reset: ResetValues = ResetValues {
-        FS_DCFG: 0x02200000,
-        FS_DCTL: 0x00000000,
-        FS_DSTS: 0x00000010,
-        FS_DIEPMSK: 0x00000000,
-        FS_DOEPMSK: 0x00000000,
-        FS_DAINT: 0x00000000,
-        FS_DAINTMSK: 0x00000000,
+        DCFG: 0x02200000,
+        DCTL: 0x00000000,
+        DSTS: 0x00000010,
+        DIEPMSK: 0x00000000,
+        DOEPMSK: 0x00000000,
+        DAINT: 0x00000000,
+        DAINTMSK: 0x00000000,
         DVBUSDIS: 0x000017D7,
         DVBUSPULSE: 0x000005B8,
         DIEPEMPMSK: 0x00000000,
-        FS_DIEPCTL0: 0x00000000,
+        DIEPCTL0: 0x00000000,
         DIEPCTL1: 0x00000000,
         DIEPCTL2: 0x00000000,
         DIEPCTL3: 0x00000000,

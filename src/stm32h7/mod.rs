@@ -6,6 +6,21 @@ pub mod peripherals;
 /// Peripheral instances shared by multiple devices
 pub(crate) mod instances;
 
-#[cfg(any(feature="stm32h7x3", feature="doc"))]
-pub mod stm32h7x3;
+#[cfg(any(feature="stm32h743", feature="doc"))]
+pub mod stm32h743;
+
+#[cfg(any(feature="stm32h743v", feature="doc"))]
+pub mod stm32h743v;
+
+#[cfg(any(feature="stm32h747cm7", feature="doc"))]
+pub mod stm32h747cm7;
+
+#[cfg(any(feature="stm32h753", feature="doc"))]
+pub mod stm32h753;
+
+#[cfg(any(feature="stm32h753v", feature="doc"))]
+pub mod stm32h753v;
+
+#[cfg(any(feature="stm32h757cm7", feature="doc"))]
+pub mod stm32h757cm7;
 

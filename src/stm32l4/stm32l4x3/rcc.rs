@@ -3630,6 +3630,52 @@ pub mod CSR {
         pub mod RW {}
     }
 }
+
+/// Clock recovery RC register
+pub mod CRRCR {
+
+    /// These bits are initialized at startup with the factory-programmed HSI48 calibration trim value.
+    pub mod HSI48CAL {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (9 bits: 0x1ff << 7)
+        pub const mask: u32 = 0x1ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Set by hardware to indicate that HSI48 oscillator is stable. This bit is set only when HSI48 is enabled by software by setting HSI48ON.
+    pub mod HSI48RDY {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Set and cleared by software. Cleared by hardware to stop the HSI48 when entering in Stop, Standby or Shutdown modes.
+    pub mod HSI48ON {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,
@@ -3735,6 +3781,9 @@ pub struct RegisterBlock {
 
     /// CSR
     pub CSR: RWRegister<u32>,
+
+    /// Clock recovery RC register
+    pub CRRCR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR: u32,
@@ -3766,6 +3815,7 @@ pub struct ResetValues {
     pub CCIPR: u32,
     pub BDCR: u32,
     pub CSR: u32,
+    pub CRRCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -3827,6 +3877,7 @@ pub mod RCC {
         CCIPR: 0x00000000,
         BDCR: 0x00000000,
         CSR: 0x0C000600,
+        CRRCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

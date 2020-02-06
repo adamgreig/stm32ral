@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// ADC Common status register
-pub mod ADC1_CSR {
+pub mod CSR {
 
     /// Master ADC ready
     pub mod ADRDY_MST {
@@ -19,8 +19,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC is not ready to start conversion
+            pub const NotReady: u32 = 0b0;
+
+            /// 0b1: ADC is ready to start conversion
+            pub const Ready: u32 = 0b1;
+        }
     }
 
     /// End of Sampling phase flag of the master ADC
@@ -33,8 +40,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of sampling phase no yet reached
+            pub const NotEnded: u32 = 0b0;
+
+            /// 0b1: End of sampling phase reached
+            pub const Ended: u32 = 0b1;
+        }
     }
 
     /// End of regular conversion of the master ADC
@@ -47,8 +61,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Regular conversion complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// End of regular sequence flag of the master ADC
@@ -61,8 +82,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular sequence is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Regular sequence complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// Overrun flag of the master ADC
@@ -75,8 +103,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No overrun occurred
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: Overrun occurred
+            pub const Overrun: u32 = 0b1;
+        }
     }
 
     /// End of injected conversion flag of the master ADC
@@ -89,8 +124,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Injected conversion complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// End of injected sequence flag of the master ADC
@@ -103,8 +145,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected sequence is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Injected sequence complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// Analog watchdog 1 flag of the master ADC
@@ -117,8 +166,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No analog watchdog event occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Analog watchdog event occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Analog watchdog 2 flag of the master ADC
@@ -131,8 +187,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Analog watchdog 3 flag of the master ADC
@@ -145,8 +200,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Injected Context Queue Overflow flag of the master ADC
@@ -159,8 +213,15 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No injected context queue overflow has occurred
+            pub const NoOverflow: u32 = 0b0;
+
+            /// 0b1: Injected context queue overflow has occurred
+            pub const Overflow: u32 = 0b1;
+        }
     }
 
     /// Slave ADC ready
@@ -173,8 +234,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ADRDY_MST::RW;
     }
 
     /// End of Sampling phase flag of the slave ADC
@@ -187,8 +247,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EOSMP_MST::RW;
     }
 
     /// End of regular conversion of the slave ADC
@@ -201,8 +260,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EOC_MST::RW;
     }
 
     /// End of regular sequence flag of the slave ADC
@@ -215,8 +273,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EOS_MST::RW;
     }
 
     /// Overrun flag of the slave ADC
@@ -229,8 +286,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OVR_MST::RW;
     }
 
     /// End of injected conversion flag of the slave ADC
@@ -243,8 +299,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC_MST::RW;
     }
 
     /// End of injected sequence flag of the slave ADC
@@ -257,8 +312,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOS_MST::RW;
     }
 
     /// Analog watchdog 1 flag of the slave ADC
@@ -271,8 +325,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Analog watchdog 2 flag of the slave ADC
@@ -285,8 +338,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Analog watchdog 3 flag of the slave ADC
@@ -299,8 +351,7 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Injected Context Queue Overflow flag of the slave ADC
@@ -313,13 +364,12 @@ pub mod ADC1_CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JQOVF_MST::RW;
     }
 }
 
 /// ADC common control register
-pub mod ADC1_CCR {
+pub mod CCR {
 
     /// Dual ADC mode selection
     pub mod DUAL {
@@ -331,8 +381,33 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00000: Independent mode
+            pub const Independent: u32 = 0b00000;
+
+            /// 0b00001: Dual, combined regular simultaneous + injected simultaneous mode
+            pub const DualRJ: u32 = 0b00001;
+
+            /// 0b00010: Dual, combined regular simultaneous + alternate trigger mode
+            pub const DualRA: u32 = 0b00010;
+
+            /// 0b00011: Dual, combined interleaved mode + injected simultaneous mode
+            pub const DualIJ: u32 = 0b00011;
+
+            /// 0b00101: Dual, injected simultaneous mode only
+            pub const DualJ: u32 = 0b00101;
+
+            /// 0b00110: Dual, regular simultaneous mode only
+            pub const DualR: u32 = 0b00110;
+
+            /// 0b00111: Dual, interleaved mode only
+            pub const DualI: u32 = 0b00111;
+
+            /// 0b01001: Dual, alternate trigger mode only
+            pub const DualA: u32 = 0b01001;
+        }
     }
 
     /// Delay between 2 sampling phases
@@ -359,8 +434,15 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA one shot mode selected
+            pub const OneShot: u32 = 0b0;
+
+            /// 0b1: DMA circular mode selected
+            pub const Circulator: u32 = 0b1;
+        }
     }
 
     /// Direct memory access mode for dual ADC mode
@@ -373,8 +455,18 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: MDMA mode disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b10: MDMA mode enabled for 12 and 10-bit resolution
+            pub const Bits12_10: u32 = 0b10;
+
+            /// 0b11: MDMA mode enabled for 8 and 6-bit resolution
+            pub const Bits8_6: u32 = 0b11;
+        }
     }
 
     /// ADC clock mode
@@ -387,8 +479,21 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Use Kernel Clock adc_ker_ck_input divided by PRESC. Asynchronous to AHB clock
+            pub const Asynchronous: u32 = 0b00;
+
+            /// 0b01: Use AHB clock rcc_hclk3. In this case rcc_hclk must equal sys_d1cpre_ck
+            pub const SyncDiv1: u32 = 0b01;
+
+            /// 0b10: Use AHB clock rcc_hclk3 divided by 2
+            pub const SyncDiv2: u32 = 0b10;
+
+            /// 0b11: Use AHB clock rcc_hclk3 divided by 4
+            pub const SyncDiv4: u32 = 0b11;
+        }
     }
 
     /// VREFINT enable
@@ -401,8 +506,15 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: V_REFINT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: V_REFINT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Temperature sensor enable
@@ -415,8 +527,15 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Temperature sensor channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Temperature sensor channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// VBAT enable
@@ -429,13 +548,20 @@ pub mod ADC1_CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: V_BAT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: V_BAT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// ADC common regular data register for dual mode
-pub mod ADC1_CDR {
+pub mod CDR {
 
     /// Regular data of the slave ADC
     pub mod RDATA_SLV {
@@ -467,20 +593,20 @@ pub mod ADC1_CDR {
 }
 pub struct RegisterBlock {
     /// ADC Common status register
-    pub ADC1_CSR: RORegister<u32>,
+    pub CSR: RORegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// ADC common control register
-    pub ADC1_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 
     /// ADC common regular data register for dual mode
-    pub ADC1_CDR: RORegister<u32>,
+    pub CDR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub ADC1_CSR: u32,
-    pub ADC1_CCR: u32,
-    pub ADC1_CDR: u32,
+    pub CSR: u32,
+    pub CCR: u32,
+    pub CDR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -513,9 +639,9 @@ pub mod ADC_Common {
 
     /// Reset values for each field in ADC_Common
     pub const reset: ResetValues = ResetValues {
-        ADC1_CSR: 0x00000000,
-        ADC1_CCR: 0x00000000,
-        ADC1_CDR: 0x00000000,
+        CSR: 0x00000000,
+        CCR: 0x00000000,
+        CDR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

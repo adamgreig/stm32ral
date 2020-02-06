@@ -27,13 +27,13 @@ pub mod FSMC {
     /// Reset values for each field in FSMC
     pub const reset: ResetValues = ResetValues {
         BCR1: 0x00000000,
-        BCR2: 0x00000000,
-        BCR3: 0x00000000,
-        BCR4: 0x00000000,
         BTR1: 0x00000000,
         BTR2: 0x00000000,
         BTR3: 0x00000000,
         BTR4: 0x00000000,
+        BCR2: 0x00000000,
+        BCR3: 0x00000000,
+        BCR4: 0x00000000,
         BWTR1: 0x00000000,
         BWTR2: 0x00000000,
         BWTR3: 0x00000000,

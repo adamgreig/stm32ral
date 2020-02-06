@@ -50,7 +50,7 @@ extern "C" {
     fn TIM8_CC();
     fn DMA1_Stream7();
     fn FMC();
-    fn SDIO();
+    fn SDMMC1();
     fn TIM5();
     fn SPI3();
     fn UART4();
@@ -89,12 +89,12 @@ extern "C" {
     fn SPI5();
     fn SPI6();
     fn SAI1();
-    fn LCD_TFT();
+    fn LTDC();
     fn LCD_TFT_1();
     fn DMA2D();
     fn SAI2();
     fn QuadSPI();
-    fn LP_Timer1();
+    fn LPTimer1();
     fn HDMI_CEC();
     fn I2C4_EV();
     fn I2C4_ER();
@@ -209,7 +209,7 @@ pub static __INTERRUPTS: [Vector; 110] = [
         _handler: DMA1_Stream7,
     },
     Vector { _handler: FMC },
-    Vector { _handler: SDIO },
+    Vector { _handler: SDMMC1 },
     Vector { _handler: TIM5 },
     Vector { _handler: SPI3 },
     Vector { _handler: UART4 },
@@ -270,16 +270,14 @@ pub static __INTERRUPTS: [Vector; 110] = [
     Vector { _handler: SPI5 },
     Vector { _handler: SPI6 },
     Vector { _handler: SAI1 },
-    Vector { _handler: LCD_TFT },
+    Vector { _handler: LTDC },
     Vector {
         _handler: LCD_TFT_1,
     },
     Vector { _handler: DMA2D },
     Vector { _handler: SAI2 },
     Vector { _handler: QuadSPI },
-    Vector {
-        _handler: LP_Timer1,
-    },
+    Vector { _handler: LPTimer1 },
     Vector { _handler: HDMI_CEC },
     Vector { _handler: I2C4_EV },
     Vector { _handler: I2C4_ER },
@@ -361,11 +359,11 @@ pub enum Interrupt {
     EXTI9_5 = 23,
     /// 24: TIM1 Break interrupt and TIM9 global interrupt
     TIM1_BRK_TIM9 = 24,
-    /// 25: TIM1 Update interrupt and TIM10 global interrupt
+    /// 25: TIM1_UP_TIM10
     TIM1_UP_TIM10 = 25,
     /// 26: TIM1 Trigger and Commutation interrupts and TIM11 global interrupt
     TIM1_TRG_COM_TIM11 = 26,
-    /// 27: TIM1 Capture Compare interrupt
+    /// 27: TIM1_CC
     TIM1_CC = 27,
     /// 28: TIM2 global interrupt
     TIM2 = 28,
@@ -409,8 +407,8 @@ pub enum Interrupt {
     DMA1_Stream7 = 47,
     /// 48: FMC global interrupt
     FMC = 48,
-    /// 49: SDIO global interrupt
-    SDIO = 49,
+    /// 49: SDMMC1 global interrupt
+    SDMMC1 = 49,
     /// 50: TIM5 global interrupt
     TIM5 = 50,
     /// 51: SPI3 global interrupt
@@ -435,7 +433,7 @@ pub enum Interrupt {
     DMA2_Stream4 = 60,
     /// 61: Ethernet global interrupt
     ETH = 61,
-    /// 62: Ethernet Wakeup through EXTI line interrupt
+    /// 62: Ethernet Wakeup through EXTI line
     ETH_WKUP = 62,
     /// 63: CAN2 TX interrupts
     CAN2_TX = 63,
@@ -469,7 +467,7 @@ pub enum Interrupt {
     OTG_HS = 77,
     /// 78: DCMI global interrupt
     DCMI = 78,
-    /// 79: CRYP crypto global interrupt
+    /// 79: CRYP
     CRYP = 79,
     /// 80: Hash and Rng global interrupt
     HASH_RNG = 80,
@@ -488,7 +486,7 @@ pub enum Interrupt {
     /// 87: SAI1 global interrupt
     SAI1 = 87,
     /// 88: LTDC global interrupt
-    LCD_TFT = 88,
+    LTDC = 88,
     /// 89: LCD-TFT global error interrupt
     LCD_TFT_1 = 89,
     /// 90: DMA2D global interrupt
@@ -498,7 +496,7 @@ pub enum Interrupt {
     /// 92: QuadSPI global interrupt
     QuadSPI = 92,
     /// 93: LP Timer1 global interrupt
-    LP_Timer1 = 93,
+    LPTimer1 = 93,
     /// 94: HDMI-CEC global interrupt
     HDMI_CEC = 94,
     /// 95: I2C4 event interrupt
@@ -511,11 +509,11 @@ pub enum Interrupt {
     DSIHOST = 98,
     /// 99: DFSDM1 Filter 0 global interrupt
     DFSDM1_FLT0 = 99,
-    /// 100: DFSDM1 Filter 0 global interrupt
+    /// 100: DFSDM1 Filter 1 global interrupt
     DFSDM1_FLT1 = 100,
-    /// 101: DFSDM1 Filter 0 global interrupt
+    /// 101: DFSDM1 Filter 2 global interrupt
     DFSDM1_FLT2 = 101,
-    /// 102: DFSDM1 Filter 0 global interrupt
+    /// 102: DFSDM1 Filter 3 global interrupt
     DFSDM1_FLT3 = 102,
     /// 103: SDMMC2 global interrupt
     SDMMC2 = 103,

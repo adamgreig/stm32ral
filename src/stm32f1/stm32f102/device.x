@@ -16,7 +16,6 @@ PROVIDE(DMA1_Channel4 = DefaultHandler);
 PROVIDE(DMA1_Channel5 = DefaultHandler);
 PROVIDE(DMA1_Channel6 = DefaultHandler);
 PROVIDE(DMA1_Channel7 = DefaultHandler);
-PROVIDE(ADC1_2 = DefaultHandler);
 PROVIDE(USB_HP_CAN_TX = DefaultHandler);
 PROVIDE(USB_LP_CAN_RX0 = DefaultHandler);
 PROVIDE(CAN_RX1 = DefaultHandler);

@@ -21,8 +21,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DAC channel X disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DAC channel X enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DAC channel1 output buffer disable
@@ -35,8 +42,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DAC channel X output buffer enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: DAC channel X output buffer disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// DAC channel1 trigger enable
@@ -49,8 +63,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DAC channel X trigger disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DAC channel X trigger enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DAC channel1 trigger selection
@@ -63,8 +84,30 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Timer 6 TRGO event
+            pub const TIM6_TRGO: u32 = 0b000;
+
+            /// 0b001: Timer 3 TRGO event
+            pub const TIM3_TRGO: u32 = 0b001;
+
+            /// 0b010: Timer 7 TRGO event
+            pub const TIM7_TRGO: u32 = 0b010;
+
+            /// 0b011: Timer 15 TRGO event
+            pub const TIM15_TRGO: u32 = 0b011;
+
+            /// 0b100: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b100;
+
+            /// 0b110: EXTI line9
+            pub const EXTI9: u32 = 0b110;
+
+            /// 0b111: Software trigger
+            pub const SOFTWARE: u32 = 0b111;
+        }
     }
 
     /// DAC channel1 noise/triangle wave generation enable
@@ -77,8 +120,18 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Wave generation disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Noise wave generation enabled
+            pub const Noise: u32 = 0b01;
+
+            /// 0b10: Triangle wave generation enabled
+            pub const Triangle: u32 = 0b10;
+        }
     }
 
     /// DAC channel1 mask/amplitude selector
@@ -105,8 +158,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DAC channel X DMA mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DAC channel X DMA mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DAC channel2 enable
@@ -119,8 +179,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EN1::RW;
     }
 
     /// DAC channel2 output buffer disable
@@ -133,8 +192,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::BOFF1::RW;
     }
 
     /// DAC channel2 trigger enable
@@ -147,8 +205,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEN1::RW;
     }
 
     /// DAC channel2 trigger selection
@@ -161,8 +218,33 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Timer 6 TRGO event
+            pub const TIM6_TRGO: u32 = 0b000;
+
+            /// 0b001: Timer 8 TRGO event
+            pub const TIM8_TRGO: u32 = 0b001;
+
+            /// 0b010: Timer 7 TRGO event
+            pub const TIM7_TRGO: u32 = 0b010;
+
+            /// 0b011: Timer 5 TRGO event
+            pub const TIM5_TRGO: u32 = 0b011;
+
+            /// 0b100: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b100;
+
+            /// 0b101: Timer 4 TRGO event
+            pub const TIM4_TRGO: u32 = 0b101;
+
+            /// 0b110: EXTI line9
+            pub const EXTI9: u32 = 0b110;
+
+            /// 0b111: Software trigger
+            pub const SOFTWARE: u32 = 0b111;
+        }
     }
 
     /// DAC channel2 noise/triangle wave generation enable
@@ -175,8 +257,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::WAVE1::RW;
     }
 
     /// DAC channel2 mask/amplitude selector
@@ -203,8 +284,7 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DMAEN1::RW;
     }
 }
 
@@ -221,8 +301,15 @@ pub mod SWTRIGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DAC channel X software trigger disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DAC channel X software trigger enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DAC channel2 software trigger
@@ -235,8 +322,7 @@ pub mod SWTRIGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SWTRIG1::RW;
     }
 }
 

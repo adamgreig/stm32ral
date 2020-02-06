@@ -67,7 +67,7 @@ license = "MIT/Apache-2.0"
 edition = "2018"
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.2.0"
+version = "0.3.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -75,9 +75,9 @@ no-default-features = true
 
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
-bare-metal = "0.2.4"
-external_cortex_m = { package = "cortex-m", version = "0.6.0" }
-cortex-m-rt = { version = "0.6.8", optional = true }
+bare-metal = "0.2.5"
+external_cortex_m = { package = "cortex-m", version = "0.6.2" }
+cortex-m-rt = { version = "0.6.12", optional = true }
 
 [features]
 rt = ["cortex-m-rt/device"]

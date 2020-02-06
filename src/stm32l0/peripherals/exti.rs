@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! External interrupt/event controller
 //!
-//! Used by: stm32l0x2, stm32l0x3
+//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt request line is masked
+            pub const Masked: u32 = 0b0;
+
+            /// 0b1: Interrupt request line is unmasked
+            pub const Unmasked: u32 = 0b1;
+        }
     }
 
     /// Interrupt Mask on line 1
@@ -35,8 +42,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 2
@@ -49,8 +55,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 3
@@ -63,8 +68,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 4
@@ -77,8 +81,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 5
@@ -91,8 +94,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 6
@@ -105,8 +107,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 7
@@ -119,8 +120,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 8
@@ -133,8 +133,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 9
@@ -147,8 +146,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 10
@@ -161,8 +159,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 11
@@ -175,8 +172,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 12
@@ -189,8 +185,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 13
@@ -203,8 +198,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 14
@@ -217,8 +211,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 15
@@ -231,8 +224,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 16
@@ -245,8 +237,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 17
@@ -259,8 +250,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 18
@@ -273,8 +263,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 19
@@ -287,8 +276,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 20
@@ -301,8 +289,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 21
@@ -315,8 +302,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 22
@@ -329,8 +315,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 23
@@ -343,8 +328,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 24
@@ -357,8 +341,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 25
@@ -371,8 +354,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 27
@@ -385,8 +367,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 27
@@ -399,8 +380,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 
     /// Interrupt Mask on line 27
@@ -413,8 +393,7 @@ pub mod IMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IM0::RW;
     }
 }
 
@@ -431,8 +410,15 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt request line is masked
+            pub const Masked: u32 = 0b0;
+
+            /// 0b1: Interrupt request line is unmasked
+            pub const Unmasked: u32 = 0b1;
+        }
     }
 
     /// Event Mask on line 1
@@ -445,8 +431,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 2
@@ -459,8 +444,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 3
@@ -473,8 +457,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 4
@@ -487,8 +470,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 5
@@ -501,8 +483,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 6
@@ -515,8 +496,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 7
@@ -529,8 +509,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 8
@@ -543,8 +522,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 9
@@ -557,8 +535,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 10
@@ -571,8 +548,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 11
@@ -585,8 +561,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 12
@@ -599,8 +574,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 13
@@ -613,8 +587,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 14
@@ -627,8 +600,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 15
@@ -641,8 +613,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 16
@@ -655,8 +626,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 17
@@ -669,8 +639,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 18
@@ -683,8 +652,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 19
@@ -697,8 +665,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 20
@@ -711,8 +678,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 21
@@ -725,8 +691,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 22
@@ -739,8 +704,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 23
@@ -753,8 +717,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 24
@@ -767,8 +730,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 25
@@ -781,8 +743,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 26
@@ -795,8 +756,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 28
@@ -809,8 +769,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 
     /// Event Mask on line 29
@@ -823,8 +782,7 @@ pub mod EMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EM0::RW;
     }
 }
 
@@ -841,8 +799,15 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Rising edge trigger is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Rising edge trigger is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Rising trigger event configuration of line 1
@@ -855,8 +820,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 2
@@ -869,8 +833,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 3
@@ -883,8 +846,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 4
@@ -897,8 +859,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 5
@@ -911,8 +872,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 6
@@ -925,8 +885,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 7
@@ -939,8 +898,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 8
@@ -953,8 +911,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 9
@@ -967,8 +924,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 10
@@ -981,8 +937,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 11
@@ -995,8 +950,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 12
@@ -1009,8 +963,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 13
@@ -1023,8 +976,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 14
@@ -1037,8 +989,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 15
@@ -1051,8 +1002,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 16
@@ -1065,8 +1015,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 17
@@ -1079,8 +1028,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 19
@@ -1093,8 +1041,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 20
@@ -1107,8 +1054,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 21
@@ -1121,8 +1067,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 
     /// Rising trigger event configuration of line 22
@@ -1135,8 +1080,7 @@ pub mod RTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::RT0::RW;
     }
 }
 
@@ -1153,8 +1097,15 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Falling edge trigger is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Falling edge trigger is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Falling trigger event configuration of line 1
@@ -1167,8 +1118,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 2
@@ -1181,8 +1131,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 3
@@ -1195,8 +1144,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 4
@@ -1209,8 +1157,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 5
@@ -1223,8 +1170,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 6
@@ -1237,8 +1183,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 7
@@ -1251,8 +1196,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 8
@@ -1265,8 +1209,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 9
@@ -1279,8 +1222,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 10
@@ -1293,8 +1235,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 11
@@ -1307,8 +1248,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 12
@@ -1321,8 +1261,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 13
@@ -1335,8 +1274,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 14
@@ -1349,8 +1287,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 15
@@ -1363,8 +1300,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 16
@@ -1377,8 +1313,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 17
@@ -1391,8 +1326,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 19
@@ -1405,8 +1339,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 20
@@ -1419,8 +1352,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 21
@@ -1433,8 +1365,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 
     /// Falling trigger event configuration of line 22
@@ -1447,8 +1378,7 @@ pub mod FTSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::FT0::RW;
     }
 }
 
@@ -1463,8 +1393,12 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Generates an interrupt request
+            pub const Pend: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1477,8 +1411,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1491,8 +1424,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1505,8 +1437,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1519,8 +1450,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1533,8 +1463,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1547,8 +1476,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1561,8 +1489,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1575,8 +1502,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1589,8 +1515,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1603,8 +1528,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1617,8 +1541,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1631,8 +1554,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1645,8 +1567,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1659,8 +1580,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1673,8 +1593,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1687,8 +1606,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1701,8 +1619,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1715,8 +1632,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1729,8 +1645,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1743,8 +1658,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1757,8 +1671,7 @@ pub mod SWIER {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::SWI0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1773,10 +1686,21 @@ pub mod PR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No trigger request occurred
+            pub const NotPending: u32 = 0b0;
+
+            /// 0b1: Selected trigger request occurred
+            pub const Pending: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears pending bit
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1787,10 +1711,8 @@ pub mod PR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1801,10 +1723,8 @@ pub mod PR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1815,10 +1735,8 @@ pub mod PR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1829,10 +1747,8 @@ pub mod PR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1843,10 +1759,8 @@ pub mod PR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1857,10 +1771,8 @@ pub mod PR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1871,10 +1783,8 @@ pub mod PR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1885,10 +1795,8 @@ pub mod PR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1899,10 +1807,8 @@ pub mod PR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1913,10 +1819,8 @@ pub mod PR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1927,10 +1831,8 @@ pub mod PR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1941,10 +1843,8 @@ pub mod PR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1955,10 +1855,8 @@ pub mod PR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1969,10 +1867,8 @@ pub mod PR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1983,10 +1879,8 @@ pub mod PR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1997,10 +1891,8 @@ pub mod PR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2011,10 +1903,8 @@ pub mod PR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2025,10 +1915,8 @@ pub mod PR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2039,10 +1927,8 @@ pub mod PR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2053,10 +1939,8 @@ pub mod PR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2067,10 +1951,8 @@ pub mod PR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::PIF0::R;
+        pub use super::PIF0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }

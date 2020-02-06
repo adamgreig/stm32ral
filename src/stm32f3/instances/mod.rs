@@ -71,9 +71,6 @@ pub mod rtc_f301_f373_f3x8;
 pub mod sdadc;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f373", feature="stm32f3x8"))]
-pub mod dac2;
-
-#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f373", feature="stm32f3x8"))]
 pub mod tim6_f301_f373_f3x8;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f373", feature="stm32f3x8"))]
@@ -90,9 +87,6 @@ pub mod tim14;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f373", feature="stm32f3x8"))]
 pub mod tim12;
-
-#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f373", feature="stm32f3x8"))]
-pub mod dac1;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod dbgmcu;
@@ -121,6 +115,12 @@ pub mod fpu_cpacr;
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod scb_actrl;
 
+#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f3x4", feature="stm32f3x8"))]
+pub mod tim1;
+
+#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
+pub mod tim20;
+
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f3x4"))]
 pub mod opamp_f301_f3x4;
 
@@ -129,12 +129,6 @@ pub mod flash_f302_f303_f3x4;
 
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x4"))]
 pub mod tim2_f302_f303_f3x4;
-
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
-pub mod tim3_f302_f303;
-
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
-pub mod tim4_f302_f303;
 
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x4"))]
 pub mod tim15_f302_f303_f3x4;
@@ -163,12 +157,6 @@ pub mod tim7_f302_f303_f3x4;
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
 pub mod dac;
 
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x4", feature="stm32f3x8"))]
-pub mod tim1;
-
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
-pub mod tim20;
-
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
 pub mod tim8;
 
@@ -181,6 +169,12 @@ pub mod adc_common;
 #[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
 pub mod fmc;
 
+#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
+pub mod tim3_f302_f303;
+
+#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
+pub mod tim4_f302_f303;
+
 #[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
 pub mod opamp_f303_f3x8;
 
@@ -192,4 +186,10 @@ pub mod flash_f373_f3x8;
 
 #[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
 pub mod tim2_f373_f3x8;
+
+#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
+pub mod dac2;
+
+#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
+pub mod dac1;
 

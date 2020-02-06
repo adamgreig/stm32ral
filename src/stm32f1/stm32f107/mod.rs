@@ -22,8 +22,8 @@ pub use super::instances::spi;
 pub use super::instances::tim1_f103_f107 as tim1;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
-pub use super::instances::tim4;
-pub use super::instances::tim5;
+pub use super::instances::tim4_f101_f103_f107 as tim4;
+pub use super::instances::tim5_f101_f103_f107 as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::usart;
@@ -49,18 +49,18 @@ pub mod fsmc;
 pub use super::instances::sdio;
 pub mod tim10;
 pub mod tim11;
-pub use super::instances::tim12;
-pub use super::instances::tim9;
-pub mod adc3;
+pub use super::instances::adc3;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
+pub use super::instances::tim12;
 pub use super::instances::tim13_f100_f102_f107 as tim13;
 pub use super::instances::tim14_f100_f102_f107 as tim14;
 pub use super::instances::tim8;
+pub use super::instances::tim9;
 pub use super::instances::usb;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
@@ -122,7 +122,6 @@ pub struct Peripherals {
     pub TIM10: tim10::Instance,
     pub TIM9: tim9::Instance,
     pub TIM12: tim12::Instance,
-    pub ADC3: adc3::Instance,
     pub TIM8: tim8::Instance,
     pub USB: usb::Instance,
     pub TIM13: tim13::Instance,
@@ -133,6 +132,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
+    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -199,7 +199,6 @@ impl Peripherals {
             TIM10: tim10::TIM10::steal(),
             TIM9: tim9::TIM9::steal(),
             TIM12: tim12::TIM12::steal(),
-            ADC3: adc3::ADC3::steal(),
             TIM8: tim8::TIM8::steal(),
             USB: usb::USB::steal(),
             TIM13: tim13::TIM13::steal(),
@@ -210,6 +209,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
+            ADC3: adc3::ADC3::steal(),
         }
     }
 }

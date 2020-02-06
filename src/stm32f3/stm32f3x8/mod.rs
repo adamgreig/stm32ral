@@ -25,7 +25,6 @@ pub use super::instances::tim4_f301_f373_f3x8 as tim4;
 pub use super::instances::tim5;
 pub mod tim20;
 pub use super::instances::usart_f302_f303_f3x8 as usart;
-pub mod adc1;
 pub mod spi;
 pub use super::instances::exti_f301_f3x8 as exti;
 pub mod pwr;
@@ -46,7 +45,7 @@ pub use super::instances::tim6_f301_f373_f3x8 as tim6;
 pub use super::instances::tim7_f301_f373_f3x8 as tim7;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
-pub mod adc2;
+pub mod adc;
 pub use super::instances::tim1;
 pub mod syscfg;
 pub mod tim8;
@@ -98,7 +97,6 @@ pub struct Peripherals {
     pub I2S2ext: spi::Instance,
     pub I2S3ext: spi::Instance,
     pub SPI4: spi::Instance,
-    pub ADC1: adc1::Instance,
     pub EXTI: exti::Instance,
     pub PWR: pwr::Instance,
     pub CAN: can::Instance,
@@ -122,7 +120,8 @@ pub struct Peripherals {
     pub DAC1: dac1::Instance,
     pub DBGMCU: dbgmcu::Instance,
     pub FMC: fmc::Instance,
-    pub ADC2: adc2::Instance,
+    pub ADC2: adc::Instance,
+    pub ADC1: adc::Instance,
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
     pub SYSCFG: syscfg::Instance,
@@ -180,7 +179,6 @@ impl Peripherals {
             I2S2ext: spi::I2S2ext::steal(),
             I2S3ext: spi::I2S3ext::steal(),
             SPI4: spi::SPI4::steal(),
-            ADC1: adc1::ADC1::steal(),
             EXTI: exti::EXTI::steal(),
             PWR: pwr::PWR::steal(),
             CAN: can::CAN::steal(),
@@ -204,7 +202,8 @@ impl Peripherals {
             DAC1: dac1::DAC1::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
             FMC: fmc::FMC::steal(),
-            ADC2: adc2::ADC2::steal(),
+            ADC2: adc::ADC2::steal(),
+            ADC1: adc::ADC1::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
             SYSCFG: syscfg::SYSCFG::steal(),

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real time clock
 //!
-//! Used by: stm32f100, stm32f101, stm32f102, stm32f103, stm32f107
+//! Used by: stm32f101, stm32f102, stm32f103, stm32f107
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Second interrupt is masked
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Second interrupt is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Alarm interrupt Enable
@@ -35,8 +42,15 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Alarm interrupt is masked
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Alarm interrupt is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Overflow interrupt Enable
@@ -49,8 +63,15 @@ pub mod CRH {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Overflow interrupt is masked
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Overflow interrupt is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -63,10 +84,21 @@ pub mod CRL {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Second flag condition not met
+            pub const NoPrescalerOverflow: u32 = 0b0;
+
+            /// 0b1: Second flag condition met
+            pub const PrescalerOverflow: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -77,10 +109,16 @@ pub mod CRL {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Alarm not detected
+            pub const NoAlarm: u32 = 0b0;
+
+            /// 0b1: Alarm detected
+            pub const Alarm: u32 = 0b1;
+        }
+        pub use super::SECF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -91,10 +129,16 @@ pub mod CRL {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Overflow not detected
+            pub const NoOverflow: u32 = 0b0;
+
+            /// 0b1: 32-bit programmable counter overflow occurred
+            pub const Overflow: u32 = 0b1;
+        }
+        pub use super::SECF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -105,10 +149,16 @@ pub mod CRL {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Registers not yet synchronized
+            pub const NotSynchronized: u32 = 0b0;
+
+            /// 0b1: Registers synchronized
+            pub const Synchronized: u32 = 0b1;
+        }
+        pub use super::SECF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -123,8 +173,15 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Exit configuration mode (start update of RTC registers)
+            pub const Exit: u32 = 0b0;
+
+            /// 0b1: Enter configuration mode
+            pub const Enter: u32 = 0b1;
+        }
     }
 
     /// RTC operation OFF
@@ -137,8 +194,15 @@ pub mod CRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Last write operation on RTC registers is still ongoing
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Last write operation on RTC registers terminated
+            pub const Disabled: u32 = 0b1;
+        }
     }
 }
 

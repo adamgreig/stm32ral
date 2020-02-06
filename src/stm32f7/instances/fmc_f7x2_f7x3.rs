@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::fmc_v1::Instance;
-pub use crate::stm32f7::peripherals::fmc_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::fmc_v1::{
+pub use crate::stm32f7::peripherals::fmc_v2::Instance;
+pub use crate::stm32f7::peripherals::fmc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::fmc_v2::{
     BCR1, BCR2, BCR3, BCR4, BTR1, BTR2, BTR3, BTR4, BWTR1, BWTR2, BWTR3, BWTR4, ECCR, PATT, PCR,
     PMEM, SDCMR, SDCR1, SDCR2, SDRTR, SDSR, SDTR1, SDTR2, SR,
 };
@@ -29,12 +29,12 @@ pub mod FMC {
     pub const reset: ResetValues = ResetValues {
         BCR1: 0x000030D0,
         BTR1: 0xFFFFFFFF,
-        BCR2: 0x000030D0,
         BTR2: 0xFFFFFFFF,
-        BCR3: 0x000030D0,
         BTR3: 0xFFFFFFFF,
-        BCR4: 0x000030D0,
         BTR4: 0xFFFFFFFF,
+        BCR2: 0x000030D0,
+        BCR3: 0x000030D0,
+        BCR4: 0x000030D0,
         PCR: 0x00000018,
         SR: 0x00000040,
         PMEM: 0xFCFCFCFC,

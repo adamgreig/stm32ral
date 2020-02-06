@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f401, stm32f411, stm32f412, stm32f446, stm32f469
+//! Used by: stm32f401, stm32f405, stm32f407, stm32f411, stm32f427, stm32f429
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// OTG_FS device configuration register (OTG_FS_DCFG)
-pub mod FS_DCFG {
+pub mod DCFG {
 
     /// Device speed
     pub mod DSPD {
@@ -69,7 +69,7 @@ pub mod FS_DCFG {
 }
 
 /// OTG_FS device control register (OTG_FS_DCTL)
-pub mod FS_DCTL {
+pub mod DCTL {
 
     /// Remote wakeup signaling
     pub mod RWUSIG {
@@ -213,7 +213,7 @@ pub mod FS_DCTL {
 }
 
 /// OTG_FS device status register (OTG_FS_DSTS)
-pub mod FS_DSTS {
+pub mod DSTS {
 
     /// Suspend status
     pub mod SUSPSTS {
@@ -273,7 +273,7 @@ pub mod FS_DSTS {
 }
 
 /// OTG_FS device IN endpoint common interrupt mask register (OTG_FS_DIEPMSK)
-pub mod FS_DIEPMSK {
+pub mod DIEPMSK {
 
     /// Transfer completed interrupt mask
     pub mod XFRCM {
@@ -361,7 +361,7 @@ pub mod FS_DIEPMSK {
 }
 
 /// OTG_FS device OUT endpoint common interrupt mask register (OTG_FS_DOEPMSK)
-pub mod FS_DOEPMSK {
+pub mod DOEPMSK {
 
     /// Transfer completed interrupt mask
     pub mod XFRCM {
@@ -421,7 +421,7 @@ pub mod FS_DOEPMSK {
 }
 
 /// OTG_FS device all endpoints interrupt register (OTG_FS_DAINT)
-pub mod FS_DAINT {
+pub mod DAINT {
 
     /// IN endpoint interrupt bits
     pub mod IEPINT {
@@ -453,7 +453,7 @@ pub mod FS_DAINT {
 }
 
 /// OTG_FS all endpoints interrupt mask register (OTG_FS_DAINTMSK)
-pub mod FS_DAINTMSK {
+pub mod DAINTMSK {
 
     /// IN EP interrupt mask bits
     pub mod IEPM {
@@ -469,8 +469,8 @@ pub mod FS_DAINTMSK {
         pub mod RW {}
     }
 
-    /// OUT endpoint interrupt bits
-    pub mod OEPINT {
+    /// OUT EP interrupt mask bits
+    pub mod OEPM {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (16 bits: 0xffff << 16)
@@ -539,7 +539,7 @@ pub mod DIEPEMPMSK {
 }
 
 /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
-pub mod FS_DIEPCTL0 {
+pub mod DIEPCTL0 {
 
     /// Maximum packet size
     pub mod MPSIZ {
@@ -783,8 +783,8 @@ pub mod DIEPCTL1 {
         pub mod RW {}
     }
 
-    /// Stall
-    pub mod Stall {
+    /// STALL
+    pub mod STALL {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -868,207 +868,38 @@ pub mod DIEPCTL1 {
     }
 }
 
-/// OTG device endpoint-2 control register
+/// OTG device endpoint-1 control register
 pub mod DIEPCTL2 {
-
-    /// EPENA
-    pub mod EPENA {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EPDIS
-    pub mod EPDIS {
-        /// Offset (30 bits)
-        pub const offset: u32 = 30;
-        /// Mask (1 bit: 1 << 30)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SODDFRM
-    pub mod SODDFRM {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SD0PID/SEVNFRM
-    pub mod SD0PID_SEVNFRM {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SNAK
-    pub mod SNAK {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CNAK
-    pub mod CNAK {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TXFNUM
-    pub mod TXFNUM {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (4 bits: 0b1111 << 22)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Stall
-    pub mod Stall {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EPTYP
-    pub mod EPTYP {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (2 bits: 0b11 << 18)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// NAKSTS
-    pub mod NAKSTS {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EONUM/DPID
-    pub mod EONUM_DPID {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// USBAEP
-    pub mod USBAEP {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MPSIZ
-    pub mod MPSIZ {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (11 bits: 0x7ff << 0)
-        pub const mask: u32 = 0x7ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DIEPCTL1::CNAK;
+    pub use super::DIEPCTL1::EONUM_DPID;
+    pub use super::DIEPCTL1::EPDIS;
+    pub use super::DIEPCTL1::EPENA;
+    pub use super::DIEPCTL1::EPTYP;
+    pub use super::DIEPCTL1::MPSIZ;
+    pub use super::DIEPCTL1::NAKSTS;
+    pub use super::DIEPCTL1::SD0PID_SEVNFRM;
+    pub use super::DIEPCTL1::SNAK;
+    pub use super::DIEPCTL1::SODDFRM_SD1PID;
+    pub use super::DIEPCTL1::STALL;
+    pub use super::DIEPCTL1::TXFNUM;
+    pub use super::DIEPCTL1::USBAEP;
 }
 
-/// OTG device endpoint-3 control register
+/// OTG device endpoint-1 control register
 pub mod DIEPCTL3 {
-    pub use super::DIEPCTL2::Stall;
-    pub use super::DIEPCTL2::CNAK;
-    pub use super::DIEPCTL2::EONUM_DPID;
-    pub use super::DIEPCTL2::EPDIS;
-    pub use super::DIEPCTL2::EPENA;
-    pub use super::DIEPCTL2::EPTYP;
-    pub use super::DIEPCTL2::MPSIZ;
-    pub use super::DIEPCTL2::NAKSTS;
-    pub use super::DIEPCTL2::SD0PID_SEVNFRM;
-    pub use super::DIEPCTL2::SNAK;
-    pub use super::DIEPCTL2::SODDFRM;
-    pub use super::DIEPCTL2::TXFNUM;
-    pub use super::DIEPCTL2::USBAEP;
+    pub use super::DIEPCTL1::CNAK;
+    pub use super::DIEPCTL1::EONUM_DPID;
+    pub use super::DIEPCTL1::EPDIS;
+    pub use super::DIEPCTL1::EPENA;
+    pub use super::DIEPCTL1::EPTYP;
+    pub use super::DIEPCTL1::MPSIZ;
+    pub use super::DIEPCTL1::NAKSTS;
+    pub use super::DIEPCTL1::SD0PID_SEVNFRM;
+    pub use super::DIEPCTL1::SNAK;
+    pub use super::DIEPCTL1::SODDFRM_SD1PID;
+    pub use super::DIEPCTL1::STALL;
+    pub use super::DIEPCTL1::TXFNUM;
+    pub use super::DIEPCTL1::USBAEP;
 }
 
 /// device endpoint-0 control register
@@ -1130,8 +961,8 @@ pub mod DOEPCTL0 {
         pub mod RW {}
     }
 
-    /// Stall
-    pub mod Stall {
+    /// STALL
+    pub mod STALL {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1302,8 +1133,8 @@ pub mod DOEPCTL1 {
         pub mod RW {}
     }
 
-    /// Stall
-    pub mod Stall {
+    /// STALL
+    pub mod STALL {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1401,9 +1232,8 @@ pub mod DOEPCTL1 {
     }
 }
 
-/// device endpoint-2 control register
+/// device endpoint-1 control register
 pub mod DOEPCTL2 {
-    pub use super::DOEPCTL1::Stall;
     pub use super::DOEPCTL1::CNAK;
     pub use super::DOEPCTL1::EONUM_DPID;
     pub use super::DOEPCTL1::EPDIS;
@@ -1415,12 +1245,12 @@ pub mod DOEPCTL2 {
     pub use super::DOEPCTL1::SNAK;
     pub use super::DOEPCTL1::SNPM;
     pub use super::DOEPCTL1::SODDFRM;
+    pub use super::DOEPCTL1::STALL;
     pub use super::DOEPCTL1::USBAEP;
 }
 
-/// device endpoint-3 control register
+/// device endpoint-1 control register
 pub mod DOEPCTL3 {
-    pub use super::DOEPCTL1::Stall;
     pub use super::DOEPCTL1::CNAK;
     pub use super::DOEPCTL1::EONUM_DPID;
     pub use super::DOEPCTL1::EPDIS;
@@ -1432,6 +1262,7 @@ pub mod DOEPCTL3 {
     pub use super::DOEPCTL1::SNAK;
     pub use super::DOEPCTL1::SNPM;
     pub use super::DOEPCTL1::SODDFRM;
+    pub use super::DOEPCTL1::STALL;
     pub use super::DOEPCTL1::USBAEP;
 }
 
@@ -1886,27 +1717,27 @@ pub mod DOEPTSIZ3 {
 }
 pub struct RegisterBlock {
     /// OTG_FS device configuration register (OTG_FS_DCFG)
-    pub FS_DCFG: RWRegister<u32>,
+    pub DCFG: RWRegister<u32>,
 
     /// OTG_FS device control register (OTG_FS_DCTL)
-    pub FS_DCTL: RWRegister<u32>,
+    pub DCTL: RWRegister<u32>,
 
     /// OTG_FS device status register (OTG_FS_DSTS)
-    pub FS_DSTS: RORegister<u32>,
+    pub DSTS: RORegister<u32>,
 
     _reserved1: [u32; 1],
 
     /// OTG_FS device IN endpoint common interrupt mask register (OTG_FS_DIEPMSK)
-    pub FS_DIEPMSK: RWRegister<u32>,
+    pub DIEPMSK: RWRegister<u32>,
 
     /// OTG_FS device OUT endpoint common interrupt mask register (OTG_FS_DOEPMSK)
-    pub FS_DOEPMSK: RWRegister<u32>,
+    pub DOEPMSK: RWRegister<u32>,
 
     /// OTG_FS device all endpoints interrupt register (OTG_FS_DAINT)
-    pub FS_DAINT: RORegister<u32>,
+    pub DAINT: RORegister<u32>,
 
     /// OTG_FS all endpoints interrupt mask register (OTG_FS_DAINTMSK)
-    pub FS_DAINTMSK: RWRegister<u32>,
+    pub DAINTMSK: RWRegister<u32>,
 
     _reserved2: [u32; 2],
 
@@ -1924,7 +1755,7 @@ pub struct RegisterBlock {
     _reserved4: [u32; 50],
 
     /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
-    pub FS_DIEPCTL0: RWRegister<u32>,
+    pub DIEPCTL0: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
@@ -1963,7 +1794,7 @@ pub struct RegisterBlock {
 
     _reserved12: [u32; 1],
 
-    /// OTG device endpoint-2 control register
+    /// OTG device endpoint-1 control register
     pub DIEPCTL2: RWRegister<u32>,
 
     _reserved13: [u32; 1],
@@ -1983,7 +1814,7 @@ pub struct RegisterBlock {
 
     _reserved16: [u32; 1],
 
-    /// OTG device endpoint-3 control register
+    /// OTG device endpoint-1 control register
     pub DIEPCTL3: RWRegister<u32>,
 
     _reserved17: [u32; 1],
@@ -2033,7 +1864,7 @@ pub struct RegisterBlock {
 
     _reserved26: [u32; 3],
 
-    /// device endpoint-2 control register
+    /// device endpoint-1 control register
     pub DOEPCTL2: RWRegister<u32>,
 
     _reserved27: [u32; 1],
@@ -2048,7 +1879,7 @@ pub struct RegisterBlock {
 
     _reserved29: [u32; 3],
 
-    /// device endpoint-3 control register
+    /// device endpoint-1 control register
     pub DOEPCTL3: RWRegister<u32>,
 
     _reserved30: [u32; 1],
@@ -2062,17 +1893,17 @@ pub struct RegisterBlock {
     pub DOEPTSIZ3: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub FS_DCFG: u32,
-    pub FS_DCTL: u32,
-    pub FS_DSTS: u32,
-    pub FS_DIEPMSK: u32,
-    pub FS_DOEPMSK: u32,
-    pub FS_DAINT: u32,
-    pub FS_DAINTMSK: u32,
+    pub DCFG: u32,
+    pub DCTL: u32,
+    pub DSTS: u32,
+    pub DIEPMSK: u32,
+    pub DOEPMSK: u32,
+    pub DAINT: u32,
+    pub DAINTMSK: u32,
     pub DVBUSDIS: u32,
     pub DVBUSPULSE: u32,
     pub DIEPEMPMSK: u32,
-    pub FS_DIEPCTL0: u32,
+    pub DIEPCTL0: u32,
     pub DIEPINT0: u32,
     pub DIEPTSIZ0: u32,
     pub DTXFSTS0: u32,

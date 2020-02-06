@@ -24,10 +24,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: DAC channel1 DMA Underrun Interrupt disabled
+            /// 0b0: DAC channel X DMA Underrun Interrupt disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: DAC channel1 DMA Underrun Interrupt enabled
+            /// 0b1: DAC channel X DMA Underrun Interrupt enabled
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -45,10 +45,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: DAC channel1 DMA mode disabled
+            /// 0b0: DAC channel X DMA mode disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: DAC channel1 DMA mode enabled
+            /// 0b1: DAC channel X DMA mode enabled
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -130,10 +130,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: DAC channel1 trigger disabled
+            /// 0b0: DAC channel X trigger disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: DAC channel1 trigger enabled
+            /// 0b1: DAC channel X trigger enabled
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -151,10 +151,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: DAC channel1 output buffer enabled
+            /// 0b0: DAC channel X output buffer enabled
             pub const Enabled: u32 = 0b0;
 
-            /// 0b1: DAC channel1 output buffer disabled
+            /// 0b1: DAC channel X output buffer disabled
             pub const Disabled: u32 = 0b1;
         }
     }
@@ -172,10 +172,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: DAC channel1 disabled
+            /// 0b0: DAC channel X disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: DAC channel1 enabled
+            /// 0b1: DAC channel X enabled
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -197,10 +197,10 @@ pub mod SWTRIGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: DAC channel1 software trigger disabled
+            /// 0b0: DAC channel X software trigger disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: DAC channel1 software trigger enabled
+            /// 0b1: DAC channel X software trigger enabled
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -294,10 +294,10 @@ pub mod SR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: No DMA underrun error condition occurred for DAC channel1
+            /// 0b0: No DMA underrun error condition occurred for DAC channel X
             pub const NoUnderrun: u32 = 0b0;
 
-            /// 0b1: DMA underrun error condition occurred for DAC channel1
+            /// 0b1: DMA underrun error condition occurred for DAC channel X
             pub const Underrun: u32 = 0b1;
         }
     }

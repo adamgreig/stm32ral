@@ -2,17 +2,17 @@
 #![allow(non_camel_case_types)]
 //! Backup registers
 //!
-//! Used by: stm32f100, stm32f101, stm32f102, stm32f107
+//! Used by: stm32f100, stm32f101, stm32f102, stm32f103, stm32f107
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// Backup data register (BKP_DR)
-pub mod DR1 {
+pub mod DR0 {
 
     /// Backup data
-    pub mod D1 {
+    pub mod D {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -24,744 +24,211 @@ pub mod DR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+}
+
+/// Backup data register (BKP_DR)
+pub mod DR1 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR2 {
-
-    /// Backup data
-    pub mod D2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR3 {
-
-    /// Backup data
-    pub mod D3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR4 {
-
-    /// Backup data
-    pub mod D4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR5 {
-
-    /// Backup data
-    pub mod D5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR6 {
-
-    /// Backup data
-    pub mod D6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR7 {
-
-    /// Backup data
-    pub mod D7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR8 {
-
-    /// Backup data
-    pub mod D8 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR9 {
-
-    /// Backup data
-    pub mod D9 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR10 {
-
-    /// Backup data
-    pub mod D10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR0 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR11 {
-
-    /// Backup data
-    pub mod DR11 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR1 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR12 {
-
-    /// Backup data
-    pub mod DR12 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR2 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR13 {
-
-    /// Backup data
-    pub mod DR13 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR3 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR14 {
-
-    /// Backup data
-    pub mod D14 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR4 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR15 {
-
-    /// Backup data
-    pub mod D15 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR5 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR16 {
-
-    /// Backup data
-    pub mod D16 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR6 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR17 {
-
-    /// Backup data
-    pub mod D17 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR7 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR18 {
-
-    /// Backup data
-    pub mod D18 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR8 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR19 {
-
-    /// Backup data
-    pub mod D19 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR9 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR20 {
-
-    /// Backup data
-    pub mod D20 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR10 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR21 {
-
-    /// Backup data
-    pub mod D21 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR11 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR22 {
-
-    /// Backup data
-    pub mod D22 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR12 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR23 {
-
-    /// Backup data
-    pub mod D23 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR13 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR24 {
-
-    /// Backup data
-    pub mod D24 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR14 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR25 {
-
-    /// Backup data
-    pub mod D25 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR15 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR26 {
-
-    /// Backup data
-    pub mod D26 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR16 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR27 {
-
-    /// Backup data
-    pub mod D27 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR17 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR28 {
-
-    /// Backup data
-    pub mod D28 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR18 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR29 {
-
-    /// Backup data
-    pub mod D29 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR19 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR30 {
-
-    /// Backup data
-    pub mod D30 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR20 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR31 {
-
-    /// Backup data
-    pub mod D31 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR21 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR32 {
-
-    /// Backup data
-    pub mod D32 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR22 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR33 {
-
-    /// Backup data
-    pub mod D33 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR23 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR34 {
-
-    /// Backup data
-    pub mod D34 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR24 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR35 {
-
-    /// Backup data
-    pub mod D35 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR25 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR36 {
-
-    /// Backup data
-    pub mod D36 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR26 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR37 {
-
-    /// Backup data
-    pub mod D37 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR27 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR38 {
-
-    /// Backup data
-    pub mod D38 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR28 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR39 {
-
-    /// Backup data
-    pub mod D39 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR29 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR40 {
-
-    /// Backup data
-    pub mod D40 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR30 {
+    pub use super::DR0::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR41 {
-
-    /// Backup data
-    pub mod D41 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// Backup data register (BKP_DR)
-pub mod DR42 {
-
-    /// Backup data
-    pub mod D42 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod BKP_DR31 {
+    pub use super::DR0::D;
 }
 
 /// RTC clock calibration register (BKP_RTCCR)
@@ -805,8 +272,15 @@ pub mod RTCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Setting this bit outputs either the RTC Alarm pulse signal or the Second pulse signal on the TAMPER pin depending on the ASOS bit
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Alarm or second output selection
@@ -819,8 +293,15 @@ pub mod RTCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RTC Alarm pulse output selected
+            pub const Alarm: u32 = 0b0;
+
+            /// 0b1: RTC Second pulse output selected
+            pub const Second: u32 = 0b1;
+        }
     }
 }
 
@@ -837,8 +318,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The TAMPER pin is free for general purpose I/O
+            pub const General: u32 = 0b0;
+
+            /// 0b1: Tamper alternate I/O function is activated
+            pub const Alternate: u32 = 0b1;
+        }
     }
 
     /// Tamper pin active level
@@ -851,8 +339,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: A high level on the TAMPER pin resets all data backup registers (if TPE bit is set)
+            pub const High: u32 = 0b0;
+
+            /// 0b1: A low level on the TAMPER pin resets all data backup registers (if TPE bit is set)
+            pub const Low: u32 = 0b1;
+        }
     }
 }
 
@@ -867,8 +362,12 @@ pub mod CSR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Reset the TEF Tamper event flag (and the Tamper detector)
+            pub const Reset: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -881,8 +380,12 @@ pub mod CSR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear the Tamper interrupt and the TIF Tamper interrupt flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -897,8 +400,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tamper interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tamper interrupt enabled (the TPE bit must also be set in the BKP_CR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Tamper Event Flag
@@ -931,6 +441,9 @@ pub mod CSR {
 }
 pub struct RegisterBlock {
     /// Backup data register (BKP_DR)
+    pub DR0: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
     pub DR1: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
@@ -957,9 +470,6 @@ pub struct RegisterBlock {
     /// Backup data register (BKP_DR)
     pub DR9: RWRegister<u32>,
 
-    /// Backup data register (BKP_DR)
-    pub DR10: RWRegister<u32>,
-
     /// RTC clock calibration register (BKP_RTCCR)
     pub RTCCR: RWRegister<u32>,
 
@@ -972,102 +482,103 @@ pub struct RegisterBlock {
     _reserved1: [u32; 2],
 
     /// Backup data register (BKP_DR)
-    pub DR11: RWRegister<u32>,
+    pub BKP_DR0: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR12: RWRegister<u32>,
+    pub BKP_DR1: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR13: RWRegister<u32>,
+    pub BKP_DR2: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR14: RWRegister<u32>,
+    pub BKP_DR3: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR15: RWRegister<u32>,
+    pub BKP_DR4: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR16: RWRegister<u32>,
+    pub BKP_DR5: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR17: RWRegister<u32>,
+    pub BKP_DR6: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR18: RWRegister<u32>,
+    pub BKP_DR7: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR19: RWRegister<u32>,
+    pub BKP_DR8: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR20: RWRegister<u32>,
+    pub BKP_DR9: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR21: RWRegister<u32>,
+    pub BKP_DR10: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR22: RWRegister<u32>,
+    pub BKP_DR11: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR23: RWRegister<u32>,
+    pub BKP_DR12: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR24: RWRegister<u32>,
+    pub BKP_DR13: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR25: RWRegister<u32>,
+    pub BKP_DR14: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR26: RWRegister<u32>,
+    pub BKP_DR15: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR27: RWRegister<u32>,
+    pub BKP_DR16: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR28: RWRegister<u32>,
+    pub BKP_DR17: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR29: RWRegister<u32>,
+    pub BKP_DR18: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR30: RWRegister<u32>,
+    pub BKP_DR19: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR31: RWRegister<u32>,
+    pub BKP_DR20: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR32: RWRegister<u32>,
+    pub BKP_DR21: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR33: RWRegister<u32>,
+    pub BKP_DR22: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR34: RWRegister<u32>,
+    pub BKP_DR23: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR35: RWRegister<u32>,
+    pub BKP_DR24: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR36: RWRegister<u32>,
+    pub BKP_DR25: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR37: RWRegister<u32>,
+    pub BKP_DR26: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR38: RWRegister<u32>,
+    pub BKP_DR27: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR39: RWRegister<u32>,
+    pub BKP_DR28: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR40: RWRegister<u32>,
+    pub BKP_DR29: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR41: RWRegister<u32>,
+    pub BKP_DR30: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
-    pub DR42: RWRegister<u32>,
+    pub BKP_DR31: RWRegister<u32>,
 }
 pub struct ResetValues {
+    pub DR0: u32,
     pub DR1: u32,
     pub DR2: u32,
     pub DR3: u32,
@@ -1077,42 +588,41 @@ pub struct ResetValues {
     pub DR7: u32,
     pub DR8: u32,
     pub DR9: u32,
-    pub DR10: u32,
     pub RTCCR: u32,
     pub CR: u32,
     pub CSR: u32,
-    pub DR11: u32,
-    pub DR12: u32,
-    pub DR13: u32,
-    pub DR14: u32,
-    pub DR15: u32,
-    pub DR16: u32,
-    pub DR17: u32,
-    pub DR18: u32,
-    pub DR19: u32,
-    pub DR20: u32,
-    pub DR21: u32,
-    pub DR22: u32,
-    pub DR23: u32,
-    pub DR24: u32,
-    pub DR25: u32,
-    pub DR26: u32,
-    pub DR27: u32,
-    pub DR28: u32,
-    pub DR29: u32,
-    pub DR30: u32,
-    pub DR31: u32,
-    pub DR32: u32,
-    pub DR33: u32,
-    pub DR34: u32,
-    pub DR35: u32,
-    pub DR36: u32,
-    pub DR37: u32,
-    pub DR38: u32,
-    pub DR39: u32,
-    pub DR40: u32,
-    pub DR41: u32,
-    pub DR42: u32,
+    pub BKP_DR0: u32,
+    pub BKP_DR1: u32,
+    pub BKP_DR2: u32,
+    pub BKP_DR3: u32,
+    pub BKP_DR4: u32,
+    pub BKP_DR5: u32,
+    pub BKP_DR6: u32,
+    pub BKP_DR7: u32,
+    pub BKP_DR8: u32,
+    pub BKP_DR9: u32,
+    pub BKP_DR10: u32,
+    pub BKP_DR11: u32,
+    pub BKP_DR12: u32,
+    pub BKP_DR13: u32,
+    pub BKP_DR14: u32,
+    pub BKP_DR15: u32,
+    pub BKP_DR16: u32,
+    pub BKP_DR17: u32,
+    pub BKP_DR18: u32,
+    pub BKP_DR19: u32,
+    pub BKP_DR20: u32,
+    pub BKP_DR21: u32,
+    pub BKP_DR22: u32,
+    pub BKP_DR23: u32,
+    pub BKP_DR24: u32,
+    pub BKP_DR25: u32,
+    pub BKP_DR26: u32,
+    pub BKP_DR27: u32,
+    pub BKP_DR28: u32,
+    pub BKP_DR29: u32,
+    pub BKP_DR30: u32,
+    pub BKP_DR31: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

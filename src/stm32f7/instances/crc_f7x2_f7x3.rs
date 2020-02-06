@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::crc_v1::Instance;
-pub use crate::stm32f7::peripherals::crc_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::crc_v1::{CR, DR, IDR, INIT, POL};
+pub use crate::stm32f7::peripherals::crc_v2::Instance;
+pub use crate::stm32f7::peripherals::crc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::crc_v2::{CR, DR, IDR, INIT, POL};
 
 /// Access functions for the CRC peripheral instance
 pub mod CRC {

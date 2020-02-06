@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go high speed
 //!
-//! Used by: stm32f7x5, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f7x2, stm32f7x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1633,7 +1633,7 @@ pub mod OTG_HS {
 }
 
 /// OTG_HS nonperiodic transmit FIFO/queue status register
-pub mod OTG_HS_GNPTXSTS {
+pub mod OTG_HS_HNPTXSTS {
 
     /// Nonperiodic TxFIFO space available
     pub mod NPTXFSAV {
@@ -2153,6 +2153,136 @@ pub mod OTG_HS_GLPMCFG {
         pub mod RW {}
     }
 }
+
+/// OTG I2C access register
+pub mod OTG_HS_GI2CCTL {
+
+    /// I2C Busy/Done
+    pub mod BSYDNE {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Read/Write Indicator
+    pub mod RW {
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C DatSe0 USB mode
+    pub mod I2CDATSE0 {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (1 bit: 1 << 28)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C Device Address
+    pub mod I2CDEVADR {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (2 bits: 0b11 << 26)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C ACK
+    pub mod ACK {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C Enable
+    pub mod I2CEN {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C Address
+    pub mod ADDR {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (7 bits: 0x7f << 16)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C Register Address
+    pub mod REGADDR {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C Read/Write Data
+    pub mod RWDATA {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 pub struct RegisterBlock {
     /// OTG_HS control and status register
     pub OTG_HS_GOTGCTL: RWRegister<u32>,
@@ -2194,9 +2324,12 @@ pub struct RegisterBlock {
     pub OTG_HS: RWRegister<u32>,
 
     /// OTG_HS nonperiodic transmit FIFO/queue status register
-    pub OTG_HS_GNPTXSTS: RORegister<u32>,
+    pub OTG_HS_HNPTXSTS: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    /// OTG I2C access register
+    pub OTG_HS_GI2CCTL: RWRegister<u32>,
+
+    _reserved1: [u32; 1],
 
     /// OTG_HS general core configuration register
     pub OTG_HS_GCCFG: RWRegister<u32>,
@@ -2219,8 +2352,6 @@ pub struct RegisterBlock {
 
     /// OTG_HS device IN endpoint transmit FIFO size register
     pub OTG_HS_DIEPTXF2: RWRegister<u32>,
-
-    _reserved4: [u32; 4],
 
     /// OTG_HS device IN endpoint transmit FIFO size register
     pub OTG_HS_DIEPTXF3: RWRegister<u32>,
@@ -2249,7 +2380,8 @@ pub struct ResetValues {
     pub OTG_HS_GRXSTSP: u32,
     pub OTG_HS_GRXFSIZ: u32,
     pub OTG_HS: u32,
-    pub OTG_HS_GNPTXSTS: u32,
+    pub OTG_HS_HNPTXSTS: u32,
+    pub OTG_HS_GI2CCTL: u32,
     pub OTG_HS_GCCFG: u32,
     pub OTG_HS_CID: u32,
     pub OTG_HS_GLPMCFG: u32,

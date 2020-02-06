@@ -75,8 +75,8 @@ pub mod BPCR {
 /// Active Width Configuration Register
 pub mod AWCR {
 
-    /// AAV
-    pub mod AAV {
+    /// Accumulated Active Width (in units of pixel clock period)
+    pub mod AAW {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (10 bits: 0x3ff << 16)

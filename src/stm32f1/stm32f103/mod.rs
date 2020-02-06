@@ -8,7 +8,7 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::fsmc;
+pub use super::instances::fsmc_f101_f103 as fsmc;
 pub use super::instances::pwr;
 pub mod rcc;
 pub use super::instances::afio;
@@ -16,9 +16,9 @@ pub use super::instances::dma;
 pub use super::instances::exti;
 pub use super::instances::gpio;
 pub mod sdio;
-pub use super::instances::rtc;
-pub mod bkp;
+pub use super::instances::bkp;
 pub use super::instances::iwdg;
+pub use super::instances::rtc;
 pub use super::instances::tim1_f103_f107 as tim1;
 pub use super::instances::wwdg;
 pub mod tim8;
@@ -31,15 +31,15 @@ pub use super::instances::tim13_f101_f103 as tim13;
 pub use super::instances::tim14_f101_f103 as tim14;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
-pub use super::instances::tim4;
-pub use super::instances::tim5;
+pub use super::instances::tim4_f101_f103_f107 as tim4;
+pub use super::instances::tim5_f101_f103_f107 as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim9;
 pub use super::instances::usart;
-pub mod adc;
 pub mod adc1;
-pub use super::instances::can;
+pub mod adc2;
+pub mod can;
 pub use super::instances::dac_f101_f103_f107 as dac;
 pub mod dbgmcu;
 pub use super::instances::crc;
@@ -60,6 +60,7 @@ pub use super::instances::scb_actrl;
 pub use super::instances::stk;
 pub use super::instances::uart;
 pub use super::instances::usb;
+pub mod adc3;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -106,8 +107,7 @@ pub struct Peripherals {
     pub USART2: usart::Instance,
     pub USART3: usart::Instance,
     pub ADC1: adc1::Instance,
-    pub ADC2: adc::Instance,
-    pub ADC3: adc::Instance,
+    pub ADC2: adc2::Instance,
     pub CAN1: can::Instance,
     pub CAN2: can::Instance,
     pub DAC: dac::Instance,
@@ -131,6 +131,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
+    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtfm", feature = "nosync"))]
@@ -183,8 +184,7 @@ impl Peripherals {
             USART2: usart::USART2::steal(),
             USART3: usart::USART3::steal(),
             ADC1: adc1::ADC1::steal(),
-            ADC2: adc::ADC2::steal(),
-            ADC3: adc::ADC3::steal(),
+            ADC2: adc2::ADC2::steal(),
             CAN1: can::CAN1::steal(),
             CAN2: can::CAN2::steal(),
             DAC: dac::DAC::steal(),
@@ -208,6 +208,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
+            ADC3: adc3::ADC3::steal(),
         }
     }
 }

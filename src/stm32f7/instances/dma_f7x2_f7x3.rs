@@ -5,9 +5,9 @@
 //! Used by: stm32f7x2, stm32f7x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::dma_v1::Instance;
-pub use crate::stm32f7::peripherals::dma_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::dma_v1::{
+pub use crate::stm32f7::peripherals::dma_v2::Instance;
+pub use crate::stm32f7::peripherals::dma_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::dma_v2::{
     HIFCR, HISR, LIFCR, LISR, S0CR, S0FCR, S0M0AR, S0M1AR, S0NDTR, S0PAR, S1CR, S1FCR, S1M0AR,
     S1M1AR, S1NDTR, S1PAR, S2CR, S2FCR, S2M0AR, S2M1AR, S2NDTR, S2PAR, S3CR, S3FCR, S3M0AR, S3M1AR,
     S3NDTR, S3PAR, S4CR, S4FCR, S4M0AR, S4M1AR, S4NDTR, S4PAR, S5CR, S5FCR, S5M0AR, S5M1AR, S5NDTR,

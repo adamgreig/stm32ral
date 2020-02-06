@@ -15,10 +15,21 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No regular channel conversion started
+            pub const NotStarted: u32 = 0b0;
+
+            /// 0b1: Regular channel conversion has started
+            pub const Started: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear the Regular channel Start flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -29,10 +40,21 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No injected group conversion started
+            pub const NotStarted: u32 = 0b0;
+
+            /// 0b1: Injected group conversion has started
+            pub const Started: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear Injected channel Start flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -43,10 +65,21 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Conversion complete
+            pub const Complete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear Injected channel end of conversion flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -57,10 +90,13 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::JEOC::R;
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear End of conversion flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -71,10 +107,21 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No analog watchdog event occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Analog watchdog event occurred
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear the analog watchdog event flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -93,8 +140,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog disabled on regular channels
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Analog watchdog enabled on regular channels
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Analog watchdog enable on injected channels
@@ -107,8 +161,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog disabled on injected channels
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Analog watchdog enabled on injected channels
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Dual mode selection
@@ -121,8 +182,39 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Independent mode
+            pub const Independent: u32 = 0b0000;
+
+            /// 0b0001: Combined regular simultaneous + injected simultaneous mode
+            pub const RegularInjected: u32 = 0b0001;
+
+            /// 0b0010: Combined regular simultaneous + alternate trigger mode
+            pub const RegularAlternateTrigger: u32 = 0b0010;
+
+            /// 0b0011: Combined injected simultaneous + fast interleaved mode
+            pub const InjectedFastInterleaved: u32 = 0b0011;
+
+            /// 0b0100: Combined injected simultaneous + slow interleaved mode
+            pub const InjectedSlowInterleaved: u32 = 0b0100;
+
+            /// 0b0101: Injected simultaneous mode only
+            pub const Injected: u32 = 0b0101;
+
+            /// 0b0110: Regular simultaneous mode only
+            pub const Regular: u32 = 0b0110;
+
+            /// 0b0111: Fast interleaved mode only
+            pub const FastInterleaved: u32 = 0b0111;
+
+            /// 0b1000: Slow interleaved mode only
+            pub const SlowInterleaved: u32 = 0b1000;
+
+            /// 0b1001: Alternate trigger mode only
+            pub const AlternateTrigger: u32 = 0b1001;
+        }
     }
 
     /// Discontinuous mode channel count
@@ -149,8 +241,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Discontinuous mode on injected channels disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Discontinuous mode on injected channels enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Discontinuous mode on regular channels
@@ -163,8 +262,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Discontinuous mode on regular channels disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Discontinuous mode on regular channels enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Automatic injected group conversion
@@ -177,8 +283,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Automatic injected group conversion disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Automatic injected group conversion enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Enable the watchdog on a single channel in scan mode
@@ -191,8 +304,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog enabled on all channels
+            pub const All: u32 = 0b0;
+
+            /// 0b1: Analog watchdog enabled on a single channel
+            pub const Single: u32 = 0b1;
+        }
     }
 
     /// Scan mode
@@ -205,8 +325,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Scan mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Scan mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Interrupt enable for injected channels
@@ -219,8 +346,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: JEOC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: JEOC interrupt enabled. An interrupt is generated when the JEOC bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Analog watchdog interrupt enable
@@ -233,8 +367,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: EOC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: EOC interrupt enabled. An interrupt is generated when the EOC bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Interrupt enable for EOC
@@ -279,8 +420,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Temperature sensor and V_REFINT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Temperature sensor and V_REFINT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Start conversion of regular channels
@@ -289,10 +437,21 @@ pub mod CR2 {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Reset state
+            pub const Started: u32 = 0b0;
+
+            /// 0b1: Starting conversion of regular channels
+            pub const NotStarted: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Start conversion of regular channels
+            pub const Start: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -303,10 +462,21 @@ pub mod CR2 {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Reset state
+            pub const Started: u32 = 0b0;
+
+            /// 0b1: Starting conversion of injected channels
+            pub const NotStarted: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Start conversion of injected channels
+            pub const Start: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -321,8 +491,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Conversion on external event disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Conversion on external event enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// External event select for regular group
@@ -335,8 +512,33 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Timer 1 CC1 event
+            pub const Tim1Cc1: u32 = 0b000;
+
+            /// 0b001: Timer 1 CC2 event
+            pub const Tim1Cc2: u32 = 0b001;
+
+            /// 0b010: Timer 1 CC3 event
+            pub const Tim1Cc3: u32 = 0b010;
+
+            /// 0b011: Timer 2 CC2 event
+            pub const Tim2Cc2: u32 = 0b011;
+
+            /// 0b100: Timer 3 TRGO event
+            pub const Tim3Trgo: u32 = 0b100;
+
+            /// 0b101: Timer 4 CC4 event
+            pub const Tim4Cc4: u32 = 0b101;
+
+            /// 0b110: EXTI line 11/TIM8_TRGO event (TIM8_TRGO is available only in high-density and XL-density devices)
+            pub const Exti11: u32 = 0b110;
+
+            /// 0b111: SWSTART
+            pub const Swstart: u32 = 0b111;
+        }
     }
 
     /// External trigger conversion mode for injected channels
@@ -349,8 +551,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EXTTRIG::RW;
     }
 
     /// External event select for injected group
@@ -363,8 +564,33 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Timer 1 TRGO event
+            pub const Tim1Trgo: u32 = 0b000;
+
+            /// 0b001: Timer 1 CC4 event
+            pub const Tim1Cc4: u32 = 0b001;
+
+            /// 0b010: Timer 2 TRGO event
+            pub const Tim2Trgo: u32 = 0b010;
+
+            /// 0b011: Timer 2 CC1 event
+            pub const Tim2Cc1: u32 = 0b011;
+
+            /// 0b100: Timer 3 CC4 event
+            pub const Tim3Cc4: u32 = 0b100;
+
+            /// 0b101: Timer 4 TRGO event
+            pub const Tim4Trgo: u32 = 0b101;
+
+            /// 0b110: EXTI line15/TIM8_CC4 event (TIM8_CC4 is available only in high-density and XL-density devices)
+            pub const Exti15: u32 = 0b110;
+
+            /// 0b111: JSWSTART
+            pub const Jswstart: u32 = 0b111;
+        }
     }
 
     /// Data alignment
@@ -377,8 +603,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Right Alignment
+            pub const Right: u32 = 0b0;
+
+            /// 0b1: Left Alignment
+            pub const Left: u32 = 0b1;
+        }
     }
 
     /// Direct memory access mode
@@ -391,8 +624,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Reset calibration
@@ -401,10 +641,21 @@ pub mod CR2 {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Calibration register initialized
+            pub const Initialized: u32 = 0b0;
+
+            /// 0b1: Initializing calibration register
+            pub const NotInitialized: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Initialize calibration register
+            pub const Initialize: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -415,10 +666,21 @@ pub mod CR2 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Calibration completed
+            pub const Complete: u32 = 0b0;
+
+            /// 0b1: Calibrating
+            pub const NotComplete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Enable calibration
+            pub const Start: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -433,8 +695,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Single conversion mode
+            pub const Single: u32 = 0b0;
+
+            /// 0b1: Continuous conversion mode
+            pub const Continuous: u32 = 0b1;
+        }
     }
 
     /// A/D converter ON / OFF
@@ -447,8 +716,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable ADC conversion/calibration and go to power down mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable ADC and to start conversion
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -465,8 +741,33 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 1.5 ADC clock cycles
+            pub const Cycles1_5: u32 = 0b000;
+
+            /// 0b001: 7.5 ADC clock cycles
+            pub const Cycles7_5: u32 = 0b001;
+
+            /// 0b010: 13.5 ADC clock cycles
+            pub const Cycles13_5: u32 = 0b010;
+
+            /// 0b011: 28.5 ADC clock cycles
+            pub const Cycles28_5: u32 = 0b011;
+
+            /// 0b100: 41.5 ADC clock cycles
+            pub const Cycles41_5: u32 = 0b100;
+
+            /// 0b101: 55.5 ADC clock cycles
+            pub const Cycles55_5: u32 = 0b101;
+
+            /// 0b110: 71.5 ADC clock cycles
+            pub const Cycles71_5: u32 = 0b110;
+
+            /// 0b111: 239.5 ADC clock cycles
+            pub const Cycles239_5: u32 = 0b111;
+        }
     }
 
     /// Channel 11 sampling time selection
@@ -479,8 +780,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 
     /// Channel 12 sampling time selection
@@ -493,8 +793,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 
     /// Channel 13 sampling time selection
@@ -507,8 +806,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 
     /// Channel 14 sampling time selection
@@ -521,8 +819,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 
     /// Channel 15 sampling time selection
@@ -535,8 +832,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 
     /// Channel 16 sampling time selection
@@ -549,8 +845,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 
     /// Channel 17 sampling time selection
@@ -563,8 +858,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP10::RW;
     }
 }
 
@@ -581,8 +875,33 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 1.5 ADC clock cycles
+            pub const Cycles1_5: u32 = 0b000;
+
+            /// 0b001: 7.5 ADC clock cycles
+            pub const Cycles7_5: u32 = 0b001;
+
+            /// 0b010: 13.5 ADC clock cycles
+            pub const Cycles13_5: u32 = 0b010;
+
+            /// 0b011: 28.5 ADC clock cycles
+            pub const Cycles28_5: u32 = 0b011;
+
+            /// 0b100: 41.5 ADC clock cycles
+            pub const Cycles41_5: u32 = 0b100;
+
+            /// 0b101: 55.5 ADC clock cycles
+            pub const Cycles55_5: u32 = 0b101;
+
+            /// 0b110: 71.5 ADC clock cycles
+            pub const Cycles71_5: u32 = 0b110;
+
+            /// 0b111: 239.5 ADC clock cycles
+            pub const Cycles239_5: u32 = 0b111;
+        }
     }
 
     /// Channel 1 sampling time selection
@@ -595,8 +914,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 2 sampling time selection
@@ -609,8 +927,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 3 sampling time selection
@@ -623,8 +940,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 4 sampling time selection
@@ -637,8 +953,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 5 sampling time selection
@@ -651,8 +966,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 6 sampling time selection
@@ -665,8 +979,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 7 sampling time selection
@@ -679,8 +992,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 8 sampling time selection
@@ -693,8 +1005,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 
     /// Channel 9 sampling time selection
@@ -707,8 +1018,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP0::RW;
     }
 }
 

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 //!
-//! Used by: stm32l0x2, stm32l0x3
+//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod TR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: AM or 24-hour format
+            pub const AM: u32 = 0b0;
+
+            /// 0b1: PM
+            pub const PM: u32 = 0b1;
+        }
     }
 
     /// Hour tens in BCD format
@@ -225,8 +232,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Calibration output disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Calibration output enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output selection
@@ -239,8 +253,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Output disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Alarm A output enabled
+            pub const AlarmA: u32 = 0b01;
+
+            /// 0b10: Alarm B output enabled
+            pub const AlarmB: u32 = 0b10;
+
+            /// 0b11: Wakeup output enabled
+            pub const Wakeup: u32 = 0b11;
+        }
     }
 
     /// Output polarity
@@ -253,8 +280,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The pin is high when ALRAF/ALRBF/WUTF is asserted (depending on OSEL\[1:0\])
+            pub const High: u32 = 0b0;
+
+            /// 0b1: The pin is low when ALRAF/ALRBF/WUTF is asserted (depending on OSEL\[1:0\])
+            pub const Low: u32 = 0b1;
+        }
     }
 
     /// Calibration output selection
@@ -267,8 +301,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Calibration output is 512 Hz (with default prescaler setting)
+            pub const CalFreq_512Hz: u32 = 0b0;
+
+            /// 0b1: Calibration output is 1 Hz (with default prescaler setting)
+            pub const CalFreq_1Hz: u32 = 0b1;
+        }
     }
 
     /// Backup
@@ -281,8 +322,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Daylight Saving Time change has not been performed
+            pub const DST_Not_Changed: u32 = 0b0;
+
+            /// 0b1: Daylight Saving Time change has been performed
+            pub const DST_Changed: u32 = 0b1;
+        }
     }
 
     /// Subtract 1 hour (winter time change)
@@ -293,8 +341,12 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Subtracts 1 hour to the current time. This can be used for winter time change outside initialization mode
+            pub const Sub1: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -307,8 +359,12 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Adds 1 hour to the current time. This can be used for summer time change outside initialization mode
+            pub const Add1: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -323,8 +379,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Time-stamp Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Time-stamp Interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Wakeup timer interrupt enable
@@ -337,8 +400,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wakeup timer interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wakeup timer interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Alarm B interrupt enable
@@ -351,8 +421,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Alarm B Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Alarm B Interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Alarm A interrupt enable
@@ -365,8 +442,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Alarm A interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Alarm A interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// timestamp enable
@@ -379,8 +463,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timestamp disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Timestamp enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Wakeup timer enable
@@ -393,8 +484,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wakeup timer disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wakeup timer enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Alarm B enable
@@ -407,8 +505,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Alarm B disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Alarm B enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Alarm A enable
@@ -421,8 +526,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Alarm A disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Alarm A enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Hour format
@@ -435,8 +547,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 24 hour/day format
+            pub const Twenty_Four_Hour: u32 = 0b0;
+
+            /// 0b1: AM/PM hour format
+            pub const AM_PM: u32 = 0b1;
+        }
     }
 
     /// Bypass the shadow registers
@@ -449,8 +568,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Calendar values (when reading from RTC_SSR, RTC_TR, and RTC_DR) are taken from the shadow registers, which are updated once every two RTCCLK cycles
+            pub const ShadowReg: u32 = 0b0;
+
+            /// 0b1: Calendar values (when reading from RTC_SSR, RTC_TR, and RTC_DR) are taken directly from the calendar counters
+            pub const BypassShadowReg: u32 = 0b1;
+        }
     }
 
     /// RTC_REFIN reference clock detection enable (50 or 60 Hz)
@@ -463,8 +589,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RTC_REFIN detection disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: RTC_REFIN detection enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Time-stamp event active edge
@@ -477,8 +610,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RTC_TS input rising edge generates a time-stamp event
+            pub const RisingEdge: u32 = 0b0;
+
+            /// 0b1: RTC_TS input falling edge generates a time-stamp event
+            pub const FallingEdge: u32 = 0b1;
+        }
     }
 
     /// Wakeup clock selection
@@ -491,8 +631,27 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: RTC/16 clock is selected
+            pub const Div16: u32 = 0b000;
+
+            /// 0b001: RTC/8 clock is selected
+            pub const Div8: u32 = 0b001;
+
+            /// 0b010: RTC/4 clock is selected
+            pub const Div4: u32 = 0b010;
+
+            /// 0b011: RTC/2 clock is selected
+            pub const Div2: u32 = 0b011;
+
+            /// 0b100: ck_spre (usually 1 Hz) clock is selected
+            pub const ClockSpare: u32 = 0b100;
+
+            /// 0b110: ck_spre (usually 1 Hz) clock is selected and 216 is added to the WUT counter value
+            pub const ClockSpareWithOffset: u32 = 0b110;
+        }
     }
 }
 
@@ -505,10 +664,18 @@ pub mod ISR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: This flag is set by hardware when a tamper detection event is detected on the RTC_TAMPx input
+            pub const Tampered: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Flag cleared by software writing 0
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -519,10 +686,8 @@ pub mod ISR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::TAMP2F::R;
+        pub use super::TAMP2F::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -533,10 +698,18 @@ pub mod ISR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: This flag is set by hardware when a time-stamp event occurs while TSF is already set
+            pub const Overflow: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: This flag is cleared by software by writing 0
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -547,10 +720,13 @@ pub mod ISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: This flag is set by hardware when a time-stamp event occurs
+            pub const TimestampEvent: u32 = 0b1;
+        }
+        pub use super::TSOVF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -561,10 +737,13 @@ pub mod ISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: This flag is set by hardware when the wakeup auto-reload counter reaches 0
+            pub const Zero: u32 = 0b1;
+        }
+        pub use super::TSOVF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -575,10 +754,13 @@ pub mod ISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm B register (RTC_ALRMBR)
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::TSOVF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -589,10 +771,13 @@ pub mod ISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm A register (RTC_ALRMAR)
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::TSOVF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -607,8 +792,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Free running mode
+            pub const FreeRunningMode: u32 = 0b0;
+
+            /// 0b1: Initialization mode used to program time and date register (RTC_TR and RTC_DR), and prescaler register (RTC_PRER). Counters are stopped and start counting from the new value when INIT is reset.
+            pub const InitMode: u32 = 0b1;
+        }
     }
 
     /// Initialization flag
@@ -617,8 +809,15 @@ pub mod ISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Calendar registers update is not allowed
+            pub const NotAllowed: u32 = 0b0;
+
+            /// 0b1: Calendar registers update is allowed
+            pub const Allowed: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -631,10 +830,16 @@ pub mod ISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Calendar shadow registers not yet synchronized
+            pub const NotSynced: u32 = 0b0;
+
+            /// 0b1: Calendar shadow registers synchronized
+            pub const Synced: u32 = 0b1;
+        }
+        pub use super::TSOVF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -645,8 +850,15 @@ pub mod ISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Calendar has not been initialized
+            pub const NotInitalized: u32 = 0b0;
+
+            /// 0b1: Calendar has been initialized
+            pub const Initalized: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -659,8 +871,15 @@ pub mod ISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No shift operation is pending
+            pub const NoShiftPending: u32 = 0b0;
+
+            /// 0b1: A shift operation is pending
+            pub const ShiftPending: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -673,8 +892,15 @@ pub mod ISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Wakeup timer configuration update not allowed
+            pub const UpdateNotAllowed: u32 = 0b0;
+
+            /// 0b1: Wakeup timer configuration update allowed
+            pub const UpdateAllowed: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -687,8 +913,15 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Alarm update not allowed
+            pub const UpdateNotAllowed: u32 = 0b0;
+
+            /// 0b1: Alarm update allowed
+            pub const UpdateAllowed: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -701,10 +934,39 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ALRBWF::R;
         /// Write-only values (empty)
         pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Recalibration pending flag
+    pub mod RECALPF {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: The RECALPF status flag is automatically set to 1 when software writes to the RTC_CALR register, indicating that the RTC_CALR register is blocked. When the new calibration settings are taken into account, this bit returns to 0
+            pub const Pending: u32 = 0b1;
+        }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RTC_TAMP3 detection flag
+    pub mod TAMP3F {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        pub use super::TAMP2F::R;
+        pub use super::TAMP2F::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -773,8 +1035,15 @@ pub mod ALRMAR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Alarm set if the date/day match
+            pub const Mask: u32 = 0b0;
+
+            /// 0b1: Date/day don’t care in Alarm comparison
+            pub const NotMask: u32 = 0b1;
+        }
     }
 
     /// Week day selection
@@ -787,8 +1056,15 @@ pub mod ALRMAR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DU\[3:0\] represents the date units
+            pub const DateUnits: u32 = 0b0;
+
+            /// 0b1: DU\[3:0\] represents the week day. DT\[1:0\] is don’t care.
+            pub const WeekDay: u32 = 0b1;
+        }
     }
 
     /// Date tens in BCD format.
@@ -829,8 +1105,7 @@ pub mod ALRMAR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSK4::RW;
     }
 
     /// AM/PM notation
@@ -843,8 +1118,15 @@ pub mod ALRMAR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: AM or 24-hour format
+            pub const AM: u32 = 0b0;
+
+            /// 0b1: PM
+            pub const PM: u32 = 0b1;
+        }
     }
 
     /// Hour tens in BCD format.
@@ -885,8 +1167,7 @@ pub mod ALRMAR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSK4::RW;
     }
 
     /// Minute tens in BCD format.
@@ -927,8 +1208,7 @@ pub mod ALRMAR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MSK4::RW;
     }
 
     /// Second tens in BCD format.
@@ -1025,8 +1305,12 @@ pub mod SHIFTR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Add one second to the clock/calendar
+            pub const Add1: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1240,11 +1524,18 @@ pub mod CALR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No RTCCLK pulses are added
+            pub const NoChange: u32 = 0b0;
+
+            /// 0b1: One RTCCLK pulse is effectively inserted every 2^11 pulses (frequency increased by 488.5 ppm)
+            pub const IncreaseFreq: u32 = 0b1;
+        }
     }
 
-    /// Use a 8-second calibration cycle period
+    /// Use an 8-second calibration cycle period
     pub mod CALW8 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -1254,8 +1545,12 @@ pub mod CALR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: When CALW8 is set to ‘1’, the 8-second calibration cycle period is selected
+            pub const Eight_Second: u32 = 0b1;
+        }
     }
 
     /// Use a 16-second calibration cycle period
@@ -1268,8 +1563,12 @@ pub mod CALR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: When CALW16 is set to ‘1’, the 16-second calibration cycle period is selected.This bit must not be set to ‘1’ if CALW8=1
+            pub const Sixteen_Second: u32 = 0b1;
+        }
     }
 
     /// Calibration minus
@@ -1300,8 +1599,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tamper x event generates a trigger event and TAMPxF must be cleared by software to allow next tamper event detection
+            pub const NotMasked: u32 = 0b0;
+
+            /// 0b1: Tamper x event generates a trigger event. TAMPxF is masked and internally cleared by hardware. The backup registers are not erased.
+            pub const Masked: u32 = 0b1;
+        }
     }
 
     /// Tamper 2 no erase
@@ -1314,8 +1620,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tamper x event erases the backup registers
+            pub const Erase: u32 = 0b0;
+
+            /// 0b1: Tamper x event does not erase the backup registers
+            pub const NoErase: u32 = 0b1;
+        }
     }
 
     /// Tamper 2 interrupt enable
@@ -1328,8 +1641,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tamper x interrupt is disabled if TAMPIE = 0
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tamper x interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Tamper 1 mask flag
@@ -1342,8 +1662,7 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TAMP2MF::RW;
     }
 
     /// Tamper 1 no erase
@@ -1356,8 +1675,7 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TAMP2NOERASE::RW;
     }
 
     /// Tamper 1 interrupt enable
@@ -1370,8 +1688,7 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TAMP2IE::RW;
     }
 
     /// RTC_TAMPx pull-up disable
@@ -1384,8 +1701,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Precharge RTC_TAMPx pins before sampling (enable internal pull-up)
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Disable precharge of RTC_TAMPx pins
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// RTC_TAMPx precharge duration
@@ -1398,8 +1722,21 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 1 RTCCLK cycle
+            pub const RTCCLK_1_cycle: u32 = 0b00;
+
+            /// 0b01: 2 RTCCLK cycles
+            pub const RTCCLK_2_cycle: u32 = 0b01;
+
+            /// 0b10: 4 RTCCLK cycles
+            pub const RTCCLK_4_cycle: u32 = 0b10;
+
+            /// 0b11: 8 RTCCLK cycles
+            pub const RTCCLK_8_cycle: u32 = 0b11;
+        }
     }
 
     /// RTC_TAMPx filter count
@@ -1412,8 +1749,21 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Tamper event is activated on edge of RTC_TAMPx input transitions to the active level (no internal pull-up on RTC_TAMPx input)
+            pub const Immediate: u32 = 0b00;
+
+            /// 0b01: Tamper event is activated after 2 consecutive samples at the active level
+            pub const Two_Samples: u32 = 0b01;
+
+            /// 0b10: Tamper event is activated after 4 consecutive samples at the active level
+            pub const Four_Samples: u32 = 0b10;
+
+            /// 0b11: Tamper event is activated after 8 consecutive samples at the active level
+            pub const Eight_Samples: u32 = 0b11;
+        }
     }
 
     /// Tamper sampling frequency
@@ -1426,8 +1776,33 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: RTCCLK / 32768 (1 Hz when RTCCLK = 32768 Hz)
+            pub const Div32768: u32 = 0b000;
+
+            /// 0b001: RTCCLK / 16384 (2 Hz when RTCCLK = 32768 Hz)
+            pub const Div16384: u32 = 0b001;
+
+            /// 0b010: RTCCLK / 8192 (4 Hz when RTCCLK = 32768 Hz)
+            pub const Div8192: u32 = 0b010;
+
+            /// 0b011: RTCCLK / 4096 (8 Hz when RTCCLK = 32768 Hz)
+            pub const Div4096: u32 = 0b011;
+
+            /// 0b100: RTCCLK / 2048 (16 Hz when RTCCLK = 32768 Hz)
+            pub const Div2048: u32 = 0b100;
+
+            /// 0b101: RTCCLK / 1024 (32 Hz when RTCCLK = 32768 Hz)
+            pub const Div1024: u32 = 0b101;
+
+            /// 0b110: RTCCLK / 512 (64 Hz when RTCCLK = 32768 Hz)
+            pub const Div512: u32 = 0b110;
+
+            /// 0b111: RTCCLK / 256 (128 Hz when RTCCLK = 32768 Hz)
+            pub const Div256: u32 = 0b111;
+        }
     }
 
     /// Activate timestamp on tamper detection event
@@ -1440,12 +1815,19 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tamper detection event does not cause a timestamp to be saved
+            pub const NoSave: u32 = 0b0;
+
+            /// 0b1: Save timestamp on tamper detection event
+            pub const Save: u32 = 0b1;
+        }
     }
 
     /// Active level for RTC_TAMP2 input
-    pub mod TAMP2_TRG {
+    pub mod TAMP2TRG {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -1454,8 +1836,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: If TAMPFLT = 00: RTC_TAMPx input rising edge triggers a tamper detection event. If TAMPFLT ≠ 00: RTC_TAMPx input staying low triggers a tamper detection event.
+            pub const RisingEdge: u32 = 0b0;
+
+            /// 0b1: If TAMPFLT = 00: RTC_TAMPx input staying high triggers a tamper detection event. If TAMPFLT ≠ 00: RTC_TAMPx input falling edge triggers a tamper detection event
+            pub const FallingEdge: u32 = 0b1;
+        }
     }
 
     /// RTC_TAMP2 input detection enable
@@ -1468,8 +1857,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RTC_TAMPx input detection disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: RTC_TAMPx input detection enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Tamper interrupt enable
@@ -1482,8 +1878,15 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tamper interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tamper interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Active level for RTC_TAMP1 input
@@ -1496,8 +1899,7 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TAMP2TRG::RW;
     }
 
     /// RTC_TAMP1 input detection enable
@@ -1510,8 +1912,72 @@ pub mod TAMPCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TAMP2E::RW;
+    }
+
+    /// Tamper 3 mask flag
+    pub mod TAMP3MF {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TAMP2MF::RW;
+    }
+
+    /// Tamper 3 no erase
+    pub mod TAMP3NOERASE {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TAMP2NOERASE::RW;
+    }
+
+    /// Tamper 3 interrupt enable
+    pub mod TAMP3IE {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TAMP2IE::RW;
+    }
+
+    /// Active level for RTC_TAMP3 input
+    pub mod TAMP3TRG {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TAMP2TRG::RW;
+    }
+
+    /// RTC_TAMP3 detection enable
+    pub mod TAMP3E {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TAMP2E::RW;
     }
 }
 

@@ -2,11 +2,11 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f401, stm32f405, stm32f407, stm32f411, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f401, stm32f411, stm32f412, stm32f413, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::otg_fs_pwrclk::Instance;
-pub use crate::stm32f4::peripherals::otg_fs_pwrclk::FS_PCGCCTL;
+pub use crate::stm32f4::peripherals::otg_fs_pwrclk::PCGCCTL;
 pub use crate::stm32f4::peripherals::otg_fs_pwrclk::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG_FS_PWRCLK peripheral instance
@@ -24,7 +24,7 @@ pub mod OTG_FS_PWRCLK {
 
     /// Reset values for each field in OTG_FS_PWRCLK
     pub const reset: ResetValues = ResetValues {
-        FS_PCGCCTL: 0x00000000,
+        PCGCCTL: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

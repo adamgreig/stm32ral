@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! CPUID
 //!
-//! Used by: armv7_m, armv7e_m
+//! Used by: armv7em, armv7m
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

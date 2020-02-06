@@ -436,12 +436,6 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0000: PLL input clock x2
-            pub const Mul2: u32 = 0b0000;
-
-            /// 0b0001: PLL input clock x3
-            pub const Mul3: u32 = 0b0001;
-
             /// 0b0010: PLL input clock x4
             pub const Mul4: u32 = 0b0010;
 
@@ -460,26 +454,8 @@ pub mod CFGR {
             /// 0b0111: PLL input clock x9
             pub const Mul9: u32 = 0b0111;
 
-            /// 0b1000: PLL input clock x10
-            pub const Mul10: u32 = 0b1000;
-
-            /// 0b1001: PLL input clock x11
-            pub const Mul11: u32 = 0b1001;
-
-            /// 0b1010: PLL input clock x12
-            pub const Mul12: u32 = 0b1010;
-
-            /// 0b1011: PLL input clock x13
-            pub const Mul13: u32 = 0b1011;
-
-            /// 0b1100: PLL input clock x14
-            pub const Mul14: u32 = 0b1100;
-
-            /// 0b1101: PLL input clock x15
-            pub const Mul15: u32 = 0b1101;
-
-            /// 0b1111: PLL input clock x16
-            pub const Mul16: u32 = 0b1111;
+            /// 0b1101: PLL input clock x6.5
+            pub const Mul6_5: u32 = 0b1101;
         }
     }
 
@@ -529,8 +505,20 @@ pub mod CFGR {
             /// 0b0110: HSE oscillator clock selected
             pub const HSE: u32 = 0b0110;
 
-            /// 0b0111: PLL clock selected (divided by 1 or 2, depending en PLLNODIV)
+            /// 0b0111: PLL clock divided by 2 selected
             pub const PLL: u32 = 0b0111;
+
+            /// 0b1000: PLL2 clock selected
+            pub const PLL2: u32 = 0b1000;
+
+            /// 0b1001: PLL3 clock divided by 2 selected
+            pub const PLL3: u32 = 0b1001;
+
+            /// 0b1010: XT1 external 3-25 MHz oscillator clock selected (for Ethernet)
+            pub const XT1: u32 = 0b1010;
+
+            /// 0b1011: PLL3 clock selected (for Ethernet)
+            pub const PLL3Ethernet: u32 = 0b1011;
         }
     }
 }

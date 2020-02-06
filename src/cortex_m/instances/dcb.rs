@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Debug Control Block
 //!
-//! Used by: armv6_m, armv7_m, armv7e_m
+//! Used by: armv6m, armv7em, armv7m
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::cortex_m::peripherals::dcb::Instance;

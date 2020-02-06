@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FLASH
 //!
-//! Used by: stm32f7x7, stm32f7x9
+//! Used by: stm32f765, stm32f7x7, stm32f7x9
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -247,8 +247,8 @@ pub mod SR {
         pub mod RW {}
     }
 
-    /// Programming sequence error
-    pub mod PGSERR {
+    /// Erase Sequence Error
+    pub mod ERSERR {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -316,7 +316,7 @@ pub mod CR {
     }
 
     /// Mass Erase of sectors 0 to 11
-    pub mod MER {
+    pub mod MER1 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -328,7 +328,7 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Erase activated for all user sectors
+            /// 0b1: Erase activated for all user sectors or bank 1 in dual bank mode
             pub const MassErase: u32 = 0b1;
         }
     }
@@ -375,7 +375,7 @@ pub mod CR {
     }
 
     /// Mass Erase of sectors 12 to 23
-    pub mod MER1 {
+    pub mod MER2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -384,8 +384,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Erase activated for bank 2 in dual bank mode
+            pub const MassErase: u32 = 0b1;
+        }
     }
 
     /// Start
@@ -599,34 +603,6 @@ pub mod OPTCR {
         pub mod RW {}
     }
 
-    /// Dual Boot mode (valid only when nDBANK=0)
-    pub mod nDBOOT {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Not dual bank mode
-    pub mod nDBANK {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// Independent watchdog counter freeze in standby mode
     pub mod IWDG_STDBY {
         /// Offset (30 bits)
@@ -646,6 +622,34 @@ pub mod OPTCR {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Dual Boot mode (valid only when nDBANK=0)
+    pub mod nDBOOT {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (1 bit: 1 << 28)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Not dual bank mode
+    pub mod nDBANK {
+        /// Offset (29 bits)
+        pub const offset: u32 = 29;
+        /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

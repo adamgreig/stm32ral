@@ -61,24 +61,56 @@ fn main() {
             "src/stm32f4/stm32f446/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F469").is_some() {
             "src/stm32f4/stm32f469/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32F745").is_some() {
+            "src/stm32f7/stm32f745/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32F765").is_some() {
+            "src/stm32f7/stm32f765/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F7X2").is_some() {
             "src/stm32f7/stm32f7x2/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F7X3").is_some() {
             "src/stm32f7/stm32f7x3/device.x"
-        } else if env::var_os("CARGO_FEATURE_STM32F7X5").is_some() {
-            "src/stm32f7/stm32f7x5/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F7X6").is_some() {
             "src/stm32f7/stm32f7x6/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F7X7").is_some() {
             "src/stm32f7/stm32f7x7/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F7X9").is_some() {
             "src/stm32f7/stm32f7x9/device.x"
-        } else if env::var_os("CARGO_FEATURE_STM32G0X0").is_some() {
-            "src/stm32g0/stm32g0x0/device.x"
-        } else if env::var_os("CARGO_FEATURE_STM32G0X1").is_some() {
-            "src/stm32g0/stm32g0x1/device.x"
-        } else if env::var_os("CARGO_FEATURE_STM32H7X3").is_some() {
-            "src/stm32h7/stm32h7x3/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G030").is_some() {
+            "src/stm32g0/stm32g030/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G031").is_some() {
+            "src/stm32g0/stm32g031/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G041").is_some() {
+            "src/stm32g0/stm32g041/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G07X").is_some() {
+            "src/stm32g0/stm32g07x/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G081").is_some() {
+            "src/stm32g0/stm32g081/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G431").is_some() {
+            "src/stm32g4/stm32g431/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G441").is_some() {
+            "src/stm32g4/stm32g441/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G471").is_some() {
+            "src/stm32g4/stm32g471/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G473").is_some() {
+            "src/stm32g4/stm32g473/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G474").is_some() {
+            "src/stm32g4/stm32g474/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G483").is_some() {
+            "src/stm32g4/stm32g483/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G484").is_some() {
+            "src/stm32g4/stm32g484/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H743").is_some() {
+            "src/stm32h7/stm32h743/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H743V").is_some() {
+            "src/stm32h7/stm32h743v/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H747CM7").is_some() {
+            "src/stm32h7/stm32h747cm7/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H753").is_some() {
+            "src/stm32h7/stm32h753/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H753V").is_some() {
+            "src/stm32h7/stm32h753v/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H757CM7").is_some() {
+            "src/stm32h7/stm32h757cm7/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L0X1").is_some() {
             "src/stm32l0/stm32l0x1/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L0X2").is_some() {

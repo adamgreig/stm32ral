@@ -19,7 +19,6 @@ extern "C" {
     fn DMA1_Channel5();
     fn DMA1_Channel6();
     fn DMA1_Channel7();
-    fn ADC1_2();
     fn USB_HP_CAN_TX();
     fn USB_LP_CAN_RX0();
     fn CAN_RX1();
@@ -114,7 +113,7 @@ pub static __INTERRUPTS: [Vector; 68] = [
     Vector {
         _handler: DMA1_Channel7,
     },
-    Vector { _handler: ADC1_2 },
+    Vector { _reserved: 0 },
     Vector {
         _handler: USB_HP_CAN_TX,
     },
@@ -229,8 +228,6 @@ pub enum Interrupt {
     DMA1_Channel6 = 16,
     /// 17: DMA1 Channel7 global interrupt
     DMA1_Channel7 = 17,
-    /// 18: ADC1 and ADC2 global interrupt
-    ADC1_2 = 18,
     /// 19: USB High Priority or CAN TX interrupts
     USB_HP_CAN_TX = 19,
     /// 20: USB Low Priority or CAN RX0 interrupts

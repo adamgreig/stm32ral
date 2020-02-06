@@ -5,9 +5,9 @@
 //! Used by: stm32l4x3, stm32l4x5
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::usb_v2::Instance;
-pub use crate::stm32l4::peripherals::usb_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::usb_v2::{
+pub use crate::stm32l4::peripherals::usb::Instance;
+pub use crate::stm32l4::peripherals::usb::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::usb::{
     BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR,
 };
 
