@@ -1840,6 +1840,10 @@ def main():
             if device_family not in [f.name for f in crate.families]:
                 crate.families.append(Family(device_family))
             family = [f for f in crate.families if f.name == device_family][0]
+            if device.name in [d.name for d in family.devices]:
+                print(f"Warning: {device.name} already exists in {family},"
+                      " skipping.")
+                continue
             family.devices.append(device)
 
     print("Running refactors...")
