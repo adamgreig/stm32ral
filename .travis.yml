@@ -1,6 +1,6 @@
 language: python
 
-python: 3.6
+python: 3.7
 
 matrix:
   include:
@@ -10,7 +10,7 @@ matrix:
       env: RUST_TOOLCHAIN="beta"
 
 install:
-  - pip install pyyaml
+  - pip install svdtools
   - cd stm32-rs/svd && ./extract.sh && cd ../..
   - curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain=$RUST_TOOLCHAIN
   - export PATH="$HOME/.cargo/bin:$PATH"
