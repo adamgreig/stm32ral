@@ -1462,8 +1462,8 @@ pub mod APB1RSTR1 {
         pub mod RW {}
     }
 
-    /// USART1 reset
-    pub mod USART1RST {
+    /// USART3 reset
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -2144,8 +2144,8 @@ pub mod APB1ENR1 {
         pub mod RW {}
     }
 
-    /// USART3 clock enable
-    pub mod USART3EN {
+    /// USART1 clock enable
+    pub mod USART1EN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -2186,8 +2186,8 @@ pub mod APB1ENR1 {
         pub mod RW {}
     }
 
-    /// SPI1 clock enable
-    pub mod SPI1EN {
+    /// SPI peripheral 2 clock enable
+    pub mod SPI2EN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)

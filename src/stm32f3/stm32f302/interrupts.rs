@@ -48,7 +48,6 @@ extern "C" {
     fn TIM8_UP();
     fn TIM8_TRG_COM();
     fn TIM8_CC();
-    fn ADC3();
     fn FMC();
     fn SPI3();
     fn UART4_EXTI34();
@@ -60,7 +59,8 @@ extern "C" {
     fn DMA2_CH3();
     fn DMA2_CH4();
     fn DMA2_CH5();
-    fn ADC4();
+    fn COMP1_2_3();
+    fn COMP4_5_6();
     fn USB_HP();
     fn USB_LP();
     fn USB_WKUP_EXTI();
@@ -153,7 +153,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
         _handler: TIM8_TRG_COM,
     },
     Vector { _handler: TIM8_CC },
-    Vector { _handler: ADC3 },
+    Vector { _reserved: 0 },
     Vector { _handler: FMC },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -173,11 +173,15 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: DMA2_CH3 },
     Vector { _handler: DMA2_CH4 },
     Vector { _handler: DMA2_CH5 },
-    Vector { _handler: ADC4 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: COMP1_2_3,
+    },
+    Vector {
+        _handler: COMP4_5_6,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -297,8 +301,6 @@ pub enum Interrupt {
     TIM8_TRG_COM = 45,
     /// 46: TIM8 capture compare interrupt
     TIM8_CC = 46,
-    /// 47: ADC3 global interrupt
-    ADC3 = 47,
     /// 48: FSMC global interrupt
     FMC = 48,
     /// 51: SPI3 global interrupt
@@ -321,8 +323,10 @@ pub enum Interrupt {
     DMA2_CH4 = 59,
     /// 60: DMA2 channel5 global interrupt
     DMA2_CH5 = 60,
-    /// 61: ADC4 global interrupt
-    ADC4 = 61,
+    /// 64: COMP1_2_3 interrupt combined with EXTI lines 21, 22, 29
+    COMP1_2_3 = 64,
+    /// 65: COMP4_5_6 interrupt combined with EXTI lines 30, 31, 32
+    COMP4_5_6 = 65,
     /// 74: USB High priority interrupt
     USB_HP = 74,
     /// 75: USB Low priority interrupt

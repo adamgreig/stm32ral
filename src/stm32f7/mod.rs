@@ -6,6 +6,9 @@ pub mod peripherals;
 /// Peripheral instances shared by multiple devices
 pub(crate) mod instances;
 
+#[cfg(any(feature="stm32f730", feature="doc"))]
+pub mod stm32f730;
+
 #[cfg(any(feature="stm32f745", feature="doc"))]
 pub mod stm32f745;
 

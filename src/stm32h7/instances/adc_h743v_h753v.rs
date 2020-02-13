@@ -8,8 +8,8 @@
 pub use crate::stm32h7::peripherals::adc_v2::Instance;
 pub use crate::stm32h7::peripherals::adc_v2::{RegisterBlock, ResetValues};
 pub use crate::stm32h7::peripherals::adc_v2::{
-    AWD2CR, AWD3CR, CALFACT, CALFACT2, CFGR, CFGR2, CR, DIFSEL, DR, HTR2, HTR3, IER, ISR, JDR1,
-    JDR2, JDR3, JDR4, JSQR, LHTR1, LTR1, LTR2, LTR3, OFR1, OFR2, OFR3, OFR4, PCSEL, SMPR1, SMPR2,
+    AWD2CR, AWD3CR, CALFACT, CALFACT2, CFGR, CFGR2, CR, DIFSEL, DR, HTR1, HTR2, HTR3, IER, ISR,
+    JDR1, JDR2, JDR3, JDR4, JSQR, LTR1, LTR2, LTR3, OFR1, OFR2, OFR3, OFR4, PCSEL, SMPR1, SMPR2,
     SQR1, SQR2, SQR3, SQR4,
 };
 
@@ -36,7 +36,7 @@ pub mod ADC1 {
         SMPR1: 0x00000000,
         SMPR2: 0x00000000,
         LTR1: 0x0FFF0000,
-        LHTR1: 0x0FFF0000,
+        HTR1: 0x0FFF0000,
         SQR1: 0x00000000,
         SQR2: 0x00000000,
         SQR3: 0x00000000,
@@ -159,7 +159,7 @@ pub mod ADC2 {
         SMPR1: 0x00000000,
         SMPR2: 0x00000000,
         LTR1: 0x0FFF0000,
-        LHTR1: 0x0FFF0000,
+        HTR1: 0x0FFF0000,
         SQR1: 0x00000000,
         SQR2: 0x00000000,
         SQR3: 0x00000000,
@@ -282,7 +282,7 @@ pub mod ADC3 {
         SMPR1: 0x00000000,
         SMPR2: 0x00000000,
         LTR1: 0x0FFF0000,
-        LHTR1: 0x0FFF0000,
+        HTR1: 0x0FFF0000,
         SQR1: 0x00000000,
         SQR2: 0x00000000,
         SQR3: 0x00000000,

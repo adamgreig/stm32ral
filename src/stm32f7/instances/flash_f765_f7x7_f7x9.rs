@@ -5,9 +5,9 @@
 //! Used by: stm32f765, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::flash_v2::Instance;
-pub use crate::stm32f7::peripherals::flash_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::flash_v2::{ACR, CR, KEYR, OPTCR, OPTCR1, OPTKEYR, SR};
+pub use crate::stm32f7::peripherals::flash_v3::Instance;
+pub use crate::stm32f7::peripherals::flash_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::flash_v3::{ACR, CR, KEYR, OPTCR, OPTCR1, OPTKEYR, SR};
 
 /// Access functions for the FLASH peripheral instance
 pub mod FLASH {

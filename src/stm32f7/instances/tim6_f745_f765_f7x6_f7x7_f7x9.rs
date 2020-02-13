@@ -5,9 +5,9 @@
 //! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::tim6_v1::Instance;
-pub use crate::stm32f7::peripherals::tim6_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::tim6_v1::{ARR, CNT, CR1, CR2, DIER, EGR, PSC, SR};
+pub use crate::stm32f7::peripherals::tim6_v2::Instance;
+pub use crate::stm32f7::peripherals::tim6_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::tim6_v2::{ARR, CNT, CR1, CR2, DIER, EGR, PSC, SR};
 
 /// Access functions for the TIM6 peripheral instance
 pub mod TIM6 {

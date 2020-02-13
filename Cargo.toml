@@ -14,7 +14,7 @@ edition = "2018"
 exclude = ["/stm32-rs"]
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.3.1"
+version = "0.4.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -64,6 +64,7 @@ stm32f427 = ["armv7em"]
 stm32f429 = ["armv7em"]
 stm32f446 = ["armv7em"]
 stm32f469 = ["armv7em"]
+stm32f730 = ["armv7em"]
 stm32f745 = ["armv7em"]
 stm32f765 = ["armv7em"]
 stm32f7x2 = ["armv7em"]
@@ -85,6 +86,7 @@ stm32g483 = ["armv7em"]
 stm32g484 = ["armv7em"]
 stm32h743 = ["armv7em"]
 stm32h743v = ["armv7em"]
+stm32h747cm4 = ["armv7em"]
 stm32h747cm7 = ["armv7em"]
 stm32h753 = ["armv7em"]
 stm32h753v = ["armv7em"]

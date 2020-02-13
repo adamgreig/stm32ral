@@ -1,7 +1,7 @@
 //! stm32ral module for stm32f0x1
 
 /// Number of priority bits implemented by the NVIC
-pub const NVIC_PRIO_BITS: u8 = 3;
+pub const NVIC_PRIO_BITS: u8 = 2;
 
 /// Interrupt-related magic for this device
 pub mod interrupts;

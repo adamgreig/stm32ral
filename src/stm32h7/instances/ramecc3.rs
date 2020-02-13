@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! ECC controller is associated to each RAM area
 //!
-//! Used by: stm32h747cm7, stm32h757cm7
+//! Used by: stm32h747cm4, stm32h747cm7, stm32h757cm7
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::ramecc3::Instance;

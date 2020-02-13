@@ -59,7 +59,7 @@ extern "C" {
     fn SDADC1();
     fn SDADC2();
     fn SDADC3();
-    fn COMP1_2();
+    fn COMP1_2_3();
     fn USB_HP();
     fn USB_LP();
     fn USB_WAKEUP();
@@ -150,7 +150,9 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: SDADC1 },
     Vector { _handler: SDADC2 },
     Vector { _handler: SDADC3 },
-    Vector { _handler: COMP1_2 },
+    Vector {
+        _handler: COMP1_2_3,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -293,8 +295,8 @@ pub enum Interrupt {
     SDADC2 = 62,
     /// 63: ADC sigma delta 3 (SDADC3) global interrupt
     SDADC3 = 63,
-    /// 64: Comparator 1/comparator 2 global
-    COMP1_2 = 64,
+    /// 64: COMP1_2_3 interrupt combined with EXTI lines 21, 22
+    COMP1_2_3 = 64,
     /// 74: USB high priority interrupt
     USB_HP = 74,
     /// 75: USB low priority interrupt

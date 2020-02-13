@@ -72,6 +72,7 @@ PROVIDE(OTG_HS_EP1_IN = DefaultHandler);
 PROVIDE(OTG_HS_WKUP = DefaultHandler);
 PROVIDE(OTG_HS = DefaultHandler);
 PROVIDE(DCMI = DefaultHandler);
+PROVIDE(CRYP = DefaultHandler);
 PROVIDE(HASH_RNG = DefaultHandler);
 PROVIDE(FPU = DefaultHandler);
 PROVIDE(UART7 = DefaultHandler);

@@ -5,9 +5,9 @@
 //! Used by: stm32f745, stm32f7x6
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::nvic_v1::Instance;
-pub use crate::stm32f7::peripherals::nvic_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::nvic_v1::{
+pub use crate::stm32f7::peripherals::nvic_v2::Instance;
+pub use crate::stm32f7::peripherals::nvic_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::nvic_v2::{
     IABR0, IABR1, IABR2, ICER0, ICER1, ICER2, ICPR0, ICPR1, ICPR2, IPR0, IPR1, IPR10, IPR11, IPR12,
     IPR13, IPR14, IPR15, IPR16, IPR17, IPR18, IPR19, IPR2, IPR20, IPR21, IPR22, IPR23, IPR24,
     IPR25, IPR3, IPR4, IPR5, IPR6, IPR7, IPR8, IPR9, ISER0, ISER1, ISER2, ISPR0, ISPR1, ISPR2,

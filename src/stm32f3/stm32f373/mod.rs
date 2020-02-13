@@ -24,7 +24,7 @@ pub use super::instances::tim3_f301_f373_f3x4_f3x8 as tim3;
 pub use super::instances::tim4_f301_f373_f3x8 as tim4;
 pub use super::instances::tim5;
 pub use super::instances::usart_f301_f373_f3x4 as usart;
-pub mod adc;
+pub mod adc1;
 pub mod exti;
 pub mod spi;
 pub use super::instances::can;
@@ -87,7 +87,7 @@ pub struct Peripherals {
     pub SPI3: spi::Instance,
     pub I2S2ext: spi::Instance,
     pub I2S3ext: spi::Instance,
-    pub ADC: adc::Instance,
+    pub ADC1: adc1::Instance,
     pub EXTI: exti::Instance,
     pub CEC: cec::Instance,
     pub PWR: pwr::Instance,
@@ -158,7 +158,7 @@ impl Peripherals {
             SPI3: spi::SPI3::steal(),
             I2S2ext: spi::I2S2ext::steal(),
             I2S3ext: spi::I2S3ext::steal(),
-            ADC: adc::ADC::steal(),
+            ADC1: adc1::ADC1::steal(),
             EXTI: exti::EXTI::steal(),
             CEC: cec::CEC::steal(),
             PWR: pwr::PWR::steal(),

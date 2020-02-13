@@ -5,9 +5,9 @@
 //! Used by: stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::adc_common_v3::Instance;
-pub use crate::stm32f7::peripherals::adc_common_v3::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::adc_common_v3::{CCR, CDR, CSR};
+pub use crate::stm32f7::peripherals::adc_common_v2::Instance;
+pub use crate::stm32f7::peripherals::adc_common_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::adc_common_v2::{CCR, CDR, CSR};
 
 /// Access functions for the ADC_Common peripheral instance
 pub mod ADC_Common {

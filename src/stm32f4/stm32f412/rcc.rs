@@ -3643,6 +3643,79 @@ pub mod CKGATENR {
         pub use super::AHB2APB1_CKEN::RW;
     }
 }
+
+/// RCC AHB3 peripheral reset register
+pub mod AHB3RSTR {
+
+    /// Flexible static memory controller module reset
+    pub mod FSMCRST {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Reset the selected module
+            pub const Reset: u32 = 0b1;
+        }
+    }
+
+    /// QUADSPI module reset
+    pub mod QSPIRST {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::FSMCRST::RW;
+    }
+}
+
+/// RCC AHB3 peripheral clock enable register
+pub mod AHB3ENR {
+
+    /// Flexible static memory controller module clock enable
+    pub mod FSMCEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The selected clock is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The selected clock is enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// QUADSPI memory controller module clock enable
+    pub mod QSPIEN {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::FSMCEN::RW;
+    }
+}
 pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,
@@ -3662,7 +3735,10 @@ pub struct RegisterBlock {
     /// AHB2 peripheral reset register
     pub AHB2RSTR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    /// RCC AHB3 peripheral reset register
+    pub AHB3RSTR: RWRegister<u32>,
+
+    _reserved1: [u32; 1],
 
     /// APB1 peripheral reset register
     pub APB1RSTR: RWRegister<u32>,
@@ -3678,7 +3754,10 @@ pub struct RegisterBlock {
     /// AHB2 peripheral clock enable register
     pub AHB2ENR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    /// RCC AHB3 peripheral clock enable register
+    pub AHB3ENR: RWRegister<u32>,
+
+    _reserved3: [u32; 1],
 
     /// APB1 peripheral clock enable register
     pub APB1ENR: RWRegister<u32>,
@@ -3736,10 +3815,12 @@ pub struct ResetValues {
     pub CIR: u32,
     pub AHB1RSTR: u32,
     pub AHB2RSTR: u32,
+    pub AHB3RSTR: u32,
     pub APB1RSTR: u32,
     pub APB2RSTR: u32,
     pub AHB1ENR: u32,
     pub AHB2ENR: u32,
+    pub AHB3ENR: u32,
     pub APB1ENR: u32,
     pub APB2ENR: u32,
     pub AHB1LPENR: u32,
@@ -3808,6 +3889,8 @@ pub mod RCC {
         DCKCFGR: 0x00000000,
         DCKCFGR2: 0x00000000,
         CKGATENR: 0x00000000,
+        AHB3RSTR: 0x00000000,
+        AHB3ENR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

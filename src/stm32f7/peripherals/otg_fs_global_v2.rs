@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1948,6 +1948,252 @@ pub mod OTG_FS_GI2CCTL {
     }
 }
 
+/// OTG power down register
+pub mod OTG_FS_GPWRDN {
+
+    /// ADP module enable
+    pub mod ADPMEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP interrupt flag
+    pub mod ADPIF {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// OTG ADP timer, control and status register
+pub mod OTG_FS_GADPCTL {
+
+    /// Probe discharge
+    pub mod PRBDSCHG {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (2 bits: 0b11 << 0)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Probe delta
+    pub mod PRBDELTA {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (2 bits: 0b11 << 2)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Probe period
+    pub mod PRBPER {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (2 bits: 0b11 << 4)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Ramp time
+    pub mod RTIM {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (11 bits: 0x7ff << 6)
+        pub const mask: u32 = 0x7ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Enable probe
+    pub mod ENAPRB {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Enable sense
+    pub mod ENASNS {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP reset
+    pub mod ADPRST {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP enable
+    pub mod ADPEN {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP probe interrupt flag
+    pub mod ADPPRBIF {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP sense interrupt flag
+    pub mod ADPSNSIF {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP timeout interrupt flag
+    pub mod ADPTOIF {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP probe interrupt mask
+    pub mod ADPPRBIM {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP sense interrupt mask
+    pub mod ADPSNSIM {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADP timeout interrupt mask
+    pub mod ADPTOIM {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Access request
+    pub mod AR {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (2 bits: 0b11 << 27)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF4)
 pub mod OTG_FS_DIEPTXF4 {
     pub use super::OTG_FS_DIEPTXF1::INEPTXFD;
@@ -2232,7 +2478,15 @@ pub struct RegisterBlock {
     /// OTG core LPM configuration register
     pub OTG_FS_GLPMCFG: RWRegister<u32>,
 
-    _reserved3: [u32; 42],
+    /// OTG power down register
+    pub OTG_FS_GPWRDN: RWRegister<u32>,
+
+    _reserved3: [u32; 1],
+
+    /// OTG ADP timer, control and status register
+    pub OTG_FS_GADPCTL: RWRegister<u32>,
+
+    _reserved4: [u32; 39],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
     pub OTG_FS_HPTXFSIZ: RWRegister<u32>,
@@ -2269,6 +2523,8 @@ pub struct ResetValues {
     pub OTG_FS_GCCFG: u32,
     pub OTG_FS_CID: u32,
     pub OTG_FS_GLPMCFG: u32,
+    pub OTG_FS_GPWRDN: u32,
+    pub OTG_FS_GADPCTL: u32,
     pub OTG_FS_HPTXFSIZ: u32,
     pub OTG_FS_DIEPTXF1: u32,
     pub OTG_FS_DIEPTXF2: u32,

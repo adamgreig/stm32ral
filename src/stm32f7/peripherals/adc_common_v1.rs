@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Common ADC registers
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6
+//! Used by: stm32f730, stm32f745, stm32f765, stm32f7x2, stm32f7x3, stm32f7x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

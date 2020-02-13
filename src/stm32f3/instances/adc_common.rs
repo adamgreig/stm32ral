@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32f302, stm32f303
+//! Used by: stm32f303, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f3::peripherals::adc_common::Instance;
-pub use crate::stm32f3::peripherals::adc_common::{RegisterBlock, ResetValues};
-pub use crate::stm32f3::peripherals::adc_common::{CCR, CDR, CSR};
+pub use crate::stm32f3::peripherals::adc1_2::Instance;
+pub use crate::stm32f3::peripherals::adc1_2::{RegisterBlock, ResetValues};
+pub use crate::stm32f3::peripherals::adc1_2::{CCR, CDR, CSR};
 
 /// Access functions for the ADC1_2 peripheral instance
 pub mod ADC1_2 {

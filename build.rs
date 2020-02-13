@@ -61,6 +61,8 @@ fn main() {
             "src/stm32f4/stm32f446/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F469").is_some() {
             "src/stm32f4/stm32f469/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32F730").is_some() {
+            "src/stm32f7/stm32f730/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F745").is_some() {
             "src/stm32f7/stm32f745/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F765").is_some() {
@@ -103,6 +105,8 @@ fn main() {
             "src/stm32h7/stm32h743/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H743V").is_some() {
             "src/stm32h7/stm32h743v/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H747CM4").is_some() {
+            "src/stm32h7/stm32h747cm4/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H747CM7").is_some() {
             "src/stm32h7/stm32h747cm7/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H753").is_some() {

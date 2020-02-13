@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FLASH
 //!
-//! Used by: stm32f745, stm32f7x6
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -274,6 +274,20 @@ pub mod SR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// RDERR
+    pub mod RDERR {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// Control register
@@ -454,6 +468,20 @@ pub mod CR {
             pub const Locked: u32 = 0b1;
         }
     }
+
+    /// PCROP error interrupt enable
+    pub mod RDERRIE {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// Flash option control register
@@ -501,21 +529,7 @@ pub mod OPTCR {
         pub mod RW {}
     }
 
-    /// User option bytes
-    pub mod WWDG_SW {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// User option bytes
+    /// WDG_SW User option bytes
     pub mod IWDG_SW {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -529,7 +543,7 @@ pub mod OPTCR {
         pub mod RW {}
     }
 
-    /// User option bytes
+    /// nRST_STOP User option bytes
     pub mod nRST_STOP {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -543,7 +557,7 @@ pub mod OPTCR {
         pub mod RW {}
     }
 
-    /// User option bytes
+    /// nRST_STDBY User option bytes
     pub mod nRST_STDBY {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -585,11 +599,11 @@ pub mod OPTCR {
         pub mod RW {}
     }
 
-    /// Independent watchdog counter freeze in standby mode
-    pub mod IWDG_STDBY {
-        /// Offset (30 bits)
-        pub const offset: u32 = 30;
-        /// Mask (1 bit: 1 << 30)
+    /// User option bytes
+    pub mod WWDG_SW {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -612,10 +626,38 @@ pub mod OPTCR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Independent watchdog counter freeze in standby mode
+    pub mod IWDG_STDBY {
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// Flash option control register 1
 pub mod OPTCR1 {
+
+    /// Boot base address when Boot pin =1
+    pub mod BOOT_ADD1 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (16 bits: 0xffff << 16)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 
     /// Boot base address when Boot pin =0
     pub mod BOOT_ADD0 {
@@ -630,13 +672,31 @@ pub mod OPTCR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+}
 
-    /// Boot base address when Boot pin =1
-    pub mod BOOT_ADD1 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
+/// Flash option control register
+pub mod OPTCR2 {
+
+    /// PCROP zone preserved when RDP level decreased
+    pub mod PCROP_RDP {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PCROP option byte
+    pub mod PCROPi {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -666,6 +726,9 @@ pub struct RegisterBlock {
 
     /// Flash option control register 1
     pub OPTCR1: RWRegister<u32>,
+
+    /// Flash option control register
+    pub OPTCR2: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ACR: u32,
@@ -675,6 +738,7 @@ pub struct ResetValues {
     pub CR: u32,
     pub OPTCR: u32,
     pub OPTCR1: u32,
+    pub OPTCR2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

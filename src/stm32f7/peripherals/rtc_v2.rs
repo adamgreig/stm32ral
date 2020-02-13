@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -742,20 +742,6 @@ pub mod ISR {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Internal tTime-stamp flag
-    pub mod ITSF {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1684,9 +1670,9 @@ pub mod OR {
 
     /// RTC_ALARM on PC13 output type
     pub mod RTC_ALARM_TYPE {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1696,8 +1682,8 @@ pub mod OR {
         pub mod RW {}
     }
 
-    /// TIMESTAMP mapping
-    pub mod TSINSEL {
+    /// RTC_OUT remap
+    pub mod RTC_OUT_RMP {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)

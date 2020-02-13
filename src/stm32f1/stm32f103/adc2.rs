@@ -325,10 +325,10 @@ pub mod CR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: EOC interrupt disabled
+            /// 0b0: Analog watchdog interrupt disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: EOC interrupt enabled. An interrupt is generated when the EOC bit is set
+            /// 0b1: Analog watchdog interrupt enabled
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -343,8 +343,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: EOC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: EOC interrupt enabled. An interrupt is generated when the EOC bit is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Analog watchdog channel select bits

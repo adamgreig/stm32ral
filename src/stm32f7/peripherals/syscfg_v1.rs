@@ -2,34 +2,20 @@
 #![allow(non_camel_case_types)]
 //! System configuration controller
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// memory remap register
-pub mod MEMRM {
+pub mod MEMRMP {
 
-    /// Memory mapping selection
-    pub mod MEM_MODE {
+    /// Memory boot mapping
+    pub mod MEM_BOOT {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (3 bits: 0b111 << 0)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Flash bank mode selection
-    pub mod FB_MODE {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -57,11 +43,11 @@ pub mod MEMRM {
 /// peripheral mode configuration register
 pub mod PMC {
 
-    /// Ethernet PHY interface selection
-    pub mod MII_RMII_SEL {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
+    /// PB7_FMP Fast Mode + Enable
+    pub mod PB7_FMP {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -71,11 +57,11 @@ pub mod PMC {
         pub mod RW {}
     }
 
-    /// ADC1DC2
-    pub mod ADC1DC2 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
+    /// PB8_FMP Fast Mode + Enable
+    pub mod PB8_FMP {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -85,11 +71,11 @@ pub mod PMC {
         pub mod RW {}
     }
 
-    /// ADC2DC2
-    pub mod ADC2DC2 {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
+    /// Fast Mode + Enable
+    pub mod PB9_FMP {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -100,10 +86,66 @@ pub mod PMC {
     }
 
     /// ADC3DC2
-    pub mod ADC3DC2 {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
+    pub mod ADCDC2 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (3 bits: 0b111 << 16)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PB6_FMP Fast Mode
+    pub mod PB6_FMP {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C3_FMP I2C3 Fast Mode + Enable
+    pub mod I2C3_FMP {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C2_FMP I2C2 Fast Mode + Enable
+    pub mod I2C2_FMP {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C1_FMP I2C1 Fast Mode + Enable
+    pub mod I2C1_FMP {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -387,7 +429,7 @@ pub mod CMPCR {
 }
 pub struct RegisterBlock {
     /// memory remap register
-    pub MEMRM: RWRegister<u32>,
+    pub MEMRMP: RWRegister<u32>,
 
     /// peripheral mode configuration register
     pub PMC: RWRegister<u32>,
@@ -410,7 +452,7 @@ pub struct RegisterBlock {
     pub CMPCR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub MEMRM: u32,
+    pub MEMRMP: u32,
     pub PMC: u32,
     pub EXTICR1: u32,
     pub EXTICR2: u32,

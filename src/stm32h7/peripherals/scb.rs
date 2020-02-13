@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! System control block
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm7, stm32h753, stm32h753v, stm32h757cm7
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h757cm7
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

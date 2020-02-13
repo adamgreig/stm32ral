@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! DMA2D
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm7, stm32h753, stm32h753v, stm32h757cm7
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
 
 use crate::{RORegister, RWRegister, UnsafeRWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Launch the DMA2D
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// Suspend This bit can be used to suspend the current transfer. This bit is set and reset by software. It is automatically reset by hardware when the START bit is reset.
@@ -35,8 +39,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transfer not suspended
+            pub const NotSuspended: u32 = 0b0;
+
+            /// 0b1: Transfer suspended
+            pub const Suspended: u32 = 0b1;
+        }
     }
 
     /// Abort This bit can be used to abort the current transfer. This bit is set by software and is automatically reset by hardware when the START bit is reset.
@@ -49,8 +60,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Transfer abort requested
+            pub const AbortRequest: u32 = 0b1;
+        }
     }
 
     /// Transfer error interrupt enable This bit is set and cleared by software.
@@ -63,8 +78,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer complete interrupt enable This bit is set and cleared by software.
@@ -77,8 +99,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer watermark interrupt enable This bit is set and cleared by software.
@@ -91,8 +120,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TW interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TW interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CLUT access error interrupt enable This bit is set and cleared by software.
@@ -105,8 +141,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CAE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CAE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CLUT transfer complete interrupt enable This bit is set and cleared by software.
@@ -119,8 +162,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CTC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CTC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Configuration Error Interrupt Enable This bit is set and cleared by software.
@@ -133,8 +183,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMA2D mode This bit is set and cleared by software. It cannot be modified while a transfer is ongoing.
@@ -147,8 +204,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Memory-to-memory (FG fetch only)
+            pub const MemoryToMemory: u32 = 0b00;
+
+            /// 0b01: Memory-to-memory with PFC (FG fetch only with FG PFC active)
+            pub const MemoryToMemoryPFC: u32 = 0b01;
+
+            /// 0b10: Memory-to-memory with blending (FG and BG fetch with PFC and blending)
+            pub const MemoryToMemoryPFCBlending: u32 = 0b10;
+
+            /// 0b11: Register-to-memory
+            pub const RegisterToMemory: u32 = 0b11;
+        }
     }
 }
 
@@ -253,8 +323,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the TEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear transfer complete interrupt flag Programming this bit to 1 clears the TCIF flag in the DMA2D_ISR register
@@ -267,8 +341,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the TCIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear transfer watermark interrupt flag Programming this bit to 1 clears the TWIF flag in the DMA2D_ISR register
@@ -281,8 +359,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the TWIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear CLUT access error interrupt flag Programming this bit to 1 clears the CAEIF flag in the DMA2D_ISR register
@@ -295,8 +377,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the CAEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear CLUT transfer complete interrupt flag Programming this bit to 1 clears the CTCIF flag in the DMA2D_ISR register
@@ -309,8 +395,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the CTCIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear configuration error interrupt flag Programming this bit to 1 clears the CEIF flag in the DMA2D_ISR register
@@ -323,8 +413,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the CEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 }
 
@@ -353,8 +447,8 @@ pub mod FGOR {
     pub mod LO {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (14 bits: 0x3fff << 0)
-        pub const mask: u32 = 0x3fff << offset;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u32 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -387,8 +481,45 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Color mode ARGB8888
+            pub const ARGB8888: u32 = 0b0000;
+
+            /// 0b0001: Color mode RGB888
+            pub const RGB888: u32 = 0b0001;
+
+            /// 0b0010: Color mode RGB565
+            pub const RGB565: u32 = 0b0010;
+
+            /// 0b0011: Color mode ARGB1555
+            pub const ARGB1555: u32 = 0b0011;
+
+            /// 0b0100: Color mode ARGB4444
+            pub const ARGB4444: u32 = 0b0100;
+
+            /// 0b0101: Color mode L8
+            pub const L8: u32 = 0b0101;
+
+            /// 0b0110: Color mode AL44
+            pub const AL44: u32 = 0b0110;
+
+            /// 0b0111: Color mode AL88
+            pub const AL88: u32 = 0b0111;
+
+            /// 0b1000: Color mode L4
+            pub const L4: u32 = 0b1000;
+
+            /// 0b1001: Color mode A8
+            pub const A8: u32 = 0b1001;
+
+            /// 0b1010: Color mode A4
+            pub const A4: u32 = 0b1010;
+
+            /// 0b1011: Color mode YCbCr
+            pub const YCbCr: u32 = 0b1011;
+        }
     }
 
     /// CLUT color mode This bit defines the color format of the CLUT. It can only be written when the transfer is disabled. Once the CLUT transfer has started, this bit is read-only.
@@ -401,8 +532,15 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CLUT color format ARGB8888
+            pub const ARGB8888: u32 = 0b0;
+
+            /// 0b1: CLUT color format RGB888
+            pub const RGB888: u32 = 0b1;
+        }
     }
 
     /// Start This bit can be set to start the automatic loading of the CLUT. It is automatically reset: ** at the end of the transfer ** when the transfer is aborted by the user application by setting the ABORT bit in DMA2D_CR ** when a transfer error occurs ** when the transfer has not started due to a configuration error or another transfer operation already ongoing (data transfer or automatic background CLUT transfer).
@@ -415,8 +553,12 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Start the automatic loading of the CLUT
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// CLUT size These bits define the size of the CLUT used for the foreground image. Once the CLUT transfer has started, this field is read-only. The number of CLUT entries is equal to CS\[7:0\] + 1.
@@ -443,8 +585,18 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No modification of alpha channel
+            pub const NoModify: u32 = 0b00;
+
+            /// 0b01: Replace with value in ALPHA\[7:0\]
+            pub const Replace: u32 = 0b01;
+
+            /// 0b10: Multiply with value in ALPHA\[7:0\]
+            pub const Multiply: u32 = 0b10;
+        }
     }
 
     /// Chroma Sub-Sampling These bits define the chroma sub-sampling mode for YCbCr color mode. Once the transfer has started, these bits are read-only. others: meaningless
@@ -471,8 +623,15 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular alpha
+            pub const RegularAlpha: u32 = 0b0;
+
+            /// 0b1: Inverted alpha
+            pub const InvertedAlpha: u32 = 0b1;
+        }
     }
 
     /// Red Blue Swap This bit allows to swap the R &amp; B to support BGR or ABGR color formats. Once the transfer has started, this bit is read-only.
@@ -485,8 +644,15 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Red Blue Swap (RGB or ARGB)
+            pub const Regular: u32 = 0b0;
+
+            /// 0b1: Red Blue Swap (BGR or ABGR)
+            pub const Swap: u32 = 0b1;
+        }
     }
 
     /// Alpha value These bits define a fixed alpha channel value which can replace the original alpha value or be multiplied by the original alpha value according to the alpha mode selected through the AM\[1:0\] bits. These bits can only be written when data transfers are disabled. Once a transfer has started, they become read-only.
@@ -563,8 +729,42 @@ pub mod BGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Color mode ARGB8888
+            pub const ARGB8888: u32 = 0b0000;
+
+            /// 0b0001: Color mode RGB888
+            pub const RGB888: u32 = 0b0001;
+
+            /// 0b0010: Color mode RGB565
+            pub const RGB565: u32 = 0b0010;
+
+            /// 0b0011: Color mode ARGB1555
+            pub const ARGB1555: u32 = 0b0011;
+
+            /// 0b0100: Color mode ARGB4444
+            pub const ARGB4444: u32 = 0b0100;
+
+            /// 0b0101: Color mode L8
+            pub const L8: u32 = 0b0101;
+
+            /// 0b0110: Color mode AL44
+            pub const AL44: u32 = 0b0110;
+
+            /// 0b0111: Color mode AL88
+            pub const AL88: u32 = 0b0111;
+
+            /// 0b1000: Color mode L4
+            pub const L4: u32 = 0b1000;
+
+            /// 0b1001: Color mode A8
+            pub const A8: u32 = 0b1001;
+
+            /// 0b1010: Color mode A4
+            pub const A4: u32 = 0b1010;
+        }
     }
 
     /// CLUT Color mode These bits define the color format of the CLUT. This register can only be written when the transfer is disabled. Once the CLUT transfer has started, this bit is read-only.
@@ -577,8 +777,15 @@ pub mod BGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CLUT color format ARGB8888
+            pub const ARGB8888: u32 = 0b0;
+
+            /// 0b1: CLUT color format RGB888
+            pub const RGB888: u32 = 0b1;
+        }
     }
 
     /// Start This bit is set to start the automatic loading of the CLUT. This bit is automatically reset: ** at the end of the transfer ** when the transfer is aborted by the user application by setting the ABORT bit in the DMA2D_CR ** when a transfer error occurs ** when the transfer has not started due to a configuration error or another transfer operation already on going (data transfer or automatic BackGround CLUT transfer).
@@ -591,8 +798,12 @@ pub mod BGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Start the automatic loading of the CLUT
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// CLUT size These bits define the size of the CLUT used for the BG. Once the CLUT transfer has started, this field is read-only. The number of CLUT entries is equal to CS\[7:0\] + 1.
@@ -619,8 +830,18 @@ pub mod BGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No modification of alpha channel
+            pub const NoModify: u32 = 0b00;
+
+            /// 0b01: Replace with value in ALPHA\[7:0\]
+            pub const Replace: u32 = 0b01;
+
+            /// 0b10: Multiply with value in ALPHA\[7:0\]
+            pub const Multiply: u32 = 0b10;
+        }
     }
 
     /// Alpha Inverted This bit inverts the alpha value. Once the transfer has started, this bit is read-only.
@@ -633,8 +854,15 @@ pub mod BGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular alpha
+            pub const RegularAlpha: u32 = 0b0;
+
+            /// 0b1: Inverted alpha
+            pub const InvertedAlpha: u32 = 0b1;
+        }
     }
 
     /// Red Blue Swap This bit allows to swap the R &amp; B to support BGR or ABGR color formats. Once the transfer has started, this bit is read-only.
@@ -647,8 +875,15 @@ pub mod BGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Red Blue Swap (RGB or ARGB)
+            pub const Regular: u32 = 0b0;
+
+            /// 0b1: Red Blue Swap (BGR or ABGR)
+            pub const Swap: u32 = 0b1;
+        }
     }
 
     /// Alpha value These bits define a fixed alpha channel value which can replace the original alpha value or be multiplied with the original alpha value according to the alpha mode selected with bits AM\[1: 0\]. These bits can only be written when data transfers are disabled. Once the transfer has started, they are read-only.
@@ -696,8 +931,24 @@ pub mod OPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: ARGB8888
+            pub const ARGB8888: u32 = 0b000;
+
+            /// 0b001: RGB888
+            pub const RGB888: u32 = 0b001;
+
+            /// 0b010: RGB565
+            pub const RGB565: u32 = 0b010;
+
+            /// 0b011: ARGB1555
+            pub const ARGB1555: u32 = 0b011;
+
+            /// 0b100: ARGB4444
+            pub const ARGB4444: u32 = 0b100;
+        }
     }
 
     /// Alpha Inverted This bit inverts the alpha value. Once the transfer has started, this bit is read-only.
@@ -710,8 +961,15 @@ pub mod OPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular alpha
+            pub const RegularAlpha: u32 = 0b0;
+
+            /// 0b1: Inverted alpha
+            pub const InvertedAlpha: u32 = 0b1;
+        }
     }
 
     /// Red Blue Swap This bit allows to swap the R &amp; B to support BGR or ABGR color formats. Once the transfer has started, this bit is read-only.
@@ -724,8 +982,36 @@ pub mod OPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Red Blue Swap (RGB or ARGB)
+            pub const Regular: u32 = 0b0;
+
+            /// 0b1: Red Blue Swap (BGR or ABGR)
+            pub const Swap: u32 = 0b1;
+        }
+    }
+
+    /// Swap Bytes
+    pub mod SB {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular byte order
+            pub const Regular: u32 = 0b0;
+
+            /// 0b1: Bytes are swapped two by two
+            pub const SwapBytes: u32 = 0b1;
+        }
     }
 }
 
@@ -862,8 +1148,15 @@ pub mod AMTCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disabled AHB/AXI dead-time functionality
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enabled AHB/AXI dead-time functionality
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Dead Time Dead time value in the AXI clock cycle inserted between two consecutive accesses on the AXI master port. These bits represent the minimum guaranteed number of cycles between two consecutive AXI accesses.

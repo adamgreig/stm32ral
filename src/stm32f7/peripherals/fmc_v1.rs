@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flexible memory controller
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -311,21 +311,7 @@ pub mod BCR1 {
         }
     }
 
-    /// WRAPMOD
-    pub mod WRAPMOD {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Write FIFO disable
+    /// Write FIFO Disable
     pub mod WFDIS {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -654,20 +640,6 @@ pub mod BCR2 {
         }
     }
 
-    /// WRAPMOD
-    pub mod WRAPMOD {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// WAITPOL
     pub mod WAITPOL {
         /// Offset (9 bits)
@@ -867,7 +839,6 @@ pub mod BCR3 {
     pub use super::BCR2::WAITCFG;
     pub use super::BCR2::WAITEN;
     pub use super::BCR2::WAITPOL;
-    pub use super::BCR2::WRAPMOD;
     pub use super::BCR2::WREN;
 }
 
@@ -886,7 +857,6 @@ pub mod BCR4 {
     pub use super::BCR2::WAITCFG;
     pub use super::BCR2::WAITEN;
     pub use super::BCR2::WAITPOL;
-    pub use super::BCR2::WRAPMOD;
     pub use super::BCR2::WREN;
 }
 
@@ -1376,34 +1346,6 @@ pub mod BWTR1 {
         }
     }
 
-    /// DATLAT
-    pub mod DATLAT {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (4 bits: 0b1111 << 24)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLKDIV
-    pub mod CLKDIV {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (4 bits: 0b1111 << 20)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// DATAST
     pub mod DATAST {
         /// Offset (8 bits)
@@ -1467,9 +1409,7 @@ pub mod BWTR2 {
     pub use super::BWTR1::ADDHLD;
     pub use super::BWTR1::ADDSET;
     pub use super::BWTR1::BUSTURN;
-    pub use super::BWTR1::CLKDIV;
     pub use super::BWTR1::DATAST;
-    pub use super::BWTR1::DATLAT;
 }
 
 /// SRAM/NOR-Flash write timing registers 1
@@ -1478,9 +1418,7 @@ pub mod BWTR3 {
     pub use super::BWTR1::ADDHLD;
     pub use super::BWTR1::ADDSET;
     pub use super::BWTR1::BUSTURN;
-    pub use super::BWTR1::CLKDIV;
     pub use super::BWTR1::DATAST;
-    pub use super::BWTR1::DATLAT;
 }
 
 /// SRAM/NOR-Flash write timing registers 1
@@ -1489,9 +1427,7 @@ pub mod BWTR4 {
     pub use super::BWTR1::ADDHLD;
     pub use super::BWTR1::ADDSET;
     pub use super::BWTR1::BUSTURN;
-    pub use super::BWTR1::CLKDIV;
     pub use super::BWTR1::DATAST;
-    pub use super::BWTR1::DATLAT;
 }
 
 /// SDRAM Control Register 1
@@ -1996,27 +1932,6 @@ pub mod SDRTR {
 /// SDRAM Status register
 pub mod SDSR {
 
-    /// Refresh error flag
-    pub mod RE {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No refresh error has been detected
-            pub const NoError: u32 = 0b0;
-
-            /// 0b1: A refresh error has been detected
-            pub const Error: u32 = 0b1;
-        }
-    }
-
     /// Status Mode for Bank 1
     pub mod MODES1 {
         /// Offset (1 bits)
@@ -2072,6 +1987,27 @@ pub mod SDSR {
 
             /// 0b1: SDRAM Controller is not ready to accept a new request
             pub const Busy: u32 = 0b1;
+        }
+    }
+
+    /// Refresh error flag
+    pub mod RE {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No refresh error has been detected
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: A refresh error has been detected
+            pub const Error: u32 = 0b1;
         }
     }
 }

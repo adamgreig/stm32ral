@@ -41,6 +41,8 @@ extern "C" {
     fn RTCAlarm();
     fn TIM6_DAC1();
     fn TIM7_DAC2();
+    fn COMP1_2_3();
+    fn COMP4_5_6();
     fn HRTIM_MST();
     fn HRTIM_TIMA();
     fn HRTIM_TIMB();
@@ -154,8 +156,12 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: COMP1_2_3,
+    },
+    Vector {
+        _handler: COMP4_5_6,
+    },
     Vector { _reserved: 0 },
     Vector {
         _handler: HRTIM_MST,
@@ -273,6 +279,10 @@ pub enum Interrupt {
     TIM6_DAC1 = 54,
     /// 55: TIM7 global interrupt
     TIM7_DAC2 = 55,
+    /// 64: COMP1_2_3 interrupt combined with EXTI lines 21, 22, 29
+    COMP1_2_3 = 64,
+    /// 65: COMP4_5_6 interrupt combined with EXTI lines 30, 31, 32
+    COMP4_5_6 = 65,
     /// 67: HRTIM1 master timer interrupt
     HRTIM_MST = 67,
     /// 68: HRTIM1 timer A interrupt

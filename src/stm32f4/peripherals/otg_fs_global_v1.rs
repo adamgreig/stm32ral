@@ -1573,6 +1573,20 @@ pub mod DIEPTXF3 {
 /// GRXSTSP_Host: OTG status read and pop (host mode)
 pub mod GRXSTSP {
 
+    /// Status phase start
+    pub mod STSPHST {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// Frame number
     pub mod FRMNUM {
         /// Offset (21 bits)

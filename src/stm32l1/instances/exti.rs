@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! External interrupt/event controller
 //!
-//! Used by: stm32l151, stm32l162
+//! Used by: stm32l100, stm32l151, stm32l162
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l1::peripherals::exti::Instance;

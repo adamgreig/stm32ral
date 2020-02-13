@@ -265,17 +265,11 @@ pub struct RegisterBlock {
     /// Comparator control/status register
     pub COMP_C3CSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
-    _reserved2: [u16; 1],
-
     /// Comparator control/status register
     pub COMP_C4CSR: RWRegister<u32>,
 
     /// Comparator control/status register
     pub COMP_C5CSR: RWRegister<u32>,
-
-    _reserved3: [u32; 1],
-    _reserved4: [u16; 1],
 
     /// Comparator control/status register
     pub COMP_C6CSR: RWRegister<u32>,

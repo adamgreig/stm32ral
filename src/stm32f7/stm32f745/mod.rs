@@ -9,15 +9,15 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::cryp;
-pub use super::instances::dbgmcu_f745_f765_f7x2_f7x3_f7x6 as dbgmcu;
+pub use super::instances::dbgmcu_f730_f745_f765_f7x2_f7x3_f7x6 as dbgmcu;
 pub use super::instances::dcmi;
-pub use super::instances::dma_f745_f765_f7x6_f7x7_f7x9 as dma;
+pub use super::instances::dma;
 pub use super::instances::fmc_f745_f765_f7x6_f7x7_f7x9 as fmc;
 pub use super::instances::hash;
 pub use super::instances::rng;
 pub mod rcc;
 pub use super::instances::ac;
-pub use super::instances::adc_common_f745_f765_f7x6 as adc_common;
+pub use super::instances::adc_common_f730_f745_f765_f7x2_f7x3_f7x6 as adc_common;
 pub use super::instances::adc_f745_f765_f7x6_f7x9 as adc;
 pub use super::instances::can_f745_f7x6 as can;
 pub use super::instances::cec;

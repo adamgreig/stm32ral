@@ -54,6 +54,8 @@ extern "C" {
     fn ADC_SD1_IRQ();
     fn ADC_SD2_IRQ();
     fn ADC_SD3_IRQ();
+    fn COMP1_2_3();
+    fn COMP4_5_6();
     fn I2C3_EV_IRQ();
     fn I2C3_ER_IRQ();
     fn USB_HP_IRQ();
@@ -200,8 +202,12 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector {
         _handler: ADC_SD3_IRQ,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: COMP1_2_3,
+    },
+    Vector {
+        _handler: COMP4_5_6,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -343,6 +349,10 @@ pub enum Interrupt {
     ADC_SD2_IRQ = 62,
     /// 63: ADC sigma delta 3 (SDADC3) global interrupt
     ADC_SD3_IRQ = 63,
+    /// 64: COMP1_2_3 interrupt combined with EXTI lines 21, 22, 29
+    COMP1_2_3 = 64,
+    /// 65: COMP4_5_6 interrupt combined with EXTI lines 30, 31, 32
+    COMP4_5_6 = 65,
     /// 72: I2C3 event interrupt / EXTI Line27 interrupt
     I2C3_EV_IRQ = 72,
     /// 73: I2C3 error interrupt

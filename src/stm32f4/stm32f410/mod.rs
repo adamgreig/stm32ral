@@ -9,7 +9,7 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::adc1;
-pub use super::instances::adc_common_f401_f410_f411_f412_f413 as adc_common;
+pub use super::instances::adc_common_f410_f412_f413 as adc_common;
 pub use super::instances::crc;
 pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
 pub use super::instances::exti;

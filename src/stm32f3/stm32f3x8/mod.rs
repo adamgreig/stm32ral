@@ -37,6 +37,7 @@ pub use super::instances::i2c;
 pub use super::instances::iwdg;
 pub use super::instances::rtc_f301_f373_f3x8 as rtc;
 pub use super::instances::sdadc;
+pub use super::instances::tim1;
 pub use super::instances::tim12;
 pub use super::instances::tim13;
 pub use super::instances::tim14;
@@ -45,10 +46,10 @@ pub use super::instances::tim6_f301_f373_f3x8 as tim6;
 pub use super::instances::tim7_f301_f373_f3x8 as tim7;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
-pub mod adc;
-pub use super::instances::tim1;
 pub mod syscfg;
 pub mod tim8;
+pub use super::instances::adc_common;
+pub use super::instances::adc_f303_f3x8 as adc;
 pub use super::instances::comp;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
@@ -120,8 +121,6 @@ pub struct Peripherals {
     pub DAC1: dac1::Instance,
     pub DBGMCU: dbgmcu::Instance,
     pub FMC: fmc::Instance,
-    pub ADC2: adc::Instance,
-    pub ADC1: adc::Instance,
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
     pub SYSCFG: syscfg::Instance,
@@ -133,6 +132,12 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
+    pub ADC1: adc::Instance,
+    pub ADC2: adc::Instance,
+    pub ADC3: adc::Instance,
+    pub ADC4: adc::Instance,
+    pub ADC1_2: adc_common::Instance,
+    pub ADC3_4: adc_common::Instance,
     pub OPAMP: opamp::Instance,
     pub COMP: comp::Instance,
 }
@@ -202,8 +207,6 @@ impl Peripherals {
             DAC1: dac1::DAC1::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
             FMC: fmc::FMC::steal(),
-            ADC2: adc::ADC2::steal(),
-            ADC1: adc::ADC1::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
             SYSCFG: syscfg::SYSCFG::steal(),
@@ -215,6 +218,12 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            ADC1: adc::ADC1::steal(),
+            ADC2: adc::ADC2::steal(),
+            ADC3: adc::ADC3::steal(),
+            ADC4: adc::ADC4::steal(),
+            ADC1_2: adc_common::ADC1_2::steal(),
+            ADC3_4: adc_common::ADC3_4::steal(),
             OPAMP: opamp::OPAMP::steal(),
             COMP: comp::COMP::steal(),
         }

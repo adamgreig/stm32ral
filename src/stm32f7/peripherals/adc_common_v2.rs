@@ -1,14 +1,14 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! Common ADC registers
+//! ADC common registers
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// ADC Common status register
+/// ADC common status register
 pub mod CSR {
 
     /// Overrun flag of ADC3
@@ -21,11 +21,18 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No overrun occurred
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: Overrun occurred
+            pub const Overrun: u32 = 0b1;
+        }
     }
 
-    /// Regular channel Start flag of ADC 3
+    /// Regular channel Start flag of ADC3
     pub mod STRT3 {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -35,11 +42,18 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No regular channel conversion started
+            pub const NotStarted: u32 = 0b0;
+
+            /// 0b1: Regular channel conversion has started
+            pub const Started: u32 = 0b1;
+        }
     }
 
-    /// Injected channel Start flag of ADC 3
+    /// Injected channel Start flag of ADC3
     pub mod JSTRT3 {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
@@ -49,11 +63,18 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No injected channel conversion started
+            pub const NotStarted: u32 = 0b0;
+
+            /// 0b1: Injected channel conversion has started
+            pub const Started: u32 = 0b1;
+        }
     }
 
-    /// Injected channel end of conversion of ADC 3
+    /// Injected channel end of conversion of ADC3
     pub mod JEOC3 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -63,11 +84,18 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Conversion complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
-    /// End of conversion of ADC 3
+    /// End of conversion of ADC3
     pub mod EOC3 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -77,11 +105,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC3::RW;
     }
 
-    /// Analog watchdog flag of ADC 3
+    /// Analog watchdog flag of ADC3
     pub mod AWD3 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -91,11 +118,18 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No analog watchdog event occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Analog watchdog event occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
-    /// Overrun flag of ADC 2
+    /// Overrun flag of ADC2
     pub mod OVR2 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -105,11 +139,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OVR3::RW;
     }
 
-    /// Regular channel Start flag of ADC 2
+    /// Regular channel Start flag of ADC2
     pub mod STRT2 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -119,11 +152,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::STRT3::RW;
     }
 
-    /// Injected channel Start flag of ADC 2
+    /// Injected channel Start flag of ADC2
     pub mod JSTRT2 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
@@ -133,11 +165,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JSTRT3::RW;
     }
 
-    /// Injected channel end of conversion of ADC 2
+    /// Injected channel end of conversion of ADC2
     pub mod JEOC2 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -147,11 +178,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC3::RW;
     }
 
-    /// End of conversion of ADC 2
+    /// End of conversion of ADC2
     pub mod EOC2 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -161,11 +191,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC3::RW;
     }
 
-    /// Analog watchdog flag of ADC 2
+    /// Analog watchdog flag of ADC2
     pub mod AWD2 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -175,11 +204,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD3::RW;
     }
 
-    /// Overrun flag of ADC 1
+    /// Overrun flag of ADC1
     pub mod OVR1 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -189,11 +217,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OVR3::RW;
     }
 
-    /// Regular channel Start flag of ADC 1
+    /// Regular channel Start flag of ADC1
     pub mod STRT1 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -203,11 +230,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::STRT3::RW;
     }
 
-    /// Injected channel Start flag of ADC 1
+    /// Injected channel Start flag of ADC1
     pub mod JSTRT1 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -217,11 +243,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JSTRT3::RW;
     }
 
-    /// Injected channel end of conversion of ADC 1
+    /// Injected channel end of conversion of ADC1
     pub mod JEOC1 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -231,11 +256,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC3::RW;
     }
 
-    /// End of conversion of ADC 1
+    /// End of conversion of ADC1
     pub mod EOC1 {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -245,11 +269,10 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC3::RW;
     }
 
-    /// Analog watchdog flag of ADC 1
+    /// Analog watchdog flag of ADC1
     pub mod AWD1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -259,15 +282,14 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD3::RW;
     }
 }
 
 /// ADC common control register
 pub mod CCR {
 
-    /// Temperature sensor and VREFINT enable
+    /// Temperature sensor and V_REFINT enable
     pub mod TSVREFE {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -277,11 +299,18 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Temperature sensor and V_REFINT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Temperature sensor and V_REFINT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// VBAT enable
+    /// V_BAT enable
     pub mod VBATE {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -291,8 +320,15 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: V_BAT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: V_BAT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC prescaler
@@ -305,8 +341,21 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: PCLK2 divided by 2
+            pub const Div2: u32 = 0b00;
+
+            /// 0b01: PCLK2 divided by 4
+            pub const Div4: u32 = 0b01;
+
+            /// 0b10: PCLK2 divided by 6
+            pub const Div6: u32 = 0b10;
+
+            /// 0b11: PCLK2 divided by 8
+            pub const Div8: u32 = 0b11;
+        }
     }
 
     /// Direct memory access mode for multi ADC mode
@@ -319,11 +368,24 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: DMA mode disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: DMA mode 1 enabled (2 / 3 half-words one by one - 1 then 2 then 3)
+            pub const Mode1: u32 = 0b01;
+
+            /// 0b10: DMA mode 2 enabled (2 / 3 half-words by pairs - 2&1 then 1&3 then 3&2)
+            pub const Mode2: u32 = 0b10;
+
+            /// 0b11: DMA mode 3 enabled (2 / 3 half-words by pairs - 2&1 then 1&3 then 3&2)
+            pub const Mode3: u32 = 0b11;
+        }
     }
 
-    /// DMA disable selection for multi-ADC mode
+    /// DMA disable selection (for multi-ADC mode)
     pub mod DDS {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -333,8 +395,15 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No new DMA request is issued after the last transfer
+            pub const Single: u32 = 0b0;
+
+            /// 0b1: DMA requests are issued as long as data are converted and DMA=01, 10 or 11
+            pub const Continuous: u32 = 0b1;
+        }
     }
 
     /// Delay between 2 sampling phases
@@ -352,17 +421,57 @@ pub mod CCR {
     }
 
     /// Multi ADC mode selection
-    pub mod MULT {
+    pub mod MULTI {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (5 bits: 0b11111 << 0)
-        pub const mask: u32 = 0b11111 << offset;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: All the ADCs independent: independent mode
+            pub const Independent: u32 = 0b0000;
+
+            /// 0b0001: Dual ADC1 and ADC2, combined regular and injected simultaneous mode
+            pub const DualRJ: u32 = 0b0001;
+
+            /// 0b0010: Dual ADC1 and ADC2, combined regular and alternate trigger mode
+            pub const DualRA: u32 = 0b0010;
+
+            /// 0b0101: Dual ADC1 and ADC2, injected simultaneous mode only
+            pub const DualJ: u32 = 0b0101;
+
+            /// 0b0110: Dual ADC1 and ADC2, regular simultaneous mode only
+            pub const DualR: u32 = 0b0110;
+
+            /// 0b0111: Dual ADC1 and ADC2, interleaved mode only
+            pub const DualI: u32 = 0b0111;
+
+            /// 0b1001: Dual ADC1 and ADC2, alternate trigger mode only
+            pub const DualA: u32 = 0b1001;
+
+            /// 0b10001: Triple ADC, regular and injected simultaneous mode
+            pub const TripleRJ: u32 = 0b10001;
+
+            /// 0b10010: Triple ADC, regular and alternate trigger mode
+            pub const TripleRA: u32 = 0b10010;
+
+            /// 0b10101: Triple ADC, injected simultaneous mode only
+            pub const TripleJ: u32 = 0b10101;
+
+            /// 0b10110: Triple ADC, regular simultaneous mode only
+            pub const TripleR: u32 = 0b10110;
+
+            /// 0b10111: Triple ADC, interleaved mode only
+            pub const TripleI: u32 = 0b10111;
+
+            /// 0b11000: Triple ADC, alternate trigger mode only
+            pub const TripleA: u32 = 0b11000;
+        }
     }
 }
 
@@ -398,7 +507,7 @@ pub mod CDR {
     }
 }
 pub struct RegisterBlock {
-    /// ADC Common status register
+    /// ADC common status register
     pub CSR: RORegister<u32>,
 
     /// ADC common control register

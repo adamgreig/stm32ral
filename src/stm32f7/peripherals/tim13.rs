@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

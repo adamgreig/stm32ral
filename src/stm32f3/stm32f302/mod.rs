@@ -13,8 +13,7 @@ pub use super::instances::flash_f302_f303_f3x4 as flash;
 pub use super::instances::gpio;
 pub use super::instances::tsc;
 pub mod rcc;
-pub use super::instances::adc;
-pub use super::instances::adc_common;
+pub use super::instances::adc_f302_f3x4 as adc;
 pub use super::instances::can;
 pub use super::instances::dac;
 pub use super::instances::dbgmcu;
@@ -37,6 +36,7 @@ pub use super::instances::tim8;
 pub use super::instances::usart_f302_f303_f3x8 as usart;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
+pub mod adc1_2;
 pub mod fmc;
 pub mod syscfg;
 pub use super::instances::fpu;
@@ -103,10 +103,7 @@ pub struct Peripherals {
     pub TIM8: tim8::Instance,
     pub ADC1: adc::Instance,
     pub ADC2: adc::Instance,
-    pub ADC3: adc::Instance,
-    pub ADC4: adc::Instance,
-    pub ADC1_2: adc_common::Instance,
-    pub ADC3_4: adc_common::Instance,
+    pub ADC1_2: adc1_2::Instance,
     pub FMC: fmc::Instance,
     pub SYSCFG: syscfg::Instance,
     pub NVIC: nvic::Instance,
@@ -179,10 +176,7 @@ impl Peripherals {
             TIM8: tim8::TIM8::steal(),
             ADC1: adc::ADC1::steal(),
             ADC2: adc::ADC2::steal(),
-            ADC3: adc::ADC3::steal(),
-            ADC4: adc::ADC4::steal(),
-            ADC1_2: adc_common::ADC1_2::steal(),
-            ADC3_4: adc_common::ADC3_4::steal(),
+            ADC1_2: adc1_2::ADC1_2::steal(),
             FMC: fmc::FMC::steal(),
             SYSCFG: syscfg::SYSCFG::steal(),
             NVIC: nvic::NVIC::steal(),

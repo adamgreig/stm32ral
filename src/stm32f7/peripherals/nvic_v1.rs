@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Nested Vectored Interrupt Controller
 //!
-//! Used by: stm32f745, stm32f7x6
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -369,44 +369,25 @@ pub mod IPR20 {
 }
 
 /// Interrupt Priority Register
-pub mod IPR21 {
-    pub use super::IPR0::IPR_N0;
-    pub use super::IPR0::IPR_N1;
-    pub use super::IPR0::IPR_N2;
-    pub use super::IPR0::IPR_N3;
-}
+pub mod IPR21 {}
 
 /// Interrupt Priority Register
-pub mod IPR22 {
-    pub use super::IPR0::IPR_N0;
-    pub use super::IPR0::IPR_N1;
-    pub use super::IPR0::IPR_N2;
-    pub use super::IPR0::IPR_N3;
-}
+pub mod IPR22 {}
 
 /// Interrupt Priority Register
-pub mod IPR23 {
-    pub use super::IPR0::IPR_N0;
-    pub use super::IPR0::IPR_N1;
-    pub use super::IPR0::IPR_N2;
-    pub use super::IPR0::IPR_N3;
-}
+pub mod IPR23 {}
 
 /// Interrupt Priority Register
-pub mod IPR24 {
-    pub use super::IPR0::IPR_N0;
-    pub use super::IPR0::IPR_N1;
-    pub use super::IPR0::IPR_N2;
-    pub use super::IPR0::IPR_N3;
-}
+pub mod IPR24 {}
 
 /// Interrupt Priority Register
-pub mod IPR25 {
-    pub use super::IPR0::IPR_N0;
-    pub use super::IPR0::IPR_N1;
-    pub use super::IPR0::IPR_N2;
-    pub use super::IPR0::IPR_N3;
-}
+pub mod IPR25 {}
+
+/// Interrupt Priority Register
+pub mod IPR26 {}
+
+/// Interrupt Priority Register
+pub mod IPR27 {}
 pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
     pub ISER0: RWRegister<u32>,
@@ -540,6 +521,12 @@ pub struct RegisterBlock {
 
     /// Interrupt Priority Register
     pub IPR25: RWRegister<u32>,
+
+    /// Interrupt Priority Register
+    pub IPR26: RWRegister<u32>,
+
+    /// Interrupt Priority Register
+    pub IPR27: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ISER0: u32,
@@ -583,6 +570,8 @@ pub struct ResetValues {
     pub IPR23: u32,
     pub IPR24: u32,
     pub IPR25: u32,
+    pub IPR26: u32,
+    pub IPR27: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -23,7 +23,7 @@ pub use super::instances::tim3_f301_f373_f3x4_f3x8 as tim3;
 pub use super::instances::tim4_f301_f373_f3x8 as tim4;
 pub use super::instances::tim5;
 pub use super::instances::usart_f301_f373_f3x4 as usart;
-pub mod adc;
+pub mod adc1;
 pub mod spi;
 pub use super::instances::can;
 pub use super::instances::cec;
@@ -50,11 +50,12 @@ pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
-pub use super::instances::opamp_f301_f3x4 as opamp;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
 pub use super::instances::tim1;
+pub mod adc1_2;
+pub use super::instances::opamp_f301_f3x4 as opamp;
 pub mod comp;
 
 #[cfg(all(feature = "rtfm", not(feature = "nosync")))]
@@ -88,7 +89,7 @@ pub struct Peripherals {
     pub SPI3: spi::Instance,
     pub I2S2ext: spi::Instance,
     pub I2S3ext: spi::Instance,
-    pub ADC: adc::Instance,
+    pub ADC1: adc1::Instance,
     pub EXTI: exti::Instance,
     pub CEC: cec::Instance,
     pub PWR: pwr::Instance,
@@ -122,6 +123,7 @@ pub struct Peripherals {
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
     pub TIM1: tim1::Instance,
+    pub ADC1_2: adc1_2::Instance,
     pub OPAMP: opamp::Instance,
     pub COMP: comp::Instance,
 }
@@ -162,7 +164,7 @@ impl Peripherals {
             SPI3: spi::SPI3::steal(),
             I2S2ext: spi::I2S2ext::steal(),
             I2S3ext: spi::I2S3ext::steal(),
-            ADC: adc::ADC::steal(),
+            ADC1: adc1::ADC1::steal(),
             EXTI: exti::EXTI::steal(),
             CEC: cec::CEC::steal(),
             PWR: pwr::PWR::steal(),
@@ -196,6 +198,7 @@ impl Peripherals {
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
             TIM1: tim1::TIM1::steal(),
+            ADC1_2: adc1_2::ADC1_2::steal(),
             OPAMP: opamp::OPAMP::steal(),
             COMP: comp::COMP::steal(),
         }

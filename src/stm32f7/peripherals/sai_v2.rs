@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
-use crate::{RORegister, RWRegister, WORegister};
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -44,7 +44,7 @@ pub mod GCR {
 pub mod CR1A {
 
     /// Master clock divider
-    pub mod MCKDIV {
+    pub mod MCJDIV {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (4 bits: 0b1111 << 20)
@@ -1071,7 +1071,7 @@ pub mod CR1B {
     pub use super::CR1A::DMAEN;
     pub use super::CR1A::DS;
     pub use super::CR1A::LSBFIRST;
-    pub use super::CR1A::MCKDIV;
+    pub use super::CR1A::MCJDIV;
     pub use super::CR1A::MODE;
     pub use super::CR1A::MONO;
     pub use super::CR1A::NODIV;
@@ -1167,10 +1167,10 @@ pub struct RegisterBlock {
     pub IMA: RWRegister<u32>,
 
     /// AStatus register
-    pub SRA: RORegister<u32>,
+    pub SRA: RWRegister<u32>,
 
     /// AClear flag register
-    pub CLRFRA: WORegister<u32>,
+    pub CLRFRA: RWRegister<u32>,
 
     /// AData register
     pub DRA: RWRegister<u32>,
@@ -1191,10 +1191,10 @@ pub struct RegisterBlock {
     pub IMB: RWRegister<u32>,
 
     /// AStatus register
-    pub SRB: RORegister<u32>,
+    pub SRB: RWRegister<u32>,
 
     /// AClear flag register
-    pub CLRFRB: WORegister<u32>,
+    pub CLRFRB: RWRegister<u32>,
 
     /// AData register
     pub DRB: RWRegister<u32>,

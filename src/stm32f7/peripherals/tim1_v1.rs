@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Advanced-timers
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -186,6 +186,20 @@ pub mod CR1 {
             /// 0b1: Counter enabled
             pub const Enabled: u32 = 0b1;
         }
+    }
+
+    /// UIF status bit remapping
+    pub mod UIFREMAP {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -390,6 +404,48 @@ pub mod CR2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Master mode selection 2
+    pub mod MMS2 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (4 bits: 0b1111 << 20)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Output Idle state 6 (OC6 output)
+    pub mod OIS6 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Output Idle state 5 (OC5 output)
+    pub mod OIS5 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1093,6 +1149,20 @@ pub mod SR {
             pub const UpdatePending: u32 = 0b1;
         }
     }
+
+    /// Break 2 interrupt flag
+    pub mod B2IF {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// event generation register
@@ -1217,6 +1287,20 @@ pub mod EGR {
             /// 0b1: Re-initializes the timer counter and generates an update of the reigsters.
             pub const Update: u32 = 0b1;
         }
+    }
+
+    /// Break 2 generation
+    pub mod B2G {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1429,6 +1513,34 @@ pub mod CCMR1 {
         }
     }
 
+    /// Output Compare 2 mode - bit 3
+    pub mod OC2M_3 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Output Compare 1 mode - bit 3
+    pub mod OC1M_3 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// Input capture 2 filter
     pub mod IC2F {
         /// Offset (12 bits)
@@ -1537,7 +1649,7 @@ pub mod CCMR1 {
 
 /// CCMR2_Output and CCMR2_Input
 /// CCMR2_Output: capture/compare mode register 2 (output mode)
-/// CCMR2_Input: capture/compare mode register 2 (input mode)
+/// CCMR2_Input: capture/compare mode register 1 (input mode)
 pub mod CCMR2 {
 
     /// Output compare 4 clear enable
@@ -1742,6 +1854,34 @@ pub mod CCMR2 {
             /// 0b00: CC3 channel is configured as output
             pub const Output: u32 = 0b00;
         }
+    }
+
+    /// Output Compare 4 mode - bit 3
+    pub mod OC4M_3 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Output Compare 3 mode - bit 3
+    pub mod OC3M_3 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Input capture 4 filter
@@ -1999,6 +2139,76 @@ pub mod CCER {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Capture/Compare 6 output polarity
+    pub mod CC6P {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 6 output enable
+    pub mod CC6E {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 5 output polarity
+    pub mod CC5P {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 5 output enable
+    pub mod CC5E {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 4 complementary output polarity
+    pub mod CC4NP {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// counter
@@ -2010,6 +2220,20 @@ pub mod CNT {
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
         pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// UIF copy
+    pub mod UIFCPY {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2127,8 +2351,8 @@ pub mod DMAR {
     pub mod DMAB {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2284,6 +2508,62 @@ pub mod BDTR {
         pub const offset: u32 = 0;
         /// Mask (8 bits: 0xff << 0)
         pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break 2 polarity
+    pub mod BK2P {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break 2 enable
+    pub mod BK2E {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break 2 filter
+    pub mod BK2F {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (4 bits: 0b1111 << 20)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break filter
+    pub mod BKF {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (4 bits: 0b1111 << 16)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2498,21 +2778,8 @@ pub mod CCR5 {
 }
 
 /// capture/compare register 6
-pub mod CRR6 {
-
-    /// Capture/Compare 6 value
-    pub mod CCR6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod CCR6 {
+    pub use super::CCR1::CCR;
 }
 pub struct RegisterBlock {
     /// control register 1
@@ -2540,7 +2807,7 @@ pub struct RegisterBlock {
 
     /// CCMR2_Output and CCMR2_Input
     /// CCMR2_Output: capture/compare mode register 2 (output mode)
-    /// CCMR2_Input: capture/compare mode register 2 (input mode)
+    /// CCMR2_Input: capture/compare mode register 1 (input mode)
     pub CCMR2: RWRegister<u32>,
 
     /// capture/compare enable register
@@ -2588,7 +2855,7 @@ pub struct RegisterBlock {
     pub CCR5: RWRegister<u32>,
 
     /// capture/compare register 6
-    pub CRR6: RWRegister<u32>,
+    pub CCR6: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR1: u32,
@@ -2613,7 +2880,7 @@ pub struct ResetValues {
     pub DMAR: u32,
     pub CCMR3_Output: u32,
     pub CCR5: u32,
-    pub CRR6: u32,
+    pub CCR6: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Cryptographic processor
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x7, stm32f7x9
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -47,7 +47,7 @@ pub mod IDR {
 /// Control register
 pub mod CR {
 
-    /// RESET bit
+    /// Control regidter
     pub mod RESET {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -65,12 +65,12 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// Polynomial size
-    pub mod POLYSIZE {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (2 bits: 0b11 << 3)
-        pub const mask: u32 = 0b11 << offset;
+    /// Reverse output data
+    pub mod REV_OUT {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -93,12 +93,12 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// Reverse output data
-    pub mod REV_OUT {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
+    /// Polynomial size
+    pub mod POLYSIZE {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (2 bits: 0b11 << 3)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -152,8 +152,6 @@ pub struct RegisterBlock {
 
     /// Control register
     pub CR: WORegister<u32>,
-
-    _reserved1: [u32; 1],
 
     /// Initial CRC value
     pub INIT: RWRegister<u32>,

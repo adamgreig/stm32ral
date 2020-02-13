@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [v0.4.0] - 2020-02-13
+
+* Update to stm32-rs 0.10.0
+
 ## [v0.3.1] - 2020-02-12
 
 * Remove stm32-rs content from published crate
@@ -21,7 +25,8 @@
 
 * Initial release
 
-[Unreleased]: https://github.com/adamgreig/stm32ral/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/adamgreig/stm32ral/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/adamgreig/stm32ral/compare/v0.3.1...v0.4.0
 [v0.3.0]: https://github.com/adamgreig/stm32ral/compare/v0.3.0...v0.3.1
 [v0.3.0]: https://github.com/adamgreig/stm32ral/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/adamgreig/stm32ral/compare/v0.1.1...v0.2.0

@@ -1462,8 +1462,8 @@ pub mod APB1RSTR1 {
         pub mod RW {}
     }
 
-    /// USART1 reset
-    pub mod USART1RST {
+    /// USART3 reset
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)

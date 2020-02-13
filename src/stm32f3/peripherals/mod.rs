@@ -1,5 +1,5 @@
-#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f3x4"))]
-pub mod gpio_v1;
+#[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
+pub mod gpio;
 
 #[cfg(any(feature="doc", feature="stm32f301", feature="stm32f302", feature="stm32f303", feature="stm32f373", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod tsc;
@@ -136,8 +136,8 @@ pub mod tim8;
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x4", feature="stm32f3x8"))]
 pub mod adc;
 
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
-pub mod adc_common;
+#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x8"))]
+pub mod adc1_2;
 
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303", feature="stm32f3x8"))]
 pub mod fmc;
@@ -153,12 +153,6 @@ pub mod opamp_v2;
 
 #[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
 pub mod comp;
-
-#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
-pub mod gpio_v2;
-
-#[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
-pub mod gpioc;
 
 #[cfg(any(feature="doc", feature="stm32f373", feature="stm32f3x8"))]
 pub mod flash_v2;

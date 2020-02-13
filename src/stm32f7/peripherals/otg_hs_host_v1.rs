@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go high speed
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f730, stm32f7x2, stm32f7x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -2339,6 +2339,8 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-11 DMA address register
     pub OTG_HS_HCDMA11: RWRegister<u32>,
 
+    _reserved15: [u32; 2],
+
     /// OTG_HS host channel-12 characteristics register
     pub OTG_HS_HCCHAR12: RWRegister<u32>,
 
@@ -2356,6 +2358,8 @@ pub struct RegisterBlock {
 
     /// OTG_HS host channel-12 DMA address register
     pub OTG_HS_HCDMA12: RWRegister<u32>,
+
+    _reserved16: [u32; 2],
 
     /// OTG_HS host channel-13 characteristics register
     pub OTG_HS_HCCHAR13: RWRegister<u32>,
@@ -2375,6 +2379,8 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-13 DMA address register
     pub OTG_HS_HCDMA13: RWRegister<u32>,
 
+    _reserved17: [u32; 2],
+
     /// OTG_HS host channel-14 characteristics register
     pub OTG_HS_HCCHAR14: RWRegister<u32>,
 
@@ -2392,6 +2398,8 @@ pub struct RegisterBlock {
 
     /// OTG_HS host channel-14 DMA address register
     pub OTG_HS_HCDMA14: RWRegister<u32>,
+
+    _reserved18: [u32; 2],
 
     /// OTG_HS host channel-15 characteristics register
     pub OTG_HS_HCCHAR15: RWRegister<u32>,

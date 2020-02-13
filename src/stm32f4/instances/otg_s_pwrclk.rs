@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429
+//! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::otg_fs_pwrclk::Instance;

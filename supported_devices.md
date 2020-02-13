@@ -67,6 +67,7 @@
 
 | Feature | Devices | Links |
 |:-------:|:-------:|:-----:|
+| `stm32f730` | STM32F730 | [RM0431](https://www.st.com/resource/en/reference_manual/dm00305990.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x0-value-line.html) |
 | `stm32f7x2` | STM32F722, STM32F732 | [RM0431](https://www.st.com/resource/en/reference_manual/dm00305990.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x2.html) |
 | `stm32f7x3` | STM32F723, STM32F733 | [RM0431](https://www.st.com/resource/en/reference_manual/dm00305990.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x3.html) |
 | `stm32f745` | STM32F745 | [RM0385](https://www.st.com/resource/en/reference_manual/dm00124865.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x5.html) |
@@ -85,8 +86,8 @@
 | `stm32h743v` | STM32H743V | [RM0433](https://www.st.com/resource/en/reference_manual/dm00314099.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html) |
 | `stm32h753` | STM32H753 | [RM0433](https://www.st.com/resource/en/reference_manual/dm00314099.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html) |
 | `stm32h753v` | STM32H753V | [RM0433](https://www.st.com/resource/en/reference_manual/dm00314099.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html) |
-| `stm32h747cm7` | STM32H745 (CM7), STM32H747 (CM7) | [RM0399](https://www.st.com/resource/en/reference_manual/dm00176879.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h747-757.html) |
-| `stm32h757cm7` | STM32H755 (CM7), STM32H757 (CM7) | [RM0399](https://www.st.com/resource/en/reference_manual/dm00176879.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h747-757.html) |
+| `stm32h747cm7` | STM32H745 (CM7), STM32H747 (CM7), STM32H755 (CM7), STM32H757 (CM7) | [RM0399](https://www.st.com/resource/en/reference_manual/dm00176879.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h747-757.html) |
+| `stm32h747cm4` | STM32H745 (CM4), STM32H747 (CM4), STM32H755 (CM4), STM32H757 (CM4) | [RM0399](https://www.st.com/resource/en/reference_manual/dm00176879.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h747-757.html) |
 
 
 

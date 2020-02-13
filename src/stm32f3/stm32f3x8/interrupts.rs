@@ -19,7 +19,7 @@ extern "C" {
     fn DMA1_CH5_IRQ();
     fn DMA1_CH6_IRQ();
     fn DMA1_CH7_IRQ();
-    fn ADC1_IRQ();
+    fn ADC1_2();
     fn CAN_TX_IRQ();
     fn CAN_RXD_IRQ();
     fn CAN_RXI_IRQ();
@@ -63,6 +63,8 @@ extern "C" {
     fn ADC_SD1_IRQ();
     fn ADC_SD2_IRQ();
     fn ADC_SD3_IRQ();
+    fn COMP1_2_3();
+    fn COMP4_5_6();
     fn COMP7();
     fn I2C3_EV();
     fn I2C3_ER();
@@ -125,7 +127,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector {
         _handler: DMA1_CH7_IRQ,
     },
-    Vector { _handler: ADC1_IRQ },
+    Vector { _handler: ADC1_2 },
     Vector {
         _handler: CAN_TX_IRQ,
     },
@@ -233,8 +235,12 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector {
         _handler: ADC_SD3_IRQ,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: COMP1_2_3,
+    },
+    Vector {
+        _handler: COMP4_5_6,
+    },
     Vector { _handler: COMP7 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -306,8 +312,8 @@ pub enum Interrupt {
     DMA1_CH6_IRQ = 16,
     /// 17: DMA1 channel 7 interrupt
     DMA1_CH7_IRQ = 17,
-    /// 18: ADC1 interrupt
-    ADC1_IRQ = 18,
+    /// 18: ADC1 and ADC2 global interrupt
+    ADC1_2 = 18,
     /// 19: USB high priority/CAN_TX interrupt
     CAN_TX_IRQ = 19,
     /// 20: USB low priority/CAN_RXD interrupt
@@ -394,7 +400,11 @@ pub enum Interrupt {
     ADC_SD2_IRQ = 62,
     /// 63: ADC sigma delta 3 (SDADC3) global interrupt
     ADC_SD3_IRQ = 63,
-    /// 66: COMP7 interrupt combined with EXTI Line 33
+    /// 64: COMP1_2_3 interrupt combined with EXTI lines 21, 22, 29
+    COMP1_2_3 = 64,
+    /// 65: COMP4_5_6 interrupt combined with EXTI lines 30, 31, 32
+    COMP4_5_6 = 65,
+    /// 66: COMP7 interrupt combined with EXTI line 33
     COMP7 = 66,
     /// 72: I2C3 Event interrupt
     I2C3_EV = 72,

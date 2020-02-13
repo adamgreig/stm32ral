@@ -19,8 +19,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Memory-to-memory (FG fetch only)
+            pub const MemoryToMemory: u32 = 0b00;
+
+            /// 0b01: Memory-to-memory with PFC (FG fetch only with FG PFC active)
+            pub const MemoryToMemoryPFC: u32 = 0b01;
+
+            /// 0b10: Memory-to-memory with blending (FG and BG fetch with PFC and blending)
+            pub const MemoryToMemoryPFCBlending: u32 = 0b10;
+
+            /// 0b11: Register-to-memory
+            pub const RegisterToMemory: u32 = 0b11;
+        }
     }
 
     /// Configuration Error Interrupt Enable
@@ -33,8 +46,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CLUT transfer complete interrupt enable
@@ -47,8 +67,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CTC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CTC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CLUT access error interrupt enable
@@ -61,8 +88,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CAE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CAE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer watermark interrupt enable
@@ -75,8 +109,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TW interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TW interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer complete interrupt enable
@@ -89,8 +130,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer error interrupt enable
@@ -103,8 +151,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Abort
@@ -117,8 +172,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Transfer abort requested
+            pub const AbortRequest: u32 = 0b1;
+        }
     }
 
     /// Suspend
@@ -131,8 +190,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transfer not suspended
+            pub const NotSuspended: u32 = 0b0;
+
+            /// 0b1: Transfer suspended
+            pub const Suspended: u32 = 0b1;
+        }
     }
 
     /// Start
@@ -145,8 +211,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Launch the DMA2D
+            pub const Start: u32 = 0b1;
+        }
     }
 }
 
@@ -251,8 +321,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the CEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear CLUT transfer complete interrupt flag
@@ -265,8 +339,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the CTCIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear CLUT access error interrupt flag
@@ -279,8 +357,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the CAEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear transfer watermark interrupt flag
@@ -293,8 +375,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the TWIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear transfer complete interrupt flag
@@ -307,8 +393,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the TCIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clear Transfer error interrupt flag
@@ -321,8 +411,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the TEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 }
 
@@ -399,8 +493,18 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No modification of alpha channel
+            pub const NoModify: u32 = 0b00;
+
+            /// 0b01: Replace with value in ALPHA\[7:0\]
+            pub const Replace: u32 = 0b01;
+
+            /// 0b10: Multiply with value in ALPHA\[7:0\]
+            pub const Multiply: u32 = 0b10;
+        }
     }
 
     /// CLUT size
@@ -427,8 +531,12 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Start the automatic loading of the CLUT
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// CLUT color mode
@@ -441,8 +549,15 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CLUT color format ARGB8888
+            pub const ARGB8888: u32 = 0b0;
+
+            /// 0b1: CLUT color format RGB888
+            pub const RGB888: u32 = 0b1;
+        }
     }
 
     /// Color mode
@@ -455,8 +570,42 @@ pub mod FGPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Color mode ARGB8888
+            pub const ARGB8888: u32 = 0b0000;
+
+            /// 0b0001: Color mode RGB888
+            pub const RGB888: u32 = 0b0001;
+
+            /// 0b0010: Color mode RGB565
+            pub const RGB565: u32 = 0b0010;
+
+            /// 0b0011: Color mode ARGB1555
+            pub const ARGB1555: u32 = 0b0011;
+
+            /// 0b0100: Color mode ARGB4444
+            pub const ARGB4444: u32 = 0b0100;
+
+            /// 0b0101: Color mode L8
+            pub const L8: u32 = 0b0101;
+
+            /// 0b0110: Color mode AL44
+            pub const AL44: u32 = 0b0110;
+
+            /// 0b0111: Color mode AL88
+            pub const AL88: u32 = 0b0111;
+
+            /// 0b1000: Color mode L4
+            pub const L4: u32 = 0b1000;
+
+            /// 0b1001: Color mode A8
+            pub const A8: u32 = 0b1001;
+
+            /// 0b1010: Color mode A4
+            pub const A4: u32 = 0b1010;
+        }
     }
 
     /// Red Blue Swap
@@ -576,8 +725,24 @@ pub mod OPFCCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: ARGB8888
+            pub const ARGB8888: u32 = 0b000;
+
+            /// 0b001: RGB888
+            pub const RGB888: u32 = 0b001;
+
+            /// 0b010: RGB565
+            pub const RGB565: u32 = 0b010;
+
+            /// 0b011: ARGB1555
+            pub const ARGB1555: u32 = 0b011;
+
+            /// 0b100: ARGB4444
+            pub const ARGB4444: u32 = 0b100;
+        }
     }
 
     /// Red Blue Swap
@@ -756,8 +921,15 @@ pub mod AMTCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disabled AHB/AXI dead-time functionality
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enabled AHB/AXI dead-time functionality
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 

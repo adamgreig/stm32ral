@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Reset and clock control
 //!
-//! Used by: stm32h747cm7, stm32h757cm7
+//! Used by: stm32h747cm4, stm32h747cm7
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -4276,9 +4276,9 @@ pub mod GCR {
 
     /// Force allow CPU2 to boot
     pub mod BOOT_C2 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

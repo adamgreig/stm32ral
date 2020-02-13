@@ -54,7 +54,7 @@ pub use super::instances::otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
 pub use super::instances::wwdg;
 pub mod fsmc;
-pub use super::instances::adc_common_f401_f410_f411_f412_f413 as adc_common;
+pub use super::instances::adc_common_f410_f412_f413 as adc_common;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;

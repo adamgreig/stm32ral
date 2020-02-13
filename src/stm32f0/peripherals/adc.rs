@@ -884,8 +884,15 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Input Channel is not selected for conversion
+            pub const NotSelected: u32 = 0b0;
+
+            /// 0b1: Input Channel is selected for conversion
+            pub const Selected: u32 = 0b1;
+        }
     }
 
     /// Channel-x selection
@@ -898,8 +905,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -912,8 +918,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -926,8 +931,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -940,8 +944,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -954,8 +957,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -968,8 +970,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -982,8 +983,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -996,8 +996,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1010,8 +1009,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1024,8 +1022,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1038,8 +1035,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1052,8 +1048,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1066,8 +1061,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1080,8 +1074,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1094,8 +1087,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1108,8 +1100,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1122,8 +1113,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 
     /// Channel-x selection
@@ -1136,8 +1126,7 @@ pub mod CHSELR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHSEL18::RW;
     }
 }
 

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -364,6 +364,27 @@ pub mod CR1 {
             pub const Disabled: u32 = 0b0;
 
             /// 0b1: Receiver is enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// USART enable in Stop mode
+    pub mod UESM {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: USART not able to wake up the MCU from Stop mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART able to wake up the MCU from Stop mode
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -763,20 +784,6 @@ pub mod CR2 {
         }
     }
 
-    /// Address of the USART node
-    pub mod ADD {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (8 bits: 0xff << 24)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// Auto baud rate mode
     pub mod ABRMOD {
         /// Offset (21 bits)
@@ -803,10 +810,69 @@ pub mod CR2 {
             pub const Frame55: u32 = 0b11;
         }
     }
+
+    /// Address of the USART node
+    pub mod ADD {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// Control register 3
 pub mod CR3 {
+
+    /// Wakeup from Stop mode interrupt enable
+    pub mod WUFIE {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An USART interrupt is generated whenever WUF=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// Wakeup from Stop mode interrupt flag selection
+    pub mod WUS {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (2 bits: 0b11 << 20)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: WUF active on address match
+            pub const Address: u32 = 0b00;
+
+            /// 0b10: WuF active on Start bit detection
+            pub const Start: u32 = 0b10;
+
+            /// 0b11: WUF active on RXNE
+            pub const RXNE: u32 = 0b11;
+        }
+    }
 
     /// Smartcard auto-retry count
     pub mod SCARCNT {
@@ -1157,26 +1223,12 @@ pub mod CR3 {
             pub const Enabled: u32 = 0b1;
         }
     }
-
-    /// Transmission complete before guard time interrupt enable
-    pub mod TCBGTIE {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 }
 
 /// Baud rate register
 pub mod BRR {
 
-    /// USARTDIV
+    /// DIV_Mantissa
     pub mod BRR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1352,11 +1404,53 @@ pub mod RQR {
 /// Interrupt & status register
 pub mod ISR {
 
+    /// REACK
+    pub mod REACK {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// TEACK
     pub mod TEACK {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// WUF
+    pub mod WUF {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RWU
+    pub mod RWU {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1617,24 +1711,28 @@ pub mod ISR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+}
 
-    /// Transmission complete before guard time completion
-    pub mod TCBGT {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
+/// Interrupt flag clear register
+pub mod ICR {
+
+    /// Wakeup from Stop mode clear flag
+    pub mod WUCF {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+        /// Read-write values
+        pub mod RW {
 
-/// Interrupt flag clear register
-pub mod ICR {
+            /// 0b1: Clears the WUF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
+    }
 
     /// Character match clear flag
     pub mod CMCF {
@@ -1832,20 +1930,6 @@ pub mod ICR {
             /// 0b1: Clears the PE flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
-    }
-
-    /// Transmission completed before guard time clear flag
-    pub mod TCBGTCF {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
     }
 }
 

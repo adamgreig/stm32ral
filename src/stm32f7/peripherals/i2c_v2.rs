@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Inter-integrated circuit
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -344,6 +344,27 @@ pub mod CR1 {
 
             /// 0b1: Clock stretching disabled
             pub const Disabled: u32 = 0b1;
+        }
+    }
+
+    /// Wakeup from STOP enable
+    pub mod WUPEN {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wakeup from Stop mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wakeup from Stop mode enabled
+            pub const Enabled: u32 = 0b1;
         }
     }
 

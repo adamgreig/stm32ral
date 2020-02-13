@@ -75,6 +75,7 @@ extern "C" {
     fn OTG_HS_WKUP();
     fn OTG_HS();
     fn DCMI();
+    fn CRYP();
     fn HASH_RNG();
     fn FPU();
     fn UART7();
@@ -283,7 +284,7 @@ pub static __INTERRUPTS: [Vector; 150] = [
     },
     Vector { _handler: OTG_HS },
     Vector { _handler: DCMI },
-    Vector { _reserved: 0 },
+    Vector { _handler: CRYP },
     Vector { _handler: HASH_RNG },
     Vector { _handler: FPU },
     Vector { _handler: UART7 },
@@ -547,6 +548,8 @@ pub enum Interrupt {
     OTG_HS = 77,
     /// 78: DCMI global interrupt
     DCMI = 78,
+    /// 79: CRYP global interrupt
+    CRYP = 79,
     /// 80: HASH and RNG
     HASH_RNG = 80,
     /// 81: Floating point unit interrupt

@@ -160,10 +160,13 @@ pub mod dac;
 #[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
 pub mod tim8;
 
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
-pub mod adc;
+#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f3x4"))]
+pub mod adc_f302_f3x4;
 
-#[cfg(any(feature="doc", feature="stm32f302", feature="stm32f303"))]
+#[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
+pub mod adc_f303_f3x8;
+
+#[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]
 pub mod adc_common;
 
 #[cfg(any(feature="doc", feature="stm32f303", feature="stm32f3x8"))]

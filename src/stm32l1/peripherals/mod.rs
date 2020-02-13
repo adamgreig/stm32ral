@@ -14,6 +14,9 @@ pub mod dac;
 pub mod dma;
 
 #[cfg(any(feature="doc", feature="stm32l100", feature="stm32l151", feature="stm32l162"))]
+pub mod exti;
+
+#[cfg(any(feature="doc", feature="stm32l100", feature="stm32l151", feature="stm32l162"))]
 pub mod flash;
 
 #[cfg(any(feature="doc", feature="stm32l100", feature="stm32l151", feature="stm32l162"))]
@@ -90,9 +93,6 @@ pub mod scb;
 
 #[cfg(any(feature="doc", feature="stm32l100", feature="stm32l151", feature="stm32l162"))]
 pub mod stk;
-
-#[cfg(any(feature="doc", feature="stm32l151", feature="stm32l162"))]
-pub mod exti;
 
 #[cfg(any(feature="doc", feature="stm32l151", feature="stm32l162"))]
 pub mod rcc;

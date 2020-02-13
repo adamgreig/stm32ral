@@ -13,7 +13,7 @@ pub use super::instances::comp;
 pub use super::instances::crc;
 pub use super::instances::dac;
 pub use super::instances::dma;
-pub mod exti;
+pub use super::instances::exti;
 pub use super::instances::flash;
 pub use super::instances::fsmc;
 pub mod gpio;

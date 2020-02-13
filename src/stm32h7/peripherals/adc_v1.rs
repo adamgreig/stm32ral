@@ -1748,10 +1748,10 @@ pub mod LTR1 {
 }
 
 /// ADC analog watchdog 2 threshold register
-pub mod LHTR1 {
+pub mod HTR1 {
 
     /// ADC analog watchdog 2 threshold low
-    pub mod LHTR1 {
+    pub mod HTR1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (26 bits: 0x3ffffff << 0)
@@ -2183,7 +2183,7 @@ pub mod JSQR {
 /// ADC offset number 1 register
 pub mod OFR1 {
 
-    /// ADC offset number 1 enable
+    /// Signed saturation enable
     pub mod SSATE {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -2193,8 +2193,15 @@ pub mod OFR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset is subtracted maintaining data integrity and extending result size (9-bit and 17-bit signed format)
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset is subtracted and result is saturated to maintain result size
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC offset number 1 channel selection
@@ -2228,23 +2235,161 @@ pub mod OFR1 {
 
 /// ADC offset number 2 register
 pub mod OFR2 {
-    pub use super::OFR1::OFFSET1;
-    pub use super::OFR1::OFFSET1_CH;
-    pub use super::OFR1::SSATE;
+
+    /// Signed saturation enable
+    pub mod SSATE {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset is subtracted maintaining data integrity and extending result size (9-bit and 17-bit signed format)
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset is subtracted and result is saturated to maintain result size
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// ADC offset number 1 channel selection
+    pub mod OFFSET2_CH {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (5 bits: 0b11111 << 26)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADC offset number 1 offset level
+    pub mod OFFSET2 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (26 bits: 0x3ffffff << 0)
+        pub const mask: u32 = 0x3ffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// ADC offset number 3 register
 pub mod OFR3 {
-    pub use super::OFR1::OFFSET1;
-    pub use super::OFR1::OFFSET1_CH;
-    pub use super::OFR1::SSATE;
+
+    /// Signed saturation enable
+    pub mod SSATE {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset is subtracted maintaining data integrity and extending result size (9-bit and 17-bit signed format)
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset is subtracted and result is saturated to maintain result size
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// ADC offset number 1 channel selection
+    pub mod OFFSET3_CH {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (5 bits: 0b11111 << 26)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADC offset number 1 offset level
+    pub mod OFFSET3 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (26 bits: 0x3ffffff << 0)
+        pub const mask: u32 = 0x3ffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// ADC offset number 4 register
 pub mod OFR4 {
-    pub use super::OFR1::OFFSET1;
-    pub use super::OFR1::OFFSET1_CH;
-    pub use super::OFR1::SSATE;
+
+    /// Signed saturation enable
+    pub mod SSATE {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset is subtracted maintaining data integrity and extending result size (9-bit and 17-bit signed format)
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset is subtracted and result is saturated to maintain result size
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// ADC offset number 1 channel selection
+    pub mod OFFSET4_CH {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (5 bits: 0b11111 << 26)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADC offset number 1 offset level
+    pub mod OFFSET4 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (26 bits: 0x3ffffff << 0)
+        pub const mask: u32 = 0x3ffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// ADC group injected sequencer rank 1 register
@@ -3310,7 +3455,7 @@ pub struct RegisterBlock {
     pub LTR1: RWRegister<u32>,
 
     /// ADC analog watchdog 2 threshold register
-    pub LHTR1: RWRegister<u32>,
+    pub HTR1: RWRegister<u32>,
 
     _reserved1: [u32; 2],
 
@@ -3403,7 +3548,7 @@ pub struct ResetValues {
     pub SMPR2: u32,
     pub PCSEL: u32,
     pub LTR1: u32,
-    pub LHTR1: u32,
+    pub HTR1: u32,
     pub SQR1: u32,
     pub SQR2: u32,
     pub SQR3: u32,

@@ -68,7 +68,7 @@ edition = "2018"
 exclude = ["/stm32-rs"]
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.3.1"
+version = "0.4.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]

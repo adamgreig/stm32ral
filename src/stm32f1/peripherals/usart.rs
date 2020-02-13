@@ -431,7 +431,7 @@ pub mod CR1 {
             /// 0b0: Transmitter disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: Transmitted enabled
+            /// 0b1: Transmitter enabled
             pub const Enabled: u32 = 0b1;
         }
     }

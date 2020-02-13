@@ -5,9 +5,9 @@
 //! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::otg_fs_device_v1::Instance;
-pub use crate::stm32f7::peripherals::otg_fs_device_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::otg_fs_device_v1::{
+pub use crate::stm32f7::peripherals::otg_fs_device_v2::Instance;
+pub use crate::stm32f7::peripherals::otg_fs_device_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::otg_fs_device_v2::{
     OTG_FS_DAINT, OTG_FS_DAINTMSK, OTG_FS_DCFG, OTG_FS_DCTL, OTG_FS_DIEPCTL0, OTG_FS_DIEPCTL1,
     OTG_FS_DIEPCTL2, OTG_FS_DIEPCTL3, OTG_FS_DIEPCTL4, OTG_FS_DIEPCTL5, OTG_FS_DIEPEMPMSK,
     OTG_FS_DIEPINT0, OTG_FS_DIEPINT1, OTG_FS_DIEPINT2, OTG_FS_DIEPINT3, OTG_FS_DIEPINT4,

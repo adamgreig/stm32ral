@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f7x2, stm32f7x3
+//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1503,12 +1503,8 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-7 transfer size register
     pub OTG_FS_HCTSIZ7: RWRegister<u32>,
 
-    _reserved19: [u32; 3],
-
     /// OTG_FS host channel-8 characteristics register
     pub OTG_FS_HCCHAR8: RWRegister<u32>,
-
-    _reserved20: [u32; 1],
 
     /// OTG_FS host channel-8 interrupt register
     pub OTG_FS_HCINT8: RWRegister<u32>,
@@ -1519,12 +1515,8 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-8 transfer size register
     pub OTG_FS_HCTSIZ8: RWRegister<u32>,
 
-    _reserved21: [u32; 3],
-
     /// OTG_FS host channel-9 characteristics register
     pub OTG_FS_HCCHAR9: RWRegister<u32>,
-
-    _reserved22: [u32; 1],
 
     /// OTG_FS host channel-9 interrupt register
     pub OTG_FS_HCINT9: RWRegister<u32>,
@@ -1535,12 +1527,8 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-9 transfer size register
     pub OTG_FS_HCTSIZ9: RWRegister<u32>,
 
-    _reserved23: [u32; 3],
-
     /// OTG_FS host channel-10 characteristics register
     pub OTG_FS_HCCHAR10: RWRegister<u32>,
-
-    _reserved24: [u32; 1],
 
     /// OTG_FS host channel-10 interrupt register
     pub OTG_FS_HCINT10: RWRegister<u32>,
@@ -1551,12 +1539,8 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-10 transfer size register
     pub OTG_FS_HCTSIZ10: RWRegister<u32>,
 
-    _reserved25: [u32; 3],
-
     /// OTG_FS host channel-11 characteristics register
     pub OTG_FS_HCCHAR11: RWRegister<u32>,
-
-    _reserved26: [u32; 1],
 
     /// OTG_FS host channel-11 interrupt register
     pub OTG_FS_HCINT11: RWRegister<u32>,
