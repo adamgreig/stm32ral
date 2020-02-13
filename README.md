@@ -633,6 +633,18 @@ on STM32F373 and STM32F3x8 where some GPIO peripherals do not have the
 `LCKR` registers, annoyingly. The best solution might be to just pretend
 it does have it.
 
+## Release
+
+* Update version number in stm32ral.py
+* Update CHANGELOG.md
+* cd stm32-rs/svd; rm *.svd *.svd.patched; ./extract.sh; cd ../..;
+* make
+* git add -u .
+* git commit -am "vX.X.X"
+* git push origin master
+* git tag -a "vX.X.X" -m "vX.X.X"
+* git push origin vX.X.X
+
 ## License
 
 Licensed under either of
