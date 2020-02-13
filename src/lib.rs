@@ -210,7 +210,7 @@ pub use stm32g4::stm32g483::*;
 #[cfg(feature="stm32g484")]
 pub use stm32g4::stm32g484::*;
 
-#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h757cm7"))]
+#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod stm32h7;
 
 #[cfg(feature="stm32h743")]
@@ -230,9 +230,6 @@ pub use stm32h7::stm32h753::*;
 
 #[cfg(feature="stm32h753v")]
 pub use stm32h7::stm32h753v::*;
-
-#[cfg(feature="stm32h757cm7")]
-pub use stm32h7::stm32h757cm7::*;
 
 #[cfg(any(feature="doc", feature="stm32l0x1", feature="stm32l0x2", feature="stm32l0x3"))]
 pub mod stm32l0;

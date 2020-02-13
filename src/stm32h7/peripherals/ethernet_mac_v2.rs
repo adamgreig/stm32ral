@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: media access control (MAC)
 //!
-//! Used by: stm32h747cm4, stm32h747cm7, stm32h757cm7
+//! Used by: stm32h747cm4, stm32h747cm7
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
