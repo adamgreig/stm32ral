@@ -766,6 +766,7 @@ class PeripheralPrototype(Node):
             address += register.size // 8
         lines = "\n".join(lines)
         return f"""
+        #[repr(C)]
         pub struct RegisterBlock {{
             {lines}
         }}"""
