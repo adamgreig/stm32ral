@@ -1989,6 +1989,7 @@ pub mod EMR1 {
         pub use super::EM0::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// EXTI rising trigger selection register
     pub RTSR1: RWRegister<u32>,

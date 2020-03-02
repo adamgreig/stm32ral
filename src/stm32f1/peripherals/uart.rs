@@ -717,6 +717,7 @@ pub mod CR3 {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Status register
     pub SR: RWRegister<u32>,

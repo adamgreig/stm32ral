@@ -28,6 +28,7 @@ pub mod LSR {}
 
 /// Lock Access Register
 pub mod LAR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Supported Parallel Port Sizes Register
     pub SSPSR: RORegister<u32>,

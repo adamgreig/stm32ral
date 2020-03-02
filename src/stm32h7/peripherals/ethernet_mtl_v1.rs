@@ -589,6 +589,7 @@ pub mod MTLRxQDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Operating mode Register
     pub MTLOMR: RWRegister<u32>,

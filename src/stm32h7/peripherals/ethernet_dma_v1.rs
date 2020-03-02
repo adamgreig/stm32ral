@@ -1029,6 +1029,7 @@ pub mod DMACMFCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DMA mode register
     pub DMAMR: RWRegister<u32>,

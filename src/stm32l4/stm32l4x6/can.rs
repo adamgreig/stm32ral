@@ -3683,6 +3683,7 @@ pub mod FR127 {
 pub mod FR227 {
     pub use super::FR10::FB;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// master control register
     pub MCR: RWRegister<u32>,

@@ -1116,6 +1116,7 @@ pub mod IOG7CR {
 pub mod IOG8CR {
     pub use super::IOG1CR::CNT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

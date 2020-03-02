@@ -381,6 +381,7 @@ pub mod OPAMP2_CSR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 15],
 

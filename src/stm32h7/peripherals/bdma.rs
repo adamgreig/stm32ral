@@ -1354,6 +1354,7 @@ pub mod CPAR8 {
 pub mod CMAR8 {
     pub use super::CMAR1::MA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DMA interrupt status register
     pub ISR: RORegister<u32>,

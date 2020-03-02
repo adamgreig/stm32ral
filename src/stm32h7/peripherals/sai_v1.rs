@@ -1087,6 +1087,7 @@ pub mod PDMDLY {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Global configuration register
     pub GCR: RWRegister<u32>,

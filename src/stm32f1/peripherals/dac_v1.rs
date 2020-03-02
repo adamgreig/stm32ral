@@ -637,6 +637,7 @@ pub mod SR {
         pub use super::DMAUDR1::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Control register (DAC_CR)
     pub CR: RWRegister<u32>,

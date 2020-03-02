@@ -2745,6 +2745,7 @@ pub mod FR113 {
 pub mod FR213 {
     pub use super::FR10::FB;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CAN_MCR
     pub MCR: RWRegister<u32>,

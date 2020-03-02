@@ -389,6 +389,7 @@ pub mod IPR27 {}
 
 /// Interrupt Priority Register
 pub mod IPR28 {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
     pub ISER0: RWRegister<u32>,

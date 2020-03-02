@@ -25,6 +25,7 @@ pub mod CPACR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Coprocessor access control register
     pub CPACR: RWRegister<u32>,

@@ -761,6 +761,7 @@ pub mod CSGCM7R {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

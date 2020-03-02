@@ -180,6 +180,7 @@ pub mod COMP2_CSR {
     pub use super::COMP1_CSR::WINMODE;
     pub use super::COMP1_CSR::WINOUT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Comparator 1 control and status register
     pub COMP1_CSR: RWRegister<u32>,

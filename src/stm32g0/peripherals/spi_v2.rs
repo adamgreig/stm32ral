@@ -913,6 +913,7 @@ pub mod SIDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register 1
     pub CR1: RWRegister<u32>,

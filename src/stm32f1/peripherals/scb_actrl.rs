@@ -67,6 +67,7 @@ pub mod ACTRL {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Auxiliary control register
     pub ACTRL: RWRegister<u32>,

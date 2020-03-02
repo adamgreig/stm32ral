@@ -1559,6 +1559,7 @@ pub mod KEYR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// HSEM register HSEM_R0 HSEM_R31
     pub R0: RWRegister<u32>,

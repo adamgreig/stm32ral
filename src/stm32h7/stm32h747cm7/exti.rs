@@ -5784,6 +5784,7 @@ pub mod C2PR3 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// EXTI rising trigger selection register
     pub RTSR1: RWRegister<u32>,

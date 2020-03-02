@@ -2430,6 +2430,7 @@ pub mod IPIDR {
 pub mod SIDR {
     pub use super::IPIDR::ID;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// EXTI rising trigger selection register
     pub RTSR1: RWRegister<u32>,

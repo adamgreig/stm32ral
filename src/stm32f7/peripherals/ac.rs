@@ -287,6 +287,7 @@ pub mod ABFSR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Instruction and Data Tightly-Coupled Memory Control Registers
     pub ITCMCR: RWRegister<u32>,

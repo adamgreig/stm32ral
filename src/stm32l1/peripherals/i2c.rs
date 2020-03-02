@@ -1009,6 +1009,7 @@ pub mod TRISE {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CR1
     pub CR1: RWRegister<u32>,

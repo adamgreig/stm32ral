@@ -4667,6 +4667,7 @@ pub mod MACLMIR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Operating mode configuration register
     pub MACCR: RWRegister<u32>,

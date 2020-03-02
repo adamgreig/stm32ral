@@ -3917,6 +3917,7 @@ pub mod FLTDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Timerx Control Register
     pub TIMDCR: RWRegister<u32>,

@@ -149,6 +149,7 @@ pub mod CALIB {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SysTick control and status register
     pub CSR: RWRegister<u32>,

@@ -1693,6 +1693,7 @@ pub mod MACA3LR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Ethernet MAC configuration register
     pub MACCR: RWRegister<u32>,

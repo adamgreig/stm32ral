@@ -1851,6 +1851,7 @@ pub mod SDMMC_ID {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SDMMC power control register
     pub SDMMC_POWER: RWRegister<u32>,

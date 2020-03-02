@@ -3716,6 +3716,7 @@ pub mod AHB3ENR {
         pub use super::FSMCEN::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,

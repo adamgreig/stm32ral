@@ -1049,6 +1049,7 @@ pub mod UR17 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 1],
 

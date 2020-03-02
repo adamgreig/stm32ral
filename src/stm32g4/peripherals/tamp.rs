@@ -880,6 +880,7 @@ pub mod BKP30R {
 pub mod BKP31R {
     pub use super::BKP0R::BKP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register 1
     pub CR1: RWRegister<u32>,

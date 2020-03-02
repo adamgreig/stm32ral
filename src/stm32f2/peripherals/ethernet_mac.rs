@@ -1322,6 +1322,7 @@ pub mod MACA3LR {
 
 /// Ethernet MAC remote wakeup frame filter register
 pub mod MACRWUFFR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Ethernet MAC configuration register
     pub MACCR: RWRegister<u32>,

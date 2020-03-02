@@ -25,6 +25,7 @@ pub mod STIR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Software trigger interrupt register
     pub STIR: RWRegister<u32>,

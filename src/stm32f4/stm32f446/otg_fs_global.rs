@@ -1681,6 +1681,7 @@ pub mod GRXSTSP {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
     pub GOTGCTL: RWRegister<u32>,

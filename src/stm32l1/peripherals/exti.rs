@@ -1576,6 +1576,7 @@ pub mod PR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// IMR
     pub IMR: RWRegister<u32>,

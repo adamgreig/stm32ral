@@ -621,6 +621,7 @@ pub mod MAPR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Event Control Register (AFIO_EVCR)
     pub EVCR: RWRegister<u32>,

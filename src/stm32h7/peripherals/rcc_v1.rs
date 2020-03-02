@@ -8022,6 +8022,7 @@ pub mod APB4LPENR {
     pub use super::C1_APB4LPENR::SYSCFGLPEN;
     pub use super::C1_APB4LPENR::VREFLPEN;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,

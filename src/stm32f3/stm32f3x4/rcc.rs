@@ -2125,6 +2125,7 @@ pub mod CFGR3 {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,

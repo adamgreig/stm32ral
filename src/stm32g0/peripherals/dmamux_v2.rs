@@ -494,6 +494,7 @@ pub mod DMAMUX_HWCFGR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DMAMux - DMA request line multiplexer channel x control register
     pub DMAMUX_C0CR: RWRegister<u32>,

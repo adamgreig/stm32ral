@@ -448,6 +448,7 @@ pub mod M3FECR {
 pub mod M5FECR {
     pub use super::M5FDRH::FEC;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// RAMECC interrupt enable register
     pub IER: RWRegister<u32>,

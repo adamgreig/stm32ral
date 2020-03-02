@@ -1211,6 +1211,7 @@ pub mod CMAR6 {
 pub mod CMAR7 {
     pub use super::CMAR1::MA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// low interrupt status register
     pub ISR: RORegister<u32>,

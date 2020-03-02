@@ -385,6 +385,7 @@ pub mod OPAMP2_LPOTR {
     pub use super::OPAMP1_LPOTR::TRIMLPOFFSETN;
     pub use super::OPAMP1_LPOTR::TRIMLPOFFSETP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OPAMP1 control/status register
     pub OPAMP1_CSR: RWRegister<u32>,

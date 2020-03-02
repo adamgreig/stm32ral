@@ -439,6 +439,7 @@ pub mod CSR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Backup data register (BKP_DR)
     pub DR0: RWRegister<u32>,

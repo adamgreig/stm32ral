@@ -913,6 +913,7 @@ pub mod CFGR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt and Status Register
     pub ISR: RORegister<u32>,

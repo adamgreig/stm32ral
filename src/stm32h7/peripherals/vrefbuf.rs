@@ -85,6 +85,7 @@ pub mod CCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// VREFBUF control and status register
     pub CSR: RWRegister<u32>,

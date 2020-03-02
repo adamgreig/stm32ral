@@ -1429,6 +1429,7 @@ pub mod CSELR {
         pub use super::C7S::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// interrupt status register
     pub ISR: RORegister<u32>,

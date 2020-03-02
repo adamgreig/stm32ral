@@ -5298,6 +5298,7 @@ pub mod DCKCFGR2 {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,

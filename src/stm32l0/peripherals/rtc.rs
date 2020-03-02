@@ -2088,6 +2088,7 @@ pub mod BKP3R {
 pub mod BKP4R {
     pub use super::BKP0R::BKP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// RTC time register
     pub TR: RWRegister<u32>,

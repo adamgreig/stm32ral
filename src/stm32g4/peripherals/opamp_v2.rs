@@ -435,6 +435,7 @@ pub mod OPAMP6_TCMR {
     pub use super::OPAMP1_TCMR::VMS_SEL;
     pub use super::OPAMP1_TCMR::VPS_SEL;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OPAMP1 control/status register
     pub OPAMP1_CSR: RWRegister<u32>,

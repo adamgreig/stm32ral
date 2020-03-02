@@ -2781,6 +2781,7 @@ pub mod CCR5 {
 pub mod CCR6 {
     pub use super::CCR1::CCR;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register 1
     pub CR1: RWRegister<u32>,

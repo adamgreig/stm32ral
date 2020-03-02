@@ -2073,6 +2073,7 @@ pub mod OTG_HS_HCTSIZ15 {
 pub mod OTG_HS_HCDMA15 {
     pub use super::OTG_HS_HCDMA0::DMAADDR;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS host configuration register
     pub OTG_HS_HCFG: RWRegister<u32>,

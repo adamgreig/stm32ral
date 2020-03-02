@@ -327,6 +327,7 @@ pub mod CCSIDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Cache Level ID register
     pub CLIDR: RORegister<u32>,

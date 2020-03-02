@@ -1435,6 +1435,7 @@ pub mod RAM_COM7 {
     pub use super::RAM_COM1::S30;
     pub use super::RAM_COM1::S31;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

@@ -878,6 +878,7 @@ pub mod DMA2D_AMTCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DMA2D control register
     pub DMA2D_CR: RWRegister<u32>,

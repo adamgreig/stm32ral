@@ -811,6 +811,7 @@ pub mod LSR {}
 
 /// Lock Access Register
 pub mod LAR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Stimulus Port Register 0
     pub STIM0: RWRegister<u32>,

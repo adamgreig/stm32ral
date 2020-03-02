@@ -2329,6 +2329,7 @@ pub mod AFRH {
         pub use super::AFR8::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// GPIO port mode register
     pub MODER: RWRegister<u32>,

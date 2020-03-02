@@ -87,6 +87,7 @@ pub mod Base {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Provides identification information for the processor
     pub Base: RORegister<u32>,

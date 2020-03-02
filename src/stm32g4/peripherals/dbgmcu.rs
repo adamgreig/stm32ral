@@ -461,6 +461,7 @@ pub mod APB2_FZ {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// MCU Device ID Code Register
     pub IDCODE: RORegister<u32>,

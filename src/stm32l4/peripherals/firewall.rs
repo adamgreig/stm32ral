@@ -135,6 +135,7 @@ pub mod CR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Code segment start address
     pub CSSA: RWRegister<u32>,

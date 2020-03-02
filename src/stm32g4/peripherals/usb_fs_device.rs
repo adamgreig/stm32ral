@@ -745,6 +745,7 @@ pub mod BTABLE {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// USB endpoint n register
     pub EP0R: RWRegister<u32>,

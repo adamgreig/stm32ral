@@ -2547,6 +2547,7 @@ pub mod LCKR {
         pub use super::LCK15::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// GPIO port mode register
     pub MODER: RWRegister<u32>,

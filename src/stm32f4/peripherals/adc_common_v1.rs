@@ -80,6 +80,7 @@ pub mod CCR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 1],
 

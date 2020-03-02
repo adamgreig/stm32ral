@@ -2075,6 +2075,7 @@ pub mod SDSR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SRAM/NOR-Flash chip-select control register 1
     pub BCR1: RWRegister<u32>,

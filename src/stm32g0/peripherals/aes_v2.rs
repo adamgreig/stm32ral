@@ -778,6 +778,7 @@ pub mod IPIDR {
 pub mod SIDR {
     pub use super::IPIDR::ID;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

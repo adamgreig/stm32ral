@@ -19,6 +19,7 @@ pub mod DCRDR {}
 
 /// Debug Exception and Monitor Control Register
 pub mod DEMCR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Debug Halting Control and Status Register
     pub DHCSR: RWRegister<u32>,

@@ -335,6 +335,7 @@ pub mod APB2FZR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DBGMCU_IDCODE
     pub IDCODE: RORegister<u32>,

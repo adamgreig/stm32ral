@@ -349,6 +349,7 @@ pub mod ALRL {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// RTC Control Register High
     pub CRH: RWRegister<u32>,

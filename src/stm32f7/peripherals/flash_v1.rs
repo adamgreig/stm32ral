@@ -705,6 +705,7 @@ pub mod OPTCR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Flash access control register
     pub ACR: RWRegister<u32>,

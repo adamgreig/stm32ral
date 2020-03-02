@@ -562,6 +562,7 @@ pub mod IPR7 {
 
 /// Interrupt Priority Register 8
 pub mod IPR8 {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set Enable Register
     pub ISER: RWRegister<u32>,

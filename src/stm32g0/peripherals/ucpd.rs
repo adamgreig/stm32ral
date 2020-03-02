@@ -1354,6 +1354,7 @@ pub mod IPID {
 pub mod MID {
     pub use super::IPID::IPID;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// UCPD configuration register
     pub CFG1: RWRegister<u32>,

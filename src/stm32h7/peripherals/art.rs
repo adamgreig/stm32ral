@@ -39,6 +39,7 @@ pub mod CTR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CTR: RWRegister<u32>,

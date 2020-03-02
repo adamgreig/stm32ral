@@ -140,6 +140,7 @@ pub mod CCSIDR {}
 
 /// Cache Size Selection Register
 pub mod CSSELR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Provides identification information for the processor
     pub Base: RORegister<u32>,

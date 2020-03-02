@@ -4662,6 +4662,7 @@ pub mod FLTCR {
         pub use super::FLT5EN::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Timerx Control Register
     pub TIMCCR: RWRegister<u32>,

@@ -1128,6 +1128,7 @@ pub mod MMFAR {
 pub mod BFAR {
     pub use super::MMFAR::ADDRESS;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CPUID base register
     pub CPUID: RORegister<u32>,

@@ -345,6 +345,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// memory remap register
     pub MEMRM: RWRegister<u32>,

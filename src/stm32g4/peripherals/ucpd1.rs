@@ -1211,6 +1211,7 @@ pub mod RX_ORDEXT2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// UCPD configuration register 1
     pub CFG1: RWRegister<u32>,

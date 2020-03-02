@@ -337,6 +337,7 @@ pub mod COMP2_CSR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Comparator 1 control and status register
     pub COMP1_CSR: RWRegister<u32>,

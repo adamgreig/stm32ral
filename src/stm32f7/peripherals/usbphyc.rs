@@ -341,6 +341,7 @@ pub mod LDO {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// USBPHYC PLL1 control register
     pub PLL1: RWRegister<u32>,

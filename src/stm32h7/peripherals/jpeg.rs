@@ -595,6 +595,7 @@ pub mod DOR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// JPEG codec control register
     pub CONFR0: WORegister<u32>,

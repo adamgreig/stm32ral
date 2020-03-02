@@ -355,6 +355,7 @@ pub mod RXD {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// configuration register
     pub CFGR: RWRegister<u32>,

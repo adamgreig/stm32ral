@@ -1323,6 +1323,7 @@ pub mod COMP2_CSR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SYSCFG configuration register 1
     pub CFGR1: RWRegister<u32>,

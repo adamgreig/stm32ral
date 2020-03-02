@@ -1872,6 +1872,7 @@ pub mod DFSDM2_CNVTIMR {
 pub mod DFSDM3_CNVTIMR {
     pub use super::DFSDM0_CNVTIMR::CNVCNT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DFSDM channel configuration 0 register 1
     pub DFSDM_CHCFG0R1: RWRegister<u32>,

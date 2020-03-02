@@ -1774,6 +1774,7 @@ pub mod RDHR1 {
     pub use super::RDHR0::DATA6;
     pub use super::RDHR0::DATA7;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CAN_MCR
     pub MCR: RWRegister<u32>,

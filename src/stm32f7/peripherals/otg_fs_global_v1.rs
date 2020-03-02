@@ -2173,6 +2173,7 @@ pub mod OTG_FS_GLPMCFG {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
     pub OTG_FS_GOTGCTL: RWRegister<u32>,

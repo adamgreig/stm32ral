@@ -121,6 +121,7 @@ pub mod CALIB {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SysTick control and status register
     pub CTRL: RWRegister<u32>,

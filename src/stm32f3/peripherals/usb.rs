@@ -972,6 +972,7 @@ pub mod BTABLE {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// endpoint 0 register
     pub EP0R: RWRegister<u32>,

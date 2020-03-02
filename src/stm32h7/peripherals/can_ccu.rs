@@ -325,6 +325,7 @@ pub mod IE {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Clock Calibration Unit Core Release Register
     pub CREL: RWRegister<u32>,

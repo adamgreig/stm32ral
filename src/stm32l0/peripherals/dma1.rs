@@ -1429,6 +1429,7 @@ pub mod PAR7 {
 pub mod MAR7 {
     pub use super::MAR1::MA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// interrupt status register
     pub ISR: RORegister<u32>,

@@ -3160,6 +3160,7 @@ pub mod HUFFENC_DC1_6 {
 pub mod HUFFENC_DC1_7 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// JPEG codec configuration register 0
     pub JPEG_CONFR0: WORegister<u32>,

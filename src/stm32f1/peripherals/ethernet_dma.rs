@@ -1039,6 +1039,7 @@ pub mod DMACHRBAR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Ethernet DMA bus mode register
     pub DMABMR: RWRegister<u32>,

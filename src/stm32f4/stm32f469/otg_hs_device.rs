@@ -2449,6 +2449,7 @@ pub mod DOEPTSIZ4 {
     pub use super::DOEPTSIZ1::RXDPID_STUPCNT;
     pub use super::DOEPTSIZ1::XFRSIZ;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS device configuration register
     pub DCFG: RWRegister<u32>,

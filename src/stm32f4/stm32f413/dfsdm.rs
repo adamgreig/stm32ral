@@ -1811,6 +1811,7 @@ pub mod EXMIN3 {
 pub mod CNVTIMR3 {
     pub use super::CNVTIMR0::CNVCNT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// channel configuration y register
     pub CFGR10: RWRegister<u32>,

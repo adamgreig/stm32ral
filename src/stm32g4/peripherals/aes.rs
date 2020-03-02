@@ -533,6 +533,7 @@ pub mod SUSP6R {
 pub mod SUSP7R {
     pub use super::SUSP0R::SUSP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

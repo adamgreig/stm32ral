@@ -1423,6 +1423,7 @@ pub mod FIFO {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Bits 1:0 = PWRCTRL: Power supply control bits
     pub POWER: RWRegister<u32>,

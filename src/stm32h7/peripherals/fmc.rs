@@ -1329,6 +1329,7 @@ pub mod SDCR2 {
     pub use super::SDCR1::SDCLK;
     pub use super::SDCR1::WP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// This register contains the control information of each memory bank, used for SRAMs, PSRAM and NOR Flash memories.
     pub BCR1: RWRegister<u32>,

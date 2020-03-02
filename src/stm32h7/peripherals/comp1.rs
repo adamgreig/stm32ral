@@ -461,6 +461,7 @@ pub mod CFGR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Comparator status register
     pub SR: RORegister<u32>,

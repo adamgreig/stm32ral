@@ -951,6 +951,7 @@ pub mod GTPR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Status register
     pub SR: RWRegister<u32>,

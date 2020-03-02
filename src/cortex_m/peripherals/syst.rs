@@ -19,6 +19,7 @@ pub mod CVR {}
 
 /// SysTick Calibration Value Register
 pub mod CALIB {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// SysTick Control and Status Register
     pub CSR: RWRegister<u32>,

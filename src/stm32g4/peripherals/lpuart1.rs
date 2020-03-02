@@ -1349,6 +1349,7 @@ pub mod PRESC {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Control register 1
     pub CR1: RWRegister<u32>,

@@ -665,6 +665,7 @@ pub mod DIR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Control register
     pub CR: RWRegister<u32>,

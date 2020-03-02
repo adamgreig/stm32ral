@@ -5824,6 +5824,7 @@ pub mod FR227 {
     pub use super::FR10::FB8;
     pub use super::FR10::FB9;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// master control register
     pub MCR: RWRegister<u32>,

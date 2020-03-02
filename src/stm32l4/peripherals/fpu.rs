@@ -355,6 +355,7 @@ pub mod FPSCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Floating-point context control register
     pub FPCCR: RWRegister<u32>,

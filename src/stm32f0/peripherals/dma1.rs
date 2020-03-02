@@ -1284,6 +1284,7 @@ pub mod PAR7 {
 pub mod MAR7 {
     pub use super::MAR1::MA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DMA interrupt status register (DMA_ISR)
     pub ISR: RORegister<u32>,

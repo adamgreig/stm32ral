@@ -1873,6 +1873,7 @@ pub mod CRCEADDR2 {
 pub mod FAR2 {
     pub use super::FAR1::FAIL_ECC_ADDR1;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// FLASH access control register
     pub ACR: RWRegister<u32>,

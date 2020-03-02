@@ -565,6 +565,7 @@ pub mod LPOTR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control/status register
     pub CSR: RWRegister<u32>,

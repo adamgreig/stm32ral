@@ -255,6 +255,7 @@ pub mod COMP_C7CSR {
     pub use super::COMP_C1CSR::SCALEN;
     pub use super::COMP_C1CSR::VALUE;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Comparator control/status register
     pub COMP_C1CSR: RWRegister<u32>,

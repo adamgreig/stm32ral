@@ -1325,6 +1325,7 @@ pub mod FIFO {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// power control register
     pub POWER: RWRegister<u32>,

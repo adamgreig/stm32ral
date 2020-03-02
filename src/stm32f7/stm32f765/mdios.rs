@@ -1409,6 +1409,7 @@ pub mod MDIOS_DOUTR31 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// MDIOS configuration register
     pub MDIOS_CR: RWRegister<u32>,

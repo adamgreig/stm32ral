@@ -1177,6 +1177,7 @@ pub mod CFGR2 {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// configuration register 1
     pub CFGR1: RWRegister<u32>,

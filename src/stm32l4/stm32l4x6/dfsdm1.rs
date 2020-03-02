@@ -1894,6 +1894,7 @@ pub mod DFSDM3_EXMIN {
 pub mod DFSDM3_CNVTIMR {
     pub use super::DFSDM0_CNVTIMR::CNVCNT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// channel configuration y register
     pub CHCFG0R1: RWRegister<u32>,

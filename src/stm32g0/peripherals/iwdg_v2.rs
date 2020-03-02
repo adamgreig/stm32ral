@@ -225,6 +225,7 @@ pub mod SIDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Key register
     pub KR: WORegister<u32>,

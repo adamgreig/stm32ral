@@ -3426,6 +3426,7 @@ pub mod CALFACT2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// ADC interrupt and status register
     pub ISR: RWRegister<u32>,

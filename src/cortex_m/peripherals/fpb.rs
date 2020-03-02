@@ -67,6 +67,7 @@ pub mod LSR {}
 
 /// Lock Access Register
 pub mod LAR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// FlashPatch Control Register
     pub CTRL: RWRegister<u32>,

@@ -526,6 +526,7 @@ pub mod ICPR3 {}
 
 /// Interrupt Active Bit Register
 pub mod IABR3 {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
     pub ISER0: RWRegister<u32>,

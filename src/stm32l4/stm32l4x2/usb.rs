@@ -1210,6 +1210,7 @@ pub mod BCDR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// endpoint 0 register
     pub EP0R: RWRegister<u32>,

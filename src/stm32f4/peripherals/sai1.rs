@@ -1115,6 +1115,7 @@ pub mod CLRFRB {
 pub mod DRB {
     pub use super::DRA::DATA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 1],
 

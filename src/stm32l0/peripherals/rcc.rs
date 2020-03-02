@@ -3243,6 +3243,7 @@ pub mod CSR {
         pub use super::CSSLSEON::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,

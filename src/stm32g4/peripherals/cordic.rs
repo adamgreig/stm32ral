@@ -201,6 +201,7 @@ pub mod RDATA {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CORDIC Control Status register
     pub CSR: RWRegister<u32>,

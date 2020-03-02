@@ -1571,6 +1571,7 @@ pub mod DIEPTXF4 {}
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF5)
 pub mod DIEPTXF5 {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
     pub GOTGCTL: RWRegister<u32>,

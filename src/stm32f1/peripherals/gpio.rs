@@ -1823,6 +1823,7 @@ pub mod LCKR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Port configuration register low (GPIOn_CRL)
     pub CRL: RWRegister<u32>,

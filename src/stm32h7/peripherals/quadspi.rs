@@ -759,6 +759,7 @@ pub mod LPTR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// QUADSPI control register
     pub CR: RWRegister<u32>,

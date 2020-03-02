@@ -659,6 +659,7 @@ pub mod OR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SWPMI Configuration/Control register
     pub CR: RWRegister<u32>,

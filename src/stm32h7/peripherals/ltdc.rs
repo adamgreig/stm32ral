@@ -1119,6 +1119,7 @@ pub mod CLUTWR2 {
     pub use super::CLUTWR1::GREEN;
     pub use super::CLUTWR1::RED;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 2],
 

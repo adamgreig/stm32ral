@@ -1053,6 +1053,7 @@ pub mod SEC1R {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Access control register
     pub ACR: RWRegister<u32>,

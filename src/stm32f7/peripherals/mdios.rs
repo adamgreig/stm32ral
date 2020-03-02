@@ -605,6 +605,7 @@ pub mod DOUTR30 {
 pub mod DOUTR31 {
     pub use super::DOUTR0::DOUT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// MDIOS configuration register
     pub CR: RWRegister<u32>,

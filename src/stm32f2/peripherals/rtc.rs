@@ -1362,6 +1362,7 @@ pub mod BKP18R {
 pub mod BKP19R {
     pub use super::BKP0R::BKP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// time register
     pub TR: RWRegister<u32>,

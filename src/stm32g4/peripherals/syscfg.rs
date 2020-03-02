@@ -1013,6 +1013,7 @@ pub mod SKR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Remap Memory register
     pub MEMRMP: RWRegister<u32>,

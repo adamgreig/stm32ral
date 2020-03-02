@@ -1556,6 +1556,7 @@ pub mod CFR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DMAMux - DMA request line multiplexer channel x control register
     pub CCR0: RWRegister<u32>,

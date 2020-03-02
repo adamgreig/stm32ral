@@ -1855,6 +1855,7 @@ pub mod OTG_HS_DIEPTXF7 {
     pub use super::OTG_HS_DIEPTXF1::INEPTXFD;
     pub use super::OTG_HS_DIEPTXF1::INEPTXSA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS control and status register
     pub OTG_HS_GOTGCTL: RWRegister<u32>,

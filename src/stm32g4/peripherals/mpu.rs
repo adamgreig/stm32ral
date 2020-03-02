@@ -293,6 +293,7 @@ pub mod RASR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// MPU type register
     pub TYPER: RORegister<u32>,

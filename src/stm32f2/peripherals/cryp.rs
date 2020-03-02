@@ -432,6 +432,7 @@ pub mod IVLR1 {
 pub mod IVRR1 {
     pub use super::IVLR0::IV;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

@@ -286,6 +286,7 @@ pub mod IPR13 {
     pub use super::IPR0::IPR_N2;
     pub use super::IPR0::IPR_N3;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
     pub ISER0: RWRegister<u32>,

@@ -892,6 +892,7 @@ pub mod BGCLUT {
     pub use super::OCOLR::GREEN;
     pub use super::OCOLR::RED;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

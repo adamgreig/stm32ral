@@ -1523,6 +1523,7 @@ pub mod PDCRF {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Power control register 1
     pub CR1: RWRegister<u32>,

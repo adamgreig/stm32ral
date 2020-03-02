@@ -687,6 +687,7 @@ pub mod BWTR4 {
     pub use super::BWTR1::DATAST;
     pub use super::BWTR1::DATLAT;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// BCR1
     pub BCR1: RWRegister<u32>,

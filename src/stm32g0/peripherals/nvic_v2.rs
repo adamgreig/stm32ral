@@ -559,6 +559,7 @@ pub mod IPR7 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set Enable Register
     pub ISER: RWRegister<u32>,

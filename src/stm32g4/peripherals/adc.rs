@@ -1958,6 +1958,7 @@ pub mod GCOMP {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// interrupt and status register
     pub ISR: RWRegister<u32>,

@@ -1879,6 +1879,7 @@ pub mod FCR7 {
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// low interrupt status register
     pub LISR: RORegister<u32>,

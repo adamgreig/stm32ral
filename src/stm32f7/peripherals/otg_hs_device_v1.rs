@@ -2370,6 +2370,7 @@ pub mod OTG_HS_DIEPDMA14 {}
 
 /// OTG Device channel-x DMA address register
 pub mod OTG_HS_DIEPDMA15 {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS device configuration register
     pub OTG_HS_DCFG: RWRegister<u32>,

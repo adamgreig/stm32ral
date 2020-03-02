@@ -2051,6 +2051,7 @@ pub mod CSR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,

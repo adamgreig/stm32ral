@@ -385,6 +385,7 @@ pub mod SHPR3 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CPUID base register
     pub CPUID: RORegister<u32>,

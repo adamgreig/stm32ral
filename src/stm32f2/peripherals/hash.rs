@@ -571,6 +571,7 @@ pub mod CSR49 {
 pub mod CSR50 {
     pub use super::CSR0::CSR;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,

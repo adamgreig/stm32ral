@@ -565,6 +565,7 @@ pub mod DOR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Control register (DAC_CR)
     pub CR: RWRegister<u32>,

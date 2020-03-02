@@ -807,6 +807,7 @@ pub mod MCMP4R {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Master Timer Control Register
     pub MCR: RWRegister<u32>,

@@ -964,6 +964,7 @@ pub mod APB4FZ2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Identity code
     pub IDC: RORegister<u32>,

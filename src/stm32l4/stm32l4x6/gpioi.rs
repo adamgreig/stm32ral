@@ -2547,6 +2547,7 @@ pub mod BRR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// GPIO port mode register
     pub MODER: RWRegister<u32>,

@@ -1883,6 +1883,7 @@ pub mod BKP30R {
 pub mod BKP31R {
     pub use super::BKP0R::BKP;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
     pub TR: RWRegister<u32>,

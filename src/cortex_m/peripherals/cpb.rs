@@ -60,6 +60,7 @@ pub mod DCCISW {}
 
 /// Branch predictor invalidate all
 pub mod BPIALL {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// I-cache invalidate all to PoU
     pub ICIALLU: UnsafeWORegister<u32>,

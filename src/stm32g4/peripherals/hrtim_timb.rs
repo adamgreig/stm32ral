@@ -4377,6 +4377,7 @@ pub mod BEEFR3 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Timerx Control Register
     pub TIMBCR: RWRegister<u32>,

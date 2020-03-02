@@ -2283,6 +2283,7 @@ pub mod OTG_HS_GI2CCTL {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS control and status register
     pub OTG_HS_GOTGCTL: RWRegister<u32>,

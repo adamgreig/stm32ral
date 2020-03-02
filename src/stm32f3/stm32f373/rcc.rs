@@ -2538,6 +2538,7 @@ pub mod CFGR3 {
         pub use super::USART1SW::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,

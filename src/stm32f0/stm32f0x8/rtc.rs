@@ -1564,6 +1564,7 @@ pub mod WUTR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// time register
     pub TR: RWRegister<u32>,

@@ -267,6 +267,7 @@ pub mod PTPTTLR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Ethernet PTP time stamp control register (ETH_PTPTSCR)
     pub PTPTSCR: RWRegister<u32>,

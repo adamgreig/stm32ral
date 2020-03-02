@@ -1157,6 +1157,7 @@ pub mod FS_HCTSIZ7 {
     pub use super::FS_HCTSIZ0::PKTCNT;
     pub use super::FS_HCTSIZ0::XFRSIZ;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS host configuration register (OTG_FS_HCFG)
     pub FS_HCFG: RWRegister<u32>,

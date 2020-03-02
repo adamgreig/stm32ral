@@ -1131,6 +1131,7 @@ pub mod CLRFRB {
 pub mod DRB {
     pub use super::DRA::DATA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Global configuration register
     pub GCR: RWRegister<u32>,

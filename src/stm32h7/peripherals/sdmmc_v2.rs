@@ -1803,6 +1803,7 @@ pub mod RESPCMDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// SDMMC power control register
     pub POWER: RWRegister<u32>,

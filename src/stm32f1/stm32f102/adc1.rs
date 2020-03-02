@@ -1265,6 +1265,7 @@ pub mod DR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// status register
     pub SR: RWRegister<u32>,

@@ -1857,6 +1857,7 @@ pub mod DOEPTSIZ5 {
     pub use super::DOEPTSIZ1::RXDPID_STUPCNT;
     pub use super::DOEPTSIZ1::XFRSIZ;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS device configuration register (OTG_FS_DCFG)
     pub DCFG: RWRegister<u32>,

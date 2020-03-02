@@ -181,6 +181,7 @@ pub mod LSR {}
 
 /// Lock Access Register
 pub mod LAR {}
+#[repr(C)]
 pub struct RegisterBlock {
     /// Control Register
     pub CTRL: RWRegister<u32>,

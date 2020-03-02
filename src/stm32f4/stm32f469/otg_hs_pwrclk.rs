@@ -51,6 +51,7 @@ pub mod PCGCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Power and clock gating control register
     pub PCGCR: RWRegister<u32>,

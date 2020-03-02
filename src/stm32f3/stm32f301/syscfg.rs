@@ -463,6 +463,7 @@ pub mod CFGR2 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// configuration register 1
     pub CFGR1: RWRegister<u32>,

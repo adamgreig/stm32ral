@@ -901,6 +901,7 @@ pub mod SIDR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DAC control register
     pub DAC_CR: RWRegister<u32>,

@@ -445,6 +445,7 @@ pub mod RDATA {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// FMAC X1 Buffer Configuration register
     pub X1BUFCFG: RWRegister<u32>,

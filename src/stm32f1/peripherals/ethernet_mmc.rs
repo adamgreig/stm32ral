@@ -359,6 +359,7 @@ pub mod MMCRGUFCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Ethernet MMC control register (ETH_MMCCR)
     pub MMCCR: RWRegister<u32>,

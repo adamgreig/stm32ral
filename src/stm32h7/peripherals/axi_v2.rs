@@ -534,6 +534,7 @@ pub mod AXI_INI6_FN_MOD {
     pub use super::AXI_TARG1_FN_MOD_ISS_BM::READ_ISS_OVERRIDE;
     pub use super::AXI_TARG1_FN_MOD_ISS_BM::WRITE_ISS_OVERRIDE;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 2036],
 

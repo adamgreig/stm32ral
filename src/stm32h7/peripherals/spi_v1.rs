@@ -1887,6 +1887,7 @@ pub mod I2SCFGR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register 1
     pub CR1: RWRegister<u32>,

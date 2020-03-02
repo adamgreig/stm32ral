@@ -1411,6 +1411,7 @@ pub mod DOUTR31 {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// MDIOS configuration register
     pub CR: RWRegister<u32>,

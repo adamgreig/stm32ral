@@ -2347,6 +2347,7 @@ pub mod CFGR2 {
         pub use super::I2S2SRC::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Clock control register
     pub CR: RWRegister<u32>,

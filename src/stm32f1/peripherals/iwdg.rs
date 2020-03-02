@@ -128,6 +128,7 @@ pub mod SR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Key register (IWDG_KR)
     pub KR: WORegister<u32>,

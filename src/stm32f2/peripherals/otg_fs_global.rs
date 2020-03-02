@@ -1567,6 +1567,7 @@ pub mod FS_DIEPTXF3 {
     pub use super::FS_DIEPTXF1::INEPTXFD;
     pub use super::FS_DIEPTXF1::INEPTXSA;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
     pub FS_GOTGCTL: RWRegister<u32>,

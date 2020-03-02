@@ -8056,6 +8056,7 @@ pub mod CSICFGR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,

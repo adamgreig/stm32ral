@@ -5779,6 +5779,7 @@ pub mod TTTS {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// FDCAN Core Release Register
     pub CREL: RORegister<u32>,

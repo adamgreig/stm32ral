@@ -608,6 +608,7 @@ pub mod COMP6_CSR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 8],
 

@@ -409,6 +409,7 @@ pub mod CSR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 7],
 

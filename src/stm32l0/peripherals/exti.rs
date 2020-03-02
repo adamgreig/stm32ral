@@ -1957,6 +1957,7 @@ pub mod PR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt mask register (EXTI_IMR)
     pub IMR: RWRegister<u32>,

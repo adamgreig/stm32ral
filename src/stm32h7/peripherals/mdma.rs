@@ -4836,6 +4836,7 @@ pub mod C15MAR {
 pub mod C15MDR {
     pub use super::C0MDR::MDR;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// MDMA Global Interrupt/Status Register
     pub GISR0: RORegister<u32>,

@@ -53,6 +53,7 @@ pub mod OTG_FS_PCGCCTL {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS power and clock gating control register (OTG_FS_PCGCCTL)
     pub OTG_FS_PCGCCTL: RWRegister<u32>,

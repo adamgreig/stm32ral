@@ -4524,6 +4524,7 @@ pub mod DSI_WRPCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// DSI Host Version Register
     pub DSI_VR: RORegister<u32>,

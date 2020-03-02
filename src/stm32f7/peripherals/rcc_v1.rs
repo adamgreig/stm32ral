@@ -4810,6 +4810,7 @@ pub mod DCKCFGR2 {
         pub use super::SDMMC1SEL::RW;
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,

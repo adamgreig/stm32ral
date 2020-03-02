@@ -53,6 +53,7 @@ pub mod OTG_HS_PCGCR {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// Power and clock gating control register
     pub OTG_HS_PCGCR: RWRegister<u32>,

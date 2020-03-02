@@ -589,6 +589,7 @@ pub mod CEC_IER {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// CEC control register
     pub CEC_CR: RWRegister<u32>,

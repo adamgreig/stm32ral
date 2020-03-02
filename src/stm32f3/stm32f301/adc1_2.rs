@@ -461,6 +461,7 @@ pub mod CCR {
         }
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// ADC Common status register
     pub CSR: RORegister<u32>,

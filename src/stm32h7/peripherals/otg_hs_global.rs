@@ -2153,6 +2153,7 @@ pub mod GLPMCFG {
         pub mod RW {}
     }
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS control and status register
     pub GOTGCTL: RWRegister<u32>,

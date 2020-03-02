@@ -654,6 +654,7 @@ pub mod HASH_HR6 {
 pub mod HASH_HR7 {
     pub use super::HR0::H;
 }
+#[repr(C)]
 pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,
