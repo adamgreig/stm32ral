@@ -73,6 +73,7 @@ version = "0.4.1"
 [package.metadata.docs.rs]
 features = ["doc"]
 no-default-features = true
+targets = []
 
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
