@@ -323,7 +323,7 @@ class Field(Node):
         # unsigned integer. We probably will never see a register that's
         # not a multiple of 8, so this might be overkill.
         register_size = (ctx.size + 7) & (~7)
-        if register_size != register_size:
+        if register_size != ctx.size:
             print(f"Field {name} will be represented using u{register_size}s, "
                   f"although the register size is {ctx.size} bits")
         r = EnumeratedValues.empty("R")
