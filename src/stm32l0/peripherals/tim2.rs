@@ -1850,9 +1850,9 @@ pub mod CNT {
     /// Low counter value
     pub mod CNT {
         /// Offset (0 bits)
-        pub const offset: u32 = 0;
+        pub const offset: u16 = 0;
         /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1868,9 +1868,9 @@ pub mod ARR {
     /// Low Auto-reload value
     pub mod ARR {
         /// Offset (0 bits)
-        pub const offset: u32 = 0;
+        pub const offset: u16 = 0;
         /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1886,9 +1886,9 @@ pub mod CCR1 {
     /// Low Capture/Compare 1 value
     pub mod CCR {
         /// Offset (0 bits)
-        pub const offset: u32 = 0;
+        pub const offset: u16 = 0;
         /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
