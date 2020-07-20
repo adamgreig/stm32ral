@@ -1607,7 +1607,7 @@ class Crate:
         periph_f = open(os.path.join(periphpath, "mod.rs"), "w")
 
         pool_results = []
-        for family in sorted(self.families):
+        for family in sorted(self.families, key=lambda x: x.name):
             fname = family.name
             pool_results += family.to_files(srcpath, pool)
             features = [f'feature="{d.name}"' for d in family.devices]
