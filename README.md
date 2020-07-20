@@ -93,7 +93,7 @@ a more complete example that should build out of the box.
 * Quick to compile (~2s build time)
 * Covers [all STM32 devices](supported_devices.md) in one crate
 * Supports `cortex-m-rt` via the `rt` feature, including interrupts
-* Supports `cortex-m-rtfm` via the `rtfm` feature, exposing a `device`
+* Supports `cortex-m-rtic` via the `rtic` feature, exposing a `device`
   with all peripherals taken
 * Doesn't get in your way
 * A bit like what you're used to from C header files

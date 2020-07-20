@@ -84,7 +84,8 @@ cortex-m-rt = { version = "0.6.12", optional = true }
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["external_cortex_m/inline-asm"]
-rtfm = []
+rtfm = ["rtic"]
+rtic = []
 default = []
 nosync = []
 doc = []
@@ -810,7 +811,7 @@ class PeripheralPrototype(Node):
                 unsafe { &*(self.addr as *const _) }
             }
         }
-        #[cfg(feature="rtfm")]
+        #[cfg(feature="rtic")]
         unsafe impl Send for Instance {}
 
         """
@@ -1267,23 +1268,23 @@ class Device(Node):
             for peripheral in self.peripherals:
                 f.write(peripheral.to_parent_entry())
             f.write("\n\n")
-            f.write("#[cfg(all(feature=\"rtfm\", not(feature=\"nosync\")))]")
+            f.write("#[cfg(all(feature=\"rtic\", not(feature=\"nosync\")))]")
             f.write("\n#[allow(non_snake_case)]\n")
             f.write("pub struct Peripherals {\n")
             for peripheral in self.peripherals:
                 f.write("    " + peripheral.to_struct_entry())
             f.write("}\n\n")
-            f.write("#[cfg(all(feature=\"rtfm\", feature=\"nosync\"))]\n")
+            f.write("#[cfg(all(feature=\"rtic\", feature=\"nosync\"))]\n")
             f.write("#[allow(non_snake_case)]\n")
             f.write("pub struct Peripherals {}\n\n")
-            f.write("#[cfg(all(feature=\"rtfm\", not(feature=\"nosync\")))]")
+            f.write("#[cfg(all(feature=\"rtic\", not(feature=\"nosync\")))]")
             f.write("\nimpl Peripherals {\n")
             f.write("    pub unsafe fn steal() -> Self {\n")
             f.write("        Peripherals {\n")
             for peripheral in self.peripherals:
                 f.write("        " + peripheral.to_struct_steal())
             f.write("        }\n    }\n}\n\n")
-            f.write("#[cfg(all(feature=\"rtfm\", feature=\"nosync\"))]\n")
+            f.write("#[cfg(all(feature=\"rtic\", feature=\"nosync\"))]\n")
             f.write("impl Peripherals {\n    pub fn steal() -> Self {\n")
             f.write("        Peripherals {}\n    }\n}")
         rustfmt(mname)
@@ -1606,7 +1607,7 @@ class Crate:
         periph_f = open(os.path.join(periphpath, "mod.rs"), "w")
 
         pool_results = []
-        for family in self.families:
+        for family in sorted(self.families):
             fname = family.name
             pool_results += family.to_files(srcpath, pool)
             features = [f'feature="{d.name}"' for d in family.devices]

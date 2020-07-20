@@ -1660,7 +1660,7 @@ impl ::core::ops::Deref for Instance {
         unsafe { &*(self.addr as *const _) }
     }
 }
-#[cfg(feature = "rtfm")]
+#[cfg(feature = "rtic")]
 unsafe impl Send for Instance {}
 
 /// Access functions for the USB_OTG_GLOBAL peripheral instance

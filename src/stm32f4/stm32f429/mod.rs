@@ -71,7 +71,7 @@ pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
     pub RNG: rng::Instance,
@@ -168,11 +168,11 @@ pub struct Peripherals {
     pub SCB_ACTRL: scb_actrl::Instance,
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
 pub struct Peripherals {}
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
@@ -272,7 +272,7 @@ impl Peripherals {
     }
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 impl Peripherals {
     pub fn steal() -> Self {
         Peripherals {}

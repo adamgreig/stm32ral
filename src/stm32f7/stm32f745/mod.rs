@@ -77,7 +77,7 @@ pub use super::instances::tim9_f745_f765_f7x6_f7x7_f7x9 as tim9;
 pub use super::instances::usart_f745_f765_f7x6_f7x7_f7x9 as usart;
 pub use super::instances::wwdg;
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
     pub RNG: rng::Instance,
@@ -180,11 +180,11 @@ pub struct Peripherals {
     pub AC: ac::Instance,
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
 pub struct Peripherals {}
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
@@ -290,7 +290,7 @@ impl Peripherals {
     }
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 impl Peripherals {
     pub fn steal() -> Self {
         Peripherals {}

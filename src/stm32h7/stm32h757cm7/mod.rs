@@ -102,7 +102,7 @@ pub use super::instances::tim7;
 pub use super::instances::tim8_h747cm4_h747cm7_h757cm7 as tim8;
 pub use super::instances::usart;
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
     pub COMP1: comp1::Instance,
@@ -245,11 +245,11 @@ pub struct Peripherals {
     pub FLASH: flash::Instance,
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
 pub struct Peripherals {}
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
@@ -395,7 +395,7 @@ impl Peripherals {
     }
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 impl Peripherals {
     pub fn steal() -> Self {
         Peripherals {}

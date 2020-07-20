@@ -9,7 +9,7 @@ pub use super::instances::itm;
 pub use super::instances::syst;
 pub use super::instances::tpiu;
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
     pub CPB: cpb::Instance,
@@ -22,11 +22,11 @@ pub struct Peripherals {
     pub TPIU: tpiu::Instance,
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
 pub struct Peripherals {}
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
@@ -42,7 +42,7 @@ impl Peripherals {
     }
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 impl Peripherals {
     pub fn steal() -> Self {
         Peripherals {}

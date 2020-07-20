@@ -95,7 +95,7 @@ pub use super::instances::usart;
 pub use super::instances::vrefbuf;
 pub use super::instances::wwdg_h743_h743v_h753_h753v as wwdg;
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
     pub COMP1: comp1::Instance,
@@ -229,11 +229,11 @@ pub struct Peripherals {
     pub DBGMCU: dbgmcu::Instance,
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
 pub struct Peripherals {}
 
-#[cfg(all(feature = "rtfm", not(feature = "nosync")))]
+#[cfg(all(feature = "rtic", not(feature = "nosync")))]
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
@@ -370,7 +370,7 @@ impl Peripherals {
     }
 }
 
-#[cfg(all(feature = "rtfm", feature = "nosync"))]
+#[cfg(all(feature = "rtic", feature = "nosync"))]
 impl Peripherals {
     pub fn steal() -> Self {
         Peripherals {}
