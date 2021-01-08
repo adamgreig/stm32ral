@@ -1,8 +1,8 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! ECC controller is associated to each RAM area
+//! RAM ECC monitoring
 //!
-//! Used by: stm32h747cm4, stm32h747cm7
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::ramecc3::Instance;
@@ -28,16 +28,16 @@ pub mod RAMECC3 {
     pub const reset: ResetValues = ResetValues {
         IER: 0x00000000,
         M1CR: 0x00000000,
-        M2CR: 0x00000000,
         M1SR: 0x00000000,
-        M2SR: 0x00000000,
         M1FAR: 0x00000000,
-        M2FAR: 0x00000000,
         M1FDRL: 0x00000000,
-        M2FDRL: 0x00000000,
         M1FDRH: 0x00000000,
-        M2FDRH: 0x00000000,
         M1FECR: 0x00000000,
+        M2CR: 0x00000000,
+        M2SR: 0x00000000,
+        M2FAR: 0x00000000,
+        M2FDRL: 0x00000000,
+        M2FDRH: 0x00000000,
         M2FECR: 0x00000000,
     };
 

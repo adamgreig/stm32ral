@@ -649,7 +649,7 @@ pub mod CR {
             /// 0b100: ck_spre (usually 1 Hz) clock is selected
             pub const ClockSpare: u32 = 0b100;
 
-            /// 0b110: ck_spre (usually 1 Hz) clock is selected and 216 is added to the WUT counter value
+            /// 0b110: ck_spre (usually 1 Hz) clock is selected and 2^16 is added to the WUT counter value
             pub const ClockSpareWithOffset: u32 = 0b110;
         }
     }
@@ -1726,16 +1726,16 @@ pub mod TAMPCR {
         pub mod RW {
 
             /// 0b00: 1 RTCCLK cycle
-            pub const RTCCLK_1_cycle: u32 = 0b00;
+            pub const Cycles1: u32 = 0b00;
 
             /// 0b01: 2 RTCCLK cycles
-            pub const RTCCLK_2_cycle: u32 = 0b01;
+            pub const Cycles2: u32 = 0b01;
 
             /// 0b10: 4 RTCCLK cycles
-            pub const RTCCLK_4_cycle: u32 = 0b10;
+            pub const Cycles4: u32 = 0b10;
 
             /// 0b11: 8 RTCCLK cycles
-            pub const RTCCLK_8_cycle: u32 = 0b11;
+            pub const Cycles8: u32 = 0b11;
         }
     }
 
@@ -1756,13 +1756,13 @@ pub mod TAMPCR {
             pub const Immediate: u32 = 0b00;
 
             /// 0b01: Tamper event is activated after 2 consecutive samples at the active level
-            pub const Two_Samples: u32 = 0b01;
+            pub const Samples2: u32 = 0b01;
 
             /// 0b10: Tamper event is activated after 4 consecutive samples at the active level
-            pub const Four_Samples: u32 = 0b10;
+            pub const Samples4: u32 = 0b10;
 
             /// 0b11: Tamper event is activated after 8 consecutive samples at the active level
-            pub const Eight_Samples: u32 = 0b11;
+            pub const Samples8: u32 = 0b11;
         }
     }
 

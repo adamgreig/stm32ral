@@ -48,6 +48,7 @@ pub use super::instances::usart;
 pub use super::instances::usart3;
 pub use super::instances::vrefbuf;
 pub mod usb;
+pub use super::instances::adc_common;
 pub use super::instances::dbgmcu_l4x1_l4x2_l4x3 as dbgmcu;
 pub use super::instances::dfsdm;
 pub use super::instances::fpu;
@@ -83,7 +84,8 @@ pub struct Peripherals {
     pub SYSCFG: syscfg::Instance,
     pub RNG: rng::Instance,
     pub AES: aes::Instance,
-    pub ADC: adc::Instance,
+    pub ADC1: adc::Instance,
+    pub ADC2: adc::Instance,
     pub GPIOA: gpio::Instance,
     pub GPIOB: gpio::Instance,
     pub GPIOC: gpio::Instance,
@@ -128,6 +130,7 @@ pub struct Peripherals {
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
     pub TIM3: tim3::Instance,
+    pub ADC_Common: adc_common::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -158,7 +161,8 @@ impl Peripherals {
             SYSCFG: syscfg::SYSCFG::steal(),
             RNG: rng::RNG::steal(),
             AES: aes::AES::steal(),
-            ADC: adc::ADC::steal(),
+            ADC1: adc::ADC1::steal(),
+            ADC2: adc::ADC2::steal(),
             GPIOA: gpio::GPIOA::steal(),
             GPIOB: gpio::GPIOB::steal(),
             GPIOC: gpio::GPIOC::steal(),
@@ -203,6 +207,7 @@ impl Peripherals {
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
             TIM3: tim3::TIM3::steal(),
+            ADC_Common: adc_common::ADC_Common::steal(),
         }
     }
 }

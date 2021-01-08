@@ -79,5 +79,5 @@ PROVIDE(DCMI = DefaultHandler);
 PROVIDE(CRYP = DefaultHandler);
 PROVIDE(HASH_RNG = DefaultHandler);
 PROVIDE(FPU = DefaultHandler);
-PROVIDE(LCD_TFT = DefaultHandler);
-PROVIDE(LCD_TFT_1 = DefaultHandler);
+PROVIDE(LTDC = DefaultHandler);
+PROVIDE(LTDC_ER = DefaultHandler);

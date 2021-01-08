@@ -136,7 +136,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HSION::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Clock security system disabled (clock detector OFF)
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: Clock security system enable (clock detector ON if the HSE is ready, OFF if not)
+            pub const On: u32 = 0b1;
+        }
     }
 
     /// PLL enable
@@ -1383,6 +1391,32 @@ pub mod AHBENR {
         pub use super::DMA1EN::RW;
     }
 
+    /// I/O port H clock enable
+    pub mod IOPHEN {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1EN::RW;
+    }
+
+    /// I/O port G clock enable
+    pub mod IOPGEN {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1EN::RW;
+    }
+
     /// ADC1 and ADC2 enable
     pub mod ADC12EN {
         /// Offset (28 bits)
@@ -2254,6 +2288,32 @@ pub mod AHBRSTR {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::IOPARST::RW;
+    }
+
+    /// I/O port H reset
+    pub mod IOPHRST {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::IOPARST::RW;
+    }
+
+    /// I/O port G reset
+    pub mod IOPGRST {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

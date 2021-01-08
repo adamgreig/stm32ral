@@ -6,7 +6,11 @@ use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// Data register
+/// DR and DR16
+/// DR: DR and DR8
+/// DR: Data register
+/// DR8: Data register - byte sized
+/// DR16: Data register - half-word sized
 pub mod DR {
 
     /// Data Register
@@ -15,6 +19,34 @@ pub mod DR {
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
         pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data register bits
+    pub mod DR8 {
+        /// Offset (0 bits)
+        pub const offset: u8 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u8 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data register bits
+    pub mod DR16 {
+        /// Offset (0 bits)
+        pub const offset: u16 = 0;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -45,7 +77,7 @@ pub mod IDR {
 /// Control register
 pub mod CR {
 
-    /// Control regidter
+    /// RESET bit
     pub mod RESET {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -73,8 +105,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bit order not affected
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Bit reversed output
+            pub const Reversed: u32 = 0b1;
+        }
     }
 
     /// Reverse input data
@@ -87,8 +126,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Bit order not affected
+            pub const Normal: u32 = 0b00;
+
+            /// 0b01: Bit reversal done by byte
+            pub const Byte: u32 = 0b01;
+
+            /// 0b10: Bit reversal done by half-word
+            pub const HalfWord: u32 = 0b10;
+
+            /// 0b11: Bit reversal done by word
+            pub const Word: u32 = 0b11;
+        }
     }
 
     /// Polynomial size
@@ -101,8 +153,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 32-bit polynomial
+            pub const Polysize32: u32 = 0b00;
+
+            /// 0b01: 16-bit polynomial
+            pub const Polysize16: u32 = 0b01;
+
+            /// 0b10: 8-bit polynomial
+            pub const Polysize8: u32 = 0b10;
+
+            /// 0b11: 7-bit polynomial
+            pub const Polysize7: u32 = 0b11;
+        }
     }
 }
 
@@ -110,7 +175,7 @@ pub mod CR {
 pub mod INIT {
 
     /// Programmable initial CRC value
-    pub mod CRC_INIT {
+    pub mod INIT {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -143,7 +208,11 @@ pub mod POL {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    /// Data register
+    /// DR and DR16
+    /// DR: DR and DR8
+    /// DR: Data register
+    /// DR8: Data register - byte sized
+    /// DR16: Data register - half-word sized
     pub DR: RWRegister<u32>,
 
     /// Independent Data register
@@ -198,7 +267,7 @@ pub mod CRC {
 
     /// Reset values for each field in CRC
     pub const reset: ResetValues = ResetValues {
-        DR: 0xFFFFFFFF,
+        DR: 0x0000FFFF,
         IDR: 0x00000000,
         CR: 0x00000000,
         INIT: 0x00000000,

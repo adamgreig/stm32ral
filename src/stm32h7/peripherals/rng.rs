@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! RNG
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -24,10 +24,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: True random number generator is disabled
+            /// 0b0: Random number generator is disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: True random number generator is enabled
+            /// 0b1: Random number generator is enabled
             pub const Enabled: u32 = 0b1;
         }
     }

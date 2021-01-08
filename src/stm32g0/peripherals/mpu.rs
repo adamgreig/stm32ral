@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Memory protection unit
 //!
-//! Used by: stm32g030, stm32g031, stm32g041, stm32g07x, stm32g081
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g07x, stm32g081
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

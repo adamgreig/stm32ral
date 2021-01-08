@@ -515,7 +515,7 @@ pub mod CR2 {
             pub const Completed: u32 = 0b0;
 
             /// 0b1: The transfer is not completed after the NBYTES data transfer (NBYTES will be reloaded)
-            pub const NotCompeted: u32 = 0b1;
+            pub const NotCompleted: u32 = 0b1;
         }
     }
 
@@ -726,7 +726,7 @@ pub mod OAR1 {
         pub mod RW {
 
             /// 0b0: Own address 1 disabled. The received slave address OA1 is NACKed
-            pub const Diasbled: u32 = 0b0;
+            pub const Disabled: u32 = 0b0;
 
             /// 0b1: Own address 1 enabled. The received slave address OA1 is ACKed
             pub const Enabled: u32 = 0b1;

@@ -72,7 +72,7 @@ pub mod OPAMP2_CSR {
             /// 0b10: PB0 used as OPAMP2 non-inverting input
             pub const PB0: u32 = 0b10;
 
-            /// 0b11: PA7 used as OPAMP2 non-invertign input
+            /// 0b11: PA7 used as OPAMP2 non-inverting input
             pub const PA7: u32 = 0b11;
         }
     }
@@ -165,7 +165,7 @@ pub mod OPAMP2_CSR {
             /// 0b10: PB0 used as OPAMP2 non-inverting input when TCM_EN=1
             pub const PB0: u32 = 0b10;
 
-            /// 0b11: PA7 used as OPAMP2 non-invertign input when TCM_EN=1
+            /// 0b11: PA7 used as OPAMP2 non-inverting input when TCM_EN=1
             pub const PA7: u32 = 0b11;
         }
     }

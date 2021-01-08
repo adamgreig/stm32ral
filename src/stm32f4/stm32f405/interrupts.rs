@@ -82,8 +82,8 @@ extern "C" {
     fn CRYP();
     fn HASH_RNG();
     fn FPU();
-    fn LCD_TFT();
-    fn LCD_TFT_1();
+    fn LTDC();
+    fn LTDC_ER();
 }
 
 #[doc(hidden)]
@@ -243,10 +243,8 @@ pub static __INTERRUPTS: [Vector; 90] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _handler: LCD_TFT },
-    Vector {
-        _handler: LCD_TFT_1,
-    },
+    Vector { _handler: LTDC },
+    Vector { _handler: LTDC_ER },
 ];
 
 /// Available interrupts for this device
@@ -417,9 +415,9 @@ pub enum Interrupt {
     /// 81: FPU interrupt
     FPU = 81,
     /// 88: LTDC global interrupt
-    LCD_TFT = 88,
+    LTDC = 88,
     /// 89: LTDC global error interrupt
-    LCD_TFT_1 = 89,
+    LTDC_ER = 89,
 }
 unsafe impl bare_metal::Nr for Interrupt {
     #[inline]

@@ -35,8 +35,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of sampling phase no yet reached
+            pub const NotEnded: u32 = 0b0;
+
+            /// 0b1: End of sampling phase reached
+            pub const Ended: u32 = 0b1;
+        }
     }
 
     /// EOC_MST
@@ -49,8 +56,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Regular conversion complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// EOS_MST
@@ -63,8 +77,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular sequence is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Regular sequence complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// OVR_MST
@@ -77,8 +98,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No overrun occurred
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: Overrun occurred
+            pub const Overrun: u32 = 0b1;
+        }
     }
 
     /// JEOC_MST
@@ -91,8 +119,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Injected conversion complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// JEOS_MST
@@ -105,8 +140,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected sequence is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Injected sequence complete
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// AWD1_MST
@@ -119,8 +161,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No analog watchdog event occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Analog watchdog event occurred
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// AWD2_MST
@@ -133,8 +182,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// AWD3_MST
@@ -147,8 +195,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// JQOVF_MST
@@ -161,8 +208,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No injected context queue overflow has occurred
+            pub const NoOverflow: u32 = 0b0;
+
+            /// 0b1: Injected context queue overflow has occurred
+            pub const Overflow: u32 = 0b1;
+        }
     }
 
     /// ADRDY_SLV
@@ -175,8 +229,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC is not ready to start conversion
+            pub const NotReady: u32 = 0b0;
+
+            /// 0b1: ADC is ready to start conversion
+            pub const Ready: u32 = 0b1;
+        }
     }
 
     /// EOSMP_SLV
@@ -189,8 +250,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EOSMP_MST::RW;
     }
 
     /// End of regular conversion of the slave ADC
@@ -203,8 +263,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EOC_MST::RW;
     }
 
     /// End of regular sequence flag of the slave ADC
@@ -217,8 +276,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::EOS_MST::RW;
     }
 
     /// Overrun flag of the slave ADC
@@ -231,8 +289,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OVR_MST::RW;
     }
 
     /// End of injected conversion flag of the slave ADC
@@ -245,8 +302,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOC_MST::RW;
     }
 
     /// End of injected sequence flag of the slave ADC
@@ -259,8 +315,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JEOS_MST::RW;
     }
 
     /// Analog watchdog 1 flag of the slave ADC
@@ -273,8 +328,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Analog watchdog 2 flag of the slave ADC
@@ -287,8 +341,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Analog watchdog 3 flag of the slave ADC
@@ -301,8 +354,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD1_MST::RW;
     }
 
     /// Injected Context Queue Overflow flag of the slave ADC
@@ -315,8 +367,7 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JQOVF_MST::RW;
     }
 }
 
@@ -333,8 +384,33 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00000: Independent mode
+            pub const Independent: u32 = 0b00000;
+
+            /// 0b00001: Dual, combined regular simultaneous + injected simultaneous mode
+            pub const DualRJ: u32 = 0b00001;
+
+            /// 0b00010: Dual, combined regular simultaneous + alternate trigger mode
+            pub const DualRA: u32 = 0b00010;
+
+            /// 0b00011: Dual, combined interleaved mode + injected simultaneous mode
+            pub const DualIJ: u32 = 0b00011;
+
+            /// 0b00101: Dual, injected simultaneous mode only
+            pub const DualJ: u32 = 0b00101;
+
+            /// 0b00110: Dual, regular simultaneous mode only
+            pub const DualR: u32 = 0b00110;
+
+            /// 0b00111: Dual, interleaved mode only
+            pub const DualI: u32 = 0b00111;
+
+            /// 0b01001: Dual, alternate trigger mode only
+            pub const DualA: u32 = 0b01001;
+        }
     }
 
     /// Delay between 2 sampling phases
@@ -389,8 +465,21 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Use Kernel Clock adc_ker_ck_input divided by PRESC. Asynchronous to AHB clock
+            pub const Asynchronous: u32 = 0b00;
+
+            /// 0b01: Use AHB clock rcc_hclk3. In this case rcc_hclk must equal sys_d1cpre_ck
+            pub const SyncDiv1: u32 = 0b01;
+
+            /// 0b10: Use AHB clock rcc_hclk3 divided by 2
+            pub const SyncDiv2: u32 = 0b10;
+
+            /// 0b11: Use AHB clock rcc_hclk3 divided by 4
+            pub const SyncDiv4: u32 = 0b11;
+        }
     }
 
     /// VREFINT enable
@@ -403,12 +492,19 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: V_REFINT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: V_REFINT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// CH17 selection
-    pub mod CH17SEL {
+    /// V_TS temperature sensor channel selection
+    pub mod VSENSESEL {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
@@ -417,12 +513,19 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Temperature sensor channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Temperature sensor channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// CH18 selection
-    pub mod CH18SEL {
+    /// V_BAT battery voltage channel selection
+    pub mod VBATSEL {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -431,8 +534,15 @@ pub mod CCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: V_BAT channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: V_BAT channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ADC prescaler

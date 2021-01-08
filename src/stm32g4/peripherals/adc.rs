@@ -11,156 +11,251 @@ use core::marker::PhantomData;
 /// interrupt and status register
 pub mod ISR {
 
-    /// JQOVF
+    /// Injected context queue overflow
     pub mod JQOVF {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No injected context queue overflow has occurred
+            pub const NoOverflow: u32 = 0b0;
+
+            /// 0b1: Injected context queue overflow has occurred
+            pub const Overflow: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear injected context queue overflow flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// AWD3
+    /// Analog watchdog 3 flag
     pub mod AWD3 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No analog watchdog event occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: Analog watchdog event occurred
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear analog watchdog event occurred flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// AWD2
+    /// Analog watchdog 2 flag
     pub mod AWD2 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::AWD3::R;
+        pub use super::AWD3::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// AWD1
+    /// Analog watchdog 1 flag
     pub mod AWD1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::AWD3::R;
+        pub use super::AWD3::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// JEOS
+    /// Injected channel end of sequence flag
     pub mod JEOS {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Injected sequence is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Injected sequence complete
+            pub const Complete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear Injected sequence complete flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// JEOC
+    /// Injected channel end of conversion flag
     pub mod JEOC {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Injected conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Injected conversion complete
+            pub const Complete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear injected conversion complete flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// OVR
+    /// ADC overrun
     pub mod OVR {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No overrun occurred
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: Overrun occurred
+            pub const Overrun: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear overrun occurred flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// EOS
+    /// End of regular sequence flag
     pub mod EOS {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Regular sequence is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Regular sequence complete
+            pub const Complete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear regular sequence complete flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// EOC
+    /// End of conversion flag
     pub mod EOC {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Regular conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Regular conversion complete
+            pub const Complete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear regular conversion complete flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// EOSMP
+    /// End of sampling flag
     pub mod EOSMP {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: End of sampling phase no yet reached
+            pub const NotEnded: u32 = 0b0;
+
+            /// 0b1: End of sampling phase reached
+            pub const Ended: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear end of sampling phase reached flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// ADRDY
+    /// ADC ready
     pub mod ADRDY {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: ADC is not ready to start conversion
+            pub const NotReady: u32 = 0b0;
+
+            /// 0b1: ADC is ready to start conversion
+            pub const Ready: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear ADC is ready to start conversion flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -169,7 +264,7 @@ pub mod ISR {
 /// interrupt enable register
 pub mod IER {
 
-    /// JQOVFIE
+    /// Injected context queue overflow interrupt enable
     pub mod JQOVFIE {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -179,11 +274,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected context queue overflow interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Injected context queue overflow interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// AWD3IE
+    /// Analog watchdog 3 interrupt enable
     pub mod AWD3IE {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -193,11 +295,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Analog watchdog interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// AWD2IE
+    /// Analog watchdog 2 interrupt enable
     pub mod AWD2IE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -207,11 +316,10 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD3IE::RW;
     }
 
-    /// AWD1IE
+    /// Analog watchdog 1 interrupt enable
     pub mod AWD1IE {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -221,11 +329,10 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::AWD3IE::RW;
     }
 
-    /// JEOSIE
+    /// End of injected sequence of conversions interrupt enable
     pub mod JEOSIE {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -235,11 +342,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of injected sequence interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of injected sequence interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// JEOCIE
+    /// End of injected conversion interrupt enable
     pub mod JEOCIE {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -249,11 +363,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of injected conversion interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of injected conversion interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// OVRIE
+    /// Overrun interrupt enable
     pub mod OVRIE {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -263,11 +384,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Overrun interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Overrun interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// EOSIE
+    /// End of regular sequence of conversions interrupt enable
     pub mod EOSIE {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -277,11 +405,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of regular sequence interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of regular sequence interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// EOCIE
+    /// End of regular conversion interrupt enable
     pub mod EOCIE {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -291,11 +426,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of regular conversion interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of regular conversion interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// EOSMPIE
+    /// End of sampling flag interrupt enable for regular conversions
     pub mod EOSMPIE {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -305,11 +447,18 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of regular conversion sampling phase interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of regular conversion sampling phase interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// ADRDYIE
+    /// ADC ready interrupt enable
     pub mod ADRDYIE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -319,15 +468,22 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC ready interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ADC ready interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// control register
 pub mod CR {
 
-    /// ADCAL
+    /// ADC calibration
     pub mod ADCAL {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -337,11 +493,18 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Calibration complete
+            pub const Complete: u32 = 0b0;
+
+            /// 0b1: Start the calibration of the ADC
+            pub const Calibration: u32 = 0b1;
+        }
     }
 
-    /// ADCALDIF
+    /// Differential mode for calibration
     pub mod ADCALDIF {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
@@ -351,11 +514,18 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Calibration for single-ended mode
+            pub const SingleEnded: u32 = 0b0;
+
+            /// 0b1: Calibration for differential mode
+            pub const Differential: u32 = 0b1;
+        }
     }
 
-    /// DEEPPWD
+    /// Deep-power-down enable
     pub mod DEEPPWD {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
@@ -365,11 +535,18 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC not in Deep-power down
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ADC in Deep-power-down (default reset state)
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// ADVREGEN
+    /// ADC voltage regulator enable
     pub mod ADVREGEN {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -379,11 +556,18 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC voltage regulator disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ADC voltage regulator enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// JADSTP
+    /// ADC stop of injected conversion command
     pub mod JADSTP {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -393,11 +577,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Stop conversion of channel
+            pub const Stop: u32 = 0b1;
+        }
     }
 
-    /// ADSTP
+    /// ADC stop of regular conversion command
     pub mod ADSTP {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -407,11 +595,10 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JADSTP::RW;
     }
 
-    /// JADSTART
+    /// ADC start of injected conversion
     pub mod JADSTART {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -421,11 +608,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Starts conversion of channel
+            pub const Start: u32 = 0b1;
+        }
     }
 
-    /// ADSTART
+    /// ADC start of regular conversion
     pub mod ADSTART {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -435,11 +626,10 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::JADSTART::RW;
     }
 
-    /// ADDIS
+    /// ADC disable command
     pub mod ADDIS {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -447,13 +637,17 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Disable ADC conversion and go to power down mode
+            pub const Disable: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// ADEN
+    /// ADC enable control
     pub mod ADEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -461,8 +655,12 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Enable ADC
+            pub const Enable: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -481,12 +679,19 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected Queue enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Injected Queue disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
-    /// AWDCH1CH
-    pub mod AWDCH1CH {
+    /// Analog watchdog 1 channel selection
+    pub mod AWD1CH {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (5 bits: 0b11111 << 26)
@@ -499,7 +704,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 
-    /// JAUTO
+    /// Automatic injected group conversion
     pub mod JAUTO {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -509,11 +714,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Automatic injected group conversion disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Automatic injected group conversion enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// JAWD1EN
+    /// Analog watchdog 1 enable on injected channels
     pub mod JAWD1EN {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -523,11 +735,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog 1 disabled on injected channels
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Analog watchdog 1 enabled on injected channels
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// AWD1EN
+    /// Analog watchdog 1 enable on regular channels
     pub mod AWD1EN {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -537,11 +756,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog 1 disabled on regular channels
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Analog watchdog 1 enabled on regular channels
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// AWD1SGL
+    /// Enable the watchdog 1 on a single channel or on all channels
     pub mod AWD1SGL {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -551,11 +777,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog watchdog 1 enabled on all channels
+            pub const All: u32 = 0b0;
+
+            /// 0b1: Analog watchdog 1 enabled on single channel selected in AWD1CH
+            pub const Single: u32 = 0b1;
+        }
     }
 
-    /// JQM
+    /// JSQR queue mode
     pub mod JQM {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -565,11 +798,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: JSQR Mode 0: Queue maintains the last written configuration into JSQR
+            pub const Mode0: u32 = 0b0;
+
+            /// 0b1: JSQR Mode 1: An empty queue disables software and hardware triggers of the injected sequence
+            pub const Mode1: u32 = 0b1;
+        }
     }
 
-    /// JDISCEN
+    /// Discontinuous mode on injected channels
     pub mod JDISCEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -579,11 +819,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Discontinuous mode on injected channels disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Discontinuous mode on injected channels enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// DISCNUM
+    /// Discontinuous mode channel count
     pub mod DISCNUM {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -597,7 +844,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 
-    /// DISCEN
+    /// Discontinuous mode for regular channels
     pub mod DISCEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -607,11 +854,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Discontinuous mode on regular channels disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Discontinuous mode on regular channels enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// ALIGN
+    /// Data alignment
     pub mod ALIGN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -621,11 +875,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Right alignment
+            pub const Right: u32 = 0b0;
+
+            /// 0b1: Left alignment
+            pub const Left: u32 = 0b1;
+        }
     }
 
-    /// AUTDLY
+    /// Delayed conversion mode
     pub mod AUTDLY {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -635,11 +896,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Auto delayed conversion mode off
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: Auto delayed conversion mode on
+            pub const On: u32 = 0b1;
+        }
     }
 
-    /// CONT
+    /// Single / continuous conversion mode for regular conversions
     pub mod CONT {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -649,11 +917,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Single conversion mode
+            pub const Single: u32 = 0b0;
+
+            /// 0b1: Continuous conversion mode
+            pub const Continuous: u32 = 0b1;
+        }
     }
 
-    /// OVRMOD
+    /// Overrun mode
     pub mod OVRMOD {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -663,11 +938,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preserve DR register when an overrun is detected
+            pub const Preserve: u32 = 0b0;
+
+            /// 0b1: Overwrite DR register when an overrun is detected
+            pub const Overwrite: u32 = 0b1;
+        }
     }
 
-    /// EXTEN
+    /// External trigger enable and polarity selection for regular channels
     pub mod EXTEN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -677,39 +959,81 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Trigger detection disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Trigger detection on the rising edge
+            pub const RisingEdge: u32 = 0b01;
+
+            /// 0b10: Trigger detection on the falling edge
+            pub const FallingEdge: u32 = 0b10;
+
+            /// 0b11: Trigger detection on both the rising and falling edges
+            pub const BothEdges: u32 = 0b11;
+        }
     }
 
-    /// EXTSEL
+    /// External trigger selection for regular group
     pub mod EXTSEL {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (4 bits: 0b1111 << 6)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ALIGN_5
-    pub mod ALIGN_5 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
+        /// Mask (5 bits: 0b11111 << 5)
+        pub const mask: u32 = 0b11111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00111: HRTIM_ADCTRG1 event
+            pub const HRTIM_ADCTRG1: u32 = 0b00111;
+
+            /// 0b01000: HRTIM_ADCTRG3 event
+            pub const HRTIM_ADCTRG3: u32 = 0b01000;
+
+            /// 0b00000: Timer 1 CC1 event
+            pub const TIM1_CC1: u32 = 0b00000;
+
+            /// 0b00001: Timer 1 CC2 event
+            pub const TIM1_CC2: u32 = 0b00001;
+
+            /// 0b00010: Timer 1 CC3 event
+            pub const TIM1_CC3: u32 = 0b00010;
+
+            /// 0b00011: Timer 2 CC2 event
+            pub const TIM2_CC2: u32 = 0b00011;
+
+            /// 0b00100: Timer 3 TRGO event
+            pub const TIM3_TRGO: u32 = 0b00100;
+
+            /// 0b00110: EXTI line 11
+            pub const EXTI11: u32 = 0b00110;
+
+            /// 0b01001: Timer 1 TRGO event
+            pub const TIM1_TRGO: u32 = 0b01001;
+
+            /// 0b01010: Timer 1 TRGO2 event
+            pub const TIM1_TRGO2: u32 = 0b01010;
+
+            /// 0b01011: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b01011;
+
+            /// 0b01101: Timer 6 TRGO event
+            pub const TIM6_TRGO: u32 = 0b01101;
+
+            /// 0b01110: Timer 15 TRGO event
+            pub const TIM15_TRGO: u32 = 0b01110;
+
+            /// 0b01111: Timer 3 CC4 event
+            pub const TIM3_CC4: u32 = 0b01111;
+        }
     }
 
-    /// RES
+    /// Data resolution
     pub mod RES {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -719,11 +1043,24 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 12-bit
+            pub const Bits12: u32 = 0b00;
+
+            /// 0b01: 10-bit
+            pub const Bits10: u32 = 0b01;
+
+            /// 0b10: 8-bit
+            pub const Bits8: u32 = 0b10;
+
+            /// 0b11: 6-bit
+            pub const Bits6: u32 = 0b11;
+        }
     }
 
-    /// DMACFG
+    /// Direct memory access configuration
     pub mod DMACFG {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -733,11 +1070,18 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA One Shot Mode selected
+            pub const OneShot: u32 = 0b0;
+
+            /// 0b1: DMA circular mode selected
+            pub const Circular: u32 = 0b1;
+        }
     }
 
-    /// DMAEN
+    /// Direct memory access enable
     pub mod DMAEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -747,15 +1091,22 @@ pub mod CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// configuration register
 pub mod CFGR2 {
 
-    /// SMPTRIG
+    /// Sampling time control trigger mode
     pub mod SMPTRIG {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -765,11 +1116,18 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Sampling time control trigger mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Sampling time control trigger mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// BULB
+    /// Bulb sampling mode
     pub mod BULB {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
@@ -779,11 +1137,18 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bulb sampling mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Bulb sampling mode enabled. Immediately start sampling after last conversion finishes.
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// SWTRIG
+    /// Software trigger bit for sampling time control trigger mode
     pub mod SWTRIG {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -793,11 +1158,18 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End sampling period and start conversion
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Start sampling period
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// GCOMP
+    /// Gain compensation mode
     pub mod GCOMP {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -807,11 +1179,18 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular ADC operating mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Gain compensation enabled and applies to all channels
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// EXTEN
+    /// Regular Oversampling mode
     pub mod ROVSM {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -821,8 +1200,15 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Oversampling is temporary stopped and continued after injection sequence
+            pub const Continued: u32 = 0b0;
+
+            /// 0b1: Oversampling is aborted and resumed from start after injection sequence
+            pub const Resumed: u32 = 0b1;
+        }
     }
 
     /// Triggered Regular Oversampling
@@ -835,11 +1221,18 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: All oversampled conversions for a channel are run following a trigger
+            pub const Automatic: u32 = 0b0;
+
+            /// 0b1: Each oversampled conversion for a channel needs a new trigger
+            pub const Triggered: u32 = 0b1;
+        }
     }
 
-    /// ALIGN
+    /// Oversampling shift
     pub mod OVSS {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -849,11 +1242,39 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No right shift applied to oversampling result
+            pub const NoShift: u32 = 0b0000;
+
+            /// 0b0001: Shift oversampling result right by 1 bit
+            pub const Shift1: u32 = 0b0001;
+
+            /// 0b0010: Shift oversampling result right by 2 bits
+            pub const Shift2: u32 = 0b0010;
+
+            /// 0b0011: Shift oversampling result right by 3 bits
+            pub const Shift3: u32 = 0b0011;
+
+            /// 0b0100: Shift oversampling result right by 4 bits
+            pub const Shift4: u32 = 0b0100;
+
+            /// 0b0101: Shift oversampling result right by 5 bits
+            pub const Shift5: u32 = 0b0101;
+
+            /// 0b0110: Shift oversampling result right by 6 bits
+            pub const Shift6: u32 = 0b0110;
+
+            /// 0b0111: Shift oversampling result right by 7 bits
+            pub const Shift7: u32 = 0b0111;
+
+            /// 0b1000: Shift oversampling result right by 8 bits
+            pub const Shift8: u32 = 0b1000;
+        }
     }
 
-    /// RES
+    /// Oversampling ratio
     pub mod OVSR {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -863,11 +1284,36 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Oversampling ratio of 2
+            pub const OS2: u32 = 0b000;
+
+            /// 0b001: Oversampling ratio of 4
+            pub const OS4: u32 = 0b001;
+
+            /// 0b010: Oversampling ratio of 8
+            pub const OS8: u32 = 0b010;
+
+            /// 0b011: Oversampling ratio of 16
+            pub const OS16: u32 = 0b011;
+
+            /// 0b100: Oversampling ratio of 32
+            pub const OS32: u32 = 0b100;
+
+            /// 0b101: Oversampling ratio of 64
+            pub const OS64: u32 = 0b101;
+
+            /// 0b110: Oversampling ratio of 128
+            pub const OS128: u32 = 0b110;
+
+            /// 0b111: Oversampling ratio of 256
+            pub const OS256: u32 = 0b111;
+        }
     }
 
-    /// DMACFG
+    /// Injected Oversampling Enable
     pub mod JOVSE {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -877,11 +1323,18 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Injected oversampling disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Injected oversampling enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// DMAEN
+    /// Regular Oversampling Enable
     pub mod ROVSE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -891,15 +1344,22 @@ pub mod CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Regular oversampling disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Regular oversampling enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// sample time register 1
 pub mod SMPR1 {
 
-    /// SMP9
+    /// Channel 9 sampling time selection
     pub mod SMP9 {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -909,11 +1369,36 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 2.5 ADC clock cycles
+            pub const Cycles2_5: u32 = 0b000;
+
+            /// 0b001: 6.5 ADC clock cycles
+            pub const Cycles6_5: u32 = 0b001;
+
+            /// 0b010: 12.5 ADC clock cycles
+            pub const Cycles12_5: u32 = 0b010;
+
+            /// 0b011: 24.5 ADC clock cycles
+            pub const Cycles24_5: u32 = 0b011;
+
+            /// 0b100: 47.5 ADC clock cycles
+            pub const Cycles47_5: u32 = 0b100;
+
+            /// 0b101: 92.5 ADC clock cycles
+            pub const Cycles92_5: u32 = 0b101;
+
+            /// 0b110: 247.5 ADC clock cycles
+            pub const Cycles247_5: u32 = 0b110;
+
+            /// 0b111: 640.5 ADC clock cycles
+            pub const Cycles640_5: u32 = 0b111;
+        }
     }
 
-    /// SMP8
+    /// Channel 8 sampling time selection
     pub mod SMP8 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -923,11 +1408,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP7
+    /// Channel 7 sampling time selection
     pub mod SMP7 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -937,11 +1421,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP6
+    /// Channel 6 sampling time selection
     pub mod SMP6 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -951,11 +1434,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP5
+    /// Channel 5 sampling time selection
     pub mod SMP5 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -965,11 +1447,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP4
+    /// Channel 4 sampling time selection
     pub mod SMP4 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -979,11 +1460,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP3
+    /// Channel 3 sampling time selection
     pub mod SMP3 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -993,11 +1473,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP2
+    /// Channel 2 sampling time selection
     pub mod SMP2 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1007,11 +1486,10 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
-    /// SMP1
+    /// Channel 1 sampling time selection
     pub mod SMP1 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1021,8 +1499,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Addition of one clock cycle to the sampling time
@@ -1035,11 +1512,18 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 2.5 in SMPR remains 2.5 cycles
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: 2.5 in SMPR becomes 3.5 cycles
+            pub const Plus1: u32 = 0b1;
+        }
     }
 
-    /// SMP0
+    /// Channel 0 sampling time selection
     pub mod SMP0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1049,15 +1533,14 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 }
 
 /// sample time register 2
 pub mod SMPR2 {
 
-    /// SMP18
+    /// Channel 18 sampling time selection
     pub mod SMP18 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1067,11 +1550,36 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 2.5 ADC clock cycles
+            pub const Cycles2_5: u32 = 0b000;
+
+            /// 0b001: 6.5 ADC clock cycles
+            pub const Cycles6_5: u32 = 0b001;
+
+            /// 0b010: 12.5 ADC clock cycles
+            pub const Cycles12_5: u32 = 0b010;
+
+            /// 0b011: 24.5 ADC clock cycles
+            pub const Cycles24_5: u32 = 0b011;
+
+            /// 0b100: 47.5 ADC clock cycles
+            pub const Cycles47_5: u32 = 0b100;
+
+            /// 0b101: 92.5 ADC clock cycles
+            pub const Cycles92_5: u32 = 0b101;
+
+            /// 0b110: 247.5 ADC clock cycles
+            pub const Cycles247_5: u32 = 0b110;
+
+            /// 0b111: 640.5 ADC clock cycles
+            pub const Cycles640_5: u32 = 0b111;
+        }
     }
 
-    /// SMP17
+    /// Channel 17 sampling time selection
     pub mod SMP17 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -1081,11 +1589,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP16
+    /// Channel 16 sampling time selection
     pub mod SMP16 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -1095,11 +1602,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP15
+    /// Channel 15 sampling time selection
     pub mod SMP15 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -1109,11 +1615,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP14
+    /// Channel 14 sampling time selection
     pub mod SMP14 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1123,11 +1628,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP13
+    /// Channel 13 sampling time selection
     pub mod SMP13 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -1137,11 +1641,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP12
+    /// Channel 11 sampling time selection
     pub mod SMP12 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1151,11 +1654,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP11
+    /// Channel 12 sampling time selection
     pub mod SMP11 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1165,11 +1667,10 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
-    /// SMP10
+    /// Channel 10 sampling time selection
     pub mod SMP10 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1179,15 +1680,14 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 }
 
 /// watchdog threshold register 1
 pub mod TR1 {
 
-    /// HT1
+    /// Analog watchdog 1 higher threshold
     pub mod HT1 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1201,7 +1701,7 @@ pub mod TR1 {
         pub mod RW {}
     }
 
-    /// AWDFILT
+    /// Analog watchdog filtering parameter
     pub mod AWDFILT {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1215,7 +1715,7 @@ pub mod TR1 {
         pub mod RW {}
     }
 
-    /// LT1
+    /// Analog watchdog 1 lower threshold
     pub mod LT1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1233,7 +1733,7 @@ pub mod TR1 {
 /// watchdog threshold register
 pub mod TR2 {
 
-    /// HT2
+    /// Analog watchdog 2 higher threshold
     pub mod HT2 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1247,7 +1747,7 @@ pub mod TR2 {
         pub mod RW {}
     }
 
-    /// LT2
+    /// Analog watchdog 2 lower threshold
     pub mod LT2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1265,7 +1765,7 @@ pub mod TR2 {
 /// watchdog threshold register 3
 pub mod TR3 {
 
-    /// HT3
+    /// Analog watchdog 3 higher threshold
     pub mod HT3 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1279,7 +1779,7 @@ pub mod TR3 {
         pub mod RW {}
     }
 
-    /// LT3
+    /// Analog watchdog 3 lower threshold
     pub mod LT3 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1297,7 +1797,7 @@ pub mod TR3 {
 /// regular sequence register 1
 pub mod SQR1 {
 
-    /// SQ4
+    /// 4th conversion in regular sequence
     pub mod SQ4 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1311,7 +1811,7 @@ pub mod SQR1 {
         pub mod RW {}
     }
 
-    /// SQ3
+    /// 3rd conversion in regular sequence
     pub mod SQ3 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -1325,7 +1825,7 @@ pub mod SQR1 {
         pub mod RW {}
     }
 
-    /// SQ2
+    /// 2nd conversion in regular sequence
     pub mod SQ2 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1339,7 +1839,7 @@ pub mod SQR1 {
         pub mod RW {}
     }
 
-    /// SQ1
+    /// 1st conversion in regular sequence
     pub mod SQ1 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1371,7 +1871,7 @@ pub mod SQR1 {
 /// regular sequence register 2
 pub mod SQR2 {
 
-    /// SQ9
+    /// 9th conversion in regular sequence
     pub mod SQ9 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1385,7 +1885,7 @@ pub mod SQR2 {
         pub mod RW {}
     }
 
-    /// SQ8
+    /// 8th conversion in regular sequence
     pub mod SQ8 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -1399,7 +1899,7 @@ pub mod SQR2 {
         pub mod RW {}
     }
 
-    /// SQ7
+    /// 7th conversion in regular sequence
     pub mod SQ7 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1413,7 +1913,7 @@ pub mod SQR2 {
         pub mod RW {}
     }
 
-    /// SQ6
+    /// 6th conversion in regular sequence
     pub mod SQ6 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1427,7 +1927,7 @@ pub mod SQR2 {
         pub mod RW {}
     }
 
-    /// SQ5
+    /// 5th conversion in regular sequence
     pub mod SQ5 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1445,7 +1945,7 @@ pub mod SQR2 {
 /// regular sequence register 3
 pub mod SQR3 {
 
-    /// SQ14
+    /// 14th conversion in regular sequence
     pub mod SQ14 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1459,7 +1959,7 @@ pub mod SQR3 {
         pub mod RW {}
     }
 
-    /// SQ13
+    /// 13th conversion in regular sequence
     pub mod SQ13 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -1473,7 +1973,7 @@ pub mod SQR3 {
         pub mod RW {}
     }
 
-    /// SQ12
+    /// 12th conversion in regular sequence
     pub mod SQ12 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1487,7 +1987,7 @@ pub mod SQR3 {
         pub mod RW {}
     }
 
-    /// SQ11
+    /// 11th conversion in regular sequence
     pub mod SQ11 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1501,7 +2001,7 @@ pub mod SQR3 {
         pub mod RW {}
     }
 
-    /// SQ10
+    /// 10th conversion in regular sequence
     pub mod SQ10 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1519,7 +2019,7 @@ pub mod SQR3 {
 /// regular sequence register 4
 pub mod SQR4 {
 
-    /// SQ16
+    /// 16th conversion in regular sequence
     pub mod SQ16 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1533,7 +2033,7 @@ pub mod SQR4 {
         pub mod RW {}
     }
 
-    /// SQ15
+    /// 15th conversion in regular sequence
     pub mod SQ15 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1583,7 +2083,7 @@ pub mod JSQR {
         pub mod RW {}
     }
 
-    /// JSQ3
+    /// 3rd conversion in the injected sequence
     pub mod JSQ3 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -1597,7 +2097,7 @@ pub mod JSQR {
         pub mod RW {}
     }
 
-    /// JSQ2
+    /// 2nd conversion in the injected sequence
     pub mod JSQ2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -1611,7 +2111,7 @@ pub mod JSQR {
         pub mod RW {}
     }
 
-    /// JSQ1
+    /// 1st conversion in the injected sequence
     pub mod JSQ1 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -1625,7 +2125,7 @@ pub mod JSQR {
         pub mod RW {}
     }
 
-    /// JEXTEN
+    /// External Trigger Enable and Polarity Selection for injected channels
     pub mod JEXTEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -1635,11 +2135,24 @@ pub mod JSQR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Trigger detection disabled
+            pub const Disabled: u32 = 0b00;
+
+            /// 0b01: Trigger detection on the rising edge
+            pub const RisingEdge: u32 = 0b01;
+
+            /// 0b10: Trigger detection on the falling edge
+            pub const FallingEdge: u32 = 0b10;
+
+            /// 0b11: Trigger detection on both the rising and falling edges
+            pub const BothEdges: u32 = 0b11;
+        }
     }
 
-    /// JEXTSEL
+    /// External Trigger Selection for injected group
     pub mod JEXTSEL {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -1653,7 +2166,7 @@ pub mod JSQR {
         pub mod RW {}
     }
 
-    /// JL
+    /// Injected channel sequence length
     pub mod JL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1671,7 +2184,7 @@ pub mod JSQR {
 /// offset register 1
 pub mod OFR1 {
 
-    /// OFFSET1_EN
+    /// Offset 1 Enable
     pub mod OFFSET1_EN {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -1681,11 +2194,18 @@ pub mod OFR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
-    /// OFFSET1_CH
+    /// Channel selection for the data offset 1
     pub mod OFFSET1_CH {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
@@ -1699,7 +2219,7 @@ pub mod OFR1 {
         pub mod RW {}
     }
 
-    /// SATEN
+    /// Saturation enable
     pub mod SATEN {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -1713,7 +2233,7 @@ pub mod OFR1 {
         pub mod RW {}
     }
 
-    /// OFFSETPOS
+    /// Positive offset
     pub mod OFFSETPOS {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1727,7 +2247,7 @@ pub mod OFR1 {
         pub mod RW {}
     }
 
-    /// OFFSET1
+    /// Data offset 1 for the channel programmed into bits OFFSET1_CH
     pub mod OFFSET1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1744,36 +2264,252 @@ pub mod OFR1 {
 
 /// offset register 2
 pub mod OFR2 {
-    pub use super::OFR1::OFFSET1;
-    pub use super::OFR1::OFFSET1_CH;
-    pub use super::OFR1::OFFSET1_EN;
-    pub use super::OFR1::OFFSETPOS;
-    pub use super::OFR1::SATEN;
+
+    /// Offset 2 Enable
+    pub mod OFFSET2_EN {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// Channel selection for the data offset 2
+    pub mod OFFSET2_CH {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (5 bits: 0b11111 << 26)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Saturation enable
+    pub mod SATEN {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Positive offset
+    pub mod OFFSETPOS {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data offset 2 for the channel programmed into bits OFFSET2_CH
+    pub mod OFFSET2 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (12 bits: 0xfff << 0)
+        pub const mask: u32 = 0xfff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// offset register 3
 pub mod OFR3 {
-    pub use super::OFR1::OFFSET1;
-    pub use super::OFR1::OFFSET1_CH;
-    pub use super::OFR1::OFFSET1_EN;
-    pub use super::OFR1::OFFSETPOS;
-    pub use super::OFR1::SATEN;
+
+    /// Offset 3 Enable
+    pub mod OFFSET3_EN {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// Channel selection for the data offset 3
+    pub mod OFFSET3_CH {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (5 bits: 0b11111 << 26)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Saturation enable
+    pub mod SATEN {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Positive offset
+    pub mod OFFSETPOS {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data offset 3 for the channel programmed into bits OFFSET3_CH
+    pub mod OFFSET3 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (12 bits: 0xfff << 0)
+        pub const mask: u32 = 0xfff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// offset register 4
 pub mod OFR4 {
-    pub use super::OFR1::OFFSET1;
-    pub use super::OFR1::OFFSET1_CH;
-    pub use super::OFR1::OFFSET1_EN;
-    pub use super::OFR1::OFFSETPOS;
-    pub use super::OFR1::SATEN;
+
+    /// Offset 4 Enable
+    pub mod OFFSET4_EN {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Offset disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Offset enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// Channel selection for the data offset 4
+    pub mod OFFSET4_CH {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (5 bits: 0b11111 << 26)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Saturation enable
+    pub mod SATEN {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Positive offset
+    pub mod OFFSETPOS {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data offset 4 for the channel programmed into bits OFFSET4_CH
+    pub mod OFFSET4 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (12 bits: 0xfff << 0)
+        pub const mask: u32 = 0xfff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// injected data register 1
 pub mod JDR1 {
 
-    /// JDATA1
-    pub mod JDATA1 {
+    /// Injected data
+    pub mod JDATA {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -1789,73 +2525,275 @@ pub mod JDR1 {
 
 /// injected data register 2
 pub mod JDR2 {
-
-    /// JDATA2
-    pub mod JDATA2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::JDR1::JDATA;
 }
 
 /// injected data register 3
 pub mod JDR3 {
-
-    /// JDATA3
-    pub mod JDATA3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::JDR1::JDATA;
 }
 
 /// injected data register 4
 pub mod JDR4 {
-
-    /// JDATA4
-    pub mod JDATA4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+    pub use super::JDR1::JDATA;
 }
 
 /// Analog Watchdog 2 Configuration Register
 pub mod AWD2CR {
 
     /// AWD2CH
-    pub mod AWD2CH {
+    pub mod AWD2CH0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (19 bits: 0x7ffff << 0)
-        pub const mask: u32 = 0x7ffff << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Input channel not monitored by AWDx
+            pub const NotMonitored: u32 = 0b0;
+
+            /// 0b1: Input channel monitored by AWDx
+            pub const Monitored: u32 = 0b1;
+        }
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
     }
 }
 
@@ -1863,17 +2801,258 @@ pub mod AWD2CR {
 pub mod AWD3CR {
 
     /// AWD3CH
-    pub mod AWD3CH {
+    pub mod AWD3CH0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (19 bits: 0x7ffff << 0)
-        pub const mask: u32 = 0x7ffff << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Input channel not monitored by AWDx
+            pub const NotMonitored: u32 = 0b0;
+
+            /// 0b1: Input channel monitored by AWDx
+            pub const Monitored: u32 = 0b1;
+        }
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
     }
 }
 
@@ -1890,29 +3069,256 @@ pub mod DIFSEL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Input channel is configured in single-ended mode
+            pub const SingleEnded: u32 = 0b0;
+
+            /// 0b1: Input channel is configured in differential mode
+            pub const Differential: u32 = 0b1;
+        }
     }
 
-    /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_1_18 {
+    /// Differential mode for channels 0
+    pub mod DIFSEL_1 {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
-        /// Mask (18 bits: 0x3ffff << 1)
-        pub const mask: u32 = 0x3ffff << offset;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
+    }
+
+    /// Differential mode for channels 0
+    pub mod DIFSEL_18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_0::RW;
     }
 }
 
 /// Calibration Factors
 pub mod CALFACT {
 
-    /// CALFACT_D
+    /// Calibration Factors in differential mode
     pub mod CALFACT_D {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1926,7 +3332,7 @@ pub mod CALFACT {
         pub mod RW {}
     }
 
-    /// CALFACT_S
+    /// Calibration Factors In single-ended mode
     pub mod CALFACT_S {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1944,7 +3350,7 @@ pub mod CALFACT {
 /// Gain compensation Register
 pub mod GCOMP {
 
-    /// GCOMPCOEFF
+    /// Gain compensation coefficient
     pub mod GCOMPCOEFF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;

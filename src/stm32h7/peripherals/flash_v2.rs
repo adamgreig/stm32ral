@@ -1048,7 +1048,7 @@ pub mod CR1 {
 pub mod SR1 {
 
     /// Bank 1 CRC read error flag
-    pub mod CRCRDERR1 {
+    pub mod CRCRDERR {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
@@ -1062,7 +1062,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 CRC end of calculation flag
-    pub mod CRCEND1 {
+    pub mod CRCEND {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
@@ -1076,7 +1076,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 ECC double detection error flag
-    pub mod DBECCERR1 {
+    pub mod DBECCERR {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -1090,7 +1090,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 single correction error flag
-    pub mod SNECCERR1 {
+    pub mod SNECCERR {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -1104,7 +1104,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 secure error flag
-    pub mod RDSERR1 {
+    pub mod RDSERR {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -1118,7 +1118,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 read protection error flag
-    pub mod RDPERR1 {
+    pub mod RDPERR {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
@@ -1132,7 +1132,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 write
-    pub mod OPERR1 {
+    pub mod OPERR {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
@@ -1146,7 +1146,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 inconsistency error flag
-    pub mod INCERR1 {
+    pub mod INCERR {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1160,7 +1160,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 strobe error flag
-    pub mod STRBERR1 {
+    pub mod STRBERR {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1174,7 +1174,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 programming sequence error flag
-    pub mod PGSERR1 {
+    pub mod PGSERR {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1188,7 +1188,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 write protection error flag
-    pub mod WRPERR1 {
+    pub mod WRPERR {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1202,7 +1202,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 end-of-program flag
-    pub mod EOP1 {
+    pub mod EOP {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -1216,7 +1216,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 CRC busy flag
-    pub mod CRC_BUSY1 {
+    pub mod CRC_BUSY {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -1230,7 +1230,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 wait queue flag
-    pub mod QW1 {
+    pub mod QW {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -1244,7 +1244,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 write buffer not empty flag
-    pub mod WBNE1 {
+    pub mod WBNE {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -1258,7 +1258,7 @@ pub mod SR1 {
     }
 
     /// Bank 1 busy flag
-    pub mod BSY1 {
+    pub mod BSY {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -1276,7 +1276,7 @@ pub mod SR1 {
 pub mod CCR1 {
 
     /// Bank 1 CRCRDERR1 flag clear bit
-    pub mod CLR_CRCRDERR1 {
+    pub mod CLR_CRCRDERR {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
@@ -1290,7 +1290,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 CRCEND1 flag clear bit
-    pub mod CLR_CRCEND1 {
+    pub mod CLR_CRCEND {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
@@ -1304,7 +1304,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 DBECCERR1 flag clear bit
-    pub mod CLR_DBECCERR1 {
+    pub mod CLR_DBECCERR {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -1318,7 +1318,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 SNECCERR1 flag clear bit
-    pub mod CLR_SNECCERR1 {
+    pub mod CLR_SNECCERR {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -1332,7 +1332,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 RDSERR1 flag clear bit
-    pub mod CLR_RDSERR1 {
+    pub mod CLR_RDSERR {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -1346,7 +1346,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 RDPERR1 flag clear bit
-    pub mod CLR_RDPERR1 {
+    pub mod CLR_RDPERR {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
@@ -1360,7 +1360,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 OPERR1 flag clear bit
-    pub mod CLR_OPERR1 {
+    pub mod CLR_OPERR {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
@@ -1374,7 +1374,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 INCERR1 flag clear bit
-    pub mod CLR_INCERR1 {
+    pub mod CLR_INCERR {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1388,7 +1388,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 STRBERR1 flag clear bit
-    pub mod CLR_STRBERR1 {
+    pub mod CLR_STRBERR {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1402,7 +1402,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 PGSERR1 flag clear bit
-    pub mod CLR_PGSERR1 {
+    pub mod CLR_PGSERR {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1416,7 +1416,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 WRPERR1 flag clear bit
-    pub mod CLR_WRPERR1 {
+    pub mod CLR_WRPERR {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1430,7 +1430,7 @@ pub mod CCR1 {
     }
 
     /// Bank 1 EOP1 flag clear bit
-    pub mod CLR_EOP1 {
+    pub mod CLR_EOP {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -1448,7 +1448,7 @@ pub mod CCR1 {
 pub mod PRAR_CUR1 {
 
     /// Bank 1 PCROP protected erase enable option status bit
-    pub mod DMEP1 {
+    pub mod DMEP {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -1462,7 +1462,7 @@ pub mod PRAR_CUR1 {
     }
 
     /// Bank 1 PCROP area end status bits
-    pub mod PROT_AREA_END1 {
+    pub mod PROT_AREA_END {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (12 bits: 0xfff << 16)
@@ -1476,7 +1476,7 @@ pub mod PRAR_CUR1 {
     }
 
     /// Bank 1 PCROP area start status bits
-    pub mod PROT_AREA_START1 {
+    pub mod PROT_AREA_START {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (12 bits: 0xfff << 0)
@@ -1492,16 +1492,16 @@ pub mod PRAR_CUR1 {
 
 /// FLASH protection address for bank 1
 pub mod PRAR_PRG1 {
-    pub use super::PRAR_CUR1::DMEP1;
-    pub use super::PRAR_CUR1::PROT_AREA_END1;
-    pub use super::PRAR_CUR1::PROT_AREA_START1;
+    pub use super::PRAR_CUR1::DMEP;
+    pub use super::PRAR_CUR1::PROT_AREA_END;
+    pub use super::PRAR_CUR1::PROT_AREA_START;
 }
 
 /// FLASH secure address for bank 1
 pub mod SCAR_CUR1 {
 
     /// Bank 1 secure access protected erase enable option status bit
-    pub mod DMES1 {
+    pub mod DMES {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -1515,7 +1515,7 @@ pub mod SCAR_CUR1 {
     }
 
     /// Bank 1 secure-only area end status bits
-    pub mod SEC_AREA_END1 {
+    pub mod SEC_AREA_END {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (12 bits: 0xfff << 16)
@@ -1529,7 +1529,7 @@ pub mod SCAR_CUR1 {
     }
 
     /// Bank 1 secure-only area start status bits
-    pub mod SEC_AREA_START1 {
+    pub mod SEC_AREA_START {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (12 bits: 0xfff << 0)
@@ -1545,16 +1545,16 @@ pub mod SCAR_CUR1 {
 
 /// FLASH secure address for bank 1
 pub mod SCAR_PRG1 {
-    pub use super::SCAR_CUR1::DMES1;
-    pub use super::SCAR_CUR1::SEC_AREA_END1;
-    pub use super::SCAR_CUR1::SEC_AREA_START1;
+    pub use super::SCAR_CUR1::DMES;
+    pub use super::SCAR_CUR1::SEC_AREA_END;
+    pub use super::SCAR_CUR1::SEC_AREA_START;
 }
 
 /// FLASH write sector protection for bank 1
 pub mod WPSN_CURR1 {
 
     /// Bank 1 sector write protection option status byte
-    pub mod WRPSn1 {
+    pub mod WRPSn {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (8 bits: 0xff << 0)
@@ -1570,7 +1570,7 @@ pub mod WPSN_CURR1 {
 
 /// FLASH write sector protection for bank 1
 pub mod WPSN_PRGR1 {
-    pub use super::WPSN_CURR1::WRPSn1;
+    pub use super::WPSN_CURR1::WRPSn;
 }
 
 /// FLASH CRC control register for bank 1
@@ -1729,7 +1729,7 @@ pub mod CRCEADDR1 {
 pub mod FAR1 {
 
     /// Bank 1 ECC error address
-    pub mod FAIL_ECC_ADDR1 {
+    pub mod FAIL_ECC_ADDR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (15 bits: 0x7fff << 0)
@@ -1775,76 +1775,76 @@ pub mod CR2 {
 
 /// FLASH status register for bank 1
 pub mod SR2 {
-    pub use super::SR1::BSY1;
-    pub use super::SR1::CRCEND1;
-    pub use super::SR1::CRCRDERR1;
-    pub use super::SR1::CRC_BUSY1;
-    pub use super::SR1::DBECCERR1;
-    pub use super::SR1::EOP1;
-    pub use super::SR1::INCERR1;
-    pub use super::SR1::OPERR1;
-    pub use super::SR1::PGSERR1;
-    pub use super::SR1::QW1;
-    pub use super::SR1::RDPERR1;
-    pub use super::SR1::RDSERR1;
-    pub use super::SR1::SNECCERR1;
-    pub use super::SR1::STRBERR1;
-    pub use super::SR1::WBNE1;
-    pub use super::SR1::WRPERR1;
+    pub use super::SR1::BSY;
+    pub use super::SR1::CRCEND;
+    pub use super::SR1::CRCRDERR;
+    pub use super::SR1::CRC_BUSY;
+    pub use super::SR1::DBECCERR;
+    pub use super::SR1::EOP;
+    pub use super::SR1::INCERR;
+    pub use super::SR1::OPERR;
+    pub use super::SR1::PGSERR;
+    pub use super::SR1::QW;
+    pub use super::SR1::RDPERR;
+    pub use super::SR1::RDSERR;
+    pub use super::SR1::SNECCERR;
+    pub use super::SR1::STRBERR;
+    pub use super::SR1::WBNE;
+    pub use super::SR1::WRPERR;
 }
 
 /// FLASH clear control register for bank 1
 pub mod CCR2 {
-    pub use super::CCR1::CLR_CRCEND1;
-    pub use super::CCR1::CLR_CRCRDERR1;
-    pub use super::CCR1::CLR_DBECCERR1;
-    pub use super::CCR1::CLR_EOP1;
-    pub use super::CCR1::CLR_INCERR1;
-    pub use super::CCR1::CLR_OPERR1;
-    pub use super::CCR1::CLR_PGSERR1;
-    pub use super::CCR1::CLR_RDPERR1;
-    pub use super::CCR1::CLR_RDSERR1;
-    pub use super::CCR1::CLR_SNECCERR1;
-    pub use super::CCR1::CLR_STRBERR1;
-    pub use super::CCR1::CLR_WRPERR1;
+    pub use super::CCR1::CLR_CRCEND;
+    pub use super::CCR1::CLR_CRCRDERR;
+    pub use super::CCR1::CLR_DBECCERR;
+    pub use super::CCR1::CLR_EOP;
+    pub use super::CCR1::CLR_INCERR;
+    pub use super::CCR1::CLR_OPERR;
+    pub use super::CCR1::CLR_PGSERR;
+    pub use super::CCR1::CLR_RDPERR;
+    pub use super::CCR1::CLR_RDSERR;
+    pub use super::CCR1::CLR_SNECCERR;
+    pub use super::CCR1::CLR_STRBERR;
+    pub use super::CCR1::CLR_WRPERR;
 }
 
 /// FLASH protection address for bank 1
 pub mod PRAR_CUR2 {
-    pub use super::PRAR_CUR1::DMEP1;
-    pub use super::PRAR_CUR1::PROT_AREA_END1;
-    pub use super::PRAR_CUR1::PROT_AREA_START1;
+    pub use super::PRAR_CUR1::DMEP;
+    pub use super::PRAR_CUR1::PROT_AREA_END;
+    pub use super::PRAR_CUR1::PROT_AREA_START;
 }
 
 /// FLASH protection address for bank 1
 pub mod PRAR_PRG2 {
-    pub use super::PRAR_CUR1::DMEP1;
-    pub use super::PRAR_CUR1::PROT_AREA_END1;
-    pub use super::PRAR_CUR1::PROT_AREA_START1;
+    pub use super::PRAR_CUR1::DMEP;
+    pub use super::PRAR_CUR1::PROT_AREA_END;
+    pub use super::PRAR_CUR1::PROT_AREA_START;
 }
 
 /// FLASH secure address for bank 1
 pub mod SCAR_CUR2 {
-    pub use super::SCAR_CUR1::DMES1;
-    pub use super::SCAR_CUR1::SEC_AREA_END1;
-    pub use super::SCAR_CUR1::SEC_AREA_START1;
+    pub use super::SCAR_CUR1::DMES;
+    pub use super::SCAR_CUR1::SEC_AREA_END;
+    pub use super::SCAR_CUR1::SEC_AREA_START;
 }
 
 /// FLASH secure address for bank 1
 pub mod SCAR_PRG2 {
-    pub use super::SCAR_CUR1::DMES1;
-    pub use super::SCAR_CUR1::SEC_AREA_END1;
-    pub use super::SCAR_CUR1::SEC_AREA_START1;
+    pub use super::SCAR_CUR1::DMES;
+    pub use super::SCAR_CUR1::SEC_AREA_END;
+    pub use super::SCAR_CUR1::SEC_AREA_START;
 }
 
 /// FLASH write sector protection for bank 1
 pub mod WPSN_CURR2 {
-    pub use super::WPSN_CURR1::WRPSn1;
+    pub use super::WPSN_CURR1::WRPSn;
 }
 
 /// FLASH write sector protection for bank 1
 pub mod WPSN_PRGR2 {
-    pub use super::WPSN_CURR1::WRPSn1;
+    pub use super::WPSN_CURR1::WRPSn;
 }
 
 /// FLASH CRC control register for bank 1
@@ -1871,7 +1871,7 @@ pub mod CRCEADDR2 {
 
 /// FLASH ECC fail address for bank 1
 pub mod FAR2 {
-    pub use super::FAR1::FAIL_ECC_ADDR1;
+    pub use super::FAR1::FAIL_ECC_ADDR;
 }
 #[repr(C)]
 pub struct RegisterBlock {

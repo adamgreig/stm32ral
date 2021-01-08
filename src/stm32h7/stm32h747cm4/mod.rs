@@ -8,45 +8,45 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc_common;
-pub use super::instances::adc_h747cm4_h747cm7 as adc;
 pub use super::instances::bdma;
 pub use super::instances::cec;
 pub use super::instances::comp1;
-pub use super::instances::crc;
 pub use super::instances::crs;
 pub use super::instances::dac;
 pub use super::instances::dma2d;
-pub use super::instances::dmamux1;
 pub use super::instances::dmamux2;
 pub use super::instances::fmc;
 pub use super::instances::gpio;
 pub use super::instances::hsem;
 pub use super::instances::i2c;
-pub use super::instances::iwdg_h747cm4_h747cm7 as iwdg;
 pub use super::instances::jpeg;
+pub use super::instances::mdma;
+pub use super::instances::quadspi;
+pub use super::instances::rng;
+pub mod rtc;
+pub use super::instances::adc_common;
+pub use super::instances::adc_h747cm4_h747cm7 as adc;
+pub use super::instances::crc;
+pub use super::instances::dmamux1;
+pub use super::instances::iwdg_h747cm4_h747cm7 as iwdg;
+pub use super::instances::ltdc;
+pub use super::instances::pwr_h747cm4_h747cm7 as pwr;
+pub use super::instances::sai;
+pub use super::instances::sdmmc_h747cm4_h747cm7 as sdmmc;
+pub use super::instances::spdifrx;
+pub use super::instances::spi_h747cm4_h747cm7_h7b3 as spi;
+pub use super::instances::vrefbuf;
+pub use super::instances::wwdg_h747cm4_h747cm7 as wwdg;
+pub mod rcc;
+pub use super::instances::dlyb;
+pub use super::instances::exti_h747cm4_h747cm7 as exti;
 pub use super::instances::lptim;
 pub use super::instances::lptim3;
 pub use super::instances::lpuart1;
-pub use super::instances::ltdc;
-pub use super::instances::mdma;
-pub use super::instances::pwr_h747cm4_h747cm7 as pwr;
-pub use super::instances::quadspi;
-pub use super::instances::rcc_h747cm4_h747cm7 as rcc;
-pub use super::instances::rng;
-pub use super::instances::rtc;
-pub use super::instances::sai_h747cm4_h747cm7 as sai;
-pub use super::instances::sdmmc_h747cm4_h747cm7 as sdmmc;
-pub use super::instances::spdifrx;
-pub use super::instances::spi_h747cm4_h747cm7 as spi;
 pub use super::instances::syscfg_h747cm4_h747cm7 as syscfg;
-pub use super::instances::vrefbuf;
-pub use super::instances::wwdg_h747cm4_h747cm7 as wwdg;
-pub mod exti;
-pub use super::instances::axi_h747cm4_h747cm7 as axi;
-pub use super::instances::cryp_h747cm4_h747cm7 as cryp;
+pub mod axi;
+pub use super::instances::cryp_h747cm4_h747cm7_h7b3 as cryp;
 pub use super::instances::dcmi;
-pub use super::instances::dlyb;
 pub use super::instances::ethernet_mac_h747cm4_h747cm7 as ethernet_mac;
 pub use super::instances::hash;
 pub use super::instances::otg_hs_device;
@@ -66,7 +66,7 @@ pub use super::instances::fdcan;
 pub use super::instances::flash_h747cm4_h747cm7 as flash;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
-pub use super::instances::hrtim_common_h747cm4_h747cm7 as hrtim_common;
+pub use super::instances::hrtim_common_h747cm4_h747cm7_h7b3 as hrtim_common;
 pub use super::instances::hrtim_master;
 pub use super::instances::hrtim_tima;
 pub use super::instances::hrtim_timb;
@@ -79,8 +79,7 @@ pub use super::instances::nvic_h747cm4_h747cm7 as nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::opamp;
 pub use super::instances::pf;
-pub use super::instances::ramecc1;
-pub use super::instances::ramecc2;
+pub use super::instances::ramecc;
 pub use super::instances::ramecc3;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
@@ -92,14 +91,14 @@ pub use super::instances::tim14;
 pub use super::instances::tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
-pub use super::instances::tim1_h747cm4_h747cm7 as tim1;
+pub use super::instances::tim1_h747cm4_h747cm7_h7b3 as tim1;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
-pub use super::instances::tim8_h747cm4_h747cm7 as tim8;
+pub use super::instances::tim8_h747cm4_h747cm7_h7b3 as tim8;
 pub use super::instances::usart;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
@@ -229,9 +228,6 @@ pub struct Peripherals {
     pub SCB: scb::Instance,
     pub PF: pf::Instance,
     pub AC: ac::Instance,
-    pub RAMECC1: ramecc1::Instance,
-    pub RAMECC2: ramecc2::Instance,
-    pub RAMECC3: ramecc3::Instance,
     pub ART: art::Instance,
     pub TIM3: tim3::Instance,
     pub TIM4: tim4::Instance,
@@ -243,6 +239,9 @@ pub struct Peripherals {
     pub DBGMCU: dbgmcu::Instance,
     pub DSIHOST: dsihost::Instance,
     pub FLASH: flash::Instance,
+    pub RAMECC1: ramecc::Instance,
+    pub RAMECC2: ramecc::Instance,
+    pub RAMECC3: ramecc3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -377,9 +376,6 @@ impl Peripherals {
             SCB: scb::SCB::steal(),
             PF: pf::PF::steal(),
             AC: ac::AC::steal(),
-            RAMECC1: ramecc1::RAMECC1::steal(),
-            RAMECC2: ramecc2::RAMECC2::steal(),
-            RAMECC3: ramecc3::RAMECC3::steal(),
             ART: art::ART::steal(),
             TIM3: tim3::TIM3::steal(),
             TIM4: tim4::TIM4::steal(),
@@ -391,6 +387,9 @@ impl Peripherals {
             DBGMCU: dbgmcu::DBGMCU::steal(),
             DSIHOST: dsihost::DSIHOST::steal(),
             FLASH: flash::FLASH::steal(),
+            RAMECC1: ramecc::RAMECC1::steal(),
+            RAMECC2: ramecc::RAMECC2::steal(),
+            RAMECC3: ramecc3::RAMECC3::steal(),
         }
     }
 }

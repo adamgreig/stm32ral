@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: DMA controller operation
 //!
-//! Used by: stm32f101, stm32f103, stm32f107
+//! Used by: stm32f101, stm32f103
 
 use crate::{RORegister, RWRegister, UnsafeRWRegister};
 #[cfg(not(feature = "nosync"))]

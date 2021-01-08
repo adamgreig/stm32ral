@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: MAC management counters
 //!
-//! Used by: stm32f101, stm32f103, stm32f107
+//! Used by: stm32f101, stm32f103
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

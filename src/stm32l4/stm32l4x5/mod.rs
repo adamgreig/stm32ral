@@ -52,7 +52,7 @@ pub use super::instances::usb;
 pub mod fmc;
 pub use super::instances::dfsdm;
 pub use super::instances::tim8;
-pub mod adc123_common;
+pub mod adc_common;
 pub mod rcc;
 pub use super::instances::dbgmcu_l4x5_l4x6 as dbgmcu;
 pub use super::instances::fpu;
@@ -133,7 +133,7 @@ pub struct Peripherals {
     pub DFSDM: dfsdm::Instance,
     pub TIM8: tim8::Instance,
     pub RCC: rcc::Instance,
-    pub ADC123_Common: adc123_common::Instance,
+    pub ADC_Common: adc_common::Instance,
     pub DBGMCU: dbgmcu::Instance,
     pub FPU: fpu::Instance,
     pub MPU: mpu::Instance,
@@ -219,7 +219,7 @@ impl Peripherals {
             DFSDM: dfsdm::DFSDM::steal(),
             TIM8: tim8::TIM8::steal(),
             RCC: rcc::RCC::steal(),
-            ADC123_Common: adc123_common::ADC123_Common::steal(),
+            ADC_Common: adc_common::ADC_Common::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
             FPU: fpu::FPU::steal(),
             MPU: mpu::MPU::steal(),

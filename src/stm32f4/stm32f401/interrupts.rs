@@ -11,6 +11,13 @@ extern "C" {
     fn EXTI2();
     fn EXTI3();
     fn EXTI4();
+    fn DMA1_STREAM0();
+    fn DMA1_STREAM1();
+    fn DMA1_STREAM2();
+    fn DMA1_STREAM3();
+    fn DMA1_STREAM4();
+    fn DMA1_STREAM5();
+    fn DMA1_STREAM6();
     fn ADC();
     fn EXTI9_5();
     fn TIM1_BRK_TIM9();
@@ -19,6 +26,7 @@ extern "C" {
     fn TIM1_CC();
     fn TIM2();
     fn TIM3();
+    fn TIM4();
     fn I2C1_EV();
     fn I2C1_ER();
     fn I2C2_EV();
@@ -30,9 +38,19 @@ extern "C" {
     fn EXTI15_10();
     fn RTC_Alarm();
     fn OTG_FS_WKUP();
+    fn DMA1_STREAM7();
     fn SDIO();
+    fn TIM5();
     fn SPI3();
+    fn DMA2_STREAM0();
+    fn DMA2_STREAM1();
+    fn DMA2_STREAM2();
+    fn DMA2_STREAM3();
+    fn DMA2_STREAM4();
     fn OTG_FS();
+    fn DMA2_STREAM5();
+    fn DMA2_STREAM6();
+    fn DMA2_STREAM7();
     fn USART6();
     fn I2C3_EV();
     fn I2C3_ER();
@@ -64,13 +82,27 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _handler: EXTI2 },
     Vector { _handler: EXTI3 },
     Vector { _handler: EXTI4 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: DMA1_STREAM0,
+    },
+    Vector {
+        _handler: DMA1_STREAM1,
+    },
+    Vector {
+        _handler: DMA1_STREAM2,
+    },
+    Vector {
+        _handler: DMA1_STREAM3,
+    },
+    Vector {
+        _handler: DMA1_STREAM4,
+    },
+    Vector {
+        _handler: DMA1_STREAM5,
+    },
+    Vector {
+        _handler: DMA1_STREAM6,
+    },
     Vector { _handler: ADC },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -89,7 +121,7 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _handler: TIM1_CC },
     Vector { _handler: TIM2 },
     Vector { _handler: TIM3 },
-    Vector { _reserved: 0 },
+    Vector { _handler: TIM4 },
     Vector { _handler: I2C1_EV },
     Vector { _handler: I2C1_ER },
     Vector { _handler: I2C2_EV },
@@ -112,20 +144,32 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: DMA1_STREAM7,
+    },
     Vector { _reserved: 0 },
     Vector { _handler: SDIO },
-    Vector { _reserved: 0 },
+    Vector { _handler: TIM5 },
     Vector { _handler: SPI3 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: DMA2_STREAM0,
+    },
+    Vector {
+        _handler: DMA2_STREAM1,
+    },
+    Vector {
+        _handler: DMA2_STREAM2,
+    },
+    Vector {
+        _handler: DMA2_STREAM3,
+    },
+    Vector {
+        _handler: DMA2_STREAM4,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -133,9 +177,15 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: OTG_FS },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: DMA2_STREAM5,
+    },
+    Vector {
+        _handler: DMA2_STREAM6,
+    },
+    Vector {
+        _handler: DMA2_STREAM7,
+    },
     Vector { _handler: USART6 },
     Vector { _handler: I2C3_EV },
     Vector { _handler: I2C3_ER },
@@ -177,6 +227,20 @@ pub enum Interrupt {
     EXTI3 = 9,
     /// 10: EXTI Line4 interrupt
     EXTI4 = 10,
+    /// 11: DMA1_STREAM0 global interrupt
+    DMA1_STREAM0 = 11,
+    /// 12: DMA1_STREAM1 global interrupt
+    DMA1_STREAM1 = 12,
+    /// 13: DMA1_STREAM2 global interrupt
+    DMA1_STREAM2 = 13,
+    /// 14: DMA1_STREAM3 global interrupt
+    DMA1_STREAM3 = 14,
+    /// 15: DMA1_STREAM4 global interrupt
+    DMA1_STREAM4 = 15,
+    /// 16: DMA1_STREAM5 global interrupt
+    DMA1_STREAM5 = 16,
+    /// 17: DMA1_STREAM6 global interrupt
+    DMA1_STREAM6 = 17,
     /// 18: ADC1 global interrupt
     ADC = 18,
     /// 23: EXTI Line\[9:5\] interrupts
@@ -193,6 +257,8 @@ pub enum Interrupt {
     TIM2 = 28,
     /// 29: TIM3 global interrupt
     TIM3 = 29,
+    /// 30: TIM4 global interrupt
+    TIM4 = 30,
     /// 31: I2C1 event interrupt
     I2C1_EV = 31,
     /// 32: I2C1 error interrupt
@@ -215,12 +281,32 @@ pub enum Interrupt {
     RTC_Alarm = 41,
     /// 42: USB On-The-Go FS Wakeup through EXTI line interrupt
     OTG_FS_WKUP = 42,
+    /// 47: DMA1_STREAM7 global interrupt
+    DMA1_STREAM7 = 47,
     /// 49: SDIO global interrupt
     SDIO = 49,
+    /// 50: TIM5 global interrupt
+    TIM5 = 50,
     /// 51: SPI3 global interrupt
     SPI3 = 51,
+    /// 56: DMA2_STREAM0 global interrupt
+    DMA2_STREAM0 = 56,
+    /// 57: DMA2_STREAM1 global interrupt
+    DMA2_STREAM1 = 57,
+    /// 58: DMA2_STREAM2 global interrupt
+    DMA2_STREAM2 = 58,
+    /// 59: DMA2_STREAM3 global interrupt
+    DMA2_STREAM3 = 59,
+    /// 60: DMA2_STREAM4 global interrupt
+    DMA2_STREAM4 = 60,
     /// 67: USB On The Go FS global interrupt
     OTG_FS = 67,
+    /// 68: DMA2_STREAM5 global interrupt
+    DMA2_STREAM5 = 68,
+    /// 69: DMA2_STREAM6 global interrupt
+    DMA2_STREAM6 = 69,
+    /// 70: DMA2_STREAM7 global interrupt
+    DMA2_STREAM7 = 70,
     /// 71: USART6 global interrupt
     USART6 = 71,
     /// 72: I2C3 event interrupt

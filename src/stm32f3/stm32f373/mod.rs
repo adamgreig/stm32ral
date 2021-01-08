@@ -11,8 +11,8 @@ pub use self::interrupts::Interrupt as interrupt;
 pub mod gpio;
 pub mod gpioc;
 pub use super::instances::crc;
-pub use super::instances::flash_f373_f3x8 as flash;
 pub use super::instances::tsc;
+pub mod flash;
 pub mod rcc;
 pub use super::instances::dma;
 pub use super::instances::tim15_f301_f373_f3x8 as tim15;
@@ -67,7 +67,7 @@ pub struct Peripherals {
     pub GPIOF: gpioc::Instance,
     pub TSC: tsc::Instance,
     pub CRC: crc::Instance,
-    pub Flash: flash::Instance,
+    pub FLASH: flash::Instance,
     pub RCC: rcc::Instance,
     pub DMA1: dma::Instance,
     pub DMA2: dma::Instance,
@@ -138,7 +138,7 @@ impl Peripherals {
             GPIOF: gpioc::GPIOF::steal(),
             TSC: tsc::TSC::steal(),
             CRC: crc::CRC::steal(),
-            Flash: flash::Flash::steal(),
+            FLASH: flash::FLASH::steal(),
             RCC: rcc::RCC::steal(),
             DMA1: dma::DMA1::steal(),
             DMA2: dma::DMA2::steal(),

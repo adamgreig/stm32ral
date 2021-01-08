@@ -8,12 +8,12 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc1;
+pub use super::instances::adc1_f401_f411 as adc1;
 pub use super::instances::adc_common_f401_f411 as adc_common;
 pub use super::instances::crc;
 pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
 pub use super::instances::exti;
-pub use super::instances::flash_f401_f405_f411_f412_f413 as flash;
+pub use super::instances::flash_f405_f411_f412_f413 as flash;
 pub use super::instances::iwdg;
 pub use super::instances::otg_fs_device_f401_f405_f407_f411_f427_f429 as otg_fs_device;
 pub use super::instances::otg_fs_global_f401_f405_f407_f411_f427_f429 as otg_fs_global;

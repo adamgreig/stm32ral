@@ -136,7 +136,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HSION::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Clock security system disabled (clock detector OFF)
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: Clock security system enable (clock detector ON if the HSE is ready, OFF if not)
+            pub const On: u32 = 0b1;
+        }
     }
 
     /// PLL enable
@@ -175,7 +183,8 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HSION::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL2 clock ready flag
@@ -201,7 +210,8 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HSION::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL3 clock ready flag

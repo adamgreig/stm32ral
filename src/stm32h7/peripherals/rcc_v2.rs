@@ -4870,7 +4870,7 @@ pub mod AHB1ENR {
     }
 
     /// USB1OTG Peripheral Clocks Enable
-    pub mod USB1OTGHSEN {
+    pub mod USB1OTGEN {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -4883,7 +4883,7 @@ pub mod AHB1ENR {
     }
 
     /// USB_PHY1 Clocks Enable
-    pub mod USB1OTGHSULPIEN {
+    pub mod USB1ULPIEN {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -4896,10 +4896,23 @@ pub mod AHB1ENR {
     }
 
     /// USB2OTG Peripheral Clocks Enable
-    pub mod USB2OTGHSEN {
+    pub mod USB2OTGEN {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1EN::RW;
+    }
+
+    /// USB_PHY2 Clocks Enable
+    pub mod USB2ULPIEN {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (1 bit: 1 << 28)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4999,7 +5012,7 @@ pub mod C1_AHB1ENR {
     }
 
     /// USB1OTG Peripheral Clocks Enable
-    pub mod USB1OTGHSEN {
+    pub mod USB1OTGEN {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -5012,7 +5025,7 @@ pub mod C1_AHB1ENR {
     }
 
     /// USB_PHY1 Clocks Enable
-    pub mod USB1OTGHSULPIEN {
+    pub mod USB1ULPIEN {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -5025,10 +5038,23 @@ pub mod C1_AHB1ENR {
     }
 
     /// USB2OTG Peripheral Clocks Enable
-    pub mod USB2OTGHSEN {
+    pub mod USB2OTGEN {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1EN::RW;
+    }
+
+    /// USB_PHY2 Clocks Enable
+    pub mod USB2ULPIEN {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (1 bit: 1 << 28)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -5440,7 +5466,15 @@ pub mod C1_APB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LTDCEN::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LCD-TFT controller disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: LCD-TFT controller enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -6699,7 +6733,7 @@ pub mod AHB1LPENR {
     }
 
     /// USB1OTG peripheral clock enable during CSleep mode
-    pub mod USB1OTGHSLPEN {
+    pub mod USB1OTGLPEN {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -6725,7 +6759,7 @@ pub mod AHB1LPENR {
     }
 
     /// USB2OTG peripheral clock enable during CSleep mode
-    pub mod USB2OTGHSLPEN {
+    pub mod USB2OTGLPEN {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
@@ -6753,16 +6787,144 @@ pub mod AHB1LPENR {
 
 /// RCC AHB1 Sleep Clock Register
 pub mod C1_AHB1LPENR {
-    pub use super::AHB1LPENR::ADC12LPEN;
-    pub use super::AHB1LPENR::DMA1LPEN;
-    pub use super::AHB1LPENR::DMA2LPEN;
-    pub use super::AHB1LPENR::ETH1MACLPEN;
-    pub use super::AHB1LPENR::ETH1RXLPEN;
-    pub use super::AHB1LPENR::ETH1TXLPEN;
-    pub use super::AHB1LPENR::USB1OTGHSLPEN;
-    pub use super::AHB1LPENR::USB1OTGHSULPILPEN;
-    pub use super::AHB1LPENR::USB2OTGHSLPEN;
-    pub use super::AHB1LPENR::USB2OTGHSULPILPEN;
+
+    /// DMA1 Clock Enable During CSleep Mode
+    pub mod DMA1LPEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The selected clock is disabled during csleep mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The selected clock is enabled during csleep mode
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// DMA2 Clock Enable During CSleep Mode
+    pub mod DMA2LPEN {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// ADC1/2 Peripheral Clocks Enable During CSleep Mode
+    pub mod ADC12LPEN {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// Ethernet MAC bus interface Clock Enable During CSleep Mode
+    pub mod ETH1MACLPEN {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// Ethernet Transmission Clock Enable During CSleep Mode
+    pub mod ETH1TXLPEN {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// Ethernet Reception Clock Enable During CSleep Mode
+    pub mod ETH1RXLPEN {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// USB1OTG peripheral clock enable during CSleep mode
+    pub mod USB1OTGLPEN {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// USB_PHY1 clock enable during CSleep mode
+    pub mod USB1ULPILPEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// USB2OTG peripheral clock enable during CSleep mode
+    pub mod USB2OTGLPEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
+
+    /// USB_PHY2 clocks enable during CSleep mode
+    pub mod USB2ULPILPEN {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (1 bit: 1 << 28)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DMA1LPEN::RW;
+    }
 }
 
 /// RCC AHB2 Sleep Clock Register
@@ -7474,8 +7636,8 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// USART7 Peripheral Clocks Enable During CSleep Mode
-    pub mod USART7LPEN {
+    /// UART7 Peripheral Clocks Enable During CSleep Mode
+    pub mod UART7LPEN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
@@ -7487,8 +7649,8 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// USART8 Peripheral Clocks Enable During CSleep Mode
-    pub mod USART8LPEN {
+    /// UART8 Peripheral Clocks Enable During CSleep Mode
+    pub mod UART8LPEN {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -7523,10 +7685,10 @@ pub mod C1_APB1LLPENR {
     pub use super::APB1LLPENR::TIM7LPEN;
     pub use super::APB1LLPENR::UART4LPEN;
     pub use super::APB1LLPENR::UART5LPEN;
+    pub use super::APB1LLPENR::UART7LPEN;
+    pub use super::APB1LLPENR::UART8LPEN;
     pub use super::APB1LLPENR::USART2LPEN;
     pub use super::APB1LLPENR::USART3LPEN;
-    pub use super::APB1LLPENR::USART7LPEN;
-    pub use super::APB1LLPENR::USART8LPEN;
 }
 
 /// RCC APB1 High Sleep Clock Register

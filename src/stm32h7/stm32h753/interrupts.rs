@@ -139,6 +139,7 @@ extern "C" {
     fn LPUART();
     fn WWDG1_RST();
     fn CRS();
+    fn RAMECC();
     fn SAI4();
     fn WKUP();
 }
@@ -393,7 +394,7 @@ pub static __INTERRUPTS: [Vector; 150] = [
         _handler: WWDG1_RST,
     },
     Vector { _handler: CRS },
-    Vector { _reserved: 0 },
+    Vector { _handler: RAMECC },
     Vector { _handler: SAI4 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -681,6 +682,8 @@ pub enum Interrupt {
     WWDG1_RST = 143,
     /// 144: Clock Recovery System globa
     CRS = 144,
+    /// 145: ECC diagnostic global interrupt for all RAMECC controllers
+    RAMECC = 145,
     /// 146: SAI4 global interrupt
     SAI4 = 146,
     /// 149: WKUP1 to WKUP6 pins

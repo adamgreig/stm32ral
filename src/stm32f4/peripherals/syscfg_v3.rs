@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! System configuration controller
 //!
-//! Used by: stm32f412, stm32f413
+//! Used by: stm32f410, stm32f412, stm32f413
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -316,11 +316,11 @@ pub mod CMPCR {
     }
 }
 
-/// I2C_BUFOUT
-pub mod I2C_BUFOUT {
+/// Configuration register
+pub mod CFGR {
 
-    /// I2C4SCL
-    pub mod I2C4SCL {
+    /// FMPI2C1_SCL
+    pub mod FMPI2C1_SCL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -333,8 +333,8 @@ pub mod I2C_BUFOUT {
         pub mod RW {}
     }
 
-    /// I2C4SDA
-    pub mod I2C4SDA {
+    /// FMPI2C1_SDA
+    pub mod FMPI2C1_SDA {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -374,8 +374,8 @@ pub struct RegisterBlock {
 
     _reserved2: [u32; 2],
 
-    /// I2C_BUFOUT
-    pub I2C_BUFOUT: RWRegister<u32>,
+    /// Configuration register
+    pub CFGR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub MEMRM: u32,
@@ -385,7 +385,7 @@ pub struct ResetValues {
     pub EXTICR3: u32,
     pub EXTICR4: u32,
     pub CMPCR: u32,
-    pub I2C_BUFOUT: u32,
+    pub CFGR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

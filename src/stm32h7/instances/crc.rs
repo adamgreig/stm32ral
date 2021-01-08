@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Cryptographic processor
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::crc::Instance;
@@ -24,7 +24,7 @@ pub mod CRC {
 
     /// Reset values for each field in CRC
     pub const reset: ResetValues = ResetValues {
-        DR: 0xFFFFFFFF,
+        DR: 0x0000FFFF,
         IDR: 0x00000000,
         CR: 0x00000000,
         INIT: 0x00000000,

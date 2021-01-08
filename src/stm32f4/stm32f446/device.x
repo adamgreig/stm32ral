@@ -46,6 +46,7 @@ PROVIDE(TIM8_TRG_COM_TIM14 = DefaultHandler);
 PROVIDE(TIM8_CC = DefaultHandler);
 PROVIDE(DMA1_Stream7 = DefaultHandler);
 PROVIDE(FMC = DefaultHandler);
+PROVIDE(SDIO = DefaultHandler);
 PROVIDE(TIM5 = DefaultHandler);
 PROVIDE(SPI3 = DefaultHandler);
 PROVIDE(UART4 = DefaultHandler);

@@ -24,10 +24,10 @@ pub mod GPIOA {
 
     /// Reset values for each field in GPIOA
     pub const reset: ResetValues = ResetValues {
-        MODER: 0x28000000,
+        MODER: 0xA8000000,
         OTYPER: 0x00000000,
-        OSPEEDR: 0x00000000,
-        PUPDR: 0x24000000,
+        OSPEEDR: 0x0C000000,
+        PUPDR: 0x64000000,
         IDR: 0x00000000,
         ODR: 0x00000000,
         BSRR: 0x00000000,
@@ -125,10 +125,10 @@ pub mod GPIOB {
 
     /// Reset values for each field in GPIOB
     pub const reset: ResetValues = ResetValues {
-        MODER: 0x00000000,
+        MODER: 0x00000280,
         OTYPER: 0x00000000,
-        OSPEEDR: 0x00000000,
-        PUPDR: 0x00000000,
+        OSPEEDR: 0x000000C0,
+        PUPDR: 0x00000100,
         IDR: 0x00000000,
         ODR: 0x00000000,
         BSRR: 0x00000000,

@@ -19,7 +19,7 @@ extern "C" {
     fn DMA1_CH5();
     fn DMA1_CH6();
     fn DMA1_CH7();
-    fn ADC1();
+    fn ADC1_2();
     fn CAN1_TX();
     fn CAN1_RX0();
     fn CAN1_RX1();
@@ -109,7 +109,7 @@ pub static __INTERRUPTS: [Vector; 85] = [
     Vector { _handler: DMA1_CH5 },
     Vector { _handler: DMA1_CH6 },
     Vector { _handler: DMA1_CH7 },
-    Vector { _handler: ADC1 },
+    Vector { _handler: ADC1_2 },
     Vector { _handler: CAN1_TX },
     Vector { _handler: CAN1_RX0 },
     Vector { _handler: CAN1_RX1 },
@@ -236,7 +236,7 @@ pub enum Interrupt {
     /// 17: DMA1 Channel 7 interrupt
     DMA1_CH7 = 17,
     /// 18: ADC1 and ADC2 global interrupt
-    ADC1 = 18,
+    ADC1_2 = 18,
     /// 19: CAN1 TX interrupts
     CAN1_TX = 19,
     /// 20: CAN1 RX0 interrupts

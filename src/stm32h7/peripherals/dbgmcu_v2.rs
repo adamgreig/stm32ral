@@ -99,34 +99,6 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// Allow debug in D3 Standby mode
-    pub mod DBGSTBY_D3 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D3 Stop mode
-    pub mod DBGSTOP_D3 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// Allow debug in D1 Standby mode
     pub mod DBGSTBY_D1 {
         /// Offset (2 bits)

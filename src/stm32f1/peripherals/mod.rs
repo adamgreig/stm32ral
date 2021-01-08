@@ -115,16 +115,16 @@ pub mod otg_fs_host;
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod otg_fs_pwrclk;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod ethernet_mmc;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod ethernet_mac;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
 pub mod ethernet_ptp;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod ethernet_dma;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]

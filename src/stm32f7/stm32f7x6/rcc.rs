@@ -87,7 +87,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::PLLI2SON::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Clock security system disabled (clock detector OFF)
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: Clock security system enable (clock detector ON if the HSE is ready, OFF if not)
+            pub const On: u32 = 0b1;
+        }
     }
 
     /// HSE clock bypass
@@ -5082,13 +5090,13 @@ pub mod DCKCFGR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00: APB1 clock (PCLK1) is selected as I2C clock
-            pub const APB1: u32 = 0b00;
+            /// 0b00: APB clock selected as I2C clock
+            pub const APB: u32 = 0b00;
 
-            /// 0b01: System clock is selected as I2C clock
+            /// 0b01: System clock selected as I2C clock
             pub const SYSCLK: u32 = 0b01;
 
-            /// 0b10: HSI clock is selected as I2C clock
+            /// 0b10: HSI clock selected as I2C clock
             pub const HSI: u32 = 0b10;
         }
     }

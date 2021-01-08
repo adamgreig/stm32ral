@@ -1201,8 +1201,8 @@ pub mod CR0 {
     pub mod CHSEL {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
-        /// Mask (4 bits: 0b1111 << 25)
-        pub const mask: u32 = 0b1111 << offset;
+        /// Mask (3 bits: 0b111 << 25)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

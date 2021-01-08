@@ -8,8 +8,8 @@
 pub use crate::stm32g0::peripherals::dma_v1::Instance;
 pub use crate::stm32g0::peripherals::dma_v1::{RegisterBlock, ResetValues};
 pub use crate::stm32g0::peripherals::dma_v1::{
-    CCR1, CCR2, CCR3, CCR4, CCR5, CMAR1, CMAR2, CMAR3, CMAR4, CMAR5, CNDTR1, CNDTR2, CNDTR3,
-    CNDTR4, CNDTR5, CPAR1, CPAR2, CPAR3, CPAR4, CPAR5, IFCR, ISR,
+    CR1, CR2, CR3, CR4, CR5, IFCR, ISR, MAR1, MAR2, MAR3, MAR4, MAR5, NDTR1, NDTR2, NDTR3, NDTR4,
+    NDTR5, PAR1, PAR2, PAR3, PAR4, PAR5,
 };
 
 /// Access functions for the DMA peripheral instance
@@ -29,26 +29,26 @@ pub mod DMA {
     pub const reset: ResetValues = ResetValues {
         ISR: 0x00000000,
         IFCR: 0x00000000,
-        CCR1: 0x00000000,
-        CCR2: 0x00000000,
-        CCR3: 0x00000000,
-        CCR4: 0x00000000,
-        CCR5: 0x00000000,
-        CNDTR1: 0x00000000,
-        CNDTR2: 0x00000000,
-        CNDTR3: 0x00000000,
-        CNDTR4: 0x00000000,
-        CNDTR5: 0x00000000,
-        CPAR1: 0x00000000,
-        CPAR2: 0x00000000,
-        CPAR3: 0x00000000,
-        CPAR4: 0x00000000,
-        CPAR5: 0x00000000,
-        CMAR1: 0x00000000,
-        CMAR2: 0x00000000,
-        CMAR3: 0x00000000,
-        CMAR4: 0x00000000,
-        CMAR5: 0x00000000,
+        CR1: 0x00000000,
+        NDTR1: 0x00000000,
+        PAR1: 0x00000000,
+        MAR1: 0x00000000,
+        CR2: 0x00000000,
+        NDTR2: 0x00000000,
+        PAR2: 0x00000000,
+        MAR2: 0x00000000,
+        CR3: 0x00000000,
+        NDTR3: 0x00000000,
+        PAR3: 0x00000000,
+        MAR3: 0x00000000,
+        CR4: 0x00000000,
+        NDTR4: 0x00000000,
+        PAR4: 0x00000000,
+        MAR4: 0x00000000,
+        CR5: 0x00000000,
+        NDTR5: 0x00000000,
+        PAR5: 0x00000000,
+        MAR5: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

@@ -8,18 +8,18 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc1;
+pub use super::instances::adc1_f410_f412_f413 as adc1;
 pub use super::instances::adc_common_f410_f412_f413 as adc_common;
 pub use super::instances::crc;
 pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
 pub use super::instances::exti;
-pub use super::instances::flash_f401_f405_f411_f412_f413 as flash;
+pub use super::instances::flash_f405_f411_f412_f413 as flash;
 pub use super::instances::iwdg;
 pub use super::instances::pwr_f401_f411_f412_f413 as pwr;
 pub mod rcc;
 pub use super::instances::rtc_f401_f410_f411_f412_f413 as rtc;
 pub use super::instances::sdio;
-pub use super::instances::syscfg_f412_f413 as syscfg;
+pub use super::instances::syscfg_f410_f412_f413 as syscfg;
 pub use super::instances::tim10_f401_f411_f412_f413_f427_f429_f446_f469 as tim10;
 pub use super::instances::tim11_f401_f410_f411_f412_f413_f427_f429_f446_f469 as tim11;
 pub use super::instances::tim1_f411_f412 as tim1;
@@ -40,11 +40,11 @@ pub mod dfsdm;
 pub mod tim6;
 pub mod tim7;
 pub use super::instances::can;
-pub use super::instances::rng;
+pub use super::instances::rng_f412_f413_f469 as rng;
 pub use super::instances::tim12_f412_f413 as tim12;
 pub use super::instances::tim13_f412_f413_f427_f429_f446_f469 as tim13;
 pub use super::instances::tim14_f412_f413_f427_f429_f446_f469 as tim14;
-pub mod fmpi2c4;
+pub mod fmpi2c1;
 pub mod fsmc;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
@@ -118,7 +118,7 @@ pub struct Peripherals {
     pub RNG: rng::Instance,
     pub CAN1: can::Instance,
     pub CAN2: can::Instance,
-    pub FMPI2C4: fmpi2c4::Instance,
+    pub FMPI2C1: fmpi2c1::Instance,
     pub FSMC: fsmc::Instance,
     pub OTG_FS_GLOBAL: otg_fs_global::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
@@ -198,7 +198,7 @@ impl Peripherals {
             RNG: rng::RNG::steal(),
             CAN1: can::CAN1::steal(),
             CAN2: can::CAN2::steal(),
-            FMPI2C4: fmpi2c4::FMPI2C4::steal(),
+            FMPI2C1: fmpi2c1::FMPI2C1::steal(),
             FSMC: fsmc::FSMC::steal(),
             OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),

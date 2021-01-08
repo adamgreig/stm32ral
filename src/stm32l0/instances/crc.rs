@@ -24,7 +24,7 @@ pub mod CRC {
 
     /// Reset values for each field in CRC
     pub const reset: ResetValues = ResetValues {
-        DR: 0xFFFFFFFF,
+        DR: 0x0000FFFF,
         IDR: 0x00000000,
         CR: 0x00000000,
         INIT: 0xFFFFFFFF,

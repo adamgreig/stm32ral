@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Hash processor
 //!
-//! Used by: stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::hash::Instance;

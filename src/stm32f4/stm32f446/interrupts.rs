@@ -49,6 +49,7 @@ extern "C" {
     fn TIM8_CC();
     fn DMA1_Stream7();
     fn FMC();
+    fn SDIO();
     fn TIM5();
     fn SPI3();
     fn UART4();
@@ -178,7 +179,7 @@ pub static __INTERRUPTS: [Vector; 90] = [
         _handler: DMA1_Stream7,
     },
     Vector { _handler: FMC },
-    Vector { _reserved: 0 },
+    Vector { _handler: SDIO },
     Vector { _handler: TIM5 },
     Vector { _handler: SPI3 },
     Vector { _handler: UART4 },
@@ -340,6 +341,8 @@ pub enum Interrupt {
     DMA1_Stream7 = 47,
     /// 48: FMC global interrupt
     FMC = 48,
+    /// 49: SDIO global interrupt
+    SDIO = 49,
     /// 50: TIM5 global interrupt
     TIM5 = 50,
     /// 51: SPI3 global interrupt
@@ -390,7 +393,7 @@ pub enum Interrupt {
     I2C3_ER = 73,
     /// 78: DCMI global interrupt
     DCMI = 78,
-    /// 81: Floating point unit interrupt
+    /// 81: Floating point unit
     FPU = 81,
     /// 82: UART 7 global interrupt
     UART7 = 82,

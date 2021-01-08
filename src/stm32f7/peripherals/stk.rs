@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! SysTick timer
 //!
-//! Used by: stm32f730, stm32f745, stm32f765, stm32f7x2, stm32f7x3, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f730, stm32f745, stm32f750, stm32f765, stm32f7x2, stm32f7x3, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]

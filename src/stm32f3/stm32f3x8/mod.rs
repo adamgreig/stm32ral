@@ -9,10 +9,9 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub mod gpio;
-pub mod gpioc;
 pub use super::instances::crc;
-pub use super::instances::flash_f373_f3x8 as flash;
 pub use super::instances::tsc;
+pub mod flash;
 pub mod rcc;
 pub use super::instances::dma;
 pub use super::instances::tim15_f301_f373_f3x8 as tim15;
@@ -68,13 +67,13 @@ pub struct Peripherals {
     pub GPIOH: gpio::Instance,
     pub GPIOB: gpio::Instance,
     pub GPIOD: gpio::Instance,
-    pub GPIOC: gpioc::Instance,
-    pub GPIOE: gpioc::Instance,
-    pub GPIOF: gpioc::Instance,
-    pub GPIOG: gpioc::Instance,
+    pub GPIOE: gpio::Instance,
+    pub GPIOF: gpio::Instance,
+    pub GPIOG: gpio::Instance,
+    pub GPIOC: gpio::Instance,
     pub TSC: tsc::Instance,
     pub CRC: crc::Instance,
-    pub Flash: flash::Instance,
+    pub FLASH: flash::Instance,
     pub RCC: rcc::Instance,
     pub DMA1: dma::Instance,
     pub DMA2: dma::Instance,
@@ -154,13 +153,13 @@ impl Peripherals {
             GPIOH: gpio::GPIOH::steal(),
             GPIOB: gpio::GPIOB::steal(),
             GPIOD: gpio::GPIOD::steal(),
-            GPIOC: gpioc::GPIOC::steal(),
-            GPIOE: gpioc::GPIOE::steal(),
-            GPIOF: gpioc::GPIOF::steal(),
-            GPIOG: gpioc::GPIOG::steal(),
+            GPIOE: gpio::GPIOE::steal(),
+            GPIOF: gpio::GPIOF::steal(),
+            GPIOG: gpio::GPIOG::steal(),
+            GPIOC: gpio::GPIOC::steal(),
             TSC: tsc::TSC::steal(),
             CRC: crc::CRC::steal(),
-            Flash: flash::Flash::steal(),
+            FLASH: flash::FLASH::steal(),
             RCC: rcc::RCC::steal(),
             DMA1: dma::DMA1::steal(),
             DMA2: dma::DMA2::steal(),

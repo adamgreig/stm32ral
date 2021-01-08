@@ -26,9 +26,7 @@ extern "C" {
     fn SPI2();
     fn USART1();
     fn USART2();
-    fn USART3_USART4_LPUART1();
     fn CEC();
-    fn AES_RNG();
 }
 
 #[doc(hidden)]
@@ -41,7 +39,7 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
-pub static __INTERRUPTS: [Vector; 32] = [
+pub static __INTERRUPTS: [Vector; 31] = [
     Vector { _handler: WWDG },
     Vector { _handler: PVD },
     Vector { _handler: RTC_TAMP },
@@ -79,11 +77,8 @@ pub static __INTERRUPTS: [Vector; 32] = [
     Vector { _handler: SPI2 },
     Vector { _handler: USART1 },
     Vector { _handler: USART2 },
-    Vector {
-        _handler: USART3_USART4_LPUART1,
-    },
+    Vector { _reserved: 0 },
     Vector { _handler: CEC },
-    Vector { _handler: AES_RNG },
 ];
 
 /// Available interrupts for this device
@@ -141,12 +136,8 @@ pub enum Interrupt {
     USART1 = 27,
     /// 28: USART2 global interrupt
     USART2 = 28,
-    /// 29: USART3 + USART4 + LPUART1
-    USART3_USART4_LPUART1 = 29,
     /// 30: CEC global interrupt
     CEC = 30,
-    /// 31: AES and RNG global interrupts
-    AES_RNG = 31,
 }
 unsafe impl bare_metal::Nr for Interrupt {
     #[inline]

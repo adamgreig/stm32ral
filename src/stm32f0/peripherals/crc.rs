@@ -8,7 +8,11 @@ use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// Data register
+/// DR and DR16
+/// DR: DR and DR8
+/// DR: Data register
+/// DR8: Data register - byte sized
+/// DR16: Data register - half-word sized
 pub mod DR {
 
     /// Data register bits
@@ -17,6 +21,34 @@ pub mod DR {
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
         pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data register bits
+    pub mod DR8 {
+        /// Offset (0 bits)
+        pub const offset: u8 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u8 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Data register bits
+    pub mod DR16 {
+        /// Offset (0 bits)
+        pub const offset: u16 = 0;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -160,7 +192,11 @@ pub mod INIT {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    /// Data register
+    /// DR and DR16
+    /// DR: DR and DR8
+    /// DR: Data register
+    /// DR8: Data register - byte sized
+    /// DR16: Data register - half-word sized
     pub DR: RWRegister<u32>,
 
     /// Independent data register
@@ -168,6 +204,8 @@ pub struct RegisterBlock {
 
     /// Control register
     pub CR: RWRegister<u32>,
+
+    _reserved1: [u32; 1],
 
     /// Initial CRC value
     pub INIT: RWRegister<u32>,

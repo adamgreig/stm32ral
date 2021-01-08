@@ -63,6 +63,7 @@ PROVIDE(CAN2_TX = DefaultHandler);
 PROVIDE(CAN2_RX0 = DefaultHandler);
 PROVIDE(CAN2_RX1 = DefaultHandler);
 PROVIDE(CAN2_SCE = DefaultHandler);
+PROVIDE(OTG_FS = DefaultHandler);
 PROVIDE(DMA2_Stream5 = DefaultHandler);
 PROVIDE(DMA2_Stream6 = DefaultHandler);
 PROVIDE(DMA2_Stream7 = DefaultHandler);

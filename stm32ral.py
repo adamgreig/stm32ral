@@ -68,7 +68,7 @@ edition = "2018"
 exclude = ["/stm32-rs"]
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.4.1"
+version = "0.5.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -78,8 +78,8 @@ targets = []
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
 bare-metal = "0.2.5"
-external_cortex_m = { package = "cortex-m", version = "0.6.2" }
-cortex-m-rt = { version = "0.6.12", optional = true }
+external_cortex_m = { package = "cortex-m", version = "0.6.4" }
+cortex-m-rt = { version = "0.6.13", optional = true }
 
 [features]
 rt = ["cortex-m-rt/device"]
@@ -1130,6 +1130,8 @@ class CPU(Node):
             return "ARMv7E-M"
         elif self.name == "CM7":
             return "ARMv7E-M"
+        elif self.name == "CM33":
+            return "ARMv8-M"
 
     def to_dict(self):
         return {"name": self.name, "nvic_prio_bits": self.nvic_prio_bits}
@@ -1298,7 +1300,11 @@ class Device(Node):
     def from_svd(cls, svd, device_name):
         """Load a Device node and children from a parsed SVD XML file."""
         name = device_name
-        cpu = CPU.from_svd(svd, svd.find('cpu'))
+        try:
+            cpu = CPU.from_svd(svd, svd.find('cpu'))
+        except AttributeError as e:
+            print(device_name)
+            raise e
         device = cls(name, cpu)
         register_ctx = RegisterCtx.empty()
         register_ctx = register_ctx.inherit(svd)
@@ -1715,7 +1721,10 @@ def expand_cluster(node):
 
 def escape_desc(desc):
     """Escape `desc` suitable for a doc comment."""
-    return desc.replace("[", "\\[").replace("]", "\\]")
+    if desc is None:
+        return ""
+    else:
+        return desc.replace("[", "\\[").replace("]", "\\]")
 
 
 def rustfmt(fname):

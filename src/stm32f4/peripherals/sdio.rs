@@ -21,8 +21,15 @@ pub mod POWER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Power off
+            pub const PowerOff: u32 = 0b00;
+
+            /// 0b11: Power on
+            pub const PowerOn: u32 = 0b11;
+        }
     }
 }
 
@@ -39,8 +46,15 @@ pub mod CLKCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: HW Flow Control is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: HW Flow Control is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SDIO_CK dephasing selection bit
@@ -53,8 +67,15 @@ pub mod CLKCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SDIO_CK generated on the rising edge
+            pub const Rising: u32 = 0b0;
+
+            /// 0b1: SDIO_CK generated on the falling edge
+            pub const Falling: u32 = 0b1;
+        }
     }
 
     /// Wide bus mode enable bit
@@ -67,8 +88,18 @@ pub mod CLKCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 1 lane wide bus
+            pub const BusWidth1: u32 = 0b00;
+
+            /// 0b01: 4 lane wide bus
+            pub const BusWidth4: u32 = 0b01;
+
+            /// 0b10: 8 lane wide bus
+            pub const BusWidth8: u32 = 0b10;
+        }
     }
 
     /// Clock divider bypass enable bit
@@ -81,8 +112,15 @@ pub mod CLKCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SDIOCLK is divided according to the CLKDIV value before driving the SDIO_CK output signal.
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SDIOCLK directly drives the SDIO_CK output signal
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Power saving configuration bit
@@ -95,8 +133,15 @@ pub mod CLKCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: SDIO_CK is only enabled when the bus is active
+            pub const Disabled: u32 = 0b1;
+
+            /// 0b0: SDIO_CK clock is always enabled
+            pub const Enabled: u32 = 0b0;
+        }
     }
 
     /// Clock enable bit
@@ -109,8 +154,15 @@ pub mod CLKCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable clock
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable clock
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Clock divide factor
@@ -159,8 +211,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CE-ATA command disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CE-ATA command enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// not Interrupt Enable
@@ -173,8 +232,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupts to the CE-ATA not disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt to the CE-ATA are disabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Enable CMD completion
@@ -187,8 +253,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command complete signal disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Command complete signal enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SD I/O suspend command
@@ -201,8 +274,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Next command is not a SDIO suspend command
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Next command send is a SDIO suspend command
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Command path state machine (CPSM) Enable bit
@@ -215,8 +295,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command path state machine disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Command path state machine enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CPSM Waits for ends of data transfer (CmdPend internal signal).
@@ -229,8 +316,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Don't wait for data end
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wait for end of data transfer signal before sending command
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CPSM waits for interrupt request
@@ -243,8 +337,15 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Don't wait for interrupt request
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wait for interrupt request
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Wait for response bits
@@ -257,8 +358,21 @@ pub mod CMD {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No response
+            pub const NoResponse: u32 = 0b00;
+
+            /// 0b01: Short response
+            pub const ShortResponse: u32 = 0b01;
+
+            /// 0b10: No reponse
+            pub const NoResponse2: u32 = 0b10;
+
+            /// 0b11: Long reponse
+            pub const LongResponse: u32 = 0b11;
+        }
     }
 
     /// Command index
@@ -415,8 +529,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SDIO operations disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SDIO operations enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Read wait mode
@@ -429,8 +550,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Read wait control stopping using SDIO_D2
+            pub const D2: u32 = 0b0;
+
+            /// 0b1: Read wait control using SDIO_CK
+            pub const Ck: u32 = 0b1;
+        }
     }
 
     /// Read wait stop
@@ -443,8 +571,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Read wait in progress if RWSTART is enabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable for read wait stop if RWSTART is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Read wait start
@@ -457,8 +592,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Don't start read wait operation
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Read wait operation starts
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data block size
@@ -485,8 +627,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Dma disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Dma enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data transfer mode selection 1: Stream or SDIO multibyte data transfer.
@@ -499,8 +648,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bloack data transfer
+            pub const BlockMode: u32 = 0b0;
+
+            /// 0b1: Stream or SDIO multibyte data transfer
+            pub const StreamMode: u32 = 0b1;
+        }
     }
 
     /// Data transfer direction selection
@@ -513,8 +669,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: From controller to card
+            pub const ControllerToCard: u32 = 0b0;
+
+            /// 0b1: From card to controller
+            pub const CardToController: u32 = 0b1;
+        }
     }
 
     /// DTEN
@@ -527,8 +690,15 @@ pub mod DCTRL {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Start transfer
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -563,8 +733,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Completion signal not received
+            pub const NotReceived: u32 = 0b0;
+
+            /// 0b1: CE-ATA command completion signal received for CMD61
+            pub const Received: u32 = 0b1;
+        }
     }
 
     /// SDIO interrupt received
@@ -577,8 +754,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SDIO interrupt not receieved
+            pub const NotReceived: u32 = 0b0;
+
+            /// 0b1: SDIO interrupt received
+            pub const Received: u32 = 0b1;
+        }
     }
 
     /// Data available in receive FIFO
@@ -591,8 +775,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data not available in receive FIFO
+            pub const NotAvailable: u32 = 0b0;
+
+            /// 0b1: Data available in receive FIFO
+            pub const Available: u32 = 0b1;
+        }
     }
 
     /// Data available in transmit FIFO
@@ -605,8 +796,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data not available in transmit FIFO
+            pub const NotAvailable: u32 = 0b0;
+
+            /// 0b1: Data available in transmit FIFO
+            pub const Available: u32 = 0b1;
+        }
     }
 
     /// Receive FIFO empty
@@ -619,8 +817,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receive FIFO not empty
+            pub const NotEmpty: u32 = 0b0;
+
+            /// 0b1: Receive FIFO empty
+            pub const Empty: u32 = 0b1;
+        }
     }
 
     /// Transmit FIFO empty
@@ -633,8 +838,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transmit FIFO not empty
+            pub const NotEmpty: u32 = 0b0;
+
+            /// 0b1: Transmit FIFO empty. When HW Flow Control is enabled, TXFIFOE signals becomes activated when the FIFO contains 2 words.
+            pub const Empty: u32 = 0b1;
+        }
     }
 
     /// Receive FIFO full
@@ -647,8 +859,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transmit FIFO not full
+            pub const NotFull: u32 = 0b0;
+
+            /// 0b1: Receive FIFO full. When HW Flow Control is enabled, RXFIFOF signals becomes activated 2 words before the FIFO is full.
+            pub const Full: u32 = 0b1;
+        }
     }
 
     /// Transmit FIFO full
@@ -661,8 +880,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transmit FIFO not full
+            pub const NotFull: u32 = 0b0;
+
+            /// 0b1: Transmit FIFO full
+            pub const Full: u32 = 0b1;
+        }
     }
 
     /// Receive FIFO half full: there are at least 8 words in the FIFO
@@ -675,8 +901,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receive FIFO not half full
+            pub const NotHalfFull: u32 = 0b0;
+
+            /// 0b1: Receive FIFO half full. At least 8 words in the FIFO
+            pub const HalfFull: u32 = 0b1;
+        }
     }
 
     /// Transmit FIFO half empty: at least 8 words can be written into the FIFO
@@ -689,8 +922,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transmit FIFO not half empty
+            pub const NotHalfEmpty: u32 = 0b0;
+
+            /// 0b1: Transmit FIFO half empty. At least 8 words can be written into the FIFO
+            pub const HalfEmpty: u32 = 0b1;
+        }
     }
 
     /// Data receive in progress
@@ -703,8 +943,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data receive not in progress
+            pub const NotInProgress: u32 = 0b0;
+
+            /// 0b1: Data receive in progress
+            pub const InProgress: u32 = 0b1;
+        }
     }
 
     /// Data transmit in progress
@@ -717,8 +964,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data transmit is not in progress
+            pub const NotInProgress: u32 = 0b0;
+
+            /// 0b1: Data transmit in progress
+            pub const InProgress: u32 = 0b1;
+        }
     }
 
     /// Command transfer in progress
@@ -731,8 +985,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command transfer not in progress
+            pub const NotInProgress: u32 = 0b0;
+
+            /// 0b1: Command tranfer in progress
+            pub const InProgress: u32 = 0b1;
+        }
     }
 
     /// Data block sent/received (CRC check passed)
@@ -745,8 +1006,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data block not sent/received (CRC check failed)
+            pub const NotTransferred: u32 = 0b0;
+
+            /// 0b1: Data block sent/received (CRC check passed)
+            pub const Transferred: u32 = 0b1;
+        }
     }
 
     /// Start bit not detected on all data signals in wide bus mode
@@ -759,8 +1027,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No start bit detected error
+            pub const Detected: u32 = 0b0;
+
+            /// 0b1: Start bit not detected error
+            pub const NotDetected: u32 = 0b1;
+        }
     }
 
     /// Data end (data counter, SDIDCOUNT, is zero)
@@ -773,8 +1048,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Data end (DCOUNT, is zero)
+            pub const Done: u32 = 0b1;
+
+            /// 0b0: Not done
+            pub const NotDone: u32 = 0b0;
+        }
     }
 
     /// Command sent (no response required)
@@ -787,8 +1069,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command not sent
+            pub const NotSent: u32 = 0b0;
+
+            /// 0b1: Command sent (no response required)
+            pub const Sent: u32 = 0b1;
+        }
     }
 
     /// Command response received (CRC check passed)
@@ -801,8 +1090,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command not done
+            pub const NotDone: u32 = 0b0;
+
+            /// 0b1: Command response received (CRC check passed)
+            pub const Done: u32 = 0b1;
+        }
     }
 
     /// Received FIFO overrun error
@@ -815,8 +1111,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No FIFO overrun error
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: Receive FIFO overrun error
+            pub const Overrun: u32 = 0b1;
+        }
     }
 
     /// Transmit FIFO underrun error
@@ -829,8 +1132,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No transmit FIFO underrun error
+            pub const NoUnderrun: u32 = 0b0;
+
+            /// 0b1: Transmit FIFO underrun error
+            pub const Underrun: u32 = 0b1;
+        }
     }
 
     /// Data timeout
@@ -843,8 +1153,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No data timeout
+            pub const NoTimeout: u32 = 0b0;
+
+            /// 0b1: Data timeout
+            pub const Timeout: u32 = 0b1;
+        }
     }
 
     /// Command response timeout
@@ -857,8 +1174,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Command timeout
+            pub const NoTimeout: u32 = 0b0;
+
+            /// 0b1: Command timeout
+            pub const Timeout: u32 = 0b1;
+        }
     }
 
     /// Data block sent/received (CRC check failed)
@@ -871,8 +1195,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No Data block sent/received crc check fail
+            pub const NotFailed: u32 = 0b0;
+
+            /// 0b1: Data block sent/received crc failed
+            pub const Failed: u32 = 0b1;
+        }
     }
 
     /// Command response received (CRC check failed)
@@ -885,8 +1216,15 @@ pub mod STA {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Command response received, crc check passed
+            pub const NotFailed: u32 = 0b0;
+
+            /// 0b1: Command response received, crc check failed
+            pub const Failed: u32 = 0b1;
+        }
     }
 }
 
@@ -901,8 +1239,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -915,8 +1257,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -929,8 +1270,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -943,8 +1283,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -957,8 +1296,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -971,8 +1309,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -985,8 +1322,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -999,8 +1335,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1013,8 +1348,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1027,8 +1361,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1041,8 +1374,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1055,8 +1387,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1069,8 +1400,7 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CEATAENDC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1089,8 +1419,15 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SDIO mode interrupt received interrupt enable
@@ -1103,8 +1440,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data available in Rx FIFO interrupt enable
@@ -1117,8 +1453,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data available in Tx FIFO interrupt enable
@@ -1131,8 +1466,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Rx FIFO empty interrupt enable
@@ -1145,8 +1479,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Tx FIFO empty interrupt enable
@@ -1159,8 +1492,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Rx FIFO full interrupt enable
@@ -1173,8 +1505,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Tx FIFO full interrupt enable
@@ -1187,8 +1518,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Rx FIFO half full interrupt enable
@@ -1201,8 +1531,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Tx FIFO half empty interrupt enable
@@ -1215,8 +1544,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data receive acting interrupt enable
@@ -1229,8 +1557,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data transmit acting interrupt enable
@@ -1243,8 +1570,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Command acting interrupt enable
@@ -1257,8 +1583,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data block end interrupt enable
@@ -1271,8 +1596,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Start bit error interrupt enable
@@ -1285,8 +1609,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data end interrupt enable
@@ -1299,8 +1622,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Command sent interrupt enable
@@ -1313,8 +1635,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Command response received interrupt enable
@@ -1327,8 +1648,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Rx FIFO overrun error interrupt enable
@@ -1341,8 +1661,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Tx FIFO underrun error interrupt enable
@@ -1355,8 +1674,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data timeout interrupt enable
@@ -1369,8 +1687,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Command timeout interrupt enable
@@ -1383,8 +1700,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Data CRC fail interrupt enable
@@ -1397,8 +1713,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 
     /// Command CRC fail interrupt enable
@@ -1411,8 +1726,7 @@ pub mod MASK {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CEATAENDIE::RW;
     }
 }
 

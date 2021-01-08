@@ -87,7 +87,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::PLLI2SON::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Clock security system disabled (clock detector OFF)
+            pub const Off: u32 = 0b0;
+
+            /// 0b1: Clock security system enable (clock detector ON if the HSE is ready, OFF if not)
+            pub const On: u32 = 0b1;
+        }
     }
 
     /// HSE clock bypass
@@ -1421,8 +1429,8 @@ pub mod APB1RSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// I2CFMP1 reset
-    pub mod I2CFMP1RST {
+    /// FMPI2C1 reset
+    pub mod FMPI2C1RST {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -2219,8 +2227,8 @@ pub mod APB1ENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// I2CFMP1 clock enable
-    pub mod I2CFMP1EN {
+    /// FMPI2C1 clock enable
+    pub mod FMPI2C1EN {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -3098,8 +3106,8 @@ pub mod APB1LPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// I2CFMP1 clock enable during Sleep mode
-    pub mod I2CFMP1LPEN {
+    /// FMPI2C1 clock enable during Sleep
+    pub mod FMPI2C1LPEN {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -4399,7 +4407,7 @@ pub mod CKGATENR {
 pub mod DCKCFGR2 {
 
     /// I2C4 kernel clock source selection
-    pub mod I2CFMP1SEL {
+    pub mod FMPI2C1SEL {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (2 bits: 0b11 << 22)
@@ -4411,13 +4419,13 @@ pub mod DCKCFGR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00: APB clock selected as FMPI2C1 clock
+            /// 0b00: APB clock selected as I2C clock
             pub const APB: u32 = 0b00;
 
-            /// 0b01: System clock selected as FMPI2C1 clock
+            /// 0b01: System clock selected as I2C clock
             pub const SYSCLK: u32 = 0b01;
 
-            /// 0b10: HSI clock selected as FMPI2C1 clock
+            /// 0b10: HSI clock selected as I2C clock
             pub const HSI: u32 = 0b10;
         }
     }

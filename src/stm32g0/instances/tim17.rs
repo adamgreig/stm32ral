@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32g030, stm32g031, stm32g041, stm32g07x, stm32g081
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g07x, stm32g081
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32g0::peripherals::tim16::Instance;
-pub use crate::stm32g0::peripherals::tim16::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::tim16::{
+pub use crate::stm32g0::peripherals::tim16_v1::Instance;
+pub use crate::stm32g0::peripherals::tim16_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::tim16_v1::{
     AF1, ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SR, TISEL,
 };
 

@@ -1,7 +1,7 @@
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411"))]
 pub mod adc_common_v1;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413"))]
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411"))]
 pub mod adc1;
 
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
@@ -13,7 +13,7 @@ pub mod dbgmcu_v1;
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod exti;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f411", feature="stm32f412", feature="stm32f413"))]
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f407"))]
 pub mod flash_v1;
 
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
@@ -70,7 +70,7 @@ pub mod usart;
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod wwdg;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod dma;
 
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
@@ -106,13 +106,13 @@ pub mod fpu_cpacr;
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod scb_actrl;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f469"))]
-pub mod rng;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
+pub mod rng_v1;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f469"))]
 pub mod dcmi;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f412"))]
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
 pub mod fsmc;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
@@ -124,7 +124,7 @@ pub mod rcc;
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
 pub mod syscfg_v2;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod adc;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
@@ -156,6 +156,9 @@ pub mod ethernet_ptp;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod can;
+
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f411", feature="stm32f412", feature="stm32f413"))]
+pub mod flash_v2;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446"))]
 pub mod otg_hs_global;
@@ -190,14 +193,20 @@ pub mod ethernet_dma;
 #[cfg(any(feature="doc", feature="stm32f410", feature="stm32f412", feature="stm32f413"))]
 pub mod adc_common_v3;
 
+#[cfg(any(feature="doc", feature="stm32f410", feature="stm32f412", feature="stm32f413"))]
+pub mod syscfg_v3;
+
 #[cfg(any(feature="doc", feature="stm32f410", feature="stm32f410"))]
 pub mod tim1_v2;
 
+#[cfg(any(feature="doc", feature="stm32f410", feature="stm32f412", feature="stm32f413", feature="stm32f469"))]
+pub mod rng_v2;
+
+#[cfg(any(feature="doc", feature="stm32f410", feature="stm32f446"))]
+pub mod fmpi2c1;
+
 #[cfg(any(feature="doc", feature="stm32f411", feature="stm32f411", feature="stm32f412", feature="stm32f412"))]
 pub mod tim1_v3;
-
-#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413"))]
-pub mod syscfg_v3;
 
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f412"))]
 pub mod tim6_v2;
@@ -230,9 +239,9 @@ pub mod dbgmcu_v3;
 pub mod nvic_v2;
 
 #[cfg(any(feature="doc", feature="stm32f427", feature="stm32f429"))]
-pub mod flash_v2;
+pub mod flash_v3;
 
-#[cfg(any(feature="doc", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+#[cfg(any(feature="doc", feature="stm32f429", feature="stm32f469"))]
 pub mod syscfg_v4;
 
 #[cfg(any(feature="doc", feature="stm32f429", feature="stm32f469"))]

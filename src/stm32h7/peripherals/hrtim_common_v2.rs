@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! High Resolution Timer: Common functions
 //!
-//! Used by: stm32h747cm4, stm32h747cm7
+//! Used by: stm32h747cm4, stm32h747cm7, stm32h7b3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

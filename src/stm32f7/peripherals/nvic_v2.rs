@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Nested Vectored Interrupt Controller
 //!
-//! Used by: stm32f745, stm32f7x6
+//! Used by: stm32f745, stm32f750, stm32f7x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

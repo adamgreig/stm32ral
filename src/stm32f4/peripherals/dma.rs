@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! DMA controller
 //!
-//! Used by: stm32f401, stm32f405, stm32f407, stm32f410, stm32f411, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f401, stm32f405, stm32f407, stm32f410, stm32f411, stm32f412, stm32f427, stm32f429, stm32f446, stm32f469
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -1201,8 +1201,8 @@ pub mod CR0 {
     pub mod CHSEL {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
-        /// Mask (4 bits: 0b1111 << 25)
-        pub const mask: u32 = 0b1111 << offset;
+        /// Mask (3 bits: 0b111 << 25)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

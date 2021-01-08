@@ -8,8 +8,8 @@
 pub use crate::stm32h7::peripherals::syscfg_v2::Instance;
 pub use crate::stm32h7::peripherals::syscfg_v2::{RegisterBlock, ResetValues};
 pub use crate::stm32h7::peripherals::syscfg_v2::{
-    CCCR, CCCSR, CCVR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, PKGR, PMCR, UR0, UR10, UR11, UR12, UR13,
-    UR14, UR15, UR16, UR17, UR2, UR3, UR4, UR5, UR6, UR7, UR8, UR9,
+    CCCR, CCCSR, CCVR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, PKGR, PMCR, PWRCR, UR0, UR10, UR11,
+    UR12, UR13, UR14, UR15, UR16, UR17, UR2, UR3, UR4, UR5, UR6, UR7, UR8, UR9,
 };
 
 /// Access functions for the SYSCFG peripheral instance
@@ -53,6 +53,7 @@ pub mod SYSCFG {
         UR15: 0x00000000,
         UR16: 0x00000000,
         UR17: 0x00000000,
+        PWRCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

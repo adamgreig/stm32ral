@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FLASH
 //!
-//! Used by: stm32f427, stm32f429
+//! Used by: stm32f405, stm32f411, stm32f412, stm32f413
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -265,7 +265,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// Mass Erase of sectors 0 to 11
+    /// Mass Erase
     pub mod MER {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -283,8 +283,8 @@ pub mod CR {
     pub mod SNB {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
-        /// Mask (5 bits: 0b11111 << 3)
-        pub const mask: u32 = 0b11111 << offset;
+        /// Mask (4 bits: 0b1111 << 3)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -299,20 +299,6 @@ pub mod CR {
         pub const offset: u32 = 8;
         /// Mask (2 bits: 0b11 << 8)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Mass Erase of sectors 12 to 23
-    pub mod MER1 {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
-        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -493,24 +479,6 @@ pub mod OPTCR {
         pub mod RW {}
     }
 }
-
-/// Flash option control register 1
-pub mod OPTCR1 {
-
-    /// Not write protect
-    pub mod nWRP {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (12 bits: 0xfff << 16)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Flash access control register
@@ -530,9 +498,6 @@ pub struct RegisterBlock {
 
     /// Flash option control register
     pub OPTCR: RWRegister<u32>,
-
-    /// Flash option control register 1
-    pub OPTCR1: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ACR: u32,
@@ -541,7 +506,6 @@ pub struct ResetValues {
     pub SR: u32,
     pub CR: u32,
     pub OPTCR: u32,
-    pub OPTCR1: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

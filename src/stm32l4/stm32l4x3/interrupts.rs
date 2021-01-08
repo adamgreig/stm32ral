@@ -12,13 +12,13 @@ extern "C" {
     fn EXTI2();
     fn EXTI3();
     fn EXTI4();
-    fn DMA1_Channel1();
-    fn DMA1_Channel2();
-    fn DMA1_Channel3();
-    fn DMA1_Channel4();
-    fn DMA1_Channel5();
-    fn DMA1_Channel6();
-    fn DMA1_Channel7();
+    fn DMA1_CH1();
+    fn DMA1_CH2();
+    fn DMA1_CH3();
+    fn DMA1_CH4();
+    fn DMA1_CH5();
+    fn DMA1_CH6();
+    fn DMA1_CH7();
     fn ADC1_2();
     fn CAN1_TX();
     fn CAN1_RX0();
@@ -44,16 +44,16 @@ extern "C" {
     fn SPI3();
     fn TIM6_DAC();
     fn TIM7();
-    fn DMA2_Channel1();
-    fn DMA2_Channel2();
-    fn DMA2_Channel3();
-    fn DMA2_Channel4();
-    fn DMA2_Channel5();
+    fn DMA2_CH1();
+    fn DMA2_CH2();
+    fn DMA2_CH3();
+    fn DMA2_CH4();
+    fn DMA2_CH5();
     fn COMP();
     fn LPTIM1();
     fn LPTIM2();
-    fn DMA2_Channel6();
-    fn DMA2_Channel7();
+    fn DMA2_CH6();
+    fn DMA2_CH7();
     fn I2C3_EV();
     fn I2C3_ER();
     fn SAI1();
@@ -89,27 +89,13 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: EXTI2 },
     Vector { _handler: EXTI3 },
     Vector { _handler: EXTI4 },
-    Vector {
-        _handler: DMA1_Channel1,
-    },
-    Vector {
-        _handler: DMA1_Channel2,
-    },
-    Vector {
-        _handler: DMA1_Channel3,
-    },
-    Vector {
-        _handler: DMA1_Channel4,
-    },
-    Vector {
-        _handler: DMA1_Channel5,
-    },
-    Vector {
-        _handler: DMA1_Channel6,
-    },
-    Vector {
-        _handler: DMA1_Channel7,
-    },
+    Vector { _handler: DMA1_CH1 },
+    Vector { _handler: DMA1_CH2 },
+    Vector { _handler: DMA1_CH3 },
+    Vector { _handler: DMA1_CH4 },
+    Vector { _handler: DMA1_CH5 },
+    Vector { _handler: DMA1_CH6 },
+    Vector { _handler: DMA1_CH7 },
     Vector { _handler: ADC1_2 },
     Vector { _handler: CAN1_TX },
     Vector { _handler: CAN1_RX0 },
@@ -152,21 +138,11 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _reserved: 0 },
     Vector { _handler: TIM6_DAC },
     Vector { _handler: TIM7 },
-    Vector {
-        _handler: DMA2_Channel1,
-    },
-    Vector {
-        _handler: DMA2_Channel2,
-    },
-    Vector {
-        _handler: DMA2_Channel3,
-    },
-    Vector {
-        _handler: DMA2_Channel4,
-    },
-    Vector {
-        _handler: DMA2_Channel5,
-    },
+    Vector { _handler: DMA2_CH1 },
+    Vector { _handler: DMA2_CH2 },
+    Vector { _handler: DMA2_CH3 },
+    Vector { _handler: DMA2_CH4 },
+    Vector { _handler: DMA2_CH5 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -174,12 +150,8 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: LPTIM1 },
     Vector { _handler: LPTIM2 },
     Vector { _reserved: 0 },
-    Vector {
-        _handler: DMA2_Channel6,
-    },
-    Vector {
-        _handler: DMA2_Channel7,
-    },
+    Vector { _handler: DMA2_CH6 },
+    Vector { _handler: DMA2_CH7 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: I2C3_EV },
@@ -222,19 +194,19 @@ pub enum Interrupt {
     /// 10: EXTI Line4 interrupt
     EXTI4 = 10,
     /// 11: DMA1 Channel1 global interrupt
-    DMA1_Channel1 = 11,
+    DMA1_CH1 = 11,
     /// 12: DMA1 Channel2 global interrupt
-    DMA1_Channel2 = 12,
+    DMA1_CH2 = 12,
     /// 13: DMA1 Channel3 interrupt
-    DMA1_Channel3 = 13,
+    DMA1_CH3 = 13,
     /// 14: DMA1 Channel4 interrupt
-    DMA1_Channel4 = 14,
+    DMA1_CH4 = 14,
     /// 15: DMA1 Channel5 interrupt
-    DMA1_Channel5 = 15,
+    DMA1_CH5 = 15,
     /// 16: DMA1 Channel6 interrupt
-    DMA1_Channel6 = 16,
+    DMA1_CH6 = 16,
     /// 17: DMA1 Channel 7 interrupt
-    DMA1_Channel7 = 17,
+    DMA1_CH7 = 17,
     /// 18: ADC1 and ADC2 global interrupt
     ADC1_2 = 18,
     /// 19: CAN1 TX interrupts
@@ -286,15 +258,15 @@ pub enum Interrupt {
     /// 55: TIM7 global interrupt
     TIM7 = 55,
     /// 56: DMA2 Channel 1 global Interrupt
-    DMA2_Channel1 = 56,
+    DMA2_CH1 = 56,
     /// 57: DMA2 Channel 2 global Interrupt
-    DMA2_Channel2 = 57,
+    DMA2_CH2 = 57,
     /// 58: DMA2 Channel 3 global Interrupt
-    DMA2_Channel3 = 58,
+    DMA2_CH3 = 58,
     /// 59: DMA2 Channel 4 global Interrupt
-    DMA2_Channel4 = 59,
+    DMA2_CH4 = 59,
     /// 60: DMA2 Channel 5 global Interrupt
-    DMA2_Channel5 = 60,
+    DMA2_CH5 = 60,
     /// 64: COMP1 and COMP2 interrupts
     COMP = 64,
     /// 65: LP TIM1 interrupt
@@ -302,9 +274,9 @@ pub enum Interrupt {
     /// 66: LP TIM2 interrupt
     LPTIM2 = 66,
     /// 68: DMA2 Channel 6 global Interrupt
-    DMA2_Channel6 = 68,
+    DMA2_CH6 = 68,
     /// 69: DMA2 Channel 7 global Interrupt
-    DMA2_Channel7 = 69,
+    DMA2_CH7 = 69,
     /// 72: I2C3 event interrupt
     I2C3_EV = 72,
     /// 73: I2C3 error interrupt

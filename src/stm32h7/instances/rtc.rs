@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! RTC
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::rtc::Instance;
@@ -63,7 +63,6 @@ pub mod RTC {
         BKP13R: 0x00000000,
         BKP14R: 0x00000000,
         BKP15R: 0x00000000,
-        OR: 0x00000000,
         BKP16R: 0x00000000,
         BKP17R: 0x00000000,
         BKP18R: 0x00000000,
@@ -80,6 +79,7 @@ pub mod RTC {
         BKP29R: 0x00000000,
         BKP30R: 0x00000000,
         BKP31R: 0x00000000,
+        OR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

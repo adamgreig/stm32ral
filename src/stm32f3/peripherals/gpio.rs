@@ -476,11 +476,8 @@ pub mod OSPEEDR {
             /// 0b01: Medium speed
             pub const MediumSpeed: u32 = 0b01;
 
-            /// 0b10: High speed
-            pub const HighSpeed: u32 = 0b10;
-
-            /// 0b11: Very high speed
-            pub const VeryHighSpeed: u32 = 0b11;
+            /// 0b11: High speed
+            pub const HighSpeed: u32 = 0b11;
         }
     }
 

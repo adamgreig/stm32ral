@@ -66,6 +66,7 @@ extern "C" {
     fn CAN2_RX0();
     fn CAN2_RX1();
     fn CAN2_SCE();
+    fn OTG_FS();
     fn DMA2_Stream5();
     fn DMA2_Stream6();
     fn DMA2_Stream7();
@@ -224,7 +225,7 @@ pub static __INTERRUPTS: [Vector; 102] = [
     Vector { _handler: CAN2_RX0 },
     Vector { _handler: CAN2_RX1 },
     Vector { _handler: CAN2_SCE },
-    Vector { _reserved: 0 },
+    Vector { _handler: OTG_FS },
     Vector {
         _handler: DMA2_Stream5,
     },
@@ -416,6 +417,8 @@ pub enum Interrupt {
     CAN2_RX1 = 65,
     /// 66: CAN2 SCE interrupt
     CAN2_SCE = 66,
+    /// 67: USB OTG FS Interrupt
+    OTG_FS = 67,
     /// 68: DMA2 Stream5 global interrupt
     DMA2_Stream5 = 68,
     /// 69: DMA2 Stream6 global interrupt

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! LCD-TFT Controller
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -15,8 +15,8 @@ pub mod SSCR {
     pub mod HSW {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
-        /// Mask (10 bits: 0x3ff << 16)
-        pub const mask: u32 = 0x3ff << offset;
+        /// Mask (12 bits: 0xfff << 16)
+        pub const mask: u32 = 0xfff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -149,8 +149,15 @@ pub mod GCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Horizontal synchronization polarity is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Horizontal synchronization polarity is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// Vertical Synchronization Polarity
@@ -163,8 +170,15 @@ pub mod GCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Vertical synchronization polarity is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Vertical synchronization polarity is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// Data Enable Polarity
@@ -177,8 +191,15 @@ pub mod GCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data enable polarity is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Data enable polarity is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// Pixel Clock Polarity
@@ -191,8 +212,15 @@ pub mod GCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Pixel clock on rising edge
+            pub const RisingEdge: u32 = 0b0;
+
+            /// 0b1: Pixel clock on falling edge
+            pub const FallingEdge: u32 = 0b1;
+        }
     }
 
     /// Dither Enable
@@ -205,8 +233,15 @@ pub mod GCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Dither disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Dither enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Dither Red Width
@@ -261,8 +296,15 @@ pub mod GCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LCD-TFT controller disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: LCD-TFT controller enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -279,8 +321,15 @@ pub mod SRCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: The shadow registers are reloaded during the vertical blanking period (at the beginning of the first line after the active display area).
+            pub const Reload: u32 = 0b1;
+
+            /// 0b0: This bit is set by software and cleared only by hardware after reload (it cannot be cleared through register write once it is set)
+            pub const NoEffect: u32 = 0b0;
+        }
     }
 
     /// Immediate Reload
@@ -293,8 +342,15 @@ pub mod SRCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: The shadow registers are reloaded immediately. This bit is set by software and cleared only by hardware after reload
+            pub const Reload: u32 = 0b1;
+
+            /// 0b0: This bit is set by software and cleared only by hardware after reload (it cannot be cleared through register write once it is set)
+            pub const NoEffect: u32 = 0b0;
+        }
     }
 }
 
@@ -357,8 +413,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Register reload interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Register reload interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer Error Interrupt Enable
@@ -371,8 +434,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transfer error interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Transfer error interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FIFO Underrun Interrupt Enable
@@ -385,8 +455,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FIFO underrun interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: FIFO underrun interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Line Interrupt Enable
@@ -399,8 +476,15 @@ pub mod IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Line interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Line interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -417,8 +501,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No register reload
+            pub const NoReload: u32 = 0b0;
+
+            /// 0b1: Register reload interrupt generated when a vertical blanking reload occurs (and the first line after the active area is reached)
+            pub const Reload: u32 = 0b1;
+        }
     }
 
     /// Transfer Error interrupt flag
@@ -431,8 +522,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No transfer error
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Transfer error interrupt generated when a bus error occurs
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// FIFO Underrun Interrupt flag
@@ -445,8 +543,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No FIFO underrun
+            pub const NoUnderrun: u32 = 0b0;
+
+            /// 0b1: FIFO underrun interrupt generated, if one of the layer FIFOs is empty and pixel data is read from the FIFO
+            pub const Underrun: u32 = 0b1;
+        }
     }
 
     /// Line Interrupt flag
@@ -459,8 +564,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Programmed line not reached
+            pub const NotReached: u32 = 0b0;
+
+            /// 0b1: Line interrupt generated when a programmed line is reached
+            pub const Reached: u32 = 0b1;
+        }
     }
 }
 
@@ -477,8 +589,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears the RRIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clears the Transfer Error Interrupt Flag
@@ -491,8 +607,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears the TERRIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clears the FIFO Underrun Interrupt flag
@@ -505,8 +625,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears the FUIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Clears the Line Interrupt Flag
@@ -519,8 +643,12 @@ pub mod ICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clears the LIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
     }
 }
 
@@ -587,8 +715,15 @@ pub mod CDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Currently not in HSYNC phase
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Currently in HSYNC phase
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Vertical Synchronization display Status
@@ -601,8 +736,15 @@ pub mod CDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Currently not in VSYNC phase
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Currently in VSYNC phase
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Horizontal Data Enable display Status
@@ -615,8 +757,15 @@ pub mod CDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Currently not in horizontal Data Enable phase
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Currently in horizontal Data Enable phase
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Vertical Data Enable display Status
@@ -629,8 +778,15 @@ pub mod CDSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Currently not in vertical Data Enable phase
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Currently in vertical Data Enable phase
+            pub const Active: u32 = 0b1;
+        }
     }
 }
 
@@ -647,8 +803,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Color look-up table disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Color look-up table enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Color Keying Enable
@@ -661,8 +824,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Color keying disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Color keying enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Layer Enable
@@ -675,8 +845,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Layer disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Layer enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -803,8 +980,33 @@ pub mod PFCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: ARGB8888
+            pub const ARGB8888: u32 = 0b000;
+
+            /// 0b001: RGB888
+            pub const RGB888: u32 = 0b001;
+
+            /// 0b010: RGB565
+            pub const RGB565: u32 = 0b010;
+
+            /// 0b011: ARGB1555
+            pub const ARGB1555: u32 = 0b011;
+
+            /// 0b100: ARGB4444
+            pub const ARGB4444: u32 = 0b100;
+
+            /// 0b101: L8 (8-bit luminance)
+            pub const L8: u32 = 0b101;
+
+            /// 0b110: AL44 (4-bit alpha, 4-bit luminance)
+            pub const AL44: u32 = 0b110;
+
+            /// 0b111: AL88 (8-bit alpha, 8-bit luminance)
+            pub const AL88: u32 = 0b111;
+        }
     }
 }
 
@@ -899,8 +1101,15 @@ pub mod BFCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b100: BF1 = constant alpha
+            pub const Constant: u32 = 0b100;
+
+            /// 0b110: BF1 = pixel alpha * constant alpha
+            pub const Pixel: u32 = 0b110;
+        }
     }
 
     /// Blending Factor 2
@@ -913,8 +1122,15 @@ pub mod BFCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b101: BF2 = 1 - constant alpha
+            pub const Constant: u32 = 0b101;
+
+            /// 0b111: BF2 = 1 - pixel alpha * constant alpha
+            pub const Pixel: u32 = 0b111;
+        }
     }
 }
 

@@ -8,7 +8,7 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc1;
+pub use super::instances::adc1_f410_f412_f413 as adc1;
 pub use super::instances::adc_common_f410_f412_f413 as adc_common;
 pub use super::instances::crc;
 pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
@@ -18,7 +18,7 @@ pub use super::instances::iwdg;
 pub mod pwr;
 pub mod rcc;
 pub use super::instances::rtc_f401_f410_f411_f412_f413 as rtc;
-pub mod syscfg;
+pub use super::instances::syscfg_f410_f412_f413 as syscfg;
 pub mod tim1;
 pub mod tim8;
 pub use super::instances::tim11_f401_f410_f411_f412_f413_f427_f429_f446_f469 as tim11;
@@ -34,8 +34,8 @@ pub use super::instances::nvic_f401_f405_f407_f410_f411_f412_f413 as nvic;
 pub use super::instances::tim6;
 pub mod rng;
 pub use super::instances::dac;
-pub mod fmpi2c4;
 pub mod lptim1;
+pub use super::instances::fmpi2c1;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
@@ -83,7 +83,7 @@ pub struct Peripherals {
     pub RNG: rng::Instance,
     pub DAC: dac::Instance,
     pub LPTIM1: lptim1::Instance,
-    pub FMPI2C4: fmpi2c4::Instance,
+    pub FMPI2C1: fmpi2c1::Instance,
     pub FPU: fpu::Instance,
     pub MPU: mpu::Instance,
     pub STK: stk::Instance,
@@ -137,7 +137,7 @@ impl Peripherals {
             RNG: rng::RNG::steal(),
             DAC: dac::DAC::steal(),
             LPTIM1: lptim1::LPTIM1::steal(),
-            FMPI2C4: fmpi2c4::FMPI2C4::steal(),
+            FMPI2C1: fmpi2c1::FMPI2C1::steal(),
             FPU: fpu::FPU::steal(),
             MPU: mpu::MPU::steal(),
             STK: stk::STK::steal(),

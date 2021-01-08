@@ -23,6 +23,4 @@ PROVIDE(SPI1 = DefaultHandler);
 PROVIDE(SPI2 = DefaultHandler);
 PROVIDE(USART1 = DefaultHandler);
 PROVIDE(USART2 = DefaultHandler);
-PROVIDE(USART3_USART4_LPUART1 = DefaultHandler);
 PROVIDE(CEC = DefaultHandler);
-PROVIDE(AES_RNG = DefaultHandler);

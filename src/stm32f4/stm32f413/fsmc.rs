@@ -753,7 +753,7 @@ pub mod FSMC {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x60000000,
+        addr: 0xa0000000,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -844,4 +844,4 @@ pub mod FSMC {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const FSMC: *const RegisterBlock = 0x60000000 as *const _;
+pub const FSMC: *const RegisterBlock = 0xa0000000 as *const _;

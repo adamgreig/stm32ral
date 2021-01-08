@@ -24,3 +24,6 @@ pub mod stm32h753;
 #[cfg(any(feature="stm32h753v", feature="doc"))]
 pub mod stm32h753v;
 
+#[cfg(any(feature="stm32h7b3", feature="doc"))]
+pub mod stm32h7b3;
+

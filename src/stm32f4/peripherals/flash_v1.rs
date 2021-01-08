@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FLASH
 //!
-//! Used by: stm32f401, stm32f405, stm32f411, stm32f412, stm32f413
+//! Used by: stm32f401, stm32f407
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,57 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 0 wait states
+            pub const WS0: u32 = 0b000;
+
+            /// 0b001: 1 wait states
+            pub const WS1: u32 = 0b001;
+
+            /// 0b010: 2 wait states
+            pub const WS2: u32 = 0b010;
+
+            /// 0b011: 3 wait states
+            pub const WS3: u32 = 0b011;
+
+            /// 0b100: 4 wait states
+            pub const WS4: u32 = 0b100;
+
+            /// 0b101: 5 wait states
+            pub const WS5: u32 = 0b101;
+
+            /// 0b110: 6 wait states
+            pub const WS6: u32 = 0b110;
+
+            /// 0b111: 7 wait states
+            pub const WS7: u32 = 0b111;
+
+            /// 0b1000: 8 wait states
+            pub const WS8: u32 = 0b1000;
+
+            /// 0b1001: 9 wait states
+            pub const WS9: u32 = 0b1001;
+
+            /// 0b1010: 10 wait states
+            pub const WS10: u32 = 0b1010;
+
+            /// 0b1011: 11 wait states
+            pub const WS11: u32 = 0b1011;
+
+            /// 0b1100: 12 wait states
+            pub const WS12: u32 = 0b1100;
+
+            /// 0b1101: 13 wait states
+            pub const WS13: u32 = 0b1101;
+
+            /// 0b1110: 14 wait states
+            pub const WS14: u32 = 0b1110;
+
+            /// 0b1111: 15 wait states
+            pub const WS15: u32 = 0b1111;
+        }
     }
 
     /// Prefetch enable
@@ -35,8 +84,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Prefetch is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Prefetch is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Instruction cache enable
@@ -49,8 +105,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Instruction cache is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Instruction cache is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data cache enable
@@ -63,8 +126,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data cache is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Data cache is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Instruction cache reset
@@ -77,8 +147,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Instruction cache is not reset
+            pub const NotReset: u32 = 0b0;
+
+            /// 0b1: Instruction cache is reset
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// Data cache reset
@@ -91,8 +168,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data cache is not reset
+            pub const NotReset: u32 = 0b0;
+
+            /// 0b1: Data cache is reset
+            pub const Reset: u32 = 0b1;
+        }
     }
 }
 
@@ -247,8 +331,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Flash programming activated
+            pub const Program: u32 = 0b1;
+        }
     }
 
     /// Sector Erase
@@ -261,8 +349,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Erase activated for selected sector
+            pub const SectorErase: u32 = 0b1;
+        }
     }
 
     /// Mass Erase
@@ -275,8 +367,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Erase activated for all user sectors
+            pub const MassErase: u32 = 0b1;
+        }
     }
 
     /// Sector number
@@ -303,8 +399,21 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Program x8
+            pub const PSIZE8: u32 = 0b00;
+
+            /// 0b01: Program x16
+            pub const PSIZE16: u32 = 0b01;
+
+            /// 0b10: Program x32
+            pub const PSIZE32: u32 = 0b10;
+
+            /// 0b11: Program x64
+            pub const PSIZE64: u32 = 0b11;
+        }
     }
 
     /// Start
@@ -317,8 +426,12 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Trigger an erase operation
+            pub const Start: u32 = 0b1;
+        }
     }
 
     /// End of operation interrupt enable
@@ -331,8 +444,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of operation interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of operation interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt enable
@@ -345,8 +465,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Error interrupt generation disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Error interrupt generation enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Lock
@@ -359,8 +486,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FLASH_CR register is unlocked
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: FLASH_CR register is locked
+            pub const Locked: u32 = 0b1;
+        }
     }
 }
 

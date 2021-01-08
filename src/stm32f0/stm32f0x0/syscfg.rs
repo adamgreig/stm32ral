@@ -836,12 +836,8 @@ pub mod CFGR2 {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No SRAM parity error detected
             pub const NoParityError: u32 = 0b0;
@@ -849,6 +845,14 @@ pub mod CFGR2 {
             /// 0b1: SRAM parity error detected
             pub const ParityErrorDetected: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear SRAM parity error flag
+            pub const Clear: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SRAM parity lock bit

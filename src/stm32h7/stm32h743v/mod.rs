@@ -11,7 +11,7 @@ pub use self::interrupts::Interrupt as interrupt;
 pub use super::instances::ac;
 pub use super::instances::adc_common;
 pub use super::instances::adc_h743v_h753v as adc;
-pub use super::instances::axi_h743_h743v_h753_h753v as axi;
+pub use super::instances::axi;
 pub use super::instances::bdma;
 pub use super::instances::can_ccu;
 pub use super::instances::cec;
@@ -19,7 +19,7 @@ pub use super::instances::comp1;
 pub use super::instances::crc;
 pub use super::instances::crs;
 pub use super::instances::dac;
-pub use super::instances::dbgmcu_h743_h743v_h753_h753v as dbgmcu;
+pub use super::instances::dbgmcu_h743_h743v_h753_h753v_h7b3 as dbgmcu;
 pub use super::instances::dcmi;
 pub use super::instances::dfsdm;
 pub use super::instances::dlyb;
@@ -30,7 +30,7 @@ pub use super::instances::dmamux2;
 pub use super::instances::ethernet_dma_h743_h743v_h753_h753v as ethernet_dma;
 pub use super::instances::ethernet_mac_h743_h743v_h753_h753v as ethernet_mac;
 pub use super::instances::ethernet_mtl_h743_h743v_h753_h753v as ethernet_mtl;
-pub use super::instances::exti;
+pub use super::instances::exti_h743_h743v_h753_h753v_h7b3 as exti;
 pub use super::instances::fdcan;
 pub use super::instances::flash_h743_h743v_h753_h753v as flash;
 pub use super::instances::fmc;
@@ -46,7 +46,7 @@ pub use super::instances::hrtim_timd;
 pub use super::instances::hrtim_time;
 pub use super::instances::hsem;
 pub use super::instances::i2c;
-pub use super::instances::iwdg_h743_h743v_h753_h753v as iwdg;
+pub use super::instances::iwdg_h743_h743v_h753_h753v_h7b3 as iwdg;
 pub use super::instances::jpeg;
 pub use super::instances::lptim;
 pub use super::instances::lptim3;
@@ -65,13 +65,15 @@ pub use super::instances::otg_hs_pwrclk;
 pub use super::instances::pf;
 pub use super::instances::pwr_h743_h743v_h753_h753v as pwr;
 pub use super::instances::quadspi;
+pub use super::instances::ramecc;
+pub use super::instances::ramecc3;
 pub use super::instances::rcc_h743v_h753v as rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;
-pub use super::instances::sai_h743_h743v_h753_h753v as sai;
+pub use super::instances::sai;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
-pub use super::instances::sdmmc_h743_h743v_h753_h753v as sdmmc;
+pub use super::instances::sdmmc_h743_h743v_h753_h753v_h7b3 as sdmmc;
 pub use super::instances::spdifrx;
 pub use super::instances::spi_h743_h743v_h753_h753v as spi;
 pub use super::instances::stk;
@@ -93,7 +95,7 @@ pub use super::instances::tim7;
 pub use super::instances::tim8_h743_h743v_h753_h753v as tim8;
 pub use super::instances::usart;
 pub use super::instances::vrefbuf;
-pub use super::instances::wwdg_h743_h743v_h753_h753v as wwdg;
+pub use super::instances::wwdg_h743_h743v_h753_h753v_h7b3 as wwdg;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -227,6 +229,9 @@ pub struct Peripherals {
     pub TIM13: tim13::Instance,
     pub TIM14: tim14::Instance,
     pub DBGMCU: dbgmcu::Instance,
+    pub RAMECC1: ramecc::Instance,
+    pub RAMECC2: ramecc::Instance,
+    pub RAMECC3: ramecc3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -366,6 +371,9 @@ impl Peripherals {
             TIM13: tim13::TIM13::steal(),
             TIM14: tim14::TIM14::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
+            RAMECC1: ramecc::RAMECC1::steal(),
+            RAMECC2: ramecc::RAMECC2::steal(),
+            RAMECC3: ramecc3::RAMECC3::steal(),
         }
     }
 }

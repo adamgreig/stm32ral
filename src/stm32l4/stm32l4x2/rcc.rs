@@ -1629,6 +1629,20 @@ pub mod APB1RSTR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// TIM3 timer reset
+    pub mod TIM3RST {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// APB1 peripheral reset register 2
@@ -2186,8 +2200,8 @@ pub mod APB1ENR1 {
         pub mod RW {}
     }
 
-    /// SPI1 clock enable
-    pub mod SPI1EN {
+    /// SPI2 clock enable
+    pub mod SPI2EN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)

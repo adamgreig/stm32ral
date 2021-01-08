@@ -9,14 +9,14 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::ac;
-pub use super::instances::adc_common_f730_f745_f765_f7x2_f7x3_f7x6 as adc_common;
+pub use super::instances::adc_common_f730_f745_f750_f765_f7x2_f7x3_f7x6 as adc_common;
 pub use super::instances::adc_f730_f7x2_f7x3 as adc;
 pub use super::instances::aes;
 pub use super::instances::can1;
 pub use super::instances::crc_f730_f7x2_f7x3 as crc;
 pub use super::instances::dac;
-pub use super::instances::dbgmcu_f730_f745_f765_f7x2_f7x3_f7x6 as dbgmcu;
-pub use super::instances::dma;
+pub use super::instances::dbgmcu_f730_f745_f750_f765_f7x2_f7x3_f7x6 as dbgmcu;
+pub use super::instances::dma_f730_f745_f7x6 as dma;
 pub use super::instances::exti_f730_f7x2_f7x3 as exti;
 pub use super::instances::flash_f730_f7x2_f7x3 as flash;
 pub use super::instances::fmc_f730_f7x2_f7x3 as fmc;

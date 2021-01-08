@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-digital converter
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x9
+//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x6, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

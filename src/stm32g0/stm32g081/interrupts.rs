@@ -14,7 +14,7 @@ extern "C" {
     fn DMA_Channel2_3();
     fn DMA_Channel4_5_6_7();
     fn ADC_COMP();
-    fn TIM1_BRK_UP_TRG_COMP();
+    fn TIM1_BRK_UP_TRG_COM();
     fn TIM1_CC();
     fn TIM2();
     fn TIM3();
@@ -70,7 +70,7 @@ pub static __INTERRUPTS: [Vector; 32] = [
     },
     Vector { _handler: ADC_COMP },
     Vector {
-        _handler: TIM1_BRK_UP_TRG_COMP,
+        _handler: TIM1_BRK_UP_TRG_COM,
     },
     Vector { _handler: TIM1_CC },
     Vector { _handler: TIM2 },
@@ -129,8 +129,8 @@ pub enum Interrupt {
     DMA_Channel4_5_6_7 = 11,
     /// 12: ADC and COMP interrupts
     ADC_COMP = 12,
-    /// 13: TIM1 break, update, trigger
-    TIM1_BRK_UP_TRG_COMP = 13,
+    /// 13: IM1 break, update, trigger and commutation interrupts
+    TIM1_BRK_UP_TRG_COM = 13,
     /// 14: TIM1 Capture Compare interrupt
     TIM1_CC = 14,
     /// 15: TIM2 global interrupt

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! DMA controller
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -903,6 +903,27 @@ pub mod LIFCR {
         pub mod W {}
         pub use super::CFEIF3::RW;
     }
+
+    /// Enable the DMA to handle bufferable transfers
+    pub mod TRBUFF {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bufferable transfers not enabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Bufferable transfers enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
 }
 
 /// high interrupt flag clear register
@@ -1191,6 +1212,27 @@ pub mod HIFCR {
         /// Write-only values (empty)
         pub mod W {}
         pub use super::CFEIF7::RW;
+    }
+
+    /// Enable the DMA to handle bufferable transfers
+    pub mod TRBUFF {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bufferable transfers not enabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Bufferable transfers enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -1568,6 +1610,27 @@ pub mod CR0 {
             pub const Enabled: u32 = 0b1;
         }
     }
+
+    /// Enable the DMA to handle bufferable transfers
+    pub mod TRBUFF {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bufferable transfers not enabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Bufferable transfers enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
 }
 
 /// stream x number of data register
@@ -1746,6 +1809,27 @@ pub mod FCR0 {
             pub const Full: u32 = 0b11;
         }
     }
+
+    /// Enable the DMA to handle bufferable transfers
+    pub mod TRBUFF {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Bufferable transfers not enabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Bufferable transfers enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
 }
 
 /// stream x configuration register
@@ -1768,6 +1852,7 @@ pub mod CR1 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -1796,6 +1881,7 @@ pub mod FCR1 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 
 /// stream x configuration register
@@ -1818,6 +1904,7 @@ pub mod CR2 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -1846,6 +1933,7 @@ pub mod FCR2 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 
 /// stream x configuration register
@@ -1868,6 +1956,7 @@ pub mod CR3 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -1896,6 +1985,7 @@ pub mod FCR3 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 
 /// stream x configuration register
@@ -1918,6 +2008,7 @@ pub mod CR4 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -1946,6 +2037,7 @@ pub mod FCR4 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 
 /// stream x configuration register
@@ -1968,6 +2060,7 @@ pub mod CR5 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -1996,6 +2089,7 @@ pub mod FCR5 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 
 /// stream x configuration register
@@ -2018,6 +2112,7 @@ pub mod CR6 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -2046,6 +2141,7 @@ pub mod FCR6 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 
 /// stream x configuration register
@@ -2068,6 +2164,7 @@ pub mod CR7 {
     pub use super::CR0::PSIZE;
     pub use super::CR0::TCIE;
     pub use super::CR0::TEIE;
+    pub use super::CR0::TRBUFF;
 }
 
 /// stream x number of data register
@@ -2096,6 +2193,7 @@ pub mod FCR7 {
     pub use super::FCR0::FEIE;
     pub use super::FCR0::FS;
     pub use super::FCR0::FTH;
+    pub use super::FCR0::TRBUFF;
 }
 #[repr(C)]
 pub struct RegisterBlock {

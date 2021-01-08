@@ -130,7 +130,7 @@ pub mod dac_f101_f103_f107;
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod flash;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod otg_fs_device;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103"))]
@@ -139,19 +139,19 @@ pub mod otg_fs_global;
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103"))]
 pub mod otg_fs_host;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod otg_fs_pwrclk;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod ethernet_mmc;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod ethernet_mac;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
 pub mod ethernet_ptp;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod ethernet_dma;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]

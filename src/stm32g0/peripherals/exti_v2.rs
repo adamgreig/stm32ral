@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! External interrupt/event controller
 //!
-//! Used by: stm32g07x, stm32g081
+//! Used by: stm32g070, stm32g071
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1377,10 +1377,8 @@ pub mod EXTICR4 {
     pub use super::EXTICR1::EXTI8_15;
 }
 
-/// IMR1 and EMR1
-/// IMR1: EXTI CPU wakeup with interrupt mask register
-/// EMR1: EXTI CPU wakeup with event mask register
-pub mod MR1 {
+/// EXTI CPU wakeup with interrupt mask register
+pub mod IMR1 {
 
     /// CPU wakeup with interrupt mask on event input
     pub mod IM0 {
@@ -1805,6 +1803,10 @@ pub mod MR1 {
         pub mod W {}
         pub use super::IM0::RW;
     }
+}
+
+/// EXTI CPU wakeup with event mask register
+pub mod EMR1 {
 
     /// CPU wakeup with event mask on event input
     pub mod EM0 {
@@ -1816,7 +1818,15 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt request line is masked
+            pub const Masked: u32 = 0b0;
+
+            /// 0b1: Interrupt request line is unmasked
+            pub const Unmasked: u32 = 0b1;
+        }
     }
 
     /// CPU wakeup with event mask on event input
@@ -1829,7 +1839,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1842,7 +1852,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1855,7 +1865,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1868,7 +1878,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1881,7 +1891,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1894,7 +1904,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1907,7 +1917,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1920,7 +1930,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1933,7 +1943,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1946,7 +1956,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1959,7 +1969,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1972,7 +1982,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1985,7 +1995,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -1998,7 +2008,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2011,7 +2021,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2024,7 +2034,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2037,7 +2047,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2050,7 +2060,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2063,7 +2073,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2076,7 +2086,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2089,7 +2099,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2102,7 +2112,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2115,7 +2125,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2128,7 +2138,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2141,7 +2151,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2154,7 +2164,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2167,7 +2177,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 
     /// CPU wakeup with event mask on event input
@@ -2180,7 +2190,7 @@ pub mod MR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IM0::RW;
+        pub use super::EM0::RW;
     }
 }
 
@@ -2375,61 +2385,6 @@ pub mod HWCFGR1 {
         pub mod RW {}
     }
 }
-
-/// AES version register
-pub mod VERR {
-
-    /// Major revision
-    pub mod MAJREV {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Minor revision
-    pub mod MINREV {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// AES identification register
-pub mod IPIDR {
-
-    /// Identification code
-    pub mod ID {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// AES size ID register
-pub mod SIDR {
-    pub use super::IPIDR::ID;
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// EXTI rising trigger selection register
@@ -2463,12 +2418,13 @@ pub struct RegisterBlock {
 
     _reserved2: [u32; 4],
 
-    /// IMR1 and EMR1
-    /// IMR1: EXTI CPU wakeup with interrupt mask register
-    /// EMR1: EXTI CPU wakeup with event mask register
-    pub MR1: RWRegister<u32>,
+    /// EXTI CPU wakeup with interrupt mask register
+    pub IMR1: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    /// EXTI CPU wakeup with event mask register
+    pub EMR1: RWRegister<u32>,
+
+    _reserved3: [u32; 2],
 
     /// EXTI CPU wakeup with interrupt mask register
     pub IMR2: RWRegister<u32>,
@@ -2498,15 +2454,6 @@ pub struct RegisterBlock {
 
     /// Hardware configuration registers
     pub HWCFGR1: RORegister<u32>,
-
-    /// AES version register
-    pub VERR: RORegister<u32>,
-
-    /// AES identification register
-    pub IPIDR: RORegister<u32>,
-
-    /// AES size ID register
-    pub SIDR: RORegister<u32>,
 }
 pub struct ResetValues {
     pub RTSR1: u32,
@@ -2518,7 +2465,8 @@ pub struct ResetValues {
     pub EXTICR2: u32,
     pub EXTICR3: u32,
     pub EXTICR4: u32,
-    pub MR1: u32,
+    pub IMR1: u32,
+    pub EMR1: u32,
     pub IMR2: u32,
     pub EMR2: u32,
     pub HWCFGR7: u32,
@@ -2528,9 +2476,6 @@ pub struct ResetValues {
     pub HWCFGR3: u32,
     pub HWCFGR2: u32,
     pub HWCFGR1: u32,
-    pub VERR: u32,
-    pub IPIDR: u32,
-    pub SIDR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

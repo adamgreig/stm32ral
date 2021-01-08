@@ -12,6 +12,9 @@ pub mod stm32f730;
 #[cfg(any(feature="stm32f745", feature="doc"))]
 pub mod stm32f745;
 
+#[cfg(any(feature="stm32f750", feature="doc"))]
+pub mod stm32f750;
+
 #[cfg(any(feature="stm32f765", feature="doc"))]
 pub mod stm32f765;
 

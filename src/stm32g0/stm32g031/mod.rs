@@ -8,33 +8,32 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
+pub use super::instances::flash;
+pub use super::instances::iwdg_g030_g031_g041 as iwdg;
+pub use super::instances::wwdg;
+pub mod rcc;
 pub use super::instances::adc_g030_g031_g041 as adc;
 pub use super::instances::crc;
-pub use super::instances::dbg_g030_g031_g041 as dbg;
+pub use super::instances::dbg_g031_g041 as dbg;
 pub use super::instances::dma_g030_g031_g041 as dma;
 pub use super::instances::dmamux_g030_g031_g041 as dmamux;
 pub use super::instances::exti_g030_g031_g041 as exti;
-pub use super::instances::flash;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::gpio;
 pub use super::instances::i2c;
-pub use super::instances::iwdg_g030_g031_g041 as iwdg;
 pub use super::instances::lptim;
-pub use super::instances::lpuart_g030_g031_g041 as lpuart;
+pub use super::instances::lpuart_g031_g041 as lpuart;
 pub use super::instances::mpu;
 pub use super::instances::nvic_g030_g031_g041 as nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::pwr_g030_g031_g041 as pwr;
-pub use super::instances::rcc_g030_g031_g041 as rcc;
-pub use super::instances::rng;
 pub use super::instances::rtc_g030_g031_g041 as rtc;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::spi_g030_g031_g041 as spi;
 pub use super::instances::stk;
 pub use super::instances::syscfg;
-pub use super::instances::syscfg_itline;
 pub use super::instances::tamp_g030_g031_g041 as tamp;
 pub use super::instances::tim14;
 pub use super::instances::tim16;
@@ -44,7 +43,7 @@ pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::usart_g030_g031_g041 as usart;
 pub use super::instances::vrefbuf;
-pub use super::instances::wwdg;
+pub mod syscfg_itline;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -61,7 +60,6 @@ pub struct Peripherals {
     pub GPIOC: gpio::Instance,
     pub GPIOD: gpio::Instance,
     pub GPIOF: gpio::Instance,
-    pub RNG: rng::Instance,
     pub CRC: crc::Instance,
     pub EXTI: exti::Instance,
     pub TIM16: tim16::Instance,
@@ -116,7 +114,6 @@ impl Peripherals {
             GPIOC: gpio::GPIOC::steal(),
             GPIOD: gpio::GPIOD::steal(),
             GPIOF: gpio::GPIOF::steal(),
-            RNG: rng::RNG::steal(),
             CRC: crc::CRC::steal(),
             EXTI: exti::EXTI::steal(),
             TIM16: tim16::TIM16::steal(),

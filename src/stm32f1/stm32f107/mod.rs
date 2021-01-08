@@ -32,15 +32,15 @@ pub mod adc1;
 pub use super::instances::adc2;
 pub mod can1;
 pub mod can2;
-pub use super::instances::ethernet_dma;
-pub use super::instances::ethernet_mac;
-pub use super::instances::ethernet_mmc;
+pub mod ethernet_mac;
+pub mod ethernet_mmc;
 pub use super::instances::ethernet_ptp;
-pub mod usb_otg_device;
-pub mod usb_otg_global;
+pub mod ethernet_dma;
+pub mod otg_fs_global;
 pub mod usb_otg_host;
-pub mod usb_otg_pwrclk;
 pub use super::instances::dac_f101_f103_f107 as dac;
+pub use super::instances::otg_fs_device;
+pub use super::instances::otg_fs_pwrclk;
 pub mod dbgmcu;
 pub use super::instances::crc;
 pub use super::instances::flash;
@@ -106,10 +106,10 @@ pub struct Peripherals {
     pub Ethernet_MMC: ethernet_mmc::Instance,
     pub Ethernet_PTP: ethernet_ptp::Instance,
     pub Ethernet_DMA: ethernet_dma::Instance,
-    pub USB_OTG_GLOBAL: usb_otg_global::Instance,
+    pub OTG_FS_GLOBAL: otg_fs_global::Instance,
     pub USB_OTG_HOST: usb_otg_host::Instance,
-    pub USB_OTG_DEVICE: usb_otg_device::Instance,
-    pub USB_OTG_PWRCLK: usb_otg_pwrclk::Instance,
+    pub OTG_FS_DEVICE: otg_fs_device::Instance,
+    pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
     pub DAC: dac::Instance,
     pub DBGMCU: dbgmcu::Instance,
     pub UART4: uart::Instance,
@@ -183,10 +183,10 @@ impl Peripherals {
             Ethernet_MMC: ethernet_mmc::Ethernet_MMC::steal(),
             Ethernet_PTP: ethernet_ptp::Ethernet_PTP::steal(),
             Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
-            USB_OTG_GLOBAL: usb_otg_global::USB_OTG_GLOBAL::steal(),
+            OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
             USB_OTG_HOST: usb_otg_host::USB_OTG_HOST::steal(),
-            USB_OTG_DEVICE: usb_otg_device::USB_OTG_DEVICE::steal(),
-            USB_OTG_PWRCLK: usb_otg_pwrclk::USB_OTG_PWRCLK::steal(),
+            OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
+            OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),
             DAC: dac::DAC::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
             UART4: uart::UART4::steal(),

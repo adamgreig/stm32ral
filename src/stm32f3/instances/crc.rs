@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! cyclic redundancy check calculation unit
 //!
-//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x4, stm32f3x8
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f3::peripherals::crc::Instance;
@@ -24,7 +24,7 @@ pub mod CRC {
 
     /// Reset values for each field in CRC
     pub const reset: ResetValues = ResetValues {
-        DR: 0xFFFFFFFF,
+        DR: 0x0000FFFF,
         IDR: 0x00000000,
         CR: 0x00000000,
         INIT: 0xFFFFFFFF,

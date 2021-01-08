@@ -1049,6 +1049,31 @@ pub mod UR17 {
         pub mod RW {}
     }
 }
+
+/// SYSCFG Power Control Register
+pub mod PWRCR {
+
+    /// Overdrive enable, this bit allows to activate the LDO regulator overdrive mode. This bit must be written only in VOS1 voltage scaling mode
+    pub mod ODEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Overdrive mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Overdrive mode enabled (the LDO generates VOS0 for VCORE)
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+}
 #[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 1],
@@ -1079,7 +1104,10 @@ pub struct RegisterBlock {
     /// SYSCFG compensation cell code register
     pub CCCR: RWRegister<u32>,
 
-    _reserved3: [u32; 62],
+    /// SYSCFG Power Control Register
+    pub PWRCR: RWRegister<u32>,
+
+    _reserved3: [u32; 61],
 
     /// SYSCFG package register
     pub PKGR: RORegister<u32>,
@@ -1148,6 +1176,7 @@ pub struct ResetValues {
     pub CCCSR: u32,
     pub CCVR: u32,
     pub CCCR: u32,
+    pub PWRCR: u32,
     pub PKGR: u32,
     pub UR0: u32,
     pub UR2: u32,

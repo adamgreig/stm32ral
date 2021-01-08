@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! SDMMC1
 //!
-//! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

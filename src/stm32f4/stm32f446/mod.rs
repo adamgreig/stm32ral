@@ -14,8 +14,8 @@ pub mod fmc;
 pub use super::instances::dma;
 pub mod gpio;
 pub mod rcc;
-pub use super::instances::syscfg_f429_f446_f469 as syscfg;
 pub mod spi;
+pub mod syscfg;
 pub use super::instances::adc;
 pub use super::instances::adc_common_f405_f407_f427_f429_f446_f469 as adc_common;
 pub use super::instances::crc;
@@ -55,8 +55,9 @@ pub mod pwr;
 pub mod sai;
 pub use super::instances::quadspi;
 pub mod hdmi_cec;
-pub mod sdmmc;
+pub mod sdio;
 pub mod spdifrx;
+pub use super::instances::fmpi2c1;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
@@ -137,7 +138,7 @@ pub struct Peripherals {
     pub PWR: pwr::Instance,
     pub QUADSPI: quadspi::Instance,
     pub SPDIFRX: spdifrx::Instance,
-    pub SDMMC: sdmmc::Instance,
+    pub SDIO: sdio::Instance,
     pub HDMI_CEC: hdmi_cec::Instance,
     pub FPU: fpu::Instance,
     pub MPU: mpu::Instance,
@@ -146,6 +147,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
+    pub FMPI2C1: fmpi2c1::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -225,7 +227,7 @@ impl Peripherals {
             PWR: pwr::PWR::steal(),
             QUADSPI: quadspi::QUADSPI::steal(),
             SPDIFRX: spdifrx::SPDIFRX::steal(),
-            SDMMC: sdmmc::SDMMC::steal(),
+            SDIO: sdio::SDIO::steal(),
             HDMI_CEC: hdmi_cec::HDMI_CEC::steal(),
             FPU: fpu::FPU::steal(),
             MPU: mpu::MPU::steal(),
@@ -234,6 +236,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            FMPI2C1: fmpi2c1::FMPI2C1::steal(),
         }
     }
 }

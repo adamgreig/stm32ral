@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-digital converter
 //!
-//! Used by: stm32f401, stm32f410, stm32f411, stm32f412, stm32f413
+//! Used by: stm32f401, stm32f411
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -722,12 +722,12 @@ pub mod CR2 {
 /// sample time register 1
 pub mod SMPR1 {
 
-    /// Sample time bits
-    pub mod SMPx_x {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+    /// Channel 18 sampling time selection
+    pub mod SMP18 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (3 bits: 0b111 << 24)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -735,36 +735,312 @@ pub mod SMPR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00000000000000000000000000000000: 3 cycles
-            pub const Cycles3: u32 = 0b00000000000000000000000000000000;
+            /// 0b000: 3 cycles
+            pub const Cycles3: u32 = 0b000;
 
-            /// 0b00000000000000000000000000000001: 15 cycles
-            pub const Cycles15: u32 = 0b00000000000000000000000000000001;
+            /// 0b001: 15 cycles
+            pub const Cycles15: u32 = 0b001;
 
-            /// 0b00000000000000000000000000000010: 28 cycles
-            pub const Cycles28: u32 = 0b00000000000000000000000000000010;
+            /// 0b010: 28 cycles
+            pub const Cycles28: u32 = 0b010;
 
-            /// 0b00000000000000000000000000000011: 56 cycles
-            pub const Cycles56: u32 = 0b00000000000000000000000000000011;
+            /// 0b011: 56 cycles
+            pub const Cycles56: u32 = 0b011;
 
-            /// 0b00000000000000000000000000000100: 84 cycles
-            pub const Cycles84: u32 = 0b00000000000000000000000000000100;
+            /// 0b100: 84 cycles
+            pub const Cycles84: u32 = 0b100;
 
-            /// 0b00000000000000000000000000000101: 112 cycles
-            pub const Cycles112: u32 = 0b00000000000000000000000000000101;
+            /// 0b101: 112 cycles
+            pub const Cycles112: u32 = 0b101;
 
-            /// 0b00000000000000000000000000000110: 144 cycles
-            pub const Cycles144: u32 = 0b00000000000000000000000000000110;
+            /// 0b110: 144 cycles
+            pub const Cycles144: u32 = 0b110;
 
-            /// 0b00000000000000000000000000000111: 480 cycles
-            pub const Cycles480: u32 = 0b00000000000000000000000000000111;
+            /// 0b111: 480 cycles
+            pub const Cycles480: u32 = 0b111;
         }
+    }
+
+    /// Channel 17 sampling time selection
+    pub mod SMP17 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (3 bits: 0b111 << 21)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 16 sampling time selection
+    pub mod SMP16 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (3 bits: 0b111 << 18)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 15 sampling time selection
+    pub mod SMP15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (3 bits: 0b111 << 15)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 14 sampling time selection
+    pub mod SMP14 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (3 bits: 0b111 << 12)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 13 sampling time selection
+    pub mod SMP13 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (3 bits: 0b111 << 9)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 12 sampling time selection
+    pub mod SMP12 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (3 bits: 0b111 << 6)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 11 sampling time selection
+    pub mod SMP11 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (3 bits: 0b111 << 3)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 10 sampling time selection
+    pub mod SMP10 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
 /// sample time register 2
 pub mod SMPR2 {
-    pub use super::SMPR1::SMPx_x;
+
+    /// Channel 9 sampling time selection
+    pub mod SMP9 {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (3 bits: 0b111 << 27)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 3 cycles
+            pub const Cycles3: u32 = 0b000;
+
+            /// 0b001: 15 cycles
+            pub const Cycles15: u32 = 0b001;
+
+            /// 0b010: 28 cycles
+            pub const Cycles28: u32 = 0b010;
+
+            /// 0b011: 56 cycles
+            pub const Cycles56: u32 = 0b011;
+
+            /// 0b100: 84 cycles
+            pub const Cycles84: u32 = 0b100;
+
+            /// 0b101: 112 cycles
+            pub const Cycles112: u32 = 0b101;
+
+            /// 0b110: 144 cycles
+            pub const Cycles144: u32 = 0b110;
+
+            /// 0b111: 480 cycles
+            pub const Cycles480: u32 = 0b111;
+        }
+    }
+
+    /// Channel 8 sampling time selection
+    pub mod SMP8 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (3 bits: 0b111 << 24)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 7 sampling time selection
+    pub mod SMP7 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (3 bits: 0b111 << 21)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 6 sampling time selection
+    pub mod SMP6 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (3 bits: 0b111 << 18)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 5 sampling time selection
+    pub mod SMP5 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (3 bits: 0b111 << 15)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 4 sampling time selection
+    pub mod SMP4 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (3 bits: 0b111 << 12)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 3 sampling time selection
+    pub mod SMP3 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (3 bits: 0b111 << 9)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 2 sampling time selection
+    pub mod SMP2 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (3 bits: 0b111 << 6)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 1 sampling time selection
+    pub mod SMP1 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (3 bits: 0b111 << 3)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 0 sampling time selection
+    pub mod SMP0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// injected channel data offset register x

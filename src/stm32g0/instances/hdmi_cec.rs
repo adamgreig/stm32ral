@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! HDMI-CEC
 //!
-//! Used by: stm32g07x, stm32g081
+//! Used by: stm32g071, stm32g07x, stm32g081
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g0::peripherals::hdmi_cec::Instance;

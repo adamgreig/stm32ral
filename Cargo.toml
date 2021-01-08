@@ -14,7 +14,7 @@ edition = "2018"
 exclude = ["/stm32-rs"]
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.4.1"
+version = "0.5.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -24,20 +24,21 @@ targets = []
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
 bare-metal = "0.2.5"
-external_cortex_m = { package = "cortex-m", version = "0.6.2" }
-cortex-m-rt = { version = "0.6.12", optional = true }
+external_cortex_m = { package = "cortex-m", version = "0.6.4" }
+cortex-m-rt = { version = "0.6.13", optional = true }
 
 [features]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["external_cortex_m/inline-asm"]
-rtic = []
 rtfm = ["rtic"]
+rtic = []
 default = []
 nosync = []
 doc = []
 armv6m = []
 armv7em = []
 armv7m = []
+armv8m = []
 stm32f0x0 = ["armv6m"]
 stm32f0x1 = ["armv6m"]
 stm32f0x2 = ["armv6m"]
@@ -68,6 +69,7 @@ stm32f446 = ["armv7em"]
 stm32f469 = ["armv7em"]
 stm32f730 = ["armv7em"]
 stm32f745 = ["armv7em"]
+stm32f750 = ["armv7em"]
 stm32f765 = ["armv7em"]
 stm32f7x2 = ["armv7em"]
 stm32f7x3 = ["armv7em"]
@@ -77,6 +79,8 @@ stm32f7x9 = ["armv7em"]
 stm32g030 = ["armv6m"]
 stm32g031 = ["armv6m"]
 stm32g041 = ["armv6m"]
+stm32g070 = ["armv6m"]
+stm32g071 = ["armv6m"]
 stm32g07x = ["armv6m"]
 stm32g081 = ["armv6m"]
 stm32g431 = ["armv7em"]
@@ -92,6 +96,7 @@ stm32h747cm4 = ["armv7em"]
 stm32h747cm7 = ["armv7em"]
 stm32h753 = ["armv7em"]
 stm32h753v = ["armv7em"]
+stm32h7b3 = ["armv7em"]
 stm32l0x1 = ["armv6m"]
 stm32l0x2 = ["armv6m"]
 stm32l0x3 = ["armv6m"]
@@ -103,3 +108,8 @@ stm32l4x2 = ["armv7em"]
 stm32l4x3 = ["armv7em"]
 stm32l4x5 = ["armv7em"]
 stm32l4x6 = ["armv7em"]
+stm32l552 = ["armv8m"]
+stm32l562 = ["armv8m"]
+stm32mp157 = ["armv7em"]
+stm32wb55 = ["armv7em"]
+stm32wle5 = ["armv7em"]

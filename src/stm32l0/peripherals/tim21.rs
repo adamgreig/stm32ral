@@ -683,7 +683,7 @@ pub mod EGR {
         /// Write-only values
         pub mod W {
 
-            /// 0b1: If CC1 is an output: CC1IF flag is set, Corresponding interrupt or DMA request is sent if enabled. If CC1 is an input: The current value of the counter is captured in TIMx_CCR1 register.
+            /// 0b1: If CCx is an output: CCxIF flag is set, Corresponding interrupt or DMA request is sent if enabled. If CCx is an input: The current value of the counter is captured in TIMx_CCR1 register.
             pub const Trigger: u32 = 0b1;
         }
         /// Read-write values (empty)
@@ -716,7 +716,7 @@ pub mod EGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Re-initializes the timer counter and generates an update of the reigsters.
+            /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
     }
@@ -737,8 +737,33 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output Compare 2 preload enable
@@ -751,8 +776,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload register on CCRx disabled. New values written to CCRx are taken into account immediately
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload register on CCRx enabled. Preload value is loaded into active register on each update event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output Compare 2 fast enable
@@ -779,8 +811,12 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CCx channel is configured as output
+            pub const Output: u32 = 0b00;
+        }
     }
 
     /// Output Compare 1 mode
@@ -793,8 +829,7 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC2M::RW;
     }
 
     /// Output Compare 1 preload enable
@@ -807,8 +842,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload register on CCR2 disabled. New values written to CCR2 are taken into account immediately
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload register on CCR2 enabled. Preload value is loaded into active register on each update event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output Compare 1 fast enable
@@ -835,8 +877,12 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CC2 channel is configured as output
+            pub const Output: u32 = 0b00;
+        }
     }
 
     /// Input capture 2 filter
@@ -844,34 +890,6 @@ pub mod CCMR1 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (4 bits: 0b1111 << 12)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Input capture 2 prescaler
-    pub mod IC2PSC {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (2 bits: 0b11 << 10)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Input capture 1 filter
-    pub mod IC1F {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
         pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -928,6 +946,33 @@ pub mod CCMR1 {
             /// 0b1111: fSAMPLING=fDTS/32, N=8
             pub const FDTS_Div32_N8: u32 = 0b1111;
         }
+    }
+
+    /// Input capture 2 prescaler
+    pub mod IC2PSC {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (2 bits: 0b11 << 10)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Input capture 1 filter
+    pub mod IC1F {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (4 bits: 0b1111 << 4)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::IC2F::RW;
     }
 
     /// Input capture 1 prescaler

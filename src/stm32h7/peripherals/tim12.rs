@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -775,7 +775,7 @@ pub mod EGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Re-initializes the timer counter and generates an update of the reigsters.
+            /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
     }
@@ -796,8 +796,12 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CC1 channel is configured as output
+            pub const Output: u32 = 0b00;
+        }
     }
 
     /// OC1FE
@@ -824,8 +828,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload register on CCR1 disabled. New values written to CCR1 are taken into account immediately
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload register on CCR1 enabled. Preload value is loaded into active register on each update event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// OC1M
@@ -838,8 +849,51 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1
+            pub const PwmMode2: u32 = 0b111;
+
+            /// 0b1000: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
+            pub const OpmMode1: u32 = 0b1000;
+
+            /// 0b1001: Inversely to OpmMode1
+            pub const OpmMode2: u32 = 0b1001;
+
+            /// 0b1100: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
+            pub const CombinedPwmMode1: u32 = 0b1100;
+
+            /// 0b1101: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
+            pub const CombinedPwmMode2: u32 = 0b1101;
+
+            /// 0b1110: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const AsymmetricPwmMode1: u32 = 0b1110;
+
+            /// 0b1111: OCyREF has the same behavior as in PWM mode 2. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const AsymmetricPwmMode2: u32 = 0b1111;
+        }
     }
 
     /// OC1CE
@@ -866,8 +920,12 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CC2 channel is configured as output
+            pub const Output: u32 = 0b00;
+        }
     }
 
     /// OC2FE
@@ -894,8 +952,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload register on CCR2 disabled. New values written to CCR2 are taken into account immediately
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload register on CCR2 enabled. Preload value is loaded into active register on each update event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// OC2M
@@ -908,8 +973,7 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC1M::RW;
     }
 
     /// OC2CE
@@ -992,8 +1056,57 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filter, sampling is done at fDTS
+            pub const NoFilter: u32 = 0b0000;
+
+            /// 0b0001: fSAMPLING=fCK_INT, N=2
+            pub const FCK_INT_N2: u32 = 0b0001;
+
+            /// 0b0010: fSAMPLING=fCK_INT, N=4
+            pub const FCK_INT_N4: u32 = 0b0010;
+
+            /// 0b0011: fSAMPLING=fCK_INT, N=8
+            pub const FCK_INT_N8: u32 = 0b0011;
+
+            /// 0b0100: fSAMPLING=fDTS/2, N=6
+            pub const FDTS_Div2_N6: u32 = 0b0100;
+
+            /// 0b0101: fSAMPLING=fDTS/2, N=8
+            pub const FDTS_Div2_N8: u32 = 0b0101;
+
+            /// 0b0110: fSAMPLING=fDTS/4, N=6
+            pub const FDTS_Div4_N6: u32 = 0b0110;
+
+            /// 0b0111: fSAMPLING=fDTS/4, N=8
+            pub const FDTS_Div4_N8: u32 = 0b0111;
+
+            /// 0b1000: fSAMPLING=fDTS/8, N=6
+            pub const FDTS_Div8_N6: u32 = 0b1000;
+
+            /// 0b1001: fSAMPLING=fDTS/8, N=8
+            pub const FDTS_Div8_N8: u32 = 0b1001;
+
+            /// 0b1010: fSAMPLING=fDTS/16, N=5
+            pub const FDTS_Div16_N5: u32 = 0b1010;
+
+            /// 0b1011: fSAMPLING=fDTS/16, N=6
+            pub const FDTS_Div16_N6: u32 = 0b1011;
+
+            /// 0b1100: fSAMPLING=fDTS/16, N=8
+            pub const FDTS_Div16_N8: u32 = 0b1100;
+
+            /// 0b1101: fSAMPLING=fDTS/32, N=5
+            pub const FDTS_Div32_N5: u32 = 0b1101;
+
+            /// 0b1110: fSAMPLING=fDTS/32, N=6
+            pub const FDTS_Div32_N6: u32 = 0b1110;
+
+            /// 0b1111: fSAMPLING=fDTS/32, N=8
+            pub const FDTS_Div32_N8: u32 = 0b1111;
+        }
     }
 
     /// Input capture 1 prescaler
@@ -1068,8 +1181,51 @@ pub mod CCMR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1
+            pub const PwmMode2: u32 = 0b111;
+
+            /// 0b1000: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
+            pub const OpmMode1: u32 = 0b1000;
+
+            /// 0b1001: Inversely to OpmMode1
+            pub const OpmMode2: u32 = 0b1001;
+
+            /// 0b1100: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
+            pub const CombinedPwmMode1: u32 = 0b1100;
+
+            /// 0b1101: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
+            pub const CombinedPwmMode2: u32 = 0b1101;
+
+            /// 0b1110: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const AsymmetricPwmMode1: u32 = 0b1110;
+
+            /// 0b1111: OCyREF has the same behavior as in PWM mode 2. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const AsymmetricPwmMode2: u32 = 0b1111;
+        }
     }
 
     /// OC4PE
@@ -1138,8 +1294,7 @@ pub mod CCMR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC4M::RW;
     }
 
     /// OC3PE

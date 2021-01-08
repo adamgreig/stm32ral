@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Advanced-timers
 //!
-//! Used by: stm32g07x, stm32g081
+//! Used by: stm32g070, stm32g071, stm32g07x, stm32g081
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Inter-integrated circuit
 //!
-//! Used by: stm32g030, stm32g031, stm32g041, stm32g07x, stm32g081
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g071, stm32g07x, stm32g081
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g0::peripherals::i2c::Instance;

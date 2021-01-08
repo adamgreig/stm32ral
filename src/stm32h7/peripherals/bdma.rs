@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! BDMA
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
-use crate::{RORegister, RWRegister, UnsafeRWRegister, WORegister};
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -21,8 +21,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No TE, HT or TC event on channel x
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: A TE, HT or TC event occurred on channel x
+            pub const Event: u32 = 0b1;
+        }
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -35,8 +42,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No transfer complete event on channel x
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: A transfer complete event occurred on channel x
+            pub const Complete: u32 = 0b1;
+        }
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -49,8 +63,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No half transfer event on channel x
+            pub const NotHalf: u32 = 0b0;
+
+            /// 0b1: A half transfer event occurred on channel x
+            pub const Half: u32 = 0b1;
+        }
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -63,8 +84,15 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No transfer error on channel x
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: A transfer error occurred on channel x
+            pub const Error: u32 = 0b1;
+        }
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -77,8 +105,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -91,8 +118,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -105,8 +131,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -119,8 +144,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -133,8 +157,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -147,8 +170,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -161,8 +183,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -175,8 +196,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -189,8 +209,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -203,8 +222,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -217,8 +235,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -231,8 +248,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -245,8 +261,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -259,8 +274,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -273,8 +287,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -287,8 +300,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -301,8 +313,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -315,8 +326,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -329,8 +339,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -343,8 +352,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -357,8 +365,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -371,8 +378,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -385,8 +391,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -399,8 +404,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 
     /// Channel x global interrupt flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -413,8 +417,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::GIF1::RW;
     }
 
     /// Channel x transfer complete flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -427,8 +430,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TCIF1::RW;
     }
 
     /// Channel x half transfer flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -441,8 +443,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::HTIF1::RW;
     }
 
     /// Channel x transfer error flag (x = 1..8) This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCR register.
@@ -455,8 +456,7 @@ pub mod ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::TEIF1::RW;
     }
 }
 
@@ -473,8 +473,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the corresponding CGIFx flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -487,8 +491,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the corresponding TCIFx flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -501,8 +509,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the corresponding HTIFx flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -515,8 +527,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b1: Clear the corresponding TEIFx flag
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -529,8 +545,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -543,8 +558,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -557,8 +571,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -571,8 +584,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -585,8 +597,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -599,8 +610,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -613,8 +623,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -627,8 +636,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -641,8 +649,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -655,8 +662,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -669,8 +675,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -683,8 +688,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -697,8 +701,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -711,8 +714,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -725,8 +727,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -739,8 +740,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -753,8 +753,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -767,8 +766,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -781,8 +779,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -795,8 +792,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -809,8 +805,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -823,8 +818,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -837,8 +831,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -851,8 +844,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 
     /// Channel x global interrupt clear This bit is set and cleared by software.
@@ -865,8 +857,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CGIF1::RW;
     }
 
     /// Channel x transfer complete clear This bit is set and cleared by software.
@@ -879,8 +870,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTCIF1::RW;
     }
 
     /// Channel x half transfer clear This bit is set and cleared by software.
@@ -893,8 +883,7 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CHTIF1::RW;
     }
 
     /// Channel x transfer error clear This bit is set and cleared by software.
@@ -907,13 +896,12 @@ pub mod IFCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CTEIF1::RW;
     }
 }
 
 /// DMA channel x configuration register
-pub mod CCR1 {
+pub mod CR0 {
 
     /// Channel enable This bit is set and cleared by software.
     pub mod EN {
@@ -925,8 +913,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer complete interrupt enable This bit is set and cleared by software.
@@ -939,8 +934,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Half transfer interrupt enable This bit is set and cleared by software.
@@ -953,8 +955,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: HT interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: HT interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer error interrupt enable This bit is set and cleared by software.
@@ -967,8 +976,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TE interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TE interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data transfer direction This bit is set and cleared by software.
@@ -981,8 +997,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Peripheral-to-memory
+            pub const PeripheralToMemory: u32 = 0b0;
+
+            /// 0b1: Memory-to-peripheral
+            pub const MemoryToPeripheral: u32 = 0b1;
+        }
     }
 
     /// Circular mode This bit is set and cleared by software.
@@ -995,8 +1018,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Circular mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Circular mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Peripheral increment mode This bit is set and cleared by software.
@@ -1009,8 +1039,15 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Address pointer is fixed
+            pub const Fixed: u32 = 0b0;
+
+            /// 0b1: Address pointer is incremented after each data transfer
+            pub const Incremented: u32 = 0b1;
+        }
     }
 
     /// Memory increment mode This bit is set and cleared by software.
@@ -1023,8 +1060,7 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PINC::RW;
     }
 
     /// Peripheral size These bits are set and cleared by software.
@@ -1037,8 +1073,18 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Byte (8-bit)
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: Half-word (16-bit)
+            pub const Bits16: u32 = 0b01;
+
+            /// 0b10: Word (32-bit)
+            pub const Bits32: u32 = 0b10;
+        }
     }
 
     /// Memory size These bits are set and cleared by software.
@@ -1051,8 +1097,7 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PSIZE::RW;
     }
 
     /// Channel priority level These bits are set and cleared by software.
@@ -1065,8 +1110,21 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Low
+            pub const Low: u32 = 0b00;
+
+            /// 0b01: Medium
+            pub const Medium: u32 = 0b01;
+
+            /// 0b10: High
+            pub const High: u32 = 0b10;
+
+            /// 0b11: Very high
+            pub const VeryHigh: u32 = 0b11;
+        }
     }
 
     /// Memory to memory mode This bit is set and cleared by software.
@@ -1079,13 +1137,62 @@ pub mod CCR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Memory-to-memory mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Memory-to-memory mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// Current target memory in double-buffer mode
+    pub mod CT {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The current target memory is Memory 0
+            pub const Memory0: u32 = 0b0;
+
+            /// 0b1: The current target memory is Memory 1
+            pub const Memory1: u32 = 0b1;
+        }
+    }
+
+    /// Double-buffer mode
+    pub mod DBM {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No buffer switching at the end of transfer
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Memory target switched at the end of the DMA transfer
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR1 {
+pub mod NDTR0 {
 
     /// Number of data to transfer Number of data to be transferred (0 up to 65535). This register can only be written when the channel is disabled. Once the channel is enabled, this register is read-only, indicating the remaining bytes to be transmitted. This register decrements after each DMA transfer. Once the transfer is completed, this register can either stay at zero or be reloaded automatically by the value previously programmed if the channel is configured in auto-reload mode. If this register is zero, no transaction can be served whether the channel is enabled or not.
     pub mod NDT {
@@ -1103,7 +1210,7 @@ pub mod CNDTR1 {
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR1 {
+pub mod PAR0 {
 
     /// Peripheral address Base address of the peripheral data register from/to which the data will be read/written. When PSIZE is 01 (16-bit), the PA\[0\] bit is ignored. Access is automatically aligned to a half-word address. When PSIZE is 10 (32-bit), PA\[1:0\] are ignored. Access is automatically aligned to a word address.
     pub mod PA {
@@ -1121,7 +1228,7 @@ pub mod CPAR1 {
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR1 {
+pub mod M0AR0 {
 
     /// Memory address Base address of the memory area from/to which the data will be read/written. When MSIZE is 01 (16-bit), the MA\[0\] bit is ignored. Access is automatically aligned to a half-word address. When MSIZE is 10 (32-bit), MA\[1:0\] are ignored. Access is automatically aligned to a word address.
     pub mod MA {
@@ -1138,221 +1245,275 @@ pub mod CMAR1 {
     }
 }
 
-/// DMA channel x configuration register
-pub mod CCR2 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
-}
-
-/// DMA channel x number of data register
-pub mod CNDTR2 {
-    pub use super::CNDTR1::NDT;
-}
-
-/// This register must not be written when the channel is enabled.
-pub mod CPAR2 {
-    pub use super::CPAR1::PA;
-}
-
-/// This register must not be written when the channel is enabled.
-pub mod CMAR2 {
-    pub use super::CMAR1::MA;
+/// Channel x memory 1 address register
+pub mod M1AR0 {
+    pub use super::M0AR0::MA;
 }
 
 /// DMA channel x configuration register
-pub mod CCR3 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR1 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR3 {
-    pub use super::CNDTR1::NDT;
+pub mod NDTR1 {
+    pub use super::NDTR0::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR3 {
-    pub use super::CPAR1::PA;
+pub mod PAR1 {
+    pub use super::PAR0::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR3 {
-    pub use super::CMAR1::MA;
+pub mod M0AR1 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR1 {
+    pub use super::M0AR0::MA;
 }
 
 /// DMA channel x configuration register
-pub mod CCR4 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR2 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR4 {
-    pub use super::CNDTR1::NDT;
+pub mod NDTR2 {
+    pub use super::NDTR0::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR4 {
-    pub use super::CPAR1::PA;
+pub mod PAR2 {
+    pub use super::PAR0::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR4 {
-    pub use super::CMAR1::MA;
+pub mod M0AR2 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR2 {
+    pub use super::M0AR0::MA;
 }
 
 /// DMA channel x configuration register
-pub mod CCR5 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR3 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR5 {
-    pub use super::CNDTR1::NDT;
+pub mod NDTR3 {
+    pub use super::NDTR0::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR5 {
-    pub use super::CPAR1::PA;
+pub mod PAR3 {
+    pub use super::PAR0::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR5 {
-    pub use super::CMAR1::MA;
+pub mod M0AR3 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR3 {
+    pub use super::M0AR0::MA;
 }
 
 /// DMA channel x configuration register
-pub mod CCR6 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR4 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR6 {
-    pub use super::CNDTR1::NDT;
+pub mod NDTR4 {
+    pub use super::NDTR0::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR6 {
-    pub use super::CPAR1::PA;
+pub mod PAR4 {
+    pub use super::PAR0::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR6 {
-    pub use super::CMAR1::MA;
+pub mod M0AR4 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR4 {
+    pub use super::M0AR0::MA;
 }
 
 /// DMA channel x configuration register
-pub mod CCR7 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR5 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR7 {
-    pub use super::CNDTR1::NDT;
+pub mod NDTR5 {
+    pub use super::NDTR0::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR7 {
-    pub use super::CPAR1::PA;
+pub mod PAR5 {
+    pub use super::PAR0::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR7 {
-    pub use super::CMAR1::MA;
+pub mod M0AR5 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR5 {
+    pub use super::M0AR0::MA;
 }
 
 /// DMA channel x configuration register
-pub mod CCR8 {
-    pub use super::CCR1::CIRC;
-    pub use super::CCR1::DIR;
-    pub use super::CCR1::EN;
-    pub use super::CCR1::HTIE;
-    pub use super::CCR1::MEM2MEM;
-    pub use super::CCR1::MINC;
-    pub use super::CCR1::MSIZE;
-    pub use super::CCR1::PINC;
-    pub use super::CCR1::PL;
-    pub use super::CCR1::PSIZE;
-    pub use super::CCR1::TCIE;
-    pub use super::CCR1::TEIE;
+pub mod CR6 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
 }
 
 /// DMA channel x number of data register
-pub mod CNDTR8 {
-    pub use super::CNDTR1::NDT;
+pub mod NDTR6 {
+    pub use super::NDTR0::NDT;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CPAR8 {
-    pub use super::CPAR1::PA;
+pub mod PAR6 {
+    pub use super::PAR0::PA;
 }
 
 /// This register must not be written when the channel is enabled.
-pub mod CMAR8 {
-    pub use super::CMAR1::MA;
+pub mod M0AR6 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR6 {
+    pub use super::M0AR0::MA;
+}
+
+/// DMA channel x configuration register
+pub mod CR7 {
+    pub use super::CR0::CIRC;
+    pub use super::CR0::CT;
+    pub use super::CR0::DBM;
+    pub use super::CR0::DIR;
+    pub use super::CR0::EN;
+    pub use super::CR0::HTIE;
+    pub use super::CR0::MEM2MEM;
+    pub use super::CR0::MINC;
+    pub use super::CR0::MSIZE;
+    pub use super::CR0::PINC;
+    pub use super::CR0::PL;
+    pub use super::CR0::PSIZE;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+}
+
+/// DMA channel x number of data register
+pub mod NDTR7 {
+    pub use super::NDTR0::NDT;
+}
+
+/// This register must not be written when the channel is enabled.
+pub mod PAR7 {
+    pub use super::PAR0::PA;
+}
+
+/// This register must not be written when the channel is enabled.
+pub mod M0AR7 {
+    pub use super::M0AR0::MA;
+}
+
+/// Channel x memory 1 address register
+pub mod M1AR7 {
+    pub use super::M0AR0::MA;
 }
 #[repr(C)]
 pub struct RegisterBlock {
@@ -1363,150 +1524,168 @@ pub struct RegisterBlock {
     pub IFCR: WORegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR1: RWRegister<u32>,
+    pub CR0: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR1: RWRegister<u32>,
+    pub NDTR0: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR1: UnsafeRWRegister<u32>,
+    pub PAR0: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR1: UnsafeRWRegister<u32>,
+    pub M0AR0: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR0: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR2: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR2: RWRegister<u32>,
+    pub NDTR1: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR2: UnsafeRWRegister<u32>,
+    pub PAR1: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR2: UnsafeRWRegister<u32>,
+    pub M0AR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR1: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR3: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR3: RWRegister<u32>,
+    pub NDTR2: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR3: UnsafeRWRegister<u32>,
+    pub PAR2: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR3: UnsafeRWRegister<u32>,
+    pub M0AR2: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR2: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR4: RWRegister<u32>,
+    pub CR3: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR4: RWRegister<u32>,
+    pub NDTR3: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR4: UnsafeRWRegister<u32>,
+    pub PAR3: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR4: UnsafeRWRegister<u32>,
+    pub M0AR3: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR3: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR5: RWRegister<u32>,
+    pub CR4: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR5: RWRegister<u32>,
+    pub NDTR4: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR5: UnsafeRWRegister<u32>,
+    pub PAR4: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR5: UnsafeRWRegister<u32>,
+    pub M0AR4: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR4: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR6: RWRegister<u32>,
+    pub CR5: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR6: RWRegister<u32>,
+    pub NDTR5: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR6: UnsafeRWRegister<u32>,
+    pub PAR5: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR6: UnsafeRWRegister<u32>,
+    pub M0AR5: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR5: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR7: RWRegister<u32>,
+    pub CR6: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR7: RWRegister<u32>,
+    pub NDTR6: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR7: UnsafeRWRegister<u32>,
+    pub PAR6: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR7: UnsafeRWRegister<u32>,
+    pub M0AR6: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    /// Channel x memory 1 address register
+    pub M1AR6: RWRegister<u32>,
 
     /// DMA channel x configuration register
-    pub CCR8: RWRegister<u32>,
+    pub CR7: RWRegister<u32>,
 
     /// DMA channel x number of data register
-    pub CNDTR8: RWRegister<u32>,
+    pub NDTR7: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CPAR8: UnsafeRWRegister<u32>,
+    pub PAR7: RWRegister<u32>,
 
     /// This register must not be written when the channel is enabled.
-    pub CMAR8: UnsafeRWRegister<u32>,
+    pub M0AR7: RWRegister<u32>,
+
+    /// Channel x memory 1 address register
+    pub M1AR7: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ISR: u32,
     pub IFCR: u32,
-    pub CCR1: u32,
-    pub CNDTR1: u32,
-    pub CPAR1: u32,
-    pub CMAR1: u32,
-    pub CCR2: u32,
-    pub CNDTR2: u32,
-    pub CPAR2: u32,
-    pub CMAR2: u32,
-    pub CCR3: u32,
-    pub CNDTR3: u32,
-    pub CPAR3: u32,
-    pub CMAR3: u32,
-    pub CCR4: u32,
-    pub CNDTR4: u32,
-    pub CPAR4: u32,
-    pub CMAR4: u32,
-    pub CCR5: u32,
-    pub CNDTR5: u32,
-    pub CPAR5: u32,
-    pub CMAR5: u32,
-    pub CCR6: u32,
-    pub CNDTR6: u32,
-    pub CPAR6: u32,
-    pub CMAR6: u32,
-    pub CCR7: u32,
-    pub CNDTR7: u32,
-    pub CPAR7: u32,
-    pub CMAR7: u32,
-    pub CCR8: u32,
-    pub CNDTR8: u32,
-    pub CPAR8: u32,
-    pub CMAR8: u32,
+    pub CR0: u32,
+    pub NDTR0: u32,
+    pub PAR0: u32,
+    pub M0AR0: u32,
+    pub M1AR0: u32,
+    pub CR1: u32,
+    pub NDTR1: u32,
+    pub PAR1: u32,
+    pub M0AR1: u32,
+    pub M1AR1: u32,
+    pub CR2: u32,
+    pub NDTR2: u32,
+    pub PAR2: u32,
+    pub M0AR2: u32,
+    pub M1AR2: u32,
+    pub CR3: u32,
+    pub NDTR3: u32,
+    pub PAR3: u32,
+    pub M0AR3: u32,
+    pub M1AR3: u32,
+    pub CR4: u32,
+    pub NDTR4: u32,
+    pub PAR4: u32,
+    pub M0AR4: u32,
+    pub M1AR4: u32,
+    pub CR5: u32,
+    pub NDTR5: u32,
+    pub PAR5: u32,
+    pub M0AR5: u32,
+    pub M1AR5: u32,
+    pub CR6: u32,
+    pub NDTR6: u32,
+    pub PAR6: u32,
+    pub M0AR6: u32,
+    pub M1AR6: u32,
+    pub CR7: u32,
+    pub NDTR7: u32,
+    pub PAR7: u32,
+    pub M0AR7: u32,
+    pub M1AR7: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

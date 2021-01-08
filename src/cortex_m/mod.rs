@@ -15,3 +15,6 @@ pub mod armv7em;
 #[cfg(any(feature="armv7m", feature="doc"))]
 pub mod armv7m;
 
+#[cfg(any(feature="armv8m", feature="doc"))]
+pub mod armv8m;
+

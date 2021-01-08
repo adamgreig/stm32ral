@@ -46,7 +46,7 @@ pub mod rng;
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod aes;
 
-#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3"))]
+#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2"))]
 pub mod adc;
 
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3"))]
@@ -162,6 +162,9 @@ pub mod tim3;
 
 #[cfg(any(feature="doc", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod tim4;
+
+#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3"))]
+pub mod adc_common;
 
 #[cfg(any(feature="doc", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod comp_l4x3_l4x5_l4x6;

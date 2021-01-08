@@ -364,7 +364,7 @@ pub enum Interrupt {
     TIM20_TRG_COM = 79,
     /// 80: TIM20 Capture Compare interrupt
     TIM20_CC = 80,
-    /// 81: Floating point unit interrupt
+    /// 81: Floating point unit
     FPU = 81,
     /// 84: SPI4 Global interrupt
     SPI4 = 84,

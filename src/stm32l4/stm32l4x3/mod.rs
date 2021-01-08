@@ -20,14 +20,14 @@ pub use super::instances::lcd;
 pub use super::instances::tsc;
 pub use super::instances::wwdg;
 pub mod rcc;
-pub use super::instances::adc;
 pub use super::instances::aes;
-pub use super::instances::gpio;
-pub use super::instances::lptim;
 pub use super::instances::pwr;
 pub use super::instances::rng;
-pub use super::instances::sai1;
 pub use super::instances::syscfg;
+pub mod adc1;
+pub use super::instances::gpio;
+pub use super::instances::lptim;
+pub use super::instances::sai1;
 pub use super::instances::tim1;
 pub use super::instances::tim15;
 pub use super::instances::tim16;
@@ -35,6 +35,7 @@ pub use super::instances::tim2;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub mod usart;
+pub use super::instances::adc_common;
 pub use super::instances::can1_l4x3_l4x5 as can1;
 pub use super::instances::crs;
 pub use super::instances::dbgmcu_l4x1_l4x2_l4x3 as dbgmcu;
@@ -78,7 +79,7 @@ pub struct Peripherals {
     pub SYSCFG: syscfg::Instance,
     pub RNG: rng::Instance,
     pub AES: aes::Instance,
-    pub ADC: adc::Instance,
+    pub ADC1: adc1::Instance,
     pub GPIOA: gpio::Instance,
     pub GPIOB: gpio::Instance,
     pub GPIOC: gpio::Instance,
@@ -119,6 +120,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
+    pub ADC_Common: adc_common::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -148,7 +150,7 @@ impl Peripherals {
             SYSCFG: syscfg::SYSCFG::steal(),
             RNG: rng::RNG::steal(),
             AES: aes::AES::steal(),
-            ADC: adc::ADC::steal(),
+            ADC1: adc1::ADC1::steal(),
             GPIOA: gpio::GPIOA::steal(),
             GPIOB: gpio::GPIOB::steal(),
             GPIOC: gpio::GPIOC::steal(),
@@ -189,6 +191,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            ADC_Common: adc_common::ADC_Common::steal(),
         }
     }
 }

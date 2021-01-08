@@ -13,7 +13,7 @@ pub use super::instances::dbgmcu_f427_f429_f469 as dbgmcu;
 pub use super::instances::dcmi;
 pub use super::instances::dma;
 pub use super::instances::hash;
-pub use super::instances::rng;
+pub use super::instances::rng_f405_f407_f427_f429 as rng;
 pub mod rcc;
 pub use super::instances::gpio_f405_f407_f427 as gpio;
 pub mod syscfg;

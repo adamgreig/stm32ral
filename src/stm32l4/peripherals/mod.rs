@@ -142,6 +142,9 @@ pub mod scb_actrl;
 #[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x5", feature="stm32l4x5", feature="stm32l4x6", feature="stm32l4x6"))]
 pub mod tim3;
 
+#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3"))]
+pub mod adc_common;
+
 #[cfg(any(feature="doc", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod comp_v2;
 

@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [v0.5.0] - 2021-01-08
+
+* Update stm32-rs to 0.12.1
+
 ## [v0.4.1] - 2020-02-13
 
 * Fix stale files in v0.4.0 build

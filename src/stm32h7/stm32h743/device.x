@@ -134,5 +134,6 @@ PROVIDE(LPTIM5 = DefaultHandler);
 PROVIDE(LPUART = DefaultHandler);
 PROVIDE(WWDG1_RST = DefaultHandler);
 PROVIDE(CRS = DefaultHandler);
+PROVIDE(RAMECC = DefaultHandler);
 PROVIDE(SAI4 = DefaultHandler);
 PROVIDE(WKUP = DefaultHandler);

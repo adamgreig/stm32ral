@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Independent watchdog
 //!
-//! Used by: stm32g07x, stm32g081
+//! Used by: stm32g070, stm32g071, stm32g07x, stm32g081
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

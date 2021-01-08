@@ -33,8 +33,8 @@ pub mod IDR {
     pub mod IDR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (7 bits: 0x7f << 0)
-        pub const mask: u32 = 0x7f << offset;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

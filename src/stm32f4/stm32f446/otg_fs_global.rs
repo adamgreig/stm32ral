@@ -1681,6 +1681,9 @@ pub mod GRXSTSP {
         pub mod RW {}
     }
 }
+
+///
+pub mod GLPMCFG {}
 #[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
@@ -1733,7 +1736,12 @@ pub struct RegisterBlock {
     /// core ID register
     pub OTG_CID: RWRegister<u32>,
 
-    _reserved2: [u32; 48],
+    _reserved2: [u32; 5],
+
+    ///
+    pub GLPMCFG: RORegister<u32>,
+
+    _reserved3: [u32; 42],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
     pub HPTXFSIZ: RWRegister<u32>,
@@ -1768,6 +1776,7 @@ pub struct ResetValues {
     pub GNPTXSTS: u32,
     pub GCCFG: u32,
     pub OTG_CID: u32,
+    pub GLPMCFG: u32,
     pub HPTXFSIZ: u32,
     pub DIEPTXF1: u32,
     pub DIEPTXF2: u32,
@@ -1826,6 +1835,7 @@ pub mod OTG_FS_GLOBAL {
         DIEPTXF4: 0x02000400,
         DIEPTXF5: 0x02000400,
         GRXSTSP: 0x00000000,
+        GLPMCFG: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

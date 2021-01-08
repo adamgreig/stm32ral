@@ -50,16 +50,16 @@
 | Feature | Devices | Links |
 |:-------:|:-------:|:-----:|
 | `stm32f401` | STM32F401 | [RM0368](https://www.st.com/resource/en/reference_manual/dm00096844.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f401.html) |
-| `stm32f405` | STM32F405, STM32F415 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32f405-microprocessors-415.html) |
-| `stm32f407` | STM32F407, STM32F417 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32f407-microprocessors-417.html) |
+| `stm32f405` | STM32F405, STM32F415 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f405-415.html) |
+| `stm32f407` | STM32F407, STM32F417 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f407-417.html) |
 | `stm32f410` | STM32F410 | [RM0401](https://www.st.com/resource/en/reference_manual/dm00180366.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f410.html) |
 | `stm32f411` | STM32F411 | [RM0383](https://www.st.com/resource/en/reference_manual/dm00119316.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f411.html) |
 | `stm32f412` | STM32F412 | [RM0402](https://www.st.com/resource/en/reference_manual/dm00180369.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f412.html) |
-| `stm32f413` | STM32F413, STM32F423 | [RM0430](https://www.st.com/resource/en/reference_manual/dm00305666.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32f413-microprocessors-423.html) |
-| `stm32f427` | STM32F427, STM32F437 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32f427-microprocessors-437.html) |
-| `stm32f429` | STM32F429, STM32F439 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32f429-microprocessors-439.html) |
+| `stm32f413` | STM32F413, STM32F423 | [RM0430](https://www.st.com/resource/en/reference_manual/dm00305666.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f413-423.html) |
+| `stm32f427` | STM32F427, STM32F437 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f427-437.html) |
+| `stm32f429` | STM32F429, STM32F439 | [RM0090](https://www.st.com/resource/en/reference_manual/dm00031020.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f429-439.html) |
 | `stm32f446` | STM32F446 | [RM0390](https://www.st.com/resource/en/reference_manual/dm00135183.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f446.html) |
-| `stm32f469` | STM32F469, STM32F479 | [RM0386](https://www.st.com/resource/en/reference_manual/dm00127514.pdf), [st.com](https://www.st.com/en/microcontrollers/stm32f469-microprocessors-479.html) |
+| `stm32f469` | STM32F469, STM32F479 | [RM0386](https://www.st.com/resource/en/reference_manual/dm00127514.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f469-479.html) |
 
 
 
@@ -68,6 +68,7 @@
 | Feature | Devices | Links |
 |:-------:|:-------:|:-----:|
 | `stm32f730` | STM32F730 | [RM0431](https://www.st.com/resource/en/reference_manual/dm00305990.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x0-value-line.html) |
+| `stm32f750` | STM32F750 | [RM0385](https://www.st.com/resource/en/reference_manual/dm00124865.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x0-value-line.html) |
 | `stm32f7x2` | STM32F722, STM32F732 | [RM0431](https://www.st.com/resource/en/reference_manual/dm00305990.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x2.html) |
 | `stm32f7x3` | STM32F723, STM32F733 | [RM0431](https://www.st.com/resource/en/reference_manual/dm00305990.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x3.html) |
 | `stm32f745` | STM32F745 | [RM0385](https://www.st.com/resource/en/reference_manual/dm00124865.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x5.html) |
@@ -86,6 +87,7 @@
 | `stm32h743v` | STM32H743V | [RM0433](https://www.st.com/resource/en/reference_manual/dm00314099.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html) |
 | `stm32h753` | STM32H753 | [RM0433](https://www.st.com/resource/en/reference_manual/dm00314099.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html) |
 | `stm32h753v` | STM32H753V | [RM0433](https://www.st.com/resource/en/reference_manual/dm00314099.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753.html) |
+| `stm32h7b3` | STM32H7A3, STM32H7B3, STM32H7B0 | [RM0455](https://www.st.com/resource/en/reference_manual/dm00463927.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h7a3-7b3.html) |
 | `stm32h747cm7` | STM32H745 (CM7), STM32H747 (CM7), STM32H755 (CM7), STM32H757 (CM7) | [RM0399](https://www.st.com/resource/en/reference_manual/dm00176879.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h747-757.html) |
 | `stm32h747cm4` | STM32H745 (CM4), STM32H747 (CM4), STM32H755 (CM4), STM32H757 (CM4) | [RM0399](https://www.st.com/resource/en/reference_manual/dm00176879.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h747-757.html) |
 
@@ -116,10 +118,19 @@
 | Feature | Devices | Links |
 |:-------:|:-------:|:-----:|
 | `stm32l4x1` | STM32L431, STM32L451, STM32L471 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x1.html) |
-| `stm32l4x2` | STM32L432, STM32L442, STM32L452, STM32L462 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x2.html) |
+| `stm32l4x2` | STM32L412, STM32L422, STM32L432, STM32L442, STM32L452, STM32L462 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x2.html) |
 | `stm32l4x3` | STM32L433, STM32L443 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x3.html) |
 | `stm32l4x5` | STM32L475 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5.html) |
 | `stm32l4x6` | STM32L476, STM32L486, STM32L496, STM32L4A6 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x6.html) |
+
+
+
+## STM32L5
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32l552` | STM32L552 | [RM0438](https://www.st.com/resource/en/reference_manual/dm00346336.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l5-series/stm32l5x2.html) |
+| `stm32l562` | STM32L562 | [RM0438](https://www.st.com/resource/en/reference_manual/dm00346336.pdf), [st.com](https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-ultra-low-power-mcus/stm32l5-series/stm32l5x2.html) |
 
 
 
@@ -139,6 +150,30 @@
 | `stm32g4x1` | STM32G431, STM32G441, STM32G491 | [RM0440](https://www.st.com/resource/en/reference_manual/dm00355726.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32g4x1.html) |
 | `stm32g4x3` | STM32G473, STM32G483 | [RM0440](https://www.st.com/resource/en/reference_manual/dm00355726.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32g4x3.html) |
 | `stm32g4x4` | STM32G474, STM32G484 | [RM0440](https://www.st.com/resource/en/reference_manual/dm00355726.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32g4x4.html) |
+
+
+
+## STM32MP1
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32mp157` | STM32MP157 | [RM0436](https://www.st.com/resource/en/reference_manual/dm00366355-stm32mp157-advanced-armbased-32bit-mpus-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32mp157.html) |
+
+
+
+## STM32WL
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32wle5` | STM32WLE5 | [RM0461](https://www.st.com/resource/en/reference_manual/dm00530369-stm32wlex-advanced-armbased-32bit-mcus-with-subghz-radio-solution-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32wlex.html) |
+
+
+
+## STM32WB
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32wb55` | STM32WB55 | [RM0434](https://www.st.com/resource/en/reference_manual/dm00318631-multiprotocol-wireless-32bit-mcu-armbased-cortexm4-with-fpu-bluetooth-lowenergy-and-802154-radio-solution-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32wbx5.html) |
 
 
 

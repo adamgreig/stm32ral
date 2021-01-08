@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! MDMA
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -237,10 +237,10 @@ pub mod GISR0 {
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C0ISR {
+pub mod ISR0 {
 
     /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF0 {
+    pub mod TEIF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -254,7 +254,7 @@ pub mod C0ISR {
     }
 
     /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF0 {
+    pub mod CTCIF {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -268,7 +268,7 @@ pub mod C0ISR {
     }
 
     /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF0 {
+    pub mod BRTIF {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -282,7 +282,7 @@ pub mod C0ISR {
     }
 
     /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF0 {
+    pub mod BTIF {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -296,7 +296,7 @@ pub mod C0ISR {
     }
 
     /// channel x buffer transfer complete
-    pub mod TCIF0 {
+    pub mod TCIF {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -310,7 +310,7 @@ pub mod C0ISR {
     }
 
     /// channel x request active flag
-    pub mod CRQA0 {
+    pub mod CRQA {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -325,10 +325,10 @@ pub mod C0ISR {
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C0IFCR {
+pub mod IFCR0 {
 
     /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF0 {
+    pub mod CTEIF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -342,7 +342,7 @@ pub mod C0IFCR {
     }
 
     /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF0 {
+    pub mod CCTCIF {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -356,7 +356,7 @@ pub mod C0IFCR {
     }
 
     /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF0 {
+    pub mod CBRTIF {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -370,7 +370,7 @@ pub mod C0IFCR {
     }
 
     /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF0 {
+    pub mod CBTIF {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -384,7 +384,7 @@ pub mod C0IFCR {
     }
 
     /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF0 {
+    pub mod CLTCIF {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -399,7 +399,7 @@ pub mod C0IFCR {
 }
 
 /// MDMA Channel x error status register
-pub mod C0ESR {
+pub mod ESR0 {
 
     /// Transfer Error Address These bits are set and cleared by HW, in case of an MDMA data transfer error. It is used in conjunction with TED. This field indicates the 7 LSBits of the address which generated a transfer/access error. It may be used by SW to retrieve the failing address, by adding this value (truncated to the buffer transfer length size) to the current SAR/DAR value. Note: The SAR/DAR current value doesnt reflect this last address due to the FIFO management system. The SAR/DAR are only updated at the end of a (buffer) transfer (of TLEN+1 bytes). Note: It is not set in case of a link data error.
     pub mod TEA {
@@ -487,7 +487,7 @@ pub mod C0ESR {
 }
 
 /// This register is used to control the concerned channel.
-pub mod C0CR {
+pub mod CR0 {
 
     /// channel enable
     pub mod EN {
@@ -645,7 +645,7 @@ pub mod C0CR {
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C0TCR {
+pub mod TCR0 {
 
     /// Source increment mode These bits are set and cleared by software. These bits are protected and can be written only if EN is 0 Note: When source is AHB (SBUS=1), SINC = 00 is forbidden. In Linked List Mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x00).
     pub mod SINC {
@@ -845,7 +845,7 @@ pub mod C0TCR {
 }
 
 /// MDMA Channel x block number of data register
-pub mod C0BNDTR {
+pub mod BNDTR0 {
 
     /// block number of data to transfer
     pub mod BNDT {
@@ -905,7 +905,7 @@ pub mod C0BNDTR {
 }
 
 /// MDMA channel x source address register
-pub mod C0SAR {
+pub mod SAR0 {
 
     /// source adr base
     pub mod SAR {
@@ -923,7 +923,7 @@ pub mod C0SAR {
 }
 
 /// MDMA channel x destination address register
-pub mod C0DAR {
+pub mod DAR0 {
 
     /// Destination adr base
     pub mod DAR {
@@ -941,7 +941,7 @@ pub mod C0DAR {
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C0BRUR {
+pub mod BRUR0 {
 
     /// source adresse update value
     pub mod SUV {
@@ -973,7 +973,7 @@ pub mod C0BRUR {
 }
 
 /// MDMA channel x Link Address register
-pub mod C0LAR {
+pub mod LAR0 {
 
     /// Link address register
     pub mod LAR {
@@ -991,7 +991,7 @@ pub mod C0LAR {
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C0TBR {
+pub mod TBR0 {
 
     /// Trigger selection
     pub mod TSEL {
@@ -1037,7 +1037,7 @@ pub mod C0TBR {
 }
 
 /// MDMA channel x Mask address register
-pub mod C0MAR {
+pub mod MAR0 {
 
     /// Mask address
     pub mod MAR {
@@ -1055,7 +1055,7 @@ pub mod C0MAR {
 }
 
 /// MDMA channel x Mask Data register
-pub mod C0MDR {
+pub mod MDR0 {
 
     /// Mask data
     pub mod MDR {
@@ -1073,3768 +1073,1623 @@ pub mod C0MDR {
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C1ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF1 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF1 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF1 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA1 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR1 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C1IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF1 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF1 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF1 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR1 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C1ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR1 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C1CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR1 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C1TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR1 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C1BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR1 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C1SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR1 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C1DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR1 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C1BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR1 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C1LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR1 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C1TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR1 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C1MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR1 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C1MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR1 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C2ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF2 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF2 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF2 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF2 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA2 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR2 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C2IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF2 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF2 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF2 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF2 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR2 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C2ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR2 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C2CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR2 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C2TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR2 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C2BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR2 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C2SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR2 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C2DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR2 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C2BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR2 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C2LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR2 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C2TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR2 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C2MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR2 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C2MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR2 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C3ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF3 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF3 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF3 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF3 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA3 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR3 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C3IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF3 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF3 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF3 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF3 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF3 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR3 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C3ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR3 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C3CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR3 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C3TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR3 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C3BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR3 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C3SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR3 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C3DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR3 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C3BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR3 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C3LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR3 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C3TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR3 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C3MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR3 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C3MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR3 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C4ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF4 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF4 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF4 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF4 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA4 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR4 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C4IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF4 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF4 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF4 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF4 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF4 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR4 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C4ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR4 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C4CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR4 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C4TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR4 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C4BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR4 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C4SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR4 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C4DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR4 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C4BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR4 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C4LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR4 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C4TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR4 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C4MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR4 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C4MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR4 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C5ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF5 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF5 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF5 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF5 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA5 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR5 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C5IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF5 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF5 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF5 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF5 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF5 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR5 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C5ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR5 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C5CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR5 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C5TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR5 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C5BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR5 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C5SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR5 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C5DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR5 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C5BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR5 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C5LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR5 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C5TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR5 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C5MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR5 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C5MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR5 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C6ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF6 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF6 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF6 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF6 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA6 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR6 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C6IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF6 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF6 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF6 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF6 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF6 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR6 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C6ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR6 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C6CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR6 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C6TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR6 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C6BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR6 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C6SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR6 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C6DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR6 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C6BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR6 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C6LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR6 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C6TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR6 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C6MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR6 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C6MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR6 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C7ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF7 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF7 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF7 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF7 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA7 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR7 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C7IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF7 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF7 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF7 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF7 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF7 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR7 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C7ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR7 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C7CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR7 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C7TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR7 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C7BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR7 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C7SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR7 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C7DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR7 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C7BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR7 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C7LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR7 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C7TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR7 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C7MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR7 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C7MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR7 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C8ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF8 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF8 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF8 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF8 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF8 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA8 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR8 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C8IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF8 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF8 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF8 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF8 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF8 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR8 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C8ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR8 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C8CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR8 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C8TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR8 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C8BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR8 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C8SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR8 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C8DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR8 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C8BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR8 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C8LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR8 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C8TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR8 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C8MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR8 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C8MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR8 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C9ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF9 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF9 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF9 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF9 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF9 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA9 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR9 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C9IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF9 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF9 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF9 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF9 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF9 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR9 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C9ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR9 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C9CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR9 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C9TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR9 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C9BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR9 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C9SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR9 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C9DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR9 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C9BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR9 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C9LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR9 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C9TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR9 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C9MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR9 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C9MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR9 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C10ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF10 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF10 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF10 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF10 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA10 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR10 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C10IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF10 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF10 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF10 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF10 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR10 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C10ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR10 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C10CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR10 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C10TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR10 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C10BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR10 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C10SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR10 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C10DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR10 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C10BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR10 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C10LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR10 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C10TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR10 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C10MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR10 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C10MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR10 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C11ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF11 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF11 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF11 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF11 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF11 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA11 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR11 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C11IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF11 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF11 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF11 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF11 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF11 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR11 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C11ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR11 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C11CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR11 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C11TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR11 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C11BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR11 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C11SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR11 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C11DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR11 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C11BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR11 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C11LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR11 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C11TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR11 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C11MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR11 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C11MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR11 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C12ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF12 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF12 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF12 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF12 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF12 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA12 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR12 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C12IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF12 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF12 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF12 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF12 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF12 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR12 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C12ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR12 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C12CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR12 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C12TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR12 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C12BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR12 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C12SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR12 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C12DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR12 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C12BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR12 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C12LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR12 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C12TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR12 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C12MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR12 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C12MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR12 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C13ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF13 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF13 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF13 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF13 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF13 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA13 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR13 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C13IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF13 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF13 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF13 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF13 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF13 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR13 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C13ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR13 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C13CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR13 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C13TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR13 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C13BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR13 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C13SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR13 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C13DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR13 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C13BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR13 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C13LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR13 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C13TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR13 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C13MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR13 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C13MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR13 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C14ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF14 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF14 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF14 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF14 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF14 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA14 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR14 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C14IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF14 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF14 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF14 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF14 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF14 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR14 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C14ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR14 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C14CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR14 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C14TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR14 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C14BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR14 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C14SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR14 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C14DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR14 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C14BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR14 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C14LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR14 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C14TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR14 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C14MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR14 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C14MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR14 {
+    pub use super::MDR0::MDR;
 }
 
 /// MDMA channel x interrupt/status register
-pub mod C15ISR {
-
-    /// Channel x transfer error interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod TEIF15 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Channel Transfer Complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register. CTC is set when the last block was transferred and the channel has been automatically disabled. CTC is also set when the channel is suspended, as a result of writing EN bit to 0.
-    pub mod CTCIF15 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block repeat transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BRTIF15 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x block transfer complete interrupt flag This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_IFCRy register.
-    pub mod BTIF15 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x buffer transfer complete
-    pub mod TCIF15 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// channel x request active flag
-    pub mod CRQA15 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod ISR15 {
+    pub use super::ISR0::BRTIF;
+    pub use super::ISR0::BTIF;
+    pub use super::ISR0::CRQA;
+    pub use super::ISR0::CTCIF;
+    pub use super::ISR0::TCIF;
+    pub use super::ISR0::TEIF;
 }
 
 /// MDMA channel x interrupt flag clear register
-pub mod C15IFCR {
-
-    /// Channel x clear transfer error interrupt flag Writing a 1 into this bit clears TEIFx in the MDMA_ISRy register
-    pub mod CTEIF15 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clear Channel transfer complete interrupt flag for channel x Writing a 1 into this bit clears CTCIFx in the MDMA_ISRy register
-    pub mod CCTCIF15 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x clear block repeat transfer complete interrupt flag Writing a 1 into this bit clears BRTIFx in the MDMA_ISRy register
-    pub mod CBRTIF15 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Channel x Clear block transfer complete interrupt flag Writing a 1 into this bit clears BTIFx in the MDMA_ISRy register
-    pub mod CBTIF15 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CLear buffer Transfer Complete Interrupt Flag for channel x Writing a 1 into this bit clears TCIFx in the MDMA_ISRy register
-    pub mod CLTCIF15 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+pub mod IFCR15 {
+    pub use super::IFCR0::CBRTIF;
+    pub use super::IFCR0::CBTIF;
+    pub use super::IFCR0::CCTCIF;
+    pub use super::IFCR0::CLTCIF;
+    pub use super::IFCR0::CTEIF;
 }
 
 /// MDMA Channel x error status register
-pub mod C15ESR {
-    pub use super::C0ESR::ASE;
-    pub use super::C0ESR::BSE;
-    pub use super::C0ESR::TEA;
-    pub use super::C0ESR::TED;
-    pub use super::C0ESR::TELD;
-    pub use super::C0ESR::TEMD;
+pub mod ESR15 {
+    pub use super::ESR0::ASE;
+    pub use super::ESR0::BSE;
+    pub use super::ESR0::TEA;
+    pub use super::ESR0::TED;
+    pub use super::ESR0::TELD;
+    pub use super::ESR0::TEMD;
 }
 
 /// This register is used to control the concerned channel.
-pub mod C15CR {
-    pub use super::C0CR::BEX;
-    pub use super::C0CR::BRTIE;
-    pub use super::C0CR::BTIE;
-    pub use super::C0CR::CTCIE;
-    pub use super::C0CR::EN;
-    pub use super::C0CR::HEX;
-    pub use super::C0CR::PL;
-    pub use super::C0CR::SWRQ;
-    pub use super::C0CR::TCIE;
-    pub use super::C0CR::TEIE;
-    pub use super::C0CR::WEX;
+pub mod CR15 {
+    pub use super::CR0::BEX;
+    pub use super::CR0::BRTIE;
+    pub use super::CR0::BTIE;
+    pub use super::CR0::CTCIE;
+    pub use super::CR0::EN;
+    pub use super::CR0::HEX;
+    pub use super::CR0::PL;
+    pub use super::CR0::SWRQ;
+    pub use super::CR0::TCIE;
+    pub use super::CR0::TEIE;
+    pub use super::CR0::WEX;
 }
 
 /// This register is used to configure the concerned channel.
-pub mod C15TCR {
-    pub use super::C0TCR::BWM;
-    pub use super::C0TCR::DBURST;
-    pub use super::C0TCR::DINC;
-    pub use super::C0TCR::DINCOS;
-    pub use super::C0TCR::DSIZE;
-    pub use super::C0TCR::PAM;
-    pub use super::C0TCR::PKE;
-    pub use super::C0TCR::SBURST;
-    pub use super::C0TCR::SINC;
-    pub use super::C0TCR::SINCOS;
-    pub use super::C0TCR::SSIZE;
-    pub use super::C0TCR::SWRM;
-    pub use super::C0TCR::TLEN;
-    pub use super::C0TCR::TRGM;
+pub mod TCR15 {
+    pub use super::TCR0::BWM;
+    pub use super::TCR0::DBURST;
+    pub use super::TCR0::DINC;
+    pub use super::TCR0::DINCOS;
+    pub use super::TCR0::DSIZE;
+    pub use super::TCR0::PAM;
+    pub use super::TCR0::PKE;
+    pub use super::TCR0::SBURST;
+    pub use super::TCR0::SINC;
+    pub use super::TCR0::SINCOS;
+    pub use super::TCR0::SSIZE;
+    pub use super::TCR0::SWRM;
+    pub use super::TCR0::TLEN;
+    pub use super::TCR0::TRGM;
 }
 
 /// MDMA Channel x block number of data register
-pub mod C15BNDTR {
-    pub use super::C0BNDTR::BNDT;
-    pub use super::C0BNDTR::BRC;
-    pub use super::C0BNDTR::BRDUM;
-    pub use super::C0BNDTR::BRSUM;
+pub mod BNDTR15 {
+    pub use super::BNDTR0::BNDT;
+    pub use super::BNDTR0::BRC;
+    pub use super::BNDTR0::BRDUM;
+    pub use super::BNDTR0::BRSUM;
 }
 
 /// MDMA channel x source address register
-pub mod C15SAR {
-    pub use super::C0SAR::SAR;
+pub mod SAR15 {
+    pub use super::SAR0::SAR;
 }
 
 /// MDMA channel x destination address register
-pub mod C15DAR {
-    pub use super::C0DAR::DAR;
+pub mod DAR15 {
+    pub use super::DAR0::DAR;
 }
 
 /// MDMA channel x Block Repeat address Update register
-pub mod C15BRUR {
-    pub use super::C0BRUR::DUV;
-    pub use super::C0BRUR::SUV;
+pub mod BRUR15 {
+    pub use super::BRUR0::DUV;
+    pub use super::BRUR0::SUV;
 }
 
 /// MDMA channel x Link Address register
-pub mod C15LAR {
-    pub use super::C0LAR::LAR;
+pub mod LAR15 {
+    pub use super::LAR0::LAR;
 }
 
 /// MDMA channel x Trigger and Bus selection Register
-pub mod C15TBR {
-    pub use super::C0TBR::DBUS;
-    pub use super::C0TBR::SBUS;
-    pub use super::C0TBR::TSEL;
+pub mod TBR15 {
+    pub use super::TBR0::DBUS;
+    pub use super::TBR0::SBUS;
+    pub use super::TBR0::TSEL;
 }
 
 /// MDMA channel x Mask address register
-pub mod C15MAR {
-    pub use super::C0MAR::MAR;
+pub mod MAR15 {
+    pub use super::MAR0::MAR;
 }
 
 /// MDMA channel x Mask Data register
-pub mod C15MDR {
-    pub use super::C0MDR::MDR;
+pub mod MDR15 {
+    pub use super::MDR0::MDR;
 }
 #[repr(C)]
 pub struct RegisterBlock {
@@ -4844,901 +2699,901 @@ pub struct RegisterBlock {
     _reserved1: [u32; 15],
 
     /// MDMA channel x interrupt/status register
-    pub C0ISR: RORegister<u32>,
+    pub ISR0: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C0IFCR: WORegister<u32>,
+    pub IFCR0: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C0ESR: RORegister<u32>,
+    pub ESR0: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C0CR: RWRegister<u32>,
+    pub CR0: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C0TCR: RWRegister<u32>,
+    pub TCR0: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C0BNDTR: RWRegister<u32>,
+    pub BNDTR0: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C0SAR: RWRegister<u32>,
+    pub SAR0: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C0DAR: RWRegister<u32>,
+    pub DAR0: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C0BRUR: RWRegister<u32>,
+    pub BRUR0: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C0LAR: RWRegister<u32>,
+    pub LAR0: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C0TBR: RWRegister<u32>,
+    pub TBR0: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C0MAR: RWRegister<u32>,
+    pub MAR0: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C0MDR: RWRegister<u32>,
+    pub MDR0: RWRegister<u32>,
 
     _reserved3: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C1ISR: RORegister<u32>,
+    pub ISR1: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C1IFCR: WORegister<u32>,
+    pub IFCR1: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C1ESR: RORegister<u32>,
+    pub ESR1: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C1CR: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C1TCR: RWRegister<u32>,
+    pub TCR1: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C1BNDTR: RWRegister<u32>,
+    pub BNDTR1: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C1SAR: RWRegister<u32>,
+    pub SAR1: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C1DAR: RWRegister<u32>,
+    pub DAR1: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C1BRUR: RWRegister<u32>,
+    pub BRUR1: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C1LAR: RWRegister<u32>,
+    pub LAR1: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C1TBR: RWRegister<u32>,
+    pub TBR1: RWRegister<u32>,
 
     _reserved4: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C1MAR: RWRegister<u32>,
+    pub MAR1: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C1MDR: RWRegister<u32>,
+    pub MDR1: RWRegister<u32>,
 
     _reserved5: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C2ISR: RORegister<u32>,
+    pub ISR2: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C2IFCR: WORegister<u32>,
+    pub IFCR2: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C2ESR: RORegister<u32>,
+    pub ESR2: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C2CR: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C2TCR: RWRegister<u32>,
+    pub TCR2: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C2BNDTR: RWRegister<u32>,
+    pub BNDTR2: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C2SAR: RWRegister<u32>,
+    pub SAR2: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C2DAR: RWRegister<u32>,
+    pub DAR2: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C2BRUR: RWRegister<u32>,
+    pub BRUR2: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C2LAR: RWRegister<u32>,
+    pub LAR2: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C2TBR: RWRegister<u32>,
+    pub TBR2: RWRegister<u32>,
 
     _reserved6: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C2MAR: RWRegister<u32>,
+    pub MAR2: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C2MDR: RWRegister<u32>,
+    pub MDR2: RWRegister<u32>,
 
     _reserved7: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C3ISR: RORegister<u32>,
+    pub ISR3: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C3IFCR: WORegister<u32>,
+    pub IFCR3: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C3ESR: RORegister<u32>,
+    pub ESR3: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C3CR: RWRegister<u32>,
+    pub CR3: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C3TCR: RWRegister<u32>,
+    pub TCR3: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C3BNDTR: RWRegister<u32>,
+    pub BNDTR3: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C3SAR: RWRegister<u32>,
+    pub SAR3: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C3DAR: RWRegister<u32>,
+    pub DAR3: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C3BRUR: RWRegister<u32>,
+    pub BRUR3: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C3LAR: RWRegister<u32>,
+    pub LAR3: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C3TBR: RWRegister<u32>,
+    pub TBR3: RWRegister<u32>,
 
     _reserved8: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C3MAR: RWRegister<u32>,
+    pub MAR3: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C3MDR: RWRegister<u32>,
+    pub MDR3: RWRegister<u32>,
 
     _reserved9: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C4ISR: RORegister<u32>,
+    pub ISR4: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C4IFCR: WORegister<u32>,
+    pub IFCR4: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C4ESR: RORegister<u32>,
+    pub ESR4: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C4CR: RWRegister<u32>,
+    pub CR4: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C4TCR: RWRegister<u32>,
+    pub TCR4: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C4BNDTR: RWRegister<u32>,
+    pub BNDTR4: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C4SAR: RWRegister<u32>,
+    pub SAR4: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C4DAR: RWRegister<u32>,
+    pub DAR4: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C4BRUR: RWRegister<u32>,
+    pub BRUR4: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C4LAR: RWRegister<u32>,
+    pub LAR4: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C4TBR: RWRegister<u32>,
+    pub TBR4: RWRegister<u32>,
 
     _reserved10: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C4MAR: RWRegister<u32>,
+    pub MAR4: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C4MDR: RWRegister<u32>,
+    pub MDR4: RWRegister<u32>,
 
     _reserved11: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C5ISR: RORegister<u32>,
+    pub ISR5: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C5IFCR: WORegister<u32>,
+    pub IFCR5: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C5ESR: RORegister<u32>,
+    pub ESR5: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C5CR: RWRegister<u32>,
+    pub CR5: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C5TCR: RWRegister<u32>,
+    pub TCR5: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C5BNDTR: RWRegister<u32>,
+    pub BNDTR5: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C5SAR: RWRegister<u32>,
+    pub SAR5: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C5DAR: RWRegister<u32>,
+    pub DAR5: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C5BRUR: RWRegister<u32>,
+    pub BRUR5: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C5LAR: RWRegister<u32>,
+    pub LAR5: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C5TBR: RWRegister<u32>,
+    pub TBR5: RWRegister<u32>,
 
     _reserved12: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C5MAR: RWRegister<u32>,
+    pub MAR5: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C5MDR: RWRegister<u32>,
+    pub MDR5: RWRegister<u32>,
 
     _reserved13: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C6ISR: RORegister<u32>,
+    pub ISR6: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C6IFCR: WORegister<u32>,
+    pub IFCR6: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C6ESR: RORegister<u32>,
+    pub ESR6: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C6CR: RWRegister<u32>,
+    pub CR6: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C6TCR: RWRegister<u32>,
+    pub TCR6: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C6BNDTR: RWRegister<u32>,
+    pub BNDTR6: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C6SAR: RWRegister<u32>,
+    pub SAR6: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C6DAR: RWRegister<u32>,
+    pub DAR6: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C6BRUR: RWRegister<u32>,
+    pub BRUR6: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C6LAR: RWRegister<u32>,
+    pub LAR6: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C6TBR: RWRegister<u32>,
+    pub TBR6: RWRegister<u32>,
 
     _reserved14: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C6MAR: RWRegister<u32>,
+    pub MAR6: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C6MDR: RWRegister<u32>,
+    pub MDR6: RWRegister<u32>,
 
     _reserved15: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C7ISR: RORegister<u32>,
+    pub ISR7: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C7IFCR: WORegister<u32>,
+    pub IFCR7: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C7ESR: RORegister<u32>,
+    pub ESR7: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C7CR: RWRegister<u32>,
+    pub CR7: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C7TCR: RWRegister<u32>,
+    pub TCR7: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C7BNDTR: RWRegister<u32>,
+    pub BNDTR7: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C7SAR: RWRegister<u32>,
+    pub SAR7: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C7DAR: RWRegister<u32>,
+    pub DAR7: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C7BRUR: RWRegister<u32>,
+    pub BRUR7: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C7LAR: RWRegister<u32>,
+    pub LAR7: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C7TBR: RWRegister<u32>,
+    pub TBR7: RWRegister<u32>,
 
     _reserved16: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C7MAR: RWRegister<u32>,
+    pub MAR7: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C7MDR: RWRegister<u32>,
+    pub MDR7: RWRegister<u32>,
 
     _reserved17: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C8ISR: RORegister<u32>,
+    pub ISR8: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C8IFCR: WORegister<u32>,
+    pub IFCR8: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C8ESR: RORegister<u32>,
+    pub ESR8: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C8CR: RWRegister<u32>,
+    pub CR8: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C8TCR: RWRegister<u32>,
+    pub TCR8: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C8BNDTR: RWRegister<u32>,
+    pub BNDTR8: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C8SAR: RWRegister<u32>,
+    pub SAR8: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C8DAR: RWRegister<u32>,
+    pub DAR8: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C8BRUR: RWRegister<u32>,
+    pub BRUR8: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C8LAR: RWRegister<u32>,
+    pub LAR8: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C8TBR: RWRegister<u32>,
+    pub TBR8: RWRegister<u32>,
 
     _reserved18: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C8MAR: RWRegister<u32>,
+    pub MAR8: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C8MDR: RWRegister<u32>,
+    pub MDR8: RWRegister<u32>,
 
     _reserved19: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C9ISR: RORegister<u32>,
+    pub ISR9: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C9IFCR: WORegister<u32>,
+    pub IFCR9: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C9ESR: RORegister<u32>,
+    pub ESR9: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C9CR: RWRegister<u32>,
+    pub CR9: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C9TCR: RWRegister<u32>,
+    pub TCR9: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C9BNDTR: RWRegister<u32>,
+    pub BNDTR9: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C9SAR: RWRegister<u32>,
+    pub SAR9: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C9DAR: RWRegister<u32>,
+    pub DAR9: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C9BRUR: RWRegister<u32>,
+    pub BRUR9: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C9LAR: RWRegister<u32>,
+    pub LAR9: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C9TBR: RWRegister<u32>,
+    pub TBR9: RWRegister<u32>,
 
     _reserved20: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C9MAR: RWRegister<u32>,
+    pub MAR9: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C9MDR: RWRegister<u32>,
+    pub MDR9: RWRegister<u32>,
 
     _reserved21: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C10ISR: RORegister<u32>,
+    pub ISR10: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C10IFCR: WORegister<u32>,
+    pub IFCR10: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C10ESR: RORegister<u32>,
+    pub ESR10: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C10CR: RWRegister<u32>,
+    pub CR10: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C10TCR: RWRegister<u32>,
+    pub TCR10: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C10BNDTR: RWRegister<u32>,
+    pub BNDTR10: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C10SAR: RWRegister<u32>,
+    pub SAR10: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C10DAR: RWRegister<u32>,
+    pub DAR10: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C10BRUR: RWRegister<u32>,
+    pub BRUR10: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C10LAR: RWRegister<u32>,
+    pub LAR10: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C10TBR: RWRegister<u32>,
+    pub TBR10: RWRegister<u32>,
 
     _reserved22: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C10MAR: RWRegister<u32>,
+    pub MAR10: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C10MDR: RWRegister<u32>,
+    pub MDR10: RWRegister<u32>,
 
     _reserved23: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C11ISR: RORegister<u32>,
+    pub ISR11: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C11IFCR: WORegister<u32>,
+    pub IFCR11: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C11ESR: RORegister<u32>,
+    pub ESR11: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C11CR: RWRegister<u32>,
+    pub CR11: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C11TCR: RWRegister<u32>,
+    pub TCR11: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C11BNDTR: RWRegister<u32>,
+    pub BNDTR11: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C11SAR: RWRegister<u32>,
+    pub SAR11: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C11DAR: RWRegister<u32>,
+    pub DAR11: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C11BRUR: RWRegister<u32>,
+    pub BRUR11: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C11LAR: RWRegister<u32>,
+    pub LAR11: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C11TBR: RWRegister<u32>,
+    pub TBR11: RWRegister<u32>,
 
     _reserved24: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C11MAR: RWRegister<u32>,
+    pub MAR11: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C11MDR: RWRegister<u32>,
+    pub MDR11: RWRegister<u32>,
 
     _reserved25: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C12ISR: RORegister<u32>,
+    pub ISR12: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C12IFCR: WORegister<u32>,
+    pub IFCR12: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C12ESR: RORegister<u32>,
+    pub ESR12: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C12CR: RWRegister<u32>,
+    pub CR12: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C12TCR: RWRegister<u32>,
+    pub TCR12: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C12BNDTR: RWRegister<u32>,
+    pub BNDTR12: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C12SAR: RWRegister<u32>,
+    pub SAR12: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C12DAR: RWRegister<u32>,
+    pub DAR12: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C12BRUR: RWRegister<u32>,
+    pub BRUR12: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C12LAR: RWRegister<u32>,
+    pub LAR12: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C12TBR: RWRegister<u32>,
+    pub TBR12: RWRegister<u32>,
 
     _reserved26: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C12MAR: RWRegister<u32>,
+    pub MAR12: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C12MDR: RWRegister<u32>,
+    pub MDR12: RWRegister<u32>,
 
     _reserved27: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C13ISR: RORegister<u32>,
+    pub ISR13: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C13IFCR: WORegister<u32>,
+    pub IFCR13: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C13ESR: RORegister<u32>,
+    pub ESR13: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C13CR: RWRegister<u32>,
+    pub CR13: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C13TCR: RWRegister<u32>,
+    pub TCR13: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C13BNDTR: RWRegister<u32>,
+    pub BNDTR13: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C13SAR: RWRegister<u32>,
+    pub SAR13: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C13DAR: RWRegister<u32>,
+    pub DAR13: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C13BRUR: RWRegister<u32>,
+    pub BRUR13: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C13LAR: RWRegister<u32>,
+    pub LAR13: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C13TBR: RWRegister<u32>,
+    pub TBR13: RWRegister<u32>,
 
     _reserved28: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C13MAR: RWRegister<u32>,
+    pub MAR13: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C13MDR: RWRegister<u32>,
+    pub MDR13: RWRegister<u32>,
 
     _reserved29: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C14ISR: RORegister<u32>,
+    pub ISR14: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C14IFCR: WORegister<u32>,
+    pub IFCR14: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C14ESR: RORegister<u32>,
+    pub ESR14: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C14CR: RWRegister<u32>,
+    pub CR14: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C14TCR: RWRegister<u32>,
+    pub TCR14: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C14BNDTR: RWRegister<u32>,
+    pub BNDTR14: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C14SAR: RWRegister<u32>,
+    pub SAR14: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C14DAR: RWRegister<u32>,
+    pub DAR14: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C14BRUR: RWRegister<u32>,
+    pub BRUR14: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C14LAR: RWRegister<u32>,
+    pub LAR14: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C14TBR: RWRegister<u32>,
+    pub TBR14: RWRegister<u32>,
 
     _reserved30: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C14MAR: RWRegister<u32>,
+    pub MAR14: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C14MDR: RWRegister<u32>,
+    pub MDR14: RWRegister<u32>,
 
     _reserved31: [u32; 2],
 
     /// MDMA channel x interrupt/status register
-    pub C15ISR: RORegister<u32>,
+    pub ISR15: RORegister<u32>,
 
     /// MDMA channel x interrupt flag clear register
-    pub C15IFCR: WORegister<u32>,
+    pub IFCR15: WORegister<u32>,
 
     /// MDMA Channel x error status register
-    pub C15ESR: RORegister<u32>,
+    pub ESR15: RORegister<u32>,
 
     /// This register is used to control the concerned channel.
-    pub C15CR: RWRegister<u32>,
+    pub CR15: RWRegister<u32>,
 
     /// This register is used to configure the concerned channel.
-    pub C15TCR: RWRegister<u32>,
+    pub TCR15: RWRegister<u32>,
 
     /// MDMA Channel x block number of data register
-    pub C15BNDTR: RWRegister<u32>,
+    pub BNDTR15: RWRegister<u32>,
 
     /// MDMA channel x source address register
-    pub C15SAR: RWRegister<u32>,
+    pub SAR15: RWRegister<u32>,
 
     /// MDMA channel x destination address register
-    pub C15DAR: RWRegister<u32>,
+    pub DAR15: RWRegister<u32>,
 
     /// MDMA channel x Block Repeat address Update register
-    pub C15BRUR: RWRegister<u32>,
+    pub BRUR15: RWRegister<u32>,
 
     /// MDMA channel x Link Address register
-    pub C15LAR: RWRegister<u32>,
+    pub LAR15: RWRegister<u32>,
 
     /// MDMA channel x Trigger and Bus selection Register
-    pub C15TBR: RWRegister<u32>,
+    pub TBR15: RWRegister<u32>,
 
     _reserved32: [u32; 1],
 
     /// MDMA channel x Mask address register
-    pub C15MAR: RWRegister<u32>,
+    pub MAR15: RWRegister<u32>,
 
     /// MDMA channel x Mask Data register
-    pub C15MDR: RWRegister<u32>,
+    pub MDR15: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub GISR0: u32,
-    pub C0ISR: u32,
-    pub C0IFCR: u32,
-    pub C0ESR: u32,
-    pub C0CR: u32,
-    pub C0TCR: u32,
-    pub C0BNDTR: u32,
-    pub C0SAR: u32,
-    pub C0DAR: u32,
-    pub C0BRUR: u32,
-    pub C0LAR: u32,
-    pub C0TBR: u32,
-    pub C0MAR: u32,
-    pub C0MDR: u32,
-    pub C1ISR: u32,
-    pub C1IFCR: u32,
-    pub C1ESR: u32,
-    pub C1CR: u32,
-    pub C1TCR: u32,
-    pub C1BNDTR: u32,
-    pub C1SAR: u32,
-    pub C1DAR: u32,
-    pub C1BRUR: u32,
-    pub C1LAR: u32,
-    pub C1TBR: u32,
-    pub C1MAR: u32,
-    pub C1MDR: u32,
-    pub C2ISR: u32,
-    pub C2IFCR: u32,
-    pub C2ESR: u32,
-    pub C2CR: u32,
-    pub C2TCR: u32,
-    pub C2BNDTR: u32,
-    pub C2SAR: u32,
-    pub C2DAR: u32,
-    pub C2BRUR: u32,
-    pub C2LAR: u32,
-    pub C2TBR: u32,
-    pub C2MAR: u32,
-    pub C2MDR: u32,
-    pub C3ISR: u32,
-    pub C3IFCR: u32,
-    pub C3ESR: u32,
-    pub C3CR: u32,
-    pub C3TCR: u32,
-    pub C3BNDTR: u32,
-    pub C3SAR: u32,
-    pub C3DAR: u32,
-    pub C3BRUR: u32,
-    pub C3LAR: u32,
-    pub C3TBR: u32,
-    pub C3MAR: u32,
-    pub C3MDR: u32,
-    pub C4ISR: u32,
-    pub C4IFCR: u32,
-    pub C4ESR: u32,
-    pub C4CR: u32,
-    pub C4TCR: u32,
-    pub C4BNDTR: u32,
-    pub C4SAR: u32,
-    pub C4DAR: u32,
-    pub C4BRUR: u32,
-    pub C4LAR: u32,
-    pub C4TBR: u32,
-    pub C4MAR: u32,
-    pub C4MDR: u32,
-    pub C5ISR: u32,
-    pub C5IFCR: u32,
-    pub C5ESR: u32,
-    pub C5CR: u32,
-    pub C5TCR: u32,
-    pub C5BNDTR: u32,
-    pub C5SAR: u32,
-    pub C5DAR: u32,
-    pub C5BRUR: u32,
-    pub C5LAR: u32,
-    pub C5TBR: u32,
-    pub C5MAR: u32,
-    pub C5MDR: u32,
-    pub C6ISR: u32,
-    pub C6IFCR: u32,
-    pub C6ESR: u32,
-    pub C6CR: u32,
-    pub C6TCR: u32,
-    pub C6BNDTR: u32,
-    pub C6SAR: u32,
-    pub C6DAR: u32,
-    pub C6BRUR: u32,
-    pub C6LAR: u32,
-    pub C6TBR: u32,
-    pub C6MAR: u32,
-    pub C6MDR: u32,
-    pub C7ISR: u32,
-    pub C7IFCR: u32,
-    pub C7ESR: u32,
-    pub C7CR: u32,
-    pub C7TCR: u32,
-    pub C7BNDTR: u32,
-    pub C7SAR: u32,
-    pub C7DAR: u32,
-    pub C7BRUR: u32,
-    pub C7LAR: u32,
-    pub C7TBR: u32,
-    pub C7MAR: u32,
-    pub C7MDR: u32,
-    pub C8ISR: u32,
-    pub C8IFCR: u32,
-    pub C8ESR: u32,
-    pub C8CR: u32,
-    pub C8TCR: u32,
-    pub C8BNDTR: u32,
-    pub C8SAR: u32,
-    pub C8DAR: u32,
-    pub C8BRUR: u32,
-    pub C8LAR: u32,
-    pub C8TBR: u32,
-    pub C8MAR: u32,
-    pub C8MDR: u32,
-    pub C9ISR: u32,
-    pub C9IFCR: u32,
-    pub C9ESR: u32,
-    pub C9CR: u32,
-    pub C9TCR: u32,
-    pub C9BNDTR: u32,
-    pub C9SAR: u32,
-    pub C9DAR: u32,
-    pub C9BRUR: u32,
-    pub C9LAR: u32,
-    pub C9TBR: u32,
-    pub C9MAR: u32,
-    pub C9MDR: u32,
-    pub C10ISR: u32,
-    pub C10IFCR: u32,
-    pub C10ESR: u32,
-    pub C10CR: u32,
-    pub C10TCR: u32,
-    pub C10BNDTR: u32,
-    pub C10SAR: u32,
-    pub C10DAR: u32,
-    pub C10BRUR: u32,
-    pub C10LAR: u32,
-    pub C10TBR: u32,
-    pub C10MAR: u32,
-    pub C10MDR: u32,
-    pub C11ISR: u32,
-    pub C11IFCR: u32,
-    pub C11ESR: u32,
-    pub C11CR: u32,
-    pub C11TCR: u32,
-    pub C11BNDTR: u32,
-    pub C11SAR: u32,
-    pub C11DAR: u32,
-    pub C11BRUR: u32,
-    pub C11LAR: u32,
-    pub C11TBR: u32,
-    pub C11MAR: u32,
-    pub C11MDR: u32,
-    pub C12ISR: u32,
-    pub C12IFCR: u32,
-    pub C12ESR: u32,
-    pub C12CR: u32,
-    pub C12TCR: u32,
-    pub C12BNDTR: u32,
-    pub C12SAR: u32,
-    pub C12DAR: u32,
-    pub C12BRUR: u32,
-    pub C12LAR: u32,
-    pub C12TBR: u32,
-    pub C12MAR: u32,
-    pub C12MDR: u32,
-    pub C13ISR: u32,
-    pub C13IFCR: u32,
-    pub C13ESR: u32,
-    pub C13CR: u32,
-    pub C13TCR: u32,
-    pub C13BNDTR: u32,
-    pub C13SAR: u32,
-    pub C13DAR: u32,
-    pub C13BRUR: u32,
-    pub C13LAR: u32,
-    pub C13TBR: u32,
-    pub C13MAR: u32,
-    pub C13MDR: u32,
-    pub C14ISR: u32,
-    pub C14IFCR: u32,
-    pub C14ESR: u32,
-    pub C14CR: u32,
-    pub C14TCR: u32,
-    pub C14BNDTR: u32,
-    pub C14SAR: u32,
-    pub C14DAR: u32,
-    pub C14BRUR: u32,
-    pub C14LAR: u32,
-    pub C14TBR: u32,
-    pub C14MAR: u32,
-    pub C14MDR: u32,
-    pub C15ISR: u32,
-    pub C15IFCR: u32,
-    pub C15ESR: u32,
-    pub C15CR: u32,
-    pub C15TCR: u32,
-    pub C15BNDTR: u32,
-    pub C15SAR: u32,
-    pub C15DAR: u32,
-    pub C15BRUR: u32,
-    pub C15LAR: u32,
-    pub C15TBR: u32,
-    pub C15MAR: u32,
-    pub C15MDR: u32,
+    pub ISR0: u32,
+    pub IFCR0: u32,
+    pub ESR0: u32,
+    pub CR0: u32,
+    pub TCR0: u32,
+    pub BNDTR0: u32,
+    pub SAR0: u32,
+    pub DAR0: u32,
+    pub BRUR0: u32,
+    pub LAR0: u32,
+    pub TBR0: u32,
+    pub MAR0: u32,
+    pub MDR0: u32,
+    pub ISR1: u32,
+    pub IFCR1: u32,
+    pub ESR1: u32,
+    pub CR1: u32,
+    pub TCR1: u32,
+    pub BNDTR1: u32,
+    pub SAR1: u32,
+    pub DAR1: u32,
+    pub BRUR1: u32,
+    pub LAR1: u32,
+    pub TBR1: u32,
+    pub MAR1: u32,
+    pub MDR1: u32,
+    pub ISR2: u32,
+    pub IFCR2: u32,
+    pub ESR2: u32,
+    pub CR2: u32,
+    pub TCR2: u32,
+    pub BNDTR2: u32,
+    pub SAR2: u32,
+    pub DAR2: u32,
+    pub BRUR2: u32,
+    pub LAR2: u32,
+    pub TBR2: u32,
+    pub MAR2: u32,
+    pub MDR2: u32,
+    pub ISR3: u32,
+    pub IFCR3: u32,
+    pub ESR3: u32,
+    pub CR3: u32,
+    pub TCR3: u32,
+    pub BNDTR3: u32,
+    pub SAR3: u32,
+    pub DAR3: u32,
+    pub BRUR3: u32,
+    pub LAR3: u32,
+    pub TBR3: u32,
+    pub MAR3: u32,
+    pub MDR3: u32,
+    pub ISR4: u32,
+    pub IFCR4: u32,
+    pub ESR4: u32,
+    pub CR4: u32,
+    pub TCR4: u32,
+    pub BNDTR4: u32,
+    pub SAR4: u32,
+    pub DAR4: u32,
+    pub BRUR4: u32,
+    pub LAR4: u32,
+    pub TBR4: u32,
+    pub MAR4: u32,
+    pub MDR4: u32,
+    pub ISR5: u32,
+    pub IFCR5: u32,
+    pub ESR5: u32,
+    pub CR5: u32,
+    pub TCR5: u32,
+    pub BNDTR5: u32,
+    pub SAR5: u32,
+    pub DAR5: u32,
+    pub BRUR5: u32,
+    pub LAR5: u32,
+    pub TBR5: u32,
+    pub MAR5: u32,
+    pub MDR5: u32,
+    pub ISR6: u32,
+    pub IFCR6: u32,
+    pub ESR6: u32,
+    pub CR6: u32,
+    pub TCR6: u32,
+    pub BNDTR6: u32,
+    pub SAR6: u32,
+    pub DAR6: u32,
+    pub BRUR6: u32,
+    pub LAR6: u32,
+    pub TBR6: u32,
+    pub MAR6: u32,
+    pub MDR6: u32,
+    pub ISR7: u32,
+    pub IFCR7: u32,
+    pub ESR7: u32,
+    pub CR7: u32,
+    pub TCR7: u32,
+    pub BNDTR7: u32,
+    pub SAR7: u32,
+    pub DAR7: u32,
+    pub BRUR7: u32,
+    pub LAR7: u32,
+    pub TBR7: u32,
+    pub MAR7: u32,
+    pub MDR7: u32,
+    pub ISR8: u32,
+    pub IFCR8: u32,
+    pub ESR8: u32,
+    pub CR8: u32,
+    pub TCR8: u32,
+    pub BNDTR8: u32,
+    pub SAR8: u32,
+    pub DAR8: u32,
+    pub BRUR8: u32,
+    pub LAR8: u32,
+    pub TBR8: u32,
+    pub MAR8: u32,
+    pub MDR8: u32,
+    pub ISR9: u32,
+    pub IFCR9: u32,
+    pub ESR9: u32,
+    pub CR9: u32,
+    pub TCR9: u32,
+    pub BNDTR9: u32,
+    pub SAR9: u32,
+    pub DAR9: u32,
+    pub BRUR9: u32,
+    pub LAR9: u32,
+    pub TBR9: u32,
+    pub MAR9: u32,
+    pub MDR9: u32,
+    pub ISR10: u32,
+    pub IFCR10: u32,
+    pub ESR10: u32,
+    pub CR10: u32,
+    pub TCR10: u32,
+    pub BNDTR10: u32,
+    pub SAR10: u32,
+    pub DAR10: u32,
+    pub BRUR10: u32,
+    pub LAR10: u32,
+    pub TBR10: u32,
+    pub MAR10: u32,
+    pub MDR10: u32,
+    pub ISR11: u32,
+    pub IFCR11: u32,
+    pub ESR11: u32,
+    pub CR11: u32,
+    pub TCR11: u32,
+    pub BNDTR11: u32,
+    pub SAR11: u32,
+    pub DAR11: u32,
+    pub BRUR11: u32,
+    pub LAR11: u32,
+    pub TBR11: u32,
+    pub MAR11: u32,
+    pub MDR11: u32,
+    pub ISR12: u32,
+    pub IFCR12: u32,
+    pub ESR12: u32,
+    pub CR12: u32,
+    pub TCR12: u32,
+    pub BNDTR12: u32,
+    pub SAR12: u32,
+    pub DAR12: u32,
+    pub BRUR12: u32,
+    pub LAR12: u32,
+    pub TBR12: u32,
+    pub MAR12: u32,
+    pub MDR12: u32,
+    pub ISR13: u32,
+    pub IFCR13: u32,
+    pub ESR13: u32,
+    pub CR13: u32,
+    pub TCR13: u32,
+    pub BNDTR13: u32,
+    pub SAR13: u32,
+    pub DAR13: u32,
+    pub BRUR13: u32,
+    pub LAR13: u32,
+    pub TBR13: u32,
+    pub MAR13: u32,
+    pub MDR13: u32,
+    pub ISR14: u32,
+    pub IFCR14: u32,
+    pub ESR14: u32,
+    pub CR14: u32,
+    pub TCR14: u32,
+    pub BNDTR14: u32,
+    pub SAR14: u32,
+    pub DAR14: u32,
+    pub BRUR14: u32,
+    pub LAR14: u32,
+    pub TBR14: u32,
+    pub MAR14: u32,
+    pub MDR14: u32,
+    pub ISR15: u32,
+    pub IFCR15: u32,
+    pub ESR15: u32,
+    pub CR15: u32,
+    pub TCR15: u32,
+    pub BNDTR15: u32,
+    pub SAR15: u32,
+    pub DAR15: u32,
+    pub BRUR15: u32,
+    pub LAR15: u32,
+    pub TBR15: u32,
+    pub MAR15: u32,
+    pub MDR15: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -9,7 +9,7 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub mod aes;
-pub use super::instances::adc1;
+pub use super::instances::adc1_f410_f412_f413 as adc1;
 pub use super::instances::tim1_f401_f405_f407_f413_f427_f429_f446_f469 as tim1;
 pub use super::instances::tim8_f401_f405_f407_f413_f427_f429_f446_f469 as tim8;
 pub mod can;
@@ -21,8 +21,8 @@ pub mod dfsdm;
 pub use super::instances::dac;
 pub mod dma;
 pub use super::instances::exti;
-pub mod fmpi2c;
-pub use super::instances::flash_f401_f405_f411_f412_f413 as flash;
+pub mod fmpi2c1;
+pub use super::instances::flash_f405_f411_f412_f413 as flash;
 pub use super::instances::tim12_f412_f413 as tim12;
 pub use super::instances::tim13_f412_f413_f427_f429_f446_f469 as tim13;
 pub use super::instances::tim14_f412_f413_f427_f429_f446_f469 as tim14;
@@ -40,13 +40,13 @@ pub mod lptim;
 pub use super::instances::nvic_f401_f405_f407_f410_f411_f412_f413 as nvic;
 pub use super::instances::pwr_f401_f411_f412_f413 as pwr;
 pub use super::instances::quadspi;
-pub use super::instances::rng;
+pub use super::instances::rng_f412_f413_f469 as rng;
 pub use super::instances::rtc_f401_f410_f411_f412_f413 as rtc;
 pub mod rcc;
 pub use super::instances::sai;
 pub use super::instances::sdio;
 pub mod spi;
-pub use super::instances::syscfg_f412_f413 as syscfg;
+pub use super::instances::syscfg_f410_f412_f413 as syscfg;
 pub mod otg_fs_device;
 pub mod usart;
 pub use super::instances::otg_fs_global_f412_f413 as otg_fs_global;
@@ -83,7 +83,7 @@ pub struct Peripherals {
     pub DMA1: dma::Instance,
     pub DMA2: dma::Instance,
     pub EXTI: exti::Instance,
-    pub FMPI2C: fmpi2c::Instance,
+    pub FMPI2C1: fmpi2c1::Instance,
     pub FLASH: flash::Instance,
     pub TIM12: tim12::Instance,
     pub TIM13: tim13::Instance,
@@ -174,7 +174,7 @@ impl Peripherals {
             DMA1: dma::DMA1::steal(),
             DMA2: dma::DMA2::steal(),
             EXTI: exti::EXTI::steal(),
-            FMPI2C: fmpi2c::FMPI2C::steal(),
+            FMPI2C1: fmpi2c1::FMPI2C1::steal(),
             FLASH: flash::FLASH::steal(),
             TIM12: tim12::TIM12::steal(),
             TIM13: tim13::TIM13::steal(),

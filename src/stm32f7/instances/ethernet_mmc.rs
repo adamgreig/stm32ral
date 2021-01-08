@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: MAC management counters
 //!
-//! Used by: stm32f745, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f7::peripherals::ethernet_mmc::Instance;
