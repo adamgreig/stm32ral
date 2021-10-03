@@ -68,7 +68,7 @@ edition = "2018"
 exclude = ["/stm32-rs"]
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.6.0"
+version = "0.7.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -77,16 +77,15 @@ targets = []
 
 [dependencies]
 # Change dependency versions in stm32ral.py, not here!
-bare-metal = "0.2.5"
-external_cortex_m = { package = "cortex-m", version = "0.6.4" }
-cortex-m-rt = { version = "0.6.13", optional = true }
+external_cortex_m = { package = "cortex-m", version = "0.7.3" }
+cortex-m-rt = { version = ">=0.6.15,<0.8", optional = true }
 
 [features]
+default = ["rt"]
 rt = ["cortex-m-rt/device"]
 inline-asm = ["external_cortex_m/inline-asm"]
 rtfm = ["rtic"]
 rtic = []
-default = []
 nosync = []
 doc = []
 """
@@ -1193,7 +1192,6 @@ class Device(Node):
         devicepath = os.path.join(familypath, self.name)
         iname = os.path.join(devicepath, "interrupts.rs")
         with open(iname, "w") as f:
-            f.write("extern crate bare_metal;\n")
             f.write('#[cfg(feature="rt")]\nextern "C" {\n')
             for interrupt in self.interrupts:
                 f.write(f'    fn {interrupt.name}();\n')
@@ -1225,8 +1223,8 @@ class Device(Node):
                 ];
 
                 /// Available interrupts for this device
-                #[repr(u8)]
-                #[derive(Clone,Copy)]
+                #[repr(u16)]
+                #[derive(Copy,Clone,Debug,PartialEq,Eq)]
                 #[allow(non_camel_case_types)]
                 pub enum Interrupt {{""")
             for interrupt in self.interrupts:
@@ -1235,10 +1233,10 @@ class Device(Node):
                 f.write(f"{interrupt.name} = {interrupt.value},\n")
             f.write("}\n")
             f.write("""\
-                unsafe impl bare_metal::Nr for Interrupt {
-                    #[inline]
-                    fn nr(&self) -> u8 {
-                        *self as u8
+                    unsafe impl external_cortex_m::interrupt::InterruptNumber for Interrupt {
+                    #[inline(always)]
+                    fn number(self) -> u16 {
+                        self as u16
                     }
                 }\n""")
         rustfmt(iname)

@@ -1,4 +1,3 @@
-extern crate bare_metal;
 #[cfg(feature = "rt")]
 extern "C" {
     fn WWDG1();
@@ -397,8 +396,8 @@ pub static __INTERRUPTS: [Vector; 150] = [
 ];
 
 /// Available interrupts for this device
-#[repr(u8)]
-#[derive(Clone, Copy)]
+#[repr(u16)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 pub enum Interrupt {
     /// 0: Window Watchdog interrupt
@@ -686,9 +685,9 @@ pub enum Interrupt {
     /// 149: WKUP1 to WKUP6 pins
     WKUP = 149,
 }
-unsafe impl bare_metal::Nr for Interrupt {
-    #[inline]
-    fn nr(&self) -> u8 {
-        *self as u8
+unsafe impl external_cortex_m::interrupt::InterruptNumber for Interrupt {
+    #[inline(always)]
+    fn number(self) -> u16 {
+        self as u16
     }
 }

@@ -1,4 +1,3 @@
-extern crate bare_metal;
 #[cfg(feature = "rt")]
 extern "C" {
     fn PVD();
@@ -203,8 +202,8 @@ pub static __INTERRUPTS: [Vector; 85] = [
 ];
 
 /// Available interrupts for this device
-#[repr(u8)]
-#[derive(Clone, Copy)]
+#[repr(u16)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[allow(non_camel_case_types)]
 pub enum Interrupt {
     /// 1: PVD through EXTI line detection interrupt
@@ -318,9 +317,9 @@ pub enum Interrupt {
     /// 84: SPI4 global interrupt
     SPI4 = 84,
 }
-unsafe impl bare_metal::Nr for Interrupt {
-    #[inline]
-    fn nr(&self) -> u8 {
-        *self as u8
+unsafe impl external_cortex_m::interrupt::InterruptNumber for Interrupt {
+    #[inline(always)]
+    fn number(self) -> u16 {
+        self as u16
     }
 }
