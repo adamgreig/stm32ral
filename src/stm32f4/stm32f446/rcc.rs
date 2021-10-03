@@ -250,6 +250,20 @@ pub mod PLLCFGR {
         }
     }
 
+    /// Main PLL division factor for I2Ss, SAIs, SYSTEM and SPDIF-Rx clocks
+    pub mod PLLR {
+        /// Offset (28 bits)
+        pub const offset: u32 = 28;
+        /// Mask (3 bits: 0b111 << 28)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
     pub mod PLLM {
         /// Offset (0 bits)
@@ -573,10 +587,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1339,7 +1353,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 2 reset
-    pub mod UART2RST {
+    pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1352,7 +1366,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 3 reset
-    pub mod UART3RST {
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)

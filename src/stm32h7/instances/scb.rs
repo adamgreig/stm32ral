@@ -2,13 +2,13 @@
 #![allow(non_camel_case_types)]
 //! System control block
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::scb::Instance;
 pub use crate::stm32h7::peripherals::scb::{RegisterBlock, ResetValues};
 pub use crate::stm32h7::peripherals::scb::{
-    AIRCR, BFAR, CCR, CFSR_UFSR_BFSR_MMFSR, CPUID, HFSR, ICSR, MMFAR, SCR, SHCRS, SHPR1, SHPR2,
+    AIRCR, BFAR, CCR, CFSR_UFSR_BFSR_MMFSR, CPUID, HFSR, ICSR, MMFAR, SCR, SHCSR, SHPR1, SHPR2,
     SHPR3, VTOR,
 };
 
@@ -36,7 +36,7 @@ pub mod SCB {
         SHPR1: 0x00000000,
         SHPR2: 0x00000000,
         SHPR3: 0x00000000,
-        SHCRS: 0x00000000,
+        SHCSR: 0x00000000,
         CFSR_UFSR_BFSR_MMFSR: 0x00000000,
         HFSR: 0x00000000,
         MMFAR: 0x00000000,

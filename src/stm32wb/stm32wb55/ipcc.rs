@@ -383,7 +383,7 @@ pub mod C1SCR {
 }
 
 /// CPU1 to CPU2 status register
-pub mod C1TO2SR {
+pub mod C1TOC2SR {
 
     /// processor 1 transmit to process 2 Receive channel 6 status flag
     pub mod CH6F {
@@ -510,12 +510,12 @@ pub mod C2SCR {
 
 /// CPU2 to CPU1 status register
 pub mod C2TOC1SR {
-    pub use super::C1TO2SR::CH1F;
-    pub use super::C1TO2SR::CH2F;
-    pub use super::C1TO2SR::CH3F;
-    pub use super::C1TO2SR::CH4F;
-    pub use super::C1TO2SR::CH5F;
-    pub use super::C1TO2SR::CH6F;
+    pub use super::C1TOC2SR::CH1F;
+    pub use super::C1TOC2SR::CH2F;
+    pub use super::C1TOC2SR::CH3F;
+    pub use super::C1TOC2SR::CH4F;
+    pub use super::C1TOC2SR::CH5F;
+    pub use super::C1TOC2SR::CH6F;
 }
 
 /// IPCC Hardware configuration register
@@ -615,7 +615,7 @@ pub struct RegisterBlock {
     pub C1SCR: WORegister<u32>,
 
     /// CPU1 to CPU2 status register
-    pub C1TO2SR: RORegister<u32>,
+    pub C1TOC2SR: RORegister<u32>,
 
     /// Control register CPU2
     pub C2CR: RWRegister<u32>,
@@ -647,7 +647,7 @@ pub struct ResetValues {
     pub C1CR: u32,
     pub C1MR: u32,
     pub C1SCR: u32,
-    pub C1TO2SR: u32,
+    pub C1TOC2SR: u32,
     pub C2CR: u32,
     pub C2MR: u32,
     pub C2SCR: u32,
@@ -691,7 +691,7 @@ pub mod IPCC {
         C1CR: 0x00000000,
         C1MR: 0xFFFFFFFF,
         C1SCR: 0x00000000,
-        C1TO2SR: 0x00000000,
+        C1TOC2SR: 0x00000000,
         C2CR: 0x00000000,
         C2MR: 0xFFFFFFFF,
         C2SCR: 0x00000000,

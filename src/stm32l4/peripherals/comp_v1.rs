@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Comparator
 //!
-//! Used by: stm32l4x1, stm32l4x2
+//! Used by: stm32l412, stm32l4x1, stm32l4x2
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]

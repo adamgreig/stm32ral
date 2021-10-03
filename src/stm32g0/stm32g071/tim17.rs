@@ -3,9 +3,9 @@
 //! General purpose timers
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32g0::peripherals::tim16_v2::Instance;
-pub use crate::stm32g0::peripherals::tim16_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::tim16_v2::{
+pub use crate::stm32g0::peripherals::tim16_v4::Instance;
+pub use crate::stm32g0::peripherals::tim16_v4::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::tim16_v4::{
     AF1, ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SR, TISEL,
 };
 

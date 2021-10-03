@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! Basic timers
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::tim6_v1::Instance;
-pub use crate::stm32h7::peripherals::tim6_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32h7::peripherals::tim6_v1::{ARR, CNT, CR1, CR2, DIER, EGR, PSC, SR};
+pub use crate::stm32h7::peripherals::tim6::Instance;
+pub use crate::stm32h7::peripherals::tim6::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::tim6::{ARR, CNT, CR1, CR2, DIER, EGR, PSC, SR};
 
 /// Access functions for the TIM6 peripheral instance
 pub mod TIM6 {

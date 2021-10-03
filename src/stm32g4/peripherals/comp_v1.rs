@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Comparator control and status register
 //!
-//! Used by: stm32g431, stm32g441, stm32g471
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g491, stm32g4a1
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]

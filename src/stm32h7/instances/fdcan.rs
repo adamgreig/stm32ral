@@ -2,17 +2,17 @@
 #![allow(non_camel_case_types)]
 //! FDCAN1
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::fdcan::Instance;
 pub use crate::stm32h7::peripherals::fdcan::{RegisterBlock, ResetValues};
 pub use crate::stm32h7::peripherals::fdcan::{
-    CAN_TTGTP, CCCR, CREL, DBTP, ECR, ENDN, GFC, HPMS, IE, ILE, ILS, IR, NBTP, NDAT1, NDAT2, PSR,
-    RWD, RXBC, RXESC, RXF0A, RXF0C, RXF0S, RXF1A, RXF1C, RXF1S, SIDFC, TDCR, TEST, TOCC, TOCV,
-    TSCC, TSCV, TTCPT, TTCSM, TTCTC, TTIE, TTILS, TTIR, TTLGT, TTMLM, TTOCF, TTOCN, TTOST, TTRMC,
-    TTTMC, TTTMK, TTTS, TURCF, TURNA, TXBAR, TXBC, TXBCF, TXBCIE, TXBCR, TXBRP, TXBTIE, TXBTO,
-    TXEFA, TXEFC, TXEFS, TXESC, TXFQS, XIDAM, XIDFC,
+    CCCR, CREL, DBTP, ECR, ENDN, GFC, HPMS, IE, ILE, ILS, IR, NBTP, NDAT1, NDAT2, PSR, RWD, RXBC,
+    RXESC, RXF0A, RXF0C, RXF0S, RXF1A, RXF1C, RXF1S, SIDFC, TDCR, TEST, TOCC, TOCV, TSCC, TSCV,
+    TTCPT, TTCSM, TTCTC, TTGTP, TTIE, TTILS, TTIR, TTLGT, TTMLM, TTOCF, TTOCN, TTOST, TTRMC, TTTMC,
+    TTTMK, TTTS, TURCF, TURNA, TXBAR, TXBC, TXBCF, TXBCIE, TXBCR, TXBRP, TXBTIE, TXBTO, TXEFA,
+    TXEFC, TXEFS, TXESC, TXFQS, XIDAM, XIDFC,
 };
 
 /// Access functions for the FDCAN1 peripheral instance
@@ -82,7 +82,7 @@ pub mod FDCAN1 {
         TTMLM: 0x00000000,
         TURCF: 0x00000000,
         TTOCN: 0x00000000,
-        CAN_TTGTP: 0x00000000,
+        TTGTP: 0x00000000,
         TTTMK: 0x00000000,
         TTIR: 0x00000000,
         TTIE: 0x00000000,
@@ -236,7 +236,7 @@ pub mod FDCAN2 {
         TTMLM: 0x00000000,
         TURCF: 0x00000000,
         TTOCN: 0x00000000,
-        CAN_TTGTP: 0x00000000,
+        TTGTP: 0x00000000,
         TTTMK: 0x00000000,
         TTIR: 0x00000000,
         TTIE: 0x00000000,

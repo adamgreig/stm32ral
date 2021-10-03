@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -503,7 +503,7 @@ pub mod CCR {
         }
     }
 
-    /// V_TS temperature sensor channel selection
+    /// VTS selection
     pub mod VSENSESEL {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -524,7 +524,7 @@ pub mod CCR {
         }
     }
 
-    /// V_BAT battery voltage channel selection
+    /// VBAT selection
     pub mod VBATSEL {
         /// Offset (24 bits)
         pub const offset: u32 = 24;

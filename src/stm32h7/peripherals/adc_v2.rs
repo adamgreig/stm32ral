@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog to Digital Converter
 //!
-//! Used by: stm32h743v, stm32h753v
+//! Used by: stm32h743, stm32h753
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -678,8 +678,8 @@ pub mod CR {
     pub mod BOOST {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
-        /// Mask (2 bits: 0b11 << 8)
-        pub const mask: u32 = 0b11 << offset;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -687,17 +687,11 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00: Boost mode used when ADC clock ≤ 6.25 MHz
-            pub const LT6_25: u32 = 0b00;
+            /// 0b0: Boost mode off. Used when ADC clock < 20MHz
+            pub const Off: u32 = 0b0;
 
-            /// 0b01: Boost mode used when 6.25 MHz < ADC clock ≤ 12.5 MHz
-            pub const LT12_5: u32 = 0b01;
-
-            /// 0b10: Boost mode used when 12.5 MHz < ADC clock ≤ 25.0 MHz
-            pub const LT25: u32 = 0b10;
-
-            /// 0b11: Boost mode used when 25.0 MHz < ADC clock ≤ 50.0 MHz
-            pub const LT50: u32 = 0b11;
+            /// 0b1: Boost mode on. Used when ADC clock > 20MHz
+            pub const On: u32 = 0b1;
         }
     }
 
@@ -1192,8 +1186,8 @@ pub mod CFGR {
             /// 0b011: 10-bit resolution
             pub const TenBit: u32 = 0b011;
 
-            /// 0b111: 8-bit resolution
-            pub const EightBit: u32 = 0b111;
+            /// 0b100: 8-bit resolution
+            pub const EightBit: u32 = 0b100;
         }
     }
 
@@ -2168,6 +2162,42 @@ pub mod JSQR {
 
             /// 0b10100: LPTIM3_OUT event
             pub const LPTIM3_OUT: u32 = 0b10100;
+
+            /// 0b00000: Timer 1 TRGO event
+            pub const TIM1_TRGO: u32 = 0b00000;
+
+            /// 0b00001: Timer 1 CC4 event
+            pub const TIM1_CC4: u32 = 0b00001;
+
+            /// 0b00010: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b00010;
+
+            /// 0b00011: Timer 2 CC1 event
+            pub const TIM2_CC1: u32 = 0b00011;
+
+            /// 0b00100: Timer 3 CC4 event
+            pub const TIM3_CC4: u32 = 0b00100;
+
+            /// 0b00110: EXTI line 15
+            pub const EXTI15: u32 = 0b00110;
+
+            /// 0b01000: Timer 1 TRGO2 event
+            pub const TIM1_TRGO2: u32 = 0b01000;
+
+            /// 0b01011: Timer 3 CC3 event
+            pub const TIM3_CC3: u32 = 0b01011;
+
+            /// 0b01100: Timer 3 TRGO event
+            pub const TIM3_TRGO: u32 = 0b01100;
+
+            /// 0b01101: Timer 3 CC1 event
+            pub const TIM3_CC1: u32 = 0b01101;
+
+            /// 0b01110: Timer 6 TRGO event
+            pub const TIM6_TRGO: u32 = 0b01110;
+
+            /// 0b01111: Timer 15 TRGO event
+            pub const TIM15_TRGO: u32 = 0b01111;
         }
     }
 
@@ -2747,9 +2777,9 @@ pub mod AWD3CR {
 
     /// ADC analog watchdog 3 monitored channel selection
     pub mod AWD3CH0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2768,19 +2798,6 @@ pub mod AWD3CR {
 
     /// ADC analog watchdog 3 monitored channel selection
     pub mod AWD3CH1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::AWD3CH0::RW;
-    }
-
-    /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH2 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -2793,7 +2810,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH3 {
+    pub mod AWD3CH2 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -2806,7 +2823,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH4 {
+    pub mod AWD3CH3 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -2819,7 +2836,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH5 {
+    pub mod AWD3CH4 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -2832,7 +2849,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH6 {
+    pub mod AWD3CH5 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -2845,7 +2862,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH7 {
+    pub mod AWD3CH6 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -2858,7 +2875,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH8 {
+    pub mod AWD3CH7 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -2871,7 +2888,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH9 {
+    pub mod AWD3CH8 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -2884,7 +2901,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH10 {
+    pub mod AWD3CH9 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -2897,7 +2914,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH11 {
+    pub mod AWD3CH10 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -2910,7 +2927,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH12 {
+    pub mod AWD3CH11 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -2923,7 +2940,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH13 {
+    pub mod AWD3CH12 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -2936,7 +2953,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH14 {
+    pub mod AWD3CH13 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -2949,7 +2966,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH15 {
+    pub mod AWD3CH14 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -2962,7 +2979,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH16 {
+    pub mod AWD3CH15 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2975,7 +2992,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH17 {
+    pub mod AWD3CH16 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -2988,7 +3005,7 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH18 {
+    pub mod AWD3CH17 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -3001,10 +3018,23 @@ pub mod AWD3CR {
     }
 
     /// ADC analog watchdog 3 monitored channel selection
-    pub mod AWD3CH19 {
+    pub mod AWD3CH18 {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// ADC analog watchdog 3 monitored channel selection
+    pub mod AWD3CH19 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::tim16::Instance;

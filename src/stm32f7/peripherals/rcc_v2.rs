@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Reset and clock control
 //!
-//! Used by: stm32f765, stm32f7x9
+//! Used by: stm32f745, stm32f7x6
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -250,20 +250,6 @@ pub mod PLLCFGR {
             /// 0b1: HSE oscillator clock selected as PLL and PLLI2S clock entry
             pub const HSE: u32 = 0b1;
         }
-    }
-
-    /// PLL division factor for DSI clock
-    pub mod PLLR {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (3 bits: 0b111 << 28)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
     }
 
     /// Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input clock
@@ -589,10 +575,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1446,7 +1432,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 2 reset
-    pub mod UART2RST {
+    pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1459,7 +1445,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 3 reset
-    pub mod UART3RST {
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -2026,7 +2012,7 @@ pub mod AHB1ENR {
     }
 
     /// CCM data RAM clock enable
-    pub mod CCMDATARAMEN {
+    pub mod DTCMRAMEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -2686,7 +2672,7 @@ pub mod APB1ENR {
     }
 
     /// Low power timer 1 clock enable
-    pub mod LPTMI1EN {
+    pub mod LPTIM1EN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -3318,6 +3304,34 @@ pub mod AHB1LPENR {
         /// Write-only values (empty)
         pub mod W {}
         pub use super::GPIOALPEN::RW;
+    }
+
+    /// AXI to AHB bridge clock enable during Sleep mode
+    pub mod AXILPEN {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DTCM RAM interface clock enable during Sleep mode
+    pub mod DTCMLPEN {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -4956,48 +4970,6 @@ pub mod DCKCFGR1 {
             pub const Mul4: u32 = 0b1;
         }
     }
-
-    /// DFSDM1 clock source selection
-    pub mod DFSDM1SEL {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: APB2 clock (PCLK2) selected as DFSDM1 Kernel clock source
-            pub const APB2: u32 = 0b0;
-
-            /// 0b1: System clock (SYSCLK) clock selected as DFSDM1 Kernel clock source
-            pub const SYSCLK: u32 = 0b1;
-        }
-    }
-
-    /// DFSDM1 AUDIO clock source selection
-    pub mod ADFSDM1SEL {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: SAI1 clock selected as DFSDM1 Audio clock source
-            pub const SAI1: u32 = 0b0;
-
-            /// 0b1: SAI2 clock selected as DFSDM1 Audio clock source
-            pub const SAI2: u32 = 0b1;
-        }
-    }
 }
 
 /// dedicated clocks configuration register
@@ -5285,40 +5257,6 @@ pub mod DCKCFGR2 {
 
             /// 0b1: System clock is selected as SD clock
             pub const SYSCLK: u32 = 0b1;
-        }
-    }
-
-    /// SDMMC2 clock source selection
-    pub mod SDMMC2SEL {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SDMMC1SEL::RW;
-    }
-
-    /// DSI clock source selection
-    pub mod DSISEL {
-        /// Offset (30 bits)
-        pub const offset: u32 = 30;
-        /// Mask (1 bit: 1 << 30)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DSI-PHY used as DSI byte lane clock source (usual case)
-            pub const DSI_PHY: u32 = 0b0;
-
-            /// 0b1: PLLR used as DSI byte lane clock source, used in case DSI PLL and DSI-PHY are off (low power mode)
-            pub const PLLR: u32 = 0b1;
         }
     }
 }

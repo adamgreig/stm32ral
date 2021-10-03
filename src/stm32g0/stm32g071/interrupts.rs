@@ -127,7 +127,7 @@ pub enum Interrupt {
     DMA_Channel4_5_6_7 = 11,
     /// 12: ADC and COMP interrupts
     ADC_COMP = 12,
-    /// 13: IM1 break, update, trigger and commutation interrupts
+    /// 13: TIM1 break, update, trigger and commutation interrupts
     TIM1_BRK_UP_TRG_COM = 13,
     /// 14: TIM1 Capture Compare interrupt
     TIM1_CC = 14,

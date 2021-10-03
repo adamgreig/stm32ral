@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -640,24 +640,6 @@ pub mod CCMR1 {
 
             /// 0b111: Inversely to PwmMode1
             pub const PwmMode2: u32 = 0b111;
-
-            /// 0b1000: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
-            pub const OpmMode1: u32 = 0b1000;
-
-            /// 0b1001: Inversely to OpmMode1
-            pub const OpmMode2: u32 = 0b1001;
-
-            /// 0b1100: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
-            pub const CombinedPwmMode1: u32 = 0b1100;
-
-            /// 0b1101: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
-            pub const CombinedPwmMode2: u32 = 0b1101;
-
-            /// 0b1110: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
-            pub const AsymmetricPwmMode1: u32 = 0b1110;
-
-            /// 0b1111: OCyREF has the same behavior as in PWM mode 2. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
-            pub const AsymmetricPwmMode2: u32 = 0b1111;
         }
     }
 
@@ -899,7 +881,7 @@ pub mod RCR {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR1 {
 
     /// Capture/Compare 1 value
@@ -1257,7 +1239,7 @@ pub struct RegisterBlock {
     /// repetition counter register
     pub RCR: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR1: RWRegister<u32>,
 
     _reserved3: [u32; 3],

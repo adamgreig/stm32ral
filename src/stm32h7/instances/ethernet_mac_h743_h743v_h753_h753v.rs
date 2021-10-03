@@ -5,8 +5,8 @@
 //! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::ethernet_mac_v1::Instance;
-pub use crate::stm32h7::peripherals::ethernet_mac_v1::{
+pub use crate::stm32h7::peripherals::ethernet_mac_v2::Instance;
+pub use crate::stm32h7::peripherals::ethernet_mac_v2::{
     MACQTxFCR, MACRxFCR, MACRxTxSR, MACTxTSSNR, MACTxTSSSR, MAC1USTCR, MACA0HR, MACA0LR, MACA1HR,
     MACA1LR, MACA2HR, MACA2LR, MACA3HR, MACA3LR, MACACR, MACARPAR, MACATSNR, MACATSSR, MACCR,
     MACDR, MACECR, MACHT0R, MACHT1R, MACHWF1R, MACHWF2R, MACIER, MACISR, MACIVIR, MACL3A00R,
@@ -20,7 +20,7 @@ pub use crate::stm32h7::peripherals::ethernet_mac_v1::{
     RX_UNICAST_PACKETS_GOOD, TX_LPI_TRAN_CNTR, TX_LPI_USEC_CNTR,
     TX_MULTIPLE_COLLISION_GOOD_PACKETS, TX_PACKET_COUNT_GOOD, TX_SINGLE_COLLISION_GOOD_PACKETS,
 };
-pub use crate::stm32h7::peripherals::ethernet_mac_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::ethernet_mac_v2::{RegisterBlock, ResetValues};
 
 /// Access functions for the Ethernet_MAC peripheral instance
 pub mod Ethernet_MAC {

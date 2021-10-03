@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! MCU debug component
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3
+//! Used by: stm32l412, stm32l4x1, stm32l4x2, stm32l4x3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

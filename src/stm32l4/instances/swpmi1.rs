@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Single Wire Protocol Master Interface
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3
+//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::swpmi1::Instance;

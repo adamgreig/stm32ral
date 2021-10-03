@@ -8,11 +8,11 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc_common_f730_f745_f750_f765_f7x2_f7x3_f7x6 as adc_common;
+pub use super::instances::adc_common;
 pub use super::instances::adc_f745_f750_f765_f7x6_f7x9 as adc;
 pub use super::instances::can_f765_f7x7_f7x9 as can;
 pub use super::instances::cec;
-pub use super::instances::crc_f745_f750_f765_f7x7_f7x9 as crc;
+pub use super::instances::crc_f745_f750_f765_f7x6_f7x7_f7x9 as crc;
 pub use super::instances::cryp;
 pub use super::instances::dac;
 pub use super::instances::dbgmcu_f730_f745_f750_f765_f7x2_f7x3_f7x6 as dbgmcu;
@@ -42,28 +42,27 @@ pub use super::instances::otg_hs_host_f745_f750_f765_f7x6_f7x7_f7x9 as otg_hs_ho
 pub use super::instances::otg_hs_pwrclk;
 pub use super::instances::pwr_f745_f750_f765_f7x6_f7x7_f7x9 as pwr;
 pub use super::instances::quadspi;
-pub use super::instances::rcc_f765_f7x9 as rcc;
+pub use super::instances::rcc_f765_f7x7_f7x9 as rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc_f745_f750_f765_f7x6_f7x7_f7x9 as rtc;
 pub use super::instances::sai_f745_f750_f765_f7x6_f7x7_f7x9 as sai;
-pub use super::instances::sdmmc_f765_f7x7_f7x9 as sdmmc;
+pub use super::instances::sdmmc;
 pub use super::instances::spdifrx;
 pub use super::instances::spi_f745_f765_f7x7 as spi;
-pub use super::instances::syscfg_f745_f750_f765_f7x6_f7x7_f7x9 as syscfg;
-pub use super::instances::tim10_f745_f750_f765_f7x6_f7x7_f7x9 as tim10;
-pub use super::instances::tim11_f745_f750_f765_f7x6_f7x7_f7x9 as tim11;
-pub use super::instances::tim12_f745_f750_f765_f7x6_f7x7_f7x9 as tim12;
-pub use super::instances::tim13_f745_f750_f765_f7x6_f7x7_f7x9 as tim13;
-pub use super::instances::tim14_f745_f750_f765_f7x6_f7x7_f7x9 as tim14;
-pub use super::instances::tim1_f745_f750_f765_f7x6 as tim1;
-pub use super::instances::tim2_f745_f750_f765_f7x6 as tim2;
-pub use super::instances::tim3_f745_f750_f765_f7x6 as tim3;
-pub use super::instances::tim4_f745_f750_f765_f7x6 as tim4;
-pub use super::instances::tim5_f745_f750_f765_f7x6 as tim5;
-pub use super::instances::tim6_f745_f750_f765_f7x6_f7x7_f7x9 as tim6;
-pub use super::instances::tim7_f745_f750_f765_f7x6_f7x7_f7x9 as tim7;
-pub use super::instances::tim8_f745_f750_f765_f7x6 as tim8;
-pub use super::instances::tim9_f745_f750_f765_f7x6_f7x7_f7x9 as tim9;
+pub use super::instances::syscfg_f765_f7x7_f7x9 as syscfg;
+pub use super::instances::tim10;
+pub use super::instances::tim11;
+pub use super::instances::tim12;
+pub use super::instances::tim13;
+pub use super::instances::tim14;
+pub use super::instances::tim1_f765_f7x6_f7x9 as tim1;
+pub use super::instances::tim2;
+pub use super::instances::tim3;
+pub use super::instances::tim4;
+pub use super::instances::tim6;
+pub use super::instances::tim7;
+pub use super::instances::tim8_f765_f7x6_f7x9 as tim8;
+pub use super::instances::tim9;
 pub use super::instances::usart_f745_f750_f765_f7x6_f7x7_f7x9 as usart;
 pub use super::instances::wwdg;
 pub mod nvic;
@@ -80,6 +79,7 @@ pub mod mdios;
 pub use super::instances::jpeg;
 pub mod dfsdm1;
 pub use super::instances::dsi;
+pub use super::instances::tim5;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -124,7 +124,6 @@ pub struct Peripherals {
     pub TIM2: tim2::Instance,
     pub TIM3: tim3::Instance,
     pub TIM4: tim4::Instance,
-    pub TIM5: tim5::Instance,
     pub TIM9: tim9::Instance,
     pub TIM12: tim12::Instance,
     pub TIM10: tim10::Instance,
@@ -188,6 +187,7 @@ pub struct Peripherals {
     pub JPEG: jpeg::Instance,
     pub DFSDM1: dfsdm1::Instance,
     pub DSI: dsi::Instance,
+    pub TIM5: tim5::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -238,7 +238,6 @@ impl Peripherals {
             TIM2: tim2::TIM2::steal(),
             TIM3: tim3::TIM3::steal(),
             TIM4: tim4::TIM4::steal(),
-            TIM5: tim5::TIM5::steal(),
             TIM9: tim9::TIM9::steal(),
             TIM12: tim12::TIM12::steal(),
             TIM10: tim10::TIM10::steal(),
@@ -302,6 +301,7 @@ impl Peripherals {
             JPEG: jpeg::JPEG::steal(),
             DFSDM1: dfsdm1::DFSDM1::steal(),
             DSI: dsi::DSI::steal(),
+            TIM5: tim5::TIM5::steal(),
         }
     }
 }

@@ -1,22 +1,43 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! WinWATCHDOG
+//! System window watchdog
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
-use crate::{RORegister, RWRegister, WORegister};
+use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// Key register
-pub mod KR {
+/// Control register
+pub mod CR {
 
-    /// Key value (write only, read 0x0000)
-    pub mod KEY {
+    /// Activation bit
+    pub mod WDGA {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Watchdog disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Watchdog enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// 7-bit counter (MSB to LSB)
+    pub mod T {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (7 bits: 0x7f << 0)
+        pub const mask: u32 = 0x7f << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -26,128 +47,124 @@ pub mod KR {
     }
 }
 
-/// Prescaler register
-pub mod PR {
+/// Configuration register
+pub mod CFR {
 
-    /// Prescaler divider
-    pub mod PR {
+    /// Early wakeup interrupt
+    pub mod EWI {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: interrupt occurs whenever the counter reaches the value 0x40
+            pub const Enable: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// 7-bit window value
+    pub mod W {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (3 bits: 0b111 << 0)
+        /// Mask (7 bits: 0x7f << 0)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Timer base
+    pub mod WDGTB {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (3 bits: 0b111 << 11)
         pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+        /// Read-write values
+        pub mod RW {
 
-/// Reload register
-pub mod RLR {
+            /// 0b100: Counter clock (PCLK1 div 4096) div 16
+            pub const Div16: u32 = 0b100;
 
-    /// Watchdog counter reload value
-    pub mod RL {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+            /// 0b101: Counter clock (PCLK1 div 4096) div 32
+            pub const Div32: u32 = 0b101;
+
+            /// 0b110: Counter clock (PCLK1 div 4096) div 64
+            pub const Div64: u32 = 0b110;
+
+            /// 0b111: Counter clock (PCLK1 div 4096) div 128
+            pub const Div128: u32 = 0b111;
+
+            /// 0b000: Counter clock (PCLK1 div 4096) div 1
+            pub const Div1: u32 = 0b000;
+
+            /// 0b001: Counter clock (PCLK1 div 4096) div 2
+            pub const Div2: u32 = 0b001;
+
+            /// 0b010: Counter clock (PCLK1 div 4096) div 4
+            pub const Div4: u32 = 0b010;
+
+            /// 0b011: Counter clock (PCLK1 div 4096) div 8
+            pub const Div8: u32 = 0b011;
+        }
     }
 }
 
 /// Status register
 pub mod SR {
 
-    /// Watchdog counter window value update
-    pub mod WVU {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Watchdog counter reload value update
-    pub mod RVU {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Watchdog prescaler value update
-    pub mod PVU {
+    /// Early wakeup interrupt flag
+    pub mod EWIF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+        /// Read-only values
+        pub mod R {
 
-/// Window register
-pub mod WINR {
+            /// 0b1: The EWI Interrupt Service Routine has been triggered
+            pub const Pending: u32 = 0b1;
 
-    /// Watchdog counter window value
-    pub mod WIN {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+            /// 0b0: The EWI Interrupt Service Routine has been serviced
+            pub const Finished: u32 = 0b0;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: The EWI Interrupt Service Routine has been serviced
+            pub const Finished: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    /// Key register
-    pub KR: WORegister<u32>,
+    /// Control register
+    pub CR: RWRegister<u32>,
 
-    /// Prescaler register
-    pub PR: RWRegister<u32>,
-
-    /// Reload register
-    pub RLR: RWRegister<u32>,
+    /// Configuration register
+    pub CFR: RWRegister<u32>,
 
     /// Status register
-    pub SR: RORegister<u32>,
-
-    /// Window register
-    pub WINR: RWRegister<u32>,
+    pub SR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub KR: u32,
-    pub PR: u32,
-    pub RLR: u32,
+    pub CR: u32,
+    pub CFR: u32,
     pub SR: u32,
-    pub WINR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

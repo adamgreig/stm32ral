@@ -5,11 +5,11 @@
 //! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::ethernet_mtl_v1::Instance;
-pub use crate::stm32h7::peripherals::ethernet_mtl_v1::{
+pub use crate::stm32h7::peripherals::ethernet_mtl_v2::Instance;
+pub use crate::stm32h7::peripherals::ethernet_mtl_v2::{
     MTLRxQDR, MTLRxQMPOCR, MTLRxQOMR, MTLTxQDR, MTLTxQOMR, MTLTxQUR, MTLISR, MTLOMR, MTLQICSR,
 };
-pub use crate::stm32h7::peripherals::ethernet_mtl_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::ethernet_mtl_v2::{RegisterBlock, ResetValues};
 
 /// Access functions for the Ethernet_MTL peripheral instance
 pub mod Ethernet_MTL {

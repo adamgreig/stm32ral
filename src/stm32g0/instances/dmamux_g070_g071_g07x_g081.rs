@@ -5,9 +5,9 @@
 //! Used by: stm32g070, stm32g071, stm32g07x, stm32g081
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32g0::peripherals::dmamux_v2::Instance;
-pub use crate::stm32g0::peripherals::dmamux_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::dmamux_v2::{
+pub use crate::stm32g0::peripherals::dmamux_v3::Instance;
+pub use crate::stm32g0::peripherals::dmamux_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::dmamux_v3::{
     DMAMUX_C0CR, DMAMUX_C1CR, DMAMUX_C2CR, DMAMUX_C3CR, DMAMUX_C4CR, DMAMUX_C5CR, DMAMUX_C6CR,
     DMAMUX_CFR, DMAMUX_CSR, DMAMUX_HWCFGR1, DMAMUX_HWCFGR2, DMAMUX_IPIDR, DMAMUX_RG0CR,
     DMAMUX_RG1CR, DMAMUX_RG2CR, DMAMUX_RG3CR, DMAMUX_RGCFR, DMAMUX_RGSR, DMAMUX_SIDR, DMAMUX_VERR,

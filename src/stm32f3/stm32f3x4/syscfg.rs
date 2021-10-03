@@ -1314,11 +1314,11 @@ pub mod CFGR3 {
             /// 0b00: ADC2 mapped on DMA2
             pub const MapDma2: u32 = 0b00;
 
-            /// 0b11: ADC2 mapped on DMA1 channel 2
-            pub const MapDma1Ch2: u32 = 0b11;
+            /// 0b10: ADC2 mapped on DMA1 channel 2
+            pub const MapDma1Ch2: u32 = 0b10;
 
-            /// 0b100: DC2 mapped on DMA1 channel 4
-            pub const MapDma1Ch4: u32 = 0b100;
+            /// 0b11: ADC2 mapped on DMA1 channel 4
+            pub const MapDma1Ch4: u32 = 0b11;
         }
     }
 }

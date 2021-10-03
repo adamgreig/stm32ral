@@ -9,7 +9,7 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::aes;
-pub use super::instances::comp_l4x3_l4x5_l4x6 as comp;
+pub use super::instances::comp_l4r9_l4x3_l4x5_l4x6 as comp;
 pub use super::instances::crc;
 pub use super::instances::dac1;
 pub use super::instances::dma;
@@ -17,7 +17,7 @@ pub use super::instances::firewall;
 pub use super::instances::flash;
 pub use super::instances::i2c_l4x3_l4x5 as i2c;
 pub use super::instances::iwdg;
-pub use super::instances::lcd;
+pub use super::instances::lcd_l412_l4x1_l4x2_l4x5 as lcd;
 pub use super::instances::pwr;
 pub use super::instances::rng;
 pub use super::instances::syscfg;
@@ -32,6 +32,7 @@ pub use super::instances::tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
 pub use super::instances::tim2;
+pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
@@ -47,14 +48,14 @@ pub mod swpmi1;
 pub use super::instances::crs;
 pub use super::instances::nvic;
 pub use super::instances::opamp;
+pub mod usb;
 pub use super::instances::quadspi;
-pub use super::instances::usb;
 pub mod fmc;
 pub use super::instances::dfsdm;
 pub use super::instances::tim8;
 pub mod adc_common;
 pub mod rcc;
-pub use super::instances::dbgmcu_l4x5_l4x6 as dbgmcu;
+pub use super::instances::dbgmcu_l4r9_l4x5_l4x6 as dbgmcu;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
@@ -63,7 +64,6 @@ pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
 pub use super::instances::tim3;
-pub use super::instances::tim4;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -101,6 +101,7 @@ pub struct Peripherals {
     pub SAI2: sai::Instance,
     pub TIM2: tim2::Instance,
     pub TIM5: tim5::Instance,
+    pub TIM4: tim4::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
     pub TIM17: tim17::Instance,
@@ -143,7 +144,6 @@ pub struct Peripherals {
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
     pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -187,6 +187,7 @@ impl Peripherals {
             SAI2: sai::SAI2::steal(),
             TIM2: tim2::TIM2::steal(),
             TIM5: tim5::TIM5::steal(),
+            TIM4: tim4::TIM4::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
             TIM17: tim17::TIM17::steal(),
@@ -229,7 +230,6 @@ impl Peripherals {
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
             TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
         }
     }
 }

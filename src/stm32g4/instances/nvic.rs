@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Nested Vectored Interrupt Controller
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::nvic::Instance;
@@ -11,7 +11,7 @@ pub use crate::stm32g4::peripherals::nvic::{
     IABR0, IABR1, IABR2, IABR3, ICER0, ICER1, ICER2, ICER3, ICPR0, ICPR1, ICPR2, ICPR3, IPR0, IPR1,
     IPR10, IPR11, IPR12, IPR13, IPR14, IPR15, IPR16, IPR17, IPR18, IPR19, IPR2, IPR20, IPR21,
     IPR22, IPR23, IPR24, IPR25, IPR3, IPR4, IPR5, IPR6, IPR7, IPR8, IPR9, ISER0, ISER1, ISER2,
-    ISER3, ISPR0, ISPR1, ISPR2, ISPR3, STIR,
+    ISER3, ISPR0, ISPR1, ISPR2, ISPR3,
 };
 
 /// Access functions for the NVIC peripheral instance
@@ -75,7 +75,6 @@ pub mod NVIC {
         IPR23: 0x00000000,
         IPR24: 0x00000000,
         IPR25: 0x00000000,
-        STIR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

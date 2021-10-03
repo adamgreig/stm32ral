@@ -2116,7 +2116,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Resets the corresponding ODRx bit
+            pub const Reset: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2129,7 +2134,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2142,7 +2147,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2155,7 +2160,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2168,7 +2173,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2181,7 +2186,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2194,7 +2199,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2207,7 +2212,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2220,7 +2225,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }

@@ -573,10 +573,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1430,7 +1430,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 2 reset
-    pub mod UART2RST {
+    pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1443,7 +1443,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 3 reset
-    pub mod UART3RST {
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -2010,7 +2010,7 @@ pub mod AHB1ENR {
     }
 
     /// CCM data RAM clock enable
-    pub mod CCMDATARAMEN {
+    pub mod DTCMRAMEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -2670,7 +2670,7 @@ pub mod APB1ENR {
     }
 
     /// Low power timer 1 clock enable
-    pub mod LPTMI1EN {
+    pub mod LPTIM1EN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -3302,6 +3302,34 @@ pub mod AHB1LPENR {
         /// Write-only values (empty)
         pub mod W {}
         pub use super::GPIOALPEN::RW;
+    }
+
+    /// AXI to AHB bridge clock enable during Sleep mode
+    pub mod AXILPEN {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DTCM RAM interface clock enable during Sleep mode
+    pub mod DTCMLPEN {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -5394,8 +5422,8 @@ pub mod RCC {
         SSCGR: 0x00000000,
         PLLI2SCFGR: 0x20003000,
         PLLSAICFGR: 0x20003000,
-        DCKCFGR1: 0x20003000,
-        DCKCFGR2: 0x20003000,
+        DCKCFGR1: 0x00000000,
+        DCKCFGR2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

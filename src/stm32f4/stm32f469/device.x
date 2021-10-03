@@ -90,3 +90,4 @@ PROVIDE(LCD_TFT = DefaultHandler);
 PROVIDE(LCD_TFT_1 = DefaultHandler);
 PROVIDE(DMA2D = DefaultHandler);
 PROVIDE(QUADSPI = DefaultHandler);
+PROVIDE(DSIHOST = DefaultHandler);

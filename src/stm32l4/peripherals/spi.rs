@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface/Inter-IC sound
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 2-line unidirectional data mode selected
+            pub const Unidirectional: u32 = 0b0;
+
+            /// 0b1: 1-line bidirectional data mode selected
+            pub const Bidirectional: u32 = 0b1;
+        }
     }
 
     /// Output enable in bidirectional mode
@@ -35,8 +42,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Output disabled (receive-only mode)
+            pub const OutputDisabled: u32 = 0b0;
+
+            /// 0b1: Output enabled (transmit-only mode)
+            pub const OutputEnabled: u32 = 0b1;
+        }
     }
 
     /// Hardware CRC calculation enable
@@ -49,8 +63,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CRC calculation disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CRC calculation enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CRC transfer next
@@ -63,12 +84,19 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Next transmit value is from Tx buffer
+            pub const TxBuffer: u32 = 0b0;
+
+            /// 0b1: Next transmit value is from Tx CRC register
+            pub const CRC: u32 = 0b1;
+        }
     }
 
-    /// Data frame format
-    pub mod DFF {
+    /// CRC length
+    pub mod CRCL {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -91,8 +119,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Full duplex (Transmit and receive)
+            pub const FullDuplex: u32 = 0b0;
+
+            /// 0b1: Output disabled (Receive-only mode)
+            pub const OutputDisabled: u32 = 0b1;
+        }
     }
 
     /// Software slave management
@@ -105,8 +140,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Software slave management disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Software slave management enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Internal slave select
@@ -119,8 +161,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 0 is forced onto the NSS pin and the I/O value of the NSS pin is ignored
+            pub const SlaveSelected: u32 = 0b0;
+
+            /// 0b1: 1 is forced onto the NSS pin and the I/O value of the NSS pin is ignored
+            pub const SlaveNotSelected: u32 = 0b1;
+        }
     }
 
     /// Frame format
@@ -133,8 +182,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data is transmitted/received with the MSB first
+            pub const MSBFirst: u32 = 0b0;
+
+            /// 0b1: Data is transmitted/received with the LSB first
+            pub const LSBFirst: u32 = 0b1;
+        }
     }
 
     /// SPI enable
@@ -147,8 +203,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Peripheral disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Peripheral enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Baud rate control
@@ -161,8 +224,33 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: f_PCLK / 2
+            pub const Div2: u32 = 0b000;
+
+            /// 0b001: f_PCLK / 4
+            pub const Div4: u32 = 0b001;
+
+            /// 0b010: f_PCLK / 8
+            pub const Div8: u32 = 0b010;
+
+            /// 0b011: f_PCLK / 16
+            pub const Div16: u32 = 0b011;
+
+            /// 0b100: f_PCLK / 32
+            pub const Div32: u32 = 0b100;
+
+            /// 0b101: f_PCLK / 64
+            pub const Div64: u32 = 0b101;
+
+            /// 0b110: f_PCLK / 128
+            pub const Div128: u32 = 0b110;
+
+            /// 0b111: f_PCLK / 256
+            pub const Div256: u32 = 0b111;
+        }
     }
 
     /// Master selection
@@ -175,8 +263,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Slave configuration
+            pub const Slave: u32 = 0b0;
+
+            /// 0b1: Master configuration
+            pub const Master: u32 = 0b1;
+        }
     }
 
     /// Clock polarity
@@ -189,8 +284,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CK to 0 when idle
+            pub const IdleLow: u32 = 0b0;
+
+            /// 0b1: CK to 1 when idle
+            pub const IdleHigh: u32 = 0b1;
+        }
     }
 
     /// Clock phase
@@ -203,8 +305,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The first clock transition is the first data capture edge
+            pub const FirstEdge: u32 = 0b0;
+
+            /// 0b1: The second clock transition is the first data capture edge
+            pub const SecondEdge: u32 = 0b1;
+        }
     }
 }
 
@@ -221,8 +330,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Rx buffer DMA disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Rx buffer DMA enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Tx buffer DMA enable
@@ -235,8 +351,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tx buffer DMA disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Tx buffer DMA enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SS output enable
@@ -249,8 +372,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SS output is disabled in master mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SS output is enabled in master mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// NSS pulse management
@@ -291,8 +421,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Error interrupt masked
+            pub const Masked: u32 = 0b0;
+
+            /// 0b1: Error interrupt not masked
+            pub const NotMasked: u32 = 0b1;
+        }
     }
 
     /// RX buffer not empty interrupt enable
@@ -305,8 +442,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RXE interrupt masked
+            pub const Masked: u32 = 0b0;
+
+            /// 0b1: RXE interrupt not masked
+            pub const NotMasked: u32 = 0b1;
+        }
     }
 
     /// Tx buffer empty interrupt enable
@@ -319,8 +463,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TXE interrupt masked
+            pub const Masked: u32 = 0b0;
+
+            /// 0b1: TXE interrupt not masked
+            pub const NotMasked: u32 = 0b1;
+        }
     }
 
     /// Data size
@@ -393,8 +544,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Rx buffer empty
+            pub const Empty: u32 = 0b0;
+
+            /// 0b1: Rx buffer not empty
+            pub const NotEmpty: u32 = 0b1;
+        }
     }
 
     /// Transmit buffer empty
@@ -407,8 +565,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Tx buffer not empty
+            pub const NotEmpty: u32 = 0b0;
+
+            /// 0b1: Tx buffer empty
+            pub const Empty: u32 = 0b1;
+        }
     }
 
     /// CRC error flag
@@ -421,8 +586,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CRC value received matches the SPIx_RXCRCR value
+            pub const Match: u32 = 0b0;
+
+            /// 0b1: CRC value received does not match the SPIx_RXCRCR value
+            pub const NoMatch: u32 = 0b1;
+        }
     }
 
     /// Mode fault
@@ -431,8 +603,15 @@ pub mod SR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No mode fault occurred
+            pub const NoFault: u32 = 0b0;
+
+            /// 0b1: Mode fault occurred
+            pub const Fault: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -445,8 +624,15 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No overrun occurred
+            pub const NoOverrun: u32 = 0b0;
+
+            /// 0b1: Overrun occurred
+            pub const Overrun: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -459,16 +645,23 @@ pub mod SR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: SPI not busy
+            pub const NotBusy: u32 = 0b0;
+
+            /// 0b1: SPI busy
+            pub const Busy: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// TI frame format error
-    pub mod TIFRFE {
+    /// Frame format error
+    pub mod FRE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)

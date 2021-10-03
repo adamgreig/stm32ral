@@ -52,8 +52,8 @@ pub mod RCC {
         SSCGR: 0x00000000,
         PLLI2SCFGR: 0x20003000,
         PLLSAICFGR: 0x20003000,
-        DCKCFGR1: 0x20003000,
-        DCKCFGR2: 0x20003000,
+        DCKCFGR1: 0x00000000,
+        DCKCFGR2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

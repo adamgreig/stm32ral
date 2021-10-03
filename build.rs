@@ -85,6 +85,12 @@ fn main() {
             "src/stm32g0/stm32g031/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G041").is_some() {
             "src/stm32g0/stm32g041/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G050").is_some() {
+            "src/stm32g0/stm32g050/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G051").is_some() {
+            "src/stm32g0/stm32g051/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G061").is_some() {
+            "src/stm32g0/stm32g061/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G070").is_some() {
             "src/stm32g0/stm32g070/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G071").is_some() {
@@ -93,6 +99,12 @@ fn main() {
             "src/stm32g0/stm32g07x/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G081").is_some() {
             "src/stm32g0/stm32g081/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G0B0").is_some() {
+            "src/stm32g0/stm32g0b0/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G0B1").is_some() {
+            "src/stm32g0/stm32g0b1/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G0C1").is_some() {
+            "src/stm32g0/stm32g0c1/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G431").is_some() {
             "src/stm32g4/stm32g431/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G441").is_some() {
@@ -107,6 +119,12 @@ fn main() {
             "src/stm32g4/stm32g483/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G484").is_some() {
             "src/stm32g4/stm32g484/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G491").is_some() {
+            "src/stm32g4/stm32g491/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32G4A1").is_some() {
+            "src/stm32g4/stm32g4a1/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H735").is_some() {
+            "src/stm32h7/stm32h735/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H743").is_some() {
             "src/stm32h7/stm32h743/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H743V").is_some() {
@@ -121,6 +139,8 @@ fn main() {
             "src/stm32h7/stm32h753v/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H7B3").is_some() {
             "src/stm32h7/stm32h7b3/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32L0X0").is_some() {
+            "src/stm32l0/stm32l0x0/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L0X1").is_some() {
             "src/stm32l0/stm32l0x1/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L0X2").is_some() {
@@ -133,6 +153,10 @@ fn main() {
             "src/stm32l1/stm32l151/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L162").is_some() {
             "src/stm32l1/stm32l162/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32L412").is_some() {
+            "src/stm32l4/stm32l412/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32L4R9").is_some() {
+            "src/stm32l4/stm32l4r9/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L4X1").is_some() {
             "src/stm32l4/stm32l4x1/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L4X2").is_some() {
@@ -147,10 +171,16 @@ fn main() {
             "src/stm32l5/stm32l552/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L562").is_some() {
             "src/stm32l5/stm32l562/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32MP153").is_some() {
+            "src/stm32mp/stm32mp153/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32MP157").is_some() {
             "src/stm32mp/stm32mp157/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32WB55").is_some() {
             "src/stm32wb/stm32wb55/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32WL5X_CM0P").is_some() {
+            "src/stm32wl/stm32wl5x_cm0p/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32WL5X_CM4").is_some() {
+            "src/stm32wl/stm32wl5x_cm4/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32WLE5").is_some() {
             "src/stm32wl/stm32wle5/device.x"
         } else {

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! MIPI DSI Host
 //!
-//! Used by: stm32h747cm4, stm32h747cm7, stm32h7b3
+//! Used by: stm32h735, stm32h747cm4, stm32h747cm7, stm32h7b3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1481,8 +1481,124 @@ pub mod PTTCR {
     }
 }
 
-/// DSI Host interrupt and status register 0
+/// DSI Host PHY status register
 pub mod PSR {
+
+    /// ULPS active not lane 1
+    pub mod UAN1 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PHY stop state lane 1
+    pub mod PSS1 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RX ULPS escape lane 0
+    pub mod RUE0 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ULPS active not lane 1
+    pub mod UAN0 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PHY stop state lane 0
+    pub mod PSS0 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ULPS active not clock lane
+    pub mod UANC {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PHY stop state clock lane
+    pub mod PSSC {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PHY direction
+    pub mod PD {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// DSI Host interrupt and status register 0
+pub mod ISR0 {
 
     /// PHY error 4
     pub mod PE4 {
@@ -4002,8 +4118,128 @@ pub mod WPCR1 {
     }
 }
 
-/// DSI wrapper PHY configuration register 4
+/// DSI wrapper PHY configuration register 2
 pub mod WPCR2 {
+
+    /// tHSTRAIL
+    pub mod THSTRAIL {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// tHS-PREPARE
+    pub mod THSPREP {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// tCLK-ZERO
+    pub mod TCLKZERO {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// tCLK-PREPARE
+    pub mod TCLKPREP {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// DSI wrapper PHY configuration register 3
+pub mod WPCR3 {
+
+    /// tLPXC for clock lane
+    pub mod TLPXC {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// tHSEXIT
+    pub mod THSEXIT {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// tLPX for data lanes
+    pub mod TLPXD {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// tHS-ZERO
+    pub mod THSZERO {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// DSI wrapper PHY configuration register 4
+pub mod WPCR4 {
 
     /// tCLK-POST
     pub mod TCLKPOST {
@@ -4216,10 +4452,13 @@ pub struct RegisterBlock {
     /// DSI Host PHY TX triggers configuration register
     pub PTTCR: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    /// DSI Host PHY status register
+    pub PSR: RWRegister<u32>,
+
+    _reserved3: [u32; 2],
 
     /// DSI Host interrupt and status register 0
-    pub PSR: RWRegister<u32>,
+    pub ISR0: RWRegister<u32>,
 
     /// DSI Host interrupt and status register 1
     pub ISR1: RWRegister<u32>,
@@ -4316,12 +4555,16 @@ pub struct RegisterBlock {
     /// DSI wrapper PHY configuration register 1
     pub WPCR1: RWRegister<u32>,
 
-    _reserved11: [u32; 2],
-
-    /// DSI wrapper PHY configuration register 4
+    /// DSI wrapper PHY configuration register 2
     pub WPCR2: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    /// DSI wrapper PHY configuration register 3
+    pub WPCR3: RWRegister<u32>,
+
+    /// DSI wrapper PHY configuration register 4
+    pub WPCR4: RWRegister<u32>,
+
+    _reserved11: [u32; 1],
 
     /// DSI wrapper regulator and PLL control register
     pub WRPCR: RWRegister<u32>,
@@ -4367,6 +4610,7 @@ pub struct ResetValues {
     pub PUCR: u32,
     pub PTTCR: u32,
     pub PSR: u32,
+    pub ISR0: u32,
     pub ISR1: u32,
     pub IER0: u32,
     pub IER1: u32,
@@ -4395,6 +4639,8 @@ pub struct ResetValues {
     pub WPCR0: u32,
     pub WPCR1: u32,
     pub WPCR2: u32,
+    pub WPCR3: u32,
+    pub WPCR4: u32,
     pub WRPCR: u32,
 }
 #[cfg(not(feature = "nosync"))]

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: media access control (MAC)
 //!
-//! Used by: stm32h747cm4, stm32h747cm7
+//! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1536,8 +1536,8 @@ pub mod MACPCSR {
 /// Remove wakeup packet filter register
 pub mod MACRWKPFR {
 
-    /// WKUPFRMFTR
-    pub mod WKUPFRMFTR {
+    /// Remote wakeup packet filter
+    pub mod MACRWKPFR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -1707,20 +1707,6 @@ pub mod MACLCSR {
         /// Read-write values (empty)
         pub mod RW {}
     }
-
-    /// LPITCSE
-    pub mod LPITCSE {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 }
 
 /// LPI timers control register
@@ -1823,6 +1809,66 @@ pub mod MACVR {
     }
 }
 
+/// Debug register
+pub mod MACDR {
+
+    /// MAC MII Receive Protocol Engine Status
+    pub mod RPESTS {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// MAC Receive Packet Controller FIFO Status
+    pub mod RFCFCSTS {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (2 bits: 0b11 << 1)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// MAC MII Transmit Protocol Engine Status
+    pub mod TPESTS {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// MAC Transmit Packet Controller Status
+    pub mod TFCSTS {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (2 bits: 0b11 << 17)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// HW feature 1 register
 pub mod MACHWF1R {
 
@@ -1888,6 +1934,20 @@ pub mod MACHWF1R {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Address width
+    pub mod ADDR64 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (2 bits: 0b11 << 14)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2337,11 +2397,6 @@ pub mod MACA2LR {
     pub use super::MACA0LR::ADDRLO;
 }
 
-/// Address 3 low register
-pub mod MACA3LR {
-    pub use super::MACA0LR::ADDRLO;
-}
-
 /// Address 1 high register
 pub mod MACA1HR {
 
@@ -2416,6 +2471,11 @@ pub mod MACA3HR {
     pub use super::MACA1HR::AE;
     pub use super::MACA1HR::MBC;
     pub use super::MACA1HR::SA;
+}
+
+/// Address 3 low register
+pub mod MACA3LR {
+    pub use super::MACA0LR::ADDRLO;
 }
 
 /// MMC control register
@@ -3191,66 +3251,6 @@ pub mod MACL4A0R {
         pub const offset: u32 = 16;
         /// Mask (16 bits: 0xffff << 16)
         pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// Debug register
-pub mod MACDR {
-
-    /// MAC MII Receive Protocol Engine Status
-    pub mod RPESTS {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MAC Receive Packet Controller FIFO Status
-    pub mod RFCFCSTS {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (2 bits: 0b11 << 1)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MAC MII Transmit Protocol Engine Status
-    pub mod TPESTS {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MAC Transmit Packet Controller Status
-    pub mod TFCSTS {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (2 bits: 0b11 << 17)
-        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

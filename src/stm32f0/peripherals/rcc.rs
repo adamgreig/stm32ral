@@ -218,10 +218,10 @@ pub mod CFGR {
             /// 0b11: HSI48 used as system clock (when avaiable)
             pub const HSI48: u32 = 0b11;
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -434,8 +434,8 @@ pub mod CFGR {
     pub mod MCO {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
-        /// Mask (3 bits: 0b111 << 24)
-        pub const mask: u32 = 0b111 << offset;
+        /// Mask (4 bits: 0b1111 << 24)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -443,32 +443,32 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b001: Internal RC 14 MHz (HSI14) oscillator clock selected
-            pub const HSI14: u32 = 0b001;
+            /// 0b0001: Internal RC 14 MHz (HSI14) oscillator clock selected
+            pub const HSI14: u32 = 0b0001;
 
             /// 0b1000: Internal RC 48 MHz (HSI48) oscillator clock selected
             pub const HSI48: u32 = 0b1000;
 
-            /// 0b000: MCO output disabled, no clock on MCO
-            pub const NoMCO: u32 = 0b000;
+            /// 0b0000: MCO output disabled, no clock on MCO
+            pub const NoMCO: u32 = 0b0000;
 
-            /// 0b010: Internal low speed (LSI) oscillator clock selected
-            pub const LSI: u32 = 0b010;
+            /// 0b0010: Internal low speed (LSI) oscillator clock selected
+            pub const LSI: u32 = 0b0010;
 
-            /// 0b011: External low speed (LSE) oscillator clock selected
-            pub const LSE: u32 = 0b011;
+            /// 0b0011: External low speed (LSE) oscillator clock selected
+            pub const LSE: u32 = 0b0011;
 
-            /// 0b100: System clock selected
-            pub const SYSCLK: u32 = 0b100;
+            /// 0b0100: System clock selected
+            pub const SYSCLK: u32 = 0b0100;
 
-            /// 0b101: Internal RC 8 MHz (HSI) oscillator clock selected
-            pub const HSI: u32 = 0b101;
+            /// 0b0101: Internal RC 8 MHz (HSI) oscillator clock selected
+            pub const HSI: u32 = 0b0101;
 
-            /// 0b110: External 4-32 MHz (HSE) oscillator clock selected
-            pub const HSE: u32 = 0b110;
+            /// 0b0110: External 4-32 MHz (HSE) oscillator clock selected
+            pub const HSE: u32 = 0b0110;
 
-            /// 0b111: PLL clock selected (divided by 1 or 2, depending en PLLNODIV)
-            pub const PLL: u32 = 0b111;
+            /// 0b0111: PLL clock selected (divided by 1 or 2, depending en PLLNODIV)
+            pub const PLL: u32 = 0b0111;
         }
     }
 
@@ -1294,8 +1294,8 @@ pub mod APB1RSTR {
 /// AHB Peripheral Clock enable register (RCC_AHBENR)
 pub mod AHBENR {
 
-    /// DMA1 clock enable
-    pub mod DMA1EN {
+    /// DMA clock enable
+    pub mod DMAEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -1325,7 +1325,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// SRAM interface clock enable
@@ -1338,7 +1338,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// FLITF clock enable
@@ -1351,7 +1351,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// CRC clock enable
@@ -1364,7 +1364,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// I/O port A clock enable
@@ -1377,7 +1377,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// I/O port B clock enable
@@ -1390,7 +1390,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// I/O port C clock enable
@@ -1403,7 +1403,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// I/O port D clock enable
@@ -1416,7 +1416,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// I/O port F clock enable
@@ -1429,7 +1429,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// Touch sensing controller clock enable
@@ -1442,7 +1442,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 
     /// I/O port E clock enable
@@ -1455,20 +1455,7 @@ pub mod AHBENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMA1EN::RW;
-    }
-
-    /// DMA clock enable
-    pub mod DMAEN {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DMA1EN::RW;
+        pub use super::DMAEN::RW;
     }
 }
 

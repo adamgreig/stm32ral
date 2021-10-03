@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FDCAN1
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -512,7 +512,7 @@ pub mod NBTP {
     }
 
     /// Nominal Time segment after sample point
-    pub mod TSEG2 {
+    pub mod NTSEG2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (7 bits: 0x7f << 0)
@@ -672,7 +672,7 @@ pub mod ECR {
     }
 
     /// Receive Error Counter
-    pub mod TREC {
+    pub mod REC {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (7 bits: 0x7f << 8)
@@ -3293,8 +3293,8 @@ pub mod RXF0C {
     pub mod F0S {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
+        /// Mask (7 bits: 0x7f << 16)
+        pub const mask: u32 = 0x7f << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -3307,8 +3307,22 @@ pub mod RXF0C {
     pub mod F0WM {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
-        /// Mask (8 bits: 0xff << 24)
-        pub const mask: u32 = 0xff << offset;
+        /// Mask (7 bits: 0x7f << 24)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FIFO 0 operation mode
+    pub mod F0OM {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -3336,7 +3350,7 @@ pub mod RXF0S {
     }
 
     /// Rx FIFO 0 Get Index
-    pub mod F0G {
+    pub mod F0GI {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (6 bits: 0x3f << 8)
@@ -3350,7 +3364,7 @@ pub mod RXF0S {
     }
 
     /// Rx FIFO 0 Put Index
-    pub mod F0P {
+    pub mod F0PI {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (6 bits: 0x3f << 16)
@@ -3396,7 +3410,7 @@ pub mod RXF0S {
 pub mod RXF0A {
 
     /// Rx FIFO 0 Acknowledge Index
-    pub mod FA01 {
+    pub mod F0AI {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (6 bits: 0x3f << 0)
@@ -3465,6 +3479,20 @@ pub mod RXF1C {
         pub const offset: u32 = 24;
         /// Mask (7 bits: 0x7f << 24)
         pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FIFO 1 operation mode
+    pub mod F1OM {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -3987,6 +4015,20 @@ pub mod TXEFS {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Event FIFO put index
+    pub mod EFPI {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (5 bits: 0b11111 << 16)
+        pub const mask: u32 = 0b11111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -4529,7 +4571,7 @@ pub mod TTOCN {
 }
 
 /// FDCAN TT Global Time Preset Register
-pub mod CAN_TTGTP {
+pub mod TTGTP {
 
     /// Time Preset
     pub mod NCL {
@@ -5462,7 +5504,7 @@ pub mod TTOST {
     }
 
     /// Quality of Global Time Phase
-    pub mod GTP {
+    pub mod QGTP {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -5702,7 +5744,7 @@ pub mod TTCTC {
 pub mod TTCPT {
 
     /// Cycle Count Value
-    pub mod CT {
+    pub mod CCV {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (6 bits: 0x3f << 0)
@@ -5790,10 +5832,10 @@ pub struct RegisterBlock {
     _reserved1: [u32; 1],
 
     /// FDCAN Data Bit Timing and Prescaler Register
-    pub DBTP: RORegister<u32>,
+    pub DBTP: RWRegister<u32>,
 
     /// FDCAN Test Register
-    pub TEST: RORegister<u32>,
+    pub TEST: RWRegister<u32>,
 
     /// FDCAN RAM Watchdog Register
     pub RWD: RORegister<u32>,
@@ -5825,18 +5867,18 @@ pub struct RegisterBlock {
     pub PSR: RWRegister<u32>,
 
     /// FDCAN Transmitter Delay Compensation Register
-    pub TDCR: RORegister<u32>,
+    pub TDCR: RWRegister<u32>,
 
     _reserved3: [u32; 1],
 
     /// FDCAN Interrupt Register
-    pub IR: RORegister<u32>,
+    pub IR: RWRegister<u32>,
 
     /// FDCAN Interrupt Enable Register
-    pub IE: RORegister<u32>,
+    pub IE: RWRegister<u32>,
 
     /// FDCAN Interrupt Line Select Register
-    pub ILS: RORegister<u32>,
+    pub ILS: RWRegister<u32>,
 
     /// FDCAN Interrupt Line Enable Register
     pub ILE: RWRegister<u32>,
@@ -5861,10 +5903,10 @@ pub struct RegisterBlock {
     pub HPMS: RORegister<u32>,
 
     /// FDCAN New Data 1 Register
-    pub NDAT1: RORegister<u32>,
+    pub NDAT1: RWRegister<u32>,
 
     /// FDCAN New Data 2 Register
-    pub NDAT2: RORegister<u32>,
+    pub NDAT2: RWRegister<u32>,
 
     /// FDCAN Rx FIFO 0 Configuration Register
     pub RXF0C: RWRegister<u32>,
@@ -5952,7 +5994,7 @@ pub struct RegisterBlock {
     pub TTOCN: RWRegister<u32>,
 
     /// FDCAN TT Global Time Preset Register
-    pub CAN_TTGTP: RWRegister<u32>,
+    pub TTGTP: RWRegister<u32>,
 
     /// FDCAN TT Time Mark Register
     pub TTTMK: RWRegister<u32>,
@@ -6042,7 +6084,7 @@ pub struct ResetValues {
     pub TTMLM: u32,
     pub TURCF: u32,
     pub TTOCN: u32,
-    pub CAN_TTGTP: u32,
+    pub TTGTP: u32,
     pub TTTMK: u32,
     pub TTIR: u32,
     pub TTIE: u32,

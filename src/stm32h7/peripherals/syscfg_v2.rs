@@ -137,6 +137,20 @@ pub mod PMCR {
         pub mod RW {}
     }
 
+    /// Analog switch supply voltage selection
+    pub mod BOOSTVDDSEL {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// Ethernet PHY Interface Selection
     pub mod EPIS {
         /// Offset (21 bits)
@@ -448,6 +462,178 @@ pub mod EXTICR4 {
     }
 }
 
+/// configuration register
+pub mod CFGR {
+
+    /// CM4L
+    pub mod CM4L {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PVDL
+    pub mod PVDL {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FLASHL
+    pub mod FLASHL {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// CM7L
+    pub mod CM7L {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// BKRAML
+    pub mod BKRAML {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SRAM4L
+    pub mod SRAM4L {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SRAM3L
+    pub mod SRAM3L {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SRAM2L
+    pub mod SRAM2L {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SRAM1L
+    pub mod SRAM1L {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// DTCML
+    pub mod DTCML {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ITCML
+    pub mod ITCML {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AXISRAML
+    pub mod AXISRAML {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// compensation cell control/status register
 pub mod CCCSR {
 
@@ -572,6 +758,31 @@ pub mod CCCR {
     }
 }
 
+/// SYSCFG power control register
+pub mod PWRCR {
+
+    /// Overdrive enable
+    pub mod ODEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Overdrive mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Overdrive mode enabled (the LDO generates VOS0 for VCORE)
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+}
+
 /// SYSCFG package register
 pub mod PKGR {
 
@@ -622,6 +833,38 @@ pub mod UR0 {
     }
 }
 
+/// SYSCFG user register 1
+pub mod UR1 {
+
+    /// Boot Cortex-M4
+    pub mod BCM4 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Boot Cortex-M7
+    pub mod BCM7 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// SYSCFG user register 2
 pub mod UR2 {
 
@@ -639,8 +882,8 @@ pub mod UR2 {
         pub mod RW {}
     }
 
-    /// Boot Address 0
-    pub mod BOOT_ADD0 {
+    /// Cortex-M7 Boot Address 0
+    pub mod BCM7_ADD0 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (16 bits: 0xffff << 16)
@@ -657,8 +900,22 @@ pub mod UR2 {
 /// SYSCFG user register 3
 pub mod UR3 {
 
-    /// Boot Address 1
-    pub mod BOOT_ADD1 {
+    /// Cortex-M4 Boot Address 0
+    pub mod BCM4_ADD1 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Cortex-M7 Boot Address 1
+    pub mod BCM7_ADD1 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (16 bits: 0xffff << 16)
@@ -676,6 +933,20 @@ pub mod UR3 {
 pub mod UR4 {
 
     /// Mass Erase Protected Area Disabled for bank 1
+    pub mod BCM4_ADD1 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Boot Cortex-M4 Address 1
     pub mod MEPAD_1 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -708,7 +979,7 @@ pub mod UR5 {
     }
 
     /// Write protection for flash bank 1
-    pub mod WRPN_1 {
+    pub mod WRPS_1 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (8 bits: 0xff << 16)
@@ -822,7 +1093,7 @@ pub mod UR8 {
 pub mod UR9 {
 
     /// Write protection for flash bank 2
-    pub mod WRPN_2 {
+    pub mod WRPS_2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (8 bits: 0xff << 0)
@@ -917,6 +1188,20 @@ pub mod UR11 {
 /// SYSCFG user register 12
 pub mod UR12 {
 
+    /// Independent Watchdog 2 mode
+    pub mod IWDG2M {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// Secure mode
     pub mod SECURE {
         /// Offset (16 bits)
@@ -980,10 +1265,38 @@ pub mod UR14 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// D2 Standby Reset
+    pub mod D2SBRST {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// SYSCFG user register 15
 pub mod UR15 {
+
+    /// D2 Stop Reset
+    pub mod D2STPRST {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 
     /// Freeze independent watchdog in Standby mode
     pub mod FZIWDGSTB {
@@ -1049,31 +1362,6 @@ pub mod UR17 {
         pub mod RW {}
     }
 }
-
-/// SYSCFG Power Control Register
-pub mod PWRCR {
-
-    /// Overdrive enable, this bit allows to activate the LDO regulator overdrive mode. This bit must be written only in VOS1 voltage scaling mode
-    pub mod ODEN {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Overdrive mode disabled
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: Overdrive mode enabled (the LDO generates VOS0 for VCORE)
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
     _reserved1: [u32; 1],
@@ -1093,7 +1381,10 @@ pub struct RegisterBlock {
     /// external interrupt configuration register 4
     pub EXTICR4: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    /// configuration register
+    pub CFGR: RWRegister<u32>,
+
+    _reserved2: [u32; 1],
 
     /// compensation cell control/status register
     pub CCCSR: RWRegister<u32>,
@@ -1104,7 +1395,7 @@ pub struct RegisterBlock {
     /// SYSCFG compensation cell code register
     pub CCCR: RWRegister<u32>,
 
-    /// SYSCFG Power Control Register
+    /// SYSCFG power control register
     pub PWRCR: RWRegister<u32>,
 
     _reserved3: [u32; 61],
@@ -1117,7 +1408,8 @@ pub struct RegisterBlock {
     /// SYSCFG user register 0
     pub UR0: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    /// SYSCFG user register 1
+    pub UR1: RWRegister<u32>,
 
     /// SYSCFG user register 2
     pub UR2: RWRegister<u32>,
@@ -1126,7 +1418,7 @@ pub struct RegisterBlock {
     pub UR3: RWRegister<u32>,
 
     /// SYSCFG user register 4
-    pub UR4: RORegister<u32>,
+    pub UR4: RWRegister<u32>,
 
     /// SYSCFG user register 5
     pub UR5: RORegister<u32>,
@@ -1159,7 +1451,7 @@ pub struct RegisterBlock {
     pub UR14: RWRegister<u32>,
 
     /// SYSCFG user register 15
-    pub UR15: RORegister<u32>,
+    pub UR15: RWRegister<u32>,
 
     /// SYSCFG user register 16
     pub UR16: RORegister<u32>,
@@ -1173,12 +1465,14 @@ pub struct ResetValues {
     pub EXTICR2: u32,
     pub EXTICR3: u32,
     pub EXTICR4: u32,
+    pub CFGR: u32,
     pub CCCSR: u32,
     pub CCVR: u32,
     pub CCCR: u32,
     pub PWRCR: u32,
     pub PKGR: u32,
     pub UR0: u32,
+    pub UR1: u32,
     pub UR2: u32,
     pub UR3: u32,
     pub UR4: u32,

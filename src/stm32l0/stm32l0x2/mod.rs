@@ -20,7 +20,7 @@ pub use super::instances::gpio;
 pub use super::instances::i2c;
 pub use super::instances::iwdg;
 pub use super::instances::lptim;
-pub use super::instances::pwr;
+pub use super::instances::pwr_l0x2_l0x3 as pwr;
 pub use super::instances::rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;

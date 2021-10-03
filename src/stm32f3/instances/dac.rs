@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Digital-to-analog converter
 //!
-//! Used by: stm32f302, stm32f303
+//! Used by: stm32f303, stm32f3x4
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f3::peripherals::dac::Instance;
@@ -12,8 +12,8 @@ pub use crate::stm32f3::peripherals::dac::{
     SR, SWTRIGR,
 };
 
-/// Access functions for the DAC peripheral instance
-pub mod DAC {
+/// Access functions for the DAC1 peripheral instance
+pub mod DAC1 {
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -25,7 +25,7 @@ pub mod DAC {
         _marker: ::core::marker::PhantomData,
     };
 
-    /// Reset values for each field in DAC
+    /// Reset values for each field in DAC1
     pub const reset: ResetValues = ResetValues {
         CR: 0x00000000,
         SWTRIGR: 0x00000000,
@@ -47,9 +47,9 @@ pub mod DAC {
     #[allow(renamed_and_removed_lints)]
     #[allow(private_no_mangle_statics)]
     #[no_mangle]
-    static mut DAC_TAKEN: bool = false;
+    static mut DAC1_TAKEN: bool = false;
 
-    /// Safe access to DAC
+    /// Safe access to DAC1
     ///
     /// This function returns `Some(Instance)` if this instance is not
     /// currently taken, and `None` if it is. This ensures that if you
@@ -65,16 +65,16 @@ pub mod DAC {
     #[inline]
     pub fn take() -> Option<Instance> {
         external_cortex_m::interrupt::free(|_| unsafe {
-            if DAC_TAKEN {
+            if DAC1_TAKEN {
                 None
             } else {
-                DAC_TAKEN = true;
+                DAC1_TAKEN = true;
                 Some(INSTANCE)
             }
         })
     }
 
-    /// Release exclusive access to DAC
+    /// Release exclusive access to DAC1
     ///
     /// This function allows you to return an `Instance` so that it
     /// is available to `take()` again. This function will panic if
@@ -84,15 +84,15 @@ pub mod DAC {
     #[inline]
     pub fn release(inst: Instance) {
         external_cortex_m::interrupt::free(|_| unsafe {
-            if DAC_TAKEN && inst.addr == INSTANCE.addr {
-                DAC_TAKEN = false;
+            if DAC1_TAKEN && inst.addr == INSTANCE.addr {
+                DAC1_TAKEN = false;
             } else {
                 panic!("Released a peripheral which was not taken");
             }
         });
     }
 
-    /// Unsafely steal DAC
+    /// Unsafely steal DAC1
     ///
     /// This function is similar to take() but forcibly takes the
     /// Instance, marking it as taken irregardless of its previous
@@ -100,12 +100,12 @@ pub mod DAC {
     #[cfg(not(feature = "nosync"))]
     #[inline]
     pub unsafe fn steal() -> Instance {
-        DAC_TAKEN = true;
+        DAC1_TAKEN = true;
         INSTANCE
     }
 }
 
-/// Raw pointer to DAC
+/// Raw pointer to DAC1
 ///
 /// Dereferencing this is unsafe because you are not ensured unique
 /// access to the peripheral, so you may encounter data races with
@@ -114,4 +114,108 @@ pub mod DAC {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const DAC: *const RegisterBlock = 0x40007400 as *const _;
+pub const DAC1: *const RegisterBlock = 0x40007400 as *const _;
+
+/// Access functions for the DAC2 peripheral instance
+pub mod DAC2 {
+    use super::ResetValues;
+
+    #[cfg(not(feature = "nosync"))]
+    use super::Instance;
+
+    #[cfg(not(feature = "nosync"))]
+    const INSTANCE: Instance = Instance {
+        addr: 0x40009800,
+        _marker: ::core::marker::PhantomData,
+    };
+
+    /// Reset values for each field in DAC2
+    pub const reset: ResetValues = ResetValues {
+        CR: 0x00000000,
+        SWTRIGR: 0x00000000,
+        DHR12R1: 0x00000000,
+        DHR12L1: 0x00000000,
+        DHR8R1: 0x00000000,
+        DHR12R2: 0x00000000,
+        DHR12L2: 0x00000000,
+        DHR8R2: 0x00000000,
+        DHR12RD: 0x00000000,
+        DHR12LD: 0x00000000,
+        DHR8RD: 0x00000000,
+        DOR1: 0x00000000,
+        DOR2: 0x00000000,
+        SR: 0x00000000,
+    };
+
+    #[cfg(not(feature = "nosync"))]
+    #[allow(renamed_and_removed_lints)]
+    #[allow(private_no_mangle_statics)]
+    #[no_mangle]
+    static mut DAC2_TAKEN: bool = false;
+
+    /// Safe access to DAC2
+    ///
+    /// This function returns `Some(Instance)` if this instance is not
+    /// currently taken, and `None` if it is. This ensures that if you
+    /// do get `Some(Instance)`, you are ensured unique access to
+    /// the peripheral and there cannot be data races (unless other
+    /// code uses `unsafe`, of course). You can then pass the
+    /// `Instance` around to other functions as required. When you're
+    /// done with it, you can call `release(instance)` to return it.
+    ///
+    /// `Instance` itself dereferences to a `RegisterBlock`, which
+    /// provides access to the peripheral's registers.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub fn take() -> Option<Instance> {
+        external_cortex_m::interrupt::free(|_| unsafe {
+            if DAC2_TAKEN {
+                None
+            } else {
+                DAC2_TAKEN = true;
+                Some(INSTANCE)
+            }
+        })
+    }
+
+    /// Release exclusive access to DAC2
+    ///
+    /// This function allows you to return an `Instance` so that it
+    /// is available to `take()` again. This function will panic if
+    /// you return a different `Instance` or if this instance is not
+    /// already taken.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub fn release(inst: Instance) {
+        external_cortex_m::interrupt::free(|_| unsafe {
+            if DAC2_TAKEN && inst.addr == INSTANCE.addr {
+                DAC2_TAKEN = false;
+            } else {
+                panic!("Released a peripheral which was not taken");
+            }
+        });
+    }
+
+    /// Unsafely steal DAC2
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        DAC2_TAKEN = true;
+        INSTANCE
+    }
+}
+
+/// Raw pointer to DAC2
+///
+/// Dereferencing this is unsafe because you are not ensured unique
+/// access to the peripheral, so you may encounter data races with
+/// other users of this peripheral. It is up to you to ensure you
+/// will not cause data races.
+///
+/// This constant is provided for ease of use in unsafe code: you can
+/// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
+pub const DAC2: *const RegisterBlock = 0x40009800 as *const _;

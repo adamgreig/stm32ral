@@ -520,8 +520,8 @@ pub mod CFGR1 {
         }
     }
 
-    /// Auto-delayed conversion mode
-    pub mod AUTDLY {
+    /// Wait conversion mode
+    pub mod WAIT {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -530,8 +530,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Wait conversion mode off
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Wait conversion mode on
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Single / continuous conversion mode
@@ -737,27 +744,6 @@ pub mod CFGR1 {
             pub const Disabled: u32 = 0b0;
 
             /// 0b1: DMA mode enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// Wait conversion mode
-    pub mod WAIT {
-        /// Offset (14 bits)
-        pub const offset: u32 = 14;
-        /// Mask (1 bit: 1 << 14)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Wait conversion mode off
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: Wait conversion mode on
             pub const Enabled: u32 = 0b1;
         }
     }

@@ -187,7 +187,7 @@ pub mod SR {
             /// 0b0: No write/erase operation is in progress
             pub const Inactive: u32 = 0b0;
 
-            /// 0b1: No write/erase operation is in progress
+            /// 0b1: A write/erase operation is in progress
             pub const Active: u32 = 0b1;
         }
         /// Write-only values (empty)
@@ -276,10 +276,10 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Option byte write enabled
+            /// 0b0: Option byte write disabled
             pub const Disabled: u32 = 0b0;
 
-            /// 0b1: Option byte write disabled
+            /// 0b1: Option byte write enabled
             pub const Enabled: u32 = 0b1;
         }
     }

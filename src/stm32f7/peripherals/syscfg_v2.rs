@@ -2,34 +2,20 @@
 #![allow(non_camel_case_types)]
 //! System configuration controller
 //!
-//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f750, stm32f7x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// memory remap register
-pub mod MEMRM {
+pub mod MEMRMP {
 
     /// Memory mapping selection
-    pub mod MEM_MODE {
+    pub mod MEM_BOOT {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (3 bits: 0b111 << 0)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Flash bank mode selection
-    pub mod FB_MODE {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -388,7 +374,7 @@ pub mod CMPCR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// memory remap register
-    pub MEMRM: RWRegister<u32>,
+    pub MEMRMP: RWRegister<u32>,
 
     /// peripheral mode configuration register
     pub PMC: RWRegister<u32>,
@@ -411,7 +397,7 @@ pub struct RegisterBlock {
     pub CMPCR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub MEMRM: u32,
+    pub MEMRMP: u32,
     pub PMC: u32,
     pub EXTICR1: u32,
     pub EXTICR2: u32,

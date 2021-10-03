@@ -5,9 +5,9 @@
 //! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l0::peripherals::i2c::Instance;
-pub use crate::stm32l0::peripherals::i2c::{RegisterBlock, ResetValues};
-pub use crate::stm32l0::peripherals::i2c::{
+pub use crate::stm32l0::peripherals::i2c1::Instance;
+pub use crate::stm32l0::peripherals::i2c1::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::i2c1::{
     CR1, CR2, ICR, ISR, OAR1, OAR2, PECR, RXDR, TIMEOUTR, TIMINGR, TXDR,
 };
 

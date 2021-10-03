@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x0, stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -1880,10 +1880,10 @@ pub mod ARR {
     }
 }
 
-/// TIMx capture/compare register 1
+/// capture/compare register
 pub mod CCR1 {
 
-    /// Low Capture/Compare 1 value
+    /// Capture/Compare value
     pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u16 = 0;
@@ -1898,17 +1898,17 @@ pub mod CCR1 {
     }
 }
 
-/// TIMx capture/compare register 1
+/// capture/compare register
 pub mod CCR2 {
     pub use super::CCR1::CCR;
 }
 
-/// TIMx capture/compare register 1
+/// capture/compare register
 pub mod CCR3 {
     pub use super::CCR1::CCR;
 }
 
-/// TIMx capture/compare register 1
+/// capture/compare register
 pub mod CCR4 {
     pub use super::CCR1::CCR;
 }
@@ -1959,22 +1959,22 @@ pub struct RegisterBlock {
     _reserved2: [u32; 1],
     _reserved3: [u16; 1],
 
-    /// TIMx capture/compare register 1
+    /// capture/compare register
     pub CCR1: RWRegister<u16>,
 
     _reserved4: [u16; 1],
 
-    /// TIMx capture/compare register 1
+    /// capture/compare register
     pub CCR2: RWRegister<u16>,
 
     _reserved5: [u16; 1],
 
-    /// TIMx capture/compare register 1
+    /// capture/compare register
     pub CCR3: RWRegister<u16>,
 
     _reserved6: [u16; 1],
 
-    /// TIMx capture/compare register 1
+    /// capture/compare register
     pub CCR4: RWRegister<u16>,
 
     _reserved7: [u32; 1],

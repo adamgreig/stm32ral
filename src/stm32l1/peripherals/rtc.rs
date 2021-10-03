@@ -495,8 +495,8 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// WCKSEL
-    pub mod WCKSEL {
+    /// Wakeup clock selection
+    pub mod WUCKSEL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (3 bits: 0b111 << 0)

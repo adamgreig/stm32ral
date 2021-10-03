@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Controller area network
 //!
-//! Used by: stm32l4x3, stm32l4x5
+//! Used by: stm32l4r9, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -594,7 +594,7 @@ pub mod TSR {
     }
 }
 
-/// receive FIFO 0 register
+/// receive FIFO %s register
 pub mod RF0R {
 
     /// RFOM0
@@ -675,7 +675,7 @@ pub mod RF0R {
     }
 }
 
-/// receive FIFO 0 register
+/// receive FIFO %s register
 pub mod RF1R {
     pub use super::RF0R::FMP;
     pub use super::RF0R::FOVR;
@@ -1179,6 +1179,1622 @@ pub mod BTR {
         pub const offset: u32 = 0;
         /// Mask (10 bits: 0x3ff << 0)
         pub const mask: u32 = 0x3ff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// filter master register
+pub mod FMR {
+
+    /// Filter initialization mode
+    pub mod FINIT {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// CAN start bank
+    pub mod CANSB {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (6 bits: 0x3f << 8)
+        pub const mask: u32 = 0x3f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// filter mode register
+pub mod FM1R {
+
+    /// Filter mode
+    pub mod FBM0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM19 {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM20 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM21 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM22 {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM23 {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM24 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM25 {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM26 {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter mode
+    pub mod FBM27 {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// filter scale register
+pub mod FS1R {
+
+    /// Filter scale configuration
+    pub mod FSC0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC19 {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC20 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC21 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC22 {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC23 {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC24 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC25 {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC26 {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter scale configuration
+    pub mod FSC27 {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// filter FIFO assignment register
+pub mod FFA1R {
+
+    /// Filter FIFO assignment for filter 0
+    pub mod FFA0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 1
+    pub mod FFA1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 2
+    pub mod FFA2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 3
+    pub mod FFA3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 4
+    pub mod FFA4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 5
+    pub mod FFA5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 6
+    pub mod FFA6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 7
+    pub mod FFA7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 8
+    pub mod FFA8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 9
+    pub mod FFA9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 10
+    pub mod FFA10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 11
+    pub mod FFA11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 12
+    pub mod FFA12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter 13
+    pub mod FFA13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA19 {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA20 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA21 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA22 {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA23 {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA24 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA25 {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA26 {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter FIFO assignment for filter
+    pub mod FFA27 {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// filter activation register
+pub mod FA1R {
+
+    /// Filter active
+    pub mod FACT0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT18 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT19 {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT20 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT21 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT22 {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT23 {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT24 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT25 {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT26 {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Filter active
+    pub mod FACT27 {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2080,10 +3696,10 @@ pub struct RegisterBlock {
     /// transmit status register
     pub TSR: RWRegister<u32>,
 
-    /// receive FIFO 0 register
+    /// receive FIFO %s register
     pub RF0R: RWRegister<u32>,
 
-    /// receive FIFO 0 register
+    /// receive FIFO %s register
     pub RF1R: RWRegister<u32>,
 
     /// interrupt enable register
@@ -2157,7 +3773,30 @@ pub struct RegisterBlock {
     /// receive FIFO mailbox data high register
     pub RDHR1: RORegister<u32>,
 
-    _reserved2: [u32; 28],
+    _reserved2: [u32; 12],
+
+    /// filter master register
+    pub FMR: RWRegister<u32>,
+
+    /// filter mode register
+    pub FM1R: RWRegister<u32>,
+
+    _reserved3: [u32; 1],
+
+    /// filter scale register
+    pub FS1R: RWRegister<u32>,
+
+    _reserved4: [u32; 1],
+
+    /// filter FIFO assignment register
+    pub FFA1R: RWRegister<u32>,
+
+    _reserved5: [u32; 1],
+
+    /// filter activation register
+    pub FA1R: RWRegister<u32>,
+
+    _reserved6: [u32; 8],
 
     /// Filter bank 0 register 1
     pub FR10: RWRegister<u32>,
@@ -2356,6 +3995,11 @@ pub struct ResetValues {
     pub RDTR1: u32,
     pub RDLR1: u32,
     pub RDHR1: u32,
+    pub FMR: u32,
+    pub FM1R: u32,
+    pub FS1R: u32,
+    pub FFA1R: u32,
+    pub FA1R: u32,
     pub FR10: u32,
     pub FR20: u32,
     pub FR11: u32,

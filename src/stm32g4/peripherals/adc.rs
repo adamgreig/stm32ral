@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -2162,8 +2162,45 @@ pub mod JSQR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00000: Timer 1 TRGO event
+            pub const TIM1_TRGO: u32 = 0b00000;
+
+            /// 0b00001: Timer 1 CC4 event
+            pub const TIM1_CC4: u32 = 0b00001;
+
+            /// 0b00010: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b00010;
+
+            /// 0b00011: Timer 2 CC1 event
+            pub const TIM2_CC1: u32 = 0b00011;
+
+            /// 0b00100: Timer 3 CC4 event
+            pub const TIM3_CC4: u32 = 0b00100;
+
+            /// 0b00110: EXTI line 15
+            pub const EXTI15: u32 = 0b00110;
+
+            /// 0b01000: Timer 1 TRGO2 event
+            pub const TIM1_TRGO2: u32 = 0b01000;
+
+            /// 0b01011: Timer 3 CC3 event
+            pub const TIM3_CC3: u32 = 0b01011;
+
+            /// 0b01100: Timer 3 TRGO event
+            pub const TIM3_TRGO: u32 = 0b01100;
+
+            /// 0b01101: Timer 3 CC1 event
+            pub const TIM3_CC1: u32 = 0b01101;
+
+            /// 0b01110: Timer 6 TRGO event
+            pub const TIM6_TRGO: u32 = 0b01110;
+
+            /// 0b01111: Timer 15 TRGO event
+            pub const TIM15_TRGO: u32 = 0b01111;
+        }
     }
 
     /// Injected channel sequence length

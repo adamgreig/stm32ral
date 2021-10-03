@@ -1125,8 +1125,33 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs / OpmMode1: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register / OpmMode2: Inversely to OpmMode1
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register / Reserved
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy / Reserved
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low / CombinedPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high / CombinedPwmMode2: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active / AsymmetricPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1 / AsymmetricPwmMode2: Inversely to AsymmetricPwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output Compare 1 clear enable
@@ -1195,8 +1220,33 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output Compare 2 clear enable
@@ -1223,8 +1273,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal output compare mode (modes 0-7)
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Extended output compare mode (modes 7-15)
+            pub const Extended: u32 = 0b1;
+        }
     }
 
     /// Output Compare 2 mode - bit 3
@@ -1237,8 +1294,7 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC1M_3::RW;
     }
 }
 
@@ -1299,8 +1355,33 @@ pub mod CCMR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs / OpmMode1: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register / OpmMode2: Inversely to OpmMode1
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register / Reserved
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy / Reserved
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low / CombinedPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high / CombinedPwmMode2: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active / AsymmetricPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1 / AsymmetricPwmMode2: Inversely to AsymmetricPwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output compare 3 clear enable
@@ -1369,8 +1450,7 @@ pub mod CCMR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC3M::RW;
     }
 
     /// Output compare 4 clear enable
@@ -1397,8 +1477,15 @@ pub mod CCMR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal output compare mode (modes 0-7)
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Extended output compare mode (modes 7-15)
+            pub const Extended: u32 = 0b1;
+        }
     }
 
     /// Output Compare 4 mode - bit 3
@@ -1411,8 +1498,7 @@ pub mod CCMR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC3M_3::RW;
     }
 }
 
@@ -2144,7 +2230,7 @@ pub mod OR1 {
 pub mod CCMR3_Output {
 
     /// Output Compare 6 mode bit 3
-    pub mod OC6M_bit3 {
+    pub mod OC6M_3 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -2153,12 +2239,19 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal output compare mode (modes 0-7)
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Extended output compare mode (modes 7-15)
+            pub const Extended: u32 = 0b1;
+        }
     }
 
     /// Output Compare 5 mode bit 3
-    pub mod OC5M_bit3 {
+    pub mod OC5M_3 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2167,8 +2260,7 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC6M_3::RW;
     }
 
     /// Output compare 6 clear enable
@@ -2195,8 +2287,33 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs / OpmMode1: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register / OpmMode2: Inversely to OpmMode1
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register / Reserved
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy / Reserved
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low / CombinedPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high / CombinedPwmMode2: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active / AsymmetricPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1 / AsymmetricPwmMode2: Inversely to AsymmetricPwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output compare 6 preload enable
@@ -2251,8 +2368,7 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC6M::RW;
     }
 
     /// Output compare 5 preload enable

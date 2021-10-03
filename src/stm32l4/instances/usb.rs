@@ -2,13 +2,13 @@
 #![allow(non_camel_case_types)]
 //! Universal serial bus full-speed device interface
 //!
-//! Used by: stm32l4x3, stm32l4x5
+//! Used by: stm32l412, stm32l4x2
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::usb::Instance;
 pub use crate::stm32l4::peripherals::usb::{RegisterBlock, ResetValues};
 pub use crate::stm32l4::peripherals::usb::{
-    BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR,
+    BCDR, BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR, LPMCSR,
 };
 
 /// Access functions for the USB peripheral instance
@@ -20,7 +20,7 @@ pub mod USB {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x40006c00,
+        addr: 0x40006800,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -39,6 +39,8 @@ pub mod USB {
         FNR: 0x00000000,
         DADDR: 0x00000000,
         BTABLE: 0x00000000,
+        LPMCSR: 0x00000000,
+        BCDR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -112,4 +114,4 @@ pub mod USB {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const USB: *const RegisterBlock = 0x40006c00 as *const _;
+pub const USB: *const RegisterBlock = 0x40006800 as *const _;

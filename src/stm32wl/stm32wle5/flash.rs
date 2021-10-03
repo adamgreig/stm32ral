@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flash
 
-use crate::{RORegister, RWRegister, WORegister};
+use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -19,8 +19,18 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: 0 wait states
+            pub const WS0: u32 = 0b000;
+
+            /// 0b001: 1 wait states
+            pub const WS1: u32 = 0b001;
+
+            /// 0b010: 2 wait states
+            pub const WS2: u32 = 0b010;
+        }
     }
 
     /// Prefetch enable
@@ -33,8 +43,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Prefetch is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Prefetch is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Instruction cache enable
@@ -47,8 +64,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Instruction cache is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Instruction cache is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data cache enable
@@ -61,8 +85,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data cache is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Data cache is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Instruction cache reset
@@ -75,8 +106,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Instruction cache is not reset
+            pub const NotReset: u32 = 0b0;
+
+            /// 0b1: Instruction cache is reset
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// Data cache reset
@@ -89,8 +127,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Data cache is not reset
+            pub const NotReset: u32 = 0b0;
+
+            /// 0b1: Data cache is reset
+            pub const Reset: u32 = 0b1;
+        }
     }
 
     /// CPU1 programm erase suspend request
@@ -103,8 +148,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Flash program and erase operations granted
+            pub const Granted: u32 = 0b0;
+
+            /// 0b1: Any new Flash program and erase operation is suspended until this bit is cleared. The PESD bit in FLASH_SR is set when PES bit in FLASH_ACR is set
+            pub const Suspended: u32 = 0b1;
+        }
     }
 
     /// Flash User area empty
@@ -117,8 +169,15 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: User Flash programmend
+            pub const Programmed: u32 = 0b0;
+
+            /// 0b1: User Flash empty
+            pub const Empty: u32 = 0b1;
+        }
     }
 }
 
@@ -144,7 +203,7 @@ pub mod KEYR {
 pub mod OPTKEYR {
 
     /// Option byte key
-    pub mod OPTKEYR {
+    pub mod OPTKEY {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)
@@ -167,10 +226,21 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No EOP operation occurred
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: An EOP event occurred
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear the flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -181,10 +251,16 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No memory opreation error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Memory operation error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -195,10 +271,16 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No size programming error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Programming error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -209,10 +291,16 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No write protection error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Write protection error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -223,10 +311,16 @@ pub mod SR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No programming alignment error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Programming alignment error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -237,10 +331,16 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No size error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Size error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -251,24 +351,36 @@ pub mod SR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No fast programming sequence error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Fast programming sequence error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
     /// Fast programming data miss error
-    pub mod MISERR {
+    pub mod MISSERR {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No fast programming data miss error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Fast programming data miss error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -279,16 +391,22 @@ pub mod SR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No fast programming error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Fast programming error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
     /// User Option OPTIVAL indication
-    pub mod OPTVN {
+    pub mod OPTNV {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -297,8 +415,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The OBL user option OPTVAL indicates "valid"
+            pub const Valid: u32 = 0b0;
+
+            /// 0b1: The OBL user option OPTVAL indicates "invalid"
+            pub const Invalid: u32 = 0b1;
+        }
     }
 
     /// PCROP read error
@@ -307,10 +432,16 @@ pub mod SR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No read-only error happened
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Read-only error happened
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -321,10 +452,16 @@ pub mod SR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No error in option and engineering bits
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: Error in option and engineering bits
+            pub const Error: u32 = 0b1;
+        }
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -339,8 +476,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No write/erase operation is in progress
+            pub const Inactive: u32 = 0b0;
+
+            /// 0b1: No write/erase operation is in progress
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Programming or erase configuration busy
@@ -353,8 +497,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PG, PNB, PER, MER bits available for writing
+            pub const Free: u32 = 0b0;
+
+            /// 0b1: PG, PNB, PER, MER bits not available for writing (operation ongoing)
+            pub const Busy: u32 = 0b1;
+        }
     }
 
     /// Programming / erase operation suspended
@@ -367,8 +518,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Flash program and erase operations granted
+            pub const Granted: u32 = 0b0;
+
+            /// 0b1: Any new Flash program and erase operation is suspended until this bit is cleared. This bit is set when the PES bit in FLASH_ACR is set
+            pub const Suspended: u32 = 0b1;
+        }
     }
 }
 
@@ -385,8 +543,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Flash programming disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Flash programming enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Page erase
@@ -399,8 +564,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Page erase disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Page erase enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Mass erase
@@ -413,8 +585,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No mass erase
+            pub const NoErase: u32 = 0b0;
+
+            /// 0b1: Trigger mass erase
+            pub const MassErase: u32 = 0b1;
+        }
     }
 
     /// Page number
@@ -437,10 +616,18 @@ pub mod CR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Options modification completed or idle
+            pub const Done: u32 = 0b0;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Trigger options programming operation
+            pub const Start: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -451,10 +638,8 @@ pub mod CR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::STRT::R;
+        pub use super::STRT::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -469,8 +654,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Fast programming disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Fast programming enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// End of operation interrupt enable
@@ -483,8 +675,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: End of program interrupt disable
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: End of program interrupt enable
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt enable
@@ -497,8 +696,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OPERR Error interrupt disable
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: OPERR Error interrupt enable
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// PCROP read error interrupt enable
@@ -511,8 +717,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PCROP read error interrupt disable
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: PCROP read error interrupt enable
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Force the option byte loading
@@ -521,10 +734,21 @@ pub mod CR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Option byte loaded
+            pub const Complete: u32 = 0b0;
+
+            /// 0b1: Option byte loading to be done
+            pub const NotComplete: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Reload option byte
+            pub const Reload: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -535,10 +759,18 @@ pub mod CR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: FLASH_CR options are unlocked
+            pub const Unlocked: u32 = 0b0;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: FLASH_CR options are locked
+            pub const Locked: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -549,10 +781,18 @@ pub mod CR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: FLASH_CR is unlocked
+            pub const Unlocked: u32 = 0b0;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: FLASH_CR is locked
+            pub const Locked: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -585,8 +825,15 @@ pub mod ECCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No System Flash memory ECC fail
+            pub const NotInFlash: u32 = 0b0;
+
+            /// 0b1: System Flash memory ECC fail
+            pub const InFlash: u32 = 0b1;
+        }
     }
 
     /// ECC correction interrupt enable
@@ -599,8 +846,15 @@ pub mod ECCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ECCC interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ECCC interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// ECC correction
@@ -609,10 +863,21 @@ pub mod ECCR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: ECC error corrected
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: No ECC error corrected
+            pub const Event: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear the flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -623,10 +888,16 @@ pub mod ECCR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Two ECC errors detected
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: No two ECC errors detected
+            pub const Event: u32 = 0b1;
+        }
+        pub use super::ECCC::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -645,8 +916,18 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b10101010: Level 0, readout protection not active
+            pub const Level0: u32 = 0b10101010;
+
+            /// 0b11001100: Level 2, chip readout protection active
+            pub const Level2: u32 = 0b11001100;
+
+            /// 0b10001000: Level 1, memories readout protection active (writes 0x88)
+            pub const Level1: u32 = 0b10001000;
+        }
     }
 
     /// System security enabled flag
@@ -659,8 +940,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Security disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Security enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// BOR reset Level
@@ -673,8 +961,24 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: BOR level 0. Reset level threshold is around 1.7 V
+            pub const Level0: u32 = 0b000;
+
+            /// 0b001: BOR level 1. Reset level threshold is around 2.0 V
+            pub const Level1: u32 = 0b001;
+
+            /// 0b010: BOR level 2. Reset level threshold is around 2.2 V
+            pub const Level2: u32 = 0b010;
+
+            /// 0b011: BOR level 3. Reset level threshold is around 2.5 V
+            pub const Level3: u32 = 0b011;
+
+            /// 0b100: BOR level 4. Reset level threshold is around 2.8 V
+            pub const Level4: u32 = 0b100;
+        }
     }
 
     /// nRST_STOP
@@ -687,8 +991,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Reset generated when entering the Standby mode
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: No reset generated when entering the Standby mode
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// nRST_STDBY
@@ -701,8 +1012,7 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::nRST_STOP::RW;
     }
 
     /// nRSTSHDW
@@ -715,8 +1025,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Reset generated when entering the Shutdown mode
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: No reset generated when entering the Shutdown mode
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// Independent watchdog selection
@@ -729,8 +1046,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Hardware independent watchdog
+            pub const Hardware: u32 = 0b0;
+
+            /// 0b1: Software independent watchdog
+            pub const Software: u32 = 0b1;
+        }
     }
 
     /// Independent watchdog counter freeze in Stop mode
@@ -743,8 +1067,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Independent watchdog counter frozen in Stop mode
+            pub const Frozen: u32 = 0b0;
+
+            /// 0b1: Independent watchdog counter running in Stop mode
+            pub const Running: u32 = 0b1;
+        }
     }
 
     /// Independent watchdog counter freeze in Standby mode
@@ -757,8 +1088,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Independent watchdog counter frozen in Standby mode
+            pub const Frozen: u32 = 0b0;
+
+            /// 0b1: Independent watchdog counter running in Standby mode
+            pub const Running: u32 = 0b1;
+        }
     }
 
     /// Window watchdog selection
@@ -771,8 +1109,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Hardware window watchdog
+            pub const Hardware: u32 = 0b0;
+
+            /// 0b1: Software window watchdog
+            pub const Software: u32 = 0b1;
+        }
     }
 
     /// Boot configuration
@@ -785,8 +1130,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: When nSWBOOT0 is cleared, select boot mode together with nBOOT0
+            pub const Clear: u32 = 0b0;
+
+            /// 0b1: When nSWBOOT0 is cleared, select boot mode together with nBOOT0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// SRAM2 parity check enable
@@ -799,12 +1151,19 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SRAM2 Parity check enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: SRAM2 Parity check disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// SRAM2 Erase when system reset
-    pub mod SRAM2_RST {
+    pub mod SRAM_RST {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -813,8 +1172,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SRAM1 and SRAM2 erased when a system reset occurs
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: SRAM1 and SRAM2 not erased when a system reset occurs
+            pub const NotReset: u32 = 0b1;
+        }
     }
 
     /// Software BOOT0 selection
@@ -827,8 +1193,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: BOOT0 taken from nBOOT0 in this register
+            pub const Bit: u32 = 0b0;
+
+            /// 0b1: BOOT0 taken from GPIO PH3/BOOT0
+            pub const Pin: u32 = 0b1;
+        }
     }
 
     /// nBOOT0 option bit
@@ -841,8 +1214,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: When nSWBOOT0 is cleared, select boot mode together with nBOOT1
+            pub const Clear: u32 = 0b0;
+
+            /// 0b1: When nSWBOOT0 is cleared, select boot mode together with nBOOT1
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// CPU1 CM4 Unique Boot entry enable option bit
@@ -855,8 +1235,15 @@ pub mod OPTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Boot lock is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Boot lock is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -1037,7 +1424,7 @@ pub struct RegisterBlock {
     pub OPTR: RWRegister<u32>,
 
     /// Flash PCROP zone A Start address register
-    pub PCROP1ASR: RORegister<u32>,
+    pub PCROP1ASR: RWRegister<u32>,
 
     /// Flash PCROP zone A End address register
     pub PCROP1AER: RWRegister<u32>,

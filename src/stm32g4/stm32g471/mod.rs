@@ -8,8 +8,11 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
+pub use super::instances::adc12_common;
+pub use super::instances::adc_g471_g491_g4a1 as adc;
 pub use super::instances::aes;
-pub use super::instances::comp_g431_g441_g471 as comp;
+pub use super::instances::comp_g431_g441_g471_g491_g4a1 as comp;
+pub use super::instances::cordic;
 pub use super::instances::crc;
 pub use super::instances::dac;
 pub use super::instances::dbgmcu;
@@ -17,56 +20,54 @@ pub use super::instances::dma;
 pub use super::instances::dmamux;
 pub use super::instances::exti;
 pub use super::instances::flash;
+pub use super::instances::fmac;
+pub use super::instances::fpu;
+pub use super::instances::fpu_cpacr;
 pub use super::instances::gpio;
 pub use super::instances::i2c_g471_g473_g474_g483_g484 as i2c;
 pub use super::instances::iwdg;
 pub use super::instances::lptimer1;
 pub use super::instances::lpuart1;
+pub use super::instances::mpu;
+pub use super::instances::nvic;
+pub use super::instances::nvic_stir;
 pub use super::instances::opamp_g431_g441_g471 as opamp;
 pub use super::instances::pwr;
 pub use super::instances::rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;
+pub use super::instances::sai_g431_g441_g471_g473_g474_g483_g484 as sai;
+pub use super::instances::scb;
+pub use super::instances::scb_actlr;
 pub use super::instances::spi_g471_g473_g474_g483_g484 as spi;
+pub use super::instances::stk;
 pub use super::instances::syscfg;
+pub use super::instances::tamp;
 pub use super::instances::tim1;
 pub use super::instances::tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
 pub use super::instances::tim2;
-pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim8;
-pub use super::instances::usart_g471_g473_g474_g483_g484 as usart;
+pub use super::instances::usart_g471_g473_g474_g483_g484_g491_g4a1 as usart;
 pub use super::instances::vrefbuf;
 pub use super::instances::wwdg;
-pub mod adc;
-pub mod adc12_common;
-pub use super::instances::cordic;
-pub use super::instances::fmac;
-pub use super::instances::fpu;
-pub use super::instances::fpu_cpacr;
-pub use super::instances::mpu;
-pub use super::instances::nvic;
-pub use super::instances::sai;
-pub use super::instances::scb;
-pub use super::instances::scb_actrl;
-pub use super::instances::stk;
-pub use super::instances::tamp;
 pub mod fdcan;
 pub use super::instances::crs;
+pub use super::instances::tim3;
 pub use super::instances::ucpd1;
-pub use super::instances::usb_fs_device;
+pub use super::instances::usb;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
     pub CRC: crc::Instance,
-    pub WWDG: wwdg::Instance,
     pub IWDG: iwdg::Instance,
+    pub WWDG: wwdg::Instance,
     pub I2C1: i2c::Instance,
     pub I2C2: i2c::Instance,
     pub I2C3: i2c::Instance,
@@ -90,7 +91,6 @@ pub struct Peripherals {
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
     pub TIM2: tim2::Instance,
-    pub TIM3: tim3::Instance,
     pub TIM4: tim4::Instance,
     pub TIM5: tim5::Instance,
     pub TIM6: tim6::Instance,
@@ -133,14 +133,16 @@ pub struct Peripherals {
     pub STK: stk::Instance,
     pub SCB: scb::Instance,
     pub NVIC: nvic::Instance,
+    pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
-    pub SCB_ACTRL: scb_actrl::Instance,
+    pub SCB_ACTLR: scb_actlr::Instance,
     pub FDCAN: fdcan::Instance,
     pub FDCAN1: fdcan::Instance,
     pub FDCAN2: fdcan::Instance,
     pub UCPD1: ucpd1::Instance,
-    pub USB_FS_device: usb_fs_device::Instance,
+    pub USB: usb::Instance,
     pub CRS: crs::Instance,
+    pub TIM3: tim3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -152,8 +154,8 @@ impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
             CRC: crc::CRC::steal(),
-            WWDG: wwdg::WWDG::steal(),
             IWDG: iwdg::IWDG::steal(),
+            WWDG: wwdg::WWDG::steal(),
             I2C1: i2c::I2C1::steal(),
             I2C2: i2c::I2C2::steal(),
             I2C3: i2c::I2C3::steal(),
@@ -177,7 +179,6 @@ impl Peripherals {
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
             TIM2: tim2::TIM2::steal(),
-            TIM3: tim3::TIM3::steal(),
             TIM4: tim4::TIM4::steal(),
             TIM5: tim5::TIM5::steal(),
             TIM6: tim6::TIM6::steal(),
@@ -220,14 +221,16 @@ impl Peripherals {
             STK: stk::STK::steal(),
             SCB: scb::SCB::steal(),
             NVIC: nvic::NVIC::steal(),
+            NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
-            SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
+            SCB_ACTLR: scb_actlr::SCB_ACTLR::steal(),
             FDCAN: fdcan::FDCAN::steal(),
             FDCAN1: fdcan::FDCAN1::steal(),
             FDCAN2: fdcan::FDCAN2::steal(),
             UCPD1: ucpd1::UCPD1::steal(),
-            USB_FS_device: usb_fs_device::USB_FS_device::steal(),
+            USB: usb::USB::steal(),
             CRS: crs::CRS::steal(),
+            TIM3: tim3::TIM3::steal(),
         }
     }
 }

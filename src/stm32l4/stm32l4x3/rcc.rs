@@ -1130,9 +1130,9 @@ pub mod AHB1RSTR {
 
     /// CRC reset
     pub mod CRCRST {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1587,6 +1587,20 @@ pub mod APB1RSTR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// USB FS reset
+    pub mod USBFSRST {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// APB1 peripheral reset register 2
@@ -1770,9 +1784,9 @@ pub mod AHB1ENR {
 
     /// CRC clock enable
     pub mod CRCEN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2116,8 +2130,8 @@ pub mod APB1ENR1 {
         pub mod RW {}
     }
 
-    /// SPI3 clock enable
-    pub mod SP3EN {
+    /// SPI peripheral 3 clock enable
+    pub mod SPI3EN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -2452,9 +2466,9 @@ pub mod AHB1SMENR {
 
     /// CRCSMEN
     pub mod CRCSMEN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! LCD-TFT Controller
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

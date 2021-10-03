@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Advanced-timers
 //!
-//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x6
+//! Used by: stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -186,6 +186,20 @@ pub mod CR1 {
             /// 0b1: Counter enabled
             pub const Enabled: u32 = 0b1;
         }
+    }
+
+    /// UIF status bit remapping
+    pub mod UIFREMAP {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -391,6 +405,48 @@ pub mod CR2 {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Output Idle state 5 (OC5 output)
+    pub mod OIS5 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Output Idle state 6 (OC6 output)
+    pub mod OIS6 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Master mode selection 2
+    pub mod MMS2 {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (4 bits: 0b1111 << 20)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1093,6 +1149,48 @@ pub mod SR {
             pub const UpdatePending: u32 = 0b1;
         }
     }
+
+    /// Break 2 interrupt flag
+    pub mod B2IF {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Compare 5 interrupt flag
+    pub mod CC5IF {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Compare 6 interrupt flag
+    pub mod CC6IF {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// event generation register
@@ -1218,6 +1316,20 @@ pub mod EGR {
             pub const Update: u32 = 0b1;
         }
     }
+
+    /// Break 2 generation
+    pub mod B2G {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// CCMR1_Output and CCMR1_Input
@@ -1252,47 +1364,29 @@ pub mod CCMR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs / OpmMode1: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
             pub const Frozen: u32 = 0b000;
 
-            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register / OpmMode2: Inversely to OpmMode1
             pub const ActiveOnMatch: u32 = 0b001;
 
-            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register / Reserved
             pub const InactiveOnMatch: u32 = 0b010;
 
-            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy / Reserved
             pub const Toggle: u32 = 0b011;
 
-            /// 0b100: OCyREF is forced low
+            /// 0b100: OCyREF is forced low / CombinedPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
             pub const ForceInactive: u32 = 0b100;
 
-            /// 0b101: OCyREF is forced high
+            /// 0b101: OCyREF is forced high / CombinedPwmMode2: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
             pub const ForceActive: u32 = 0b101;
 
-            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active / AsymmetricPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
             pub const PwmMode1: u32 = 0b110;
 
-            /// 0b111: Inversely to PwmMode1
+            /// 0b111: Inversely to PwmMode1 / AsymmetricPwmMode2: Inversely to AsymmetricPwmMode1
             pub const PwmMode2: u32 = 0b111;
-
-            /// 0b1000: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
-            pub const OpmMode1: u32 = 0b1000;
-
-            /// 0b1001: Inversely to OpmMode1
-            pub const OpmMode2: u32 = 0b1001;
-
-            /// 0b1100: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
-            pub const CombinedPwmMode1: u32 = 0b1100;
-
-            /// 0b1101: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
-            pub const CombinedPwmMode2: u32 = 0b1101;
-
-            /// 0b1110: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
-            pub const AsymmetricPwmMode1: u32 = 0b1110;
-
-            /// 0b1111: OCyREF has the same behavior as in PWM mode 2. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
-            pub const AsymmetricPwmMode2: u32 = 0b1111;
         }
     }
 
@@ -1427,6 +1521,40 @@ pub mod CCMR1 {
             /// 0b00: CC1 channel is configured as output
             pub const Output: u32 = 0b00;
         }
+    }
+
+    /// Output Compare 2 mode, bit 3
+    pub mod OC2M_3 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal output compare mode (modes 0-7)
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Extended output compare mode (modes 7-15)
+            pub const Extended: u32 = 0b1;
+        }
+    }
+
+    /// Output Compare 1 mode, bit 3
+    pub mod OC1M_3 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OC2M_3::RW;
     }
 
     /// Input capture 2 filter
@@ -1567,47 +1695,29 @@ pub mod CCMR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs / OpmMode1: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
             pub const Frozen: u32 = 0b000;
 
-            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register / OpmMode2: Inversely to OpmMode1
             pub const ActiveOnMatch: u32 = 0b001;
 
-            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register / Reserved
             pub const InactiveOnMatch: u32 = 0b010;
 
-            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy / Reserved
             pub const Toggle: u32 = 0b011;
 
-            /// 0b100: OCyREF is forced low
+            /// 0b100: OCyREF is forced low / CombinedPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
             pub const ForceInactive: u32 = 0b100;
 
-            /// 0b101: OCyREF is forced high
+            /// 0b101: OCyREF is forced high / CombinedPwmMode2: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
             pub const ForceActive: u32 = 0b101;
 
-            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active / AsymmetricPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
             pub const PwmMode1: u32 = 0b110;
 
-            /// 0b111: Inversely to PwmMode1
+            /// 0b111: Inversely to PwmMode1 / AsymmetricPwmMode2: Inversely to AsymmetricPwmMode1
             pub const PwmMode2: u32 = 0b111;
-
-            /// 0b1000: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
-            pub const OpmMode1: u32 = 0b1000;
-
-            /// 0b1001: Inversely to OpmMode1
-            pub const OpmMode2: u32 = 0b1001;
-
-            /// 0b1100: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
-            pub const CombinedPwmMode1: u32 = 0b1100;
-
-            /// 0b1101: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
-            pub const CombinedPwmMode2: u32 = 0b1101;
-
-            /// 0b1110: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
-            pub const AsymmetricPwmMode1: u32 = 0b1110;
-
-            /// 0b1111: OCyREF has the same behavior as in PWM mode 2. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
-            pub const AsymmetricPwmMode2: u32 = 0b1111;
         }
     }
 
@@ -1742,6 +1852,40 @@ pub mod CCMR2 {
             /// 0b00: CC3 channel is configured as output
             pub const Output: u32 = 0b00;
         }
+    }
+
+    /// Output Compare 3 mode, bit 3
+    pub mod OC3M_3 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal output compare mode (modes 0-7)
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Extended output compare mode (modes 7-15)
+            pub const Extended: u32 = 0b1;
+        }
+    }
+
+    /// Output Compare 4 mode, bit 3
+    pub mod OC4M_3 {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::OC3M_3::RW;
     }
 
     /// Input capture 4 filter
@@ -1999,6 +2143,76 @@ pub mod CCER {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Capture/Compare 5 output enable
+    pub mod CC5E {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 5 output polarity
+    pub mod CC5P {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 6 output enable
+    pub mod CC6E {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 6 output polarity
+    pub mod CC6P {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 4 complementary output polarity
+    pub mod CC4NP {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// counter
@@ -2010,6 +2224,20 @@ pub mod CNT {
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
         pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// UIF copy This bit is a read-only copy of the UIF bit of the TIMx_ISR register. If the UIFREMAP bit in the TIMxCR1 is reset, bit 31 is reserved and read at 0
+    pub mod UIFCPY {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2055,10 +2283,10 @@ pub mod ARR {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR1 {
 
-    /// Capture/Compare 1 value
+    /// Capture/Compare value
     pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2073,17 +2301,17 @@ pub mod CCR1 {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR2 {
     pub use super::CCR1::CCR;
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR3 {
     pub use super::CCR1::CCR;
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR4 {
     pub use super::CCR1::CCR;
 }
@@ -2127,8 +2355,8 @@ pub mod DMAR {
     pub mod DMAB {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2291,6 +2519,62 @@ pub mod BDTR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Break filter
+    pub mod BKF {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (4 bits: 0b1111 << 16)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break 2 filter
+    pub mod BK2F {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (4 bits: 0b1111 << 20)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break 2 enable
+    pub mod BK2E {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Break 2 polarity
+    pub mod BK2P {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// capture/compare mode register 3 (output mode)
@@ -2334,8 +2618,33 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs / OpmMode1: Retriggerable OPM mode 1 - In up-counting mode, the channel is active until a trigger event is detected (on TRGI signal). In down-counting mode, the channel is inactive
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register / OpmMode2: Inversely to OpmMode1
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register / Reserved
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy / Reserved
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low / CombinedPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC is the logical OR between OC1REF and OC2REF
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high / CombinedPwmMode2: OCyREF has the same behavior as in PWM mode 2. OCyREFC is the logical AND between OC1REF and OC2REF
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active / AsymmetricPwmMode1: OCyREF has the same behavior as in PWM mode 1. OCyREFC outputs OC1REF when the counter is counting up, OC2REF when it is counting down
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1 / AsymmetricPwmMode2: Inversely to AsymmetricPwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output compare 5 clear enable
@@ -2390,8 +2699,7 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC5M::RW;
     }
 
     /// Output compare 6 clear enable
@@ -2409,7 +2717,7 @@ pub mod CCMR3_Output {
     }
 
     /// Output Compare 5 mode
-    pub mod OC5M3 {
+    pub mod OC5M_3 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2418,12 +2726,19 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal output compare mode (modes 0-7)
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Extended output compare mode (modes 7-15)
+            pub const Extended: u32 = 0b1;
+        }
     }
 
     /// Output Compare 6 mode
-    pub mod OC6M3 {
+    pub mod OC6M_3 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -2432,15 +2747,14 @@ pub mod CCMR3_Output {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OC5M_3::RW;
     }
 }
 
-/// capture/compare register 5
+/// capture/compare register
 pub mod CCR5 {
 
-    /// Capture/Compare 5 value
+    /// Capture/Compare value
     pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2497,15 +2811,94 @@ pub mod CCR5 {
     }
 }
 
-/// capture/compare register 6
-pub mod CRR6 {
+/// capture/compare register
+pub mod CCR6 {
+    pub use super::CCR1::CCR;
+}
 
-    /// Capture/Compare 6 value
-    pub mod CCR6 {
+/// alternate function option register 1
+pub mod AF1 {
+
+    /// BRK BKIN input enable
+    pub mod BKINE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// BRK DFSDM_BREAK\[0\] enable
+    pub mod BKDFBKE {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// BRK BKIN input polarity
+    pub mod BKINP {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// alternate function option register 2
+pub mod AF2 {
+
+    /// BRK2 BKIN input enable
+    pub mod BK2INE {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// BRK2 DFSDM_BREAK\[0\] enable
+    pub mod BK2DFBKE {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// BRK2 BKIN input polarity
+    pub mod BK2INP {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2559,16 +2952,16 @@ pub struct RegisterBlock {
     /// repetition counter register
     pub RCR: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR1: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR2: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR3: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR4: RWRegister<u32>,
 
     /// break and dead-time register
@@ -2585,11 +2978,17 @@ pub struct RegisterBlock {
     /// capture/compare mode register 3 (output mode)
     pub CCMR3_Output: RWRegister<u32>,
 
-    /// capture/compare register 5
+    /// capture/compare register
     pub CCR5: RWRegister<u32>,
 
-    /// capture/compare register 6
-    pub CRR6: RWRegister<u32>,
+    /// capture/compare register
+    pub CCR6: RWRegister<u32>,
+
+    /// alternate function option register 1
+    pub AF1: RWRegister<u32>,
+
+    /// alternate function option register 2
+    pub AF2: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR1: u32,
@@ -2614,7 +3013,9 @@ pub struct ResetValues {
     pub DMAR: u32,
     pub CCMR3_Output: u32,
     pub CCR5: u32,
-    pub CRR6: u32,
+    pub CCR6: u32,
+    pub AF1: u32,
+    pub AF2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

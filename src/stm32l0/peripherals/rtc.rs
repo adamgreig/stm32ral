@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x0, stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

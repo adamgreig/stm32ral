@@ -6,10 +6,10 @@ use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// clock control register
+///
 pub mod CR {
 
-    /// Internal high-speed clock enable
+    /// HSI clock enable Set and cleared by software. Set by hardware to force the HSI to ON when the product leaves Stop mode, if STOPWUCK = 0 or STOPKERWUCK = 0. Set by hardware to force the HSI to ON when the product leaves Standby mode or in case of a failure of the HSE which is used as the system clock source. This bit cannot be cleared if the HSI is used directly (via SW mux) as system clock, or if the HSI is selected as reference clock for PLL1 with PLL1 enabled (PLL1ON bit set to 1).
     pub mod HSION {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -30,7 +30,7 @@ pub mod CR {
         }
     }
 
-    /// High Speed Internal clock enable in Stop mode
+    /// HSI clock enable in Stop mode Set and reset by software to force the HSI to ON, even in Stop mode, in order to be quickly available as kernel clock for peripherals. This bit has no effect on the value of HSION.
     pub mod HSIKERON {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -43,7 +43,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// HSI clock ready flag
+    /// HSI clock ready flag Set by hardware to indicate that the HSI oscillator is stable.
     pub mod HSIRDY {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -64,7 +64,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// HSI clock divider
+    /// HSI clock divider Set and reset by software. These bits allow selecting a division ratio in order to configure the wanted HSI clock frequency. The HSIDIV cannot be changed if the HSI is selected as reference clock for at least one enabled PLL (PLLxON bit set to 1). In that case, the new HSIDIV value is ignored.
     pub mod HSIDIV {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -91,7 +91,7 @@ pub mod CR {
         }
     }
 
-    /// HSI divider flag
+    /// HSI divider flag Set and reset by hardware. As a write operation to HSIDIV has not an immediate effect on the frequency, this flag indicates the current status of the HSI divider. HSIDIVF goes immediately to 0 when HSIDIV value is changed, and is set back to 1 when the output frequency matches the value programmed into HSIDIV. clock setting is completed)
     pub mod HSIDIVF {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -112,7 +112,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// CSI clock enable
+    /// CSI clock enable Set and reset by software to enable/disable CSI clock for system and/or peripheral. Set by hardware to force the CSI to ON when the system leaves Stop mode, if STOPWUCK = 1 or STOPKERWUCK = 1. This bit cannot be cleared if the CSI is used directly (via SW mux) as system clock, or if the CSI is selected as reference clock for PLL1 with PLL1 enabled (PLL1ON bit set to 1).
     pub mod CSION {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -125,7 +125,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// CSI clock ready flag
+    /// CSI clock ready flag Set by hardware to indicate that the CSI oscillator is stable. This bit is activated only if the RC is enabled by CSION (it is not activated if the CSI is enabled by CSIKERON or by a peripheral request).
     pub mod CSIRDY {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -138,7 +138,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// CSI clock enable in Stop mode
+    /// CSI clock enable in Stop mode Set and reset by software to force the CSI to ON, even in Stop mode, in order to be quickly available as kernel clock for some peripherals. This bit has no effect on the value of CSION.
     pub mod CSIKERON {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -151,7 +151,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// RC48 clock enable
+    /// HSI48 clock enable Set by software and cleared by software or by the hardware when the system enters to Stop or Standby mode.
     pub mod HSI48ON {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -164,7 +164,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// RC48 clock ready flag
+    /// HSI48 clock ready flag Set by hardware to indicate that the HSI48 oscillator is stable.
     pub mod HSI48RDY {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -177,8 +177,8 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// D1 domain clocks ready flag
-    pub mod D1CKRDY {
+    /// CPU related clocks ready flag Set by hardware to indicate that the CPU related clocks (CPU, APB3, AXI bus matrix and related memories) are available.
+    pub mod CPUCKRDY {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -190,8 +190,8 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// D2 domain clocks ready flag
-    pub mod D2CKRDY {
+    /// CPU domain clocks ready flag Set by hardware to indicate that the following CPU domain clocks are available: APB1, APB2, AHB bus matrix.
+    pub mod CDCKRDY {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -203,7 +203,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// HSE clock enable
+    /// HSE clock enable Set and cleared by software. Cleared by hardware to stop the HSE when entering Stop or Standby mode. This bit cannot be cleared if the HSE is used directly (via SW mux) as system clock, or if the HSE is selected as reference clock for PLL1 with PLL1 enabled (PLL1ON bit set to 1).
     pub mod HSEON {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -216,7 +216,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// HSE clock ready flag
+    /// HSE clock ready flag Set by hardware to indicate that the HSE oscillator is stable.
     pub mod HSERDY {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -229,7 +229,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// HSE clock bypass
+    /// HSE clock bypass Set and cleared by software to bypass the oscillator with an external clock. The external clock must be enabled with the HSEON bit to be used by the device. The HSEBYP bit can be written only if the HSE oscillator is disabled.
     pub mod HSEBYP {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -250,7 +250,7 @@ pub mod CR {
         }
     }
 
-    /// HSE Clock Security System enable
+    /// HSE clock security system enable Set by software to enable clock security system on HSE. This bit is âset onlyâ (disabled by a system reset or when the system enters in Standby mode). When HSECSSON is set, the clock detector is enabled by hardware when the HSE is ready and disabled by hardware if an oscillator failure is detected.
     pub mod HSECSSON {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
@@ -263,7 +263,21 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// PLL1 enable
+    /// external high speed clock type in Bypass mode Set and reset by software to select the external clock type (analog or digital). The external clock must be enabled with the HSEON bit to be used by the device. The HSEEXT bit can be written only if the HSE oscillator is disabled.
+    pub mod HSEEXT {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// PLL1 enable Set and cleared by software to enable PLL1. Cleared by hardware when entering Stop or Standby mode. Note that the hardware prevents writing this bit to 0, if the PLL1 output is used as the system clock.
     pub mod PLL1ON {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -276,7 +290,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// PLL1 clock ready flag
+    /// PLL1 clock ready flag Set by hardware to indicate that the PLL1 is locked.
     pub mod PLL1RDY {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -289,7 +303,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// PLL2 enable
+    /// PLL2 enable Set and cleared by software to enable PLL2. Cleared by hardware when entering Stop or Standby mode.
     pub mod PLL2ON {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
@@ -302,7 +316,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// PLL2 clock ready flag
+    /// PLL2 clock ready flag Set by hardware to indicate that the PLL2 is locked.
     pub mod PLL2RDY {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -315,7 +329,7 @@ pub mod CR {
         pub mod RW {}
     }
 
-    /// PLL3 enable
+    /// PLL3 enable Set and cleared by software to enable PLL3. Cleared by hardware when entering Stop or Standby mode.
     pub mod PLL3ON {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -328,7 +342,7 @@ pub mod CR {
         pub use super::HSION::RW;
     }
 
-    /// PLL3 clock ready flag
+    /// PLL3 clock ready flag Set by hardware to indicate that the PLL3 is locked.
     pub mod PLL3RDY {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
@@ -342,10 +356,42 @@ pub mod CR {
     }
 }
 
-/// RCC Clock Recovery RC Register
+/// RCC HSI calibration register
+pub mod HSICFGR {
+
+    /// HSI clock calibration Set by hardware by option byte loading during system reset nreset. Adjusted by software through trimming bits HSITRIM. This field represents the sum of engineering option byte calibration value and HSITRIM bits value.
+    pub mod HSICAL {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (12 bits: 0xfff << 0)
+        pub const mask: u32 = 0xfff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// HSI clock trimming Set by software to adjust calibration. HSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_HSI_opt) in order to form the calibration trimming value. HSICALÂ =Â HSITRIMÂ +Â FLASH_HSI_opt. Note: The reset value of the field is 0x40.
+    pub mod HSITRIM {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (7 bits: 0x7f << 24)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// RCC clock recovery RC register
 pub mod CRRCR {
 
-    /// Internal RC 48 MHz clock calibration
+    /// Internal RC 48 MHz clock calibration Set by hardware by option byte loading during system reset nreset. Read-only.
     pub mod HSI48CAL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -360,10 +406,42 @@ pub mod CRRCR {
     }
 }
 
-/// RCC Clock Configuration Register
+/// RCC CSI calibration register
+pub mod CSICFGR {
+
+    /// CSI clock calibration Set by hardware by option byte loading during system reset nreset. Adjusted by software through trimming bits CSITRIM. This field represents the sum of engineering option byte calibration value and CSITRIM bits value.
+    pub mod CSICAL {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// CSI clock trimming Set by software to adjust calibration. CSITRIM field is added to the engineering option bytes loaded during reset phase (FLASH_CSI_opt) in order to form the calibration trimming value. CSICALÂ =Â CSITRIMÂ +Â FLASH_CSI_opt. Note: The reset value of the field is 0x20.
+    pub mod CSITRIM {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (6 bits: 0x3f << 24)
+        pub const mask: u32 = 0x3f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+///
 pub mod CFGR {
 
-    /// System clock switch
+    /// system clock and trace clock switch Set and reset by software to select system clock and trace clock sources (sys_ck and traceclk). Set by hardware in order to: force the selection of the HSI or CSI (depending on STOPWUCK selection) when leaving a system Stop mode force the selection of the HSI in case of failure of the HSE when used directly or indirectly as system clock others: reserved
     pub mod SW {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -390,7 +468,7 @@ pub mod CFGR {
         }
     }
 
-    /// System clock switch status
+    /// system clock switch status Set and reset by hardware to indicate which clock source is used as system clock. others: reserved
     pub mod SWS {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -417,7 +495,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 
-    /// System clock selection after a wake up from system Stop
+    /// system clock selection after a wake up from system Stop Set and reset by software to select the system wakeup clock from system Stop. The selected clock is also used as emergency clock for the clock security system (CSS) on HSE. See for details. STOPWUCK must not be modified when CSS is enabled (by HSECSSON bit) and the system clock is HSE (SWSÂ =Â 10) or a switch on HSE is requested (SWÂ =10).
     pub mod STOPWUCK {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -438,7 +516,7 @@ pub mod CFGR {
         }
     }
 
-    /// Kernel clock selection after a wake up from system Stop
+    /// kernel clock selection after a wake up from system Stop Set and reset by software to select the kernel wakeup clock from system Stop. See for details.
     pub mod STOPKERWUCK {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -451,7 +529,7 @@ pub mod CFGR {
         pub use super::STOPWUCK::RW;
     }
 
-    /// HSE division factor for RTC clock
+    /// HSE division factor for RTC clock Set and cleared by software to divide the HSE to generate a clock for RTC. Caution: The software must set these bits correctly to ensure that the clock supplied to the RTC is lower than 1Â MHz. These bits must be configured if needed before selecting the RTC clock source. ...
     pub mod RTCPRE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -465,28 +543,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 
-    /// High Resolution Timer clock prescaler selection
-    pub mod HRTIMSEL {
-        /// Offset (14 bits)
-        pub const offset: u32 = 14;
-        /// Mask (1 bit: 1 << 14)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The HRTIM prescaler clock source is the same as other timers (rcc_timy_ker_ck)
-            pub const TIMY_KER: u32 = 0b0;
-
-            /// 0b1: The HRTIM prescaler clock source is the CPU clock (c_ck)
-            pub const C_CK: u32 = 0b1;
-        }
-    }
-
-    /// Timers clocks prescaler selection
+    /// timers clocks prescaler selection This bit is set and reset by software to control the clock frequency of all the timers connected to APB1 and APB2 domains. Refer to for more details.
     pub mod TIMPRE {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -507,7 +564,7 @@ pub mod CFGR {
         }
     }
 
-    /// MCO1 prescaler
+    /// MCO1 prescaler Set and cleared by software to configure the prescaler of the MCO1. Modification of this prescaler may generate glitches on MCO1. It is highly recommended to change this prescaler only after reset, before enabling the external oscillators and the PLLs. ...
     pub mod MCO1PRE {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -521,7 +578,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 
-    /// Micro-controller clock output 1
+    /// Microcontroller clock output 1 Set and cleared by software. Clock source selection may generate glitches on MCO1. It is highly recommended to configure these bits only after reset, before enabling the external oscillators and the PLLs. others: reserved
     pub mod MCO1 {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -551,7 +608,7 @@ pub mod CFGR {
         }
     }
 
-    /// MCO2 prescaler
+    /// MCO2 prescaler Set and cleared by software to configure the prescaler of the MCO2. Modification of this prescaler may generate glitches on MCO2. It is highly recommended to change this prescaler only after reset, before enabling the external oscillators and the PLLs. ...
     pub mod MCO2PRE {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -565,7 +622,7 @@ pub mod CFGR {
         pub mod RW {}
     }
 
-    /// Micro-controller clock output 2
+    /// microcontroller clock output 2 Set and cleared by software. Clock source selection may generate glitches on MCO2. It is highly recommended to configure these bits only after reset, before enabling the external oscillators and the PLLs. others: reserved
     pub mod MCO2 {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
@@ -599,10 +656,10 @@ pub mod CFGR {
     }
 }
 
-/// RCC Domain 1 Clock Configuration Register
-pub mod D1CFGR {
+///
+pub mod CDCFGR1 {
 
-    /// D1 domain AHB prescaler
+    /// CPU domain AHB prescaler Set and reset by software to control the division factor of rcc_hclk3 and rcc_aclk. Changing this division ratio has an impact on the frequency of all bus matrix clocks. 0xxx: rcc_hclk3 = sys_cdcpre_ck (default after reset) Note: The clocks are divided by the new prescaler factor from1 to 16 periods of the slowest APB clock among rcc_pclk\[4:1\] after HPRE update. Note: Note also that rcc_hclk3 = rcc_aclk.
     pub mod HPRE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -644,8 +701,8 @@ pub mod D1CFGR {
         }
     }
 
-    /// D1 domain APB3 prescaler
-    pub mod D1PPRE {
+    /// CPU domain APB3 prescaler Set and reset by software to control the division factor of rcc_pclk3. The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk3 after CDPPRE write. 0xx: rcc_pclk3 = rcc_hclk3 (default after reset)
+    pub mod CDPPRE {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (3 bits: 0b111 << 4)
@@ -674,8 +731,8 @@ pub mod D1CFGR {
         }
     }
 
-    /// D1 domain Core prescaler
-    pub mod D1CPRE {
+    /// CPU domain core prescaler Set and reset by software to control the CPU domain CPU clock division factor. Changing this division ratio has an impact on the frequency of the CPU clock and all bus matrix clocks. After changing this prescaler value, it takes up to 16 periods of the slowest APB clock before the new division ratio is taken into account. The application can check if the new division factor is taken into account by reading back this register. 0xxx: sys_ck not divided (default after reset)
+    pub mod CDCPRE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (4 bits: 0b1111 << 8)
@@ -688,11 +745,11 @@ pub mod D1CFGR {
     }
 }
 
-/// RCC Domain 2 Clock Configuration Register
-pub mod D2CFGR {
+///
+pub mod CDCFGR2 {
 
-    /// D2 domain APB1 prescaler
-    pub mod D2PPRE1 {
+    /// CPU domain APB1 prescaler Set and reset by software to control the CPU domain APB1 clock division factor. The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk1 after CDPPRE1 write. 0xx: rcc_pclk1 = rcc_hclk1 (default after reset)
+    pub mod CDPPRE1 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (3 bits: 0b111 << 4)
@@ -721,8 +778,8 @@ pub mod D2CFGR {
         }
     }
 
-    /// D2 domain APB2 prescaler
-    pub mod D2PPRE2 {
+    /// CPU domain APB2 prescaler Set and reset by software to control the CPU domain APB2 clock division factor. The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk1 after CDPPRE2 write. 0xx: rcc_pclk2 = rcc_hclk1 (default after reset)
+    pub mod CDPPRE2 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (3 bits: 0b111 << 8)
@@ -731,15 +788,15 @@ pub mod D2CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::D2PPRE1::RW;
+        pub use super::CDPPRE1::RW;
     }
 }
 
-/// RCC Domain 3 Clock Configuration Register
-pub mod D3CFGR {
+///
+pub mod SRDCFGR {
 
-    /// D3 domain APB4 prescaler
-    pub mod D3PPRE {
+    /// SmartRun domain APB4 prescaler Set and reset by software to control the SmartRun domain APB4 clock division factor. The clock is divided by the new prescaler factor from 1 to 16 cycles of rcc_hclk4 after SRDPPRE write. 0xx: rcc_pclk4 = rcc_hclk4 (default after reset)
+    pub mod SRDPPRE {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (3 bits: 0b111 << 4)
@@ -751,28 +808,25 @@ pub mod D3CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b000: rcc_hclk not divided
-            pub const Div1: u32 = 0b000;
+            /// 0b100: rcc_pclk4 = rcc_hclk4 / 2
+            pub const B_0x4: u32 = 0b100;
 
-            /// 0b100: rcc_hclk divided by 2
-            pub const Div2: u32 = 0b100;
+            /// 0b101: rcc_pclk4 = rcc_hclk4 / 4
+            pub const B_0x5: u32 = 0b101;
 
-            /// 0b101: rcc_hclk divided by 4
-            pub const Div4: u32 = 0b101;
+            /// 0b110: rcc_pclk4 = rcc_hclk4 / 8
+            pub const B_0x6: u32 = 0b110;
 
-            /// 0b110: rcc_hclk divided by 8
-            pub const Div8: u32 = 0b110;
-
-            /// 0b111: rcc_hclk divided by 16
-            pub const Div16: u32 = 0b111;
+            /// 0b111: rcc_pclk4 = rcc_hclk4 / 16
+            pub const B_0x7: u32 = 0b111;
         }
     }
 }
 
-/// RCC PLLs Clock Source Selection Register
+///
 pub mod PLLCKSELR {
 
-    /// DIVMx and PLLs clock source selection
+    /// DIVMx and PLLs clock source selection Set and reset by software to select the PLL clock source. These bits can be written only when all PLLs are disabled. In order to save power, when no PLL is used, the value of PLLSRC must be set to '11â.
     pub mod PLLSRC {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -799,7 +853,7 @@ pub mod PLLCKSELR {
         }
     }
 
-    /// Prescaler for PLL1
+    /// prescaler for PLL1 Set and cleared by software to configure the prescaler of the PLL1. The hardware does not allow any modification of this prescaler when PLL1 is enabled (PLL1ONÂ =Â 1). In order to save power when PLL1 is not used, the value of DIVM1 must be set to 0. ... ...
     pub mod DIVM1 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -813,7 +867,7 @@ pub mod PLLCKSELR {
         pub mod RW {}
     }
 
-    /// Prescaler for PLL2
+    /// prescaler for PLL2 Set and cleared by software to configure the prescaler of the PLL2. The hardware does not allow any modification of this prescaler when PLL2 is enabled (PLL2ONÂ =Â 1). In order to save power when PLL2 is not used, the value of DIVM2 must be set to 0. ... ...
     pub mod DIVM2 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -827,7 +881,7 @@ pub mod PLLCKSELR {
         pub mod RW {}
     }
 
-    /// Prescaler for PLL3
+    /// prescaler for PLL3 Set and cleared by software to configure the prescaler of the PLL3. The hardware does not allow any modification of this prescaler when PLL3 is enabled (PLL3ONÂ =Â 1). In order to save power when PLL3 is not used, the value of DIVM3 must be set to 0. ... ...
     pub mod DIVM3 {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -842,10 +896,10 @@ pub mod PLLCKSELR {
     }
 }
 
-/// RCC PLLs Configuration Register
+///
 pub mod PLLCFGR {
 
-    /// PLL1 fractional latch enable
+    /// PLL1 fractional latch enable Set and reset by software to latch the content of FRACN1 into the sigma-delta modulator. In order to latch the FRACN1 value into the sigma-delta modulator, PLL1FRACEN must be set to 0, then set to 1. The transition 0 to 1 transfers the content of FRACN1 into the modulator. Refer to for additional information.
     pub mod PLL1FRACEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -866,7 +920,7 @@ pub mod PLLCFGR {
         }
     }
 
-    /// PLL1 VCO selection
+    /// PLL1 VCO selection Set and reset by software to select the proper VCO frequency range used for PLL1. These bits must be written before enabling the PLL1.
     pub mod PLL1VCOSEL {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -887,7 +941,7 @@ pub mod PLLCFGR {
         }
     }
 
-    /// PLL1 input frequency range
+    /// PLL1 input frequency range Set and reset by software to select the proper reference frequency range used for PLL1. This bit must be written before enabling the PLL1.
     pub mod PLL1RGE {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -914,7 +968,7 @@ pub mod PLLCFGR {
         }
     }
 
-    /// PLL2 fractional latch enable
+    /// PLL2 fractional latch enable Set and reset by software to latch the content of FRACN2 into the sigma-delta modulator. In order to latch the FRACN2 value into the sigma-delta modulator, PLL2FRACEN must be set to 0, then set to 1. The transition 0 to 1 transfers the content of FRACN2 into the modulator. Refer to for additional information.
     pub mod PLL2FRACEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -927,7 +981,7 @@ pub mod PLLCFGR {
         pub use super::PLL1FRACEN::RW;
     }
 
-    /// PLL2 VCO selection
+    /// PLL2 VCO selection Set and reset by software to select the proper VCO frequency range used for PLL2. This bit must be written before enabling the PLL2.
     pub mod PLL2VCOSEL {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -940,7 +994,7 @@ pub mod PLLCFGR {
         pub use super::PLL1VCOSEL::RW;
     }
 
-    /// PLL2 input frequency range
+    /// PLL2 input frequency range Set and reset by software to select the proper reference frequency range used for PLL2. These bits must be written before enabling the PLL2.
     pub mod PLL2RGE {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -953,7 +1007,7 @@ pub mod PLLCFGR {
         pub use super::PLL1RGE::RW;
     }
 
-    /// PLL3 fractional latch enable
+    /// PLL3 fractional latch enable Set and reset by software to latch the content of FRACN3 into the sigma-delta modulator. In order to latch the FRACN3 value into the sigma-delta modulator, PLL3FRACEN must be set to 0, then set to 1. The transition 0 to 1 transfers the content of FRACN3 into the modulator. Refer to for additional information.
     pub mod PLL3FRACEN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -966,7 +1020,7 @@ pub mod PLLCFGR {
         pub use super::PLL1FRACEN::RW;
     }
 
-    /// PLL3 VCO selection
+    /// PLL3 VCO selection Set and reset by software to select the proper VCO frequency range used for PLL3. This bit must be written before enabling the PLL3.
     pub mod PLL3VCOSEL {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -979,7 +1033,7 @@ pub mod PLLCFGR {
         pub use super::PLL1VCOSEL::RW;
     }
 
-    /// PLL3 input frequency range
+    /// PLL3 input frequency range Set and reset by software to select the proper reference frequency range used for PLL3. These bits must be written before enabling the PLL3.
     pub mod PLL3RGE {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -992,7 +1046,7 @@ pub mod PLLCFGR {
         pub use super::PLL1RGE::RW;
     }
 
-    /// PLL1 DIVP divider output enable
+    /// PLL1 DIVP divider output enable Set and reset by software to enable the pll1_p_ck output of the PLL1. This bit can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0). In order to save power, when the pll1_p_ck output of the PLL1 is not used, the pll1_p_ck must be disabled.
     pub mod DIVP1EN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1013,7 +1067,7 @@ pub mod PLLCFGR {
         }
     }
 
-    /// PLL1 DIVQ divider output enable
+    /// PLL1 DIVQ divider output enable Set and reset by software to enable the pll1_q_ck output of the PLL1. In order to save power, when the pll1_q_ck output of the PLL1 is not used, the pll1_q_ck must be disabled. This bit can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0).
     pub mod DIVQ1EN {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -1026,7 +1080,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL1 DIVR divider output enable
+    /// PLL1 DIVR divider output enable Set and reset by software to enable the pll1_r_ck output of the PLL1. To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used. This bit can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0).
     pub mod DIVR1EN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -1039,7 +1093,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL2 DIVP divider output enable
+    /// PLL2 DIVP divider output enable Set and reset by software to enable the pll2_p_ck output of the PLL2. This bit can be written only when the PLL2 is disabled (PLL2ON = 0 and PLL2RDY = 0). To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used.
     pub mod DIVP2EN {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
@@ -1052,7 +1106,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL2 DIVQ divider output enable
+    /// PLL2 DIVQ divider output enable Set and reset by software to enable the pll2_q_ck output of the PLL2. To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used. This bit can be written only when the PLL2 is disabled (PLL2ON = 0 and PLL2RDY = 0).
     pub mod DIVQ2EN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -1065,7 +1119,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL2 DIVR divider output enable
+    /// PLL2 DIVR divider output enable Set and reset by software to enable the pll2_r_ck output of the PLL2. To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used. This bit can be written only when the PLL2 is disabled (PLL2ON = 0 and PLL2RDY = 0).
     pub mod DIVR2EN {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -1078,7 +1132,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL3 DIVP divider output enable
+    /// PLL3 DIVP divider output enable Set and reset by software to enable the pll3_p_ck output of the PLL3. This bit can be written only when the PLL3 is disabled (PLL3ON = 0 and PLL3RDY = 0). To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used.
     pub mod DIVP3EN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -1091,7 +1145,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL3 DIVQ divider output enable
+    /// PLL3 DIVQ divider output enable Set and reset by software to enable the pll3_q_ck output of the PLL3. To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used. This bit can be written only when the PLL3 is disabled (PLL3ON = 0 and PLL3RDY = 0).
     pub mod DIVQ3EN {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -1104,7 +1158,7 @@ pub mod PLLCFGR {
         pub use super::DIVP1EN::RW;
     }
 
-    /// PLL3 DIVR divider output enable
+    /// PLL3 DIVR divider output enable Set and reset by software to enable the pll3_r_ck output of the PLL3. To save power, DIVR3EN and DIVR3 bits must be set to 0 when the pll3_r_ck is not used. This bit can be written only when the PLL3 is disabled (PLL3ON = 0 and PLL3RDY = 0).
     pub mod DIVR3EN {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1118,10 +1172,10 @@ pub mod PLLCFGR {
     }
 }
 
-/// RCC PLL1 Dividers Configuration Register
+///
 pub mod PLL1DIVR {
 
-    /// Multiplication factor for PLL1 VCO
+    /// multiplication factor for PLL1 VCO Set and reset by software to control the multiplication factor of the VCO. These bits can be written only when the PLL is disabled (PLL1ON = PLL1RDY = 0). ..........: not used ... ... Others: wrong configurations The software must set correctly these bits to insure that the VCO output frequency is between its valid frequency range, that is: 128 to 560Â MHz if PLL1VCOSEL = 0 150 to 420Â MHz if PLL1VCOSEL = 1 VCO output frequency = Fref1_ck x DIVN1, when fractional value 0 has been loaded into FRACN1, with: DIVN1 between 8 and 420 The input frequency Fref1_ck must be between 1 and 16Â MHz.
     pub mod DIVN1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1135,7 +1189,7 @@ pub mod PLL1DIVR {
         pub mod RW {}
     }
 
-    /// PLL1 DIVP division factor
+    /// PLL1 DIVP division factor Set and reset by software to control the frequency of the pll1_p_ck clock. These bits can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0). Note that odd division factors are not allowed. ...
     pub mod DIVP1 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -1345,7 +1399,7 @@ pub mod PLL1DIVR {
         }
     }
 
-    /// PLL1 DIVQ division factor
+    /// PLL1 DIVQ division factor Set and reset by software to control the frequency of the pll1_q_ck clock. These bits can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0). ...
     pub mod DIVQ1 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1359,7 +1413,7 @@ pub mod PLL1DIVR {
         pub mod RW {}
     }
 
-    /// PLL1 DIVR division factor
+    /// PLL1 DIVR division factor Set and reset by software to control the frequency of the pll1_r_ck clock. These bits can be written only when the PLL1 is disabled (PLL1ON = 0 and PLL1RDY = 0). ...
     pub mod DIVR1 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1374,10 +1428,10 @@ pub mod PLL1DIVR {
     }
 }
 
-/// RCC PLL1 Fractional Divider Register
+///
 pub mod PLL1FRACR {
 
-    /// Fractional part of the multiplication factor for PLL1 VCO
+    /// fractional part of the multiplication factor for PLL1 VCO Set and reset by software to control the fractional part of the multiplication factor of the VCO. These bits can be written at any time, allowing dynamic fine-tuning of the PLL1 VCO. The software must set correctly these bits to insure that the VCO output frequency is between its valid frequency range, that is: 128 to 560Â MHz if PLL1VCOSEL = 0 150 to 420Â MHz if PLL1VCOSEL = 1 VCO output frequency = Fref1_ck x (DIVN1 + (FRACN1 / 213)), with DIVN1 between 8 and 420 FRACN1 can be between 0 and 213- 1 The input frequency Fref1_ck must be between 1 and 16 MHz. To change the FRACN value on-the-fly even if the PLL is enabled, the application must proceed as follows: Set the bit PLL1FRACEN to 0. Write the new fractional value into FRACN1. Set the bit PLL1FRACEN to 1.
     pub mod FRACN1 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1392,10 +1446,10 @@ pub mod PLL1FRACR {
     }
 }
 
-/// RCC PLL2 Dividers Configuration Register
+///
 pub mod PLL2DIVR {
 
-    /// Multiplication factor for PLL1 VCO
+    /// multiplication factor for PLL2 VCO Set and reset by software to control the multiplication factor of the VCO. These bits can be written only when the PLL is disabled (PLL2ON = PLL2RDY = 0). ..........: not used ... ... Others: wrong configurations The software must set correctly these bits to insure that the VCO output frequency is between its valid frequency range, that is: 128 to 560Â MHz if PLL2VCOSEL = 0 150 to 420Â MHz if PLL2VCOSEL = 1 VCO output frequency = Fref2_ck x DIVN2, when fractional value 0 has been loaded into FRACN2, with DIVN2 between 8 and 420 The input frequency Fref2_ck must be between 1 and 16MHz.
     pub mod DIVN2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1409,7 +1463,7 @@ pub mod PLL2DIVR {
         pub mod RW {}
     }
 
-    /// PLL1 DIVP division factor
+    /// PLL2 DIVP division factor Set and reset by software to control the frequency of the pll2_p_ck clock. These bits can be written only when the PLL2 is disabled (PLL2ON = PLL2RDY = 0). ...
     pub mod DIVP2 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -1423,7 +1477,7 @@ pub mod PLL2DIVR {
         pub mod RW {}
     }
 
-    /// PLL1 DIVQ division factor
+    /// PLL2 DIVQ division factor Set and reset by software to control the frequency of the pll2_q_ck clock. These bits can be written only when the PLL2 is disabled (PLL2ON = PLL2RDY = 0). ...
     pub mod DIVQ2 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1437,7 +1491,7 @@ pub mod PLL2DIVR {
         pub mod RW {}
     }
 
-    /// PLL1 DIVR division factor
+    /// PLL2 DIVR division factor Set and reset by software to control the frequency of the pll2_r_ck clock. These bits can be written only when the PLL2 is disabled (PLL2ON = PLL2RDY = 0). ...
     pub mod DIVR2 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1452,10 +1506,10 @@ pub mod PLL2DIVR {
     }
 }
 
-/// RCC PLL2 Fractional Divider Register
+///
 pub mod PLL2FRACR {
 
-    /// Fractional part of the multiplication factor for PLL VCO
+    /// fractional part of the multiplication factor for PLL2 VCO Set and reset by software to control the fractional part of the multiplication factor of the VCO. These bits can be written at any time, allowing dynamic fine-tuning of the PLL2 VCO. The software must set correctly these bits to insure that the VCO output frequency is between its valid frequency range, that is: 128 to 560Â MHz if PLL2VCOSEL = 0 150 to 420Â MHz if PLL2VCOSEL = 1 VCO output frequency = Fref2_ck x (DIVN2 + (FRACN2 / 213)), with DIVN2 between 8 and 420 FRACN2 can be between 0 and 213 - 1 The input frequency Fref2_ck must be between 1 and 16 MHz. In order to change the FRACN value on-the-fly even if the PLL is enabled, the application must proceed as follows: Set the bit PLL2FRACEN to 0. Write the new fractional value into FRACN2. Set the bit PLL2FRACEN to 1.
     pub mod FRACN2 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1470,10 +1524,10 @@ pub mod PLL2FRACR {
     }
 }
 
-/// RCC PLL3 Dividers Configuration Register
+///
 pub mod PLL3DIVR {
 
-    /// Multiplication factor for PLL1 VCO
+    /// Multiplication factor for PLL3 VCO Set and reset by software to control the multiplication factor of the VCO. These bits can be written only when the PLL is disabled (PLL3ON = PLL3RDY = 0). ...........: not used ... ... Others: wrong configurations The software must set correctly these bits to insure that the VCO output frequency is between its valid frequency range, that is: 128 to 560Â MHz if PLL3VCOSEL = 0 150 to 420Â MHz if PLL3VCOSEL = 1 VCO output frequency = Fref3_ck x DIVN3, when fractional value 0 has been loaded into FRACN3, with: DIVN3 between 8 and 420 The input frequency Fref3_ck must be between 1 and 16MHz
     pub mod DIVN3 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1483,11 +1537,24 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000000110: wrong configuration
+            pub const B_0x6: u32 = 0b000000110;
+
+            /// 0b000000111: DIVN3 = 8
+            pub const B_0x7: u32 = 0b000000111;
+
+            /// 0b010000000: DIVN3 = 129 (default after reset)
+            pub const B_0x80: u32 = 0b010000000;
+
+            /// 0b110100011: DIVN3 = 420
+            pub const B_0x1A3: u32 = 0b110100011;
+        }
     }
 
-    /// PLL DIVP division factor
+    /// PLL3 DIVP division factor Set and reset by software to control the frequency of the pll3_p_ck clock. These bits can be written only when the PLL3 is disabled (PLL3ON = PLL3RDY = 0). ...
     pub mod DIVP3 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -1497,11 +1564,27 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000000: pll3_p_ck = vco3_ck
+            pub const B_0x0: u32 = 0b0000000;
+
+            /// 0b0000001: pll3_p_ck = vco3_ck / 2 (default after reset)
+            pub const B_0x1: u32 = 0b0000001;
+
+            /// 0b0000010: pll3_p_ck = vco3_ck / 3
+            pub const B_0x2: u32 = 0b0000010;
+
+            /// 0b0000011: pll3_p_ck = vco3_ck / 4
+            pub const B_0x3: u32 = 0b0000011;
+
+            /// 0b1111111: pll3_p_ck = vco3_ck / 128
+            pub const B_0x7F: u32 = 0b1111111;
+        }
     }
 
-    /// PLL DIVQ division factor
+    /// PLL3 DIVQ division factor Set and reset by software to control the frequency of the pll3_q_ck clock. These bits can be written only when the PLL3 is disabled (PLL3ON = PLL3RDY = 0). ...
     pub mod DIVQ3 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1511,11 +1594,27 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000000: pll3_q_ck = vco3_ck
+            pub const B_0x0: u32 = 0b0000000;
+
+            /// 0b0000001: pll3_q_ck = vco3_ck / 2 (default after reset)
+            pub const B_0x1: u32 = 0b0000001;
+
+            /// 0b0000010: pll3_q_ck = vco3_ck / 3
+            pub const B_0x2: u32 = 0b0000010;
+
+            /// 0b0000011: pll3_q_ck = vco3_ck / 4
+            pub const B_0x3: u32 = 0b0000011;
+
+            /// 0b1111111: pll3_q_ck = vco3_ck / 128
+            pub const B_0x7F: u32 = 0b1111111;
+        }
     }
 
-    /// PLL DIVR division factor
+    /// PLL3 DIVR division factor Set and reset by software to control the frequency of the pll3_r_ck clock. These bits can be written only when the PLL3 is disabled (PLL3ON = PLL3RDY = 0). ...
     pub mod DIVR3 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1525,15 +1624,31 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000000: pll3_r_ck = vco3_ck
+            pub const B_0x0: u32 = 0b0000000;
+
+            /// 0b0000001: pll3_r_ck = vco3_ck / 2 (default after reset)
+            pub const B_0x1: u32 = 0b0000001;
+
+            /// 0b0000010: pll3_r_ck = vco3_ck / 3
+            pub const B_0x2: u32 = 0b0000010;
+
+            /// 0b0000011: pll3_r_ck = vco3_ck / 4
+            pub const B_0x3: u32 = 0b0000011;
+
+            /// 0b1111111: pll3_r_ck = vco3_ck / 128
+            pub const B_0x7F: u32 = 0b1111111;
+        }
     }
 }
 
-/// RCC PLL3 Fractional Divider Register
+///
 pub mod PLL3FRACR {
 
-    /// Fractional part of the multiplication factor for PLL3 VCO
+    /// fractional part of the multiplication factor for PLL3 VCO Set and reset by software to control the fractional part of the multiplication factor of the VCO. These bits can be written at any time, allowing dynamic fine-tuning of the PLL3 VCO. The software must set correctly these bits to insure that the VCO output frequency is between its valid frequency range, that is: 128 to 560Â MHz if PLL3VCOSEL = 0 150 to 420Â MHz if PLL3VCOSEL = 1 VCO output frequency = Fref3_ck x (DIVN3 + (FRACN3 / 213)), with DIVN3 between 8 and 420 FRACN3 can be between 0 and 213 - 1 The input frequency Fref3_ck must be between 1 and 16 MHz. In order to change the FRACN value on-the-fly even if the PLL is enabled, the application must proceed as follows: Set the bit PLL1FRACEN to 0. Write the new fractional value into FRACN1. Set the bit PLL1FRACEN to 1.
     pub mod FRACN3 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1548,7 +1663,7 @@ pub mod PLL3FRACR {
     }
 }
 
-/// RCC Domain 1 Kernel Clock Configuration Register
+/// RCC CPU domain kernel clock configuration register
 pub mod CDCCIPR {
 
     /// FMC kernel clock source selection
@@ -1576,6 +1691,19 @@ pub mod CDCCIPR {
             /// 0b11: PER selected as peripheral clock
             pub const PER: u32 = 0b11;
         }
+    }
+
+    /// OCTOSPI kernel clock source selection
+    pub mod OCTOSPISEL {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (2 bits: 0b11 << 4)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::FMCSEL::RW;
     }
 
     /// SDMMC kernel clock source selection
@@ -1622,25 +1750,12 @@ pub mod CDCCIPR {
             pub const HSE: u32 = 0b10;
         }
     }
-
-    /// OCTOSPI kernel clock source selection
-    pub mod OCTOSPISEL {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::FMCSEL::RW;
-    }
 }
 
-/// RCC Domain 2 Kernel Clock Configuration Register
+/// RCC CPU domain kernel clock configuration register
 pub mod CDCCIP1R {
 
-    /// SAI1 and DFSDM1 kernel Aclk clock source selection
+    /// SAI1 and DFSDM1 kernel Aclk clock source selection Set and reset by software. If the selected clock is the external clock and this clock is stopped, it isnot be possible to switch to another clock. Refer to for additional information. Note: DFSDM1 clock source selection is done by DFSDM1SEL. others: reserved, the kernel clock is disabled Note: I2S_CKIN is an external clock taken from a pin.
     pub mod SAI1SEL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1670,7 +1785,50 @@ pub mod CDCCIP1R {
         }
     }
 
-    /// SPI/I2S1,2 and 3 kernel clock source selection
+    /// SAI2 kernel clock source A selection Set and reset by software. If the selected clock is the external clock and this clock is stopped, it is not be possible to switch to another clock. Refer to for additional information. others: reserved, the kernel clock is disabled Note: I2S_CKIN is an external clock taken from a pin. spdifrx_symb_ck is the symbol clock generated by the SPDIFRX (see ).
+    pub mod SAI2ASEL {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (3 bits: 0b111 << 6)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: pll1_q selected as peripheral clock
+            pub const PLL1_Q: u32 = 0b000;
+
+            /// 0b001: pll2_p selected as peripheral clock
+            pub const PLL2_P: u32 = 0b001;
+
+            /// 0b010: pll3_p selected as peripheral clock
+            pub const PLL3_P: u32 = 0b010;
+
+            /// 0b011: i2s_ckin selected as peripheral clock
+            pub const I2S_CKIN: u32 = 0b011;
+
+            /// 0b100: PER selected as peripheral clock
+            pub const PER: u32 = 0b100;
+        }
+    }
+
+    /// SAI2 kernel clock B source selection Set and reset by software. If the selected clock is the external clock and this clock is stopped, it is not be possible to switch to another clock. Refer to for additional information. others: reserved, the kernel clock is disabled Note: I2S_CKIN is an external clock taken from a pin. spdifrx_symb_ck is the symbol clock generated by the spdifrx (see ).
+    pub mod SAI2BSEL {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (3 bits: 0b111 << 9)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::SAI2ASEL::RW;
+    }
+
+    /// SPI/I2S1,2 and 3 kernel clock source selection Set and reset by software. If the selected clock is the external clock and this clock is stopped, it is not be possible to switch to another clock. Refer to for additional information. others: reserved, the kernel clock is disabled Note: I2S_CKIN is an external clock taken from a pin.
     pub mod SPI123SEL {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1683,7 +1841,7 @@ pub mod CDCCIP1R {
         pub use super::SAI1SEL::RW;
     }
 
-    /// SPI4 and 5 kernel clock source selection
+    /// SPI4 and 5 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod SPI45SEL {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1743,7 +1901,7 @@ pub mod CDCCIP1R {
         }
     }
 
-    /// DFSDM1 kernel Clk clock source selection
+    /// DFSDM1 kernel clock Clk source selection Set and reset by software. Note: the DFSDM1 Aclk clock source selection is done by SAI1SEL (see ).
     pub mod DFSDM1SEL {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1764,7 +1922,7 @@ pub mod CDCCIP1R {
         }
     }
 
-    /// FDCAN kernel clock source selection
+    /// FDCAN kernel clock source selection Set and reset by software.
     pub mod FDCANSEL {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -1788,8 +1946,8 @@ pub mod CDCCIP1R {
         }
     }
 
-    /// SWPMI kernel clock source selection
-    pub mod SWPSEL {
+    /// SWPMI kernel clock source selection Set and reset by software.
+    pub mod SWPMISEL {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -1808,55 +1966,12 @@ pub mod CDCCIP1R {
             pub const HSI_KER: u32 = 0b1;
         }
     }
-
-    /// SAI2 kernel clock source A source selection
-    pub mod SAI2ASEL {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (3 bits: 0b111 << 6)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: pll1_q selected as peripheral clock
-            pub const PLL1_Q: u32 = 0b000;
-
-            /// 0b001: pll2_p selected as peripheral clock
-            pub const PLL2_P: u32 = 0b001;
-
-            /// 0b010: pll3_p selected as peripheral clock
-            pub const PLL3_P: u32 = 0b010;
-
-            /// 0b011: i2s_ckin selected as peripheral clock
-            pub const I2S_CKIN: u32 = 0b011;
-
-            /// 0b100: PER selected as peripheral clock
-            pub const PER: u32 = 0b100;
-        }
-    }
-
-    /// SAI2 kernel clock source B source selection
-    pub mod SAI2BSEL {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (3 bits: 0b111 << 9)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SAI2ASEL::RW;
-    }
 }
 
-/// RCC Domain 2 Kernel Clock Configuration Register
+/// RCC CPU domain kernel clock configuration register
 pub mod CDCCIP2R {
 
-    /// USART2/3, UART4,5, 7/8 (APB1) kernel clock source selection
+    /// USART2/3, UART4,5, 7 and 8 (APB1) kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod USART234578SEL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1889,7 +2004,7 @@ pub mod CDCCIP2R {
         }
     }
 
-    /// USART1, 6, 9 and 10 kernel clock source selection
+    /// USART1, 6, 9 and 10 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod USART16910SEL {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1922,7 +2037,7 @@ pub mod CDCCIP2R {
         }
     }
 
-    /// RNG kernel clock source selection
+    /// RNG kernel clock source selection Set and reset by software.
     pub mod RNGSEL {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -1949,7 +2064,7 @@ pub mod CDCCIP2R {
         }
     }
 
-    /// I2C1,2,3 kernel clock source selection
+    /// I2C1,2,3 kernel clock source selection Set and reset by software.
     pub mod I2C123SEL {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1976,7 +2091,7 @@ pub mod CDCCIP2R {
         }
     }
 
-    /// USBOTG 1 and 2 kernel clock source selection
+    /// USBOTG 1 and 2 kernel clock source selection Set and reset by software.
     pub mod USBSEL {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -2003,7 +2118,7 @@ pub mod CDCCIP2R {
         }
     }
 
-    /// HDMI-CEC kernel clock source selection
+    /// HDMI-CEC kernel clock source selection Set and reset by software.
     pub mod CECSEL {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -2027,7 +2142,7 @@ pub mod CDCCIP2R {
         }
     }
 
-    /// LPTIM1 kernel clock source selection
+    /// LPTIM1 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod LPTIM1SEL {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -2061,10 +2176,10 @@ pub mod CDCCIP2R {
     }
 }
 
-/// RCC Domain 3 Kernel Clock Configuration Register
+/// RCC SmartRun domain kernel clock configuration register
 pub mod SRDCCIPR {
 
-    /// LPUART1 kernel clock source selection
+    /// LPUART1 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod LPUART1SEL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2097,7 +2212,7 @@ pub mod SRDCCIPR {
         }
     }
 
-    /// I2C4 kernel clock source selection
+    /// I2C4 kernel clock source selection Set and reset by software.
     pub mod I2C4SEL {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -2124,7 +2239,7 @@ pub mod SRDCCIPR {
         }
     }
 
-    /// LPTIM2 kernel clock source selection
+    /// LPTIM2 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod LPTIM2SEL {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -2157,7 +2272,7 @@ pub mod SRDCCIPR {
         }
     }
 
-    /// LPTIM3,4,5 kernel clock source selection
+    /// LPTIM3 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod LPTIM3SEL {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -2171,7 +2286,7 @@ pub mod SRDCCIPR {
         pub mod RW {}
     }
 
-    /// SAR ADC kernel clock source selection
+    /// SAR ADC kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod ADCSEL {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -2195,7 +2310,21 @@ pub mod SRDCCIPR {
         }
     }
 
-    /// SPI6 kernel clock source selection
+    /// DFSDM2 kernel Clk clock source selection Set and reset by software. Note: The DFSDM2 Aclk clock source selection is done by SPI6SEL (see and ).
+    pub mod DFSDM2SEL {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SPI6 kernel clock source selection Set and reset by software. others: reserved, the kernel clock is disabled
     pub mod SPI6SEL {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -2227,26 +2356,12 @@ pub mod SRDCCIPR {
             pub const HSE: u32 = 0b101;
         }
     }
-
-    /// DFSDM2 kernel clock source selection
-    pub mod DFSDM2SEL {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 }
 
-/// RCC Clock Source Interrupt Enable Register
+///
 pub mod CIER {
 
-    /// LSI ready Interrupt Enable
+    /// LSI ready interrupt enable Set and reset by software to enable/disable interrupt caused by the LSI oscillator stabilization.
     pub mod LSIRDYIE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2267,7 +2382,7 @@ pub mod CIER {
         }
     }
 
-    /// LSE ready Interrupt Enable
+    /// LSE ready interrupt enable Set and reset by software to enable/disable interrupt caused by the LSE oscillator stabilization.
     pub mod LSERDYIE {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -2280,7 +2395,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// HSI ready Interrupt Enable
+    /// HSI ready interrupt enable Set and reset by software to enable/disable interrupt caused by the HSI oscillator stabilization.
     pub mod HSIRDYIE {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -2293,7 +2408,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// HSE ready Interrupt Enable
+    /// HSE ready interrupt enable Set and reset by software to enable/disable interrupt caused by the HSE oscillator stabilization.
     pub mod HSERDYIE {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -2306,7 +2421,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// CSI ready Interrupt Enable
+    /// CSI ready interrupt enable Set and reset by software to enable/disable interrupt caused by the CSI oscillator stabilization.
     pub mod CSIRDYIE {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -2319,7 +2434,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// RC48 ready Interrupt Enable
+    /// HSI48 ready interrupt enable Set and reset by software to enable/disable interrupt caused by the HSI48 oscillator stabilization.
     pub mod HSI48RDYIE {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -2332,7 +2447,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// PLL1 ready Interrupt Enable
+    /// PLL1 ready interrupt enable Set and reset by software to enable/disable interrupt caused by PLL1 lock.
     pub mod PLL1RDYIE {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -2345,7 +2460,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// PLL2 ready Interrupt Enable
+    /// PLL2 ready interrupt enable Set and reset by software to enable/disable interrupt caused by PLL2 lock.
     pub mod PLL2RDYIE {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -2358,7 +2473,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// PLL3 ready Interrupt Enable
+    /// PLL3 ready interrupt enable Set and reset by software to enable/disable interrupt caused by PLL3 lock.
     pub mod PLL3RDYIE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -2371,7 +2486,7 @@ pub mod CIER {
         pub use super::LSIRDYIE::RW;
     }
 
-    /// LSE clock security system Interrupt Enable
+    /// LSE clock security system interrupt enable Set and reset by software to enable/disable interrupt caused by the clock security system (CSS) on external 32 kHz oscillator.
     pub mod LSECSSIE {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -2385,10 +2500,10 @@ pub mod CIER {
     }
 }
 
-/// RCC Clock Source Interrupt Flag Register
+///
 pub mod CIFR {
 
-    /// LSI ready Interrupt Flag
+    /// LSI ready interrupt flag Reset by software by writing LSIRDYC bit. Set by hardware when the LSI clock becomes stable and LSIRDYIE is set.
     pub mod LSIRDYF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2398,11 +2513,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by the LSI (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by the LSI
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// LSE ready Interrupt Flag
+    /// LSE ready interrupt flag Reset by software by writing LSERDYC bit. Set by hardware when the LSE clock becomes stable and LSERDYIE is set.
     pub mod LSERDYF {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -2412,11 +2534,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by the LSE (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by the LSE
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// HSI ready Interrupt Flag
+    /// HSI ready interrupt flag Reset by software by writing HSIRDYC bit. Set by hardware when the HSI clock becomes stable and HSIRDYIE is set.
     pub mod HSIRDYF {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -2426,11 +2555,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by the HSI (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by the HSI
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// HSE ready Interrupt Flag
+    /// HSE ready interrupt flag Reset by software by writing HSERDYC bit. Set by hardware when the HSE clock becomes stable and HSERDYIE is set.
     pub mod HSERDYF {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -2440,12 +2576,19 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by the HSE (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by the HSE
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// CSI ready Interrupt Flag
-    pub mod CSIRDY {
+    /// CSI ready interrupt flag Reset by software by writing CSIRDYC bit. Set by hardware when the CSI clock becomes stable and CSIRDYIE is set.
+    pub mod CSIRDYF {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -2454,11 +2597,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by the CSI (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by the CSI
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// RC48 ready Interrupt Flag
+    /// HSI48 ready interrupt flag Reset by software by writing HSI48RDYC bit. Set by hardware when the HSI48 clock becomes stable and HSI48RDYIE is set.
     pub mod HSI48RDYF {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -2468,11 +2618,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by the HSI48 oscillator (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by the HSI48 oscillator
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// PLL1 ready Interrupt Flag
+    /// PLL1 ready interrupt flag Reset by software by writing PLL1RDYC bit. Set by hardware when the PLL1 locks and PLL1RDYIE is set.
     pub mod PLL1RDYF {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -2482,11 +2639,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by PLL1 lock (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by PLL1 lock
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// PLL2 ready Interrupt Flag
+    /// PLL2 ready interrupt flag Reset by software by writing PLL2RDYC bit. Set by hardware when the PLL2 locks and PLL2RDYIE is set.
     pub mod PLL2RDYF {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -2496,11 +2660,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by PLL2 lock (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by PLL2 lock
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// PLL3 ready Interrupt Flag
+    /// PLL3 ready interrupt flag Reset by software by writing PLL3RDYC bit. Set by hardware when the PLL3 locks and PLL3RDYIE is set.
     pub mod PLL3RDYF {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -2510,11 +2681,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock ready interrupt caused by PLL3 lock (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock ready interrupt caused by PLL3 lock
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// LSE clock security system Interrupt Flag
+    /// LSE clock security system interrupt flag Reset by software by writing LSECSSC bit. Set by hardware when a failure is detected on the external 32 kHz oscillator and LSECSSIE is set.
     pub mod LSECSSF {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -2524,11 +2702,18 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no failure detected on the external 32 kHz oscillator (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: failure detected on the external 32 kHz oscillator
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 
-    /// HSE clock security system Interrupt Flag
+    /// HSE clock security system interrupt flag Reset by software by writing HSECSSC bit. Set by hardware in case of HSE clock failure.
     pub mod HSECSSF {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -2538,15 +2723,22 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: no clock security interrupt caused by HSE clock failure (default after reset)
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: clock security interrupt caused by HSE clock failure
+            pub const B_0x1: u32 = 0b1;
+        }
     }
 }
 
-/// RCC Clock Source Interrupt Clear Register
+///
 pub mod CICR {
 
-    /// LSI ready Interrupt Clear
+    /// LSI ready interrupt clear Set by software to clear LSIRDYF. Reset by hardware when clear done.
     pub mod LSIRDYC {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2564,7 +2756,7 @@ pub mod CICR {
         }
     }
 
-    /// LSE ready Interrupt Clear
+    /// LSE ready interrupt clear Set by software to clear LSERDYF. Reset by hardware when clear done.
     pub mod LSERDYC {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -2577,7 +2769,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// HSI ready Interrupt Clear
+    /// HSI ready interrupt clear Set by software to clear HSIRDYF. Reset by hardware when clear done.
     pub mod HSIRDYC {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -2590,7 +2782,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// HSE ready Interrupt Clear
+    /// HSE ready interrupt clear Set by software to clear HSERDYF. Reset by hardware when clear done.
     pub mod HSERDYC {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -2603,8 +2795,8 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// CSI ready Interrupt Clear
-    pub mod HSE_ready_Interrupt_Clear {
+    /// CSI ready interrupt clear Set by software to clear CSIRDYF. Reset by hardware when clear done.
+    pub mod CSIRDYC {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -2613,11 +2805,10 @@ pub mod CICR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LSIRDYC::RW;
     }
 
-    /// RC48 ready Interrupt Clear
+    /// HSI48 ready interrupt clear Set by software to clear HSI48RDYF. Reset by hardware when clear done.
     pub mod HSI48RDYC {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -2630,7 +2821,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// PLL1 ready Interrupt Clear
+    /// PLL1 ready interrupt clear Set by software to clear PLL1RDYF. Reset by hardware when clear done.
     pub mod PLL1RDYC {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -2643,7 +2834,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// PLL2 ready Interrupt Clear
+    /// PLL2 ready interrupt clear Set by software to clear PLL2RDYF. Reset by hardware when clear done.
     pub mod PLL2RDYC {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -2656,7 +2847,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// PLL3 ready Interrupt Clear
+    /// PLL3 ready interrupt clear Set by software to clear PLL3RDYF. Reset by hardware when clear done.
     pub mod PLL3RDYC {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -2669,7 +2860,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// LSE clock security system Interrupt Clear
+    /// LSE clock security system interrupt clear Set by software to clear LSECSSF. Reset by hardware when clear done.
     pub mod LSECSSC {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -2682,7 +2873,7 @@ pub mod CICR {
         pub use super::LSIRDYC::RW;
     }
 
-    /// HSE clock security system Interrupt Clear
+    /// HSE clock security system interrupt clear Set by software to clear HSECSSF. Reset by hardware when clear done.
     pub mod HSECSSC {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -2696,10 +2887,10 @@ pub mod CICR {
     }
 }
 
-/// RCC Backup Domain Control Register
+/// RCC Backup domain control register
 pub mod BDCR {
 
-    /// LSE oscillator enabled
+    /// LSE oscillator enabled Set and reset by software.
     pub mod LSEON {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2720,7 +2911,7 @@ pub mod BDCR {
         }
     }
 
-    /// LSE oscillator ready
+    /// LSE oscillator ready Set and reset by hardware to indicate when the LSE is stable. This bit needs 6 cycles of lse_ck clock to fall down after LSEON has been set to 0.
     pub mod LSERDY {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -2741,7 +2932,7 @@ pub mod BDCR {
         pub mod RW {}
     }
 
-    /// LSE oscillator bypass
+    /// LSE oscillator bypass Set and reset by software to bypass oscillator in debug mode. This bit must not be written when the LSE is enabled (by LSEON) or ready (LSERDY = 1)
     pub mod LSEBYP {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -2762,7 +2953,7 @@ pub mod BDCR {
         }
     }
 
-    /// LSE oscillator driving capability
+    /// LSE oscillator driving capability Set by software to select the driving capability of the LSE oscillator.
     pub mod LSEDRV {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -2789,7 +2980,7 @@ pub mod BDCR {
         }
     }
 
-    /// LSE clock security system enable
+    /// LSE clock security system enable Set by software to enable the clock security system on 32 kHz oscillator. LSECSSON must be enabled after LSE is enabled (LSEON enabled) and ready (LSERDY set by hardware) and after RTCSEL is selected. Once enabled, this bit cannot be disabled, except after a LSE failure detection (LSECSSD = 1). In that case the software must disable LSECSSON.
     pub mod LSECSSON {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -2810,7 +3001,7 @@ pub mod BDCR {
         }
     }
 
-    /// LSE clock security system failure detection
+    /// LSE clock security system failure detection Set by hardware to indicate when a failure has been detected by the clock security system on the external 32 kHz oscillator.
     pub mod LSECSSD {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -2831,7 +3022,21 @@ pub mod BDCR {
         pub mod RW {}
     }
 
-    /// RTC clock source selection
+    /// low-speed external clock type in Bypass mode Set and reset by software to select the external clock type (analog or digital). The external clock must be enabled with the LSEON bit, to be used by the device. The LSEEXT bit can be written only if the LSE oscillator is disabled.
+    pub mod LSEEXT {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RTC clock source selection Set by software to select the clock source for the RTC. These bits can be written only one time (except in case of failure detection on LSE). These bits must be written before LSECSSON is enabled. The VSWRST bit can be used to reset them, then it can be written one time again. If HSE is selected as RTC clock, this clock is lost when the system is in Stop mode or in case of a pin reset (NRST).
     pub mod RTCSEL {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -2858,7 +3063,7 @@ pub mod BDCR {
         }
     }
 
-    /// RTC clock enable
+    /// RTC clock enable Set and reset by software.
     pub mod RTCEN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -2879,8 +3084,8 @@ pub mod BDCR {
         }
     }
 
-    /// VSwitch domain software reset
-    pub mod BDRST {
+    /// VSwitch domain software reset Set and reset by software.
+    pub mod VSWRST {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2898,10 +3103,10 @@ pub mod BDCR {
     }
 }
 
-/// RCC Clock Control and Status Register
+/// RCC clock control and status register
 pub mod CSR {
 
-    /// LSI oscillator enable
+    /// LSI oscillator enable Set and reset by software.
     pub mod LSION {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2922,7 +3127,7 @@ pub mod CSR {
         }
     }
 
-    /// LSI oscillator ready
+    /// LSI oscillator ready Set and reset by hardware to indicate when the low-speed internal RC oscillator is stable. This bit needs 3 cycles of lsi_ck clock to fall down after LSION has been set to 0. This bit can be set even when LSION is not enabled if there is a request for LSI clock by the clock security system on LSE or by the low-speed watchdog or by the RTC.
     pub mod LSIRDY {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -2944,10 +3149,10 @@ pub mod CSR {
     }
 }
 
-/// RCC AHB3 Reset Register
+///
 pub mod AHB3RSTR {
 
-    /// MDMA block reset
+    /// MDMA block reset Set and reset by software.
     pub mod MDMARST {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2965,7 +3170,7 @@ pub mod AHB3RSTR {
         }
     }
 
-    /// DMA2D block reset
+    /// DMA2D block reset Set and reset by software.
     pub mod DMA2DRST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -2978,7 +3183,7 @@ pub mod AHB3RSTR {
         pub use super::MDMARST::RW;
     }
 
-    /// JPGDEC block reset
+    /// JPGDEC block reset Set and reset by software.
     pub mod JPGDECRST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -2991,7 +3196,7 @@ pub mod AHB3RSTR {
         pub use super::MDMARST::RW;
     }
 
-    /// FMC block reset
+    /// FMC block reset Set and reset by software.
     pub mod FMCRST {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -3004,8 +3209,8 @@ pub mod AHB3RSTR {
         pub use super::MDMARST::RW;
     }
 
-    /// QUADSPI and QUADSPI delay block reset
-    pub mod QSPIRST {
+    /// OCTOSPI1 and OCTOSPI1 delay blocks reset Set and reset by software.
+    pub mod OCTOSPI1RST {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -3017,7 +3222,7 @@ pub mod AHB3RSTR {
         pub use super::MDMARST::RW;
     }
 
-    /// SDMMC1 and SDMMC1 delay block reset
+    /// SDMMC1 and SDMMC1 delay blocks reset Set and reset by software.
     pub mod SDMMC1RST {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -3030,11 +3235,63 @@ pub mod AHB3RSTR {
         pub use super::MDMARST::RW;
     }
 
-    /// CPU reset
-    pub mod CPURST {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
+    /// OCTOSPI2 and OCTOSPI2 delay block reset Set and reset by software
+    pub mod OCTOSPI2RST {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMARST::RW;
+    }
+
+    /// OCTOSPIM reset Set and reset by software
+    pub mod OCTOSPIMRST {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMARST::RW;
+    }
+
+    /// OTFD1 reset Set and reset by software Take care that resetting the OTFD means loosing the decryption key loaded during secure boot.
+    pub mod OTFD1RST {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMARST::RW;
+    }
+
+    /// OTFD2 reset Set and reset by software Take care that resetting the OTFD means loosing the decryption key loaded during secure boot.
+    pub mod OTFD2RST {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMARST::RW;
+    }
+
+    /// GFXMMU reset Set and reset by software
+    pub mod GFXMMURST {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3044,10 +3301,10 @@ pub mod AHB3RSTR {
     }
 }
 
-/// RCC AHB1 Peripheral Reset Register
+///
 pub mod AHB1RSTR {
 
-    /// DMA1 block reset
+    /// DMA1 and DMAMUX1 blocks reset Set and reset by software.
     pub mod DMA1RST {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -3065,7 +3322,7 @@ pub mod AHB1RSTR {
         }
     }
 
-    /// DMA2 block reset
+    /// DMA2 and DMAMUX2 blocks reset Set and reset by software.
     pub mod DMA2RST {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -3078,7 +3335,7 @@ pub mod AHB1RSTR {
         pub use super::DMA1RST::RW;
     }
 
-    /// ADC1&2 block reset
+    /// ADC1 and 2 blocks reset Set and reset by software.
     pub mod ADC12RST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -3091,11 +3348,11 @@ pub mod AHB1RSTR {
         pub use super::DMA1RST::RW;
     }
 
-    /// ETH1MAC block reset
-    pub mod ETH1MACRST {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
+    /// CRC block reset Set and reset by software.
+    pub mod CRCRST {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3104,7 +3361,7 @@ pub mod AHB1RSTR {
         pub use super::DMA1RST::RW;
     }
 
-    /// USB1OTG block reset
+    /// USB1OTG block reset Set and reset by software.
     pub mod USB1OTGRST {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -3116,26 +3373,13 @@ pub mod AHB1RSTR {
         pub mod W {}
         pub use super::DMA1RST::RW;
     }
-
-    /// USB2OTG block reset
-    pub mod USB2OTGRST {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DMA1RST::RW;
-    }
 }
 
-/// RCC AHB2 Peripheral Reset Register
+///
 pub mod AHB2RSTR {
 
-    /// CAMITF block reset
-    pub mod CAMITFRST {
+    /// digital camera interface block reset (DCMI or PSSI depending which IP is active) Set and reset by software.
+    pub mod DCMI_PSSIRST {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -3152,7 +3396,20 @@ pub mod AHB2RSTR {
         }
     }
 
-    /// Cryptography block reset
+    /// HSEM block reset Set and reset by software.
+    pub mod HSEMRST {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DCMI_PSSIRST::RW;
+    }
+
+    /// cryptography block reset Set and reset by software.
     pub mod CRYPTRST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -3162,10 +3419,10 @@ pub mod AHB2RSTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CAMITFRST::RW;
+        pub use super::DCMI_PSSIRST::RW;
     }
 
-    /// Hash block reset
+    /// hash block reset Set and reset by software.
     pub mod HASHRST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -3175,10 +3432,10 @@ pub mod AHB2RSTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CAMITFRST::RW;
+        pub use super::DCMI_PSSIRST::RW;
     }
 
-    /// Random Number Generator block reset
+    /// random number generator block reset Set and reset by software.
     pub mod RNGRST {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -3188,10 +3445,10 @@ pub mod AHB2RSTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CAMITFRST::RW;
+        pub use super::DCMI_PSSIRST::RW;
     }
 
-    /// SDMMC2 and SDMMC2 Delay block reset
+    /// SDMMC2 and SDMMC2 delay blocks reset Set and reset by software.
     pub mod SDMMC2RST {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -3201,14 +3458,27 @@ pub mod AHB2RSTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CAMITFRST::RW;
+        pub use super::DCMI_PSSIRST::RW;
+    }
+
+    /// BDMA1 reset (DFSDM dedicated DMA) Set and reset by software.
+    pub mod BDMA1RST {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DCMI_PSSIRST::RW;
     }
 }
 
-/// RCC AHB4 Peripheral Reset Register
+///
 pub mod AHB4RSTR {
 
-    /// GPIO block reset
+    /// GPIOA block reset Set and reset by software.
     pub mod GPIOARST {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -3226,7 +3496,7 @@ pub mod AHB4RSTR {
         }
     }
 
-    /// GPIO block reset
+    /// GPIOB block reset Set and reset by software.
     pub mod GPIOBRST {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -3239,7 +3509,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOC block reset Set and reset by software.
     pub mod GPIOCRST {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -3252,7 +3522,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOD block reset Set and reset by software.
     pub mod GPIODRST {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -3265,7 +3535,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOE block reset Set and reset by software.
     pub mod GPIOERST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -3278,7 +3548,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOF block reset Set and reset by software.
     pub mod GPIOFRST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -3291,7 +3561,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOG block reset Set and reset by software.
     pub mod GPIOGRST {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -3304,7 +3574,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOH block reset Set and reset by software.
     pub mod GPIOHRST {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -3317,7 +3587,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOI block reset Set and reset by software.
     pub mod GPIOIRST {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -3330,7 +3600,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOJ block reset Set and reset by software.
     pub mod GPIOJRST {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -3343,7 +3613,7 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// GPIO block reset
+    /// GPIOK block reset Set and reset by software.
     pub mod GPIOKRST {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -3356,21 +3626,8 @@ pub mod AHB4RSTR {
         pub use super::GPIOARST::RW;
     }
 
-    /// CRC block reset
-    pub mod CRCRST {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOARST::RW;
-    }
-
-    /// BDMA block reset
-    pub mod BDMARST {
+    /// SmartRun domain DMA and DMAMUX blocks reset Set and reset by software.
+    pub mod BDMA2RST {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -3381,38 +3638,12 @@ pub mod AHB4RSTR {
         pub mod W {}
         pub use super::GPIOARST::RW;
     }
-
-    /// ADC3 block reset
-    pub mod ADC3RST {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOARST::RW;
-    }
-
-    /// HSEM block reset
-    pub mod HSEMRST {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOARST::RW;
-    }
 }
 
-/// RCC APB3 Peripheral Reset Register
+///
 pub mod APB3RSTR {
 
-    /// LTDC block reset
+    /// LTDC block reset Set and reset by software.
     pub mod LTDCRST {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -3431,10 +3662,10 @@ pub mod APB3RSTR {
     }
 }
 
-/// RCC APB1 Peripheral Reset Register
+///
 pub mod APB1LRSTR {
 
-    /// TIM block reset
+    /// TIM2 block reset Set and reset by software.
     pub mod TIM2RST {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -3452,7 +3683,7 @@ pub mod APB1LRSTR {
         }
     }
 
-    /// TIM block reset
+    /// TIM3 block reset Set and reset by software.
     pub mod TIM3RST {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -3465,7 +3696,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM4 block reset Set and reset by software.
     pub mod TIM4RST {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -3478,7 +3709,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM5 block reset Set and reset by software.
     pub mod TIM5RST {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -3491,7 +3722,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM6 block reset Set and reset by software.
     pub mod TIM6RST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -3504,7 +3735,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM7 block reset Set and reset by software.
     pub mod TIM7RST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -3517,7 +3748,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM12 block reset Set and reset by software.
     pub mod TIM12RST {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -3530,7 +3761,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM13 block reset Set and reset by software.
     pub mod TIM13RST {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -3543,7 +3774,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// TIM14 block reset Set and reset by software.
     pub mod TIM14RST {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -3556,7 +3787,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// TIM block reset
+    /// LPTIM1 block reset Set and reset by software.
     pub mod LPTIM1RST {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -3569,7 +3800,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// SPI2 block reset
+    /// SPI2 block reset Set and reset by software.
     pub mod SPI2RST {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -3582,7 +3813,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// SPI3 block reset
+    /// SPI3 block reset Set and reset by software.
     pub mod SPI3RST {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -3595,7 +3826,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// SPDIFRX block reset
+    /// SPDIFRX block reset Set and reset by software.
     pub mod SPDIFRXRST {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -3608,7 +3839,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// USART2 block reset
+    /// USART2 block reset Set and reset by software.
     pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -3621,7 +3852,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// USART3 block reset
+    /// USART3 block reset Set and reset by software.
     pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -3634,7 +3865,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// UART4 block reset
+    /// UART4 block reset Set and reset by software.
     pub mod UART4RST {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
@@ -3647,7 +3878,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// UART5 block reset
+    /// UART5 block reset Set and reset by software.
     pub mod UART5RST {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -3660,7 +3891,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// I2C1 block reset
+    /// I2C1 block reset Set and reset by software.
     pub mod I2C1RST {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -3673,7 +3904,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// I2C2 block reset
+    /// I2C2 block reset Set and reset by software.
     pub mod I2C2RST {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -3686,7 +3917,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// I2C3 block reset
+    /// I2C3 block reset Set and reset by software.
     pub mod I2C3RST {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -3699,7 +3930,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// HDMI-CEC block reset
+    /// HDMI-CEC block reset Set and reset by software.
     pub mod CECRST {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -3712,8 +3943,8 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// DAC1 and 2 Blocks Reset
-    pub mod DAC12RST {
+    /// DAC1 (containing two converters) reset Set and reset by software.
+    pub mod DAC1RST {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -3725,7 +3956,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// UART7 block reset
+    /// UART7 block reset Set and reset by software.
     pub mod UART7RST {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
@@ -3738,7 +3969,7 @@ pub mod APB1LRSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// UART8 block reset
+    /// UART8 block reset Set and reset by software.
     pub mod UART8RST {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -3752,10 +3983,10 @@ pub mod APB1LRSTR {
     }
 }
 
-/// RCC APB1 Peripheral Reset Register
+///
 pub mod APB1HRSTR {
 
-    /// Clock Recovery System reset
+    /// clock recovery system reset Set and reset by software.
     pub mod CRSRST {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -3773,8 +4004,8 @@ pub mod APB1HRSTR {
         }
     }
 
-    /// SWPMI block reset
-    pub mod SWPRST {
+    /// SWPMI block reset Set and reset by software.
+    pub mod SWPMIRST {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -3786,7 +4017,7 @@ pub mod APB1HRSTR {
         pub use super::CRSRST::RW;
     }
 
-    /// OPAMP block reset
+    /// OPAMP block reset Set and reset by software.
     pub mod OPAMPRST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -3799,7 +4030,7 @@ pub mod APB1HRSTR {
         pub use super::CRSRST::RW;
     }
 
-    /// MDIOS block reset
+    /// MDIOS block reset Set and reset by software.
     pub mod MDIOSRST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -3812,7 +4043,7 @@ pub mod APB1HRSTR {
         pub use super::CRSRST::RW;
     }
 
-    /// FDCAN block reset
+    /// FDCAN block reset Set and reset by software.
     pub mod FDCANRST {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -3826,10 +4057,10 @@ pub mod APB1HRSTR {
     }
 }
 
-/// RCC APB2 Peripheral Reset Register
+///
 pub mod APB2RSTR {
 
-    /// TIM1 block reset
+    /// TIM1 block reset Set and reset by software.
     pub mod TIM1RST {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -3847,7 +4078,7 @@ pub mod APB2RSTR {
         }
     }
 
-    /// TIM8 block reset
+    /// TIM8 block reset Set and reset by software.
     pub mod TIM8RST {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -3860,7 +4091,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// USART1 block reset
+    /// USART1 block reset Set and reset by software.
     pub mod USART1RST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -3873,7 +4104,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// USART6 block reset
+    /// USART6 block reset Set and reset by software.
     pub mod USART6RST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -3886,7 +4117,33 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// SPI1 block reset
+    /// UART9 block reset Set and reset by software.
+    pub mod UART9RST {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1RST::RW;
+    }
+
+    /// USART10 block reset Set and reset by software.
+    pub mod USART10RST {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1RST::RW;
+    }
+
+    /// SPI1 block reset Set and reset by software.
     pub mod SPI1RST {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -3899,7 +4156,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// SPI4 block reset
+    /// SPI4 block reset Set and reset by software.
     pub mod SPI4RST {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -3912,7 +4169,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// TIM15 block reset
+    /// TIM15 block reset Set and reset by software.
     pub mod TIM15RST {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -3925,7 +4182,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// TIM16 block reset
+    /// TIM16 block reset Set and reset by software.
     pub mod TIM16RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -3938,7 +4195,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// TIM17 block reset
+    /// TIM17 block reset Set and reset by software.
     pub mod TIM17RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -3951,7 +4208,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// SPI5 block reset
+    /// SPI5 block reset Set and reset by software.
     pub mod SPI5RST {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -3964,7 +4221,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// SAI1 block reset
+    /// SAI1 block reset Set and reset by software.
     pub mod SAI1RST {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -3977,7 +4234,7 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// SAI2 block reset
+    /// SAI2 block reset Set and reset by software.
     pub mod SAI2RST {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -3990,37 +4247,11 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// SAI3 block reset
-    pub mod SAI3RST {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1RST::RW;
-    }
-
-    /// DFSDM1 block reset
+    /// DFSDM1 block reset Set and reset by software.
     pub mod DFSDM1RST {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1RST::RW;
-    }
-
-    /// HRTIM block reset
-    pub mod HRTIMRST {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4030,10 +4261,10 @@ pub mod APB2RSTR {
     }
 }
 
-/// RCC APB4 Peripheral Reset Register
+///
 pub mod APB4RSTR {
 
-    /// SYSCFG block reset
+    /// SYSCFG block reset Set and reset by software.
     pub mod SYSCFGRST {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -4051,7 +4282,7 @@ pub mod APB4RSTR {
         }
     }
 
-    /// LPUART1 block reset
+    /// LPUART1 block reset Set and reset by software.
     pub mod LPUART1RST {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -4064,7 +4295,7 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// SPI6 block reset
+    /// SPI6 block reset Set and reset by software.
     pub mod SPI6RST {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -4077,7 +4308,7 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// I2C4 block reset
+    /// I2C4 block reset Set and reset by software.
     pub mod I2C4RST {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -4090,7 +4321,7 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// LPTIM2 block reset
+    /// LPTIM2 block reset Set and reset by software.
     pub mod LPTIM2RST {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -4103,7 +4334,7 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// LPTIM3 block reset
+    /// LPTIM3 block reset Set and reset by software.
     pub mod LPTIM3RST {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -4116,11 +4347,11 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// LPTIM4 block reset
-    pub mod LPTIM4RST {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+    /// DAC2 (containing one converter) reset Set and reset by software.
+    pub mod DAC2RST {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4129,20 +4360,7 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// LPTIM5 block reset
-    pub mod LPTIM5RST {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SYSCFGRST::RW;
-    }
-
-    /// COMP12 Blocks Reset
+    /// COMP1 and 2 blocks reset Set and reset by software.
     pub mod COMP12RST {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -4155,7 +4373,7 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// VREF block reset
+    /// VREF block reset Set and reset by software.
     pub mod VREFRST {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -4168,11 +4386,24 @@ pub mod APB4RSTR {
         pub use super::SYSCFGRST::RW;
     }
 
-    /// SAI4 block reset
-    pub mod SAI4RST {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
+    /// Digital temperature sensor block reset Set and reset by software.
+    pub mod DTSRST {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::SYSCFGRST::RW;
+    }
+
+    /// DFSDM2 block reset Set and reset by software.
+    pub mod DFSDM2RST {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4182,11 +4413,11 @@ pub mod APB4RSTR {
     }
 }
 
-/// RCC D3 Autonomous mode Register
-pub mod D3AMR {
+/// RCC SmartRun domain Autonomous mode register
+pub mod SRDAMR {
 
-    /// BDMA and DMAMUX Autonomous mode enable
-    pub mod BDMAAMEN {
+    /// SmartRun domain DMA and DMAMUX Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod BDMA2AMEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -4206,7 +4437,20 @@ pub mod D3AMR {
         }
     }
 
-    /// LPUART1 Autonomous mode enable
+    /// GPIO Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod GPIOAMEN {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::BDMA2AMEN::RW;
+    }
+
+    /// LPUART1 Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod LPUART1AMEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -4216,10 +4460,10 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// SPI6 Autonomous mode enable
+    /// SPI6 Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod SPI6AMEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -4229,10 +4473,10 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// I2C4 Autonomous mode enable
+    /// I2C4 Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod I2C4AMEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -4242,10 +4486,10 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// LPTIM2 Autonomous mode enable
+    /// LPTIM2 Autonomous mode enable Set and reset by software. Refer to for additional information
     pub mod LPTIM2AMEN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -4255,10 +4499,10 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// LPTIM3 Autonomous mode enable
+    /// LPTIM3 Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod LPTIM3AMEN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -4268,36 +4512,23 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// LPTIM4 Autonomous mode enable
-    pub mod LPTIM4AMEN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+    /// DAC2 (containing one converter) Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod DAC2AMEN {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// LPTIM5 Autonomous mode enable
-    pub mod LPTIM5AMEN {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::BDMAAMEN::RW;
-    }
-
-    /// COMP12 Autonomous mode enable
+    /// COMP1 and 2 Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod COMP12AMEN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -4307,10 +4538,10 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// VREF Autonomous mode enable
+    /// VREF Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod VREFAMEN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -4320,10 +4551,10 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// RTC Autonomous mode enable
+    /// RTC Autonomous mode enable Set and reset by software. Refer to for additional information.
     pub mod RTCAMEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -4333,50 +4564,37 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// CRC Autonomous mode enable
-    pub mod CRCAMEN {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
+    /// Digital temperature sensor Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod DTSAMEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// SAI4 Autonomous mode enable
-    pub mod SAI4AMEN {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
+    /// DFSDM2 Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod DFSDM2AMEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// ADC3 Autonomous mode enable
-    pub mod ADC3AMEN {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::BDMAAMEN::RW;
-    }
-
-    /// Backup RAM Autonomous mode enable
-    pub mod BKPSRAMAMEN {
+    /// Backup RAM Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod BKPRAMAMEN {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
@@ -4385,11 +4603,11 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 
-    /// SRAM4 Autonomous mode enable
-    pub mod SRAM4AMEN {
+    /// SmartRun domain SRAM Autonomous mode enable Set and reset by software. Refer to for additional information.
+    pub mod SRDSRAMAMEN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -4398,15 +4616,351 @@ pub mod D3AMR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::BDMAAMEN::RW;
+        pub use super::BDMA2AMEN::RW;
     }
 }
 
-/// RCC Reset Status Register
-pub mod C1_RSR {
+/// RCC AXI clocks gating enable register
+pub mod CKGAENR {
 
-    /// Remove reset flag
-    pub mod RMVF {
+    /// AXI interconnect matrix clock gating This bit is set and reset by software.
+    pub mod AXICKG {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI interconnect matrix clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master AHB clock gating This bit is set and reset by software.
+    pub mod AHBCKG {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master AHB clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master CPU clock gating This bit is set and reset by software.
+    pub mod CPUCKG {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master CPU clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master SDMMC clock gating This bit is set and reset by software.
+    pub mod SDMMCCKG {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master SDMMC clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master MDMA clock gating This bit is set and reset by software.
+    pub mod MDMACKG {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master MDMA clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master DMA2D clock gating This bit is set and reset by software.
+    pub mod DMA2DCKG {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master DMA2D clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master LTDC clock gating This bit is set and reset by software.
+    pub mod LTDCCKG {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master LTDC clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI master GFXMMU clock gating This bit is set and reset by software.
+    pub mod GFXMMUMCKG {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix master GFXMMU clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave AHB12 clock gating This bit is set and reset by software.
+    pub mod AHB12CKG {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave AHB12 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave AHB34 clock gating This bit is set and reset by software.
+    pub mod AHB34CKG {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave AHB34 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave Flash interface (FLIFT) clock gating This bit is set and reset by software.
+    pub mod FLIFTCKG {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave FLIFT clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave OCTOSPI2 clock gating This bit is set and reset by software.
+    pub mod OCTOSPI2CKG {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave OCTOSPI2 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave FMC clock gating This bit is set and reset by software.
+    pub mod FMCCKG {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave FMC clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave OCTOSPI1 clock gating This bit is set and reset by software.
+    pub mod OCTOSPI1CKG {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave OCTOSPI1 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI slave SRAM1 clock gating This bit is set and reset by software.
+    pub mod AXIRAM1CKG {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave SRAM1 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI matrix slave SRAM2 clock gating This bit is set and reset by software.
+    pub mod AXIRAM2CKG {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The AXI matrix slave SRAM2 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// AXI matrix slave SRAM3 clock gating This bit is set and reset by software.
+    pub mod AXIRAM3CKG {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -4418,146 +4972,222 @@ pub mod C1_RSR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Not clearing the the reset flags
-            pub const NotActive: u32 = 0b0;
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
 
-            /// 0b1: Clear the reset flags
-            pub const Clear: u32 = 0b1;
+            /// 0b1: The clock gating is enabled. The AXI matrix slave SRAM3 clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
         }
     }
 
-    /// CPU reset flag
-    pub mod CPURSTF {
+    /// AXI matrix slave GFXMMU clock gating This bit is set and reset by software.
+    pub mod GFXMMUSCKG {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values
-        pub mod R {
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
 
-            /// 0b0: No reset occoured for block
-            pub const NoResetOccoured: u32 = 0b0;
+            /// 0b0: The clock gating is disabled. The clock is always enabled
+            pub const B_0x0: u32 = 0b0;
 
-            /// 0b1: Reset occoured for block
-            pub const ResetOccourred: u32 = 0b1;
+            /// 0b1: The clock gating is enabled. The AXI matrix slave GFXMMU clock is enabled on bus transaction request.
+            pub const B_0x1: u32 = 0b1;
         }
+    }
+
+    /// RAM error code correction (ECC) clock gating This bit is set and reset by software.
+    pub mod ECCRAMCKG {
+        /// Offset (29 bits)
+        pub const offset: u32 = 29;
+        /// Mask (1 bit: 1 << 29)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The ECC clock is enabled only during a RAM access.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// EXTI clock gating This bit is set and reset by software.
+    pub mod EXTICKG {
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The clock is enabled after an event detection and stopped again when the event flag is cleared.
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+
+    /// JTAG automatic clock gating This bit is set and reset by software.
+    pub mod JTAGCKG {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock gating is disabled. The clock is always enabled.
+            pub const B_0x0: u32 = 0b0;
+
+            /// 0b1: The clock gating is enabled. The clock is disabled except if a JTAG connection has been detected
+            pub const B_0x1: u32 = 0b1;
+        }
+    }
+}
+
+/// RCC reset status register
+pub mod RSR {
+
+    /// remove reset flag Set and reset by software to reset the value of the reset flags.
+    pub mod RMVF {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// D1 domain power switch reset flag
-    pub mod D1RSTF {
+    /// CPU domain power-switch reset flag Reset by software by writing the RMVF bit. Set by hardware when a the CPU domain exits from DStop or after of power-on reset. Set also when the CPU domain exists DStop2 but only when a pad reset has occurred during DStop2 (PINRST bit also set by hardware)
+    pub mod CDRSTF {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// D2 domain power switch reset flag
-    pub mod D2RSTF {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BOR reset flag
+    /// BOR reset flag Reset by software by writing the RMVF bit. Set by hardware when a BOR reset occurs (pwr_bor_rst).
     pub mod BORRSTF {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Pin reset flag (NRST)
+    /// pin reset flag (NRST) Reset by software by writing the RMVF bit. Set by hardware when a reset from pin occurs.
     pub mod PINRSTF {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// POR/PDR reset flag
+    /// POR/PDR reset flag Reset by software by writing the RMVF bit. Set by hardware when a POR/PDR reset occurs.
     pub mod PORRSTF {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// System reset from CPU reset flag
+    /// system reset from CPU reset flag Reset by software by writing the RMVF bit. Set by hardware when the system reset is due to CPU.The CPU can generate a system reset by writing SYSRESETREQ bit of AIRCR register of the core M7.
     pub mod SFTRSTF {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Independent Watchdog reset flag
-    pub mod IWDG1RSTF {
+    /// independent watchdog reset flag Reset by software by writing the RMVF bit. Set by hardware when an independent watchdog reset occurs.
+    pub mod IWDGRSTF {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Window Watchdog reset flag
-    pub mod WWDG1RSTF {
+    /// window watchdog reset flag Reset by software by writing the RMVF bit. Set by hardware when a window watchdog reset occurs.
+    pub mod WWDGRSTF {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Reset due to illegal D1 DStandby or CPU CStop flag
+    /// reset due to illegal CD DStop or CD DStop2 or CPU CStop flag Reset by software by writing the RMVF bit. Set by hardware when the CPU domain goes erroneously in DStop or DStop2, or when the CPU goes erroneously in CStop.
     pub mod LPWRRSTF {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        pub use super::CPURSTF::R;
+        /// Read-only values (empty)
+        pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -4565,10 +5195,10 @@ pub mod C1_RSR {
     }
 }
 
-/// RCC AHB3 Clock Register
+///
 pub mod AHB3ENR {
 
-    /// MDMA Peripheral Clock Enable
+    /// MDMA peripheral clock enable Set and reset by software.
     pub mod MDMAEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -4589,7 +5219,7 @@ pub mod AHB3ENR {
         }
     }
 
-    /// DMA2D Peripheral Clock Enable
+    /// DMA2D peripheral clock enable Set and reset by software.
     pub mod DMA2DEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -4602,7 +5232,7 @@ pub mod AHB3ENR {
         pub use super::MDMAEN::RW;
     }
 
-    /// JPGDEC Peripheral Clock Enable
+    /// JPGDEC peripheral clock enable Set and reset by software.
     pub mod JPGDECEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -4615,7 +5245,7 @@ pub mod AHB3ENR {
         pub use super::MDMAEN::RW;
     }
 
-    /// FMC Peripheral Clocks Enable
+    /// FMC peripheral clocks enable Set and reset by software. The peripheral clocks of the FMC are the kernel clock selected by FMCSEL and provided to fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
     pub mod FMCEN {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -4628,8 +5258,8 @@ pub mod AHB3ENR {
         pub use super::MDMAEN::RW;
     }
 
-    /// QUADSPI and QUADSPI Delay Clock Enable
-    pub mod QSPIEN {
+    /// OCTOSPI1 and OCTOSPI1 delay clock enable Set and reset by software.
+    pub mod OCTOSPI1EN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -4641,11 +5271,76 @@ pub mod AHB3ENR {
         pub use super::MDMAEN::RW;
     }
 
-    /// SDMMC1 and SDMMC1 Delay Clock Enable
+    /// SDMMC1 and SDMMC1 delay clock enable Set and reset by software.
     pub mod SDMMC1EN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMAEN::RW;
+    }
+
+    /// OCTOSPI2 clock enable Set and reset by software.
+    pub mod OCTOSPI2EN {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMAEN::RW;
+    }
+
+    /// OCTOSPIM clock enable Set and reset by software.
+    pub mod OCTOSPIMEN {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMAEN::RW;
+    }
+
+    /// OTFD1 clock enable Set and reset by software.
+    pub mod OTFD1EN {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMAEN::RW;
+    }
+
+    /// OTFD2 clock enable Set and reset by software.
+    pub mod OTFD2EN {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMAEN::RW;
+    }
+
+    /// GFXMMU clock enable Set and reset by software.
+    pub mod GFXMMUEN {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4664,7 +5359,8 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MDMAEN::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// D1 DTCM2 block enable
@@ -4677,7 +5373,8 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MDMAEN::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// D1 ITCM block enable
@@ -4690,7 +5387,8 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MDMAEN::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXISRAM block enable
@@ -4703,14 +5401,15 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MDMAEN::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
-/// RCC AHB1 Clock Register
+///
 pub mod AHB1ENR {
 
-    /// DMA1 Clock Enable
+    /// DMA1 clock enable Set and reset by software.
     pub mod DMA1EN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -4731,7 +5430,7 @@ pub mod AHB1ENR {
         }
     }
 
-    /// DMA2 Clock Enable
+    /// DMA2 clock enable Set and reset by software.
     pub mod DMA2EN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -4744,7 +5443,7 @@ pub mod AHB1ENR {
         pub use super::DMA1EN::RW;
     }
 
-    /// ADC1/2 Peripheral Clocks Enable
+    /// ADC1 and 2 peripheral clocks enable Set and reset by software. The peripheral clocks of the ADC1 and 2 are the kernel clock selected by ADCSEL and provided to adc_ker_ck input, and the rcc_hclk1 bus interface clock.
     pub mod ADC12EN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -4757,11 +5456,11 @@ pub mod AHB1ENR {
         pub use super::DMA1EN::RW;
     }
 
-    /// Ethernet MAC bus interface Clock Enable
-    pub mod ETH1MACEN {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
+    /// CRC peripheral clock enable Set and reset by software.
+    pub mod CRCEN {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -4770,33 +5469,7 @@ pub mod AHB1ENR {
         pub use super::DMA1EN::RW;
     }
 
-    /// Ethernet Transmission Clock Enable
-    pub mod ETH1TXEN {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DMA1EN::RW;
-    }
-
-    /// Ethernet Reception Clock Enable
-    pub mod ETH1RXEN {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DMA1EN::RW;
-    }
-
-    /// USB1OTG Peripheral Clocks Enable
+    /// USB1OTG peripheral clocks enable Set and reset by software. The peripheral clocks of the USB1OTG are the kernel clock selected by USBSEL and the rcc_hclk1 bus interface clock.
     pub mod USB1OTGEN {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -4809,7 +5482,7 @@ pub mod AHB1ENR {
         pub use super::DMA1EN::RW;
     }
 
-    /// USB_PHY1 Clocks Enable
+    /// USB_PHY1 clocks enable Set and reset by software.
     pub mod USB1ULPIEN {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
@@ -4823,11 +5496,11 @@ pub mod AHB1ENR {
     }
 }
 
-/// RCC AHB2 Clock Register
+///
 pub mod AHB2ENR {
 
-    /// DCMI peripheral clock
-    pub mod DCMIEN {
+    /// digital camera interface peripheral clock enable (DCMI or PSSI depending which IP is active) Set and reset by software.
+    pub mod DCMI_PSSIEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -4847,7 +5520,20 @@ pub mod AHB2ENR {
         }
     }
 
-    /// CRYPT peripheral clock enable
+    /// HSEM peripheral clock enable Set and reset by software.
+    pub mod HSEMEN {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DCMI_PSSIEN::RW;
+    }
+
+    /// CRYPT peripheral clock enable Set and reset by software.
     pub mod CRYPTEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -4857,10 +5543,10 @@ pub mod AHB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMIEN::RW;
+        pub use super::DCMI_PSSIEN::RW;
     }
 
-    /// HASH peripheral clock enable
+    /// HASH peripheral clock enable Set and reset by software.
     pub mod HASHEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -4870,10 +5556,10 @@ pub mod AHB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMIEN::RW;
+        pub use super::DCMI_PSSIEN::RW;
     }
 
-    /// RNG peripheral clocks enable
+    /// RNG peripheral clocks enable Set and reset by software. The peripheral clocks of the RNG are the kernel clock selected by RNGSEL and provided to rng_clk input, and the rcc_hclk2 bus interface clock.
     pub mod RNGEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -4883,10 +5569,10 @@ pub mod AHB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMIEN::RW;
+        pub use super::DCMI_PSSIEN::RW;
     }
 
-    /// SDMMC2 and SDMMC2 delay clock enable
+    /// SDMMC2 and SDMMC2 delay clock enable Set and reset by software.
     pub mod SDMMC2EN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -4896,11 +5582,24 @@ pub mod AHB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMIEN::RW;
+        pub use super::DCMI_PSSIEN::RW;
     }
 
-    /// SRAM1 block enable
-    pub mod SRAM1EN {
+    /// DMA clock enable (DFSDM dedicated DMA) Set and reset by software.
+    pub mod BDMA1EN {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DCMI_PSSIEN::RW;
+    }
+
+    /// AHBSRAM1 block enable Set and reset by software. When set, this bit indicates that the SRAM1 is allocated by the CPU. It causes the CPU domain to take into account also the CPU operation modes, keeping the CPU domain in DRun when the CPU is in CRun.
+    pub mod AHBSRAM1EN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -4909,11 +5608,11 @@ pub mod AHB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMIEN::RW;
+        pub use super::DCMI_PSSIEN::RW;
     }
 
-    /// SRAM2 block enable
-    pub mod SRAM2EN {
+    /// AHBSRAM2 block enable Set and reset by software. When set, this bit indicates that the SRAM2 is allocated by the CPU. It causes the CPU domain to take into account also the CPU operation modes, keeping the CPU domain in DRun when the CPU is in CRun.
+    pub mod AHBSRAM2EN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
@@ -4922,27 +5621,14 @@ pub mod AHB2ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMIEN::RW;
-    }
-
-    /// SRAM3 block enable
-    pub mod SRAM3EN {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DCMIEN::RW;
+        pub use super::DCMI_PSSIEN::RW;
     }
 }
 
-/// RCC AHB4 Clock Register
+///
 pub mod AHB4ENR {
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOA peripheral clock enable Set and reset by software.
     pub mod GPIOAEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -4963,7 +5649,7 @@ pub mod AHB4ENR {
         }
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOB peripheral clock enable Set and reset by software.
     pub mod GPIOBEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -4976,7 +5662,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOC peripheral clock enable Set and reset by software.
     pub mod GPIOCEN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -4989,7 +5675,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOD peripheral clock enable Set and reset by software.
     pub mod GPIODEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -5002,7 +5688,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOE peripheral clock enable Set and reset by software.
     pub mod GPIOEEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -5015,7 +5701,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOF peripheral clock enable Set and reset by software.
     pub mod GPIOFEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -5028,7 +5714,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOG peripheral clock enable Set and reset by software.
     pub mod GPIOGEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -5041,7 +5727,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOH peripheral clock enable Set and reset by software.
     pub mod GPIOHEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -5054,7 +5740,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOI peripheral clock enable Set and reset by software.
     pub mod GPIOIEN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -5067,7 +5753,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOJ peripheral clock enable Set and reset by software.
     pub mod GPIOJEN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -5080,7 +5766,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// 0GPIO peripheral clock enable
+    /// GPIOK peripheral clock enable Set and reset by software.
     pub mod GPIOKEN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -5093,21 +5779,8 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// CRC peripheral clock enable
-    pub mod CRCEN {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOAEN::RW;
-    }
-
-    /// BDMA and DMAMUX2 Clock Enable
-    pub mod BDMAEN {
+    /// SmartRun domain DMA and DMAMUX clock enable Set and reset by software.
+    pub mod BDMA2EN {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -5119,33 +5792,7 @@ pub mod AHB4ENR {
         pub use super::GPIOAEN::RW;
     }
 
-    /// ADC3 Peripheral Clocks Enable
-    pub mod ADC3EN {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOAEN::RW;
-    }
-
-    /// HSEM peripheral clock enable
-    pub mod HSEMEN {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOAEN::RW;
-    }
-
-    /// Backup RAM Clock Enable
+    /// Backup RAM clock enable Set and reset by software.
     pub mod BKPRAMEN {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -5157,12 +5804,25 @@ pub mod AHB4ENR {
         pub mod W {}
         pub use super::GPIOAEN::RW;
     }
+
+    /// SmartRun domain SRAM clock enable Set and reset by software.
+    pub mod SRDSRAMEN {
+        /// Offset (29 bits)
+        pub const offset: u32 = 29;
+        /// Mask (1 bit: 1 << 29)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::GPIOAEN::RW;
+    }
 }
 
-/// RCC APB3 Clock Register
+///
 pub mod APB3ENR {
 
-    /// LTDC peripheral clock enable
+    /// LTDC clock enable Provides the clock (ltdc_pclk, ltdc_aclk, ltdc_ker_ck) to the LTDC block. Set and reset by software.
     pub mod LTDCEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -5183,8 +5843,8 @@ pub mod APB3ENR {
         }
     }
 
-    /// WWDG1 Clock Enable
-    pub mod WWDG1EN {
+    /// WWDG clock enable Set by software, and reset by hardware when a system reset occurs. Note that in order to work properly, before enabling the WWDG, the bit WW1RSC must be set to 1.
+    pub mod WWDGEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -5205,10 +5865,10 @@ pub mod APB3ENR {
     }
 }
 
-/// RCC APB1 Clock Register
+///
 pub mod APB1LENR {
 
-    /// TIM peripheral clock enable
+    /// TIM2 peripheral clock enable Set and reset by software.
     pub mod TIM2EN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -5229,7 +5889,7 @@ pub mod APB1LENR {
         }
     }
 
-    /// TIM peripheral clock enable
+    /// TIM3 peripheral clock enable Set and reset by software.
     pub mod TIM3EN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -5242,7 +5902,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM4 peripheral clock enable Set and reset by software.
     pub mod TIM4EN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -5255,7 +5915,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM5 peripheral clock enable Set and reset by software.
     pub mod TIM5EN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -5268,7 +5928,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM6 peripheral clock enable Set and reset by software.
     pub mod TIM6EN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -5281,7 +5941,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM7 peripheral clock enable Set and reset by software.
     pub mod TIM7EN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -5294,7 +5954,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM12 peripheral clock enable Set and reset by software.
     pub mod TIM12EN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -5307,7 +5967,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM13 peripheral clock enable Set and reset by software.
     pub mod TIM13EN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -5320,7 +5980,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// TIM peripheral clock enable
+    /// TIM14 peripheral clock enable Set and reset by software.
     pub mod TIM14EN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -5333,7 +5993,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// LPTIM1 Peripheral Clocks Enable
+    /// LPTIM1 peripheral clocks enable Set and reset by software. The peripheral clocks of the LPTIM1 are the kernel clock selected by LPTIM1SEL and provided to lptim_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod LPTIM1EN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -5346,7 +6006,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// SPI2 Peripheral Clocks Enable
+    /// SPI2 peripheral clocks enable Set and reset by software. The peripheral clocks of the SPI2 are the kernel clock selected by I2S123SRC and provided to spi_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod SPI2EN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -5359,7 +6019,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// SPI3 Peripheral Clocks Enable
+    /// SPI3 peripheral clocks enable Set and reset by software. The peripheral clocks of the SPI3 are the kernel clock selected by I2S123SRC and provided to spi_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod SPI3EN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -5372,7 +6032,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// SPDIFRX Peripheral Clocks Enable
+    /// SPDIFRX peripheral clocks enable Set and reset by software. The peripheral clocks of the SPDIFRX are the kernel clock selected by SPDIFRXSEL and provided to spdifrx_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod SPDIFRXEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -5385,7 +6045,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// USART2 Peripheral Clocks Enable
+    /// USART2peripheral clocks enable Set and reset by software. The peripheral clocks of the USART2 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod USART2EN {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -5398,7 +6058,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// USART3 Peripheral Clocks Enable
+    /// USART3 peripheral clocks enable Set and reset by software. The peripheral clocks of the USART3 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod USART3EN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -5411,7 +6071,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// UART4 Peripheral Clocks Enable
+    /// UART4 peripheral clocks enable Set and reset by software. The peripheral clocks of the UART4 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART4EN {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
@@ -5424,7 +6084,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// UART5 Peripheral Clocks Enable
+    /// UART5 peripheral clocks enable Set and reset by software. The peripheral clocks of the UART5 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART5EN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -5437,7 +6097,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// I2C1 Peripheral Clocks Enable
+    /// I2C1 peripheral clocks enable Set and reset by software. The peripheral clocks of the I2C1 are the kernel clock selected by I2C123SEL and provided to i2C_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod I2C1EN {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -5450,7 +6110,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// I2C2 Peripheral Clocks Enable
+    /// I2C2 peripheral clocks enable Set and reset by software. The peripheral clocks of the I2C2 are the kernel clock selected by I2C123SEL and provided to i2C_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod I2C2EN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -5463,7 +6123,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// I2C3 Peripheral Clocks Enable
+    /// I2C3 peripheral clocks enable Set and reset by software. The peripheral clocks of the I2C3 are the kernel clock selected by I2C123SEL and provided to i2C_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod I2C3EN {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -5476,7 +6136,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// HDMI-CEC peripheral clock enable
+    /// HDMI-CEC peripheral clock enable Set and reset by software. The peripheral clocks of the HDMI-CEC are the kernel clock selected by CECSEL and provided to cec_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod CECEN {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -5489,8 +6149,8 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// DAC1&2 peripheral clock enable
-    pub mod DAC12EN {
+    /// DAC1 (containing two converters) peripheral clock enable Set and reset by software.
+    pub mod DAC1EN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -5502,7 +6162,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// UART7 Peripheral Clocks Enable
+    /// UART7 peripheral clocks enable Set and reset by software. The peripheral clocks of the UART7 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART7EN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
@@ -5515,7 +6175,7 @@ pub mod APB1LENR {
         pub use super::TIM2EN::RW;
     }
 
-    /// UART8 Peripheral Clocks Enable
+    /// UART8 peripheral clocks enable Set and reset by software. The peripheral clocks of the UART8 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART8EN {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -5529,10 +6189,10 @@ pub mod APB1LENR {
     }
 }
 
-/// RCC APB1 Clock Register
+///
 pub mod APB1HENR {
 
-    /// Clock Recovery System peripheral clock enable
+    /// clock recovery system peripheral clock enable Set and reset by software.
     pub mod CRSEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -5553,8 +6213,8 @@ pub mod APB1HENR {
         }
     }
 
-    /// SWPMI Peripheral Clocks Enable
-    pub mod SWPEN {
+    /// SWPMI peripheral clocks enable Set and reset by software.
+    pub mod SWPMIEN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -5566,7 +6226,7 @@ pub mod APB1HENR {
         pub use super::CRSEN::RW;
     }
 
-    /// OPAMP peripheral clock enable
+    /// OPAMP peripheral clock enable Set and reset by software.
     pub mod OPAMPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -5579,7 +6239,7 @@ pub mod APB1HENR {
         pub use super::CRSEN::RW;
     }
 
-    /// MDIOS peripheral clock enable
+    /// MDIOS peripheral clock enable Set and reset by software.
     pub mod MDIOSEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -5592,7 +6252,7 @@ pub mod APB1HENR {
         pub use super::CRSEN::RW;
     }
 
-    /// FDCAN Peripheral Clocks Enable
+    /// FDCAN peripheral clocks enable Set and reset by software. The peripheral clocks of the FDCAN are the kernel clock selected by FDCANSEL and provided to fdcan_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod FDCANEN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -5606,10 +6266,10 @@ pub mod APB1HENR {
     }
 }
 
-/// RCC APB2 Clock Register
+///
 pub mod APB2ENR {
 
-    /// TIM1 peripheral clock enable
+    /// TIM1 peripheral clock enable Set and reset by software.
     pub mod TIM1EN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -5630,7 +6290,7 @@ pub mod APB2ENR {
         }
     }
 
-    /// TIM8 peripheral clock enable
+    /// TIM8 peripheral clock enable Set and reset by software.
     pub mod TIM8EN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -5643,7 +6303,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// USART1 Peripheral Clocks Enable
+    /// USART1 peripheral clocks enable Set and reset by software. The peripheral clocks of the USART1 are the kernel clock selected by USART16910SEL and provided to UCKL input, and the rcc_pclk2 bus interface clock.
     pub mod USART1EN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -5656,7 +6316,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// USART6 Peripheral Clocks Enable
+    /// USART6 peripheral clocks enable Set and reset by software. The peripheral clocks of the USART6 are the kernel clock selected by USART16910SEL and provided to UCKL input, and the rcc_pclk2 bus interface clock.
     pub mod USART6EN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -5669,7 +6329,33 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// SPI1 Peripheral Clocks Enable
+    /// UART9 peripheral clocks enable Set and reset by software. The peripheral clocks of the UART9 are the kernel clock selected by USART16910SEL and provided to UCKL input, and the rcc_pclk2 bus interface clock.
+    pub mod UART9EN {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
+
+    /// USART10 peripheral clocks enable Set and reset by software. The peripheral clocks of the USART10 are the kernel clock selected by USART16910SEL and provided to UCKL input, and the rcc_pclk2 bus interface clock.
+    pub mod USART10EN {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
+
+    /// SPI1 Peripheral Clocks Enable Set and reset by software. The peripheral clocks of the SPI1 are: the kernel clock selected by I2S123SRC and provided to spi_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod SPI1EN {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -5682,7 +6368,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// SPI4 Peripheral Clocks Enable
+    /// SPI4 Peripheral Clocks Enable Set and reset by software. The peripheral clocks of the SPI4 are: the kernel clock selected by SPI45SEL and provided to spi_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod SPI4EN {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -5695,20 +6381,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// TIM16 peripheral clock enable
-    pub mod TIM16EN {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1EN::RW;
-    }
-
-    /// TIM15 peripheral clock enable
+    /// TIM15 peripheral clock enable Set and reset by software.
     pub mod TIM15EN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -5721,7 +6394,20 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// TIM17 peripheral clock enable
+    /// TIM16 peripheral clock enable Set and reset by software.
+    pub mod TIM16EN {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
+
+    /// TIM17 peripheral clock enable Set and reset by software.
     pub mod TIM17EN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -5734,7 +6420,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// SPI5 Peripheral Clocks Enable
+    /// SPI5 peripheral clocks enable Set and reset by software. The peripheral clocks of the SPI5 are the kernel clock selected by SPI45SEL and provided to spi_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod SPI5EN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -5747,7 +6433,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// SAI1 Peripheral Clocks Enable
+    /// SAI1 peripheral clocks enable Set and reset by software. The peripheral clocks of the SAI1 are: the kernel clock selected by SAI1SEL and provided to sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
     pub mod SAI1EN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -5760,7 +6446,7 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// SAI2 Peripheral Clocks Enable
+    /// SAI2 peripheral clocks enable Set and reset by software. The peripheral clocks of the SAI2 are the kernel clock selected by SAI2SEL and provided to sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
     pub mod SAI2EN {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -5773,37 +6459,11 @@ pub mod APB2ENR {
         pub use super::TIM1EN::RW;
     }
 
-    /// SAI3 Peripheral Clocks Enable
-    pub mod SAI3EN {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1EN::RW;
-    }
-
-    /// DFSDM1 Peripheral Clocks Enable
+    /// DFSDM1 peripheral clocks enable Set and reset by software. DFSDM1 peripheral clocks are the kernel clocks selected by SAI1SEL and DFSDM1SEL and provided to Aclk and clk inputs respectively,
     pub mod DFSDM1EN {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1EN::RW;
-    }
-
-    /// HRTIM peripheral clock enable
-    pub mod HRTIMEN {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -5813,10 +6473,10 @@ pub mod APB2ENR {
     }
 }
 
-/// RCC APB4 Clock Register
+///
 pub mod APB4ENR {
 
-    /// SYSCFG peripheral clock enable
+    /// SYSCFG peripheral clock enable Set and reset by software.
     pub mod SYSCFGEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -5837,7 +6497,7 @@ pub mod APB4ENR {
         }
     }
 
-    /// LPUART1 Peripheral Clocks Enable
+    /// LPUART1 peripheral clocks enable Set and reset by software. The peripheral clocks of the LPUART1 are the kernel clock selected by LPUART1SEL and provided to lpuart_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod LPUART1EN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -5850,7 +6510,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// SPI6 Peripheral Clocks Enable
+    /// SPI6 peripheral clocks enable Set and reset by software. The peripheral clocks of the SPI6 are the kernel clock selected by SPI6SEL and provided to spi_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod SPI6EN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -5863,7 +6523,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// I2C4 Peripheral Clocks Enable
+    /// I2C4 peripheral clocks enable Set and reset by software. The peripheral clocks of the I2C4 are the kernel clock selected by I2C4SEL and provided to i2C_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod I2C4EN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -5876,7 +6536,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// LPTIM2 Peripheral Clocks Enable
+    /// LPTIM2 peripheral clocks enable Set and reset by software. The peripheral clocks of the LPTIM2 are the kernel clock selected by LPTIM2SEL and provided to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod LPTIM2EN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -5889,7 +6549,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// LPTIM3 Peripheral Clocks Enable
+    /// LPTIM3 peripheral clocks enable Set and reset by software. The peripheral clocks of the LPTIM3 are the kernel clock selected by LPTIM345SEL and provided to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod LPTIM3EN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -5902,11 +6562,11 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// LPTIM4 Peripheral Clocks Enable
-    pub mod LPTIM4EN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+    /// DAC2 (containing one converter) peripheral clock enable Set and reset by software.
+    pub mod DAC2EN {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -5915,20 +6575,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// LPTIM5 Peripheral Clocks Enable
-    pub mod LPTIM5EN {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SYSCFGEN::RW;
-    }
-
-    /// COMP1/2 peripheral clock enable
+    /// COMP1 and 2 peripheral clock enable Set and reset by software.
     pub mod COMP12EN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -5941,7 +6588,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// VREF peripheral clock enable
+    /// VREF peripheral clock enable Set and reset by software.
     pub mod VREFEN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -5954,7 +6601,7 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// RTC APB Clock Enable
+    /// RTC APB clock enable Set and reset by software.
     pub mod RTCAPBEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -5967,11 +6614,24 @@ pub mod APB4ENR {
         pub use super::SYSCFGEN::RW;
     }
 
-    /// SAI4 Peripheral Clocks Enable
-    pub mod SAI4EN {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
+    /// Digital temperature sensor peripheral clock enable Set and reset by software.
+    pub mod DTSEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::SYSCFGEN::RW;
+    }
+
+    /// DFSDM2peripheral clock enable Set and reset by software.
+    pub mod DFSDM2EN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -5981,10 +6641,10 @@ pub mod APB4ENR {
     }
 }
 
-/// RCC AHB3 Sleep Clock Register
+///
 pub mod AHB3LPENR {
 
-    /// MDMA Clock Enable During CSleep Mode
+    /// MDMA clock enable during CSleep mode Set and reset by software.
     pub mod MDMALPEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -6005,7 +6665,7 @@ pub mod AHB3LPENR {
         }
     }
 
-    /// DMA2D Clock Enable During CSleep Mode
+    /// DMA2D clock enable during CSleep mode Set and reset by software.
     pub mod DMA2DLPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -6018,7 +6678,7 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// JPGDEC Clock Enable During CSleep Mode
+    /// JPGDEC clock enable during CSleep mode Set and reset by software.
     pub mod JPGDECLPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -6041,11 +6701,10 @@ pub mod AHB3LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MDMALPEN::RW;
     }
 
-    /// FMC Peripheral Clocks Enable During CSleep Mode
+    /// FMC peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the FMC are the kernel clock selected by FMCSEL and provided to fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
     pub mod FMCLPEN {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -6058,8 +6717,8 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// QUADSPI and QUADSPI Delay Clock Enable During CSleep Mode
-    pub mod QSPILPEN {
+    /// OCTOSPI1 and OCTOSPI1 delay clock enable during CSleep mode Set and reset by software.
+    pub mod OCTOSPI1LPEN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -6071,7 +6730,7 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// SDMMC1 and SDMMC1 Delay Clock Enable During CSleep Mode
+    /// SDMMC1 and SDMMC1 delay clock enable during CSleep mode Set and reset by software.
     pub mod SDMMC1LPEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -6084,8 +6743,99 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// D1DTCM1 Block Clock Enable During CSleep mode
-    pub mod D1DTCM1LPEN {
+    /// OCTOSPI2 and OCTOSPI2 delay clock enable during CSleep mode Set and reset by software.
+    pub mod OCTOSPI2LPEN {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// OCTOSPIM block clock enable during CSleep mode Set and reset by software.
+    pub mod OCTOSPIMLPEN {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// OTFD1 block clock enable during CSleep mode Set and reset by software.
+    pub mod OTFD1LPEN {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// OTFD2 block clock enable during CSleep mode Set and reset by software.
+    pub mod OTFD2LPEN {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// GFXMMU block clock enable during CSleep mode Set and reset by software.
+    pub mod GFXMMULPEN {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// AXISRAM2 block clock enable during CSleep mode Set and reset by software.
+    pub mod AXISRAM2LPEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// AXISRAM3 block clock enable during CSleep mode Set and reset by software.
+    pub mod AXISRAM3LPEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MDMALPEN::RW;
+    }
+
+    /// DTCM1 block clock enable during CSleep mode Set and reset by software.
+    pub mod DTCM1LPEN {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
@@ -6097,7 +6847,7 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// D1 DTCM2 Block Clock Enable During CSleep mode
+    /// DTCM2 block clock enable during CSleep mode Set and reset by software.
     pub mod DTCM2LPEN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
@@ -6110,7 +6860,7 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// D1ITCM Block Clock Enable During CSleep mode
+    /// ITCM block clock enable during CSleep mode Set and reset by software.
     pub mod ITCMLPEN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
@@ -6123,8 +6873,8 @@ pub mod AHB3LPENR {
         pub use super::MDMALPEN::RW;
     }
 
-    /// AXISRAM Block Clock Enable During CSleep mode
-    pub mod AXISRAMLPEN {
+    /// AXISRAM1 block clock enable during CSleep mode Set and reset by software.
+    pub mod AXISRAM1LPEN {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
@@ -6137,10 +6887,10 @@ pub mod AHB3LPENR {
     }
 }
 
-/// RCC AHB1 Sleep Clock Register
+///
 pub mod AHB1LPENR {
 
-    /// DMA1 Clock Enable During CSleep Mode
+    /// DMA1 clock enable during CSleep mode Set and reset by software.
     pub mod DMA1LPEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -6161,7 +6911,7 @@ pub mod AHB1LPENR {
         }
     }
 
-    /// DMA2 Clock Enable During CSleep Mode
+    /// DMA2 clock enable during CSleep mode Set and reset by software.
     pub mod DMA2LPEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -6174,7 +6924,7 @@ pub mod AHB1LPENR {
         pub use super::DMA1LPEN::RW;
     }
 
-    /// ADC1/2 Peripheral Clocks Enable During CSleep Mode
+    /// ADC1 and 2 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the ADC1 and 2 are the kernel clock selected by ADCSEL and provided to adc_ker_ck input, and the rcc_hclk1 bus interface clock.
     pub mod ADC12LPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -6187,11 +6937,11 @@ pub mod AHB1LPENR {
         pub use super::DMA1LPEN::RW;
     }
 
-    /// Ethernet MAC bus interface Clock Enable During CSleep Mode
-    pub mod ETH1MACLPEN {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
+    /// CRC peripheral clock enable during CSleep mode Set and reset by software.
+    pub mod CRCLPEN {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -6200,33 +6950,7 @@ pub mod AHB1LPENR {
         pub use super::DMA1LPEN::RW;
     }
 
-    /// Ethernet Transmission Clock Enable During CSleep Mode
-    pub mod ETH1TXLPEN {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DMA1LPEN::RW;
-    }
-
-    /// Ethernet Reception Clock Enable During CSleep Mode
-    pub mod ETH1RXLPEN {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DMA1LPEN::RW;
-    }
-
-    /// USB1OTG peripheral clock enable during CSleep mode
+    /// USB1OTG peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the USB1OTG are the kernel clock selected by USBSEL and the rcc_hclk1 bus interface clock.
     pub mod USB1OTGLPEN {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
@@ -6239,7 +6963,7 @@ pub mod AHB1LPENR {
         pub use super::DMA1LPEN::RW;
     }
 
-    /// USB_PHY1 clock enable during CSleep mode
+    /// USB_PHY1 clock enable during CSleep mode Set and reset by software.
     pub mod USB1ULPILPEN {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
@@ -6253,11 +6977,11 @@ pub mod AHB1LPENR {
     }
 }
 
-/// RCC AHB2 Sleep Clock Register
+///
 pub mod AHB2LPENR {
 
-    /// DCMI peripheral clock enable during csleep mode
-    pub mod DCMILPEN {
+    /// digital camera interface peripheral clock enable during CSleep mode (DCMI or PSSI depending which IP is active) Set and reset by software.
+    pub mod DCMI_PSSILPEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -6277,7 +7001,7 @@ pub mod AHB2LPENR {
         }
     }
 
-    /// CRYPT peripheral clock enable during CSleep mode
+    /// CRYPT peripheral clock enable during CSleep mode Set and reset by software.
     pub mod CRYPTLPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -6287,10 +7011,10 @@ pub mod AHB2LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMILPEN::RW;
+        pub use super::DCMI_PSSILPEN::RW;
     }
 
-    /// HASH peripheral clock enable during CSleep mode
+    /// HASH peripheral clock enable during CSleep mode Set and reset by software.
     pub mod HASHLPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -6300,23 +7024,10 @@ pub mod AHB2LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMILPEN::RW;
+        pub use super::DCMI_PSSILPEN::RW;
     }
 
-    /// SDMMC2 and SDMMC2 Delay Clock Enable During CSleep Mode
-    pub mod SDMMC2LPEN {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DCMILPEN::RW;
-    }
-
-    /// RNG peripheral clock enable during CSleep mode
+    /// RNG peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the RNG are the kernel clock selected by RNGSEL and provided to rng_clk input, and the rcc_hclk2 bus interface clock.
     pub mod RNGLPEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -6326,11 +7037,37 @@ pub mod AHB2LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMILPEN::RW;
+        pub use super::DCMI_PSSILPEN::RW;
     }
 
-    /// SRAM1 Clock Enable During CSleep Mode
-    pub mod SRAM1LPEN {
+    /// SDMMC2 and SDMMC2 delay clock enable during CSleep mode Set and reset by software.
+    pub mod SDMMC2LPEN {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DCMI_PSSILPEN::RW;
+    }
+
+    /// DFSDMDMA clock enable during CSleep mode Set and reset by software.
+    pub mod DFSDMDMALPEN {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DCMI_PSSILPEN::RW;
+    }
+
+    /// AHBSRAM1 clock enable during CSleep mode Set and reset by software.
+    pub mod AHBSRAM1LPEN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -6339,11 +7076,11 @@ pub mod AHB2LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMILPEN::RW;
+        pub use super::DCMI_PSSILPEN::RW;
     }
 
-    /// SRAM2 Clock Enable During CSleep Mode
-    pub mod SRAM2LPEN {
+    /// AHBSRAM2 clock enable during CSleep mode Set and reset by software.
+    pub mod AHBSRAM2LPEN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
@@ -6352,27 +7089,14 @@ pub mod AHB2LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DCMILPEN::RW;
-    }
-
-    /// SRAM3 Clock Enable During CSleep Mode
-    pub mod SRAM3LPEN {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DCMILPEN::RW;
+        pub use super::DCMI_PSSILPEN::RW;
     }
 }
 
-/// RCC AHB4 Sleep Clock Register
+///
 pub mod AHB4LPENR {
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOA peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOALPEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -6393,7 +7117,7 @@ pub mod AHB4LPENR {
         }
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOB peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOBLPEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -6406,7 +7130,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOC peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOCLPEN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -6419,7 +7143,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOD peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIODLPEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -6432,7 +7156,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOE peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOELPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -6445,7 +7169,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOF peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOFLPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -6458,7 +7182,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOG peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOGLPEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -6471,7 +7195,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOH peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOHLPEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -6484,7 +7208,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOI peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOILPEN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -6497,7 +7221,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOJ peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOJLPEN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -6510,7 +7234,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// GPIO peripheral clock enable during CSleep mode
+    /// GPIOK peripheral clock enable during CSleep mode Set and reset by software.
     pub mod GPIOKLPEN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -6523,21 +7247,8 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// CRC peripheral clock enable during CSleep mode
-    pub mod CRCLPEN {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// BDMA Clock Enable During CSleep Mode
-    pub mod BDMALPEN {
+    /// SmartRun domain DMA and DMAMUX clock enable during CSleep mode Set and reset by software.
+    pub mod BDMA2LPEN {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -6549,20 +7260,7 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// ADC3 Peripheral Clocks Enable During CSleep Mode
-    pub mod ADC3LPEN {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// Backup RAM Clock Enable During CSleep Mode
+    /// Backup RAM clock enable during CSleep mode Set and reset by software.
     pub mod BKPRAMLPEN {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -6575,8 +7273,8 @@ pub mod AHB4LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// SRAM4 Clock Enable During CSleep Mode
-    pub mod SRAM4LPEN {
+    /// SmartRun domain SRAM clock enable during CSleep mode Set and reset by software.
+    pub mod SRDSRAMLPEN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -6589,10 +7287,10 @@ pub mod AHB4LPENR {
     }
 }
 
-/// RCC APB3 Sleep Clock Register
+///
 pub mod APB3LPENR {
 
-    /// LTDC peripheral clock enable during CSleep mode
+    /// LTDC peripheral clock enable during CSleep mode Set and reset by software. The LTDC peripheral clocks are the kernel clock provided to ltdc_ker_ck input and the rcc_pclk3 bus interface clock.
     pub mod LTDCLPEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -6613,8 +7311,8 @@ pub mod APB3LPENR {
         }
     }
 
-    /// WWDG1 Clock Enable During CSleep Mode
-    pub mod WWDG1LPEN {
+    /// WWDG clock enable during CSleep mode Set and reset by software.
+    pub mod WWDGLPEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -6627,10 +7325,10 @@ pub mod APB3LPENR {
     }
 }
 
-/// RCC APB1 Low Sleep Clock Register
+///
 pub mod APB1LLPENR {
 
-    /// TIM2 peripheral clock enable during CSleep mode
+    /// TIM2 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM2LPEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -6651,7 +7349,7 @@ pub mod APB1LLPENR {
         }
     }
 
-    /// TIM3 peripheral clock enable during CSleep mode
+    /// TIM3 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM3LPEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -6664,7 +7362,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM4 peripheral clock enable during CSleep mode
+    /// TIM4 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM4LPEN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -6677,7 +7375,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM5 peripheral clock enable during CSleep mode
+    /// TIM5 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM5LPEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -6690,7 +7388,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM6 peripheral clock enable during CSleep mode
+    /// TIM6 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM6LPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -6703,7 +7401,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM7 peripheral clock enable during CSleep mode
+    /// TIM7 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM7LPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -6716,7 +7414,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM12 peripheral clock enable during CSleep mode
+    /// TIM12 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM12LPEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -6729,7 +7427,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM13 peripheral clock enable during CSleep mode
+    /// TIM13 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM13LPEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -6742,7 +7440,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// TIM14 peripheral clock enable during CSleep mode
+    /// TIM14 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM14LPEN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -6755,7 +7453,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// LPTIM1 Peripheral Clocks Enable During CSleep Mode
+    /// LPTIM1 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the LPTIM1 are the kernel clock selected by LPTIM1SEL and provided to lptim_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod LPTIM1LPEN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -6768,7 +7466,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// SPI2 Peripheral Clocks Enable During CSleep Mode
+    /// SPI2 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SPI2 are the kernel clock selected by I2S123SRC and provided to spi_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod SPI2LPEN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -6781,7 +7479,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// SPI3 Peripheral Clocks Enable During CSleep Mode
+    /// SPI3 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SPI3 are the kernel clock selected by I2S123SRC and provided to spi_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod SPI3LPEN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -6794,7 +7492,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// SPDIFRX Peripheral Clocks Enable During CSleep Mode
+    /// SPDIFRX peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SPDIFRX are: the kernel clock selected by SPDIFRXSEL and provided to spdifrx_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod SPDIFRXLPEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -6807,7 +7505,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// USART2 Peripheral Clocks Enable During CSleep Mode
+    /// USART2 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the USART2 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod USART2LPEN {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -6820,7 +7518,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// USART3 Peripheral Clocks Enable During CSleep Mode
+    /// USART3 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the USART3 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod USART3LPEN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -6833,7 +7531,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// UART4 Peripheral Clocks Enable During CSleep Mode
+    /// UART4 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the UART4 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART4LPEN {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
@@ -6846,7 +7544,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// UART5 Peripheral Clocks Enable During CSleep Mode
+    /// UART5 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the UART5 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART5LPEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -6859,7 +7557,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// I2C1 Peripheral Clocks Enable During CSleep Mode
+    /// I2C1 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the I2C1 are the kernel clock selected by I2C123SEL and provided to i2C_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod I2C1LPEN {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -6872,7 +7570,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// I2C2 Peripheral Clocks Enable During CSleep Mode
+    /// I2C2 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the I2C2 are the kernel clock selected by I2C123SEL and provided to i2C_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod I2C2LPEN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -6885,7 +7583,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// I2C3 Peripheral Clocks Enable During CSleep Mode
+    /// I2C3 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the I2C3 are the kernel clock selected by I2C123SEL and provided to i2C_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod I2C3LPEN {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -6898,7 +7596,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// HDMI-CEC Peripheral Clocks Enable During CSleep Mode
+    /// HDMI-CEC peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the HDMI-CEC are the kernel clock selected by CECSEL and provided to cec_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod CECLPEN {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -6911,8 +7609,8 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// DAC1/2 peripheral clock enable during CSleep mode
-    pub mod DAC12LPEN {
+    /// DAC1 (containing two converters) peripheral clock enable during CSleep mode Set and reset by software.
+    pub mod DAC1LPEN {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
         /// Mask (1 bit: 1 << 29)
@@ -6924,7 +7622,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// UART7 Peripheral Clocks Enable During CSleep Mode
+    /// UART7 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the UART7 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART7LPEN {
         /// Offset (30 bits)
         pub const offset: u32 = 30;
@@ -6937,7 +7635,7 @@ pub mod APB1LLPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// UART8 Peripheral Clocks Enable During CSleep Mode
+    /// UART8 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the UART8 are the kernel clock selected by USART234578SEL and provided to usart_ker_ck input, and the rcc_pclk1 bus interface clock.
     pub mod UART8LPEN {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -6951,10 +7649,10 @@ pub mod APB1LLPENR {
     }
 }
 
-/// RCC APB1 High Sleep Clock Register
+///
 pub mod APB1HLPENR {
 
-    /// Clock Recovery System peripheral clock enable during CSleep mode
+    /// clock recovery system peripheral clock enable during CSleep mode Set and reset by software.
     pub mod CRSLPEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -6975,8 +7673,8 @@ pub mod APB1HLPENR {
         }
     }
 
-    /// SWPMI Peripheral Clocks Enable During CSleep Mode
-    pub mod SWPLPEN {
+    /// SWPMI peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SWPMI are the kernel clock selected by SWPMISEL and provided to swpmi_ker_ck input, and the rcc_pclk1 bus interface clock.
+    pub mod SWPMILPEN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -6988,7 +7686,7 @@ pub mod APB1HLPENR {
         pub use super::CRSLPEN::RW;
     }
 
-    /// OPAMP peripheral clock enable during CSleep mode
+    /// OPAMP peripheral clock enable during CSleep mode Set and reset by software.
     pub mod OPAMPLPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -7001,7 +7699,7 @@ pub mod APB1HLPENR {
         pub use super::CRSLPEN::RW;
     }
 
-    /// MDIOS peripheral clock enable during CSleep mode
+    /// MDIOS peripheral clock enable during CSleep mode Set and reset by software.
     pub mod MDIOSLPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -7014,7 +7712,7 @@ pub mod APB1HLPENR {
         pub use super::CRSLPEN::RW;
     }
 
-    /// FDCAN Peripheral Clocks Enable During CSleep Mode
+    /// FDCAN peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the FDCAN are: the kernel clock selected by FDCANSEL and provided to fdcan_clk input, and the rcc_pclk1 bus interface clock.
     pub mod FDCANLPEN {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -7028,10 +7726,10 @@ pub mod APB1HLPENR {
     }
 }
 
-/// RCC APB2 Sleep Clock Register
+///
 pub mod APB2LPENR {
 
-    /// TIM1 peripheral clock enable during CSleep mode
+    /// TIM1 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM1LPEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -7052,7 +7750,7 @@ pub mod APB2LPENR {
         }
     }
 
-    /// TIM8 peripheral clock enable during CSleep mode
+    /// TIM8 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM8LPEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -7065,7 +7763,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// USART1 Peripheral Clocks Enable During CSleep Mode
+    /// USART1 peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the USART1 are the kernel clock selected by USART16910SEL and provided to usart_ker_ck inputs, and the rcc_pclk2 bus interface clock.
     pub mod USART1LPEN {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -7078,7 +7776,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// USART6 Peripheral Clocks Enable During CSleep Mode
+    /// USART6 peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the USART6 are the kernel clock selected by USART16910SEL and provided to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod USART6LPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -7091,7 +7789,33 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// SPI1 Peripheral Clocks Enable During CSleep Mode
+    /// UART9 peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the UART9 are the kernel clock selected by USART16910SEL and provided to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+    pub mod UART9LPEN {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1LPEN::RW;
+    }
+
+    /// USART10 peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the USART10 are the kernel clock selected by USART16910SEL and provided to usart_ker_ck input, and the rcc_pclk2 bus interface clock.
+    pub mod USART10LPEN {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1LPEN::RW;
+    }
+
+    /// SPI1 peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the SPI1 are: the kernel clock selected by I2S123SRC and provided to spi_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod SPI1LPEN {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -7104,7 +7828,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// SPI4 Peripheral Clocks Enable During CSleep Mode
+    /// SPI4 peripheral clock enable during CSleep mode Set and reset by software. The peripheral clocks of the SPI4 are: the kernel clock selected by SPI45SEL and provided to spi_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod SPI4LPEN {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -7117,7 +7841,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// TIM15 peripheral clock enable during CSleep mode
+    /// TIM15 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM15LPEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -7130,7 +7854,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// TIM16 peripheral clock enable during CSleep mode
+    /// TIM16 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM16LPEN {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
@@ -7143,7 +7867,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// TIM17 peripheral clock enable during CSleep mode
+    /// TIM17 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod TIM17LPEN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -7156,7 +7880,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// SPI5 Peripheral Clocks Enable During CSleep Mode
+    /// SPI5 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SPI5 are the kernel clock selected by SPI45SEL and provided to spi_ker_ck input, and the rcc_pclk2 bus interface clock.
     pub mod SPI5LPEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -7169,7 +7893,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// SAI1 Peripheral Clocks Enable During CSleep Mode
+    /// SAI1 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SAI1 are: the kernel clock selected by SAI1SEL and provided to sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
     pub mod SAI1LPEN {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
@@ -7182,7 +7906,7 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// SAI2 Peripheral Clocks Enable During CSleep Mode
+    /// SAI2 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SAI2 are the kernel clock selected by SAI23EL and provided to sai_a_ker_ck and sai_b_ker_ck inputs, and the rcc_pclk2 bus interface clock.
     pub mod SAI2LPEN {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -7195,37 +7919,11 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// SAI3 Peripheral Clocks Enable During CSleep Mode
-    pub mod SAI3LPEN {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1LPEN::RW;
-    }
-
-    /// DFSDM1 Peripheral Clocks Enable During CSleep Mode
+    /// DFSDM1 peripheral clocks enable during CSleep mode Set and reset by software. DFSDM1 peripheral clocks are the kernel clocks selected by SAI1SEL and DFSDM1SEL and provided to Aclk and clk inputs respectively, and the rcc_pclk2 bus interface clock.
     pub mod DFSDM1LPEN {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1LPEN::RW;
-    }
-
-    /// HRTIM peripheral clock enable during CSleep mode
-    pub mod HRTIMLPEN {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
+        /// Offset (30 bits)
+        pub const offset: u32 = 30;
+        /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -7235,10 +7933,10 @@ pub mod APB2LPENR {
     }
 }
 
-/// RCC APB4 Sleep Clock Register
+///
 pub mod APB4LPENR {
 
-    /// SYSCFG peripheral clock enable during CSleep mode
+    /// SYSCFG peripheral clock enable during CSleep mode Set and reset by software.
     pub mod SYSCFGLPEN {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -7259,7 +7957,7 @@ pub mod APB4LPENR {
         }
     }
 
-    /// LPUART1 Peripheral Clocks Enable During CSleep Mode
+    /// LPUART1 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the LPUART1 are the kernel clock selected by LPUART1SEL and provided to lpuart_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod LPUART1LPEN {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -7272,7 +7970,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// SPI6 Peripheral Clocks Enable During CSleep Mode
+    /// SPI6 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the SPI6 are the kernel clock selected by SPI6SEL and provided to com_ck input, and the rcc_pclk4 bus interface clock.
     pub mod SPI6LPEN {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -7285,7 +7983,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// I2C4 Peripheral Clocks Enable During CSleep Mode
+    /// I2C4 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the I2C4 are the kernel clock selected by I2C4SEL and provided to i2C_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod I2C4LPEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -7298,7 +7996,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// LPTIM2 Peripheral Clocks Enable During CSleep Mode
+    /// LPTIM2 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the LPTIM2 are the kernel clock selected by LPTIM2SEL and provided to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod LPTIM2LPEN {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -7311,7 +8009,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// LPTIM3 Peripheral Clocks Enable During CSleep Mode
+    /// LPTIM3 peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the LPTIM3 are the kernel clock selected by LPTIM345SEL and provided to lptim_ker_ck input, and the rcc_pclk4 bus interface clock.
     pub mod LPTIM3LPEN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -7324,11 +8022,11 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// LPTIM4 Peripheral Clocks Enable During CSleep Mode
-    pub mod LPTIM4LPEN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+    /// DAC2 (containing one converter) peripheral clock enable during CSleep mode Set and reset by software.
+    pub mod DAC2LPEN {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -7337,20 +8035,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// LPTIM5 Peripheral Clocks Enable During CSleep Mode
-    pub mod LPTIM5LPEN {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SYSCFGLPEN::RW;
-    }
-
-    /// COMP1/2 peripheral clock enable during CSleep mode
+    /// COMP1 and 2 peripheral clock enable during CSleep mode Set and reset by software.
     pub mod COMP12LPEN {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -7363,7 +8048,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// VREF peripheral clock enable during CSleep mode
+    /// VREF peripheral clock enable during CSleep mode Set and reset by software.
     pub mod VREFLPEN {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -7376,7 +8061,7 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// RTC APB Clock Enable During CSleep Mode
+    /// RTC APB clock enable during CSleep mode Set and reset by software.
     pub mod RTCAPBLPEN {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -7389,11 +8074,24 @@ pub mod APB4LPENR {
         pub use super::SYSCFGLPEN::RW;
     }
 
-    /// SAI4 Peripheral Clocks Enable During CSleep Mode
-    pub mod SAI4LPEN {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
+    /// temperature sensor peripheral clock enable during CSleep mode Set and reset by software.
+    pub mod DTSLPEN {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::SYSCFGLPEN::RW;
+    }
+
+    /// DFSDM2 peripheral clock enable during CSleep mode Set and reset by software.
+    pub mod DFSDM2LPEN {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -7427,184 +8125,120 @@ pub mod GCR {
         }
     }
 }
-
-/// RCC HSI configuration register
-pub mod HSICFGR {
-
-    /// HSI clock trimming
-    pub mod HSITRIM {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (7 bits: 0x7f << 24)
-        pub const mask: u32 = 0x7f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// HSI clock calibration
-    pub mod HSICAL {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// RCC CSI configuration register
-pub mod CSICFGR {
-
-    /// CSI clock trimming
-    pub mod CSITRIM {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (6 bits: 0x3f << 24)
-        pub const mask: u32 = 0x3f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CSI clock calibration
-    pub mod CSICAL {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (9 bits: 0x1ff << 0)
-        pub const mask: u32 = 0x1ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
-    /// clock control register
+    ///
     pub CR: RWRegister<u32>,
 
-    /// RCC HSI configuration register
+    /// RCC HSI calibration register
     pub HSICFGR: RWRegister<u32>,
 
-    /// RCC Clock Recovery RC Register
+    /// RCC clock recovery RC register
     pub CRRCR: RORegister<u32>,
 
-    /// RCC CSI configuration register
+    /// RCC CSI calibration register
     pub CSICFGR: RWRegister<u32>,
 
-    /// RCC Clock Configuration Register
+    ///
     pub CFGR: RWRegister<u32>,
 
     _reserved1: [u32; 1],
 
-    /// RCC Domain 1 Clock Configuration Register
-    pub D1CFGR: RWRegister<u32>,
+    ///
+    pub CDCFGR1: RWRegister<u32>,
 
-    /// RCC Domain 2 Clock Configuration Register
-    pub D2CFGR: RWRegister<u32>,
+    ///
+    pub CDCFGR2: RWRegister<u32>,
 
-    /// RCC Domain 3 Clock Configuration Register
-    pub D3CFGR: RWRegister<u32>,
+    ///
+    pub SRDCFGR: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
-    /// RCC PLLs Clock Source Selection Register
+    ///
     pub PLLCKSELR: RWRegister<u32>,
 
-    /// RCC PLLs Configuration Register
+    ///
     pub PLLCFGR: RWRegister<u32>,
 
-    /// RCC PLL1 Dividers Configuration Register
+    ///
     pub PLL1DIVR: RWRegister<u32>,
 
-    /// RCC PLL1 Fractional Divider Register
+    ///
     pub PLL1FRACR: RWRegister<u32>,
 
-    /// RCC PLL2 Dividers Configuration Register
+    ///
     pub PLL2DIVR: RWRegister<u32>,
 
-    /// RCC PLL2 Fractional Divider Register
+    ///
     pub PLL2FRACR: RWRegister<u32>,
 
-    /// RCC PLL3 Dividers Configuration Register
+    ///
     pub PLL3DIVR: RWRegister<u32>,
 
-    /// RCC PLL3 Fractional Divider Register
+    ///
     pub PLL3FRACR: RWRegister<u32>,
 
     _reserved3: [u32; 1],
 
-    /// RCC Domain 1 Kernel Clock Configuration Register
+    /// RCC CPU domain kernel clock configuration register
     pub CDCCIPR: RWRegister<u32>,
 
-    /// RCC Domain 2 Kernel Clock Configuration Register
+    /// RCC CPU domain kernel clock configuration register
     pub CDCCIP1R: RWRegister<u32>,
 
-    /// RCC Domain 2 Kernel Clock Configuration Register
+    /// RCC CPU domain kernel clock configuration register
     pub CDCCIP2R: RWRegister<u32>,
 
-    /// RCC Domain 3 Kernel Clock Configuration Register
+    /// RCC SmartRun domain kernel clock configuration register
     pub SRDCCIPR: RWRegister<u32>,
 
     _reserved4: [u32; 1],
 
-    /// RCC Clock Source Interrupt Enable Register
+    ///
     pub CIER: RWRegister<u32>,
 
-    /// RCC Clock Source Interrupt Flag Register
+    ///
     pub CIFR: RORegister<u32>,
 
-    /// RCC Clock Source Interrupt Clear Register
+    ///
     pub CICR: RWRegister<u32>,
 
     _reserved5: [u32; 1],
 
-    /// RCC Backup Domain Control Register
+    /// RCC Backup domain control register
     pub BDCR: RWRegister<u32>,
 
-    /// RCC Clock Control and Status Register
+    /// RCC clock control and status register
     pub CSR: RWRegister<u32>,
 
     _reserved6: [u32; 1],
 
-    /// RCC AHB3 Reset Register
+    ///
     pub AHB3RSTR: RWRegister<u32>,
 
-    /// RCC AHB1 Peripheral Reset Register
+    ///
     pub AHB1RSTR: RWRegister<u32>,
 
-    /// RCC AHB2 Peripheral Reset Register
+    ///
     pub AHB2RSTR: RWRegister<u32>,
 
-    /// RCC AHB4 Peripheral Reset Register
+    ///
     pub AHB4RSTR: RWRegister<u32>,
 
-    /// RCC APB3 Peripheral Reset Register
+    ///
     pub APB3RSTR: RWRegister<u32>,
 
-    /// RCC APB1 Peripheral Reset Register
+    ///
     pub APB1LRSTR: RWRegister<u32>,
 
-    /// RCC APB1 Peripheral Reset Register
+    ///
     pub APB1HRSTR: RWRegister<u32>,
 
-    /// RCC APB2 Peripheral Reset Register
+    ///
     pub APB2RSTR: RWRegister<u32>,
 
-    /// RCC APB4 Peripheral Reset Register
+    ///
     pub APB4RSTR: RWRegister<u32>,
 
     /// Global Control Register
@@ -7612,68 +8246,73 @@ pub struct RegisterBlock {
 
     _reserved7: [u32; 1],
 
-    /// RCC D3 Autonomous mode Register
-    pub D3AMR: RWRegister<u32>,
+    /// RCC SmartRun domain Autonomous mode register
+    pub SRDAMR: RWRegister<u32>,
 
-    _reserved8: [u32; 33],
+    _reserved8: [u32; 1],
 
-    /// RCC Reset Status Register
-    pub C1_RSR: RWRegister<u32>,
+    /// RCC AXI clocks gating enable register
+    pub CKGAENR: RWRegister<u32>,
 
-    /// RCC AHB3 Clock Register
+    _reserved9: [u32; 31],
+
+    /// RCC reset status register
+    pub RSR: RWRegister<u32>,
+
+    ///
     pub AHB3ENR: RWRegister<u32>,
 
-    /// RCC AHB1 Clock Register
+    ///
     pub AHB1ENR: RWRegister<u32>,
 
-    /// RCC AHB2 Clock Register
+    ///
     pub AHB2ENR: RWRegister<u32>,
 
-    /// RCC AHB4 Clock Register
+    ///
     pub AHB4ENR: RWRegister<u32>,
 
-    /// RCC APB3 Clock Register
+    ///
     pub APB3ENR: RWRegister<u32>,
 
-    /// RCC APB1 Clock Register
+    ///
     pub APB1LENR: RWRegister<u32>,
 
-    /// RCC APB1 Clock Register
+    ///
     pub APB1HENR: RWRegister<u32>,
 
-    /// RCC APB2 Clock Register
+    ///
     pub APB2ENR: RWRegister<u32>,
 
-    /// RCC APB4 Clock Register
+    ///
     pub APB4ENR: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved10: [u32; 1],
 
-    /// RCC AHB3 Sleep Clock Register
+    ///
     pub AHB3LPENR: RWRegister<u32>,
 
-    /// RCC AHB1 Sleep Clock Register
+    ///
     pub AHB1LPENR: RWRegister<u32>,
 
-    /// RCC AHB2 Sleep Clock Register
+    ///
     pub AHB2LPENR: RWRegister<u32>,
 
-    /// RCC AHB4 Sleep Clock Register
+    ///
     pub AHB4LPENR: RWRegister<u32>,
 
-    /// RCC APB3 Sleep Clock Register
+    ///
     pub APB3LPENR: RWRegister<u32>,
 
-    /// RCC APB1 Low Sleep Clock Register
+    ///
     pub APB1LLPENR: RWRegister<u32>,
 
-    /// RCC APB1 High Sleep Clock Register
+    ///
     pub APB1HLPENR: RWRegister<u32>,
 
-    /// RCC APB2 Sleep Clock Register
+    ///
     pub APB2LPENR: RWRegister<u32>,
 
-    /// RCC APB4 Sleep Clock Register
+    ///
     pub APB4LPENR: RWRegister<u32>,
 }
 pub struct ResetValues {
@@ -7682,9 +8321,9 @@ pub struct ResetValues {
     pub CRRCR: u32,
     pub CSICFGR: u32,
     pub CFGR: u32,
-    pub D1CFGR: u32,
-    pub D2CFGR: u32,
-    pub D3CFGR: u32,
+    pub CDCFGR1: u32,
+    pub CDCFGR2: u32,
+    pub SRDCFGR: u32,
     pub PLLCKSELR: u32,
     pub PLLCFGR: u32,
     pub PLL1DIVR: u32,
@@ -7712,8 +8351,9 @@ pub struct ResetValues {
     pub APB2RSTR: u32,
     pub APB4RSTR: u32,
     pub GCR: u32,
-    pub D3AMR: u32,
-    pub C1_RSR: u32,
+    pub SRDAMR: u32,
+    pub CKGAENR: u32,
+    pub RSR: u32,
     pub AHB3ENR: u32,
     pub AHB1ENR: u32,
     pub AHB2ENR: u32,
@@ -7764,12 +8404,14 @@ pub mod RCC {
 
     /// Reset values for each field in RCC
     pub const reset: ResetValues = ResetValues {
-        CR: 0x00000083,
+        CR: 0x00000025,
+        HSICFGR: 0x40000000,
         CRRCR: 0x00000000,
+        CSICFGR: 0x20000000,
         CFGR: 0x00000000,
-        D1CFGR: 0x00000000,
-        D2CFGR: 0x00000000,
-        D3CFGR: 0x00000000,
+        CDCFGR1: 0x00000000,
+        CDCFGR2: 0x00000000,
+        SRDCFGR: 0x00000000,
         PLLCKSELR: 0x02020200,
         PLLCFGR: 0x01FF0000,
         PLL1DIVR: 0x01010280,
@@ -7796,8 +8438,9 @@ pub mod RCC {
         APB1HRSTR: 0x00000000,
         APB2RSTR: 0x00000000,
         APB4RSTR: 0x00000000,
-        D3AMR: 0x00000000,
-        C1_RSR: 0x00000000,
+        SRDAMR: 0x00000000,
+        CKGAENR: 0x00000000,
+        RSR: 0x00E80000,
         AHB3ENR: 0x00000000,
         AHB1ENR: 0x00000000,
         AHB2ENR: 0x00000000,
@@ -7806,19 +8449,17 @@ pub mod RCC {
         APB1LENR: 0x00000000,
         APB1HENR: 0x00000000,
         APB2ENR: 0x00000000,
-        APB4ENR: 0x00000000,
-        AHB3LPENR: 0x00000000,
-        AHB1LPENR: 0x00000000,
-        AHB2LPENR: 0x00000000,
-        AHB4LPENR: 0x00000000,
-        APB3LPENR: 0x00000000,
-        APB1LLPENR: 0x00000000,
-        APB1HLPENR: 0x00000000,
-        APB2LPENR: 0x00000000,
-        APB4LPENR: 0x00000000,
+        APB4ENR: 0x00010000,
+        AHB3LPENR: 0xFDE95131,
+        AHB1LPENR: 0x06000223,
+        AHB2LPENR: 0x60000A71,
+        AHB4LPENR: 0x302007FF,
+        APB3LPENR: 0x00000048,
+        APB1LLPENR: 0xE8FFC3FF,
+        APB1HLPENR: 0x00000136,
+        APB2LPENR: 0x40D730F3,
+        APB4LPENR: 0x0C01E6AA,
         GCR: 0x00000000,
-        HSICFGR: 0x00000000,
-        CSICFGR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

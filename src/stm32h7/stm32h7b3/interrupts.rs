@@ -1,7 +1,7 @@
 extern crate bare_metal;
 #[cfg(feature = "rt")]
 extern "C" {
-    fn WWDG1();
+    fn WWDG();
     fn PVD_PVM();
     fn RTC_TAMP_STAMP_CSS_LSE();
     fn RTC_WKUP();
@@ -12,13 +12,13 @@ extern "C" {
     fn EXTI2();
     fn EXTI3();
     fn EXTI4();
-    fn DMA1_STR0();
-    fn DMA1_STR1();
-    fn DMA1_STR2();
-    fn DMA1_STR3();
-    fn DMA1_STR4();
-    fn DMA1_STR5();
-    fn DMA1_STR6();
+    fn DMA_STR0();
+    fn DMA_STR1();
+    fn DMA_STR2();
+    fn DMA_STR3();
+    fn DMA_STR4();
+    fn DMA_STR5();
+    fn DMA_STR6();
     fn ADC1_2();
     fn FDCAN1_IT0();
     fn FDCAN2_IT0();
@@ -28,7 +28,7 @@ extern "C" {
     fn TIM1_BRK();
     fn TIM1_UP();
     fn TIM1_TRG_COM();
-    fn TIM_CC();
+    fn TIM1_CC();
     fn TIM2();
     fn TIM3();
     fn TIM4();
@@ -71,7 +71,7 @@ extern "C" {
     fn OTG_HS_EP1_IN();
     fn OTG_HS_WKUP();
     fn OTG_HS();
-    fn DCMI();
+    fn DCMI_PSSI();
     fn CRYP();
     fn HASH_RNG();
     fn FPU();
@@ -143,7 +143,7 @@ pub union Vector {
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
 pub static __INTERRUPTS: [Vector; 155] = [
-    Vector { _handler: WWDG1 },
+    Vector { _handler: WWDG },
     Vector { _handler: PVD_PVM },
     Vector {
         _handler: RTC_TAMP_STAMP_CSS_LSE,
@@ -156,27 +156,13 @@ pub static __INTERRUPTS: [Vector; 155] = [
     Vector { _handler: EXTI2 },
     Vector { _handler: EXTI3 },
     Vector { _handler: EXTI4 },
-    Vector {
-        _handler: DMA1_STR0,
-    },
-    Vector {
-        _handler: DMA1_STR1,
-    },
-    Vector {
-        _handler: DMA1_STR2,
-    },
-    Vector {
-        _handler: DMA1_STR3,
-    },
-    Vector {
-        _handler: DMA1_STR4,
-    },
-    Vector {
-        _handler: DMA1_STR5,
-    },
-    Vector {
-        _handler: DMA1_STR6,
-    },
+    Vector { _handler: DMA_STR0 },
+    Vector { _handler: DMA_STR1 },
+    Vector { _handler: DMA_STR2 },
+    Vector { _handler: DMA_STR3 },
+    Vector { _handler: DMA_STR4 },
+    Vector { _handler: DMA_STR5 },
+    Vector { _handler: DMA_STR6 },
     Vector { _handler: ADC1_2 },
     Vector {
         _handler: FDCAN1_IT0,
@@ -196,7 +182,7 @@ pub static __INTERRUPTS: [Vector; 155] = [
     Vector {
         _handler: TIM1_TRG_COM,
     },
-    Vector { _handler: TIM_CC },
+    Vector { _handler: TIM1_CC },
     Vector { _handler: TIM2 },
     Vector { _handler: TIM3 },
     Vector { _handler: TIM4 },
@@ -281,7 +267,9 @@ pub static __INTERRUPTS: [Vector; 155] = [
         _handler: OTG_HS_WKUP,
     },
     Vector { _handler: OTG_HS },
-    Vector { _handler: DCMI },
+    Vector {
+        _handler: DCMI_PSSI,
+    },
     Vector { _handler: CRYP },
     Vector { _handler: HASH_RNG },
     Vector { _handler: FPU },
@@ -382,14 +370,14 @@ pub static __INTERRUPTS: [Vector; 155] = [
 #[allow(non_camel_case_types)]
 pub enum Interrupt {
     /// 0: Window Watchdog interrupt
-    WWDG1 = 0,
+    WWDG = 0,
     /// 1: PVD through EXTI line
     PVD_PVM = 1,
-    /// 2: RTC tamper, timestamp
+    /// 2: RTC tamper, timestamp/CSS LSE
     RTC_TAMP_STAMP_CSS_LSE = 2,
-    /// 3: RTC Wakeup interrupt
+    /// 3: RTC Wakeup interrupt through the EXTI linet
     RTC_WKUP = 3,
-    /// 4: Flash memory
+    /// 4: Flash memory global interrupt
     FLASH = 4,
     /// 5: RCC global interrupt
     RCC = 5,
@@ -403,29 +391,29 @@ pub enum Interrupt {
     EXTI3 = 9,
     /// 10: EXTI Line 4interrupt
     EXTI4 = 10,
-    /// 11: DMA1 Stream0
-    DMA1_STR0 = 11,
-    /// 12: DMA1 Stream1
-    DMA1_STR1 = 12,
-    /// 13: DMA1 Stream2
-    DMA1_STR2 = 13,
-    /// 14: DMA1 Stream3
-    DMA1_STR3 = 14,
-    /// 15: DMA1 Stream4
-    DMA1_STR4 = 15,
-    /// 16: DMA1 Stream5
-    DMA1_STR5 = 16,
-    /// 17: DMA1 Stream6
-    DMA1_STR6 = 17,
-    /// 18: ADC1 and ADC2
+    /// 11: DMA1 Stream0 global interrupt
+    DMA_STR0 = 11,
+    /// 12: DMA1 Stream1 global interrupt
+    DMA_STR1 = 12,
+    /// 13: DMA1 Stream2 global interrupt
+    DMA_STR2 = 13,
+    /// 14: DMA1 Stream3 global interrupt
+    DMA_STR3 = 14,
+    /// 15: DMA1 Stream4 global interrupt
+    DMA_STR4 = 15,
+    /// 16: DMA1 Stream5 global interrupt
+    DMA_STR5 = 16,
+    /// 17: DMA1 Stream6 global interrupt
+    DMA_STR6 = 17,
+    /// 18: ADC1 and ADC2 global interrupt
     ADC1_2 = 18,
-    /// 19: FDCAN1 Interrupt 0
+    /// 19: TTCAN Interrupt 0
     FDCAN1_IT0 = 19,
-    /// 20: FDCAN2 Interrupt 0
+    /// 20: FDCAN Interrupt 0
     FDCAN2_IT0 = 20,
-    /// 21: FDCAN1 Interrupt 1
+    /// 21: TTCAN Interrupt 1
     FDCAN1_IT1 = 21,
-    /// 22: FDCAN2 Interrupt 1
+    /// 22: FDCAN Interrupt 1
     FDCAN2_IT1 = 22,
     /// 23: EXTI Line\[9:5\] interrupts
     EXTI9_5 = 23,
@@ -436,7 +424,7 @@ pub enum Interrupt {
     /// 26: TIM1 trigger and commutation
     TIM1_TRG_COM = 26,
     /// 27: TIM1 capture / compare
-    TIM_CC = 27,
+    TIM1_CC = 27,
     /// 28: TIM2 global interrupt
     TIM2 = 28,
     /// 29: TIM3 global interrupt
@@ -463,7 +451,7 @@ pub enum Interrupt {
     USART3 = 39,
     /// 40: EXTI Line\[15:10\] interrupts
     EXTI15_10 = 40,
-    /// 41: RTC alarms (A and B)
+    /// 41: RTC alarms (A and B) through EXTI Line interrupts)
     RTC_ALARM = 41,
     /// 43: TIM8 and 12 break global
     TIM8_BRK_TIM12 = 43,
@@ -473,7 +461,7 @@ pub enum Interrupt {
     TIM8_TRG_COM_TIM14 = 45,
     /// 46: TIM8 capture / compare
     TIM8_CC = 46,
-    /// 47: DMA1 Stream7
+    /// 47: DMA1 Stream7 global interrupt
     DMA1_STR7 = 47,
     /// 48: FMC global interrupt
     FMC = 48,
@@ -521,11 +509,11 @@ pub enum Interrupt {
     OTG_HS_WKUP = 76,
     /// 77: OTG_HS global interrupt
     OTG_HS = 77,
-    /// 78: DCMI global interrupt
-    DCMI = 78,
+    /// 78: DCMI/PSSI global interrupt
+    DCMI_PSSI = 78,
     /// 79: CRYP global interrupt
     CRYP = 79,
-    /// 80: HASH and RNG
+    /// 80: HASH and RNG global interrupt
     HASH_RNG = 80,
     /// 81: Floating point unit interrupt
     FPU = 81,

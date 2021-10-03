@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! Independent watchdog
 //!
-//! Used by: stm32g070, stm32g071, stm32g07x, stm32g081
+//! Used by: stm32g050, stm32g051, stm32g061, stm32g0b0, stm32g0b1, stm32g0c1
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
 /// Key register
-pub mod KR {
+pub mod IWDG_KR {
 
     /// Key value (write only, read 0x0000)
     pub mod KEY {
@@ -27,9 +27,9 @@ pub mod KR {
 }
 
 /// Prescaler register
-pub mod PR {
+pub mod IWDG_PR {
 
-    /// Prescaler divider
+    /// Prescaler divider These bits are write access protected see . They are written by software to select the prescaler divider feeding the counter clock. PVU bit of the must be reset in order to be able to change the prescaler divider. Note: Reading this register returns the prescaler value from the VDD voltage domain. This value may not be up to date/valid if a write operation to this register is ongoing. For this reason the value read from this register is valid only when the PVU bit in the status register (IWDG_SR) is reset.
     pub mod PR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -39,13 +39,38 @@ pub mod PR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: divider /4
+            pub const B_0x0: u32 = 0b000;
+
+            /// 0b001: divider /8
+            pub const B_0x1: u32 = 0b001;
+
+            /// 0b010: divider /16
+            pub const B_0x2: u32 = 0b010;
+
+            /// 0b011: divider /32
+            pub const B_0x3: u32 = 0b011;
+
+            /// 0b100: divider /64
+            pub const B_0x4: u32 = 0b100;
+
+            /// 0b101: divider /128
+            pub const B_0x5: u32 = 0b101;
+
+            /// 0b110: divider /256
+            pub const B_0x6: u32 = 0b110;
+
+            /// 0b111: divider /256
+            pub const B_0x7: u32 = 0b111;
+        }
     }
 }
 
 /// Reload register
-pub mod RLR {
+pub mod IWDG_RLR {
 
     /// Watchdog counter reload value
     pub mod RL {
@@ -63,13 +88,13 @@ pub mod RLR {
 }
 
 /// Status register
-pub mod SR {
+pub mod IWDG_SR {
 
-    /// Watchdog counter window value update
-    pub mod WVU {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
+    /// Watchdog prescaler value update This bit is set by hardware to indicate that an update of the prescaler value is ongoing. It is reset by hardware when the prescaler update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Prescaler value can be updated only when PVU bit is reset.
+    pub mod PVU {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -79,7 +104,7 @@ pub mod SR {
         pub mod RW {}
     }
 
-    /// Watchdog counter reload value update
+    /// Watchdog counter reload value update This bit is set by hardware to indicate that an update of the reload value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Reload value can be updated only when RVU bit is reset.
     pub mod RVU {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -93,11 +118,11 @@ pub mod SR {
         pub mod RW {}
     }
 
-    /// Watchdog prescaler value update
-    pub mod PVU {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
+    /// Watchdog counter window value update This bit is set by hardware to indicate that an update of the window value is ongoing. It is reset by hardware when the reload value update operation is completed in the VDD voltage domain (takes up to five LSI cycles). Window value can be updated only when WVU bit is reset.
+    pub mod WVU {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -109,7 +134,7 @@ pub mod SR {
 }
 
 /// Window register
-pub mod WINR {
+pub mod IWDG_WINR {
 
     /// Watchdog counter window value
     pub mod WIN {
@@ -125,147 +150,29 @@ pub mod WINR {
         pub mod RW {}
     }
 }
-
-/// hardware configuration register
-pub mod HWCFGR {
-
-    /// Support of Window function
-    pub mod WINDOW {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Prescaler default value
-    pub mod PR_DEFAULT {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// EXTI IP Version register
-pub mod VERR {
-
-    /// Minor Revision number
-    pub mod MINREV {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Major Revision number
-    pub mod MAJREV {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// EXTI Identification register
-pub mod IPIDR {
-
-    /// IP Identification
-    pub mod IPID {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// EXTI Size ID register
-pub mod SIDR {
-
-    /// Size Identification
-    pub mod SID {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Key register
-    pub KR: WORegister<u32>,
+    pub IWDG_KR: WORegister<u32>,
 
     /// Prescaler register
-    pub PR: RWRegister<u32>,
+    pub IWDG_PR: RWRegister<u32>,
 
     /// Reload register
-    pub RLR: RWRegister<u32>,
+    pub IWDG_RLR: RWRegister<u32>,
 
     /// Status register
-    pub SR: RORegister<u32>,
+    pub IWDG_SR: RORegister<u32>,
 
     /// Window register
-    pub WINR: RWRegister<u32>,
-
-    _reserved1: [u32; 247],
-
-    /// hardware configuration register
-    pub HWCFGR: RWRegister<u32>,
-
-    /// EXTI IP Version register
-    pub VERR: RORegister<u32>,
-
-    /// EXTI Identification register
-    pub IPIDR: RORegister<u32>,
-
-    /// EXTI Size ID register
-    pub SIDR: RORegister<u32>,
+    pub IWDG_WINR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub KR: u32,
-    pub PR: u32,
-    pub RLR: u32,
-    pub SR: u32,
-    pub WINR: u32,
-    pub HWCFGR: u32,
-    pub VERR: u32,
-    pub IPIDR: u32,
-    pub SIDR: u32,
+    pub IWDG_KR: u32,
+    pub IWDG_PR: u32,
+    pub IWDG_RLR: u32,
+    pub IWDG_SR: u32,
+    pub IWDG_WINR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -743,7 +743,7 @@ pub mod FLASH {
         SR: 0x00000000,
         CR: 0x00000080,
         AR: 0x00000000,
-        OBR: 0xFFFFFF02,
+        OBR: 0xFFFFFF0F,
         WRPR: 0xFFFFFFFF,
     };
 

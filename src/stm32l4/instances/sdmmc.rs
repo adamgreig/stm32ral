@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Secure digital input/output interface
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5
+//! Used by: stm32l412, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::sdmmc::Instance;

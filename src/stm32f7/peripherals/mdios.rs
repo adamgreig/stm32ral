@@ -260,7 +260,7 @@ pub mod CLRFR {
     }
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR0 {
 
     /// Input data received from MDIO Master during write frames
@@ -278,162 +278,162 @@ pub mod DINR0 {
     }
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR1 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR2 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR3 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR4 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR5 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR6 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR7 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR8 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR9 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR10 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR11 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR12 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR13 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR14 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR15 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR16 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR17 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR18 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR19 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR20 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR21 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR22 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR23 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR24 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR25 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR26 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR27 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR28 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR29 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR30 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS input data register 0
+/// MDIOS input data register %s
 pub mod DINR31 {
     pub use super::DINR0::DIN;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR0 {
 
     /// Output data sent to MDIO Master during read frames
@@ -451,157 +451,157 @@ pub mod DOUTR0 {
     }
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR1 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR2 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR3 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR4 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR5 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR6 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR7 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR8 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR9 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR10 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR11 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR12 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR13 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR14 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR15 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR16 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR17 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR18 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR19 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR20 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR21 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR22 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR23 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR24 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR25 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR26 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR27 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR28 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR29 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR30 {
     pub use super::DOUTR0::DOUT;
 }
 
-/// MDIOS output data register 0
+/// MDIOS output data register %s
 pub mod DOUTR31 {
     pub use super::DOUTR0::DOUT;
 }
@@ -628,196 +628,196 @@ pub struct RegisterBlock {
     /// MDIOS clear flag register
     pub CLRFR: RWRegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR0: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR1: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR2: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR3: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR4: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR5: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR6: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR7: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR8: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR9: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR10: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR11: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR12: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR13: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR14: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR15: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR16: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR17: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR18: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR19: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR20: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR21: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR22: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR23: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR24: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR25: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR26: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR27: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR28: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR29: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR30: RORegister<u32>,
 
-    /// MDIOS input data register 0
+    /// MDIOS input data register %s
     pub DINR31: RORegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR0: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR1: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR2: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR3: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR4: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR5: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR6: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR7: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR8: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR9: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR10: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR11: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR12: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR13: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR14: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR15: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR16: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR17: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR18: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR19: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR20: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR21: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR22: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR23: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR24: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR25: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR26: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR27: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR28: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR29: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR30: RWRegister<u32>,
 
-    /// MDIOS output data register 0
+    /// MDIOS output data register %s
     pub DOUTR31: RWRegister<u32>,
 }
 pub struct ResetValues {

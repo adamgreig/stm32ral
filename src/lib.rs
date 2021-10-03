@@ -174,7 +174,7 @@ pub use stm32f7::stm32f7x7::*;
 #[cfg(feature="stm32f7x9")]
 pub use stm32f7::stm32f7x9::*;
 
-#[cfg(any(feature="doc", feature="stm32g030", feature="stm32g031", feature="stm32g041", feature="stm32g070", feature="stm32g071", feature="stm32g07x", feature="stm32g081"))]
+#[cfg(any(feature="doc", feature="stm32g030", feature="stm32g031", feature="stm32g041", feature="stm32g050", feature="stm32g051", feature="stm32g061", feature="stm32g070", feature="stm32g071", feature="stm32g07x", feature="stm32g081", feature="stm32g0b0", feature="stm32g0b1", feature="stm32g0c1"))]
 pub mod stm32g0;
 
 #[cfg(feature="stm32g030")]
@@ -185,6 +185,15 @@ pub use stm32g0::stm32g031::*;
 
 #[cfg(feature="stm32g041")]
 pub use stm32g0::stm32g041::*;
+
+#[cfg(feature="stm32g050")]
+pub use stm32g0::stm32g050::*;
+
+#[cfg(feature="stm32g051")]
+pub use stm32g0::stm32g051::*;
+
+#[cfg(feature="stm32g061")]
+pub use stm32g0::stm32g061::*;
 
 #[cfg(feature="stm32g070")]
 pub use stm32g0::stm32g070::*;
@@ -198,7 +207,16 @@ pub use stm32g0::stm32g07x::*;
 #[cfg(feature="stm32g081")]
 pub use stm32g0::stm32g081::*;
 
-#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484"))]
+#[cfg(feature="stm32g0b0")]
+pub use stm32g0::stm32g0b0::*;
+
+#[cfg(feature="stm32g0b1")]
+pub use stm32g0::stm32g0b1::*;
+
+#[cfg(feature="stm32g0c1")]
+pub use stm32g0::stm32g0c1::*;
+
+#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]
 pub mod stm32g4;
 
 #[cfg(feature="stm32g431")]
@@ -222,8 +240,17 @@ pub use stm32g4::stm32g483::*;
 #[cfg(feature="stm32g484")]
 pub use stm32g4::stm32g484::*;
 
-#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
+#[cfg(feature="stm32g491")]
+pub use stm32g4::stm32g491::*;
+
+#[cfg(feature="stm32g4a1")]
+pub use stm32g4::stm32g4a1::*;
+
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod stm32h7;
+
+#[cfg(feature="stm32h735")]
+pub use stm32h7::stm32h735::*;
 
 #[cfg(feature="stm32h743")]
 pub use stm32h7::stm32h743::*;
@@ -246,8 +273,11 @@ pub use stm32h7::stm32h753v::*;
 #[cfg(feature="stm32h7b3")]
 pub use stm32h7::stm32h7b3::*;
 
-#[cfg(any(feature="doc", feature="stm32l0x1", feature="stm32l0x2", feature="stm32l0x3"))]
+#[cfg(any(feature="doc", feature="stm32l0x0", feature="stm32l0x1", feature="stm32l0x2", feature="stm32l0x3"))]
 pub mod stm32l0;
+
+#[cfg(feature="stm32l0x0")]
+pub use stm32l0::stm32l0x0::*;
 
 #[cfg(feature="stm32l0x1")]
 pub use stm32l0::stm32l0x1::*;
@@ -270,8 +300,14 @@ pub use stm32l1::stm32l151::*;
 #[cfg(feature="stm32l162")]
 pub use stm32l1::stm32l162::*;
 
-#[cfg(any(feature="doc", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
+#[cfg(any(feature="doc", feature="stm32l412", feature="stm32l4r9", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod stm32l4;
+
+#[cfg(feature="stm32l412")]
+pub use stm32l4::stm32l412::*;
+
+#[cfg(feature="stm32l4r9")]
+pub use stm32l4::stm32l4r9::*;
 
 #[cfg(feature="stm32l4x1")]
 pub use stm32l4::stm32l4x1::*;
@@ -297,8 +333,11 @@ pub use stm32l5::stm32l552::*;
 #[cfg(feature="stm32l562")]
 pub use stm32l5::stm32l562::*;
 
-#[cfg(any(feature="doc", feature="stm32mp157"))]
+#[cfg(any(feature="doc", feature="stm32mp153", feature="stm32mp157"))]
 pub mod stm32mp;
+
+#[cfg(feature="stm32mp153")]
+pub use stm32mp::stm32mp153::*;
 
 #[cfg(feature="stm32mp157")]
 pub use stm32mp::stm32mp157::*;
@@ -309,8 +348,14 @@ pub mod stm32wb;
 #[cfg(feature="stm32wb55")]
 pub use stm32wb::stm32wb55::*;
 
-#[cfg(any(feature="doc", feature="stm32wle5"))]
+#[cfg(any(feature="doc", feature="stm32wl5x_cm0p", feature="stm32wl5x_cm4", feature="stm32wle5"))]
 pub mod stm32wl;
+
+#[cfg(feature="stm32wl5x_cm0p")]
+pub use stm32wl::stm32wl5x_cm0p::*;
+
+#[cfg(feature="stm32wl5x_cm4")]
+pub use stm32wl::stm32wl5x_cm4::*;
 
 #[cfg(feature="stm32wle5")]
 pub use stm32wl::stm32wle5::*;

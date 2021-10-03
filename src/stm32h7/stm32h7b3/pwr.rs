@@ -79,6 +79,34 @@ pub mod CR1 {
         pub mod RW {}
     }
 
+    /// BOOSTE
+    pub mod BOOSTE {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AVD_READY
+    pub mod AVD_READY {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
     /// System Stop mode voltage scaling selection These bits control the VCORE voltage level in system Stop mode, to obtain the best trade-off between power consumption and performance.
     pub mod SVOS {
         /// Offset (14 bits)
@@ -113,6 +141,132 @@ pub mod CR1 {
         pub const offset: u32 = 17;
         /// Mask (2 bits: 0b11 << 17)
         pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AXIRAM1SO
+    pub mod AXIRAM1SO {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AXIRAM2SO
+    pub mod AXIRAM2SO {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AXIRAM3SO
+    pub mod AXIRAM3SO {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AHBRAM1SO
+    pub mod AHBRAM1SO {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// AHBRAM2SO
+    pub mod AHBRAM2SO {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ITCMSO
+    pub mod ITCMSO {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// GFXSO
+    pub mod GFXSO {
+        /// Offset (25 bits)
+        pub const offset: u32 = 25;
+        /// Mask (1 bit: 1 << 25)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// HSITFSO
+    pub mod HSITFSO {
+        /// Offset (26 bits)
+        pub const offset: u32 = 26;
+        /// Mask (1 bit: 1 << 26)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SRDRAMSO
+    pub mod SRDRAMSO {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -180,6 +334,20 @@ pub mod CSR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// MMCVDO
+    pub mod MMCVDO {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// This register is not reset by wakeup from Standby mode, RESET signal and VDD POR. It is only reset by VSW POR and VSWRST reset. This register shall not be accessed when VSWRST bit in RCC_BDCR register resets the VSW domain.After reset, PWR_CR2 register is write-protected. Prior to modifying its content, the DBP bit in PWR_CR1 register must be set to disable the write protection.
@@ -218,34 +386,6 @@ pub mod CR2 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// VBAT level monitoring versus low threshold
-    pub mod VBATL {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// VBAT level monitoring versus high threshold
-    pub mod VBATH {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -315,12 +455,40 @@ pub mod CR3 {
         pub mod RW {}
     }
 
-    /// SD converter Enable
-    pub mod SDEN {
+    /// SMPSEN
+    pub mod SMPSEN {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SMPSEXTHP
+    pub mod SMPSEXTHP {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SMPSLEVEL
+    pub mod SMPSLEVEL {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (2 bits: 0b11 << 4)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -348,6 +516,20 @@ pub mod CR3 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SMPSEXTRDY
+    pub mod SMPSEXTRDY {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -398,55 +580,13 @@ pub mod CR3 {
         /// Read-write values (empty)
         pub mod RW {}
     }
-
-    /// SMPS step-down converter external supply ready
-    pub mod SMPSEXTRDY {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Step-down converter voltage output level selection
-    pub mod SMPSLEVEL {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Step-down converter forced ON and in High Power MR mode
-    pub mod SMPSEXTHP {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 }
 
 /// This register allows controlling CPU1 power.
 pub mod CPUCR {
 
-    /// D1 domain Power Down Deepsleep selection. This bit allows CPU1 to define the Deepsleep mode for D1 domain.
-    pub mod PDDS_D1 {
+    /// RETDS_CD
+    pub mod RETDS_CD {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -459,22 +599,8 @@ pub mod CPUCR {
         pub mod RW {}
     }
 
-    /// D2 domain Power Down Deepsleep. This bit allows CPU1 to define the Deepsleep mode for D2 domain.
-    pub mod PDDS_D2 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// System D3 domain Power Down Deepsleep. This bit allows CPU1 to define the Deepsleep mode for System D3 domain.
-    pub mod PDDS_D3 {
+    /// PDDS_SRD
+    pub mod PDDS_SRD {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -515,34 +641,6 @@ pub mod CPUCR {
         pub mod RW {}
     }
 
-    /// D1 domain DStandby flag This bit is set by hardware and cleared by any system reset or by setting the CPU1 CSSF bit. Once set, this bit can be cleared only when the D1 domain is no longer in DStandby mode.
-    pub mod SBF_D1 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// D2 domain DStandby flag This bit is set by hardware and cleared by any system reset or by setting the CPU1 CSSF bit. Once set, this bit can be cleared only when the D2 domain is no longer in DStandby mode.
-    pub mod SBF_D2 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// Clear D1 domain CPU1 Standby, Stop and HOLD flags (always read as 0) This bit is cleared to 0 by hardware.
     pub mod CSSF {
         /// Offset (9 bits)
@@ -557,8 +655,8 @@ pub mod CPUCR {
         pub mod RW {}
     }
 
-    /// Keep system D3 domain in Run mode regardless of the CPU sub-systems modes
-    pub mod RUN_D3 {
+    /// RUN_SRD
+    pub mod RUN_SRD {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -573,7 +671,7 @@ pub mod CPUCR {
 }
 
 /// This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
-pub mod D3CR {
+pub mod SRDCR {
 
     /// VOS Ready bit for VCORE voltage scaling output selection. This bit is set to 1 by hardware when Bypass mode is selected in PWR control register 3 (PWR_CR3).
     pub mod VOSRDY {
@@ -608,11 +706,81 @@ pub mod D3CR {
 pub mod WKUPCR {
 
     /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
-    pub mod WKUPC {
+    pub mod WKUPC1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (6 bits: 0x3f << 0)
-        pub const mask: u32 = 0x3f << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
+    pub mod WKUPC2 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
+    pub mod WKUPC3 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
+    pub mod WKUPC4 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
+    pub mod WKUPC5 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clear Wakeup pin flag for WKUP. These bits are always read as 0.
+    pub mod WKUPC6 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -985,7 +1153,7 @@ pub struct RegisterBlock {
     _reserved1: [u32; 1],
 
     /// This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
-    pub D3CR: RWRegister<u32>,
+    pub SRDCR: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
@@ -1004,7 +1172,7 @@ pub struct ResetValues {
     pub CR2: u32,
     pub CR3: u32,
     pub CPUCR: u32,
-    pub D3CR: u32,
+    pub SRDCR: u32,
     pub WKUPCR: u32,
     pub WKUPFR: u32,
     pub WKUPEPR: u32,
@@ -1045,7 +1213,7 @@ pub mod PWR {
         CR2: 0x00000000,
         CR3: 0x00000006,
         CPUCR: 0x00000000,
-        D3CR: 0x00004000,
+        SRDCR: 0x00004000,
         WKUPCR: 0x00000000,
         WKUPFR: 0x00000000,
         WKUPEPR: 0x00000000,

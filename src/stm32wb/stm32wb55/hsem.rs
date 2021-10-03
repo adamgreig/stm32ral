@@ -743,7 +743,7 @@ pub mod SIDR {
 }
 
 /// HSEM Interrupt enable register
-pub mod C1IER0 {
+pub mod C1IER {
 
     /// CPU(n) semaphore m enable bit
     pub mod ISEm {
@@ -815,8 +815,8 @@ pub mod C1MISR {
 }
 
 /// HSEM Interrupt enable register
-pub mod C2IER0 {
-    pub use super::C1IER0::ISEm;
+pub mod C2IER {
+    pub use super::C1IER::ISEm;
 }
 
 /// HSEM Interrupt clear register
@@ -1028,7 +1028,7 @@ pub struct RegisterBlock {
     pub RLR31: RORegister<u32>,
 
     /// HSEM Interrupt enable register
-    pub C1IER0: RWRegister<u32>,
+    pub C1IER: RWRegister<u32>,
 
     /// HSEM Interrupt clear register
     pub C1ICR: RWRegister<u32>,
@@ -1040,7 +1040,7 @@ pub struct RegisterBlock {
     pub C1MISR: RORegister<u32>,
 
     /// HSEM Interrupt enable register
-    pub C2IER0: RWRegister<u32>,
+    pub C2IER: RWRegister<u32>,
 
     /// HSEM Interrupt clear register
     pub C2ICR: RWRegister<u32>,
@@ -1141,11 +1141,11 @@ pub struct ResetValues {
     pub RLR29: u32,
     pub RLR30: u32,
     pub RLR31: u32,
-    pub C1IER0: u32,
+    pub C1IER: u32,
     pub C1ICR: u32,
     pub C1ISR: u32,
     pub C1MISR: u32,
-    pub C2IER0: u32,
+    pub C2IER: u32,
     pub C2ICR: u32,
     pub C2ISR: u32,
     pub C2MISR: u32,
@@ -1259,11 +1259,11 @@ pub mod HSEM {
         VERR: 0x00000020,
         IPIDR: 0x00100072,
         SIDR: 0xA3C5DD01,
-        C1IER0: 0x00000000,
+        C1IER: 0x00000000,
         C1ICR: 0x00000000,
         C1ISR: 0x00000000,
         C1MISR: 0x00000000,
-        C2IER0: 0x00000000,
+        C2IER: 0x00000000,
         C2ICR: 0x00000000,
         C2ISR: 0x00000000,
         C2MISR: 0x00000000,

@@ -20,10 +20,10 @@ pub use super::instances::crc;
 pub use super::instances::crs;
 pub use super::instances::cryp_h753_h753v as cryp;
 pub use super::instances::dac;
-pub use super::instances::dbgmcu_h743_h743v_h753_h753v_h7b3 as dbgmcu;
+pub use super::instances::dbgmcu_h753_h753v as dbgmcu;
 pub use super::instances::dcmi;
-pub use super::instances::dfsdm;
-pub use super::instances::dlyb;
+pub use super::instances::dfsdm_h747cm4_h747cm7_h753_h753v as dfsdm;
+pub use super::instances::dlyb_h743_h743v_h747cm4_h747cm7_h753_h753v as dlyb;
 pub use super::instances::dma;
 pub use super::instances::dma2d;
 pub use super::instances::dmamux1;
@@ -31,9 +31,9 @@ pub use super::instances::dmamux2;
 pub use super::instances::ethernet_dma_h743_h743v_h753_h753v as ethernet_dma;
 pub use super::instances::ethernet_mac_h743_h743v_h753_h753v as ethernet_mac;
 pub use super::instances::ethernet_mtl_h743_h743v_h753_h753v as ethernet_mtl;
-pub use super::instances::exti_h743_h743v_h753_h753v_h7b3 as exti;
+pub use super::instances::exti_h735_h743_h743v_h753_h753v_h7b3 as exti;
 pub use super::instances::fdcan;
-pub use super::instances::flash_h743_h743v_h753_h753v as flash;
+pub use super::instances::flash_h735_h743_h743v_h753_h753v as flash;
 pub use super::instances::fmc;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
@@ -72,26 +72,26 @@ pub use super::instances::ramecc3;
 pub use super::instances::rcc_h743v_h753v as rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;
-pub use super::instances::sai;
+pub use super::instances::sai_h743_h743v_h753_h753v as sai;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::sdmmc_h743_h743v_h753_h753v_h7b3 as sdmmc;
 pub use super::instances::spdifrx;
-pub use super::instances::spi_h743_h743v_h753_h753v as spi;
+pub use super::instances::spi_h735_h743_h743v_h753_h753v as spi;
 pub use super::instances::stk;
 pub use super::instances::swpmi;
 pub use super::instances::syscfg_h743_h743v_h753_h753v as syscfg;
-pub use super::instances::tim12;
-pub use super::instances::tim13;
-pub use super::instances::tim14;
-pub use super::instances::tim15;
+pub use super::instances::tim12_h743_h743v_h747cm4_h747cm7_h753_h753v as tim12;
+pub use super::instances::tim13_h743_h743v_h747cm4_h747cm7_h753_h753v as tim13;
+pub use super::instances::tim14_h743_h743v_h747cm4_h747cm7_h753_h753v as tim14;
+pub use super::instances::tim15_h743_h743v_h747cm4_h747cm7_h753_h753v as tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
 pub use super::instances::tim1_h743_h743v_h753_h753v as tim1;
-pub use super::instances::tim2;
-pub use super::instances::tim3;
-pub use super::instances::tim4;
-pub use super::instances::tim5;
+pub use super::instances::tim2_h743_h743v_h747cm4_h747cm7_h753_h753v as tim2;
+pub use super::instances::tim3_h743_h743v_h747cm4_h747cm7_h753_h753v as tim3;
+pub use super::instances::tim4_h743_h743v_h747cm4_h747cm7_h753_h753v as tim4;
+pub use super::instances::tim5_h743_h743v_h747cm4_h747cm7_h753_h753v as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim8_h743_h743v_h753_h753v as tim8;
@@ -218,6 +218,7 @@ pub struct Peripherals {
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
     pub NVIC: nvic::Instance,
+    pub DBGMCU: dbgmcu::Instance,
     pub MPU: mpu::Instance,
     pub STK: stk::Instance,
     pub NVIC_STIR: nvic_stir::Instance,
@@ -232,7 +233,6 @@ pub struct Peripherals {
     pub TIM12: tim12::Instance,
     pub TIM13: tim13::Instance,
     pub TIM14: tim14::Instance,
-    pub DBGMCU: dbgmcu::Instance,
     pub RAMECC1: ramecc::Instance,
     pub RAMECC2: ramecc::Instance,
     pub RAMECC3: ramecc3::Instance,
@@ -362,6 +362,7 @@ impl Peripherals {
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
             NVIC: nvic::NVIC::steal(),
+            DBGMCU: dbgmcu::DBGMCU::steal(),
             MPU: mpu::MPU::steal(),
             STK: stk::STK::steal(),
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
@@ -376,7 +377,6 @@ impl Peripherals {
             TIM12: tim12::TIM12::steal(),
             TIM13: tim13::TIM13::steal(),
             TIM14: tim14::TIM14::steal(),
-            DBGMCU: dbgmcu::DBGMCU::steal(),
             RAMECC1: ramecc::RAMECC1::steal(),
             RAMECC2: ramecc::RAMECC2::steal(),
             RAMECC3: ramecc3::RAMECC3::steal(),

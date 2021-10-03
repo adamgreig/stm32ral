@@ -549,10 +549,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1250,7 +1250,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 3 reset
-    pub mod UART3RST {
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1263,7 +1263,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 2 reset
-    pub mod UART2RST {
+    pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)

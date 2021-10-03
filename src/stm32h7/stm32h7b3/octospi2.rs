@@ -283,8 +283,22 @@ pub mod DCR1 {
     pub mod MTYP {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
-        /// Mask (2 bits: 0b11 << 24)
-        pub const mask: u32 = 0b11 << offset;
+        /// Mask (3 bits: 0b111 << 24)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Delay block bypass
+    pub mod DLYBYP {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -365,8 +379,8 @@ pub mod DCR4 {
     pub mod REFRESH {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -379,8 +393,8 @@ pub mod DCR4 {
 /// status register
 pub mod SR {
 
-    /// Clear transfer error flag
-    pub mod CTEF {
+    /// Transfer error flag
+    pub mod TEF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -393,8 +407,8 @@ pub mod SR {
         pub mod RW {}
     }
 
-    /// Clear transfer complete flag
-    pub mod CTCF {
+    /// Transfer complete flag
+    pub mod TCF {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -407,8 +421,8 @@ pub mod SR {
         pub mod RW {}
     }
 
-    /// Clear status match flag
-    pub mod CSMF {
+    /// Status match flag
+    pub mod SMF {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -421,8 +435,8 @@ pub mod SR {
         pub mod RW {}
     }
 
-    /// Clear timeout flag
-    pub mod CTOF {
+    /// Timeout flag
+    pub mod TOF {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -560,7 +574,7 @@ pub mod DLR {
 pub mod AR {
 
     /// Adress
-    pub mod ADRESS {
+    pub mod ADDRESS {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (32 bits: 0xffffffff << 0)

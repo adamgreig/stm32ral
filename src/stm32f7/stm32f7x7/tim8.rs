@@ -3,12 +3,12 @@
 //! Advanced-timers
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::tim1_v3::Instance;
-pub use crate::stm32f7::peripherals::tim1_v3::{
-    CCMR3_Output, AF1, AF2, ARR, BDTR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CCR5, CNT, CR1,
-    CR2, CRR6, DCR, DIER, DMAR, EGR, PSC, RCR, SMCR, SR,
+pub use crate::stm32f7::peripherals::tim1_v2::Instance;
+pub use crate::stm32f7::peripherals::tim1_v2::{
+    CCMR3_Output, AF1, AF2, ARR, BDTR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CCR5, CCR6, CNT,
+    CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SMCR, SR,
 };
-pub use crate::stm32f7::peripherals::tim1_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::tim1_v2::{RegisterBlock, ResetValues};
 
 /// Access functions for the TIM8 peripheral instance
 pub mod TIM8 {
@@ -47,7 +47,7 @@ pub mod TIM8 {
         BDTR: 0x00000000,
         CCMR3_Output: 0x00000000,
         CCR5: 0x00000000,
-        CRR6: 0x00000000,
+        CCR6: 0x00000000,
         AF1: 0x00000000,
         AF2: 0x00000000,
     };

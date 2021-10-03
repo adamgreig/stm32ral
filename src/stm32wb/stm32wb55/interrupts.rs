@@ -24,7 +24,7 @@ extern "C" {
     fn USB_LP();
     fn C2SEV();
     fn COMP();
-    fn EXTI5_9();
+    fn EXTI9_5();
     fn TIM1_BRK();
     fn TIM1_UP();
     fn TIM1_TRG_COM_TIM17();
@@ -41,7 +41,7 @@ extern "C" {
     fn LPUART1();
     fn SAI1();
     fn TSC();
-    fn EXTI10_15();
+    fn EXTI15_10();
     fn RTC_ALARM();
     fn CRS_IT();
     fn PWR_SOTF();
@@ -114,7 +114,7 @@ pub static __INTERRUPTS: [Vector; 63] = [
     Vector { _handler: USB_LP },
     Vector { _handler: C2SEV },
     Vector { _handler: COMP },
-    Vector { _handler: EXTI5_9 },
+    Vector { _handler: EXTI9_5 },
     Vector { _handler: TIM1_BRK },
     Vector { _handler: TIM1_UP },
     Vector {
@@ -134,7 +134,7 @@ pub static __INTERRUPTS: [Vector; 63] = [
     Vector { _handler: SAI1 },
     Vector { _handler: TSC },
     Vector {
-        _handler: EXTI10_15,
+        _handler: EXTI15_10,
     },
     Vector {
         _handler: RTC_ALARM,
@@ -220,7 +220,7 @@ pub enum Interrupt {
     /// 22: COMP2 & COMP1 interrupt through AIEC\[21:20\]
     COMP = 22,
     /// 23: EXTI line \[9:5\] interrupt through EXTI\[9:5\]
-    EXTI5_9 = 23,
+    EXTI9_5 = 23,
     /// 24: Timer 1 break interrupt
     TIM1_BRK = 24,
     /// 25: Timer 1 Update
@@ -254,7 +254,7 @@ pub enum Interrupt {
     /// 39: TSC global interrupt
     TSC = 39,
     /// 40: EXTI line \[15:10\] interrupt through EXTI\[15:10\]
-    EXTI10_15 = 40,
+    EXTI15_10 = 40,
     /// 41: RTC Alarms (A and B) interrupt through AIEC
     RTC_ALARM = 41,
     /// 42: CRS interrupt

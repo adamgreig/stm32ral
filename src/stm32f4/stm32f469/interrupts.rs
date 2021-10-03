@@ -93,6 +93,7 @@ extern "C" {
     fn LCD_TFT_1();
     fn DMA2D();
     fn QUADSPI();
+    fn DSIHOST();
 }
 
 #[doc(hidden)]
@@ -105,7 +106,7 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
-pub static __INTERRUPTS: [Vector; 92] = [
+pub static __INTERRUPTS: [Vector; 93] = [
     Vector { _handler: WWDG },
     Vector { _handler: PVD },
     Vector {
@@ -258,6 +259,7 @@ pub static __INTERRUPTS: [Vector; 92] = [
     },
     Vector { _handler: DMA2D },
     Vector { _handler: QUADSPI },
+    Vector { _handler: DSIHOST },
 ];
 
 /// Available interrupts for this device
@@ -449,6 +451,8 @@ pub enum Interrupt {
     DMA2D = 90,
     /// 91: QuadSPI global interrupt
     QUADSPI = 91,
+    /// 92: DSI host global interrupt
+    DSIHOST = 92,
 }
 unsafe impl bare_metal::Nr for Interrupt {
     #[inline]

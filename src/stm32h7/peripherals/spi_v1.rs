@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial peripheral interface
 //!
-//! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h753, stm32h753v
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

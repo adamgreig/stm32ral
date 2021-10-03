@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Inter-integrated circuit
 //!
-//! Used by: stm32f401, stm32f405, stm32f407, stm32f410, stm32f411, stm32f412
+//! Used by: stm32f401, stm32f410, stm32f411, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1009,6 +1009,94 @@ pub mod TRISE {
         pub mod RW {}
     }
 }
+
+/// FLTR register
+pub mod FLTR {
+
+    /// Analog noise filter
+    pub mod ANOFF {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Analog noise filter enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Analog noise filter disabled
+            pub const Disabled: u32 = 0b1;
+        }
+    }
+
+    /// Digital noise filter
+    pub mod DNF {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Digital filter disabled
+            pub const NoFilter: u32 = 0b0000;
+
+            /// 0b0001: Digital filter enabled and filtering capability up to 1 tI2CCLK
+            pub const Filter1: u32 = 0b0001;
+
+            /// 0b0010: Digital filter enabled and filtering capability up to 2 tI2CCLK
+            pub const Filter2: u32 = 0b0010;
+
+            /// 0b0011: Digital filter enabled and filtering capability up to 3 tI2CCLK
+            pub const Filter3: u32 = 0b0011;
+
+            /// 0b0100: Digital filter enabled and filtering capability up to 4 tI2CCLK
+            pub const Filter4: u32 = 0b0100;
+
+            /// 0b0101: Digital filter enabled and filtering capability up to 5 tI2CCLK
+            pub const Filter5: u32 = 0b0101;
+
+            /// 0b0110: Digital filter enabled and filtering capability up to 6 tI2CCLK
+            pub const Filter6: u32 = 0b0110;
+
+            /// 0b0111: Digital filter enabled and filtering capability up to 7 tI2CCLK
+            pub const Filter7: u32 = 0b0111;
+
+            /// 0b1000: Digital filter enabled and filtering capability up to 8 tI2CCLK
+            pub const Filter8: u32 = 0b1000;
+
+            /// 0b1001: Digital filter enabled and filtering capability up to 9 tI2CCLK
+            pub const Filter9: u32 = 0b1001;
+
+            /// 0b1010: Digital filter enabled and filtering capability up to 10 tI2CCLK
+            pub const Filter10: u32 = 0b1010;
+
+            /// 0b1011: Digital filter enabled and filtering capability up to 11 tI2CCLK
+            pub const Filter11: u32 = 0b1011;
+
+            /// 0b1100: Digital filter enabled and filtering capability up to 12 tI2CCLK
+            pub const Filter12: u32 = 0b1100;
+
+            /// 0b1101: Digital filter enabled and filtering capability up to 13 tI2CCLK
+            pub const Filter13: u32 = 0b1101;
+
+            /// 0b1110: Digital filter enabled and filtering capability up to 14 tI2CCLK
+            pub const Filter14: u32 = 0b1110;
+
+            /// 0b1111: Digital filter enabled and filtering capability up to 15 tI2CCLK
+            pub const Filter15: u32 = 0b1111;
+        }
+    }
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Control register 1
@@ -1037,6 +1125,9 @@ pub struct RegisterBlock {
 
     /// TRISE register
     pub TRISE: RWRegister<u32>,
+
+    /// FLTR register
+    pub FLTR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR1: u32,
@@ -1048,6 +1139,7 @@ pub struct ResetValues {
     pub SR2: u32,
     pub CCR: u32,
     pub TRISE: u32,
+    pub FLTR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

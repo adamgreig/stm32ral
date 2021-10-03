@@ -13,7 +13,7 @@ pub use super::instances::adc_common_f401_f411 as adc_common;
 pub use super::instances::crc;
 pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
 pub use super::instances::exti;
-pub use super::instances::flash_f401_f407 as flash;
+pub use super::instances::flash_f401_f411_f412_f413 as flash;
 pub use super::instances::iwdg;
 pub use super::instances::otg_fs_device_f401_f405_f407_f411_f427_f429 as otg_fs_device;
 pub use super::instances::otg_fs_global_f401_f405_f407_f411_f427_f429 as otg_fs_global;
@@ -21,9 +21,9 @@ pub use super::instances::otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
 pub use super::instances::pwr_f401_f411_f412_f413 as pwr;
 pub mod rcc;
-pub use super::instances::dma;
+pub use super::instances::dma_f401_f410_f411_f412 as dma;
 pub use super::instances::gpio_f401_f411 as gpio;
-pub use super::instances::i2c_f401_f405_f407_f411_f412 as i2c;
+pub use super::instances::i2c_f401_f411_f412_f427_f429_f446_f469 as i2c;
 pub use super::instances::rtc_f401_f410_f411_f412_f413 as rtc;
 pub use super::instances::sdio;
 pub use super::instances::syscfg_f401_f411 as syscfg;
@@ -34,8 +34,7 @@ pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
-pub use super::instances::tim8_f401_f405_f407_f413_f427_f429_f446_f469 as tim8;
-pub use super::instances::tim9;
+pub use super::instances::tim9_f401_f405_f407_f410_f411_f427_f429_f446 as tim9;
 pub use super::instances::usart_f401_f410_f411 as usart;
 pub use super::instances::wwdg;
 pub mod spi;
@@ -68,7 +67,6 @@ pub struct Peripherals {
     pub SDIO: sdio::Instance,
     pub SYSCFG: syscfg::Instance,
     pub TIM1: tim1::Instance,
-    pub TIM8: tim8::Instance,
     pub TIM10: tim10::Instance,
     pub TIM11: tim11::Instance,
     pub TIM2: tim2::Instance,
@@ -132,7 +130,6 @@ impl Peripherals {
             SDIO: sdio::SDIO::steal(),
             SYSCFG: syscfg::SYSCFG::steal(),
             TIM1: tim1::TIM1::steal(),
-            TIM8: tim8::TIM8::steal(),
             TIM10: tim10::TIM10::steal(),
             TIM11: tim11::TIM11::steal(),
             TIM2: tim2::TIM2::steal(),

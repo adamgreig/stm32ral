@@ -3,9 +3,9 @@
 //! SAI
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::sai::Instance;
-pub use crate::stm32h7::peripherals::sai::{RegisterBlock, ResetValues};
-pub use crate::stm32h7::peripherals::sai::{
+pub use crate::stm32h7::peripherals::sai_v1::Instance;
+pub use crate::stm32h7::peripherals::sai_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::sai_v1::{
     CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, GCR, IMA, IMB, PDMCR, PDMDLY,
     SLOTRA, SLOTRB, SRA, SRB,
 };

@@ -5,9 +5,9 @@
 //! Used by: stm32g070, stm32g071, stm32g07x, stm32g081
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32g0::peripherals::iwdg_v2::Instance;
-pub use crate::stm32g0::peripherals::iwdg_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::iwdg_v2::{HWCFGR, IPIDR, KR, PR, RLR, SIDR, SR, VERR, WINR};
+pub use crate::stm32g0::peripherals::iwdg_v3::Instance;
+pub use crate::stm32g0::peripherals::iwdg_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::iwdg_v3::{HWCFGR, IPIDR, KR, PR, RLR, SIDR, SR, VERR, WINR};
 
 /// Access functions for the IWDG peripheral instance
 pub mod IWDG {

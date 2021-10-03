@@ -2211,11 +2211,11 @@ pub mod SETB1R {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Timer compare event has no effect
-            pub const NoEffect: u32 = 0b0;
+            /// 0b0: No compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
 
-            /// 0b1: Timer compare event forces the output to its active state
-            pub const SetActive: u32 = 0b1;
+            /// 0b1: Compare interrupt occurred
+            pub const Event: u32 = 0b1;
         }
     }
 
@@ -2229,15 +2229,7 @@ pub mod SETB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No compare interrupt occurred
-            pub const NoEvent: u32 = 0b0;
-
-            /// 0b1: Compare interrupt occurred
-            pub const Event: u32 = 0b1;
-        }
+        pub use super::CMP4::RW;
     }
 
     /// Timer A compare 2
@@ -2250,7 +2242,7 @@ pub mod SETB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP3::RW;
+        pub use super::CMP4::RW;
     }
 
     /// Timer A compare 1
@@ -2263,7 +2255,15 @@ pub mod SETB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP3::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
+        }
     }
 
     /// Timer A Period
@@ -2370,8 +2370,8 @@ pub mod RSTB1R {
             /// 0b0: External event has no effect
             pub const NoEffect: u32 = 0b0;
 
-            /// 0b1: External event forces the output to its inactive state
-            pub const SetInactive: u32 = 0b1;
+            /// 0b1: External event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
         }
     }
 
@@ -2385,15 +2385,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: External event has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: External event forces the output to its active state
-            pub const SetActive: u32 = 0b1;
-        }
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT8
@@ -2406,7 +2398,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT7
@@ -2419,7 +2411,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT6
@@ -2432,7 +2424,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT5
@@ -2445,7 +2437,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT4
@@ -2458,7 +2450,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT3
@@ -2471,7 +2463,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT2
@@ -2484,7 +2476,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// EXTEVNT1
@@ -2497,7 +2489,15 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: External event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// TIMEVNT9
@@ -2516,8 +2516,8 @@ pub mod RSTB1R {
             /// 0b0: Timer event has no effect
             pub const NoEffect: u32 = 0b0;
 
-            /// 0b1: Timer event forces the output to its inactive state
-            pub const SetInactive: u32 = 0b1;
+            /// 0b1: Timer event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
         }
     }
 
@@ -2531,15 +2531,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Timer event has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: Timer event forces the output to its active state
-            pub const SetActive: u32 = 0b1;
-        }
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT7
@@ -2552,7 +2544,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT6
@@ -2565,7 +2557,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT5
@@ -2578,7 +2570,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT4
@@ -2591,7 +2583,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT3
@@ -2604,7 +2596,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT2
@@ -2617,7 +2609,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        pub use super::TIMEVNT9::RW;
     }
 
     /// TIMEVNT1
@@ -2630,7 +2622,15 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TIMEVNT8::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// MSTCMP4
@@ -2649,8 +2649,8 @@ pub mod RSTB1R {
             /// 0b0: Master timer compare event has no effect
             pub const NoEffect: u32 = 0b0;
 
-            /// 0b1: Master timer compare event forces the output to its inactive state
-            pub const SetInactive: u32 = 0b1;
+            /// 0b1: Master timer compare event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
         }
     }
 
@@ -2664,15 +2664,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Master timer compare event has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: Master timer compare event forces the output to its active state
-            pub const SetActive: u32 = 0b1;
-        }
+        pub use super::MSTCMP4::RW;
     }
 
     /// MSTCMP2
@@ -2685,7 +2677,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSTCMP3::RW;
+        pub use super::MSTCMP4::RW;
     }
 
     /// MSTCMP1
@@ -2698,7 +2690,15 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSTCMP3::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// MSTPER
@@ -2735,11 +2735,11 @@ pub mod RSTB1R {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Timer compare event has no effect
-            pub const NoEffect: u32 = 0b0;
+            /// 0b0: No compare interrupt occurred
+            pub const NoEvent: u32 = 0b0;
 
-            /// 0b1: Timer compare event forces the output to its inactive state
-            pub const SetInactive: u32 = 0b1;
+            /// 0b1: Compare interrupt occurred
+            pub const Event: u32 = 0b1;
         }
     }
 
@@ -2753,15 +2753,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No compare interrupt occurred
-            pub const NoEvent: u32 = 0b0;
-
-            /// 0b1: Compare interrupt occurred
-            pub const Event: u32 = 0b1;
-        }
+        pub use super::CMP4::RW;
     }
 
     /// CMP2
@@ -2774,7 +2766,7 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP3::RW;
+        pub use super::CMP4::RW;
     }
 
     /// CMP1
@@ -2787,7 +2779,15 @@ pub mod RSTB1R {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP3::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer compare event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer compare event forces the output to its inactive state
+            pub const SetInactive: u32 = 0b1;
+        }
     }
 
     /// PER
@@ -3490,11 +3490,11 @@ pub mod RSTBR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: External event Z has no effect
+            /// 0b0: External event has no effect
             pub const NoEffect: u32 = 0b0;
 
-            /// 0b1: Timer X counter is reset upon external event Z
-            pub const ResetCounter: u32 = 0b1;
+            /// 0b1: External event forces the output to its active state
+            pub const SetActive: u32 = 0b1;
         }
     }
 
@@ -3508,15 +3508,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: External event has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: External event forces the output to its active state
-            pub const SetActive: u32 = 0b1;
-        }
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 8
@@ -3529,7 +3521,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 7
@@ -3542,7 +3534,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 6
@@ -3555,7 +3547,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 5
@@ -3568,7 +3560,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 4
@@ -3581,7 +3573,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 3
@@ -3594,7 +3586,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 2
@@ -3607,7 +3599,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        pub use super::EXTEVNT10::RW;
     }
 
     /// External Event 1
@@ -3620,7 +3612,15 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EXTEVNT9::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External event Z has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon external event Z
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// Master compare 4
@@ -3628,27 +3628,6 @@ pub mod RSTBR {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Master timer compare Z event has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: Timer X counter is reset upon master timer compare Z event
-            pub const ResetCounter: u32 = 0b1;
-        }
-    }
-
-    /// Master compare 3
-    pub mod MSTCMP3 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3665,6 +3644,19 @@ pub mod RSTBR {
         }
     }
 
+    /// Master compare 3
+    pub mod MSTCMP3 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MSTCMP4::RW;
+    }
+
     /// Master compare 2
     pub mod MSTCMP2 {
         /// Offset (6 bits)
@@ -3675,7 +3667,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSTCMP3::RW;
+        pub use super::MSTCMP4::RW;
     }
 
     /// Master compare 1
@@ -3688,7 +3680,15 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSTCMP3::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare Z event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X counter is reset upon master timer compare Z event
+            pub const ResetCounter: u32 = 0b1;
+        }
     }
 
     /// Master timer Period
@@ -3743,15 +3743,7 @@ pub mod RSTBR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No compare interrupt occurred
-            pub const NoEvent: u32 = 0b0;
-
-            /// 0b1: Compare interrupt occurred
-            pub const Event: u32 = 0b1;
-        }
+        pub use super::CMP4::RW;
     }
 
     /// Timer A Update reset

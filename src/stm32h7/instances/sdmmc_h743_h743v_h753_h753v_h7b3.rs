@@ -5,9 +5,9 @@
 //! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::sdmmc_v1::Instance;
-pub use crate::stm32h7::peripherals::sdmmc_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32h7::peripherals::sdmmc_v1::{
+pub use crate::stm32h7::peripherals::sdmmc_v2::Instance;
+pub use crate::stm32h7::peripherals::sdmmc_v2::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::sdmmc_v2::{
     ACKTIMER, ARGR, CLKCR, CMDR, DCNTR, DCTRL, DLENR, DTIMER, FIFOR, ICR, ID, IDMABASE0R,
     IDMABASE1R, IDMABSIZER, IDMACTRLR, MASKR, POWER, RESP1R, RESP2R, RESP3R, RESP4R, RESPCMDR,
     STAR, VER,

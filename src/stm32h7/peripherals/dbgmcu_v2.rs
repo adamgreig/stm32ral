@@ -1,29 +1,15 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! Debug support
+//! Microcontroller Debug Unit
 //!
-//! Used by: stm32h747cm4, stm32h747cm7
+//! Used by: stm32h743, stm32h743v
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// Identity code
+/// DBGMCU Identity Code Register
 pub mod IDC {
-
-    /// Revision ID
-    pub mod REV_ID {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 
     /// Device ID
     pub mod DEV_ID {
@@ -38,10 +24,108 @@ pub mod IDC {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Revision
+    pub mod REV_ID {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (16 bits: 0xffff << 16)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
-/// Configuration register
+/// DBGMCU Configuration Register
 pub mod CR {
+
+    /// Allow D1 domain debug in Sleep mode
+    pub mod DBGSLEEP_D1 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Allow D1 domain debug in Stop mode
+    pub mod DBGSTOP_D1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Allow D1 domain debug in Standby mode
+    pub mod DBGSTBY_D1 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Trace port clock enable
+    pub mod TRACECLKEN {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// D1 debug clock enable
+    pub mod D1DBGCKEN {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// D3 debug clock enable
+    pub mod D3DBGCKEN {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 
     /// External trigger output enable
     pub mod TRGOEN {
@@ -56,138 +140,12 @@ pub mod CR {
         /// Read-write values (empty)
         pub mod RW {}
     }
-
-    /// D3 debug clock enable enable
-    pub mod D3DBGCKEN {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// D1 debug clock enable enable
-    pub mod D1DBGCKEN {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Trace clock enable enable
-    pub mod TRACECLKEN {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D1 Standby mode
-    pub mod DBGSTBY_D1 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D1 Stop mode
-    pub mod DBGSTOP_D1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D1 Sleep mode
-    pub mod DBGSLEEP_D1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D2 Standby mode
-    pub mod DBGSTBY_D2 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D2 Stop mode
-    pub mod DBGSTOP_D2 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D2 Sleep mode
-    pub mod DBGSLEEP_D2 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 }
 
-/// APB3 peripheral freeze register
+/// DBGMCU APB3 peripheral freeze register
 pub mod APB3FZ1 {
 
-    /// WWDG1 stop in debug mode
+    /// WWDG1 stop in debug
     pub mod WWDG1 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -202,179 +160,11 @@ pub mod APB3FZ1 {
     }
 }
 
-/// APB1L peripheral freeze register
+/// DBGMCU APB1L peripheral freeze register
 pub mod APB1LFZ1 {
 
-    /// I2C3 SMBUS timeout stop in debug mode
-    pub mod I2C3 {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// I2C2 SMBUS timeout stop in debug mode
-    pub mod I2C2 {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// I2C1 SMBUS timeout stop in debug mode
-    pub mod I2C1 {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// LPTIM1 stop in debug mode
-    pub mod LPTIM1 {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM14 stop in debug mode
-    pub mod TIM14 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM13 stop in debug mode
-    pub mod TIM13 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM12 stop in debug mode
-    pub mod TIM12 {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM7 stop in debug mode
-    pub mod TIM7 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM6 stop in debug mode
-    pub mod TIM6 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM5 stop in debug mode
-    pub mod TIM5 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM4 stop in debug mode
-    pub mod TIM4 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM3 stop in debug mode
-    pub mod TIM3 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM2 stop in debug mode
-    pub mod TIM2 {
+    /// TIM2 stop in debug
+    pub mod DBG_TIM2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -387,11 +177,165 @@ pub mod APB1LFZ1 {
         pub mod RW {}
     }
 
-    /// WWDG2 stop when Cortex-M7 in debug mode
-    pub mod WWDG2 {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+    /// TIM3 stop in debug
+    pub mod DBG_TIM3 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM4 stop in debug
+    pub mod DBG_TIM4 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM5 stop in debug
+    pub mod DBG_TIM5 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM6 stop in debug
+    pub mod DBG_TIM6 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM7 stop in debug
+    pub mod DBG_TIM7 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM12 stop in debug
+    pub mod DBG_TIM12 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM13 stop in debug
+    pub mod DBG_TIM13 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM14 stop in debug
+    pub mod DBG_TIM14 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// LPTIM1 stop in debug
+    pub mod DBG_LPTIM1 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C1 SMBUS timeout stop in debug
+    pub mod DBG_I2C1 {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C2 SMBUS timeout stop in debug
+    pub mod DBG_I2C2 {
+        /// Offset (22 bits)
+        pub const offset: u32 = 22;
+        /// Mask (1 bit: 1 << 22)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// I2C3 SMBUS timeout stop in debug
+    pub mod DBG_I2C3 {
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -402,14 +346,14 @@ pub mod APB1LFZ1 {
     }
 }
 
-/// APB2 peripheral freeze register
+/// DBGMCU APB2 peripheral freeze register
 pub mod APB2FZ1 {
 
-    /// HRTIM stop in debug mode
-    pub mod HRTIM {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
+    /// TIM1 stop in debug
+    pub mod DBG_TIM1 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -419,11 +363,11 @@ pub mod APB2FZ1 {
         pub mod RW {}
     }
 
-    /// TIM17 stop in debug mode
-    pub mod TIM17 {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
+    /// TIM8 stop in debug
+    pub mod DBG_TIM8 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -433,8 +377,22 @@ pub mod APB2FZ1 {
         pub mod RW {}
     }
 
-    /// TIM16 stop in debug mode
-    pub mod TIM16 {
+    /// TIM15 stop in debug
+    pub mod DBG_TIM15 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TIM16 stop in debug
+    pub mod DBG_TIM16 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -447,11 +405,11 @@ pub mod APB2FZ1 {
         pub mod RW {}
     }
 
-    /// TIM15 stop in debug mode
-    pub mod TIM15 {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
+    /// TIM17 stop in debug
+    pub mod DBG_TIM17 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -461,25 +419,11 @@ pub mod APB2FZ1 {
         pub mod RW {}
     }
 
-    /// TIM8 stop in debug mode
-    pub mod TIM8 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM1 stop in debug mode
-    pub mod TIM1 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
+    /// HRTIM stop in debug
+    pub mod DBG_HRTIM {
+        /// Offset (29 bits)
+        pub const offset: u32 = 29;
+        /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -490,14 +434,14 @@ pub mod APB2FZ1 {
     }
 }
 
-/// APB4 peripheral freeze register
+/// DBGMCU APB4 peripheral freeze register
 pub mod APB4FZ1 {
 
-    /// Independent watchdog for D1 stop in debug mode
-    pub mod IWDG1 {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
+    /// I2C4 SMBUS timeout stop in debug
+    pub mod DBG_I2C4 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -507,11 +451,11 @@ pub mod APB4FZ1 {
         pub mod RW {}
     }
 
-    /// RTC stop in debug mode
-    pub mod RTC {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
+    /// LPTIM2 stop in debug
+    pub mod DBG_LPTIM2 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -521,36 +465,8 @@ pub mod APB4FZ1 {
         pub mod RW {}
     }
 
-    /// LPTIM5 stop in debug mode
-    pub mod LPTIM5 {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// LPTIM4 stop in debug mode
-    pub mod LPTIM4 {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// LPTIM3 stop in debug mode
-    pub mod LPTIM3 {
+    /// LPTIM2 stop in debug
+    pub mod DBG_LPTIM3 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -563,101 +479,8 @@ pub mod APB4FZ1 {
         pub mod RW {}
     }
 
-    /// LPTIM2 stop in debug mode
-    pub mod LPTIM2 {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// I2C4 SMBUS timeout stop in debug mode
-    pub mod I2C4 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Independent watchdog for D2 stop when Cortex-M7 in debug mode
-    pub mod IWDG2 {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// APB3 peripheral freeze register CPU2
-pub mod APB3FZ2 {
-    pub use super::APB3FZ1::WWDG1;
-}
-
-/// APB1L peripheral freeze register CPU2
-pub mod APB1LFZ2 {
-
-    /// I2C3 SMBUS timeout stop when Cortex-M4 in debug mode
-    pub mod I2C3 {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// I2C2 SMBUS timeout stop when Cortex-M4 in debug mode
-    pub mod I2C2 {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// I2C1 SMBUS timeout stop when Cortex-M4 in debug mode
-    pub mod I2C1 {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// WWDG2 stop in when Cortex-M4 when Cortex-M4 in debug mode
-    pub mod WWDG2 {
+    /// LPTIM4 stop in debug
+    pub mod DBG_LPTIM4 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -670,204 +493,8 @@ pub mod APB1LFZ2 {
         pub mod RW {}
     }
 
-    /// LPTIM1 stop when Cortex-M4 in debug mode
-    pub mod LPTIM1 {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM14 stop when Cortex-M4 in debug mode
-    pub mod TIM14 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM13 stop when Cortex-M4 in debug mode
-    pub mod TIM13 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM12 stop when Cortex-M4 in debug mode
-    pub mod TIM12 {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM7 stop when Cortex-M4 in debug mode
-    pub mod TIM7 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM6 stop when Cortex-M4 in debug mode
-    pub mod TIM6 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM5 stop when Cortex-M4 in debug mode
-    pub mod TIM5 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM4 stop when Cortex-M4 in debug mode
-    pub mod TIM4 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM3 stop when Cortex-M4 in debug mode
-    pub mod TIM3 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TIM2 stop when Cortex-M4 in debug mode
-    pub mod TIM2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// APB2 peripheral freeze register CPU2
-pub mod APB2FZ2 {
-    pub use super::APB2FZ1::HRTIM;
-    pub use super::APB2FZ1::TIM1;
-    pub use super::APB2FZ1::TIM15;
-    pub use super::APB2FZ1::TIM16;
-    pub use super::APB2FZ1::TIM17;
-    pub use super::APB2FZ1::TIM8;
-}
-
-/// APB4 peripheral freeze register CPU2
-pub mod APB4FZ2 {
-
-    /// LS watchdog for D2 stop when Cortex-M4 in debug mode
-    pub mod WDGLSD2 {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// LS watchdog for D1 stop when Cortex-M4 in debug mode
-    pub mod WDGLSD1 {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// RTC stop when Cortex-M4 in debug mode
-    pub mod RTC {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// LPTIM5 stop when Cortex-M4 in debug mode
-    pub mod LPTIM5 {
+    /// LPTIM5 stop in debug
+    pub mod DBG_LPTIM5 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -880,11 +507,11 @@ pub mod APB4FZ2 {
         pub mod RW {}
     }
 
-    /// LPTIM4 stop when Cortex-M4 in debug mode
-    pub mod LPTIM4 {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+    /// RTC stop in debug
+    pub mod DBG_RTC {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -894,39 +521,11 @@ pub mod APB4FZ2 {
         pub mod RW {}
     }
 
-    /// LPTIM3 stop when Cortex-M4 in debug mode
-    pub mod LPTIM3 {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// LPTIM2 stop when Cortex-M4 in debug mode
-    pub mod LPTIM2 {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// I2C4 SMBUS timeout stop when Cortex-M4 in debug mode
-    pub mod I2C4 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
+    /// Independent watchdog for D1 stop in debug
+    pub mod DBG_IWDG1 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -938,53 +537,39 @@ pub mod APB4FZ2 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    /// Identity code
+    /// DBGMCU Identity Code Register
     pub IDC: RORegister<u32>,
 
-    /// Configuration register
+    /// DBGMCU Configuration Register
     pub CR: RWRegister<u32>,
 
     _reserved1: [u32; 11],
 
-    /// APB3 peripheral freeze register
+    /// DBGMCU APB3 peripheral freeze register
     pub APB3FZ1: RWRegister<u32>,
-
-    /// APB3 peripheral freeze register CPU2
-    pub APB3FZ2: RWRegister<u32>,
-
-    /// APB1L peripheral freeze register
-    pub APB1LFZ1: RWRegister<u32>,
-
-    /// APB1L peripheral freeze register CPU2
-    pub APB1LFZ2: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
-    /// APB2 peripheral freeze register CPU2
-    pub APB2FZ2: RWRegister<u32>,
+    /// DBGMCU APB1L peripheral freeze register
+    pub APB1LFZ1: RWRegister<u32>,
 
-    /// APB2 peripheral freeze register
+    _reserved3: [u32; 3],
+
+    /// DBGMCU APB2 peripheral freeze register
     pub APB2FZ1: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved4: [u32; 1],
 
-    /// APB4 peripheral freeze register
+    /// DBGMCU APB4 peripheral freeze register
     pub APB4FZ1: RWRegister<u32>,
-
-    /// APB4 peripheral freeze register CPU2
-    pub APB4FZ2: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub IDC: u32,
     pub CR: u32,
     pub APB3FZ1: u32,
-    pub APB3FZ2: u32,
     pub APB1LFZ1: u32,
-    pub APB1LFZ2: u32,
-    pub APB2FZ2: u32,
     pub APB2FZ1: u32,
     pub APB4FZ1: u32,
-    pub APB4FZ2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

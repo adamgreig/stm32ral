@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32l4x1, stm32l4x2
+//! Used by: stm32l412, stm32l4x1, stm32l4x2
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -410,11 +410,11 @@ pub mod CR1 {
         }
     }
 
-    /// Driver Enable de-assertion time
-    pub mod DEDT {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (5 bits: 0b11111 << 16)
+    /// Driver Enable assertion time
+    pub mod DEAT {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (5 bits: 0b11111 << 21)
         pub const mask: u32 = 0b11111 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -424,11 +424,11 @@ pub mod CR1 {
         pub mod RW {}
     }
 
-    /// Driver Enable assertion time
-    pub mod DEAT {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (5 bits: 0b11111 << 21)
+    /// Driver Enable de-assertion time
+    pub mod DEDT {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (5 bits: 0b11111 << 16)
         pub const mask: u32 = 0b11111 << offset;
         /// Read-only values (empty)
         pub mod R {}

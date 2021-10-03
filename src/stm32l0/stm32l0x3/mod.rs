@@ -24,7 +24,7 @@ pub use super::instances::iwdg;
 pub use super::instances::lptim;
 pub use super::instances::lpuart1;
 pub use super::instances::nvic;
-pub use super::instances::pwr;
+pub use super::instances::pwr_l0x2_l0x3 as pwr;
 pub use super::instances::rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;

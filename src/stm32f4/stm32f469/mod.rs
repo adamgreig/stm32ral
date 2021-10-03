@@ -14,7 +14,7 @@ pub use super::instances::hash;
 pub use super::instances::rng_f412_f413_f469 as rng;
 pub mod fmc;
 pub use super::instances::dbgmcu_f427_f429_f469 as dbgmcu;
-pub use super::instances::dma;
+pub use super::instances::dma_f405_f407_f427_f429_f446_f469 as dma;
 pub mod rcc;
 pub use super::instances::adc;
 pub use super::instances::adc_common_f405_f407_f427_f429_f446_f469 as adc_common;
@@ -31,7 +31,7 @@ pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
-pub use super::instances::tim8_f401_f405_f407_f413_f427_f429_f446_f469 as tim8;
+pub use super::instances::tim8_f405_f407_f413_f427_f429_f446_f469 as tim8;
 pub use super::instances::uart_f427_f429_f446_f469 as uart;
 pub use super::instances::usart_f427_f429_f469 as usart;
 pub use super::instances::wwdg;
@@ -63,8 +63,8 @@ pub mod otg_hs_pwrclk;
 pub use super::instances::ltdc;
 pub mod dma2d;
 pub mod sai;
-pub use super::instances::i2c_f427_f429_f446_f469 as i2c;
-pub mod dsihost;
+pub use super::instances::i2c_f401_f411_f412_f427_f429_f446_f469 as i2c;
+pub mod dsi;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
@@ -162,7 +162,7 @@ pub struct Peripherals {
     pub I2C3: i2c::Instance,
     pub I2C2: i2c::Instance,
     pub I2C1: i2c::Instance,
-    pub DSIHOST: dsihost::Instance,
+    pub DSI: dsi::Instance,
     pub QUADSPI: quadspi::Instance,
     pub FPU: fpu::Instance,
     pub MPU: mpu::Instance,
@@ -266,7 +266,7 @@ impl Peripherals {
             I2C3: i2c::I2C3::steal(),
             I2C2: i2c::I2C2::steal(),
             I2C1: i2c::I2C1::steal(),
-            DSIHOST: dsihost::DSIHOST::steal(),
+            DSI: dsi::DSI::steal(),
             QUADSPI: quadspi::QUADSPI::steal(),
             FPU: fpu::FPU::steal(),
             MPU: mpu::MPU::steal(),

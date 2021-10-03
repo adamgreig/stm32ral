@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General purpose timer
 //!
-//! Used by: stm32f301, stm32f373, stm32f3x8
+//! Used by: stm32f373, stm32f3x8
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f3::peripherals::tim5::Instance;

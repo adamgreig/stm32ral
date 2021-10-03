@@ -594,7 +594,7 @@ pub mod TSR {
     }
 }
 
-/// CAN_RF0R
+/// CAN_RF%sR
 pub mod RF0R {
 
     /// RFOM0
@@ -675,7 +675,7 @@ pub mod RF0R {
     }
 }
 
-/// CAN_RF0R
+/// CAN_RF%sR
 pub mod RF1R {
     pub use super::RF0R::FMP;
     pub use super::RF0R::FOVR;
@@ -5835,10 +5835,10 @@ pub struct RegisterBlock {
     /// CAN_TSR
     pub TSR: RWRegister<u32>,
 
-    /// CAN_RF0R
+    /// CAN_RF%sR
     pub RF0R: RWRegister<u32>,
 
-    /// CAN_RF0R
+    /// CAN_RF%sR
     pub RF1R: RWRegister<u32>,
 
     /// CAN_IER

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Memory protection unit
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -299,7 +299,7 @@ pub struct RegisterBlock {
     pub MPU_TYPER: RORegister<u32>,
 
     /// MPU control register
-    pub MPU_CTRL: RORegister<u32>,
+    pub MPU_CTRL: RWRegister<u32>,
 
     /// MPU region number register
     pub MPU_RNR: RWRegister<u32>,

@@ -1158,9 +1158,9 @@ pub mod AHB1RSTR {
 
     /// CRC reset
     pub mod CRCRST {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2144,8 +2144,8 @@ pub mod APB1ENR1 {
         pub mod RW {}
     }
 
-    /// USART1 clock enable
-    pub mod USART1EN {
+    /// USART3 clock enable
+    pub mod USART3EN {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -2912,20 +2912,6 @@ pub mod APB1SMENR1 {
 
     /// USART2 clocks enable during Sleep and Stop modes
     pub mod USART2SMEN {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// USART1 clocks enable during Sleep and Stop modes
-    pub mod USART1SMEN {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -3083,6 +3069,34 @@ pub mod APB1SMENR1 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// USART3 clocks enable during Sleep and Stop modes
+    pub mod USART3SMEN {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// UART4 clocks enable during Sleep and Stop modes
+    pub mod UART4SMEN {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

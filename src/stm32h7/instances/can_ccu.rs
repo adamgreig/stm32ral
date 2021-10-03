@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! CCU registers
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::can_ccu::Instance;

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! CORDIC Co-processor
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,11 +21,42 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Cosine funciton
+            pub const Cosine: u32 = 0b0000;
+
+            /// 0b0001: Sine function
+            pub const Sine: u32 = 0b0001;
+
+            /// 0b0010: Phase function
+            pub const Phase: u32 = 0b0010;
+
+            /// 0b0011: Modulus function
+            pub const Modulus: u32 = 0b0011;
+
+            /// 0b0100: Arctangent function
+            pub const Arctangent: u32 = 0b0100;
+
+            /// 0b0101: Hyperbolic Cosine function
+            pub const HyperbolicCosine: u32 = 0b0101;
+
+            /// 0b0110: Hyperbolic Sine function
+            pub const HyperbolicSine: u32 = 0b0110;
+
+            /// 0b0111: Arctanh function
+            pub const Arctanh: u32 = 0b0111;
+
+            /// 0b1000: Natural Logarithm function
+            pub const NaturalLogarithm: u32 = 0b1000;
+
+            /// 0b1001: Square Root function
+            pub const SquareRoot: u32 = 0b1001;
+        }
     }
 
-    /// PRECISION
+    /// Precision (number of iterations/cycles) required
     pub mod PRECISION {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -39,7 +70,7 @@ pub mod CSR {
         pub mod RW {}
     }
 
-    /// SCALE
+    /// Scaling factor (2^-n for arguments, 2^n for results)
     pub mod SCALE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -63,8 +94,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Disable interrupt request generation
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable intterrupt request generation
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMAREN
@@ -77,8 +115,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No DMA channel reads are generated
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Read requests are generated on the DMA channel when RRDY flag is set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMAWEN
@@ -91,8 +136,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No DMA channel writes are generated
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write requests are generated on the DMA channel when no operation is pending
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// NRES
@@ -105,8 +157,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Only single result value will be returned. After a single read RRDY will be automatically cleared
+            pub const Num1: u32 = 0b0;
+
+            /// 0b1: Two return reads need to be performed. After two reads RRDY will be automatically cleared
+            pub const Num2: u32 = 0b1;
+        }
     }
 
     /// NARGS
@@ -119,8 +178,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Only single argument write is needed for next calculation
+            pub const Num1: u32 = 0b0;
+
+            /// 0b1: Two argument writes need to be performed for next calculation
+            pub const Num2: u32 = 0b1;
+        }
     }
 
     /// RESSIZE
@@ -133,8 +199,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Use 32 bit output values
+            pub const Bits32: u32 = 0b0;
+
+            /// 0b1: Use 16 bit output values
+            pub const Bits16: u32 = 0b1;
+        }
     }
 
     /// ARGSIZE
@@ -147,8 +220,15 @@ pub mod CSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Use 32 bit input values
+            pub const Bits32: u32 = 0b0;
+
+            /// 0b1: Use 16 bit input values
+            pub const Bits16: u32 = 0b1;
+        }
     }
 
     /// RRDY
@@ -157,8 +237,15 @@ pub mod CSR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Results from computation are not read
+            pub const NotReady: u32 = 0b0;
+
+            /// 0b1: Results are ready, this flag will be automatically cleared once value is read
+            pub const Ready: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -166,7 +253,7 @@ pub mod CSR {
     }
 }
 
-/// FMAC Write Data register
+/// CORDIC argument register
 pub mod WDATA {
 
     /// ARG
@@ -184,7 +271,7 @@ pub mod WDATA {
     }
 }
 
-/// FMAC Read Data register
+/// CORDIC result register
 pub mod RDATA {
 
     /// RES
@@ -206,10 +293,10 @@ pub struct RegisterBlock {
     /// CORDIC Control Status register
     pub CSR: RWRegister<u32>,
 
-    /// FMAC Write Data register
+    /// CORDIC argument register
     pub WDATA: RWRegister<u32>,
 
-    /// FMAC Read Data register
+    /// CORDIC result register
     pub RDATA: RORegister<u32>,
 }
 pub struct ResetValues {

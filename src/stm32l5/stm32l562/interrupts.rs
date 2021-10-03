@@ -45,9 +45,11 @@ extern "C" {
     fn TIM1_TRG_COM();
     fn TIM1_CC();
     fn TIM2();
-    fn TIM2_3();
-    fn TIM2_4();
-    fn TIM2_5();
+    fn TIM3();
+    fn TIM4();
+    fn TIM5();
+    fn TIM6();
+    fn TIM7();
     fn TIM8_BRK();
     fn TIM8_UP();
     fn TIM8_TRG_COM();
@@ -172,11 +174,11 @@ pub static __INTERRUPTS: [Vector; 109] = [
     },
     Vector { _handler: TIM1_CC },
     Vector { _handler: TIM2 },
-    Vector { _handler: TIM2_3 },
-    Vector { _handler: TIM2_4 },
-    Vector { _handler: TIM2_5 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: TIM3 },
+    Vector { _handler: TIM4 },
+    Vector { _handler: TIM5 },
+    Vector { _handler: TIM6 },
+    Vector { _handler: TIM7 },
     Vector { _handler: TIM8_BRK },
     Vector { _handler: TIM8_UP },
     Vector {
@@ -341,11 +343,15 @@ pub enum Interrupt {
     /// 45: TIM2 global interrupt
     TIM2 = 45,
     /// 46: TIM3 global interrupt
-    TIM2_3 = 46,
+    TIM3 = 46,
     /// 47: TIM4 global interrupt
-    TIM2_4 = 47,
+    TIM4 = 47,
     /// 48: TIM5 global interrupt
-    TIM2_5 = 48,
+    TIM5 = 48,
+    /// 49: TIM6 global interrupt
+    TIM6 = 49,
+    /// 50: TIM7 global interrupt
+    TIM7 = 50,
     /// 51: TIM8 Break Interrupt
     TIM8_BRK = 51,
     /// 52: TIM8 Update Interrupt

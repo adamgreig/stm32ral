@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32g431, stm32g441, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::adc12_common::Instance;
@@ -18,7 +18,7 @@ pub mod ADC12_Common {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x50000200,
+        addr: 0x50000300,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -100,7 +100,7 @@ pub mod ADC12_Common {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const ADC12_Common: *const RegisterBlock = 0x50000200 as *const _;
+pub const ADC12_Common: *const RegisterBlock = 0x50000300 as *const _;
 
 /// Access functions for the ADC345_Common peripheral instance
 pub mod ADC345_Common {

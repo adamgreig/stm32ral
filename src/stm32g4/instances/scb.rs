@@ -2,13 +2,13 @@
 #![allow(non_camel_case_types)]
 //! System control block
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::scb::Instance;
 pub use crate::stm32g4::peripherals::scb::{RegisterBlock, ResetValues};
 pub use crate::stm32g4::peripherals::scb::{
-    AFSR, AIRCR, BFAR, CCR, CFSR_UFSR_BFSR_MMFSR, CPUID, HFSR, ICSR, MMFAR, SCR, SHCRS, SHPR1,
+    AFSR, AIRCR, BFAR, CCR, CFSR_UFSR_BFSR_MMFSR, CPUID, HFSR, ICSR, MMFAR, SCR, SHCSR, SHPR1,
     SHPR2, SHPR3, VTOR,
 };
 
@@ -21,7 +21,7 @@ pub mod SCB {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0xe000e040,
+        addr: 0xe000ed00,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -36,7 +36,7 @@ pub mod SCB {
         SHPR1: 0x00000000,
         SHPR2: 0x00000000,
         SHPR3: 0x00000000,
-        SHCRS: 0x00000000,
+        SHCSR: 0x00000000,
         CFSR_UFSR_BFSR_MMFSR: 0x00000000,
         HFSR: 0x00000000,
         MMFAR: 0x00000000,
@@ -115,4 +115,4 @@ pub mod SCB {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const SCB: *const RegisterBlock = 0xe000e040 as *const _;
+pub const SCB: *const RegisterBlock = 0xe000ed00 as *const _;

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! CORDIC Co-processor
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::cordic::Instance;

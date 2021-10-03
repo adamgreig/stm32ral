@@ -6,175 +6,6 @@ use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// control register 2
-pub mod DFSDM0_CR2 {
-
-    /// Analog watchdog channel selection
-    pub mod AWDCH {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (8 bits: 0xff << 16)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Extremes detector channel selection
-    pub mod EXCH {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (8 bits: 0xff << 8)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Clock absence interrupt enable
-    pub mod CKABIE {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Short-circuit detector interrupt enable
-    pub mod SCDIE {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Analog watchdog interrupt enable
-    pub mod AWDIE {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Regular data overrun interrupt enable
-    pub mod ROVRIE {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Injected data overrun interrupt enable
-    pub mod JOVRIE {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Regular end of conversion interrupt enable
-    pub mod REOCIE {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Injected end of conversion interrupt enable
-    pub mod JEOCIE {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// control register 2
-pub mod DFSDM1_CR2 {
-    pub use super::DFSDM0_CR2::AWDCH;
-    pub use super::DFSDM0_CR2::AWDIE;
-    pub use super::DFSDM0_CR2::CKABIE;
-    pub use super::DFSDM0_CR2::EXCH;
-    pub use super::DFSDM0_CR2::JEOCIE;
-    pub use super::DFSDM0_CR2::JOVRIE;
-    pub use super::DFSDM0_CR2::REOCIE;
-    pub use super::DFSDM0_CR2::ROVRIE;
-    pub use super::DFSDM0_CR2::SCDIE;
-}
-
-/// control register 2
-pub mod DFSDM2_CR2 {
-    pub use super::DFSDM0_CR2::AWDCH;
-    pub use super::DFSDM0_CR2::AWDIE;
-    pub use super::DFSDM0_CR2::CKABIE;
-    pub use super::DFSDM0_CR2::EXCH;
-    pub use super::DFSDM0_CR2::JEOCIE;
-    pub use super::DFSDM0_CR2::JOVRIE;
-    pub use super::DFSDM0_CR2::REOCIE;
-    pub use super::DFSDM0_CR2::ROVRIE;
-    pub use super::DFSDM0_CR2::SCDIE;
-}
-
-/// control register 2
-pub mod DFSDM3_CR2 {
-    pub use super::DFSDM0_CR2::AWDCH;
-    pub use super::DFSDM0_CR2::AWDIE;
-    pub use super::DFSDM0_CR2::CKABIE;
-    pub use super::DFSDM0_CR2::EXCH;
-    pub use super::DFSDM0_CR2::JEOCIE;
-    pub use super::DFSDM0_CR2::JOVRIE;
-    pub use super::DFSDM0_CR2::REOCIE;
-    pub use super::DFSDM0_CR2::ROVRIE;
-    pub use super::DFSDM0_CR2::SCDIE;
-}
-
 /// channel configuration y register
 pub mod CFGR10 {
 
@@ -756,7 +587,7 @@ pub mod DATINR7 {
 }
 
 /// control register 1
-pub mod CR20 {
+pub mod CR10 {
 
     /// Analog watchdog fast mode select
     pub mod AWFSEL {
@@ -942,6 +773,136 @@ pub mod CR20 {
 
     /// DFSDM enable
     pub mod DFEN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// control register 2
+pub mod CR20 {
+
+    /// Analog watchdog channel selection
+    pub mod AWDCH {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (8 bits: 0xff << 16)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Extremes detector channel selection
+    pub mod EXCH {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (8 bits: 0xff << 8)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Clock absence interrupt enable
+    pub mod CKABIE {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Short-circuit detector interrupt enable
+    pub mod SCDIE {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Analog watchdog interrupt enable
+    pub mod AWDIE {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Regular data overrun interrupt enable
+    pub mod ROVRIE {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Injected data overrun interrupt enable
+    pub mod JOVRIE {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Regular end of conversion interrupt enable
+    pub mod REOCIE {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Injected end of conversion interrupt enable
+    pub mod JEOCIE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -1498,21 +1459,34 @@ pub mod CNVTIMR0 {
 }
 
 /// control register 1
+pub mod CR11 {
+    pub use super::CR10::AWFSEL;
+    pub use super::CR10::DFEN;
+    pub use super::CR10::FAST;
+    pub use super::CR10::JDMAEN;
+    pub use super::CR10::JEXTEN;
+    pub use super::CR10::JEXTSEL;
+    pub use super::CR10::JSCAN;
+    pub use super::CR10::JSWSTART;
+    pub use super::CR10::JSYNC;
+    pub use super::CR10::RCH;
+    pub use super::CR10::RCONT;
+    pub use super::CR10::RDMAEN;
+    pub use super::CR10::RSWSTART;
+    pub use super::CR10::RSYNC;
+}
+
+/// control register 2
 pub mod CR21 {
-    pub use super::CR20::AWFSEL;
-    pub use super::CR20::DFEN;
-    pub use super::CR20::FAST;
-    pub use super::CR20::JDMAEN;
-    pub use super::CR20::JEXTEN;
-    pub use super::CR20::JEXTSEL;
-    pub use super::CR20::JSCAN;
-    pub use super::CR20::JSWSTART;
-    pub use super::CR20::JSYNC;
-    pub use super::CR20::RCH;
-    pub use super::CR20::RCONT;
-    pub use super::CR20::RDMAEN;
-    pub use super::CR20::RSWSTART;
-    pub use super::CR20::RSYNC;
+    pub use super::CR20::AWDCH;
+    pub use super::CR20::AWDIE;
+    pub use super::CR20::CKABIE;
+    pub use super::CR20::EXCH;
+    pub use super::CR20::JEOCIE;
+    pub use super::CR20::JOVRIE;
+    pub use super::CR20::REOCIE;
+    pub use super::CR20::ROVRIE;
+    pub use super::CR20::SCDIE;
 }
 
 /// interrupt and status register
@@ -1603,21 +1577,34 @@ pub mod CNVTIMR1 {
 }
 
 /// control register 1
+pub mod CR12 {
+    pub use super::CR10::AWFSEL;
+    pub use super::CR10::DFEN;
+    pub use super::CR10::FAST;
+    pub use super::CR10::JDMAEN;
+    pub use super::CR10::JEXTEN;
+    pub use super::CR10::JEXTSEL;
+    pub use super::CR10::JSCAN;
+    pub use super::CR10::JSWSTART;
+    pub use super::CR10::JSYNC;
+    pub use super::CR10::RCH;
+    pub use super::CR10::RCONT;
+    pub use super::CR10::RDMAEN;
+    pub use super::CR10::RSWSTART;
+    pub use super::CR10::RSYNC;
+}
+
+/// control register 2
 pub mod CR22 {
-    pub use super::CR20::AWFSEL;
-    pub use super::CR20::DFEN;
-    pub use super::CR20::FAST;
-    pub use super::CR20::JDMAEN;
-    pub use super::CR20::JEXTEN;
-    pub use super::CR20::JEXTSEL;
-    pub use super::CR20::JSCAN;
-    pub use super::CR20::JSWSTART;
-    pub use super::CR20::JSYNC;
-    pub use super::CR20::RCH;
-    pub use super::CR20::RCONT;
-    pub use super::CR20::RDMAEN;
-    pub use super::CR20::RSWSTART;
-    pub use super::CR20::RSYNC;
+    pub use super::CR20::AWDCH;
+    pub use super::CR20::AWDIE;
+    pub use super::CR20::CKABIE;
+    pub use super::CR20::EXCH;
+    pub use super::CR20::JEOCIE;
+    pub use super::CR20::JOVRIE;
+    pub use super::CR20::REOCIE;
+    pub use super::CR20::ROVRIE;
+    pub use super::CR20::SCDIE;
 }
 
 /// interrupt and status register
@@ -1708,21 +1695,34 @@ pub mod CNVTIMR2 {
 }
 
 /// control register 1
+pub mod CR13 {
+    pub use super::CR10::AWFSEL;
+    pub use super::CR10::DFEN;
+    pub use super::CR10::FAST;
+    pub use super::CR10::JDMAEN;
+    pub use super::CR10::JEXTEN;
+    pub use super::CR10::JEXTSEL;
+    pub use super::CR10::JSCAN;
+    pub use super::CR10::JSWSTART;
+    pub use super::CR10::JSYNC;
+    pub use super::CR10::RCH;
+    pub use super::CR10::RCONT;
+    pub use super::CR10::RDMAEN;
+    pub use super::CR10::RSWSTART;
+    pub use super::CR10::RSYNC;
+}
+
+/// control register 2
 pub mod CR23 {
-    pub use super::CR20::AWFSEL;
-    pub use super::CR20::DFEN;
-    pub use super::CR20::FAST;
-    pub use super::CR20::JDMAEN;
-    pub use super::CR20::JEXTEN;
-    pub use super::CR20::JEXTSEL;
-    pub use super::CR20::JSCAN;
-    pub use super::CR20::JSWSTART;
-    pub use super::CR20::JSYNC;
-    pub use super::CR20::RCH;
-    pub use super::CR20::RCONT;
-    pub use super::CR20::RDMAEN;
-    pub use super::CR20::RSWSTART;
-    pub use super::CR20::RSYNC;
+    pub use super::CR20::AWDCH;
+    pub use super::CR20::AWDIE;
+    pub use super::CR20::CKABIE;
+    pub use super::CR20::EXCH;
+    pub use super::CR20::JEOCIE;
+    pub use super::CR20::JOVRIE;
+    pub use super::CR20::REOCIE;
+    pub use super::CR20::ROVRIE;
+    pub use super::CR20::SCDIE;
 }
 
 /// interrupt and status register
@@ -1950,10 +1950,10 @@ pub struct RegisterBlock {
     _reserved8: [u32; 3],
 
     /// control register 1
-    pub CR20: RWRegister<u32>,
+    pub CR10: RWRegister<u32>,
 
     /// control register 2
-    pub DFSDM0_CR2: RWRegister<u32>,
+    pub CR20: RWRegister<u32>,
 
     /// interrupt and status register
     pub ISR0: RORegister<u32>,
@@ -1997,10 +1997,10 @@ pub struct RegisterBlock {
     _reserved9: [u32; 49],
 
     /// control register 1
-    pub CR21: RWRegister<u32>,
+    pub CR11: RWRegister<u32>,
 
     /// control register 2
-    pub DFSDM1_CR2: RWRegister<u32>,
+    pub CR21: RWRegister<u32>,
 
     /// interrupt and status register
     pub ISR1: RORegister<u32>,
@@ -2044,10 +2044,10 @@ pub struct RegisterBlock {
     _reserved10: [u32; 49],
 
     /// control register 1
-    pub CR22: RWRegister<u32>,
+    pub CR12: RWRegister<u32>,
 
     /// control register 2
-    pub DFSDM2_CR2: RWRegister<u32>,
+    pub CR22: RWRegister<u32>,
 
     /// interrupt and status register
     pub ISR2: RORegister<u32>,
@@ -2091,10 +2091,10 @@ pub struct RegisterBlock {
     _reserved11: [u32; 49],
 
     /// control register 1
-    pub CR23: RWRegister<u32>,
+    pub CR13: RWRegister<u32>,
 
     /// control register 2
-    pub DFSDM3_CR2: RWRegister<u32>,
+    pub CR23: RWRegister<u32>,
 
     /// interrupt and status register
     pub ISR3: RORegister<u32>,
@@ -2176,8 +2176,8 @@ pub struct ResetValues {
     pub AWSCDR7: u32,
     pub WDATR7: u32,
     pub DATINR7: u32,
+    pub CR10: u32,
     pub CR20: u32,
-    pub DFSDM0_CR2: u32,
     pub ISR0: u32,
     pub ICR0: u32,
     pub JCHGR0: u32,
@@ -2191,8 +2191,8 @@ pub struct ResetValues {
     pub EXMAX0: u32,
     pub EXMIN0: u32,
     pub CNVTIMR0: u32,
+    pub CR11: u32,
     pub CR21: u32,
-    pub DFSDM1_CR2: u32,
     pub ISR1: u32,
     pub ICR1: u32,
     pub JCHGR1: u32,
@@ -2206,8 +2206,8 @@ pub struct ResetValues {
     pub EXMAX1: u32,
     pub EXMIN1: u32,
     pub CNVTIMR1: u32,
+    pub CR12: u32,
     pub CR22: u32,
-    pub DFSDM2_CR2: u32,
     pub ISR2: u32,
     pub ICR2: u32,
     pub JCHGR2: u32,
@@ -2221,8 +2221,8 @@ pub struct ResetValues {
     pub EXMAX2: u32,
     pub EXMIN2: u32,
     pub CNVTIMR2: u32,
+    pub CR13: u32,
     pub CR23: u32,
-    pub DFSDM3_CR2: u32,
     pub ISR3: u32,
     pub ICR3: u32,
     pub JCHGR3: u32,
@@ -2268,10 +2268,6 @@ pub mod DFSDM {
 
     /// Reset values for each field in DFSDM
     pub const reset: ResetValues = ResetValues {
-        DFSDM0_CR2: 0x00000000,
-        DFSDM1_CR2: 0x00000000,
-        DFSDM2_CR2: 0x00000000,
-        DFSDM3_CR2: 0x00000000,
         CFGR10: 0x00000000,
         CFGR20: 0x00000000,
         AWSCDR0: 0x00000000,
@@ -2312,6 +2308,7 @@ pub mod DFSDM {
         AWSCDR7: 0x00000000,
         WDATR7: 0x00000000,
         DATINR7: 0x00000000,
+        CR10: 0x00000000,
         CR20: 0x00000000,
         ISR0: 0x00FF0000,
         ICR0: 0x00000000,
@@ -2326,6 +2323,7 @@ pub mod DFSDM {
         EXMAX0: 0x80000000,
         EXMIN0: 0x7FFFFF00,
         CNVTIMR0: 0x00000000,
+        CR11: 0x00000000,
         CR21: 0x00000000,
         ISR1: 0x00FF0000,
         ICR1: 0x00000000,
@@ -2340,6 +2338,7 @@ pub mod DFSDM {
         EXMAX1: 0x80000000,
         EXMIN1: 0x7FFFFF00,
         CNVTIMR1: 0x00000000,
+        CR12: 0x00000000,
         CR22: 0x00000000,
         ISR2: 0x00FF0000,
         ICR2: 0x00000000,
@@ -2354,6 +2353,7 @@ pub mod DFSDM {
         EXMAX2: 0x80000000,
         EXMIN2: 0x7FFFFF00,
         CNVTIMR2: 0x00000000,
+        CR13: 0x00000000,
         CR23: 0x00000000,
         ISR3: 0x00FF0000,
         ICR3: 0x00000000,

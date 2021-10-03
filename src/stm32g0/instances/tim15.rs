@@ -2,13 +2,14 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32g070, stm32g07x, stm32g081
+//! Used by: stm32g051, stm32g061, stm32g0b0, stm32g0b1, stm32g0c1
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32g0::peripherals::tim16_v1::Instance;
-pub use crate::stm32g0::peripherals::tim16_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::tim16_v1::{
-    AF1, ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SR, TISEL,
+pub use crate::stm32g0::peripherals::tim15::Instance;
+pub use crate::stm32g0::peripherals::tim15::{RegisterBlock, ResetValues};
+pub use crate::stm32g0::peripherals::tim15::{
+    AF1, ARR, BDTR, CCER, CCMR1, CCR1, CCR2, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, RCR, SMCR,
+    SR, TISEL,
 };
 
 /// Access functions for the TIM15 peripheral instance
@@ -28,6 +29,7 @@ pub mod TIM15 {
     pub const reset: ResetValues = ResetValues {
         CR1: 0x00000000,
         CR2: 0x00000000,
+        SMCR: 0x00000000,
         DIER: 0x00000000,
         SR: 0x00000000,
         EGR: 0x00000000,
@@ -35,13 +37,14 @@ pub mod TIM15 {
         CCER: 0x00000000,
         CNT: 0x00000000,
         PSC: 0x00000000,
-        ARR: 0x00000000,
+        ARR: 0x0000FFFF,
         RCR: 0x00000000,
         CCR1: 0x00000000,
+        CCR2: 0x00000000,
         BDTR: 0x00000000,
         DCR: 0x00000000,
         DMAR: 0x00000000,
-        AF1: 0x00000000,
+        AF1: 0x00000001,
         TISEL: 0x00000000,
     };
 

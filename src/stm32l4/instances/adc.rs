@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32l4x1, stm32l4x2
+//! Used by: stm32l412, stm32l4x1, stm32l4x2
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::adc::Instance;

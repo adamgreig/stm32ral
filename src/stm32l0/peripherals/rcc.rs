@@ -3011,9 +3011,9 @@ pub mod CSR {
 
     /// Remove reset flag
     pub mod RMVF {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
+        /// Offset (23 bits)
+        pub const offset: u32 = 23;
+        /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3241,6 +3241,19 @@ pub mod CSR {
         /// Write-only values (empty)
         pub mod W {}
         pub use super::CSSLSEON::RW;
+    }
+
+    /// Firewall reset flag
+    pub mod FWRSTF {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        pub use super::LPWRRSTF::R;
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]

@@ -540,10 +540,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1219,7 +1219,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 2 reset
-    pub mod UART2RST {
+    pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1348,8 +1348,8 @@ pub mod APB1RSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// USART4 reset
-    pub mod USART4RST {
+    /// UART4 reset
+    pub mod UART4RST {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1361,8 +1361,8 @@ pub mod APB1RSTR {
         pub use super::TIM2RST::RW;
     }
 
-    /// USART5 reset
-    pub mod USART5RST {
+    /// UART5 reset
+    pub mod UART5RST {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -1591,8 +1591,8 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// USART9 reset
-    pub mod USART9RST {
+    /// UART9 reset
+    pub mod UART9RST {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -1604,8 +1604,8 @@ pub mod APB2RSTR {
         pub use super::TIM1RST::RW;
     }
 
-    /// USART10 reset
-    pub mod SART10RST {
+    /// UART10 reset
+    pub mod UART10RST {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -1661,32 +1661,6 @@ pub mod APB2RSTR {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1RST::RW;
-    }
-
-    /// UART9 reset
-    pub mod UART9RST {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1RST::RW;
-    }
-
-    /// UART10 reset
-    pub mod UART10RST {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3105,8 +3079,8 @@ pub mod APB1LPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// USART4 clock enable during Sleep mode
-    pub mod USART4LPEN {
+    /// UART4 clock enable during Sleep mode
+    pub mod UART4LPEN {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -3118,8 +3092,8 @@ pub mod APB1LPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// USART5 clock enable during Sleep mode
-    pub mod USART5LPEN {
+    /// UART5 clock enable during Sleep mode
+    pub mod UART5LPEN {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -3364,8 +3338,8 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// USART9 clock enable during Sleep mode
-    pub mod USART9LPEN {
+    /// UART9 clock enable during Sleep mode
+    pub mod UART9LPEN {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -3377,8 +3351,8 @@ pub mod APB2LPENR {
         pub use super::TIM1LPEN::RW;
     }
 
-    /// USART10 clock enable during Sleep mode
-    pub mod USART10LPEN {
+    /// UART10 clock enable during Sleep mode
+    pub mod UART10LPEN {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -3434,32 +3408,6 @@ pub mod APB2LPENR {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1LPEN::RW;
-    }
-
-    /// UART9 clock enable during Sleep mode
-    pub mod UART9LPEN {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM1LPEN::RW;
-    }
-
-    /// UART10 clock enable during Sleep mode
-    pub mod UART10LPEN {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

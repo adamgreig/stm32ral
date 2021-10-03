@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -216,7 +216,7 @@ pub mod DR {
 pub mod CR {
 
     /// Wakeup clock selection
-    pub mod WCKSEL {
+    pub mod WUCKSEL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (3 bits: 0b111 << 0)

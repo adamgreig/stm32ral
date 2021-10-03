@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32f302, stm32f303, stm32f3x4, stm32f3x8
+//! Used by: stm32f302, stm32f303, stm32f3x4
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1830,6 +1830,42 @@ pub mod JSQR {
 
             /// 0b1010: HRTIM_ADCTRG4 event
             pub const HRTIM_ADCTRG4: u32 = 0b1010;
+
+            /// 0b0000: Timer 1 TRGO event
+            pub const TIM1_TRGO: u32 = 0b0000;
+
+            /// 0b0001: Timer 1 CC4 event
+            pub const TIM1_CC4: u32 = 0b0001;
+
+            /// 0b0010: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b0010;
+
+            /// 0b0011: Timer 2 CC1 event
+            pub const TIM2_CC1: u32 = 0b0011;
+
+            /// 0b0100: Timer 3 CC4 event
+            pub const TIM3_CC4: u32 = 0b0100;
+
+            /// 0b0110: EXTI line 15
+            pub const EXTI15: u32 = 0b0110;
+
+            /// 0b1000: Timer 1 TRGO2 event
+            pub const TIM1_TRGO2: u32 = 0b1000;
+
+            /// 0b1011: Timer 3 CC3 event
+            pub const TIM3_CC3: u32 = 0b1011;
+
+            /// 0b1100: Timer 3 TRGO event
+            pub const TIM3_TRGO: u32 = 0b1100;
+
+            /// 0b1101: Timer 3 CC1 event
+            pub const TIM3_CC1: u32 = 0b1101;
+
+            /// 0b1110: Timer 6 TRGO event
+            pub const TIM6_TRGO: u32 = 0b1110;
+
+            /// 0b1111: Timer 15 TRGO event
+            pub const TIM15_TRGO: u32 = 0b1111;
         }
     }
 
@@ -2137,9 +2173,9 @@ pub mod AWD2CR {
 
     /// AWD2CH
     pub mod AWD2CH0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2158,19 +2194,6 @@ pub mod AWD2CR {
 
     /// AWD2CH
     pub mod AWD2CH1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::AWD2CH0::RW;
-    }
-
-    /// AWD2CH
-    pub mod AWD2CH2 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -2183,7 +2206,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH3 {
+    pub mod AWD2CH2 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -2196,7 +2219,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH4 {
+    pub mod AWD2CH3 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -2209,7 +2232,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH5 {
+    pub mod AWD2CH4 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -2222,7 +2245,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH6 {
+    pub mod AWD2CH5 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -2235,7 +2258,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH7 {
+    pub mod AWD2CH6 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -2248,7 +2271,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH8 {
+    pub mod AWD2CH7 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -2261,7 +2284,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH9 {
+    pub mod AWD2CH8 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -2274,7 +2297,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH10 {
+    pub mod AWD2CH9 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -2287,7 +2310,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH11 {
+    pub mod AWD2CH10 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -2300,7 +2323,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH12 {
+    pub mod AWD2CH11 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -2313,7 +2336,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH13 {
+    pub mod AWD2CH12 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -2326,7 +2349,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH14 {
+    pub mod AWD2CH13 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -2339,7 +2362,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH15 {
+    pub mod AWD2CH14 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -2352,7 +2375,7 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH16 {
+    pub mod AWD2CH15 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2365,10 +2388,23 @@ pub mod AWD2CR {
     }
 
     /// AWD2CH
-    pub mod AWD2CH17 {
+    pub mod AWD2CH16 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH17 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2383,9 +2419,9 @@ pub mod AWD3CR {
 
     /// AWD3CH
     pub mod AWD3CH0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2404,19 +2440,6 @@ pub mod AWD3CR {
 
     /// AWD3CH
     pub mod AWD3CH1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::AWD3CH0::RW;
-    }
-
-    /// AWD3CH
-    pub mod AWD3CH2 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -2429,7 +2452,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH3 {
+    pub mod AWD3CH2 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -2442,7 +2465,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH4 {
+    pub mod AWD3CH3 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -2455,7 +2478,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH5 {
+    pub mod AWD3CH4 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -2468,7 +2491,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH6 {
+    pub mod AWD3CH5 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -2481,7 +2504,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH7 {
+    pub mod AWD3CH6 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -2494,7 +2517,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH8 {
+    pub mod AWD3CH7 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -2507,7 +2530,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH9 {
+    pub mod AWD3CH8 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -2520,7 +2543,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH10 {
+    pub mod AWD3CH9 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -2533,7 +2556,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH11 {
+    pub mod AWD3CH10 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -2546,7 +2569,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH12 {
+    pub mod AWD3CH11 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -2559,7 +2582,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH13 {
+    pub mod AWD3CH12 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -2572,7 +2595,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH14 {
+    pub mod AWD3CH13 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -2585,7 +2608,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH15 {
+    pub mod AWD3CH14 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -2598,7 +2621,7 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH16 {
+    pub mod AWD3CH15 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2611,10 +2634,23 @@ pub mod AWD3CR {
     }
 
     /// AWD3CH
-    pub mod AWD3CH17 {
+    pub mod AWD3CH16 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH17 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2629,9 +2665,9 @@ pub mod DIFSEL {
 
     /// Differential mode for channels 15 to 1
     pub mod DIFSEL_10 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2650,19 +2686,6 @@ pub mod DIFSEL {
 
     /// Differential mode for channels 15 to 1
     pub mod DIFSEL_11 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DIFSEL_10::RW;
-    }
-
-    /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_12 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -2675,7 +2698,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_13 {
+    pub mod DIFSEL_12 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -2688,7 +2711,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_14 {
+    pub mod DIFSEL_13 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -2701,7 +2724,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_15 {
+    pub mod DIFSEL_14 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -2714,7 +2737,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_16 {
+    pub mod DIFSEL_15 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -2727,7 +2750,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_17 {
+    pub mod DIFSEL_16 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -2740,7 +2763,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_18 {
+    pub mod DIFSEL_17 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -2753,7 +2776,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_19 {
+    pub mod DIFSEL_18 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -2766,7 +2789,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_110 {
+    pub mod DIFSEL_19 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -2779,7 +2802,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_111 {
+    pub mod DIFSEL_110 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -2792,7 +2815,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_112 {
+    pub mod DIFSEL_111 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -2805,7 +2828,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_113 {
+    pub mod DIFSEL_112 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -2818,7 +2841,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_114 {
+    pub mod DIFSEL_113 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -2831,7 +2854,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_115 {
+    pub mod DIFSEL_114 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -2844,7 +2867,7 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_116 {
+    pub mod DIFSEL_115 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -2857,10 +2880,23 @@ pub mod DIFSEL {
     }
 
     /// Differential mode for channels 15 to 1
-    pub mod DIFSEL_117 {
+    pub mod DIFSEL_116 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::DIFSEL_10::RW;
+    }
+
+    /// Differential mode for channels 15 to 1
+    pub mod DIFSEL_117 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

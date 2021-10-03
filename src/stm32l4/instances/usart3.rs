@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32l4x1, stm32l4x2
+//! Used by: stm32l412, stm32l4x1, stm32l4x2
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::usart3::Instance;

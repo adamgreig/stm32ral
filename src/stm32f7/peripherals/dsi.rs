@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// DSI Host Version Register
-pub mod DSI_VR {
+pub mod VR {
 
     /// Version of the DSI Host
     pub mod VERSION {
@@ -27,7 +27,7 @@ pub mod DSI_VR {
 }
 
 /// DSI Host Control Register
-pub mod DSI_CR {
+pub mod CR {
 
     /// Enable
     pub mod EN {
@@ -45,7 +45,7 @@ pub mod DSI_CR {
 }
 
 /// DSI HOST Clock Control Register
-pub mod DSI_CCR {
+pub mod CCR {
 
     /// TX Escape Clock Division
     pub mod TXECKDIV {
@@ -77,7 +77,7 @@ pub mod DSI_CCR {
 }
 
 /// DSI Host LTDC VCID Register
-pub mod DSI_LVCIDR {
+pub mod LVCIDR {
 
     /// Virtual Channel ID
     pub mod VCID {
@@ -95,7 +95,7 @@ pub mod DSI_LVCIDR {
 }
 
 /// DSI Host LTDC Color Coding Register
-pub mod DSI_LCOLCR {
+pub mod LCOLCR {
 
     /// Color Coding
     pub mod COLC {
@@ -127,7 +127,7 @@ pub mod DSI_LCOLCR {
 }
 
 /// DSI Host LTDC Polarity Configuration Register
-pub mod DSI_LPCR {
+pub mod LPCR {
 
     /// Data Enable Polarity
     pub mod DEP {
@@ -173,7 +173,7 @@ pub mod DSI_LPCR {
 }
 
 /// DSI Host Low-Power mode Configuration Register
-pub mod DSI_LPMCR {
+pub mod LPMCR {
 
     /// VACT Largest Packet Size
     pub mod VLPSIZE {
@@ -205,7 +205,7 @@ pub mod DSI_LPMCR {
 }
 
 /// DSI Host Protocol Configuration Register
-pub mod DSI_PCR {
+pub mod PCR {
 
     /// EoTp Transmission Enable
     pub mod ETTXE {
@@ -279,12 +279,12 @@ pub mod DSI_PCR {
 }
 
 /// DSI Host Generic VCID Register
-pub mod DSI_GVCIDR {
-    pub use super::DSI_LVCIDR::VCID;
+pub mod GVCIDR {
+    pub use super::LVCIDR::VCID;
 }
 
 /// DSI Host mode Configuration Register
-pub mod DSI_MCR {
+pub mod MCR {
 
     /// Command mode
     pub mod CMDM {
@@ -302,7 +302,7 @@ pub mod DSI_MCR {
 }
 
 /// DSI Host Video mode Configuration Register
-pub mod DSI_VMCR {
+pub mod VMCR {
 
     /// Video mode Type
     pub mod VMT {
@@ -474,7 +474,7 @@ pub mod DSI_VMCR {
 }
 
 /// DSI Host Video Packet Configuration Register
-pub mod DSI_VPCR {
+pub mod VPCR {
 
     /// Video Packet Size
     pub mod VPSIZE {
@@ -492,7 +492,7 @@ pub mod DSI_VPCR {
 }
 
 /// DSI Host Video Chunks Configuration Register
-pub mod DSI_VCCR {
+pub mod VCCR {
 
     /// Number of Chunks
     pub mod NUMC {
@@ -510,7 +510,7 @@ pub mod DSI_VCCR {
 }
 
 /// DSI Host Video Null Packet Configuration Register
-pub mod DSI_VNPCR {
+pub mod VNPCR {
 
     /// Null Packet Size
     pub mod NPSIZE {
@@ -528,7 +528,7 @@ pub mod DSI_VNPCR {
 }
 
 /// DSI Host Video HSA Configuration Register
-pub mod DSI_VHSACR {
+pub mod VHSACR {
 
     /// Horizontal Synchronism Active duration
     pub mod HSA {
@@ -546,7 +546,7 @@ pub mod DSI_VHSACR {
 }
 
 /// DSI Host Video HBP Configuration Register
-pub mod DSI_VHBPCR {
+pub mod VHBPCR {
 
     /// Horizontal Back-Porch duration
     pub mod HBP {
@@ -564,7 +564,7 @@ pub mod DSI_VHBPCR {
 }
 
 /// DSI Host Video Line Configuration Register
-pub mod DSI_VLCR {
+pub mod VLCR {
 
     /// Horizontal Line duration
     pub mod HLINE {
@@ -582,7 +582,7 @@ pub mod DSI_VLCR {
 }
 
 /// DSI Host Video VSA Configuration Register
-pub mod DSI_VVSACR {
+pub mod VVSACR {
 
     /// Vertical Synchronism Active duration
     pub mod VSA {
@@ -600,7 +600,7 @@ pub mod DSI_VVSACR {
 }
 
 /// DSI Host Video VBP Configuration Register
-pub mod DSI_VVBPCR {
+pub mod VVBPCR {
 
     /// Vertical Back-Porch duration
     pub mod VBP {
@@ -618,7 +618,7 @@ pub mod DSI_VVBPCR {
 }
 
 /// DSI Host Video VFP Configuration Register
-pub mod DSI_VVFPCR {
+pub mod VVFPCR {
 
     /// Vertical Front-Porch duration
     pub mod VFP {
@@ -636,7 +636,7 @@ pub mod DSI_VVFPCR {
 }
 
 /// DSI Host Video VA Configuration Register
-pub mod DSI_VVACR {
+pub mod VVACR {
 
     /// Vertical Active duration
     pub mod VA {
@@ -654,7 +654,7 @@ pub mod DSI_VVACR {
 }
 
 /// DSI Host LTDC Command Configuration Register
-pub mod DSI_LCCR {
+pub mod LCCR {
 
     /// Command Size
     pub mod CMDSIZE {
@@ -672,7 +672,7 @@ pub mod DSI_LCCR {
 }
 
 /// DSI Host Command mode Configuration Register
-pub mod DSI_CMCR {
+pub mod CMCR {
 
     /// Tearing Effect Acknowledge Request Enable
     pub mod TEARE {
@@ -872,7 +872,7 @@ pub mod DSI_CMCR {
 }
 
 /// DSI Host Generic Header Configuration Register
-pub mod DSI_GHCR {
+pub mod GHCR {
 
     /// Type
     pub mod DT {
@@ -932,7 +932,7 @@ pub mod DSI_GHCR {
 }
 
 /// DSI Host Generic Payload Data Register
-pub mod DSI_GPDR {
+pub mod GPDR {
 
     /// Payload Byte 1
     pub mod DATA1 {
@@ -992,7 +992,7 @@ pub mod DSI_GPDR {
 }
 
 /// DSI Host Generic Packet Status Register
-pub mod DSI_GPSR {
+pub mod GPSR {
 
     /// Command FIFO Empty
     pub mod CMDFE {
@@ -1094,7 +1094,7 @@ pub mod DSI_GPSR {
 }
 
 /// DSI Host Timeout Counter Configuration Register 0
-pub mod DSI_TCCR0 {
+pub mod TCCR0 {
 
     /// Low-power Reception Timeout Counter
     pub mod LPRX_TOCNT {
@@ -1126,7 +1126,7 @@ pub mod DSI_TCCR0 {
 }
 
 /// DSI Host Timeout Counter Configuration Register 1
-pub mod DSI_TCCR1 {
+pub mod TCCR1 {
 
     /// High-Speed Read Timeout Counter
     pub mod HSRD_TOCNT {
@@ -1144,7 +1144,7 @@ pub mod DSI_TCCR1 {
 }
 
 /// DSI Host Timeout Counter Configuration Register 2
-pub mod DSI_TCCR2 {
+pub mod TCCR2 {
 
     /// Low-Power Read Timeout Counter
     pub mod LPRD_TOCNT {
@@ -1162,7 +1162,7 @@ pub mod DSI_TCCR2 {
 }
 
 /// DSI Host Timeout Counter Configuration Register 3
-pub mod DSI_TCCR3 {
+pub mod TCCR3 {
 
     /// High-Speed Write Timeout Counter
     pub mod HSWR_TOCNT {
@@ -1194,7 +1194,7 @@ pub mod DSI_TCCR3 {
 }
 
 /// DSI Host Timeout Counter Configuration Register 4
-pub mod DSI_TCCR4 {
+pub mod TCCR4 {
 
     /// Low-Power Write Timeout Counter
     pub mod LSWR_TOCNT {
@@ -1212,7 +1212,7 @@ pub mod DSI_TCCR4 {
 }
 
 /// DSI Host Timeout Counter Configuration Register 5
-pub mod DSI_TCCR5 {
+pub mod TCCR5 {
 
     /// Bus-Turn-Around Timeout Counter
     pub mod BTA_TOCNT {
@@ -1230,7 +1230,7 @@ pub mod DSI_TCCR5 {
 }
 
 /// DSI Host Clock Lane Configuration Register
-pub mod DSI_CLCR {
+pub mod CLCR {
 
     /// D-PHY Clock Control
     pub mod DPCC {
@@ -1262,7 +1262,7 @@ pub mod DSI_CLCR {
 }
 
 /// DSI Host Clock Lane Timer Configuration Register
-pub mod DSI_CLTCR {
+pub mod CLTCR {
 
     /// Low-Power to High-Speed Time
     pub mod LP2HS_TIME {
@@ -1294,7 +1294,7 @@ pub mod DSI_CLTCR {
 }
 
 /// DSI Host Data Lane Timer Configuration Register
-pub mod DSI_DLTCR {
+pub mod DLTCR {
 
     /// Maximum Read Time
     pub mod MRD_TIME {
@@ -1340,7 +1340,7 @@ pub mod DSI_DLTCR {
 }
 
 /// DSI Host PHY Control Register
-pub mod DSI_PCTLR {
+pub mod PCTLR {
 
     /// Digital Enable
     pub mod DEN {
@@ -1372,7 +1372,7 @@ pub mod DSI_PCTLR {
 }
 
 /// DSI Host PHY Configuration Register
-pub mod DSI_PCONFR {
+pub mod PCONFR {
 
     /// Number of Lanes
     pub mod NL {
@@ -1404,7 +1404,7 @@ pub mod DSI_PCONFR {
 }
 
 /// DSI Host PHY ULPS Control Register
-pub mod DSI_PUCR {
+pub mod PUCR {
 
     /// ULPS Request on Clock Lane
     pub mod URCL {
@@ -1464,7 +1464,7 @@ pub mod DSI_PUCR {
 }
 
 /// DSI Host PHY TX Triggers Configuration Register
-pub mod DSI_PTTCR {
+pub mod PTTCR {
 
     /// Transmission Trigger
     pub mod TX_TRIG {
@@ -1482,7 +1482,7 @@ pub mod DSI_PTTCR {
 }
 
 /// DSI Host PHY Status Register
-pub mod DSI_PSR {
+pub mod PSR {
 
     /// PHY Direction
     pub mod PD {
@@ -1598,7 +1598,7 @@ pub mod DSI_PSR {
 }
 
 /// DSI Host Interrupt & Status Register 0
-pub mod DSI_ISR0 {
+pub mod ISR0 {
 
     /// Acknowledge Error 0
     pub mod AE0 {
@@ -1896,7 +1896,7 @@ pub mod DSI_ISR0 {
 }
 
 /// DSI Host Interrupt & Status Register 1
-pub mod DSI_ISR1 {
+pub mod ISR1 {
 
     /// Timeout High-Speed Transmission
     pub mod TOHSTX {
@@ -2082,7 +2082,7 @@ pub mod DSI_ISR1 {
 }
 
 /// DSI Host Interrupt Enable Register 0
-pub mod DSI_IER0 {
+pub mod IER0 {
 
     /// Acknowledge Error 0 Interrupt Enable
     pub mod AE0IE {
@@ -2380,7 +2380,7 @@ pub mod DSI_IER0 {
 }
 
 /// DSI Host Interrupt Enable Register 1
-pub mod DSI_IER1 {
+pub mod IER1 {
 
     /// Timeout High-Speed Transmission Interrupt Enable
     pub mod TOHSTXIE {
@@ -2566,7 +2566,7 @@ pub mod DSI_IER1 {
 }
 
 /// DSI Host Force Interrupt Register 0
-pub mod DSI_FIR0 {
+pub mod FIR0 {
 
     /// Force Acknowledge Error 0
     pub mod FAE0 {
@@ -2864,7 +2864,7 @@ pub mod DSI_FIR0 {
 }
 
 /// DSI Host Force Interrupt Register 1
-pub mod DSI_FIR1 {
+pub mod FIR1 {
 
     /// Force Timeout High-Speed Transmission
     pub mod FTOHSTX {
@@ -3050,7 +3050,7 @@ pub mod DSI_FIR1 {
 }
 
 /// DSI Host Video Shadow Control Register
-pub mod DSI_VSCR {
+pub mod VSCR {
 
     /// Enable
     pub mod EN {
@@ -3082,7 +3082,7 @@ pub mod DSI_VSCR {
 }
 
 /// DSI Host LTDC Current VCID Register
-pub mod DSI_LCVCIDR {
+pub mod LCVCIDR {
 
     /// Virtual Channel ID
     pub mod VCID {
@@ -3100,7 +3100,7 @@ pub mod DSI_LCVCIDR {
 }
 
 /// DSI Host LTDC Current Color Coding Register
-pub mod DSI_LCCCR {
+pub mod LCCCR {
 
     /// Color Coding
     pub mod COLC {
@@ -3132,7 +3132,7 @@ pub mod DSI_LCCCR {
 }
 
 /// DSI Host Low-Power mode Current Configuration Register
-pub mod DSI_LPMCCR {
+pub mod LPMCCR {
 
     /// VACT Largest Packet Size
     pub mod VLPSIZE {
@@ -3164,7 +3164,7 @@ pub mod DSI_LPMCCR {
 }
 
 /// DSI Host Video mode Current Configuration Register
-pub mod DSI_VMCCR {
+pub mod VMCCR {
 
     /// Video mode Type
     pub mod VMT {
@@ -3294,7 +3294,7 @@ pub mod DSI_VMCCR {
 }
 
 /// DSI Host Video Packet Current Configuration Register
-pub mod DSI_VPCCR {
+pub mod VPCCR {
 
     /// Video Packet Size
     pub mod VPSIZE {
@@ -3312,7 +3312,7 @@ pub mod DSI_VPCCR {
 }
 
 /// DSI Host Video Chunks Current Configuration Register
-pub mod DSI_VCCCR {
+pub mod VCCCR {
 
     /// Number of Chunks
     pub mod NUMC {
@@ -3330,7 +3330,7 @@ pub mod DSI_VCCCR {
 }
 
 /// DSI Host Video Null Packet Current Configuration Register
-pub mod DSI_VNPCCR {
+pub mod VNPCCR {
 
     /// Null Packet Size
     pub mod NPSIZE {
@@ -3348,7 +3348,7 @@ pub mod DSI_VNPCCR {
 }
 
 /// DSI Host Video HSA Current Configuration Register
-pub mod DSI_VHSACCR {
+pub mod VHSACCR {
 
     /// Horizontal Synchronism Active duration
     pub mod HSA {
@@ -3366,7 +3366,7 @@ pub mod DSI_VHSACCR {
 }
 
 /// DSI Host Video HBP Current Configuration Register
-pub mod DSI_VHBPCCR {
+pub mod VHBPCCR {
 
     /// Horizontal Back-Porch duration
     pub mod HBP {
@@ -3384,7 +3384,7 @@ pub mod DSI_VHBPCCR {
 }
 
 /// DSI Host Video Line Current Configuration Register
-pub mod DSI_VLCCR {
+pub mod VLCCR {
 
     /// Horizontal Line duration
     pub mod HLINE {
@@ -3402,7 +3402,7 @@ pub mod DSI_VLCCR {
 }
 
 /// DSI Host Video VSA Current Configuration Register
-pub mod DSI_VVSACCR {
+pub mod VVSACCR {
 
     /// Vertical Synchronism Active duration
     pub mod VSA {
@@ -3420,7 +3420,7 @@ pub mod DSI_VVSACCR {
 }
 
 /// DSI Host Video VBP Current Configuration Register
-pub mod DSI_VVBPCCR {
+pub mod VVBPCCR {
 
     /// Vertical Back-Porch duration
     pub mod VBP {
@@ -3438,7 +3438,7 @@ pub mod DSI_VVBPCCR {
 }
 
 /// DSI Host Video VFP Current Configuration Register
-pub mod DSI_VVFPCCR {
+pub mod VVFPCCR {
 
     /// Vertical Front-Porch duration
     pub mod VFP {
@@ -3456,7 +3456,7 @@ pub mod DSI_VVFPCCR {
 }
 
 /// DSI Host Video VA Current Configuration Register
-pub mod DSI_VVACCR {
+pub mod VVACCR {
 
     /// Vertical Active duration
     pub mod VA {
@@ -3474,7 +3474,7 @@ pub mod DSI_VVACCR {
 }
 
 /// DSI Wrapper Configuration Register
-pub mod DSI_WCFGR {
+pub mod WCFGR {
 
     /// VSync Polarity
     pub mod VSPOL {
@@ -3562,7 +3562,7 @@ pub mod DSI_WCFGR {
 }
 
 /// DSI Wrapper Control Register
-pub mod DSI_WCR {
+pub mod WCR {
 
     /// DSI Enable
     pub mod DSIEN {
@@ -3622,7 +3622,7 @@ pub mod DSI_WCR {
 }
 
 /// DSI Wrapper Interrupt Enable Register
-pub mod DSI_WIER {
+pub mod WIER {
 
     /// Regulator Ready Interrupt Enable
     pub mod RRIE {
@@ -3696,7 +3696,7 @@ pub mod DSI_WIER {
 }
 
 /// DSI Wrapper Interrupt & Status Register
-pub mod DSI_WISR {
+pub mod WISR {
 
     /// Regulator Ready Interrupt Flag
     pub mod RRIF {
@@ -3812,7 +3812,7 @@ pub mod DSI_WISR {
 }
 
 /// DSI Wrapper Interrupt Flag Clear Register
-pub mod DSI_WIFCR {
+pub mod WIFCR {
 
     /// Clear Regulator Ready Interrupt Flag
     pub mod CRRIF {
@@ -3886,7 +3886,7 @@ pub mod DSI_WIFCR {
 }
 
 /// DSI Wrapper PHY Configuration Register 1
-pub mod DSI_WPCR1 {
+pub mod WPCR1 {
 
     /// custom time for tCLK-POST Enable
     pub mod TCLKPOSTEN {
@@ -4184,7 +4184,7 @@ pub mod DSI_WPCR1 {
 }
 
 /// DSI Wrapper PHY Configuration Register 2
-pub mod DSI_WPCR2 {
+pub mod WPCR2 {
 
     /// Low-Power RX low-pass Filtering Tuning
     pub mod LPRXFT {
@@ -4314,7 +4314,7 @@ pub mod DSI_WPCR2 {
 }
 
 /// DSI Wrapper PHY Configuration Register 3
-pub mod DSI_WPCR3 {
+pub mod WPCR3 {
 
     /// tHSTRAIL
     pub mod THSTRAIL {
@@ -4374,7 +4374,7 @@ pub mod DSI_WPCR3 {
 }
 
 /// DSI_WPCR4
-pub mod DSI_WPCR4 {
+pub mod WPCR4 {
 
     /// tLPXC for Clock lane
     pub mod TLPXC {
@@ -4434,7 +4434,7 @@ pub mod DSI_WPCR4 {
 }
 
 /// DSI Wrapper PHY Configuration Register 5
-pub mod DSI_WPCR5 {
+pub mod WPCR5 {
 
     /// tCLK-POST
     pub mod THSZERO {
@@ -4452,7 +4452,7 @@ pub mod DSI_WPCR5 {
 }
 
 /// DSI Wrapper Regulator and PLL Control Register
-pub mod DSI_WRPCR {
+pub mod WRPCR {
 
     /// Regulator Enable
     pub mod REGEN {
@@ -4527,316 +4527,316 @@ pub mod DSI_WRPCR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// DSI Host Version Register
-    pub DSI_VR: RORegister<u32>,
+    pub VR: RORegister<u32>,
 
     /// DSI Host Control Register
-    pub DSI_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// DSI HOST Clock Control Register
-    pub DSI_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 
     /// DSI Host LTDC VCID Register
-    pub DSI_LVCIDR: RWRegister<u32>,
+    pub LVCIDR: RWRegister<u32>,
 
     /// DSI Host LTDC Color Coding Register
-    pub DSI_LCOLCR: RWRegister<u32>,
+    pub LCOLCR: RWRegister<u32>,
 
     /// DSI Host LTDC Polarity Configuration Register
-    pub DSI_LPCR: RWRegister<u32>,
+    pub LPCR: RWRegister<u32>,
 
     /// DSI Host Low-Power mode Configuration Register
-    pub DSI_LPMCR: RWRegister<u32>,
+    pub LPMCR: RWRegister<u32>,
 
     _reserved1: [u32; 4],
 
     /// DSI Host Protocol Configuration Register
-    pub DSI_PCR: RWRegister<u32>,
+    pub PCR: RWRegister<u32>,
 
     /// DSI Host Generic VCID Register
-    pub DSI_GVCIDR: RWRegister<u32>,
+    pub GVCIDR: RWRegister<u32>,
 
     /// DSI Host mode Configuration Register
-    pub DSI_MCR: RWRegister<u32>,
+    pub MCR: RWRegister<u32>,
 
     /// DSI Host Video mode Configuration Register
-    pub DSI_VMCR: RWRegister<u32>,
+    pub VMCR: RWRegister<u32>,
 
     /// DSI Host Video Packet Configuration Register
-    pub DSI_VPCR: RWRegister<u32>,
+    pub VPCR: RWRegister<u32>,
 
     /// DSI Host Video Chunks Configuration Register
-    pub DSI_VCCR: RWRegister<u32>,
+    pub VCCR: RWRegister<u32>,
 
     /// DSI Host Video Null Packet Configuration Register
-    pub DSI_VNPCR: RWRegister<u32>,
+    pub VNPCR: RWRegister<u32>,
 
     /// DSI Host Video HSA Configuration Register
-    pub DSI_VHSACR: RWRegister<u32>,
+    pub VHSACR: RWRegister<u32>,
 
     /// DSI Host Video HBP Configuration Register
-    pub DSI_VHBPCR: RWRegister<u32>,
+    pub VHBPCR: RWRegister<u32>,
 
     /// DSI Host Video Line Configuration Register
-    pub DSI_VLCR: RWRegister<u32>,
+    pub VLCR: RWRegister<u32>,
 
     /// DSI Host Video VSA Configuration Register
-    pub DSI_VVSACR: RWRegister<u32>,
+    pub VVSACR: RWRegister<u32>,
 
     /// DSI Host Video VBP Configuration Register
-    pub DSI_VVBPCR: RWRegister<u32>,
+    pub VVBPCR: RWRegister<u32>,
 
     /// DSI Host Video VFP Configuration Register
-    pub DSI_VVFPCR: RWRegister<u32>,
+    pub VVFPCR: RWRegister<u32>,
 
     /// DSI Host Video VA Configuration Register
-    pub DSI_VVACR: RWRegister<u32>,
+    pub VVACR: RWRegister<u32>,
 
     /// DSI Host LTDC Command Configuration Register
-    pub DSI_LCCR: RWRegister<u32>,
+    pub LCCR: RWRegister<u32>,
 
     /// DSI Host Command mode Configuration Register
-    pub DSI_CMCR: RWRegister<u32>,
+    pub CMCR: RWRegister<u32>,
 
     /// DSI Host Generic Header Configuration Register
-    pub DSI_GHCR: RWRegister<u32>,
+    pub GHCR: RWRegister<u32>,
 
     /// DSI Host Generic Payload Data Register
-    pub DSI_GPDR: RWRegister<u32>,
+    pub GPDR: RWRegister<u32>,
 
     /// DSI Host Generic Packet Status Register
-    pub DSI_GPSR: RORegister<u32>,
+    pub GPSR: RORegister<u32>,
 
     /// DSI Host Timeout Counter Configuration Register 0
-    pub DSI_TCCR0: RWRegister<u32>,
+    pub TCCR0: RWRegister<u32>,
 
     /// DSI Host Timeout Counter Configuration Register 1
-    pub DSI_TCCR1: RWRegister<u32>,
+    pub TCCR1: RWRegister<u32>,
 
     /// DSI Host Timeout Counter Configuration Register 2
-    pub DSI_TCCR2: RWRegister<u32>,
+    pub TCCR2: RWRegister<u32>,
 
     /// DSI Host Timeout Counter Configuration Register 3
-    pub DSI_TCCR3: RWRegister<u32>,
+    pub TCCR3: RWRegister<u32>,
 
     /// DSI Host Timeout Counter Configuration Register 4
-    pub DSI_TCCR4: RWRegister<u32>,
+    pub TCCR4: RWRegister<u32>,
 
     /// DSI Host Timeout Counter Configuration Register 5
-    pub DSI_TCCR5: RWRegister<u32>,
+    pub TCCR5: RWRegister<u32>,
 
     _reserved2: [u32; 1],
 
     /// DSI Host Clock Lane Configuration Register
-    pub DSI_CLCR: RWRegister<u32>,
+    pub CLCR: RWRegister<u32>,
 
     /// DSI Host Clock Lane Timer Configuration Register
-    pub DSI_CLTCR: RWRegister<u32>,
+    pub CLTCR: RWRegister<u32>,
 
     /// DSI Host Data Lane Timer Configuration Register
-    pub DSI_DLTCR: RWRegister<u32>,
+    pub DLTCR: RWRegister<u32>,
 
     /// DSI Host PHY Control Register
-    pub DSI_PCTLR: RWRegister<u32>,
+    pub PCTLR: RWRegister<u32>,
 
     /// DSI Host PHY Configuration Register
-    pub DSI_PCONFR: RWRegister<u32>,
+    pub PCONFR: RWRegister<u32>,
 
     /// DSI Host PHY ULPS Control Register
-    pub DSI_PUCR: RWRegister<u32>,
+    pub PUCR: RWRegister<u32>,
 
     /// DSI Host PHY TX Triggers Configuration Register
-    pub DSI_PTTCR: RWRegister<u32>,
+    pub PTTCR: RWRegister<u32>,
 
     /// DSI Host PHY Status Register
-    pub DSI_PSR: RORegister<u32>,
+    pub PSR: RORegister<u32>,
 
     _reserved3: [u32; 2],
 
     /// DSI Host Interrupt & Status Register 0
-    pub DSI_ISR0: RORegister<u32>,
+    pub ISR0: RORegister<u32>,
 
     /// DSI Host Interrupt & Status Register 1
-    pub DSI_ISR1: RORegister<u32>,
+    pub ISR1: RORegister<u32>,
 
     /// DSI Host Interrupt Enable Register 0
-    pub DSI_IER0: RWRegister<u32>,
+    pub IER0: RWRegister<u32>,
 
     /// DSI Host Interrupt Enable Register 1
-    pub DSI_IER1: RWRegister<u32>,
+    pub IER1: RWRegister<u32>,
 
     _reserved4: [u32; 3],
 
     /// DSI Host Force Interrupt Register 0
-    pub DSI_FIR0: WORegister<u32>,
+    pub FIR0: WORegister<u32>,
 
     /// DSI Host Force Interrupt Register 1
-    pub DSI_FIR1: WORegister<u32>,
+    pub FIR1: WORegister<u32>,
 
     _reserved5: [u32; 8],
 
     /// DSI Host Video Shadow Control Register
-    pub DSI_VSCR: RWRegister<u32>,
+    pub VSCR: RWRegister<u32>,
 
     _reserved6: [u32; 2],
 
     /// DSI Host LTDC Current VCID Register
-    pub DSI_LCVCIDR: RORegister<u32>,
+    pub LCVCIDR: RORegister<u32>,
 
     /// DSI Host LTDC Current Color Coding Register
-    pub DSI_LCCCR: RORegister<u32>,
+    pub LCCCR: RORegister<u32>,
 
     _reserved7: [u32; 1],
 
     /// DSI Host Low-Power mode Current Configuration Register
-    pub DSI_LPMCCR: RORegister<u32>,
+    pub LPMCCR: RORegister<u32>,
 
     _reserved8: [u32; 7],
 
     /// DSI Host Video mode Current Configuration Register
-    pub DSI_VMCCR: RORegister<u32>,
+    pub VMCCR: RORegister<u32>,
 
     /// DSI Host Video Packet Current Configuration Register
-    pub DSI_VPCCR: RORegister<u32>,
+    pub VPCCR: RORegister<u32>,
 
     /// DSI Host Video Chunks Current Configuration Register
-    pub DSI_VCCCR: RORegister<u32>,
+    pub VCCCR: RORegister<u32>,
 
     /// DSI Host Video Null Packet Current Configuration Register
-    pub DSI_VNPCCR: RORegister<u32>,
+    pub VNPCCR: RORegister<u32>,
 
     /// DSI Host Video HSA Current Configuration Register
-    pub DSI_VHSACCR: RORegister<u32>,
+    pub VHSACCR: RORegister<u32>,
 
     /// DSI Host Video HBP Current Configuration Register
-    pub DSI_VHBPCCR: RORegister<u32>,
+    pub VHBPCCR: RORegister<u32>,
 
     /// DSI Host Video Line Current Configuration Register
-    pub DSI_VLCCR: RORegister<u32>,
+    pub VLCCR: RORegister<u32>,
 
     /// DSI Host Video VSA Current Configuration Register
-    pub DSI_VVSACCR: RORegister<u32>,
+    pub VVSACCR: RORegister<u32>,
 
     /// DSI Host Video VBP Current Configuration Register
-    pub DSI_VVBPCCR: RORegister<u32>,
+    pub VVBPCCR: RORegister<u32>,
 
     /// DSI Host Video VFP Current Configuration Register
-    pub DSI_VVFPCCR: RORegister<u32>,
+    pub VVFPCCR: RORegister<u32>,
 
     /// DSI Host Video VA Current Configuration Register
-    pub DSI_VVACCR: RORegister<u32>,
+    pub VVACCR: RORegister<u32>,
 
     _reserved9: [u32; 167],
 
     /// DSI Wrapper Configuration Register
-    pub DSI_WCFGR: RWRegister<u32>,
+    pub WCFGR: RWRegister<u32>,
 
     /// DSI Wrapper Control Register
-    pub DSI_WCR: RWRegister<u32>,
+    pub WCR: RWRegister<u32>,
 
     /// DSI Wrapper Interrupt Enable Register
-    pub DSI_WIER: RWRegister<u32>,
+    pub WIER: RWRegister<u32>,
 
     /// DSI Wrapper Interrupt & Status Register
-    pub DSI_WISR: RORegister<u32>,
+    pub WISR: RORegister<u32>,
 
     /// DSI Wrapper Interrupt Flag Clear Register
-    pub DSI_WIFCR: RWRegister<u32>,
+    pub WIFCR: RWRegister<u32>,
 
     _reserved10: [u32; 1],
 
     /// DSI Wrapper PHY Configuration Register 1
-    pub DSI_WPCR1: RWRegister<u32>,
+    pub WPCR1: RWRegister<u32>,
 
     /// DSI Wrapper PHY Configuration Register 2
-    pub DSI_WPCR2: RWRegister<u32>,
+    pub WPCR2: RWRegister<u32>,
 
     /// DSI Wrapper PHY Configuration Register 3
-    pub DSI_WPCR3: RWRegister<u32>,
+    pub WPCR3: RWRegister<u32>,
 
     /// DSI_WPCR4
-    pub DSI_WPCR4: RWRegister<u32>,
+    pub WPCR4: RWRegister<u32>,
 
     /// DSI Wrapper PHY Configuration Register 5
-    pub DSI_WPCR5: RWRegister<u32>,
+    pub WPCR5: RWRegister<u32>,
 
     _reserved11: [u32; 1],
 
     /// DSI Wrapper Regulator and PLL Control Register
-    pub DSI_WRPCR: RWRegister<u32>,
+    pub WRPCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub DSI_VR: u32,
-    pub DSI_CR: u32,
-    pub DSI_CCR: u32,
-    pub DSI_LVCIDR: u32,
-    pub DSI_LCOLCR: u32,
-    pub DSI_LPCR: u32,
-    pub DSI_LPMCR: u32,
-    pub DSI_PCR: u32,
-    pub DSI_GVCIDR: u32,
-    pub DSI_MCR: u32,
-    pub DSI_VMCR: u32,
-    pub DSI_VPCR: u32,
-    pub DSI_VCCR: u32,
-    pub DSI_VNPCR: u32,
-    pub DSI_VHSACR: u32,
-    pub DSI_VHBPCR: u32,
-    pub DSI_VLCR: u32,
-    pub DSI_VVSACR: u32,
-    pub DSI_VVBPCR: u32,
-    pub DSI_VVFPCR: u32,
-    pub DSI_VVACR: u32,
-    pub DSI_LCCR: u32,
-    pub DSI_CMCR: u32,
-    pub DSI_GHCR: u32,
-    pub DSI_GPDR: u32,
-    pub DSI_GPSR: u32,
-    pub DSI_TCCR0: u32,
-    pub DSI_TCCR1: u32,
-    pub DSI_TCCR2: u32,
-    pub DSI_TCCR3: u32,
-    pub DSI_TCCR4: u32,
-    pub DSI_TCCR5: u32,
-    pub DSI_CLCR: u32,
-    pub DSI_CLTCR: u32,
-    pub DSI_DLTCR: u32,
-    pub DSI_PCTLR: u32,
-    pub DSI_PCONFR: u32,
-    pub DSI_PUCR: u32,
-    pub DSI_PTTCR: u32,
-    pub DSI_PSR: u32,
-    pub DSI_ISR0: u32,
-    pub DSI_ISR1: u32,
-    pub DSI_IER0: u32,
-    pub DSI_IER1: u32,
-    pub DSI_FIR0: u32,
-    pub DSI_FIR1: u32,
-    pub DSI_VSCR: u32,
-    pub DSI_LCVCIDR: u32,
-    pub DSI_LCCCR: u32,
-    pub DSI_LPMCCR: u32,
-    pub DSI_VMCCR: u32,
-    pub DSI_VPCCR: u32,
-    pub DSI_VCCCR: u32,
-    pub DSI_VNPCCR: u32,
-    pub DSI_VHSACCR: u32,
-    pub DSI_VHBPCCR: u32,
-    pub DSI_VLCCR: u32,
-    pub DSI_VVSACCR: u32,
-    pub DSI_VVBPCCR: u32,
-    pub DSI_VVFPCCR: u32,
-    pub DSI_VVACCR: u32,
-    pub DSI_WCFGR: u32,
-    pub DSI_WCR: u32,
-    pub DSI_WIER: u32,
-    pub DSI_WISR: u32,
-    pub DSI_WIFCR: u32,
-    pub DSI_WPCR1: u32,
-    pub DSI_WPCR2: u32,
-    pub DSI_WPCR3: u32,
-    pub DSI_WPCR4: u32,
-    pub DSI_WPCR5: u32,
-    pub DSI_WRPCR: u32,
+    pub VR: u32,
+    pub CR: u32,
+    pub CCR: u32,
+    pub LVCIDR: u32,
+    pub LCOLCR: u32,
+    pub LPCR: u32,
+    pub LPMCR: u32,
+    pub PCR: u32,
+    pub GVCIDR: u32,
+    pub MCR: u32,
+    pub VMCR: u32,
+    pub VPCR: u32,
+    pub VCCR: u32,
+    pub VNPCR: u32,
+    pub VHSACR: u32,
+    pub VHBPCR: u32,
+    pub VLCR: u32,
+    pub VVSACR: u32,
+    pub VVBPCR: u32,
+    pub VVFPCR: u32,
+    pub VVACR: u32,
+    pub LCCR: u32,
+    pub CMCR: u32,
+    pub GHCR: u32,
+    pub GPDR: u32,
+    pub GPSR: u32,
+    pub TCCR0: u32,
+    pub TCCR1: u32,
+    pub TCCR2: u32,
+    pub TCCR3: u32,
+    pub TCCR4: u32,
+    pub TCCR5: u32,
+    pub CLCR: u32,
+    pub CLTCR: u32,
+    pub DLTCR: u32,
+    pub PCTLR: u32,
+    pub PCONFR: u32,
+    pub PUCR: u32,
+    pub PTTCR: u32,
+    pub PSR: u32,
+    pub ISR0: u32,
+    pub ISR1: u32,
+    pub IER0: u32,
+    pub IER1: u32,
+    pub FIR0: u32,
+    pub FIR1: u32,
+    pub VSCR: u32,
+    pub LCVCIDR: u32,
+    pub LCCCR: u32,
+    pub LPMCCR: u32,
+    pub VMCCR: u32,
+    pub VPCCR: u32,
+    pub VCCCR: u32,
+    pub VNPCCR: u32,
+    pub VHSACCR: u32,
+    pub VHBPCCR: u32,
+    pub VLCCR: u32,
+    pub VVSACCR: u32,
+    pub VVBPCCR: u32,
+    pub VVFPCCR: u32,
+    pub VVACCR: u32,
+    pub WCFGR: u32,
+    pub WCR: u32,
+    pub WIER: u32,
+    pub WISR: u32,
+    pub WIFCR: u32,
+    pub WPCR1: u32,
+    pub WPCR2: u32,
+    pub WPCR3: u32,
+    pub WPCR4: u32,
+    pub WPCR5: u32,
+    pub WRPCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

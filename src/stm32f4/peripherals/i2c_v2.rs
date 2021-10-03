@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Inter-integrated circuit
 //!
-//! Used by: stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1009,38 +1009,6 @@ pub mod TRISE {
         pub mod RW {}
     }
 }
-
-/// FLTR register
-pub mod FLTR {
-
-    /// Digital noise filter
-    pub mod DNF {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Analog noise filter OFF
-    pub mod ANOFF {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Control register 1
@@ -1069,9 +1037,6 @@ pub struct RegisterBlock {
 
     /// TRISE register
     pub TRISE: RWRegister<u32>,
-
-    /// FLTR register
-    pub FLTR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub CR1: u32,
@@ -1083,7 +1048,6 @@ pub struct ResetValues {
     pub SR2: u32,
     pub CCR: u32,
     pub TRISE: u32,
-    pub FLTR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

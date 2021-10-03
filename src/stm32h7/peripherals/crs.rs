@@ -1,8 +1,8 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! CRS
+//! Clock Recovery System
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

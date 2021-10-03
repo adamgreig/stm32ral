@@ -566,9 +566,6 @@ First set up the stm32-rs submodule:
 
 ```
 $ git submodule update --init
-$ cd stm32-rs/svd
-$ ./extract.sh
-$ cd ../..
 ```
 
 Now you should simply be able to run make, which will automatically run

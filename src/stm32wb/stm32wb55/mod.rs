@@ -8,7 +8,8 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub mod adc;
+pub mod adc1;
+pub mod adc_common;
 pub mod aes1;
 pub mod aes2;
 pub mod comp;
@@ -79,7 +80,7 @@ pub struct Peripherals {
     pub AES1: aes1::Instance,
     pub AES2: aes2::Instance,
     pub HSEM: hsem::Instance,
-    pub ADC: adc::Instance,
+    pub ADC1: adc1::Instance,
     pub GPIOA: gpio::Instance,
     pub GPIOB: gpio::Instance,
     pub GPIOC: gpio::Instance,
@@ -113,6 +114,7 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
+    pub ADC_Common: adc_common::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -143,7 +145,7 @@ impl Peripherals {
             AES1: aes1::AES1::steal(),
             AES2: aes2::AES2::steal(),
             HSEM: hsem::HSEM::steal(),
-            ADC: adc::ADC::steal(),
+            ADC1: adc1::ADC1::steal(),
             GPIOA: gpio::GPIOA::steal(),
             GPIOB: gpio::GPIOB::steal(),
             GPIOC: gpio::GPIOC::steal(),
@@ -177,6 +179,7 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
+            ADC_Common: adc_common::ADC_Common::steal(),
         }
     }
 }

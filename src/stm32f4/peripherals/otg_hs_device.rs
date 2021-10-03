@@ -1333,7 +1333,7 @@ pub mod DIEPCTL5 {
     pub use super::DIEPCTL0::USBAEP;
 }
 
-/// OTG device endpoint-0 interrupt register
+/// OTG device endpoint-%s interrupt register
 pub mod DIEPINT0 {
 
     /// Transfer completed interrupt
@@ -1491,7 +1491,7 @@ pub mod DIEPINT0 {
     }
 }
 
-/// OTG device endpoint-0 interrupt register
+/// OTG device endpoint-%s interrupt register
 pub mod DIEPINT1 {
     pub use super::DIEPINT0::BERR;
     pub use super::DIEPINT0::BNA;
@@ -1506,7 +1506,7 @@ pub mod DIEPINT1 {
     pub use super::DIEPINT0::XFRC;
 }
 
-/// OTG device endpoint-0 interrupt register
+/// OTG device endpoint-%s interrupt register
 pub mod DIEPINT2 {
     pub use super::DIEPINT0::BERR;
     pub use super::DIEPINT0::BNA;
@@ -1521,7 +1521,7 @@ pub mod DIEPINT2 {
     pub use super::DIEPINT0::XFRC;
 }
 
-/// OTG device endpoint-0 interrupt register
+/// OTG device endpoint-%s interrupt register
 pub mod DIEPINT3 {
     pub use super::DIEPINT0::BERR;
     pub use super::DIEPINT0::BNA;
@@ -1536,7 +1536,7 @@ pub mod DIEPINT3 {
     pub use super::DIEPINT0::XFRC;
 }
 
-/// OTG device endpoint-0 interrupt register
+/// OTG device endpoint-%s interrupt register
 pub mod DIEPINT4 {
     pub use super::DIEPINT0::BERR;
     pub use super::DIEPINT0::BNA;
@@ -1551,7 +1551,7 @@ pub mod DIEPINT4 {
     pub use super::DIEPINT0::XFRC;
 }
 
-/// OTG device endpoint-0 interrupt register
+/// OTG device endpoint-%s interrupt register
 pub mod DIEPINT5 {
     pub use super::DIEPINT0::BERR;
     pub use super::DIEPINT0::BNA;
@@ -2151,7 +2151,7 @@ pub mod DOEPCTL5 {
     pub use super::DOEPCTL1::USBAEP;
 }
 
-/// OTG_HS device endpoint-0 interrupt register
+/// OTG_HS device endpoint-%s interrupt register
 pub mod DOEPINT0 {
 
     /// Transfer completed interrupt
@@ -2239,7 +2239,7 @@ pub mod DOEPINT0 {
     }
 }
 
-/// OTG_HS device endpoint-0 interrupt register
+/// OTG_HS device endpoint-%s interrupt register
 pub mod DOEPINT1 {
     pub use super::DOEPINT0::B2BSTUP;
     pub use super::DOEPINT0::EPDISD;
@@ -2249,7 +2249,7 @@ pub mod DOEPINT1 {
     pub use super::DOEPINT0::XFRC;
 }
 
-/// OTG_HS device endpoint-0 interrupt register
+/// OTG_HS device endpoint-%s interrupt register
 pub mod DOEPINT2 {
     pub use super::DOEPINT0::B2BSTUP;
     pub use super::DOEPINT0::EPDISD;
@@ -2259,7 +2259,7 @@ pub mod DOEPINT2 {
     pub use super::DOEPINT0::XFRC;
 }
 
-/// OTG_HS device endpoint-0 interrupt register
+/// OTG_HS device endpoint-%s interrupt register
 pub mod DOEPINT3 {
     pub use super::DOEPINT0::B2BSTUP;
     pub use super::DOEPINT0::EPDISD;
@@ -2269,7 +2269,7 @@ pub mod DOEPINT3 {
     pub use super::DOEPINT0::XFRC;
 }
 
-/// OTG_HS device endpoint-0 interrupt register
+/// OTG_HS device endpoint-%s interrupt register
 pub mod DOEPINT4 {
     pub use super::DOEPINT0::B2BSTUP;
     pub use super::DOEPINT0::EPDISD;
@@ -2279,7 +2279,7 @@ pub mod DOEPINT4 {
     pub use super::DOEPINT0::XFRC;
 }
 
-/// OTG_HS device endpoint-0 interrupt register
+/// OTG_HS device endpoint-%s interrupt register
 pub mod DOEPINT5 {
     pub use super::DOEPINT0::B2BSTUP;
     pub use super::DOEPINT0::EPDISD;
@@ -2468,7 +2468,7 @@ pub struct RegisterBlock {
 
     _reserved5: [u32; 1],
 
-    /// OTG device endpoint-0 interrupt register
+    /// OTG device endpoint-%s interrupt register
     pub DIEPINT0: RWRegister<u32>,
 
     _reserved6: [u32; 1],
@@ -2489,7 +2489,7 @@ pub struct RegisterBlock {
 
     _reserved8: [u32; 1],
 
-    /// OTG device endpoint-0 interrupt register
+    /// OTG device endpoint-%s interrupt register
     pub DIEPINT1: RWRegister<u32>,
 
     _reserved9: [u32; 1],
@@ -2510,7 +2510,7 @@ pub struct RegisterBlock {
 
     _reserved11: [u32; 1],
 
-    /// OTG device endpoint-0 interrupt register
+    /// OTG device endpoint-%s interrupt register
     pub DIEPINT2: RWRegister<u32>,
 
     _reserved12: [u32; 1],
@@ -2531,7 +2531,7 @@ pub struct RegisterBlock {
 
     _reserved14: [u32; 1],
 
-    /// OTG device endpoint-0 interrupt register
+    /// OTG device endpoint-%s interrupt register
     pub DIEPINT3: RWRegister<u32>,
 
     _reserved15: [u32; 1],
@@ -2552,7 +2552,7 @@ pub struct RegisterBlock {
 
     _reserved17: [u32; 1],
 
-    /// OTG device endpoint-0 interrupt register
+    /// OTG device endpoint-%s interrupt register
     pub DIEPINT4: RWRegister<u32>,
 
     _reserved18: [u32; 1],
@@ -2573,7 +2573,7 @@ pub struct RegisterBlock {
 
     _reserved20: [u32; 1],
 
-    /// OTG device endpoint-0 interrupt register
+    /// OTG device endpoint-%s interrupt register
     pub DIEPINT5: RWRegister<u32>,
 
     _reserved21: [u32; 1],
@@ -2593,7 +2593,7 @@ pub struct RegisterBlock {
 
     _reserved24: [u32; 1],
 
-    /// OTG_HS device endpoint-0 interrupt register
+    /// OTG_HS device endpoint-%s interrupt register
     pub DOEPINT0: RWRegister<u32>,
 
     _reserved25: [u32; 1],
@@ -2608,7 +2608,7 @@ pub struct RegisterBlock {
 
     _reserved27: [u32; 1],
 
-    /// OTG_HS device endpoint-0 interrupt register
+    /// OTG_HS device endpoint-%s interrupt register
     pub DOEPINT1: RWRegister<u32>,
 
     _reserved28: [u32; 1],
@@ -2623,7 +2623,7 @@ pub struct RegisterBlock {
 
     _reserved30: [u32; 1],
 
-    /// OTG_HS device endpoint-0 interrupt register
+    /// OTG_HS device endpoint-%s interrupt register
     pub DOEPINT2: RWRegister<u32>,
 
     _reserved31: [u32; 1],
@@ -2638,7 +2638,7 @@ pub struct RegisterBlock {
 
     _reserved33: [u32; 1],
 
-    /// OTG_HS device endpoint-0 interrupt register
+    /// OTG_HS device endpoint-%s interrupt register
     pub DOEPINT3: RWRegister<u32>,
 
     _reserved34: [u32; 1],
@@ -2653,7 +2653,7 @@ pub struct RegisterBlock {
 
     _reserved36: [u32; 1],
 
-    /// OTG_HS device endpoint-0 interrupt register
+    /// OTG_HS device endpoint-%s interrupt register
     pub DOEPINT4: RWRegister<u32>,
 
     _reserved37: [u32; 1],
@@ -2668,7 +2668,7 @@ pub struct RegisterBlock {
 
     _reserved39: [u32; 1],
 
-    /// OTG_HS device endpoint-0 interrupt register
+    /// OTG_HS device endpoint-%s interrupt register
     pub DOEPINT5: RWRegister<u32>,
 
     _reserved40: [u32; 1],

@@ -244,9 +244,9 @@ pub mod CNT {
     /// Low counter value
     pub mod CNT {
         /// Offset (0 bits)
-        pub const offset: u32 = 0;
+        pub const offset: u16 = 0;
         /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -280,9 +280,9 @@ pub mod ARR {
     /// Low Auto-reload value
     pub mod ARR {
         /// Offset (0 bits)
-        pub const offset: u32 = 0;
+        pub const offset: u16 = 0;
         /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        pub const mask: u16 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -313,13 +313,15 @@ pub struct RegisterBlock {
     _reserved2: [u32; 3],
 
     /// counter
-    pub CNT: RWRegister<u32>,
+    pub CNT: RWRegister<u16>,
+
+    _reserved3: [u16; 1],
 
     /// prescaler
     pub PSC: RWRegister<u32>,
 
     /// auto-reload register
-    pub ARR: RWRegister<u32>,
+    pub ARR: RWRegister<u16>,
 }
 pub struct ResetValues {
     pub CR1: u32,
@@ -327,9 +329,9 @@ pub struct ResetValues {
     pub DIER: u32,
     pub SR: u32,
     pub EGR: u32,
-    pub CNT: u32,
+    pub CNT: u16,
     pub PSC: u32,
-    pub ARR: u32,
+    pub ARR: u16,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -305,8 +305,33 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Input capture 1 filter
@@ -438,10 +463,10 @@ pub mod ARR {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR1 {
 
-    /// Capture/Compare 1 value
+    /// Capture/Compare value
     pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -510,7 +535,7 @@ pub struct RegisterBlock {
 
     _reserved3: [u32; 1],
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR1: RWRegister<u32>,
 
     _reserved4: [u32; 6],

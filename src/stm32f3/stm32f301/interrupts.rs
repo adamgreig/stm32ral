@@ -2,16 +2,16 @@ extern crate bare_metal;
 #[cfg(feature = "rt")]
 extern "C" {
     fn WWDG_IRQ();
-    fn PVD_IRQ();
-    fn TAMP();
+    fn PVD();
+    fn TAMP_STAMP();
     fn RTC_WKUP_IRQ();
     fn FLASH();
     fn RCC();
-    fn EXTI0_IRQ();
-    fn EXTI1_IRQ();
-    fn EXTI2_RI_IRQ();
-    fn EXTI3_IRQ();
-    fn EXTI4_IRQ();
+    fn EXTI0();
+    fn EXTI1();
+    fn EXTI2_TSC();
+    fn EXTI3();
+    fn EXTI4();
     fn DMA1_CH1();
     fn DMA1_CH2();
     fn DMA1_CH3();
@@ -24,14 +24,12 @@ extern "C" {
     fn CAN_RXD_IRQ();
     fn CAN_RXI_IRQ();
     fn CAN_SCE_IRQ();
-    fn EXTI5_9_IRQ();
+    fn EXTI9_5();
     fn TIM15_IRQ();
     fn TIM16_IRQ();
     fn TIM17_IRQ();
     fn TIM18_DAC3_IRQ();
     fn TIM2();
-    fn TIM3_IRQ();
-    fn TIM4_IRQ();
     fn I2C1_EV_IRQ();
     fn I2C1_ER_IRQ();
     fn I2C2_EV_IRQ();
@@ -41,13 +39,12 @@ extern "C" {
     fn USART1_IRQ();
     fn USART2_IRQ();
     fn USART3_IRQ();
-    fn EXTI15_10_IRQ();
+    fn EXTI15_10();
     fn RTC_ALARM_IT_IRQ();
     fn CEC_IRQ();
     fn TIM12_IRQ();
     fn TIM13_IRQ();
     fn TIM14_IRQ();
-    fn TIM5_IRQ();
     fn SPI3_IRQ();
     fn TIM6_DAC1();
     fn TIM7_IRQ();
@@ -61,7 +58,6 @@ extern "C" {
     fn USB_HP_IRQ();
     fn USB_LP_IRQ();
     fn USB_WAKEUP_IRQ();
-    fn TIM19_IRQ();
     fn FPU();
 }
 
@@ -77,28 +73,22 @@ pub union Vector {
 #[no_mangle]
 pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: WWDG_IRQ },
-    Vector { _handler: PVD_IRQ },
-    Vector { _handler: TAMP },
+    Vector { _handler: PVD },
+    Vector {
+        _handler: TAMP_STAMP,
+    },
     Vector {
         _handler: RTC_WKUP_IRQ,
     },
     Vector { _handler: FLASH },
     Vector { _handler: RCC },
+    Vector { _handler: EXTI0 },
+    Vector { _handler: EXTI1 },
     Vector {
-        _handler: EXTI0_IRQ,
+        _handler: EXTI2_TSC,
     },
-    Vector {
-        _handler: EXTI1_IRQ,
-    },
-    Vector {
-        _handler: EXTI2_RI_IRQ,
-    },
-    Vector {
-        _handler: EXTI3_IRQ,
-    },
-    Vector {
-        _handler: EXTI4_IRQ,
-    },
+    Vector { _handler: EXTI3 },
+    Vector { _handler: EXTI4 },
     Vector { _handler: DMA1_CH1 },
     Vector { _handler: DMA1_CH2 },
     Vector { _handler: DMA1_CH3 },
@@ -119,9 +109,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector {
         _handler: CAN_SCE_IRQ,
     },
-    Vector {
-        _handler: EXTI5_9_IRQ,
-    },
+    Vector { _handler: EXTI9_5 },
     Vector {
         _handler: TIM15_IRQ,
     },
@@ -135,8 +123,8 @@ pub static __INTERRUPTS: [Vector; 82] = [
         _handler: TIM18_DAC3_IRQ,
     },
     Vector { _handler: TIM2 },
-    Vector { _handler: TIM3_IRQ },
-    Vector { _handler: TIM4_IRQ },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
     Vector {
         _handler: I2C1_EV_IRQ,
     },
@@ -161,7 +149,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
         _handler: USART3_IRQ,
     },
     Vector {
-        _handler: EXTI15_10_IRQ,
+        _handler: EXTI15_10,
     },
     Vector {
         _handler: RTC_ALARM_IT_IRQ,
@@ -180,7 +168,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _handler: TIM5_IRQ },
+    Vector { _reserved: 0 },
     Vector { _handler: SPI3_IRQ },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -230,9 +218,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
         _handler: USB_WAKEUP_IRQ,
     },
     Vector { _reserved: 0 },
-    Vector {
-        _handler: TIM19_IRQ,
-    },
+    Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: FPU },
@@ -245,26 +231,26 @@ pub static __INTERRUPTS: [Vector; 82] = [
 pub enum Interrupt {
     /// 0: Window Watchdog interrupt
     WWDG_IRQ = 0,
-    /// 1: Power voltage detector through EXTI line detection interrupt
-    PVD_IRQ = 1,
-    /// 2: Tamper and timestamp through EXTI19 line
-    TAMP = 2,
+    /// 1: PVD through EXTI line detection interrupt
+    PVD = 1,
+    /// 2: Tamper and TimeStamp interrupts
+    TAMP_STAMP = 2,
     /// 3: RTC
     RTC_WKUP_IRQ = 3,
     /// 4: Flash global interrupt
     FLASH = 4,
     /// 5: RCC global interrupt
     RCC = 5,
-    /// 6: EXTI Line 0 interrupt
-    EXTI0_IRQ = 6,
-    /// 7: EXTI Line1 interrupt
-    EXTI1_IRQ = 7,
-    /// 8: EXTI Line 2 and routing interface interrupt
-    EXTI2_RI_IRQ = 8,
-    /// 9: EXTI Line1 interrupt
-    EXTI3_IRQ = 9,
+    /// 6: EXTI Line0 interrupt
+    EXTI0 = 6,
+    /// 7: EXTI Line3 interrupt
+    EXTI1 = 7,
+    /// 8: EXTI Line2 and Touch sensing interrupts
+    EXTI2_TSC = 8,
+    /// 9: EXTI Line3 interrupt
+    EXTI3 = 9,
     /// 10: EXTI Line4 interrupt
-    EXTI4_IRQ = 10,
+    EXTI4 = 10,
     /// 11: DMA1 channel 1 interrupt
     DMA1_CH1 = 11,
     /// 12: DMA1 channel 2 interrupt
@@ -289,8 +275,8 @@ pub enum Interrupt {
     CAN_RXI_IRQ = 21,
     /// 22: CAN_SCE interrupt
     CAN_SCE_IRQ = 22,
-    /// 23: EXTI Line\[9:5\] interrupts
-    EXTI5_9_IRQ = 23,
+    /// 23: EXTI Line5 to Line9 interrupts
+    EXTI9_5 = 23,
     /// 24: Timer 15 global interrupt
     TIM15_IRQ = 24,
     /// 25: Timer 16 global interrupt
@@ -301,10 +287,6 @@ pub enum Interrupt {
     TIM18_DAC3_IRQ = 27,
     /// 28: Timer 2 global interrupt
     TIM2 = 28,
-    /// 29: Timer 3 global interrupt
-    TIM3_IRQ = 29,
-    /// 30: Timer 4 global interrupt
-    TIM4_IRQ = 30,
     /// 31: I2C1_EV global interrupt/EXTI Line\[3:2\] interrupts
     I2C1_EV_IRQ = 31,
     /// 32: I2C1_ER
@@ -323,8 +305,8 @@ pub enum Interrupt {
     USART2_IRQ = 38,
     /// 39: USART3 global interrupt/EXTI28 (USART1 wakeup event)
     USART3_IRQ = 39,
-    /// 40: EXTI Line\[15:10\] interrupts
-    EXTI15_10_IRQ = 40,
+    /// 40: EXTI Line15 to Line10 interrupts
+    EXTI15_10 = 40,
     /// 41: RTC alarm interrupt
     RTC_ALARM_IT_IRQ = 41,
     /// 42: CEC interrupt
@@ -335,8 +317,6 @@ pub enum Interrupt {
     TIM13_IRQ = 44,
     /// 45: Timer 14 global interrupt
     TIM14_IRQ = 45,
-    /// 50: Timer 5 global interrupt
-    TIM5_IRQ = 50,
     /// 51: SPI3 global interrupt
     SPI3_IRQ = 51,
     /// 54: TIM6 global, DAC1 Cahnnel1 and Cahnnel2 underrun error Interrupts
@@ -363,8 +343,6 @@ pub enum Interrupt {
     USB_LP_IRQ = 75,
     /// 76: USB wakeup interrupt
     USB_WAKEUP_IRQ = 76,
-    /// 78: Timer 19 global interrupt
-    TIM19_IRQ = 78,
     /// 81: Floating point unit interrupt
     FPU = 81,
 }

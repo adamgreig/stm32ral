@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FLASH
 //!
-//! Used by: stm32f401, stm32f407
+//! Used by: stm32f401, stm32f411, stm32f412, stm32f413
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -15,8 +15,8 @@ pub mod ACR {
     pub mod LATENCY {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (3 bits: 0b111 << 0)
-        pub const mask: u32 = 0b111 << offset;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -24,29 +24,29 @@ pub mod ACR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b000: 0 wait states
-            pub const WS0: u32 = 0b000;
+            /// 0b0000: 0 wait states
+            pub const WS0: u32 = 0b0000;
 
-            /// 0b001: 1 wait states
-            pub const WS1: u32 = 0b001;
+            /// 0b0001: 1 wait states
+            pub const WS1: u32 = 0b0001;
 
-            /// 0b010: 2 wait states
-            pub const WS2: u32 = 0b010;
+            /// 0b0010: 2 wait states
+            pub const WS2: u32 = 0b0010;
 
-            /// 0b011: 3 wait states
-            pub const WS3: u32 = 0b011;
+            /// 0b0011: 3 wait states
+            pub const WS3: u32 = 0b0011;
 
-            /// 0b100: 4 wait states
-            pub const WS4: u32 = 0b100;
+            /// 0b0100: 4 wait states
+            pub const WS4: u32 = 0b0100;
 
-            /// 0b101: 5 wait states
-            pub const WS5: u32 = 0b101;
+            /// 0b0101: 5 wait states
+            pub const WS5: u32 = 0b0101;
 
-            /// 0b110: 6 wait states
-            pub const WS6: u32 = 0b110;
+            /// 0b0110: 6 wait states
+            pub const WS6: u32 = 0b0110;
 
-            /// 0b111: 7 wait states
-            pub const WS7: u32 = 0b111;
+            /// 0b0111: 7 wait states
+            pub const WS7: u32 = 0b0111;
 
             /// 0b1000: 8 wait states
             pub const WS8: u32 = 0b1000;

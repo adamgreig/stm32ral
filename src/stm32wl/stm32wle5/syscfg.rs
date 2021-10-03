@@ -19,8 +19,18 @@ pub mod MEMRMP {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Main Flash memory mapped at 0x0000_0000
+            pub const MainFlash: u32 = 0b000;
+
+            /// 0b001: System Flash memory mapped at 0x0000_0000
+            pub const SystemFlash: u32 = 0b001;
+
+            /// 0b011: Embedded SRAM mapped at 0x0000_0000
+            pub const SRAM: u32 = 0b011;
+        }
     }
 }
 
@@ -37,8 +47,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FM+ mode is controlled by I2C_Pxx_FMP bits only
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: FM+ mode is enabled on all I2C3 pins selected through selection bits in GPIOx_AFR registers
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// I2C2 Fast-mode Plus driving capability activation
@@ -51,8 +68,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FM+ mode is controlled by I2C_Pxx_FMP bits only
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: FM+ mode is enabled on all I2C2 pins selected through selection bits in GPIOx_AFR registers
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// I2C1 Fast-mode Plus driving capability activation
@@ -65,8 +89,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FM+ mode is controlled by I2C_Pxx_FMP bits only
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: FM+ mode is enabled on all I2C1 pins selected through selection bits in GPIOx_AFR registers
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// Fast-mode Plus (Fm+) driving capability activation on PB9
@@ -79,8 +110,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PB9 pin operate in standard mode
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: I2C FM+ mode enabled on PB9 and the Speed control is bypassed
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// Fast-mode Plus (Fm+) driving capability activation on PB8
@@ -93,8 +131,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PB8 pin operate in standard mode
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: I2C FM+ mode enabled on PB8 and the Speed control is bypassed
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// Fast-mode Plus (Fm+) driving capability activation on PB7
@@ -107,8 +152,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PB7 pin operate in standard mode
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: I2C FM+ mode enabled on PB7 and the Speed control is bypassed
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// Fast-mode Plus (Fm+) driving capability activation on PB6
@@ -121,8 +173,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: PB6 pin operate in standard mode
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: I2C FM+ mode enabled on PB6 and the Speed control is bypassed
+            pub const FMP: u32 = 0b1;
+        }
     }
 
     /// I/O analog switch voltage booster enable
@@ -135,8 +194,15 @@ pub mod CFGR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: I/O analog switches are supplied by VDDA voltage. This is the recommended configuration when using the ADC in high VDDA voltage operation
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: I/O analog switches are supplied by a dedicated voltage booster (supplied by VDD). This is the recommended configuration when using the ADC in low VDDA voltage operation
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -153,8 +219,21 @@ pub mod EXTICR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA3 as the source input for the EXTI3 external interrupt
+            pub const PA3: u32 = 0b000;
+
+            /// 0b001: Select PB3 as the source input for the EXTI3 external interrupt
+            pub const PB3: u32 = 0b001;
+
+            /// 0b010: Select PC3 as the source input for the EXTI3 external interrupt
+            pub const PC3: u32 = 0b010;
+
+            /// 0b111: Select PH3 as the source input for the EXTI3 external interrupt
+            pub const PH3: u32 = 0b111;
+        }
     }
 
     /// EXTI 2 configuration bits
@@ -167,8 +246,18 @@ pub mod EXTICR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA2 as the source input for the EXTI2 external interrupt
+            pub const PA2: u32 = 0b000;
+
+            /// 0b001: Select PB2 as the source input for the EXTI2 external interrupt
+            pub const PB2: u32 = 0b001;
+
+            /// 0b010: Select PC2 as the source input for the EXTI2 external interrupt
+            pub const PC2: u32 = 0b010;
+        }
     }
 
     /// EXTI 1 configuration bits
@@ -181,8 +270,18 @@ pub mod EXTICR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA1 as the source input for the EXTI1 external interrupt
+            pub const PA1: u32 = 0b000;
+
+            /// 0b001: Select PB1 as the source input for the EXTI1 external interrupt
+            pub const PB1: u32 = 0b001;
+
+            /// 0b010: Select PC1 as the source input for the EXTI1 external interrupt
+            pub const PC1: u32 = 0b010;
+        }
     }
 
     /// EXTI 0 configuration bits
@@ -195,8 +294,18 @@ pub mod EXTICR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA0 as the source input for the EXTI0 external interrupt
+            pub const PA0: u32 = 0b000;
+
+            /// 0b001: Select PB0 as the source input for the EXTI0 external interrupt
+            pub const PB0: u32 = 0b001;
+
+            /// 0b010: Select PC0 as the source input for the EXTI0 external interrupt
+            pub const PC0: u32 = 0b010;
+        }
     }
 }
 
@@ -213,8 +322,15 @@ pub mod EXTICR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA7 as the source input for the EXTI7 external interrupt
+            pub const PA7: u32 = 0b000;
+
+            /// 0b001: Select PB7 as the source input for the EXTI7 external interrupt
+            pub const PB7: u32 = 0b001;
+        }
     }
 
     /// EXTI 6 configuration bits
@@ -227,8 +343,18 @@ pub mod EXTICR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA6 as the source input for the EXTI6 external interrupt
+            pub const PA6: u32 = 0b000;
+
+            /// 0b001: Select PB6 as the source input for the EXTI6 external interrupt
+            pub const PB6: u32 = 0b001;
+
+            /// 0b010: Select PC6 as the source input for the EXTI6 external interrupt
+            pub const PC6: u32 = 0b010;
+        }
     }
 
     /// EXTI 5 configuration bits
@@ -241,8 +367,18 @@ pub mod EXTICR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA5 as the source input for the EXTI5 external interrupt
+            pub const PA5: u32 = 0b000;
+
+            /// 0b001: Select PB5 as the source input for the EXTI5 external interrupt
+            pub const PB5: u32 = 0b001;
+
+            /// 0b010: Select PC5 as the source input for the EXTI5 external interrupt
+            pub const PC5: u32 = 0b010;
+        }
     }
 
     /// EXTI 4 configuration bits
@@ -255,8 +391,18 @@ pub mod EXTICR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA4 as the source input for the EXTI4 external interrupt
+            pub const PA4: u32 = 0b000;
+
+            /// 0b001: Select PB4 as the source input for the EXTI4 external interrupt
+            pub const PB4: u32 = 0b001;
+
+            /// 0b010: Select PC4 as the source input for the EXTI4 external interrupt
+            pub const PC4: u32 = 0b010;
+        }
     }
 }
 
@@ -273,8 +419,15 @@ pub mod EXTICR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA11 as the source input for the EXTI11 external interrupt
+            pub const PA11: u32 = 0b000;
+
+            /// 0b001: Select PB11 as the source input for the EXTI11 external interrupt
+            pub const PB11: u32 = 0b001;
+        }
     }
 
     /// EXTI 10 configuration bits
@@ -287,8 +440,15 @@ pub mod EXTICR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA10 as the source input for the EXTI10 external interrupt
+            pub const PA10: u32 = 0b000;
+
+            /// 0b001: Select PB10 as the source input for the EXTI10 external interrupt
+            pub const PB10: u32 = 0b001;
+        }
     }
 
     /// EXTI 9 configuration bits
@@ -301,8 +461,15 @@ pub mod EXTICR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA9 as the source input for the EXTI9 external interrupt
+            pub const PA9: u32 = 0b000;
+
+            /// 0b001: Select PB9 as the source input for the EXTI9 external interrupt
+            pub const PB9: u32 = 0b001;
+        }
     }
 
     /// EXTI 8 configuration bits
@@ -315,8 +482,15 @@ pub mod EXTICR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA8 as the source input for the EXTI8 external interrupt
+            pub const PA8: u32 = 0b000;
+
+            /// 0b001: Select PB8 as the source input for the EXTI8 external interrupt
+            pub const PB8: u32 = 0b001;
+        }
     }
 }
 
@@ -333,8 +507,18 @@ pub mod EXTICR4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA15 as the source input for the EXTI15 external interrupt
+            pub const PA15: u32 = 0b000;
+
+            /// 0b001: Select PB15 as the source input for the EXTI15 external interrupt
+            pub const PB15: u32 = 0b001;
+
+            /// 0b010: Select PC15 as the source input for the EXTI15 external interrupt
+            pub const PC15: u32 = 0b010;
+        }
     }
 
     /// EXTI14 configuration bits
@@ -347,8 +531,18 @@ pub mod EXTICR4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA14 as the source input for the EXTI14 external interrupt
+            pub const PA14: u32 = 0b000;
+
+            /// 0b001: Select PB14 as the source input for the EXTI14 external interrupt
+            pub const PB14: u32 = 0b001;
+
+            /// 0b010: Select PC14 as the source input for the EXTI14 external interrupt
+            pub const PC14: u32 = 0b010;
+        }
     }
 
     /// EXTI13 configuration bits
@@ -361,8 +555,18 @@ pub mod EXTICR4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA13 as the source input for the EXTI13 external interrupt
+            pub const PA13: u32 = 0b000;
+
+            /// 0b001: Select PB13 as the source input for the EXTI13 external interrupt
+            pub const PB13: u32 = 0b001;
+
+            /// 0b010: Select PC13 as the source input for the EXTI13 external interrupt
+            pub const PC13: u32 = 0b010;
+        }
     }
 
     /// EXTI12 configuration bits
@@ -375,8 +579,15 @@ pub mod EXTICR4 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Select PA12 as the source input for the EXTI12 external interrupt
+            pub const PA12: u32 = 0b000;
+
+            /// 0b001: Select PB12 as the source input for the EXTI12 external interrupt
+            pub const PB12: u32 = 0b001;
+        }
     }
 }
 
@@ -393,8 +604,15 @@ pub mod SCSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No PKA SRAM erase operation is ongoing
+            pub const Idle: u32 = 0b0;
+
+            /// 0b1: PKA SRAM erase operation is ongoing
+            pub const Busy: u32 = 0b1;
+        }
     }
 
     /// SRAM1, SRAM2 and PKA SRAM busy by erase operation
@@ -407,8 +625,15 @@ pub mod SCSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No SRAM1 or SRAM2 erase operation is ongoing
+            pub const Idle: u32 = 0b0;
+
+            /// 0b1: SRAM1 or SRAM2 erase operation is ongoing
+            pub const Busy: u32 = 0b1;
+        }
     }
 
     /// SRAM2 erase
@@ -419,8 +644,12 @@ pub mod SCSR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Start SRAM2 erase operation
+            pub const Erase: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -435,10 +664,21 @@ pub mod CFGR2 {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No SRAM2 parity error detected
+            pub const Nominal: u32 = 0b0;
+
+            /// 0b1: SRAM2 parity error detected
+            pub const Error: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear SRAM2 parity error flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -449,10 +689,21 @@ pub mod CFGR2 {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: ECC error disconnected from TIM1/16/17 break input
+            pub const Disconnected: u32 = 0b0;
+
+            /// 0b1: ECC error connected to TIM1/16/17 break input
+            pub const Connected: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Connect ECC error to TIM1/16/17 break input
+            pub const Connect: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -463,10 +714,21 @@ pub mod CFGR2 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: PVD interrupt disconnected from TIM1/16/17 break input. PVDE and PLS\[2:0\] bits can be programmed by the application
+            pub const Disconnected: u32 = 0b0;
+
+            /// 0b1: PVD interrupt connected to TIM1/16/17 break input. PVDE and PLS\[2:0\] bits are read only
+            pub const Connected: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Connect PVD interretup to TIM1/16/17 break input
+            pub const Connect: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -477,10 +739,21 @@ pub mod CFGR2 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: SRAM2 parity error signal disconnected from TIM1/16/17 break input
+            pub const Disconnected: u32 = 0b0;
+
+            /// 0b1: SRAM2 parity error signal connected to TIM1/16/17 break input
+            pub const Connected: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Connect SRAM2 parity error signal to TIM1/16/17 break input
+            pub const Connect: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -491,10 +764,21 @@ pub mod CFGR2 {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: CPU LOCKUP output disconnected from TIM1/16/17 break input
+            pub const Disconnected: u32 = 0b0;
+
+            /// 0b1: CPU LOCKUP output connected to TIM1/16/17 break input
+            pub const Connected: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Connect CPU LOCKUP output to TIM1/16/17 break input
+            pub const Connect: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -513,8 +797,15 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SRAM2 1 KB page protection disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SRAM2 1 KB page protection enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// SRAM2 1Kbyte page 30 write protection
@@ -527,8 +818,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 29 write protection
@@ -541,8 +831,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 28 write protection
@@ -555,8 +844,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 27 write protection
@@ -569,8 +857,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 26 write protection
@@ -583,8 +870,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 25 write protection
@@ -597,8 +883,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 24 write protection
@@ -611,8 +896,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 23 write protection
@@ -625,8 +909,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 22 write protection
@@ -639,8 +922,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 21 write protection
@@ -653,8 +935,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 20 write protection
@@ -667,8 +948,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 19 write protection
@@ -681,8 +961,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 18 write protection
@@ -695,8 +974,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 17 write protection
@@ -709,8 +987,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 16 write protection
@@ -723,8 +1000,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 15 write protection
@@ -737,8 +1013,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 14 write protection
@@ -751,8 +1026,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 13 write protection
@@ -765,8 +1039,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 12 write protection
@@ -779,8 +1052,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 11 write protection
@@ -793,8 +1065,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 10 write protection
@@ -807,8 +1078,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 9 write protection
@@ -821,8 +1091,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 8 write protection
@@ -835,8 +1104,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 7 write protection
@@ -849,8 +1117,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 6 write protection
@@ -863,8 +1130,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 5 write protection
@@ -877,8 +1143,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 4 write protection
@@ -891,8 +1156,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 3 write protection
@@ -905,8 +1169,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 2 write protection
@@ -919,8 +1182,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 1 write protection
@@ -933,8 +1195,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 
     /// SRAM2 1Kbyte page 0 write protection
@@ -947,8 +1208,7 @@ pub mod SWPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::P31WP::RW;
     }
 }
 
@@ -965,8 +1225,18 @@ pub mod SKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b11001010: Step 1 to remove SRAM2ER bits write protection
+            pub const Step1: u32 = 0b11001010;
+
+            /// 0b01010011: Step 2 to remove SRAM2ER bits write protection
+            pub const Step2: u32 = 0b01010011;
+
+            /// 0b00010001: Activate SRAM2ER bits write protection
+            pub const WriteProtect: u32 = 0b00010001;
+        }
     }
 }
 
@@ -983,8 +1253,15 @@ pub mod RFDCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Digital test bus selected on RF_ADTB\[3:0\]
+            pub const Digital: u32 = 0b0;
+
+            /// 0b1: Analog test bus selected on RF_ADTB\[3:0\]
+            pub const Analog: u32 = 0b1;
+        }
     }
 }
 #[repr(C)]

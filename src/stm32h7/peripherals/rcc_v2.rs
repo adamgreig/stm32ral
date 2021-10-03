@@ -344,68 +344,6 @@ pub mod CR {
     }
 }
 
-/// ICSCR and HSICFGR
-/// ICSCR: RCC Internal Clock Source Calibration Register
-/// HSICFGR: RCC HSI configuration register
-pub mod ICSCR {
-
-    /// HSI clock calibration
-    pub mod HSICAL {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (12 bits: 0xfff << 0)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// HSI clock trimming
-    pub mod HSITRIM {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (6 bits: 0x3f << 12)
-        pub const mask: u32 = 0x3f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CSI clock calibration
-    pub mod CSICAL {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (8 bits: 0xff << 18)
-        pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CSI clock trimming
-    pub mod CSITRIM {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (5 bits: 0b11111 << 26)
-        pub const mask: u32 = 0b11111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// RCC Clock Recovery RC Register
 pub mod CRRCR {
 
@@ -8187,6 +8125,38 @@ pub mod APB4LPENR {
     pub use super::C1_APB4LPENR::VREFLPEN;
 }
 
+/// RCC HSI configuration register
+pub mod HSICFGR {
+
+    /// HSI clock trimming
+    pub mod HSITRIM {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (7 bits: 0x7f << 24)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// HSI clock calibration
+    pub mod HSICAL {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (12 bits: 0xfff << 0)
+        pub const mask: u32 = 0xfff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// RCC CSI configuration register
 pub mod CSICFGR {
 
@@ -8223,10 +8193,8 @@ pub struct RegisterBlock {
     /// clock control register
     pub CR: RWRegister<u32>,
 
-    /// ICSCR and HSICFGR
-    /// ICSCR: RCC Internal Clock Source Calibration Register
-    /// HSICFGR: RCC HSI configuration register
-    pub ICSCR: RWRegister<u32>,
+    /// RCC HSI configuration register
+    pub HSICFGR: RWRegister<u32>,
 
     /// RCC Clock Recovery RC Register
     pub CRRCR: RORegister<u32>,
@@ -8468,7 +8436,7 @@ pub struct RegisterBlock {
 }
 pub struct ResetValues {
     pub CR: u32,
-    pub ICSCR: u32,
+    pub HSICFGR: u32,
     pub CRRCR: u32,
     pub CSICFGR: u32,
     pub CFGR: u32,

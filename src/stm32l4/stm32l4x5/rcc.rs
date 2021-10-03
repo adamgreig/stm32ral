@@ -1232,9 +1232,9 @@ pub mod AHB1RSTR {
 
     /// CRC reset
     pub mod CRCRST {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2026,9 +2026,9 @@ pub mod AHB1ENR {
 
     /// CRC clock enable
     pub mod CRCEN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2862,9 +2862,9 @@ pub mod AHB1SMENR {
 
     /// CRCSMEN
     pub mod CRCSMEN {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

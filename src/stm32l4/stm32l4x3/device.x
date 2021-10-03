@@ -49,6 +49,7 @@ PROVIDE(DMA2_CH5 = DefaultHandler);
 PROVIDE(COMP = DefaultHandler);
 PROVIDE(LPTIM1 = DefaultHandler);
 PROVIDE(LPTIM2 = DefaultHandler);
+PROVIDE(USB_FS = DefaultHandler);
 PROVIDE(DMA2_CH6 = DefaultHandler);
 PROVIDE(DMA2_CH7 = DefaultHandler);
 PROVIDE(I2C3_EV = DefaultHandler);

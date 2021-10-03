@@ -27,3 +27,9 @@ pub mod stm32g483;
 #[cfg(any(feature="stm32g484", feature="doc"))]
 pub mod stm32g484;
 
+#[cfg(any(feature="stm32g491", feature="doc"))]
+pub mod stm32g491;
+
+#[cfg(any(feature="stm32g4a1", feature="doc"))]
+pub mod stm32g4a1;
+

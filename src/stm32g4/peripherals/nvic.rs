@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Nested Vectored Interrupt Controller
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -407,24 +407,6 @@ pub mod IPR24 {}
 
 /// Interrupt Priority Register
 pub mod IPR25 {}
-
-/// Software trigger interrupt register
-pub mod STIR {
-
-    /// Software generated interrupt ID
-    pub mod INTID {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (9 bits: 0x1ff << 0)
-        pub const mask: u32 = 0x1ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
@@ -574,11 +556,6 @@ pub struct RegisterBlock {
 
     /// Interrupt Priority Register
     pub IPR25: RWRegister<u32>,
-
-    _reserved6: [u32; 678],
-
-    /// Software trigger interrupt register
-    pub STIR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ISER0: u32,
@@ -627,7 +604,6 @@ pub struct ResetValues {
     pub IPR23: u32,
     pub IPR24: u32,
     pub IPR25: u32,
-    pub STIR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

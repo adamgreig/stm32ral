@@ -14,35 +14,30 @@ pub use super::instances::tsc;
 pub mod flash;
 pub mod rcc;
 pub use super::instances::dma;
+pub mod tim15;
 pub mod tim2;
-pub use super::instances::tim15_f301_f373_f3x8 as tim15;
-pub use super::instances::tim16_f301_f373_f3x8 as tim16;
-pub use super::instances::tim17_f301_f373_f3x8 as tim17;
-pub use super::instances::tim19;
-pub use super::instances::tim3_f301_f373_f3x4_f3x8 as tim3;
-pub use super::instances::tim4_f301_f373_f3x8 as tim4;
-pub use super::instances::tim5;
+pub use super::instances::tim16_f301_f373 as tim16;
+pub use super::instances::tim17_f301_f373 as tim17;
 pub use super::instances::usart_f301_f373_f3x4 as usart;
 pub mod adc1;
 pub mod spi;
 pub use super::instances::can;
 pub use super::instances::cec;
-pub use super::instances::exti_f301_f3x8 as exti;
 pub use super::instances::i2c;
 pub use super::instances::iwdg;
-pub use super::instances::pwr_f301_f373 as pwr;
+pub use super::instances::pwr;
 pub use super::instances::rtc_f301_f373_f3x8 as rtc;
 pub use super::instances::sdadc;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
 pub mod dac2;
-pub use super::instances::tim12;
 pub use super::instances::tim13;
 pub use super::instances::tim14;
 pub use super::instances::tim18;
 pub use super::instances::tim6_f301_f373_f3x8 as tim6;
 pub use super::instances::tim7_f301_f373_f3x8 as tim7;
 pub mod dac1;
+pub mod tim12;
 pub use super::instances::dbgmcu;
 pub mod syscfg;
 pub use super::instances::fpu;
@@ -53,9 +48,10 @@ pub use super::instances::nvic_stir;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
-pub use super::instances::tim1;
 pub mod adc1_2;
+pub mod exti;
 pub use super::instances::opamp_f301_f3x4 as opamp;
+pub use super::instances::tim1;
 pub mod comp;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
@@ -74,10 +70,6 @@ pub struct Peripherals {
     pub DMA1: dma::Instance,
     pub DMA2: dma::Instance,
     pub TIM2: tim2::Instance,
-    pub TIM5: tim5::Instance,
-    pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
-    pub TIM19: tim19::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
     pub TIM17: tim17::Instance,
@@ -90,7 +82,6 @@ pub struct Peripherals {
     pub I2S2ext: spi::Instance,
     pub I2S3ext: spi::Instance,
     pub ADC1: adc1::Instance,
-    pub EXTI: exti::Instance,
     pub CEC: cec::Instance,
     pub PWR: pwr::Instance,
     pub CAN: can::Instance,
@@ -122,8 +113,9 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
-    pub TIM1: tim1::Instance,
     pub ADC1_2: adc1_2::Instance,
+    pub EXTI: exti::Instance,
+    pub TIM1: tim1::Instance,
     pub OPAMP: opamp::Instance,
     pub COMP: comp::Instance,
 }
@@ -149,10 +141,6 @@ impl Peripherals {
             DMA1: dma::DMA1::steal(),
             DMA2: dma::DMA2::steal(),
             TIM2: tim2::TIM2::steal(),
-            TIM5: tim5::TIM5::steal(),
-            TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
-            TIM19: tim19::TIM19::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
             TIM17: tim17::TIM17::steal(),
@@ -165,7 +153,6 @@ impl Peripherals {
             I2S2ext: spi::I2S2ext::steal(),
             I2S3ext: spi::I2S3ext::steal(),
             ADC1: adc1::ADC1::steal(),
-            EXTI: exti::EXTI::steal(),
             CEC: cec::CEC::steal(),
             PWR: pwr::PWR::steal(),
             CAN: can::CAN::steal(),
@@ -197,8 +184,9 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
-            TIM1: tim1::TIM1::steal(),
             ADC1_2: adc1_2::ADC1_2::steal(),
+            EXTI: exti::EXTI::steal(),
+            TIM1: tim1::TIM1::steal(),
             OPAMP: opamp::OPAMP::steal(),
             COMP: comp::COMP::steal(),
         }

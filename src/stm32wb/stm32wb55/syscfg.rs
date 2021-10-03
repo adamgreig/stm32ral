@@ -2190,6 +2190,8 @@ pub struct RegisterBlock {
     /// SRAM2 write protection register 2
     pub SWPR2: WORegister<u32>,
 
+    _reserved1: [u32; 53],
+
     /// CPU1 interrupt mask register 1
     pub IMR1: RWRegister<u32>,
 
@@ -2248,7 +2250,7 @@ pub mod SYSCFG {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x40010100,
+        addr: 0x40010000,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -2343,4 +2345,4 @@ pub mod SYSCFG {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const SYSCFG: *const RegisterBlock = 0x40010100 as *const _;
+pub const SYSCFG: *const RegisterBlock = 0x40010000 as *const _;

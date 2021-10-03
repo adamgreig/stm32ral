@@ -44,7 +44,7 @@ pub mod GCR {
 pub mod CR1A {
 
     /// Master clock divider
-    pub mod MCJDIV {
+    pub mod MCKDIV {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (4 bits: 0b1111 << 20)
@@ -70,10 +70,10 @@ pub mod CR1A {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Master clock generator is enabled
+            /// 0b0: MCLK output is enabled. Forces the ratio between FS and MCLK to 256 or 512 according to the OSR value
             pub const MasterClock: u32 = 0b0;
 
-            /// 0b1: No divider used in the clock generator (in this case Master Clock Divider bit has no effect)
+            /// 0b1: MCLK output enable set by the MCKEN bit (where present, else 0). Ratio between FS and MCLK depends on FRL.
             pub const NoDiv: u32 = 0b1;
         }
     }
@@ -1071,7 +1071,7 @@ pub mod CR1B {
     pub use super::CR1A::DMAEN;
     pub use super::CR1A::DS;
     pub use super::CR1A::LSBFIRST;
-    pub use super::CR1A::MCJDIV;
+    pub use super::CR1A::MCKDIV;
     pub use super::CR1A::MODE;
     pub use super::CR1A::MONO;
     pub use super::CR1A::NODIV;

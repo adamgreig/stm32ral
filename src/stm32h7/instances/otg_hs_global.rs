@@ -2,16 +2,16 @@
 #![allow(non_camel_case_types)]
 //! USB 1 on the go high speed
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::otg_hs_global::Instance;
-pub use crate::stm32h7::peripherals::otg_hs_global::{
+pub use crate::stm32h7::peripherals::otg1_hs_global::Instance;
+pub use crate::stm32h7::peripherals::otg1_hs_global::{
     HNPTXFSIZ_Host, CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, DIEPTXF4, DIEPTXF5, DIEPTXF6, DIEPTXF7,
     GAHBCFG, GCCFG, GINTMSK, GINTSTS, GLPMCFG, GNPTXSTS, GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ,
     GRXSTSP, GRXSTSR, GUSBCFG, HPTXFSIZ,
 };
-pub use crate::stm32h7::peripherals::otg_hs_global::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::otg1_hs_global::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG1_HS_GLOBAL peripheral instance
 pub mod OTG1_HS_GLOBAL {

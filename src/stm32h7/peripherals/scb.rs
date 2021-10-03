@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! System control block
 //!
-//! Used by: stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h743, stm32h743v, stm32h747cm4, stm32h747cm7, stm32h753, stm32h753v, stm32h7b3
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -591,7 +591,7 @@ pub mod SHPR3 {
 }
 
 /// System handler control and state register
-pub mod SHCRS {
+pub mod SHCSR {
 
     /// Memory management fault exception active bit
     pub mod MEMFAULTACT {
@@ -1158,7 +1158,7 @@ pub struct RegisterBlock {
     pub SHPR3: RWRegister<u32>,
 
     /// System handler control and state register
-    pub SHCRS: RWRegister<u32>,
+    pub SHCSR: RWRegister<u32>,
 
     /// Configurable fault status register
     pub CFSR_UFSR_BFSR_MMFSR: RWRegister<u32>,
@@ -1184,7 +1184,7 @@ pub struct ResetValues {
     pub SHPR1: u32,
     pub SHPR2: u32,
     pub SHPR3: u32,
-    pub SHCRS: u32,
+    pub SHCSR: u32,
     pub CFSR_UFSR_BFSR_MMFSR: u32,
     pub HFSR: u32,
     pub MMFAR: u32,

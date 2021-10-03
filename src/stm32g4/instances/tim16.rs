@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::tim16::Instance;
 pub use crate::stm32g4::peripherals::tim16::{RegisterBlock, ResetValues};
 pub use crate::stm32g4::peripherals::tim16::{
-    AF1, AF2, ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, DTR2, EGR, PSC, RCR,
-    SR, TISEL,
+    AF1, AF2, ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, DTR2, EGR, OR1, PSC,
+    RCR, SR, TISEL,
 };
 
 /// Access functions for the TIM16 peripheral instance
@@ -44,6 +44,7 @@ pub mod TIM16 {
         TISEL: 0x00000000,
         AF1: 0x00000000,
         AF2: 0x00000000,
+        OR1: 0x00000000,
         DCR: 0x00000000,
         DMAR: 0x00000000,
     };

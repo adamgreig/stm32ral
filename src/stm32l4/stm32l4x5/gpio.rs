@@ -3,9 +3,9 @@
 //! General-purpose I/Os
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::gpio::Instance;
-pub use crate::stm32l4::peripherals::gpio::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::gpio::{
+pub use crate::stm32l4::peripherals::gpio_v1::Instance;
+pub use crate::stm32l4::peripherals::gpio_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::gpio_v1::{
     AFRH, AFRL, BSRR, IDR, LCKR, MODER, ODR, OSPEEDR, OTYPER, PUPDR,
 };
 

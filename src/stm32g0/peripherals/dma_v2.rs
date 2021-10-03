@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! DMA controller
 //!
-//! Used by: stm32g070, stm32g071, stm32g081
+//! Used by: stm32g070, stm32g081
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -11,8 +11,8 @@ use core::marker::PhantomData;
 /// low interrupt status register
 pub mod ISR {
 
-    /// Channel 1 global interrupt flag
-    pub mod GIF1 {
+    /// Channel global interrupt flag
+    pub mod GIF0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -39,8 +39,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 1 half transfer flag
-    pub mod HTIF1 {
+    /// Channel 2 half transfer flag
+    pub mod HTIF2 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -53,8 +53,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 1 transfer error flag
-    pub mod TEIF1 {
+    /// Channel 3 transfer error flag
+    pub mod TEIF3 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -67,8 +67,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 2 global interrupt flag
-    pub mod GIF2 {
+    /// Channel 4 global interrupt flag
+    pub mod GIF4 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -81,8 +81,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 2 transfer complete flag
-    pub mod TCIF2 {
+    /// Channel 5 transfer complete flag
+    pub mod TCIF5 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -95,8 +95,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 2 half transfer flag
-    pub mod HTIF2 {
+    /// Channel 6 half transfer flag
+    pub mod HTIF6 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -109,8 +109,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 2 transfer error flag
-    pub mod TEIF2 {
+    /// Channel 7 transfer error flag
+    pub mod TEIF7 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -123,8 +123,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 3 global interrupt flag
-    pub mod GIF3 {
+    /// Channel global interrupt flag
+    pub mod GIF8 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -137,8 +137,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 3 transfer complete flag
-    pub mod TCIF3 {
+    /// Channel transfer complete flag
+    pub mod TCIF9 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -151,8 +151,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 3 half transfer flag
-    pub mod HTIF3 {
+    /// Channel half transfer flag
+    pub mod HTIF10 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -165,8 +165,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 3 transfer error flag
-    pub mod TEIF3 {
+    /// Channel transfer error flag
+    pub mod TEIF11 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -179,8 +179,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 4 global interrupt flag
-    pub mod GIF4 {
+    /// Channel global interrupt flag
+    pub mod GIF12 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -193,8 +193,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 4 transfer complete flag
-    pub mod TCIF4 {
+    /// Channel transfer complete flag
+    pub mod TCIF13 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -207,8 +207,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 4 half transfer flag
-    pub mod HTIF4 {
+    /// Channel half transfer flag
+    pub mod HTIF14 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -221,8 +221,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 4 transfer error flag
-    pub mod TEIF4 {
+    /// Channel transfer error flag
+    pub mod TEIF15 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -235,8 +235,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 5 global interrupt flag
-    pub mod GIF5 {
+    /// Channel global interrupt flag
+    pub mod GIF16 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -249,8 +249,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 5 transfer complete flag
-    pub mod TCIF5 {
+    /// Channel transfer complete flag
+    pub mod TCIF17 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -263,8 +263,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 5 half transfer flag
-    pub mod HTIF5 {
+    /// Channel half transfer flag
+    pub mod HTIF18 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -277,8 +277,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 5 transfer error flag
-    pub mod TEIF5 {
+    /// Channel transfer error flag
+    pub mod TEIF19 {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -291,8 +291,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 6 global interrupt flag
-    pub mod GIF6 {
+    /// Channel global interrupt flag
+    pub mod GIF20 {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -305,8 +305,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 6 transfer complete flag
-    pub mod TCIF6 {
+    /// Channel transfer complete flag
+    pub mod TCIF21 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -319,8 +319,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 6 half transfer flag
-    pub mod HTIF6 {
+    /// Channel half transfer flag
+    pub mod HTIF22 {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
@@ -333,8 +333,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 6 transfer error flag
-    pub mod TEIF6 {
+    /// Channel transfer error flag
+    pub mod TEIF23 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
@@ -347,8 +347,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 7 global interrupt flag
-    pub mod GIF7 {
+    /// Channel global interrupt flag
+    pub mod GIF24 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -361,8 +361,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 7 transfer complete flag
-    pub mod TCIF7 {
+    /// Channel transfer complete flag
+    pub mod TCIF25 {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -375,8 +375,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 7 half transfer flag
-    pub mod HTIF7 {
+    /// Channel half transfer flag
+    pub mod HTIF26 {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -389,8 +389,8 @@ pub mod ISR {
         pub mod RW {}
     }
 
-    /// Channel 7 transfer error flag
-    pub mod TEIF7 {
+    /// Channel transfer error flag
+    pub mod TEIF27 {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
@@ -435,8 +435,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 1 half transfer flag
-    pub mod CHTIF1 {
+    /// Clear channel 2 half transfer flag
+    pub mod CHTIF2 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -449,8 +449,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 1 transfer error flag
-    pub mod CTEIF1 {
+    /// Clear channel 3 transfer error flag
+    pub mod CTEIF3 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -463,8 +463,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 2 global interrupt flag
-    pub mod CGIF2 {
+    /// Clear channel 4 global interrupt flag
+    pub mod CGIF4 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -477,8 +477,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 2 transfer complete flag
-    pub mod CTCIF2 {
+    /// Clear channel 5 transfer complete flag
+    pub mod CTCIF5 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -491,8 +491,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 2 half transfer flag
-    pub mod CHTIF2 {
+    /// Clear channel 6 half transfer flag
+    pub mod CHTIF6 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -505,8 +505,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 2 transfer error flag
-    pub mod CTEIF2 {
+    /// Clear channel 7 transfer error flag
+    pub mod CTEIF7 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -519,8 +519,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 3 global interrupt flag
-    pub mod CGIF3 {
+    /// Channel global interrupt flag
+    pub mod CGIF8 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -533,8 +533,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 3 transfer complete flag
-    pub mod CTCIF3 {
+    /// Channel transfer complete flag
+    pub mod CTCIF9 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -547,8 +547,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 3 half transfer flag
-    pub mod CHTIF3 {
+    /// Channel half transfer flag
+    pub mod CHTIF10 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -561,8 +561,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 3 transfer error flag
-    pub mod CTEIF3 {
+    /// Channel transfer error flag
+    pub mod CTEIF11 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -575,8 +575,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 4 global interrupt flag
-    pub mod CGIF4 {
+    /// Channel global interrupt flag
+    pub mod CGIF12 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -589,8 +589,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 4 transfer complete flag
-    pub mod CTCIF4 {
+    /// Channel transfer complete flag
+    pub mod CTCIF13 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -603,8 +603,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 4 half transfer flag
-    pub mod CHTIF4 {
+    /// Channel half transfer flag
+    pub mod CHTIF14 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -631,8 +631,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 5 global interrupt flag
-    pub mod CGIF5 {
+    /// Channel global interrupt flag
+    pub mod CGIF16 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -645,8 +645,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 5 transfer complete flag
-    pub mod CTCIF5 {
+    /// Channel transfer complete flag
+    pub mod CTCIF17 {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -659,8 +659,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 5 half transfer flag
-    pub mod CHTIF5 {
+    /// Channel half transfer flag
+    pub mod CHTIF18 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -673,8 +673,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 5 transfer error flag
-    pub mod CTEIF5 {
+    /// Channel transfer error flag
+    pub mod CTEIF19 {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -687,8 +687,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 6 global interrupt flag
-    pub mod CGIF6 {
+    /// Channel global interrupt flag
+    pub mod CGIF20 {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -701,8 +701,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 6 transfer complete flag
-    pub mod CTCIF6 {
+    /// Channel transfer complete flag
+    pub mod CTCIF21 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -715,8 +715,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 6 half transfer flag
-    pub mod CHTIF6 {
+    /// Channel half transfer flag
+    pub mod CHTIF22 {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
@@ -729,8 +729,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 6 transfer error flag
-    pub mod CTEIF6 {
+    /// Channel transfer error flag
+    pub mod CTEIF23 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
@@ -743,8 +743,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 7 global interrupt flag
-    pub mod CGIF7 {
+    /// Channel global interrupt flag
+    pub mod CGIF24 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
@@ -757,8 +757,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 7 transfer complete flag
-    pub mod CTCIF7 {
+    /// Channel transfer complete flag
+    pub mod CTCIF25 {
         /// Offset (25 bits)
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
@@ -771,8 +771,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 7 half transfer flag
-    pub mod CHTIF7 {
+    /// Channel half transfer flag
+    pub mod CHTIF26 {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -785,8 +785,8 @@ pub mod IFCR {
         pub mod RW {}
     }
 
-    /// Clear channel 7 transfer error flag
-    pub mod CTEIF7 {
+    /// Channel transfer error flag
+    pub mod CTEIF27 {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! FDCAN
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -470,7 +470,7 @@ pub mod CCCR {
 pub mod NBTP {
 
     /// TSEG2
-    pub mod TSEG2 {
+    pub mod NTSEG2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (7 bits: 0x7f << 0)
@@ -658,7 +658,7 @@ pub mod ECR {
     }
 
     /// TREC
-    pub mod TREC {
+    pub mod REC {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (7 bits: 0x7f << 8)
@@ -893,7 +893,7 @@ pub mod TDCR {
 /// The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
 pub mod IR {
 
-    /// RF0N
+    /// Rx FIFO 0 new message
     pub mod RF0N {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -907,8 +907,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF0W
-    pub mod RF0W {
+    /// Rx FIFO 0 full
+    pub mod RF0F {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -921,8 +921,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF0F
-    pub mod RF0F {
+    /// Rx FIFO 0 message lost
+    pub mod RF0L {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -935,8 +935,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF0L
-    pub mod RF0L {
+    /// Rx FIFO 1 new message
+    pub mod RF1N {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -949,8 +949,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF1N
-    pub mod RF1N {
+    /// Rx FIFO 1 full
+    pub mod RF1F {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -963,8 +963,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF1W
-    pub mod RF1W {
+    /// Rx FIFO 1 message lost
+    pub mod RF1L {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -977,8 +977,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF1F
-    pub mod RF1F {
+    /// High-priority message
+    pub mod HPM {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -991,8 +991,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// RF1L
-    pub mod RF1L {
+    /// Transmission completed
+    pub mod TC {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -1005,8 +1005,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// HPM
-    pub mod HPM {
+    /// Transmission cancellation finished
+    pub mod TCF {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -1019,8 +1019,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TC
-    pub mod TC {
+    /// Tx FIFO empty
+    pub mod TFE {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -1033,8 +1033,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TCF
-    pub mod TCF {
+    /// Tx even FIFO new entry
+    pub mod TEFN {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -1047,8 +1047,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TFE
-    pub mod TFE {
+    /// Tx event FIFO full
+    pub mod TEFF {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -1061,8 +1061,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TEFN
-    pub mod TEFN {
+    /// Tx event FIFO element lost
+    pub mod TEFL {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -1075,8 +1075,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TEFW
-    pub mod TEFW {
+    /// Timestamp wraparound
+    pub mod TSW {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -1089,8 +1089,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TEFF
-    pub mod TEFF {
+    /// Message RAM access failure
+    pub mod MRAF {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -1103,8 +1103,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TEFL
-    pub mod TEFL {
+    /// Timeout occurred
+    pub mod TOO {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -1117,8 +1117,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TSW
-    pub mod TSW {
+    /// Error logging overflow
+    pub mod ELO {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -1131,8 +1131,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// MRAF
-    pub mod MRAF {
+    /// Error passive
+    pub mod EP {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1145,8 +1145,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// TOO
-    pub mod TOO {
+    /// Warning status
+    pub mod EW {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1159,8 +1159,8 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// DRX
-    pub mod DRX {
+    /// Bus_off status
+    pub mod BO {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1173,8 +1173,36 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// ELO
-    pub mod ELO {
+    /// Watchdog interrupt
+    pub mod WDI {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Protocol error in arbitration phase
+    pub mod PEA {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Protocol error in data phase
+    pub mod PED {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
@@ -1187,95 +1215,11 @@ pub mod IR {
         pub mod RW {}
     }
 
-    /// EP
-    pub mod EP {
+    /// Access to reserved address
+    pub mod ARA {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EW
-    pub mod EW {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BO
-    pub mod BO {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// WDI
-    pub mod WDI {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PEA
-    pub mod PEA {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PED
-    pub mod PED {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ARA
-    pub mod ARA {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1289,7 +1233,7 @@ pub mod IR {
 /// The settings in the Interrupt Enable register determine which status changes in the Interrupt Register will be signaled on an interrupt line.
 pub mod IE {
 
-    /// RF0NE
+    /// Rx FIFO 0 new message enable
     pub mod RF0NE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1303,8 +1247,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF0WE
-    pub mod RF0WE {
+    /// Rx FIFO 0 full enable
+    pub mod RF0FE {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -1317,8 +1261,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF0FE
-    pub mod RF0FE {
+    /// Rx FIFO 0 message lost enable
+    pub mod RF0LE {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -1331,8 +1275,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF0LE
-    pub mod RF0LE {
+    /// Rx FIFO 1 new message enable
+    pub mod RF1NE {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -1345,8 +1289,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF1NE
-    pub mod RF1NE {
+    /// Rx FIFO 1 full enable
+    pub mod RF1FE {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -1359,8 +1303,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF1WE
-    pub mod RF1WE {
+    /// Rx FIFO 1 message lost enable
+    pub mod RF1LE {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -1373,8 +1317,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF1FE
-    pub mod RF1FE {
+    /// High-priority message enable
+    pub mod HPME {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
@@ -1387,8 +1331,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// RF1LE
-    pub mod RF1LE {
+    /// Transmission completed enable
+    pub mod TCE {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
@@ -1401,8 +1345,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// HPME
-    pub mod HPME {
+    /// Transmission cancellation finished enable
+    pub mod TCFE {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
@@ -1415,8 +1359,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TCE
-    pub mod TCE {
+    /// Tx FIFO empty enable
+    pub mod TFEE {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
@@ -1429,8 +1373,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TCFE
-    pub mod TCFE {
+    /// Tx even FIFO new entry enable
+    pub mod TEFNE {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
@@ -1443,8 +1387,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TFEE
-    pub mod TFEE {
+    /// Tx event FIFO full enable
+    pub mod TEFFE {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
@@ -1457,8 +1401,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TEFNE
-    pub mod TEFNE {
+    /// Tx event FIFO element lost enable
+    pub mod TEFLE {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
@@ -1471,8 +1415,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TEFWE
-    pub mod TEFWE {
+    /// Timestamp wraparound enable
+    pub mod TSWE {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
@@ -1485,8 +1429,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TEFFE
-    pub mod TEFFE {
+    /// Message RAM access failure enable
+    pub mod MRAFE {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
@@ -1499,8 +1443,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TEFLE
-    pub mod TEFLE {
+    /// Timeout occurred enable
+    pub mod TOOE {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
@@ -1513,8 +1457,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TSWE
-    pub mod TSWE {
+    /// Error logging overflow enable
+    pub mod ELOE {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
@@ -1527,8 +1471,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// MRAFE
-    pub mod MRAFE {
+    /// Error passive enable
+    pub mod EPE {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1541,8 +1485,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// TOOE
-    pub mod TOOE {
+    /// Warning status enable
+    pub mod EWE {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1555,8 +1499,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// DRX
-    pub mod DRX {
+    /// Bus_off status enable
+    pub mod BOE {
         /// Offset (19 bits)
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
@@ -1569,8 +1513,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// BECE
-    pub mod BECE {
+    /// Watchdog interrupt enable
+    pub mod WDIE {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
@@ -1583,8 +1527,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// BEUE
-    pub mod BEUE {
+    /// Protocol error in arbitration phase enable
+    pub mod PEAE {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1597,8 +1541,8 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// ELOE
-    pub mod ELOE {
+    /// Protocol error in data phase enable
+    pub mod PEDE {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
@@ -1611,95 +1555,11 @@ pub mod IE {
         pub mod RW {}
     }
 
-    /// EPE
-    pub mod EPE {
+    /// Access to reserved address enable
+    pub mod ARAE {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EWE
-    pub mod EWE {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BOE
-    pub mod BOE {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// WDIE
-    pub mod WDIE {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PEAE
-    pub mod PEAE {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PEDE
-    pub mod PEDE {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ARAE
-    pub mod ARAE {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1713,8 +1573,8 @@ pub mod IE {
 /// The Interrupt Line Select register assigns an interrupt generated by a specific interrupt flag from the Interrupt Register to one of the two module interrupt lines. For interrupt generation the respective interrupt line has to be enabled via ILE\[EINT0\] and ILE\[EINT1\].
 pub mod ILS {
 
-    /// RF0NL
-    pub mod RF0NL {
+    /// RX FIFO bit grouping the following interruption
+    pub mod RXFIFO0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -1727,8 +1587,8 @@ pub mod ILS {
         pub mod RW {}
     }
 
-    /// RF0WL
-    pub mod RF0WL {
+    /// RX FIFO bit grouping the following interruption
+    pub mod RXFIFO1 {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -1741,8 +1601,8 @@ pub mod ILS {
         pub mod RW {}
     }
 
-    /// RF0FL
-    pub mod RF0FL {
+    /// Status message bit grouping the following interruption
+    pub mod SMSG {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
@@ -1755,8 +1615,8 @@ pub mod ILS {
         pub mod RW {}
     }
 
-    /// RF0LL
-    pub mod RF0LL {
+    /// TX FIFO error grouping the following interruption
+    pub mod TFERR {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
@@ -1769,8 +1629,8 @@ pub mod ILS {
         pub mod RW {}
     }
 
-    /// RF1NL
-    pub mod RF1NL {
+    /// Interrupt regrouping the following interruption
+    pub mod MISC {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
@@ -1783,8 +1643,8 @@ pub mod ILS {
         pub mod RW {}
     }
 
-    /// RF1WL
-    pub mod RF1WL {
+    /// Bit and line error grouping the following interruption
+    pub mod BERR {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
@@ -1797,333 +1657,11 @@ pub mod ILS {
         pub mod RW {}
     }
 
-    /// RF1FL
-    pub mod RF1FL {
+    /// Protocol error grouping the following interruption
+    pub mod PERR {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// RF1LL
-    pub mod RF1LL {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// HPML
-    pub mod HPML {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TCL
-    pub mod TCL {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TCFL
-    pub mod TCFL {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TFEL
-    pub mod TFEL {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TEFNL
-    pub mod TEFNL {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TEFWL
-    pub mod TEFWL {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (1 bit: 1 << 13)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TEFFL
-    pub mod TEFFL {
-        /// Offset (14 bits)
-        pub const offset: u32 = 14;
-        /// Mask (1 bit: 1 << 14)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TEFLL
-    pub mod TEFLL {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TSWL
-    pub mod TSWL {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MRAFL
-    pub mod MRAFL {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TOOL
-    pub mod TOOL {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (1 bit: 1 << 18)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DRXL
-    pub mod DRXL {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BECL
-    pub mod BECL {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (1 bit: 1 << 20)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BEUL
-    pub mod BEUL {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ELOL
-    pub mod ELOL {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EPL
-    pub mod EPL {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EWL
-    pub mod EWL {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (1 bit: 1 << 24)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BOL
-    pub mod BOL {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// WDIL
-    pub mod WDIL {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PEAL
-    pub mod PEAL {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PEDL
-    pub mod PEDL {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ARAL
-    pub mod ARAL {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2217,6 +1755,62 @@ pub mod RXGFC {
         pub const offset: u32 = 4;
         /// Mask (2 bits: 0b11 << 4)
         pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// List size extended
+    pub mod LSE {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (4 bits: 0b1111 << 24)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// List size standard
+    pub mod LSS {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (5 bits: 0b11111 << 16)
+        pub const mask: u32 = 0b11111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FIFO 0 operation mode
+    pub mod F0OM {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FIFO 1 operation mode
+    pub mod F1OM {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2569,8 +2163,8 @@ pub mod TXFQS {
     pub mod TFFL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (6 bits: 0x3f << 0)
-        pub const mask: u32 = 0x3f << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2583,8 +2177,8 @@ pub mod TXFQS {
     pub mod TFGI {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
-        /// Mask (5 bits: 0b11111 << 8)
-        pub const mask: u32 = 0b11111 << offset;
+        /// Mask (2 bits: 0b11 << 8)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2597,8 +2191,8 @@ pub mod TXFQS {
     pub mod TFQPI {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
-        /// Mask (5 bits: 0b11111 << 16)
-        pub const mask: u32 = 0b11111 << offset;
+        /// Mask (2 bits: 0b11 << 16)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2629,8 +2223,8 @@ pub mod TXBRP {
     pub mod TRP {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2647,8 +2241,8 @@ pub mod TXBAR {
     pub mod AR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2665,8 +2259,8 @@ pub mod TXBCR {
     pub mod CR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2683,8 +2277,8 @@ pub mod TXBTO {
     pub mod TO {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2701,8 +2295,8 @@ pub mod TXBCF {
     pub mod CF {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2719,8 +2313,8 @@ pub mod TXBTIE {
     pub mod TIE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2737,8 +2331,8 @@ pub mod TXBCIE {
     pub mod CFIE {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2755,8 +2349,8 @@ pub mod TXEFS {
     pub mod EFFL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (6 bits: 0x3f << 0)
-        pub const mask: u32 = 0x3f << offset;
+        /// Mask (3 bits: 0b111 << 0)
+        pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2769,8 +2363,8 @@ pub mod TXEFS {
     pub mod EFGI {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
-        /// Mask (5 bits: 0b11111 << 8)
-        pub const mask: u32 = 0b11111 << offset;
+        /// Mask (2 bits: 0b11 << 8)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2783,8 +2377,8 @@ pub mod TXEFS {
     pub mod EFPI {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
-        /// Mask (5 bits: 0b11111 << 16)
-        pub const mask: u32 = 0b11111 << offset;
+        /// Mask (2 bits: 0b11 << 16)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -2886,13 +2480,13 @@ pub struct RegisterBlock {
     pub TSCC: RWRegister<u32>,
 
     /// FDCAN Timestamp Counter Value Register
-    pub TSCV: RORegister<u32>,
+    pub TSCV: RWRegister<u32>,
 
     /// FDCAN Timeout Counter Configuration Register
     pub TOCC: RWRegister<u32>,
 
     /// FDCAN Timeout Counter Value Register
-    pub TOCV: RORegister<u32>,
+    pub TOCV: RWRegister<u32>,
 
     _reserved2: [u32; 4],
 

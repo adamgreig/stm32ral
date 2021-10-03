@@ -86,11 +86,11 @@ pub mod PMC {
     }
 
     /// ADC3DC2
-    pub mod ADCDC2 {
+    pub mod ADC1DC2 {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
-        /// Mask (3 bits: 0b111 << 16)
-        pub const mask: u32 = 0b111 << offset;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -146,6 +146,34 @@ pub mod PMC {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADC3DC2
+    pub mod ADC3DC2 {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (1 bit: 1 << 18)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ADC2DC2
+    pub mod ADC2DC2 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}

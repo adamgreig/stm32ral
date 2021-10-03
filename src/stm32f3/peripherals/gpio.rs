@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose I/Os
 //!
-//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x4, stm32f3x8
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x4
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -2359,7 +2359,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Resets the corresponding ODRx bit
+            pub const Reset: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2372,7 +2377,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2385,7 +2390,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2398,7 +2403,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2411,7 +2416,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2424,7 +2429,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2437,7 +2442,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2450,7 +2455,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2463,7 +2468,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }

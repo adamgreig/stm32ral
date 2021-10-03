@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Cryptographic processor
 //!
-//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -222,6 +222,8 @@ pub struct RegisterBlock {
 
     /// Control register
     pub CR: WORegister<u32>,
+
+    _reserved1: [u32; 1],
 
     /// Initial CRC value
     pub INIT: RWRegister<u32>,

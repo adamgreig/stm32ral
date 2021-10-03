@@ -1463,7 +1463,7 @@ pub mod ARR {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR1 {
 
     /// High Capture/Compare 1 value
@@ -1495,19 +1495,19 @@ pub mod CCR1 {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR2 {
     pub use super::CCR1::CCR1_H;
     pub use super::CCR1::CCR1_L;
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR3 {
     pub use super::CCR1::CCR1_H;
     pub use super::CCR1::CCR1_L;
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR4 {
     pub use super::CCR1::CCR1_H;
     pub use super::CCR1::CCR1_L;
@@ -1624,16 +1624,16 @@ pub struct RegisterBlock {
 
     _reserved1: [u32; 1],
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR1: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR2: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR3: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR4: RWRegister<u32>,
 
     _reserved2: [u32; 1],

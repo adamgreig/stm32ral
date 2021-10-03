@@ -52,6 +52,7 @@ extern "C" {
     fn COMP();
     fn LPTIM1();
     fn LPTIM2();
+    fn USB_FS();
     fn DMA2_CH6();
     fn DMA2_CH7();
     fn I2C3_EV();
@@ -149,7 +150,7 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector { _handler: COMP },
     Vector { _handler: LPTIM1 },
     Vector { _handler: LPTIM2 },
-    Vector { _reserved: 0 },
+    Vector { _handler: USB_FS },
     Vector { _handler: DMA2_CH6 },
     Vector { _handler: DMA2_CH7 },
     Vector { _reserved: 0 },
@@ -273,6 +274,8 @@ pub enum Interrupt {
     LPTIM1 = 65,
     /// 66: LP TIM2 interrupt
     LPTIM2 = 66,
+    /// 67: USB event interrupt through EXTI
+    USB_FS = 67,
     /// 68: DMA2 Channel 6 global Interrupt
     DMA2_CH6 = 68,
     /// 69: DMA2 Channel 7 global Interrupt

@@ -1515,10 +1515,10 @@ pub mod BMTRGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: has no effect
+            /// 0b0: Timer X period following external event Y has no effect
             pub const NoEffect: u32 = 0b0;
 
-            /// 0b1: triggers a burst mode entry
+            /// 0b1: Timer X period following external event Y triggers a burst mode entry
             pub const Trigger: u32 = 0b1;
         }
     }
@@ -1549,11 +1549,11 @@ pub mod BMTRGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Timer X compare Y event has no effect
+            /// 0b0: Timer X compare Y has no effect
             pub const NoEffect: u32 = 0b0;
 
-            /// 0b1: Timer X compare Y event triggers a burst mode entry
-            pub const Trigger: u32 = 0b1;
+            /// 0b1: Timer X compare Y triggers capture Z
+            pub const TriggerCapture: u32 = 0b1;
         }
     }
 
@@ -1567,15 +1567,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Timer X compare Y has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: Timer X compare Y triggers capture Z
-            pub const TriggerCapture: u32 = 0b1;
-        }
+        pub use super::TECMP2::RW;
     }
 
     /// TEREP
@@ -1630,7 +1622,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TDCMP1
@@ -1643,7 +1635,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TDREP
@@ -1669,12 +1661,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Reset timer
-            pub const Reset: u32 = 0b1;
-        }
+        pub use super::TERST::RW;
     }
 
     /// TCCMP2
@@ -1687,7 +1674,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TCCMP1
@@ -1700,7 +1687,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TCREP
@@ -1726,7 +1713,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TDRST::RW;
+        pub use super::TERST::RW;
     }
 
     /// TBCMP2
@@ -1739,7 +1726,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TBCMP1
@@ -1752,7 +1739,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TBREP
@@ -1778,7 +1765,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TDRST::RW;
+        pub use super::TERST::RW;
     }
 
     /// TACMP2
@@ -1791,7 +1778,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        pub use super::TECMP2::RW;
     }
 
     /// TACMP1
@@ -1804,7 +1791,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TECMP1::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Timer X compare Y event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Timer X compare Y event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// TAREP
@@ -1830,7 +1825,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TDRST::RW;
+        pub use super::TERST::RW;
     }
 
     /// MSTCMP4
@@ -1838,27 +1833,6 @@ pub mod BMTRGR {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Master timer compare X event has no effect
-            pub const NoEffect: u32 = 0b0;
-
-            /// 0b1: Master timer compare X event triggers a burst mode entry
-            pub const Trigger: u32 = 0b1;
-        }
-    }
-
-    /// MSTCMP3
-    pub mod MSTCMP3 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1875,6 +1849,19 @@ pub mod BMTRGR {
         }
     }
 
+    /// MSTCMP3
+    pub mod MSTCMP3 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::MSTCMP4::RW;
+    }
+
     /// MSTCMP2
     pub mod MSTCMP2 {
         /// Offset (4 bits)
@@ -1885,7 +1872,7 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSTCMP3::RW;
+        pub use super::MSTCMP4::RW;
     }
 
     /// MSTCMP1
@@ -1898,7 +1885,15 @@ pub mod BMTRGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSTCMP3::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Master timer compare X event has no effect
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Master timer compare X event triggers a burst mode entry
+            pub const Trigger: u32 = 0b1;
+        }
     }
 
     /// MSTREP
@@ -4315,15 +4310,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No master compare interrupt occurred
-            pub const NoEvent: u32 = 0b0;
-
-            /// 0b1: Master compare interrupt occurred
-            pub const Event: u32 = 0b1;
-        }
+        pub use super::MCMP4::RW;
     }
 
     /// MCMP2
@@ -4336,7 +4323,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MCMP1
@@ -4349,7 +4336,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MREP
@@ -4362,7 +4349,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MPER
@@ -4375,7 +4362,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MCNT
@@ -4388,7 +4375,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MDIER
@@ -4401,7 +4388,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MICR
@@ -4414,7 +4401,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 
     /// MCR
@@ -4427,7 +4414,7 @@ pub mod BDMUPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP3::RW;
+        pub use super::MCMP4::RW;
     }
 }
 

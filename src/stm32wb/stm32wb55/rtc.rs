@@ -214,7 +214,7 @@ pub mod DR {
 pub mod CR {
 
     /// Wakeup clock selection
-    pub mod WCKSEL {
+    pub mod WUCKSEL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (3 bits: 0b111 << 0)

@@ -1,13 +1,13 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! System window watchdog
+//! WinWATCHDOG
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::iwdg::Instance;
 pub use crate::stm32g4::peripherals::iwdg::{RegisterBlock, ResetValues};
-pub use crate::stm32g4::peripherals::iwdg::{CFR, CR, SR};
+pub use crate::stm32g4::peripherals::iwdg::{KR, PR, RLR, SR, WINR};
 
 /// Access functions for the IWDG peripheral instance
 pub mod IWDG {
@@ -24,9 +24,11 @@ pub mod IWDG {
 
     /// Reset values for each field in IWDG
     pub const reset: ResetValues = ResetValues {
-        CR: 0x0000007F,
-        CFR: 0x0000007F,
+        KR: 0x00000000,
+        PR: 0x00000000,
+        RLR: 0x00000FFF,
         SR: 0x00000000,
+        WINR: 0x00000FFF,
     };
 
     #[cfg(not(feature = "nosync"))]

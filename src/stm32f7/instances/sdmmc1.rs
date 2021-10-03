@@ -5,9 +5,9 @@
 //! Used by: stm32f745, stm32f750, stm32f7x6
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f7::peripherals::sdmmc1::Instance;
-pub use crate::stm32f7::peripherals::sdmmc1::{RegisterBlock, ResetValues};
-pub use crate::stm32f7::peripherals::sdmmc1::{
+pub use crate::stm32f7::peripherals::sdmmc::Instance;
+pub use crate::stm32f7::peripherals::sdmmc::{RegisterBlock, ResetValues};
+pub use crate::stm32f7::peripherals::sdmmc::{
     ARG, CLKCR, CMD, DCOUNT, DCTRL, DLEN, DTIMER, FIFO, FIFOCNT, ICR, MASK, POWER, RESP1, RESP2,
     RESP3, RESP4, RESPCMD, STA,
 };

@@ -210,10 +210,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1966,8 +1966,8 @@ pub mod CFGR2 {
     pub mod ADC1PRES {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
-        pub const mask: u32 = 0b1111 << offset;
+        /// Mask (5 bits: 0b11111 << 4)
+        pub const mask: u32 = 0b11111 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1975,8 +1975,8 @@ pub mod CFGR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0000: No clock
-            pub const NoClock: u32 = 0b0000;
+            /// 0b00000: No clock
+            pub const NoClock: u32 = 0b00000;
 
             /// 0b10000: PLL clock not divided
             pub const Div1: u32 = 0b10000;

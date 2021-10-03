@@ -5,9 +5,9 @@
 //! Used by: stm32l4x3, stm32l4x5
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::can1_v2::Instance;
-pub use crate::stm32l4::peripherals::can1_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::can1_v2::{
+pub use crate::stm32l4::peripherals::can1_v3::Instance;
+pub use crate::stm32l4::peripherals::can1_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::can1_v3::{
     BTR, ESR, FR10, FR11, FR110, FR111, FR112, FR113, FR114, FR115, FR116, FR117, FR118, FR119,
     FR12, FR120, FR121, FR122, FR123, FR124, FR125, FR126, FR127, FR13, FR14, FR15, FR16, FR17,
     FR18, FR19, FR20, FR21, FR210, FR211, FR212, FR213, FR214, FR215, FR216, FR217, FR218, FR219,

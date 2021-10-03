@@ -575,10 +575,10 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b00: HSE oscillator used as system clock
+            /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
-            /// 0b01: HSI oscillator used as system clock
+            /// 0b01: HSE oscillator used as system clock
             pub const HSE: u32 = 0b01;
 
             /// 0b10: PLL used as system clock
@@ -1354,7 +1354,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 2 reset
-    pub mod UART2RST {
+    pub mod USART2RST {
         /// Offset (17 bits)
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
@@ -1367,7 +1367,7 @@ pub mod APB1RSTR {
     }
 
     /// USART 3 reset
-    pub mod UART3RST {
+    pub mod USART3RST {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -1501,19 +1501,6 @@ pub mod APB1RSTR {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM2RST::RW;
-    }
-
-    /// HDMI-CEC reset
-    pub mod CECRST {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -2812,32 +2799,6 @@ pub mod AHB1LPENR {
         pub use super::GPIOALPEN::RW;
     }
 
-    /// IO port J clock enable during Sleep mode
-    pub mod GPIOJLPEN {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// IO port K clock enable during Sleep mode
-    pub mod GPIOKLPEN {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
     /// CRC clock enable during Sleep mode
     pub mod CRCLPEN {
         /// Offset (12 bits)
@@ -2934,71 +2895,6 @@ pub mod AHB1LPENR {
         /// Offset (22 bits)
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// DMA2D clock enable during Sleep mode
-    pub mod DMA2DLPEN {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// Ethernet MAC clock enable during Sleep mode
-    pub mod ETHMACLPEN {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (1 bit: 1 << 25)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// Ethernet transmission clock enable during Sleep mode
-    pub mod ETHMACTXLPEN {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// Ethernet reception clock enable during Sleep mode
-    pub mod ETHMACRXLPEN {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::GPIOALPEN::RW;
-    }
-
-    /// Ethernet PTP clock enable during Sleep mode
-    pub mod ETHMACPTPLPEN {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -3420,19 +3316,6 @@ pub mod APB1LPENR {
         pub use super::TIM2LPEN::RW;
     }
 
-    /// CAN 2 clock enable during Sleep mode
-    pub mod CAN2LPEN {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::TIM2LPEN::RW;
-    }
-
     /// Power interface clock enable during Sleep mode
     pub mod PWRLPEN {
         /// Offset (28 bits)
@@ -3496,6 +3379,20 @@ pub mod APB1LPENR {
         /// Write-only values (empty)
         pub mod W {}
         pub use super::TIM2LPEN::RW;
+    }
+
+    /// RTCAPB clock enable during Sleep mode
+    pub mod RTCAPBLPEN {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

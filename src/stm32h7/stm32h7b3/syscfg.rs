@@ -121,34 +121,6 @@ pub mod PMCR {
         pub mod RW {}
     }
 
-    /// Booster Enable
-    pub mod BOOSTE {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Ethernet PHY Interface Selection
-    pub mod EPIS {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (3 bits: 0b111 << 21)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// PA0 Switch Open
     pub mod PA0SO {
         /// Offset (24 bits)
@@ -571,7 +543,7 @@ pub mod CCCR {
 }
 
 /// SYSCFG timer break lockup register
-pub mod SYSCFG_BRK_LOCKUPR {
+pub mod CFGR {
 
     /// PVD lock enable bit.
     pub mod PVDL {
@@ -662,7 +634,10 @@ pub struct RegisterBlock {
     /// external interrupt configuration register 4
     pub EXTICR4: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    /// SYSCFG timer break lockup register
+    pub CFGR: RWRegister<u32>,
+
+    _reserved2: [u32; 1],
 
     /// compensation cell control/status register
     pub CCCSR: RWRegister<u32>,
@@ -672,11 +647,6 @@ pub struct RegisterBlock {
 
     /// SYSCFG compensation cell code register
     pub CCCR: RWRegister<u32>,
-
-    _reserved3: [u32; 59],
-
-    /// SYSCFG timer break lockup register
-    pub SYSCFG_BRK_LOCKUPR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub PMCR: u32,
@@ -684,10 +654,10 @@ pub struct ResetValues {
     pub EXTICR2: u32,
     pub EXTICR3: u32,
     pub EXTICR4: u32,
+    pub CFGR: u32,
     pub CCCSR: u32,
     pub CCVR: u32,
     pub CCCR: u32,
-    pub SYSCFG_BRK_LOCKUPR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -728,7 +698,7 @@ pub mod SYSCFG {
         CCCSR: 0x00000000,
         CCVR: 0x00000000,
         CCCR: 0x00000000,
-        SYSCFG_BRK_LOCKUPR: 0x00000000,
+        CFGR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose I/Os
 //!
-//! Used by: stm32l0x1, stm32l0x2, stm32l0x3
+//! Used by: stm32l0x0, stm32l0x1, stm32l0x2, stm32l0x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -2053,30 +2053,6 @@ pub mod AFRL {
 
             /// 0b0111: AF7
             pub const AF7: u32 = 0b0111;
-
-            /// 0b1000: AF8
-            pub const AF8: u32 = 0b1000;
-
-            /// 0b1001: AF9
-            pub const AF9: u32 = 0b1001;
-
-            /// 0b1010: AF10
-            pub const AF10: u32 = 0b1010;
-
-            /// 0b1011: AF11
-            pub const AF11: u32 = 0b1011;
-
-            /// 0b1100: AF12
-            pub const AF12: u32 = 0b1100;
-
-            /// 0b1101: AF13
-            pub const AF13: u32 = 0b1101;
-
-            /// 0b1110: AF14
-            pub const AF14: u32 = 0b1110;
-
-            /// 0b1111: AF15
-            pub const AF15: u32 = 0b1111;
         }
     }
 
@@ -2211,30 +2187,6 @@ pub mod AFRH {
 
             /// 0b0111: AF7
             pub const AF7: u32 = 0b0111;
-
-            /// 0b1000: AF8
-            pub const AF8: u32 = 0b1000;
-
-            /// 0b1001: AF9
-            pub const AF9: u32 = 0b1001;
-
-            /// 0b1010: AF10
-            pub const AF10: u32 = 0b1010;
-
-            /// 0b1011: AF11
-            pub const AF11: u32 = 0b1011;
-
-            /// 0b1100: AF12
-            pub const AF12: u32 = 0b1100;
-
-            /// 0b1101: AF13
-            pub const AF13: u32 = 0b1101;
-
-            /// 0b1110: AF14
-            pub const AF14: u32 = 0b1110;
-
-            /// 0b1111: AF15
-            pub const AF15: u32 = 0b1111;
         }
     }
 

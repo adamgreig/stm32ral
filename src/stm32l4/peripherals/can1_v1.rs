@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Controller area network
 //!
-//! Used by: stm32l4x1, stm32l4x2
+//! Used by: stm32l412, stm32l4x1, stm32l4x2
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -594,7 +594,7 @@ pub mod TSR {
     }
 }
 
-/// receive FIFO 0 register
+/// receive FIFO %s register
 pub mod RF0R {
 
     /// RFOM0
@@ -675,7 +675,7 @@ pub mod RF0R {
     }
 }
 
-/// receive FIFO 0 register
+/// receive FIFO %s register
 pub mod RF1R {
     pub use super::RF0R::FMP;
     pub use super::RF0R::FOVR;
@@ -2898,10 +2898,10 @@ pub struct RegisterBlock {
     /// transmit status register
     pub TSR: RWRegister<u32>,
 
-    /// receive FIFO 0 register
+    /// receive FIFO %s register
     pub RF0R: RWRegister<u32>,
 
-    /// receive FIFO 0 register
+    /// receive FIFO %s register
     pub RF1R: RWRegister<u32>,
 
     /// interrupt enable register

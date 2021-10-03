@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! TIM16
 //!
-//! Used by: stm32mp157
+//! Used by: stm32mp153, stm32mp157
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

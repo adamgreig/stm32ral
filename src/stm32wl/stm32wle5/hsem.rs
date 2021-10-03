@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R0 {
+pub mod R0 {
 
     /// Semaphore ProcessID
     pub mod PROCID {
@@ -24,7 +24,7 @@ pub mod HSEM_R0 {
     }
 
     /// Semaphore MASTERID
-    pub mod MASTERID {
+    pub mod COREID {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (4 bits: 0b1111 << 8)
@@ -43,122 +43,136 @@ pub mod HSEM_R0 {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Semaphore is free
+            pub const Free: u32 = 0b0;
+
+            /// 0b1: Semaphore is locked
+            pub const Locked: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Free semaphore
+            pub const Free: u32 = 0b0;
+
+            /// 0b1: Try to lock semaphore
+            pub const TryLock: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R1 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R1 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R2 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R2 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R3 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R3 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R4 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R4 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R5 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R5 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R6 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R6 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R7 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R7 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R8 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R8 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R9 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R9 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R10 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R10 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R11 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R11 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R12 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R12 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R13 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R13 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R14 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R14 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM register HSEM_R0 HSEM_R31
-pub mod HSEM_R15 {
-    pub use super::HSEM_R0::LOCK;
-    pub use super::HSEM_R0::MASTERID;
-    pub use super::HSEM_R0::PROCID;
+pub mod R15 {
+    pub use super::R0::COREID;
+    pub use super::R0::LOCK;
+    pub use super::R0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR0 {
+pub mod RLR0 {
 
     /// Semaphore ProcessID
     pub mod PROCID {
@@ -175,7 +189,7 @@ pub mod HSEM_RLR0 {
     }
 
     /// Semaphore MASTERID
-    pub mod MASTERID {
+    pub mod COREID {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (4 bits: 0b1111 << 8)
@@ -194,122 +208,136 @@ pub mod HSEM_RLR0 {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Semaphore is free
+            pub const Free: u32 = 0b0;
+
+            /// 0b1: Semaphore is locked
+            pub const Locked: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Free semaphore
+            pub const Free: u32 = 0b0;
+
+            /// 0b1: Try to lock semaphore
+            pub const TryLock: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR1 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR1 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR2 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR2 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR3 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR3 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR4 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR4 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR5 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR5 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR6 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR6 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR7 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR7 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR8 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR8 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR9 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR9 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR10 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR10 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR11 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR11 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR12 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR12 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR13 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR13 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR14 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR14 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Read lock register
-pub mod HSEM_RLR15 {
-    pub use super::HSEM_RLR0::LOCK;
-    pub use super::HSEM_RLR0::MASTERID;
-    pub use super::HSEM_RLR0::PROCID;
+pub mod RLR15 {
+    pub use super::RLR0::COREID;
+    pub use super::RLR0::LOCK;
+    pub use super::RLR0::PROCID;
 }
 
 /// HSEM Interrupt enable register
-pub mod HSEM_IER {
+pub mod C1IER {
 
     /// Interrupt semaphore n enable bit
     pub mod ISE0 {
@@ -321,8 +349,15 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt generation disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt generation enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Interrupt semaphore n enable bit
@@ -335,8 +370,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -349,8 +383,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -363,8 +396,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -377,8 +409,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -391,8 +422,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -405,8 +435,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -419,8 +448,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -433,8 +461,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -447,8 +474,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -461,8 +487,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -475,8 +500,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -489,8 +513,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -503,8 +526,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -517,8 +539,7 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 
     /// Interrupt semaphore n enable bit
@@ -531,13 +552,12 @@ pub mod HSEM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISE0::RW;
     }
 }
 
 /// HSEM Interrupt clear register
-pub mod HSEM_ICR {
+pub mod C1ICR {
 
     /// Interrupt(N) semaphore n clear bit
     pub mod ISC0 {
@@ -545,10 +565,21 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Always reads 0
+            pub const NoEffect: u32 = 0b0;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Interrupt semaphore x status ISFx and masked status MISFx not affected
+            pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: Interrupt semaphore x status ISFx and masked status MISFx cleared
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -559,10 +590,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -573,10 +602,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -587,10 +614,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -601,10 +626,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -615,10 +638,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -629,10 +650,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -643,10 +662,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -657,10 +674,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -671,10 +686,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -685,10 +698,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -699,10 +710,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -713,10 +722,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -727,10 +734,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -741,10 +746,8 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -755,17 +758,15 @@ pub mod HSEM_ICR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::ISC0::R;
+        pub use super::ISC0::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 }
 
 /// HSEM Interrupt status register
-pub mod HSEM_ISR {
+pub mod C1ISR {
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
     pub mod ISF0 {
@@ -777,8 +778,15 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt pending
+            pub const NotPending: u32 = 0b0;
+
+            /// 0b1: Interrupt pending
+            pub const Pending: u32 = 0b1;
+        }
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -791,8 +799,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -805,8 +812,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -819,8 +825,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -833,8 +838,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -847,8 +851,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -861,8 +864,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -875,8 +877,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -889,8 +890,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -903,8 +903,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -917,8 +916,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -931,8 +929,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -945,8 +942,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -959,8 +955,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -973,8 +968,7 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 
     /// Interrupt(N) semaphore n status bit before enable (mask)
@@ -987,13 +981,12 @@ pub mod HSEM_ISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::ISF0::RW;
     }
 }
 
 /// HSEM Masked interrupt status register
-pub mod HSEM_MISR {
+pub mod C1MISR {
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
     pub mod MISF0 {
@@ -1005,8 +998,15 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No interrupt pending after masking
+            pub const NotPending: u32 = 0b0;
+
+            /// 0b1: Interrupt pending after masking
+            pub const Pending: u32 = 0b1;
+        }
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1019,8 +1019,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1033,8 +1032,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1047,8 +1045,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1061,8 +1058,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1075,8 +1071,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1089,8 +1084,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1103,8 +1097,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1117,8 +1110,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1131,8 +1123,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1145,8 +1136,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1159,8 +1149,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1173,8 +1162,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1187,8 +1175,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1201,8 +1188,7 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 
     /// masked interrupt(N) semaphore n status bit after enable (mask)
@@ -1215,16 +1201,15 @@ pub mod HSEM_MISR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MISF0::RW;
     }
 }
 
 /// HSEM Clear register
-pub mod HSEM_CR {
+pub mod CR {
 
     /// MASTERID
-    pub mod MASTERID {
+    pub mod COREID {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
         /// Mask (4 bits: 0b1111 << 8)
@@ -1253,7 +1238,7 @@ pub mod HSEM_CR {
 }
 
 /// HSEM Interrupt clear register
-pub mod HSEM_KEYR {
+pub mod KEYR {
 
     /// Semaphore Clear Key
     pub mod KEY {
@@ -1272,164 +1257,164 @@ pub mod HSEM_KEYR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R0: RWRegister<u32>,
+    pub R0: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R1: RWRegister<u32>,
+    pub R1: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R2: RWRegister<u32>,
+    pub R2: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R3: RWRegister<u32>,
+    pub R3: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R4: RWRegister<u32>,
+    pub R4: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R5: RWRegister<u32>,
+    pub R5: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R6: RWRegister<u32>,
+    pub R6: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R7: RWRegister<u32>,
+    pub R7: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R8: RWRegister<u32>,
+    pub R8: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R9: RWRegister<u32>,
+    pub R9: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R10: RWRegister<u32>,
+    pub R10: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R11: RWRegister<u32>,
+    pub R11: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R12: RWRegister<u32>,
+    pub R12: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R13: RWRegister<u32>,
+    pub R13: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R14: RWRegister<u32>,
+    pub R14: RWRegister<u32>,
 
     /// HSEM register HSEM_R0 HSEM_R31
-    pub HSEM_R15: RWRegister<u32>,
+    pub R15: RWRegister<u32>,
 
     _reserved1: [u32; 16],
 
     /// HSEM Read lock register
-    pub HSEM_RLR0: RORegister<u32>,
+    pub RLR0: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR1: RORegister<u32>,
+    pub RLR1: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR2: RORegister<u32>,
+    pub RLR2: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR3: RORegister<u32>,
+    pub RLR3: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR4: RORegister<u32>,
+    pub RLR4: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR5: RORegister<u32>,
+    pub RLR5: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR6: RORegister<u32>,
+    pub RLR6: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR7: RORegister<u32>,
+    pub RLR7: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR8: RORegister<u32>,
+    pub RLR8: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR9: RORegister<u32>,
+    pub RLR9: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR10: RORegister<u32>,
+    pub RLR10: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR11: RORegister<u32>,
+    pub RLR11: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR12: RORegister<u32>,
+    pub RLR12: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR13: RORegister<u32>,
+    pub RLR13: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR14: RORegister<u32>,
+    pub RLR14: RORegister<u32>,
 
     /// HSEM Read lock register
-    pub HSEM_RLR15: RORegister<u32>,
+    pub RLR15: RORegister<u32>,
 
     _reserved2: [u32; 16],
 
     /// HSEM Interrupt enable register
-    pub HSEM_IER: RWRegister<u32>,
+    pub C1IER: RWRegister<u32>,
 
     /// HSEM Interrupt clear register
-    pub HSEM_ICR: RWRegister<u32>,
+    pub C1ICR: RWRegister<u32>,
 
     /// HSEM Interrupt status register
-    pub HSEM_ISR: RORegister<u32>,
+    pub C1ISR: RORegister<u32>,
 
     /// HSEM Masked interrupt status register
-    pub HSEM_MISR: RORegister<u32>,
+    pub C1MISR: RORegister<u32>,
 
     _reserved3: [u32; 12],
 
     /// HSEM Clear register
-    pub HSEM_CR: WORegister<u32>,
+    pub CR: WORegister<u32>,
 
     /// HSEM Interrupt clear register
-    pub HSEM_KEYR: RWRegister<u32>,
+    pub KEYR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub HSEM_R0: u32,
-    pub HSEM_R1: u32,
-    pub HSEM_R2: u32,
-    pub HSEM_R3: u32,
-    pub HSEM_R4: u32,
-    pub HSEM_R5: u32,
-    pub HSEM_R6: u32,
-    pub HSEM_R7: u32,
-    pub HSEM_R8: u32,
-    pub HSEM_R9: u32,
-    pub HSEM_R10: u32,
-    pub HSEM_R11: u32,
-    pub HSEM_R12: u32,
-    pub HSEM_R13: u32,
-    pub HSEM_R14: u32,
-    pub HSEM_R15: u32,
-    pub HSEM_RLR0: u32,
-    pub HSEM_RLR1: u32,
-    pub HSEM_RLR2: u32,
-    pub HSEM_RLR3: u32,
-    pub HSEM_RLR4: u32,
-    pub HSEM_RLR5: u32,
-    pub HSEM_RLR6: u32,
-    pub HSEM_RLR7: u32,
-    pub HSEM_RLR8: u32,
-    pub HSEM_RLR9: u32,
-    pub HSEM_RLR10: u32,
-    pub HSEM_RLR11: u32,
-    pub HSEM_RLR12: u32,
-    pub HSEM_RLR13: u32,
-    pub HSEM_RLR14: u32,
-    pub HSEM_RLR15: u32,
-    pub HSEM_IER: u32,
-    pub HSEM_ICR: u32,
-    pub HSEM_ISR: u32,
-    pub HSEM_MISR: u32,
-    pub HSEM_CR: u32,
-    pub HSEM_KEYR: u32,
+    pub R0: u32,
+    pub R1: u32,
+    pub R2: u32,
+    pub R3: u32,
+    pub R4: u32,
+    pub R5: u32,
+    pub R6: u32,
+    pub R7: u32,
+    pub R8: u32,
+    pub R9: u32,
+    pub R10: u32,
+    pub R11: u32,
+    pub R12: u32,
+    pub R13: u32,
+    pub R14: u32,
+    pub R15: u32,
+    pub RLR0: u32,
+    pub RLR1: u32,
+    pub RLR2: u32,
+    pub RLR3: u32,
+    pub RLR4: u32,
+    pub RLR5: u32,
+    pub RLR6: u32,
+    pub RLR7: u32,
+    pub RLR8: u32,
+    pub RLR9: u32,
+    pub RLR10: u32,
+    pub RLR11: u32,
+    pub RLR12: u32,
+    pub RLR13: u32,
+    pub RLR14: u32,
+    pub RLR15: u32,
+    pub C1IER: u32,
+    pub C1ICR: u32,
+    pub C1ISR: u32,
+    pub C1MISR: u32,
+    pub CR: u32,
+    pub KEYR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1462,44 +1447,44 @@ pub mod HSEM {
 
     /// Reset values for each field in HSEM
     pub const reset: ResetValues = ResetValues {
-        HSEM_R0: 0x00000000,
-        HSEM_R1: 0x00000000,
-        HSEM_R2: 0x00000000,
-        HSEM_R3: 0x00000000,
-        HSEM_R4: 0x00000000,
-        HSEM_R5: 0x00000000,
-        HSEM_R6: 0x00000000,
-        HSEM_R7: 0x00000000,
-        HSEM_R8: 0x00000000,
-        HSEM_R9: 0x00000000,
-        HSEM_R10: 0x00000000,
-        HSEM_R11: 0x00000000,
-        HSEM_R12: 0x00000000,
-        HSEM_R13: 0x00000000,
-        HSEM_R14: 0x00000000,
-        HSEM_R15: 0x00000000,
-        HSEM_RLR0: 0x00000000,
-        HSEM_RLR1: 0x00000000,
-        HSEM_RLR2: 0x00000000,
-        HSEM_RLR3: 0x00000000,
-        HSEM_RLR4: 0x00000000,
-        HSEM_RLR5: 0x00000000,
-        HSEM_RLR6: 0x00000000,
-        HSEM_RLR7: 0x00000000,
-        HSEM_RLR8: 0x00000000,
-        HSEM_RLR9: 0x00000000,
-        HSEM_RLR10: 0x00000000,
-        HSEM_RLR11: 0x00000000,
-        HSEM_RLR12: 0x00000000,
-        HSEM_RLR13: 0x00000000,
-        HSEM_RLR14: 0x00000000,
-        HSEM_RLR15: 0x00000000,
-        HSEM_IER: 0x00000000,
-        HSEM_ICR: 0x00000000,
-        HSEM_ISR: 0x00000000,
-        HSEM_MISR: 0x00000000,
-        HSEM_CR: 0x00000000,
-        HSEM_KEYR: 0x00000000,
+        R0: 0x00000000,
+        R1: 0x00000000,
+        R2: 0x00000000,
+        R3: 0x00000000,
+        R4: 0x00000000,
+        R5: 0x00000000,
+        R6: 0x00000000,
+        R7: 0x00000000,
+        R8: 0x00000000,
+        R9: 0x00000000,
+        R10: 0x00000000,
+        R11: 0x00000000,
+        R12: 0x00000000,
+        R13: 0x00000000,
+        R14: 0x00000000,
+        R15: 0x00000000,
+        RLR0: 0x00000000,
+        RLR1: 0x00000000,
+        RLR2: 0x00000000,
+        RLR3: 0x00000000,
+        RLR4: 0x00000000,
+        RLR5: 0x00000000,
+        RLR6: 0x00000000,
+        RLR7: 0x00000000,
+        RLR8: 0x00000000,
+        RLR9: 0x00000000,
+        RLR10: 0x00000000,
+        RLR11: 0x00000000,
+        RLR12: 0x00000000,
+        RLR13: 0x00000000,
+        RLR14: 0x00000000,
+        RLR15: 0x00000000,
+        C1IER: 0x00000000,
+        C1ICR: 0x00000000,
+        C1ISR: 0x00000000,
+        C1MISR: 0x00000000,
+        CR: 0x00000000,
+        KEYR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

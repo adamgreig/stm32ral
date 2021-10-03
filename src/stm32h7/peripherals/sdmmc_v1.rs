@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! SDMMC1
 //!
-//! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v, stm32h7b3
+//! Used by: stm32h735, stm32h747cm4, stm32h747cm7
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1786,56 +1786,6 @@ pub mod FIFOR {
     }
 }
 
-/// SDMMC IP version register
-pub mod VER {
-
-    /// IP minor revision number.
-    pub mod MINREV {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// IP major revision number.
-    pub mod MAJREV {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// SDMMC IP identification register
-pub mod ID {
-
-    /// SDMMC IP identification.
-    pub mod IP_ID {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// SDMMC command response register
 pub mod RESPCMDR {
 
@@ -1924,14 +1874,6 @@ pub struct RegisterBlock {
 
     /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
     pub FIFOR: RWRegister<u32>,
-
-    _reserved3: [u32; 220],
-
-    /// SDMMC IP version register
-    pub VER: RORegister<u32>,
-
-    /// SDMMC IP identification register
-    pub ID: RORegister<u32>,
 }
 pub struct ResetValues {
     pub POWER: u32,
@@ -1956,8 +1898,6 @@ pub struct ResetValues {
     pub IDMABASE0R: u32,
     pub IDMABASE1R: u32,
     pub FIFOR: u32,
-    pub VER: u32,
-    pub ID: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

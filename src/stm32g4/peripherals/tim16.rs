@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General purpose timers
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -463,8 +463,33 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: The comparison between the output compare register TIMx_CCRy and the counter TIMx_CNT has no effect on the outputs
+            pub const Frozen: u32 = 0b000;
+
+            /// 0b001: Set channel to active level on match. OCyREF signal is forced high when the counter matches the capture/compare register
+            pub const ActiveOnMatch: u32 = 0b001;
+
+            /// 0b010: Set channel to inactive level on match. OCyREF signal is forced low when the counter matches the capture/compare register
+            pub const InactiveOnMatch: u32 = 0b010;
+
+            /// 0b011: OCyREF toggles when TIMx_CNT=TIMx_CCRy
+            pub const Toggle: u32 = 0b011;
+
+            /// 0b100: OCyREF is forced low
+            pub const ForceInactive: u32 = 0b100;
+
+            /// 0b101: OCyREF is forced high
+            pub const ForceActive: u32 = 0b101;
+
+            /// 0b110: In upcounting, channel is active as long as TIMx_CNT<TIMx_CCRy else inactive. In downcounting, channel is inactive as long as TIMx_CNT>TIMx_CCRy else active
+            pub const PwmMode1: u32 = 0b110;
+
+            /// 0b111: Inversely to PwmMode1
+            pub const PwmMode2: u32 = 0b111;
+        }
     }
 
     /// Output Compare 1 preload enable
@@ -655,8 +680,8 @@ pub mod ARR {
     pub mod ARR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (20 bits: 0xfffff << 0)
+        pub const mask: u32 = 0xfffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -684,15 +709,15 @@ pub mod RCR {
     }
 }
 
-/// capture/compare register 1
+/// capture/compare register
 pub mod CCR1 {
 
-    /// Capture/Compare 1 value
-    pub mod CCR1 {
+    /// Capture/Compare value
+    pub mod CCR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (20 bits: 0xfffff << 0)
+        pub const mask: u32 = 0xfffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1128,6 +1153,24 @@ pub mod AF2 {
     }
 }
 
+/// TIM option register 1
+pub mod OR1 {
+
+    /// HSE Divided by 32 enable
+    pub mod HSE32EN {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// DMA control register
 pub mod DCR {
 
@@ -1218,7 +1261,7 @@ pub struct RegisterBlock {
     /// repetition counter register
     pub RCR: RWRegister<u32>,
 
-    /// capture/compare register 1
+    /// capture/compare register
     pub CCR1: RWRegister<u32>,
 
     _reserved3: [u32; 3],
@@ -1242,7 +1285,10 @@ pub struct RegisterBlock {
     /// TIM alternate function option register 2
     pub AF2: RWRegister<u32>,
 
-    _reserved6: [u32; 221],
+    /// TIM option register 1
+    pub OR1: RWRegister<u32>,
+
+    _reserved6: [u32; 220],
 
     /// DMA control register
     pub DCR: RWRegister<u32>,
@@ -1268,6 +1314,7 @@ pub struct ResetValues {
     pub TISEL: u32,
     pub AF1: u32,
     pub AF2: u32,
+    pub OR1: u32,
     pub DCR: u32,
     pub DMAR: u32,
 }

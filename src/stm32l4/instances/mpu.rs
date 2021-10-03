@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Memory protection unit
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::mpu::Instance;

@@ -25,17 +25,17 @@ pub mod tim1_f100_f101_f102;
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f107"))]
 pub mod tim8;
 
-#[cfg(any(feature="doc", feature="stm32f100", feature="stm32f102"))]
-pub mod tim4_f100_f102;
-
-#[cfg(any(feature="doc", feature="stm32f100", feature="stm32f102"))]
-pub mod tim5_f100_f102;
-
 #[cfg(any(feature="doc", feature="stm32f100", feature="stm32f102", feature="stm32f107"))]
 pub mod tim13_f100_f102_f107;
 
 #[cfg(any(feature="doc", feature="stm32f100", feature="stm32f102", feature="stm32f107"))]
 pub mod tim14_f100_f102_f107;
+
+#[cfg(any(feature="doc", feature="stm32f102", feature="stm32f107"))]
+pub mod tim10_f102_f107;
+
+#[cfg(any(feature="doc", feature="stm32f102", feature="stm32f107"))]
+pub mod tim11_f102_f107;
 
 #[cfg(any(feature="doc", feature="stm32f100", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod tim6;
@@ -97,11 +97,11 @@ pub mod tim2;
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod tim3;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
-pub mod tim4_f101_f103_f107;
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
+pub mod tim4;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103", feature="stm32f107"))]
-pub mod tim5_f101_f103_f107;
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
+pub mod tim5;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod tim9;
@@ -109,11 +109,11 @@ pub mod tim9;
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103", feature="stm32f107"))]
 pub mod tim12;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103"))]
-pub mod tim10;
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
+pub mod tim10_f101_f103;
 
-#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f102", feature="stm32f103"))]
-pub mod tim11;
+#[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
+pub mod tim11_f101_f103;
 
 #[cfg(any(feature="doc", feature="stm32f101", feature="stm32f103"))]
 pub mod tim13_f101_f103;

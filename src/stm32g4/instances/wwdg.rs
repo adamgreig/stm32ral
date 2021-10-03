@@ -1,13 +1,13 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! WinWATCHDOG
+//! System window watchdog
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::wwdg::Instance;
 pub use crate::stm32g4::peripherals::wwdg::{RegisterBlock, ResetValues};
-pub use crate::stm32g4::peripherals::wwdg::{KR, PR, RLR, SR, WINR};
+pub use crate::stm32g4::peripherals::wwdg::{CFR, CR, SR};
 
 /// Access functions for the WWDG peripheral instance
 pub mod WWDG {
@@ -24,11 +24,9 @@ pub mod WWDG {
 
     /// Reset values for each field in WWDG
     pub const reset: ResetValues = ResetValues {
-        KR: 0x00000000,
-        PR: 0x00000000,
-        RLR: 0x00000FFF,
+        CR: 0x0000007F,
+        CFR: 0x0000007F,
         SR: 0x00000000,
-        WINR: 0x00000FFF,
     };
 
     #[cfg(not(feature = "nosync"))]

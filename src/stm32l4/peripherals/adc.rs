@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5
+//! Used by: stm32l412, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -829,7 +829,7 @@ pub mod CFGR2 {
 /// sample time register 1
 pub mod SMPR1 {
 
-    /// SMP9
+    /// Channel 9 sampling time selection
     pub mod SMP9 {
         /// Offset (27 bits)
         pub const offset: u32 = 27;
@@ -843,7 +843,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP8
+    /// Channel 8 sampling time selection
     pub mod SMP8 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -857,7 +857,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP7
+    /// Channel 7 sampling time selection
     pub mod SMP7 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -871,7 +871,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP6
+    /// Channel 6 sampling time selection
     pub mod SMP6 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -885,7 +885,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP5
+    /// Channel 5 sampling time selection
     pub mod SMP5 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -899,7 +899,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP4
+    /// Channel 4 sampling time selection
     pub mod SMP4 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -913,7 +913,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP3
+    /// Channel 3 sampling time selection
     pub mod SMP3 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -927,7 +927,7 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP2
+    /// Channel 2 sampling time selection
     pub mod SMP2 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -941,11 +941,25 @@ pub mod SMPR1 {
         pub mod RW {}
     }
 
-    /// SMP1
+    /// Channel 1 sampling time selection
     pub mod SMP1 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
         /// Mask (3 bits: 0b111 << 3)
+        pub const mask: u32 = 0b111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel 0 sampling time selection
+    pub mod SMP0 {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (3 bits: 0b111 << 0)
         pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -959,7 +973,7 @@ pub mod SMPR1 {
 /// sample time register 2
 pub mod SMPR2 {
 
-    /// SMP18
+    /// Channel 18 sampling time selection
     pub mod SMP18 {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -973,7 +987,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP17
+    /// Channel 17 sampling time selection
     pub mod SMP17 {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
@@ -987,7 +1001,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP16
+    /// Channel 16 sampling time selection
     pub mod SMP16 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
@@ -1001,7 +1015,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP15
+    /// Channel 15 sampling time selection
     pub mod SMP15 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -1015,7 +1029,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP14
+    /// Channel 14 sampling time selection
     pub mod SMP14 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1029,7 +1043,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP13
+    /// Channel 13 sampling time selection
     pub mod SMP13 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -1043,7 +1057,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP12
+    /// Channel 12 sampling time selection
     pub mod SMP12 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -1057,7 +1071,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP11
+    /// Channel 11 sampling time selection
     pub mod SMP11 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -1071,7 +1085,7 @@ pub mod SMPR2 {
         pub mod RW {}
     }
 
-    /// SMP10
+    /// Channel 10 sampling time selection
     pub mod SMP10 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1241,8 +1255,8 @@ pub mod SQR1 {
         pub mod RW {}
     }
 
-    /// L3
-    pub mod L3 {
+    /// Regular channel sequence length
+    pub mod L {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (4 bits: 0b1111 << 0)

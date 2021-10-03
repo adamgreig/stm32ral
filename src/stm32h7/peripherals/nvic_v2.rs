@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Nested Vectored Interrupt Controller
 //!
-//! Used by: stm32h747cm4, stm32h747cm7
+//! Used by: stm32h743, stm32h743v, stm32h753, stm32h753v
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -512,20 +512,43 @@ pub mod IPR38 {
     pub use super::IPR0::IPR_N3;
 }
 
+/// Interrupt Priority Register
+pub mod IPR39 {
+    pub use super::IPR0::IPR_N0;
+    pub use super::IPR0::IPR_N1;
+    pub use super::IPR0::IPR_N2;
+    pub use super::IPR0::IPR_N3;
+}
+
 /// Interrupt Set-Enable Register
 pub mod ISER3 {}
+
+/// Interrupt Set-Enable Register
+pub mod ISER4 {}
 
 /// Interrupt Clear-Enable Register
 pub mod ICER3 {}
 
+/// Interrupt Clear-Enable Register
+pub mod ICER4 {}
+
 /// Interrupt Set-Pending Register
 pub mod ISPR3 {}
+
+/// Interrupt Set-Pending Register
+pub mod ISPR4 {}
 
 /// Interrupt Clear-Pending Register
 pub mod ICPR3 {}
 
+/// Interrupt Clear-Pending Register
+pub mod ICPR4 {}
+
 /// Interrupt Active Bit Register
 pub mod IABR3 {}
+
+/// Interrupt Active Bit Register
+pub mod IABR4 {}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
@@ -540,7 +563,10 @@ pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
     pub ISER3: RWRegister<u32>,
 
-    _reserved1: [u32; 28],
+    /// Interrupt Set-Enable Register
+    pub ISER4: RWRegister<u32>,
+
+    _reserved1: [u32; 27],
 
     /// Interrupt Clear-Enable Register
     pub ICER0: RWRegister<u32>,
@@ -554,7 +580,10 @@ pub struct RegisterBlock {
     /// Interrupt Clear-Enable Register
     pub ICER3: RWRegister<u32>,
 
-    _reserved2: [u32; 28],
+    /// Interrupt Clear-Enable Register
+    pub ICER4: RWRegister<u32>,
+
+    _reserved2: [u32; 27],
 
     /// Interrupt Set-Pending Register
     pub ISPR0: RWRegister<u32>,
@@ -568,7 +597,10 @@ pub struct RegisterBlock {
     /// Interrupt Set-Pending Register
     pub ISPR3: RWRegister<u32>,
 
-    _reserved3: [u32; 28],
+    /// Interrupt Set-Pending Register
+    pub ISPR4: RWRegister<u32>,
+
+    _reserved3: [u32; 27],
 
     /// Interrupt Clear-Pending Register
     pub ICPR0: RWRegister<u32>,
@@ -584,7 +616,10 @@ pub struct RegisterBlock {
     /// Interrupt Clear-Pending Register
     pub ICPR3: RWRegister<u32>,
 
-    _reserved5: [u32; 15],
+    /// Interrupt Clear-Pending Register
+    pub ICPR4: RWRegister<u32>,
+
+    _reserved5: [u32; 14],
 
     /// Interrupt Active Bit Register
     pub IABR0: RORegister<u32>,
@@ -598,7 +633,10 @@ pub struct RegisterBlock {
     /// Interrupt Active Bit Register
     pub IABR3: RWRegister<u32>,
 
-    _reserved6: [u32; 60],
+    /// Interrupt Active Bit Register
+    pub IABR4: RWRegister<u32>,
+
+    _reserved6: [u32; 59],
 
     /// Interrupt Priority Register
     pub IPR0: RWRegister<u32>,
@@ -716,28 +754,36 @@ pub struct RegisterBlock {
 
     /// Interrupt Priority Register
     pub IPR38: RWRegister<u32>,
+
+    /// Interrupt Priority Register
+    pub IPR39: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub ISER0: u32,
     pub ISER1: u32,
     pub ISER2: u32,
     pub ISER3: u32,
+    pub ISER4: u32,
     pub ICER0: u32,
     pub ICER1: u32,
     pub ICER2: u32,
     pub ICER3: u32,
+    pub ICER4: u32,
     pub ISPR0: u32,
     pub ISPR1: u32,
     pub ISPR2: u32,
     pub ISPR3: u32,
+    pub ISPR4: u32,
     pub ICPR0: u32,
     pub ICPR1: u32,
     pub ICPR2: u32,
     pub ICPR3: u32,
+    pub ICPR4: u32,
     pub IABR0: u32,
     pub IABR1: u32,
     pub IABR2: u32,
     pub IABR3: u32,
+    pub IABR4: u32,
     pub IPR0: u32,
     pub IPR1: u32,
     pub IPR2: u32,
@@ -777,6 +823,7 @@ pub struct ResetValues {
     pub IPR36: u32,
     pub IPR37: u32,
     pub IPR38: u32,
+    pub IPR39: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

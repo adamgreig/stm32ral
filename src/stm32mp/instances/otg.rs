@@ -1,0 +1,380 @@
+#![allow(non_snake_case, non_upper_case_globals)]
+#![allow(non_camel_case_types)]
+//! OTG
+//!
+//! Used by: stm32mp153, stm32mp157
+
+#[cfg(not(feature = "nosync"))]
+pub use crate::stm32mp::peripherals::otg::Instance;
+pub use crate::stm32mp::peripherals::otg::{RegisterBlock, ResetValues};
+pub use crate::stm32mp::peripherals::otg::{
+    OTG_CID, OTG_DAINT, OTG_DAINTMSK, OTG_DCFG, OTG_DCTL, OTG_DEACHINT, OTG_DEACHINTMSK,
+    OTG_DIEPCTL0, OTG_DIEPCTL1, OTG_DIEPCTL2, OTG_DIEPCTL3, OTG_DIEPCTL4, OTG_DIEPCTL5,
+    OTG_DIEPCTL6, OTG_DIEPCTL7, OTG_DIEPCTL8, OTG_DIEPDMA0, OTG_DIEPDMA1, OTG_DIEPDMA2,
+    OTG_DIEPDMA3, OTG_DIEPDMA4, OTG_DIEPDMA5, OTG_DIEPDMA6, OTG_DIEPDMA7, OTG_DIEPDMA8,
+    OTG_DIEPEMPMSK, OTG_DIEPINT0, OTG_DIEPINT1, OTG_DIEPINT2, OTG_DIEPINT3, OTG_DIEPINT4,
+    OTG_DIEPINT5, OTG_DIEPINT6, OTG_DIEPINT7, OTG_DIEPINT8, OTG_DIEPMSK, OTG_DIEPTSIZ0,
+    OTG_DIEPTSIZ1, OTG_DIEPTSIZ2, OTG_DIEPTSIZ3, OTG_DIEPTSIZ4, OTG_DIEPTSIZ5, OTG_DIEPTSIZ6,
+    OTG_DIEPTSIZ7, OTG_DIEPTSIZ8, OTG_DIEPTXF1, OTG_DIEPTXF2, OTG_DIEPTXF3, OTG_DIEPTXF4,
+    OTG_DIEPTXF5, OTG_DIEPTXF6, OTG_DIEPTXF7, OTG_DIEPTXF8, OTG_DOEPCTL0, OTG_DOEPCTL1,
+    OTG_DOEPCTL2, OTG_DOEPCTL3, OTG_DOEPCTL4, OTG_DOEPCTL5, OTG_DOEPCTL6, OTG_DOEPCTL7,
+    OTG_DOEPCTL8, OTG_DOEPDMA0, OTG_DOEPDMA1, OTG_DOEPDMA2, OTG_DOEPDMA3, OTG_DOEPDMA4,
+    OTG_DOEPDMA5, OTG_DOEPDMA6, OTG_DOEPDMA7, OTG_DOEPDMA8, OTG_DOEPINT0, OTG_DOEPINT1,
+    OTG_DOEPINT2, OTG_DOEPINT3, OTG_DOEPINT4, OTG_DOEPINT5, OTG_DOEPINT6, OTG_DOEPINT7,
+    OTG_DOEPINT8, OTG_DOEPMSK, OTG_DOEPTSIZ0, OTG_DOEPTSIZ1, OTG_DOEPTSIZ2, OTG_DOEPTSIZ3,
+    OTG_DOEPTSIZ4, OTG_DOEPTSIZ5, OTG_DOEPTSIZ6, OTG_DOEPTSIZ7, OTG_DOEPTSIZ8, OTG_DSTS,
+    OTG_DTHRCTL, OTG_DTXFSTS0, OTG_DTXFSTS1, OTG_DTXFSTS2, OTG_DTXFSTS3, OTG_DTXFSTS4,
+    OTG_DTXFSTS5, OTG_DTXFSTS6, OTG_DTXFSTS7, OTG_DTXFSTS8, OTG_DVBUSDIS, OTG_DVBUSPULSE,
+    OTG_GAHBCFG, OTG_GCCFG, OTG_GINTMSK, OTG_GINTSTS, OTG_GLPMCFG, OTG_GOTGCTL, OTG_GOTGINT,
+    OTG_GRSTCTL, OTG_GRXFSIZ, OTG_GRXSTSP, OTG_GRXSTSR, OTG_GUSBCFG, OTG_HAINT, OTG_HAINTMSK,
+    OTG_HCCHAR0, OTG_HCCHAR1, OTG_HCCHAR10, OTG_HCCHAR11, OTG_HCCHAR12, OTG_HCCHAR13, OTG_HCCHAR14,
+    OTG_HCCHAR15, OTG_HCCHAR2, OTG_HCCHAR3, OTG_HCCHAR4, OTG_HCCHAR5, OTG_HCCHAR6, OTG_HCCHAR7,
+    OTG_HCCHAR8, OTG_HCCHAR9, OTG_HCDMA0, OTG_HCDMA1, OTG_HCDMA10, OTG_HCDMA11, OTG_HCDMA12,
+    OTG_HCDMA13, OTG_HCDMA14, OTG_HCDMA15, OTG_HCDMA2, OTG_HCDMA3, OTG_HCDMA4, OTG_HCDMA5,
+    OTG_HCDMA6, OTG_HCDMA7, OTG_HCDMA8, OTG_HCDMA9, OTG_HCDMAB0, OTG_HCDMAB1, OTG_HCDMAB10,
+    OTG_HCDMAB11, OTG_HCDMAB12, OTG_HCDMAB13, OTG_HCDMAB14, OTG_HCDMAB15, OTG_HCDMAB2, OTG_HCDMAB3,
+    OTG_HCDMAB4, OTG_HCDMAB5, OTG_HCDMAB6, OTG_HCDMAB7, OTG_HCDMAB8, OTG_HCDMAB9, OTG_HCFG,
+    OTG_HCINT0, OTG_HCINT1, OTG_HCINT10, OTG_HCINT11, OTG_HCINT12, OTG_HCINT13, OTG_HCINT14,
+    OTG_HCINT15, OTG_HCINT2, OTG_HCINT3, OTG_HCINT4, OTG_HCINT5, OTG_HCINT6, OTG_HCINT7,
+    OTG_HCINT8, OTG_HCINT9, OTG_HCINTMSK0, OTG_HCINTMSK1, OTG_HCINTMSK10, OTG_HCINTMSK11,
+    OTG_HCINTMSK12, OTG_HCINTMSK13, OTG_HCINTMSK14, OTG_HCINTMSK15, OTG_HCINTMSK2, OTG_HCINTMSK3,
+    OTG_HCINTMSK4, OTG_HCINTMSK5, OTG_HCINTMSK6, OTG_HCINTMSK7, OTG_HCINTMSK8, OTG_HCINTMSK9,
+    OTG_HCSPLT0, OTG_HCSPLT1, OTG_HCSPLT10, OTG_HCSPLT11, OTG_HCSPLT12, OTG_HCSPLT13, OTG_HCSPLT14,
+    OTG_HCSPLT15, OTG_HCSPLT2, OTG_HCSPLT3, OTG_HCSPLT4, OTG_HCSPLT5, OTG_HCSPLT6, OTG_HCSPLT7,
+    OTG_HCSPLT8, OTG_HCSPLT9, OTG_HCTSIZ0, OTG_HCTSIZ1, OTG_HCTSIZ10, OTG_HCTSIZ11, OTG_HCTSIZ12,
+    OTG_HCTSIZ13, OTG_HCTSIZ14, OTG_HCTSIZ15, OTG_HCTSIZ2, OTG_HCTSIZ3, OTG_HCTSIZ4, OTG_HCTSIZ5,
+    OTG_HCTSIZ6, OTG_HCTSIZ7, OTG_HCTSIZ8, OTG_HCTSIZ9, OTG_HFIR, OTG_HFLBADDR, OTG_HFNUM,
+    OTG_HNPTXFSIZ, OTG_HNPTXSTS, OTG_HPRT, OTG_HPTXFSIZ, OTG_HPTXSTS, OTG_HS_DIEPEACHMSK1,
+    OTG_HS_DOEPEACHMSK1, OTG_PCGCCTL,
+};
+
+/// Access functions for the OTG peripheral instance
+pub mod OTG {
+    use super::ResetValues;
+
+    #[cfg(not(feature = "nosync"))]
+    use super::Instance;
+
+    #[cfg(not(feature = "nosync"))]
+    const INSTANCE: Instance = Instance {
+        addr: 0x49000000,
+        _marker: ::core::marker::PhantomData,
+    };
+
+    /// Reset values for each field in OTG
+    pub const reset: ResetValues = ResetValues {
+        OTG_GOTGCTL: 0x00010000,
+        OTG_GOTGINT: 0x00000000,
+        OTG_GAHBCFG: 0x00000000,
+        OTG_GUSBCFG: 0x00001400,
+        OTG_GRSTCTL: 0x80000000,
+        OTG_GINTSTS: 0x14000020,
+        OTG_GINTMSK: 0x00000000,
+        OTG_GRXSTSR: 0x00000000,
+        OTG_GRXSTSP: 0x00000000,
+        OTG_GRXFSIZ: 0x00000400,
+        OTG_HNPTXFSIZ: 0x02000200,
+        OTG_HNPTXSTS: 0x00080400,
+        OTG_GCCFG: 0x00000000,
+        OTG_CID: 0x00004000,
+        OTG_GLPMCFG: 0x00000000,
+        OTG_HPTXFSIZ: 0x02000400,
+        OTG_DIEPTXF1: 0x02000400,
+        OTG_DIEPTXF2: 0x02000400,
+        OTG_DIEPTXF3: 0x02000400,
+        OTG_DIEPTXF4: 0x02000400,
+        OTG_DIEPTXF5: 0x02000400,
+        OTG_DIEPTXF6: 0x02000400,
+        OTG_DIEPTXF7: 0x02000400,
+        OTG_DIEPTXF8: 0x02000400,
+        OTG_HCFG: 0x00000000,
+        OTG_HFIR: 0x0000EA60,
+        OTG_HFNUM: 0x00003FFF,
+        OTG_HPTXSTS: 0x00080100,
+        OTG_HAINT: 0x00000000,
+        OTG_HAINTMSK: 0x00000000,
+        OTG_HFLBADDR: 0x00000000,
+        OTG_HPRT: 0x00000000,
+        OTG_HCCHAR0: 0x00000000,
+        OTG_HCSPLT0: 0x00000000,
+        OTG_HCINT0: 0x00000000,
+        OTG_HCINTMSK0: 0x00000000,
+        OTG_HCTSIZ0: 0x00000000,
+        OTG_HCDMA0: 0x00000000,
+        OTG_HCDMAB0: 0x00000000,
+        OTG_HCCHAR1: 0x00000000,
+        OTG_HCSPLT1: 0x00000000,
+        OTG_HCINT1: 0x00000000,
+        OTG_HCINTMSK1: 0x00000000,
+        OTG_HCTSIZ1: 0x00000000,
+        OTG_HCDMA1: 0x00000000,
+        OTG_HCDMAB1: 0x00000000,
+        OTG_HCCHAR2: 0x00000000,
+        OTG_HCSPLT2: 0x00000000,
+        OTG_HCINT2: 0x00000000,
+        OTG_HCINTMSK2: 0x00000000,
+        OTG_HCTSIZ2: 0x00000000,
+        OTG_HCDMA2: 0x00000000,
+        OTG_HCDMAB2: 0x00000000,
+        OTG_HCCHAR3: 0x00000000,
+        OTG_HCSPLT3: 0x00000000,
+        OTG_HCINT3: 0x00000000,
+        OTG_HCINTMSK3: 0x00000000,
+        OTG_HCTSIZ3: 0x00000000,
+        OTG_HCDMA3: 0x00000000,
+        OTG_HCDMAB3: 0x00000000,
+        OTG_HCCHAR4: 0x00000000,
+        OTG_HCSPLT4: 0x00000000,
+        OTG_HCINT4: 0x00000000,
+        OTG_HCINTMSK4: 0x00000000,
+        OTG_HCTSIZ4: 0x00000000,
+        OTG_HCDMA4: 0x00000000,
+        OTG_HCDMAB4: 0x00000000,
+        OTG_HCCHAR5: 0x00000000,
+        OTG_HCSPLT5: 0x00000000,
+        OTG_HCINT5: 0x00000000,
+        OTG_HCINTMSK5: 0x00000000,
+        OTG_HCTSIZ5: 0x00000000,
+        OTG_HCDMA5: 0x00000000,
+        OTG_HCDMAB5: 0x00000000,
+        OTG_HCCHAR6: 0x00000000,
+        OTG_HCSPLT6: 0x00000000,
+        OTG_HCINT6: 0x00000000,
+        OTG_HCINTMSK6: 0x00000000,
+        OTG_HCTSIZ6: 0x00000000,
+        OTG_HCDMA6: 0x00000000,
+        OTG_HCDMAB6: 0x00000000,
+        OTG_HCCHAR7: 0x00000000,
+        OTG_HCSPLT7: 0x00000000,
+        OTG_HCINT7: 0x00000000,
+        OTG_HCINTMSK7: 0x00000000,
+        OTG_HCTSIZ7: 0x00000000,
+        OTG_HCDMA7: 0x00000000,
+        OTG_HCDMAB7: 0x00000000,
+        OTG_HCCHAR8: 0x00000000,
+        OTG_HCSPLT8: 0x00000000,
+        OTG_HCINT8: 0x00000000,
+        OTG_HCINTMSK8: 0x00000000,
+        OTG_HCTSIZ8: 0x00000000,
+        OTG_HCDMA8: 0x00000000,
+        OTG_HCDMAB8: 0x00000000,
+        OTG_HCCHAR9: 0x00000000,
+        OTG_HCSPLT9: 0x00000000,
+        OTG_HCINT9: 0x00000000,
+        OTG_HCINTMSK9: 0x00000000,
+        OTG_HCTSIZ9: 0x00000000,
+        OTG_HCDMA9: 0x00000000,
+        OTG_HCDMAB9: 0x00000000,
+        OTG_HCCHAR10: 0x00000000,
+        OTG_HCSPLT10: 0x00000000,
+        OTG_HCINT10: 0x00000000,
+        OTG_HCINTMSK10: 0x00000000,
+        OTG_HCTSIZ10: 0x00000000,
+        OTG_HCDMA10: 0x00000000,
+        OTG_HCDMAB10: 0x00000000,
+        OTG_HCCHAR11: 0x00000000,
+        OTG_HCSPLT11: 0x00000000,
+        OTG_HCINT11: 0x00000000,
+        OTG_HCINTMSK11: 0x00000000,
+        OTG_HCTSIZ11: 0x00000000,
+        OTG_HCDMA11: 0x00000000,
+        OTG_HCDMAB11: 0x00000000,
+        OTG_HCCHAR12: 0x00000000,
+        OTG_HCSPLT12: 0x00000000,
+        OTG_HCINT12: 0x00000000,
+        OTG_HCINTMSK12: 0x00000000,
+        OTG_HCTSIZ12: 0x00000000,
+        OTG_HCDMA12: 0x00000000,
+        OTG_HCDMAB12: 0x00000000,
+        OTG_HCCHAR13: 0x00000000,
+        OTG_HCSPLT13: 0x00000000,
+        OTG_HCINT13: 0x00000000,
+        OTG_HCINTMSK13: 0x00000000,
+        OTG_HCTSIZ13: 0x00000000,
+        OTG_HCDMA13: 0x00000000,
+        OTG_HCDMAB13: 0x00000000,
+        OTG_HCCHAR14: 0x00000000,
+        OTG_HCSPLT14: 0x00000000,
+        OTG_HCINT14: 0x00000000,
+        OTG_HCINTMSK14: 0x00000000,
+        OTG_HCTSIZ14: 0x00000000,
+        OTG_HCDMA14: 0x00000000,
+        OTG_HCDMAB14: 0x00000000,
+        OTG_HCCHAR15: 0x00000000,
+        OTG_HCSPLT15: 0x00000000,
+        OTG_HCINT15: 0x00000000,
+        OTG_HCINTMSK15: 0x00000000,
+        OTG_HCTSIZ15: 0x00000000,
+        OTG_HCDMA15: 0x00000000,
+        OTG_HCDMAB15: 0x00000000,
+        OTG_DCFG: 0x02200000,
+        OTG_DCTL: 0x00000002,
+        OTG_DSTS: 0x00000010,
+        OTG_DIEPMSK: 0x00000000,
+        OTG_DOEPMSK: 0x00000000,
+        OTG_DAINT: 0x00000000,
+        OTG_DAINTMSK: 0x00000000,
+        OTG_DVBUSDIS: 0x000017D7,
+        OTG_DVBUSPULSE: 0x000005B8,
+        OTG_DTHRCTL: 0x00000000,
+        OTG_DIEPEMPMSK: 0x00000000,
+        OTG_DEACHINT: 0x00000000,
+        OTG_DEACHINTMSK: 0x00000000,
+        OTG_HS_DIEPEACHMSK1: 0x00000000,
+        OTG_HS_DOEPEACHMSK1: 0x00000000,
+        OTG_DIEPCTL0: 0x00000000,
+        OTG_DIEPINT0: 0x00000080,
+        OTG_DIEPTSIZ0: 0x00000000,
+        OTG_DIEPDMA0: 0x00000000,
+        OTG_DTXFSTS0: 0x00000200,
+        OTG_DIEPCTL1: 0x00000000,
+        OTG_DIEPINT1: 0x00000080,
+        OTG_DIEPTSIZ1: 0x00000000,
+        OTG_DIEPDMA1: 0x00000000,
+        OTG_DTXFSTS1: 0x00000200,
+        OTG_DIEPCTL2: 0x00000000,
+        OTG_DIEPINT2: 0x00000080,
+        OTG_DIEPTSIZ2: 0x00000000,
+        OTG_DIEPDMA2: 0x00000000,
+        OTG_DTXFSTS2: 0x00000200,
+        OTG_DIEPCTL3: 0x00000000,
+        OTG_DIEPINT3: 0x00000080,
+        OTG_DIEPTSIZ3: 0x00000000,
+        OTG_DIEPDMA3: 0x00000000,
+        OTG_DTXFSTS3: 0x00000200,
+        OTG_DIEPCTL4: 0x00000000,
+        OTG_DIEPINT4: 0x00000080,
+        OTG_DIEPTSIZ4: 0x00000000,
+        OTG_DIEPDMA4: 0x00000000,
+        OTG_DTXFSTS4: 0x00000200,
+        OTG_DIEPCTL5: 0x00000000,
+        OTG_DIEPINT5: 0x00000080,
+        OTG_DIEPTSIZ5: 0x00000000,
+        OTG_DIEPDMA5: 0x00000000,
+        OTG_DTXFSTS5: 0x00000200,
+        OTG_DIEPCTL6: 0x00000000,
+        OTG_DIEPINT6: 0x00000080,
+        OTG_DIEPTSIZ6: 0x00000000,
+        OTG_DIEPDMA6: 0x00000000,
+        OTG_DTXFSTS6: 0x00000200,
+        OTG_DIEPCTL7: 0x00000000,
+        OTG_DIEPINT7: 0x00000080,
+        OTG_DIEPTSIZ7: 0x00000000,
+        OTG_DIEPDMA7: 0x00000000,
+        OTG_DTXFSTS7: 0x00000200,
+        OTG_DIEPCTL8: 0x00000000,
+        OTG_DIEPINT8: 0x00000080,
+        OTG_DIEPTSIZ8: 0x00000000,
+        OTG_DIEPDMA8: 0x00000000,
+        OTG_DTXFSTS8: 0x00000200,
+        OTG_DOEPCTL0: 0x00008000,
+        OTG_DOEPINT0: 0x00000080,
+        OTG_DOEPTSIZ0: 0x00000000,
+        OTG_DOEPDMA0: 0x00000000,
+        OTG_DOEPCTL1: 0x00000000,
+        OTG_DOEPINT1: 0x00000080,
+        OTG_DOEPTSIZ1: 0x00000000,
+        OTG_DOEPDMA1: 0x00000000,
+        OTG_DOEPCTL2: 0x00000000,
+        OTG_DOEPINT2: 0x00000080,
+        OTG_DOEPTSIZ2: 0x00000000,
+        OTG_DOEPDMA2: 0x00000000,
+        OTG_DOEPCTL3: 0x00000000,
+        OTG_DOEPINT3: 0x00000080,
+        OTG_DOEPTSIZ3: 0x00000000,
+        OTG_DOEPDMA3: 0x00000000,
+        OTG_DOEPCTL4: 0x00000000,
+        OTG_DOEPINT4: 0x00000080,
+        OTG_DOEPTSIZ4: 0x00000000,
+        OTG_DOEPDMA4: 0x00000000,
+        OTG_DOEPCTL5: 0x00000000,
+        OTG_DOEPINT5: 0x00000080,
+        OTG_DOEPTSIZ5: 0x00000000,
+        OTG_DOEPDMA5: 0x00000000,
+        OTG_DOEPCTL6: 0x00000000,
+        OTG_DOEPINT6: 0x00000080,
+        OTG_DOEPTSIZ6: 0x00000000,
+        OTG_DOEPDMA6: 0x00000000,
+        OTG_DOEPCTL7: 0x00000000,
+        OTG_DOEPINT7: 0x00000080,
+        OTG_DOEPTSIZ7: 0x00000000,
+        OTG_DOEPDMA7: 0x00000000,
+        OTG_DOEPCTL8: 0x00000000,
+        OTG_DOEPINT8: 0x00000080,
+        OTG_DOEPTSIZ8: 0x00000000,
+        OTG_DOEPDMA8: 0x00000000,
+        OTG_PCGCCTL: 0x200B8000,
+    };
+
+    #[cfg(not(feature = "nosync"))]
+    #[allow(renamed_and_removed_lints)]
+    #[allow(private_no_mangle_statics)]
+    #[no_mangle]
+    static mut OTG_TAKEN: bool = false;
+
+    /// Safe access to OTG
+    ///
+    /// This function returns `Some(Instance)` if this instance is not
+    /// currently taken, and `None` if it is. This ensures that if you
+    /// do get `Some(Instance)`, you are ensured unique access to
+    /// the peripheral and there cannot be data races (unless other
+    /// code uses `unsafe`, of course). You can then pass the
+    /// `Instance` around to other functions as required. When you're
+    /// done with it, you can call `release(instance)` to return it.
+    ///
+    /// `Instance` itself dereferences to a `RegisterBlock`, which
+    /// provides access to the peripheral's registers.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub fn take() -> Option<Instance> {
+        external_cortex_m::interrupt::free(|_| unsafe {
+            if OTG_TAKEN {
+                None
+            } else {
+                OTG_TAKEN = true;
+                Some(INSTANCE)
+            }
+        })
+    }
+
+    /// Release exclusive access to OTG
+    ///
+    /// This function allows you to return an `Instance` so that it
+    /// is available to `take()` again. This function will panic if
+    /// you return a different `Instance` or if this instance is not
+    /// already taken.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub fn release(inst: Instance) {
+        external_cortex_m::interrupt::free(|_| unsafe {
+            if OTG_TAKEN && inst.addr == INSTANCE.addr {
+                OTG_TAKEN = false;
+            } else {
+                panic!("Released a peripheral which was not taken");
+            }
+        });
+    }
+
+    /// Unsafely steal OTG
+    ///
+    /// This function is similar to take() but forcibly takes the
+    /// Instance, marking it as taken irregardless of its previous
+    /// state.
+    #[cfg(not(feature = "nosync"))]
+    #[inline]
+    pub unsafe fn steal() -> Instance {
+        OTG_TAKEN = true;
+        INSTANCE
+    }
+}
+
+/// Raw pointer to OTG
+///
+/// Dereferencing this is unsafe because you are not ensured unique
+/// access to the peripheral, so you may encounter data races with
+/// other users of this peripheral. It is up to you to ensure you
+/// will not cause data races.
+///
+/// This constant is provided for ease of use in unsafe code: you can
+/// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
+pub const OTG: *const RegisterBlock = 0x49000000 as *const _;

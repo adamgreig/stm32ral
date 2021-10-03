@@ -405,8 +405,8 @@ pub mod CCR {
         pub mod RW {}
     }
 
-    /// Temperature sensor enable
-    pub mod TSEN {
+    /// CH18 selection (Vbat)
+    pub mod CH18SEL {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
@@ -419,8 +419,8 @@ pub mod CCR {
         pub mod RW {}
     }
 
-    /// VBAT enable
-    pub mod VBATEN {
+    /// CH17 selection (temperature)
+    pub mod CH17SEL {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)

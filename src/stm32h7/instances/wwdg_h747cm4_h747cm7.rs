@@ -5,9 +5,9 @@
 //! Used by: stm32h747cm4, stm32h747cm7
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::wwdg::Instance;
-pub use crate::stm32h7::peripherals::wwdg::{RegisterBlock, ResetValues};
-pub use crate::stm32h7::peripherals::wwdg::{CFR, CR, SR};
+pub use crate::stm32h7::peripherals::wwdg1::Instance;
+pub use crate::stm32h7::peripherals::wwdg1::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::wwdg1::{CFR, CR, SR};
 
 /// Access functions for the WWDG1 peripheral instance
 pub mod WWDG1 {

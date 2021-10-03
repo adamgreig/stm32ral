@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Floating point unit CPACR
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::fpu_cpacr::Instance;
@@ -18,7 +18,7 @@ pub mod FPU_CPACR {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0xe000ef08,
+        addr: 0xe000ed88,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -96,4 +96,4 @@ pub mod FPU_CPACR {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const FPU_CPACR: *const RegisterBlock = 0xe000ef08 as *const _;
+pub const FPU_CPACR: *const RegisterBlock = 0xe000ed88 as *const _;

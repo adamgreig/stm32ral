@@ -5,9 +5,9 @@
 //! Used by: stm32l0x1, stm32l0x2, stm32l0x3
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l0::peripherals::spi::Instance;
-pub use crate::stm32l0::peripherals::spi::{RegisterBlock, ResetValues};
-pub use crate::stm32l0::peripherals::spi::{
+pub use crate::stm32l0::peripherals::spi1::Instance;
+pub use crate::stm32l0::peripherals::spi1::{RegisterBlock, ResetValues};
+pub use crate::stm32l0::peripherals::spi1::{
     CR1, CR2, CRCPR, DR, I2SCFGR, I2SPR, RXCRCR, SR, TXCRCR,
 };
 

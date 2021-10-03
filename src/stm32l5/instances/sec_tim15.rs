@@ -8,7 +8,8 @@
 pub use crate::stm32l5::peripherals::tim15::Instance;
 pub use crate::stm32l5::peripherals::tim15::{RegisterBlock, ResetValues};
 pub use crate::stm32l5::peripherals::tim15::{
-    ARR, BDTR, CCER, CCMR1, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, OR1, OR2, PSC, RCR, SMCR, SR,
+    ARR, BDTR, CCER, CCMR1, CCR1, CCR2, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, OR1, OR2, PSC, RCR,
+    SMCR, SR,
 };
 
 /// Access functions for the SEC_TIM15 peripheral instance
@@ -44,6 +45,7 @@ pub mod SEC_TIM15 {
         SMCR: 0x00000000,
         OR1: 0x00000000,
         OR2: 0x00000000,
+        CCR2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

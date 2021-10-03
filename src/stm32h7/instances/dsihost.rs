@@ -2,17 +2,18 @@
 #![allow(non_camel_case_types)]
 //! MIPI DSI Host
 //!
-//! Used by: stm32h747cm4, stm32h747cm7, stm32h7b3
+//! Used by: stm32h735, stm32h747cm4, stm32h747cm7, stm32h7b3
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::dsihost::Instance;
 pub use crate::stm32h7::peripherals::dsihost::{RegisterBlock, ResetValues};
 pub use crate::stm32h7::peripherals::dsihost::{
-    CCR, CLCR, CLTCR, CMCR, CR, DLTCR, FIR0, FIR1, GHCR, GPDR, GPSR, GVCIDR, IER0, IER1, ISR1,
-    LCCCR, LCCR, LCOLCR, LCVCIDR, LPCR, LPMCCR, LPMCR, LVCIDR, MCR, PCONFR, PCR, PCTLR, PSR, PTTCR,
-    PUCR, TCCR0, TCCR1, TCCR2, TCCR3, TCCR4, TCCR5, VCCCR, VCCR, VHBPCCR, VHBPCR, VHSACCR, VHSACR,
-    VLCCR, VLCR, VMCCR, VMCR, VNPCCR, VNPCR, VPCCR, VPCR, VR, VSCR, VVACCR, VVACR, VVBPCR, VVFPCCR,
-    VVFPCR, VVPBCCR, VVSACCR, VVSACR, WCFGR, WCR, WIER, WIFCR, WISR, WPCR0, WPCR1, WPCR2, WRPCR,
+    CCR, CLCR, CLTCR, CMCR, CR, DLTCR, FIR0, FIR1, GHCR, GPDR, GPSR, GVCIDR, IER0, IER1, ISR0,
+    ISR1, LCCCR, LCCR, LCOLCR, LCVCIDR, LPCR, LPMCCR, LPMCR, LVCIDR, MCR, PCONFR, PCR, PCTLR, PSR,
+    PTTCR, PUCR, TCCR0, TCCR1, TCCR2, TCCR3, TCCR4, TCCR5, VCCCR, VCCR, VHBPCCR, VHBPCR, VHSACCR,
+    VHSACR, VLCCR, VLCR, VMCCR, VMCR, VNPCCR, VNPCR, VPCCR, VPCR, VR, VSCR, VVACCR, VVACR, VVBPCR,
+    VVFPCCR, VVFPCR, VVPBCCR, VVSACCR, VVSACR, WCFGR, WCR, WIER, WIFCR, WISR, WPCR0, WPCR1, WPCR2,
+    WPCR3, WPCR4, WRPCR,
 };
 
 /// Access functions for the DSIHOST peripheral instance
@@ -69,7 +70,8 @@ pub mod DSIHOST {
         PCONFR: 0x00000001,
         PUCR: 0x00000000,
         PTTCR: 0x00000000,
-        PSR: 0x00000000,
+        PSR: 0x00001528,
+        ISR0: 0x00000000,
         ISR1: 0x00000000,
         IER0: 0x00000000,
         IER1: 0x00000000,
@@ -98,6 +100,8 @@ pub mod DSIHOST {
         WPCR0: 0x00000000,
         WPCR1: 0x00000000,
         WPCR2: 0x00000000,
+        WPCR3: 0x00000000,
+        WPCR4: 0x00000000,
         WRPCR: 0x00000000,
     };
 

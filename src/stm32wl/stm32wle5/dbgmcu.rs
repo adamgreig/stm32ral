@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// DBGMCU Identity Code Register
-pub mod IDCODE {
+pub mod IDCODER {
 
     /// Device ID
     pub mod DEV_ID {
@@ -51,8 +51,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Debug Sleep Mode Disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Debug Sleep Mode Enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Allow debug in STOP mode
@@ -65,8 +72,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Debug Stop Mode Disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Debug Stop Mode Enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Allow debug in STANDBY mode
@@ -79,8 +93,15 @@ pub mod CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Debug Standby Mode Disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Debug Standby Mode Enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -97,8 +118,15 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The counter clock of TIMx is fed even if the core is halted
+            pub const Continue: u32 = 0b0;
+
+            /// 0b1: The counter clock of TIMx is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 
     /// RTC stop in CPU1 debug
@@ -111,8 +139,15 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock of the RTC counter is fed even if the core is halted
+            pub const Continue: u32 = 0b0;
+
+            /// 0b1: The clock of the RTC counter is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 
     /// WWDG stop in CPU1 debug
@@ -125,8 +160,15 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The window watchdog counter clock continues even if the core is halted
+            pub const Continue: u32 = 0b0;
+
+            /// 0b1: The window watchdog counter clock is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 
     /// IWDG stop in CPU1 debug
@@ -139,8 +181,15 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The independent watchdog counter clock continues even if the core is halted
+            pub const Continue: u32 = 0b0;
+
+            /// 0b1: The independent watchdog counter clock is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 
     /// I2C1 SMBUS timeout stop in CPU1 debug
@@ -153,8 +202,15 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Same behavior as in normal mode
+            pub const NormalMode: u32 = 0b0;
+
+            /// 0b1: I2C3 SMBUS timeout is frozen
+            pub const SMBusTimeoutFrozen: u32 = 0b1;
+        }
     }
 
     /// I2C2 SMBUS timeout stop in CPU1 debug
@@ -167,8 +223,7 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DBG_I2C1_STOP::RW;
     }
 
     /// I2C3 SMBUS timeout stop in CPU1 debug
@@ -181,8 +236,7 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DBG_I2C1_STOP::RW;
     }
 
     /// LPTIM1 stop in CPU1 debug
@@ -195,110 +249,15 @@ pub mod APB1FZR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+        /// Read-write values
+        pub mod RW {
 
-/// DBGMCU CPU2 APB1 Peripheral Freeze Register 1 \[dual core device
-pub mod C2APB1FZR1 {
+            /// 0b0: LPTIM1 counter clock is fed even if the core is halted
+            pub const Continue: u32 = 0b0;
 
-    /// DBG_TIM2_STOP
-    pub mod DBG_TIM2_STOP {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DBG_RTC_STOP
-    pub mod DBG_RTC_STOP {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DBG_IWDG_STOP
-    pub mod DBG_IWDG_STOP {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DBG_I2C1_STOP
-    pub mod DBG_I2C1_STOP {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DBG_I2C2_STOP
-    pub mod DBG_I2C2_STOP {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DBG_I2C3_STOP
-    pub mod DBG_I2C3_STOP {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DBG_LPTIM1_STOP
-    pub mod DBG_LPTIM1_STOP {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+            /// 0b1: LPTIM1 counter clock is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 }
 
@@ -315,8 +274,15 @@ pub mod APB1FZR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LPTIM1 counter clock is fed even if the core is halted
+            pub const Continue: u32 = 0b0;
+
+            /// 0b1: LPTIM1 counter clock is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 
     /// DBG_LPTIM3_STOP
@@ -329,15 +295,8 @@ pub mod APB1FZR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DBG_LPTIM2_STOP::RW;
     }
-}
-
-/// DBGMCU CPU2 APB1 Peripheral Freeze Register 2 \[dual core device
-pub mod C2APB1FZR2 {
-    pub use super::APB1FZR2::DBG_LPTIM2_STOP;
-    pub use super::APB1FZR2::DBG_LPTIM3_STOP;
 }
 
 /// DBGMCU CPU1 APB2 Peripheral Freeze Register
@@ -353,8 +312,15 @@ pub mod APB2FZR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The counter clock of TIMx is fed even if the core is halted
+            pub const Continue: u32 = 0b0;
+
+            /// 0b1: The counter clock of TIMx is stopped when the core is halted
+            pub const Stop: u32 = 0b1;
+        }
     }
 
     /// DBG_TIM16_STOP
@@ -367,8 +333,7 @@ pub mod APB2FZR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DBG_TIM1_STOP::RW;
     }
 
     /// DBG_TIM17_STOP
@@ -381,21 +346,13 @@ pub mod APB2FZR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::DBG_TIM1_STOP::RW;
     }
-}
-
-/// DBGMCU CPU2 APB2 Peripheral Freeze Register \[dual core device
-pub mod C2APB2FZR {
-    pub use super::APB2FZR::DBG_TIM16_STOP;
-    pub use super::APB2FZR::DBG_TIM17_STOP;
-    pub use super::APB2FZR::DBG_TIM1_STOP;
 }
 #[repr(C)]
 pub struct RegisterBlock {
     /// DBGMCU Identity Code Register
-    pub IDCODE: RORegister<u32>,
+    pub IDCODER: RORegister<u32>,
 
     /// DBGMCU Configuration Register
     pub CR: RWRegister<u32>,
@@ -405,30 +362,22 @@ pub struct RegisterBlock {
     /// DBGMCU CPU1 APB1 Peripheral Freeze Register 1
     pub APB1FZR1: RWRegister<u32>,
 
-    /// DBGMCU CPU2 APB1 Peripheral Freeze Register 1 \[dual core device
-    pub C2APB1FZR1: RWRegister<u32>,
+    _reserved2: [u32; 1],
 
     /// DBGMCU CPU1 APB1 Peripheral Freeze Register 2
     pub APB1FZR2: RWRegister<u32>,
 
-    /// DBGMCU CPU2 APB1 Peripheral Freeze Register 2 \[dual core device
-    pub C2APB1FZR2: RWRegister<u32>,
+    _reserved3: [u32; 1],
 
     /// DBGMCU CPU1 APB2 Peripheral Freeze Register
     pub APB2FZR: RWRegister<u32>,
-
-    /// DBGMCU CPU2 APB2 Peripheral Freeze Register \[dual core device
-    pub C2APB2FZR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub IDCODE: u32,
+    pub IDCODER: u32,
     pub CR: u32,
     pub APB1FZR1: u32,
-    pub C2APB1FZR1: u32,
     pub APB1FZR2: u32,
-    pub C2APB1FZR2: u32,
     pub APB2FZR: u32,
-    pub C2APB2FZR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -461,14 +410,11 @@ pub mod DBGMCU {
 
     /// Reset values for each field in DBGMCU
     pub const reset: ResetValues = ResetValues {
-        IDCODE: 0x10006497,
+        IDCODER: 0x10006497,
         CR: 0x00000000,
         APB1FZR1: 0x00000000,
-        C2APB1FZR1: 0x00000000,
         APB1FZR2: 0x00000000,
-        C2APB1FZR2: 0x00000000,
         APB2FZR: 0x00000000,
-        C2APB2FZR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
