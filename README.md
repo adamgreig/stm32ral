@@ -8,7 +8,6 @@ The underlying data is generated via the patched SVD files in
 
 [![Version](https://img.shields.io/crates/v/stm32ral.svg)](https://crates.io/crates/stm32ral)
 [![Documentation](https://docs.rs/stm32ral/badge.svg)](https://docs.rs/stm32ral)
-[![Build Status](https://travis-ci.org/adamgreig/stm32ral.svg?branch=master)](https://travis-ci.org/adamgreig/stm32ral)
 ![License](https://img.shields.io/crates/l/stm32ral.svg)
 
 [Documentation](https://docs.rs/stm32ral) ·
