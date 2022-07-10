@@ -707,16 +707,23 @@ pub mod CR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
-            /// 0b1: Stop conversion of channel
-            pub const Stop: u32 = 0b1;
+            /// 0b0: No stop command active
+            pub const NotStopping: u32 = 0b0;
+
+            /// 0b1: ADC stopping conversion
+            pub const Stopping: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Stop the active conversion
+            pub const StopConversion: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC group regular conversion stop
@@ -725,11 +732,10 @@ pub mod CR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::JADSTP::RW;
+        pub use super::JADSTP::R;
+        pub use super::JADSTP::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC group injected conversion start
@@ -738,16 +744,23 @@ pub mod CR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
-            /// 0b1: Starts conversion of channel
-            pub const Start: u32 = 0b1;
+            /// 0b0: No conversion ongoing
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: ADC operating and may be converting
+            pub const Active: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Start the ADC conversion (may be delayed for hardware triggers)
+            pub const StartConversion: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC group regular conversion start
@@ -756,11 +769,10 @@ pub mod CR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::JADSTART::RW;
+        pub use super::JADSTART::R;
+        pub use super::JADSTART::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC disable
@@ -769,13 +781,20 @@ pub mod CR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No disable command active
+            pub const NotDisabling: u32 = 0b0;
+
+            /// 0b1: ADC disabling
+            pub const Disabling: u32 = 0b1;
+        }
         /// Write-only values
         pub mod W {
 
-            /// 0b0: Disable ADC conversion and go to power down mode
-            pub const Disable: u32 = 0b0;
+            /// 0b1: Disable the ADC
+            pub const Disable: u32 = 0b1;
         }
         /// Read-write values (empty)
         pub mod RW {}
@@ -787,13 +806,20 @@ pub mod CR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: ADC disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ADC enabled
+            pub const Enabled: u32 = 0b1;
+        }
         /// Write-only values
         pub mod W {
 
-            /// 0b1: Enable ADC
-            pub const Enable: u32 = 0b1;
+            /// 0b1: Enable the ADC
+            pub const Enabled: u32 = 0b1;
         }
         /// Read-write values (empty)
         pub mod RW {}
@@ -1102,33 +1128,6 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00101: Timer 4 CC4 event
-            pub const TIM4_CC4: u32 = 0b00101;
-
-            /// 0b00111: Timer 8 TRGO event
-            pub const TIM8_TRGO: u32 = 0b00111;
-
-            /// 0b01000: Timer 8 TRGO2 event
-            pub const TIM8_TRGO2: u32 = 0b01000;
-
-            /// 0b01100: Timer 4 TRGO event
-            pub const TIM4_TRGO: u32 = 0b01100;
-
-            /// 0b10000: HRTIM1_ADCTRG1 event
-            pub const HRTIM1_ADCTRG1: u32 = 0b10000;
-
-            /// 0b10001: HRTIM1_ADCTRG3 event
-            pub const HRTIM1_ADCTRG3: u32 = 0b10001;
-
-            /// 0b10010: LPTIM1_OUT event
-            pub const LPTIM1_OUT: u32 = 0b10010;
-
-            /// 0b10011: LPTIM2_OUT event
-            pub const LPTIM2_OUT: u32 = 0b10011;
-
-            /// 0b10100: LPTIM3_OUT event
-            pub const LPTIM3_OUT: u32 = 0b10100;
-
             /// 0b00000: Timer 1 CC1 event
             pub const TIM1_CC1: u32 = 0b00000;
 
@@ -1144,8 +1143,17 @@ pub mod CFGR {
             /// 0b00100: Timer 3 TRGO event
             pub const TIM3_TRGO: u32 = 0b00100;
 
+            /// 0b00101: Timer 4 CC4 event
+            pub const TIM4_CC4: u32 = 0b00101;
+
             /// 0b00110: EXTI line 11
             pub const EXTI11: u32 = 0b00110;
+
+            /// 0b00111: Timer 8 TRGO event
+            pub const TIM8_TRGO: u32 = 0b00111;
+
+            /// 0b01000: Timer 8 TRGO2 event
+            pub const TIM8_TRGO2: u32 = 0b01000;
 
             /// 0b01001: Timer 1 TRGO event
             pub const TIM1_TRGO: u32 = 0b01001;
@@ -1156,6 +1164,9 @@ pub mod CFGR {
             /// 0b01011: Timer 2 TRGO event
             pub const TIM2_TRGO: u32 = 0b01011;
 
+            /// 0b01100: Timer 4 TRGO event
+            pub const TIM4_TRGO: u32 = 0b01100;
+
             /// 0b01101: Timer 6 TRGO event
             pub const TIM6_TRGO: u32 = 0b01101;
 
@@ -1164,6 +1175,21 @@ pub mod CFGR {
 
             /// 0b01111: Timer 3 CC4 event
             pub const TIM3_CC4: u32 = 0b01111;
+
+            /// 0b10000: HRTIM1_ADCTRG1 event
+            pub const HRTIM1_ADCTRG1: u32 = 0b10000;
+
+            /// 0b10001: HRTIM1_ADCTRG3 event
+            pub const HRTIM1_ADCTRG3: u32 = 0b10001;
+
+            /// 0b10010: LPTIM1_OUT event
+            pub const LPTIM1_OUT: u32 = 0b10010;
+
+            /// 0b10011: LPTIM2_OUT event
+            pub const LPTIM2_OUT: u32 = 0b10011;
+
+            /// 0b10100: LPTIM3_OUT event
+            pub const LPTIM3_OUT: u32 = 0b10100;
         }
     }
 
@@ -2148,33 +2174,6 @@ pub mod JSQR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00101: Timer 4 TRGO event
-            pub const TIM4_TRGO: u32 = 0b00101;
-
-            /// 0b00111: Timer 8 CC4 event
-            pub const TIM8_CC4: u32 = 0b00111;
-
-            /// 0b01001: Timer 8 TRGO event
-            pub const TIM8_TRGO: u32 = 0b01001;
-
-            /// 0b01010: Timer 8 TRGO2 event
-            pub const TIM8_TRGO2: u32 = 0b01010;
-
-            /// 0b10000: HRTIM1_ADCTRG2 event
-            pub const HRTIM1_ADCTRG2: u32 = 0b10000;
-
-            /// 0b10001: HRTIM1_ADCTRG4 event
-            pub const HRTIM1_ADCTRG4: u32 = 0b10001;
-
-            /// 0b10010: LPTIM1_OUT event
-            pub const LPTIM1_OUT: u32 = 0b10010;
-
-            /// 0b10011: LPTIM2_OUT event
-            pub const LPTIM2_OUT: u32 = 0b10011;
-
-            /// 0b10100: LPTIM3_OUT event
-            pub const LPTIM3_OUT: u32 = 0b10100;
-
             /// 0b00000: Timer 1 TRGO event
             pub const TIM1_TRGO: u32 = 0b00000;
 
@@ -2190,11 +2189,23 @@ pub mod JSQR {
             /// 0b00100: Timer 3 CC4 event
             pub const TIM3_CC4: u32 = 0b00100;
 
+            /// 0b00101: Timer 4 TRGO event
+            pub const TIM4_TRGO: u32 = 0b00101;
+
             /// 0b00110: EXTI line 15
             pub const EXTI15: u32 = 0b00110;
 
+            /// 0b00111: Timer 8 CC4 event
+            pub const TIM8_CC4: u32 = 0b00111;
+
             /// 0b01000: Timer 1 TRGO2 event
             pub const TIM1_TRGO2: u32 = 0b01000;
+
+            /// 0b01001: Timer 8 TRGO event
+            pub const TIM8_TRGO: u32 = 0b01001;
+
+            /// 0b01010: Timer 8 TRGO2 event
+            pub const TIM8_TRGO2: u32 = 0b01010;
 
             /// 0b01011: Timer 3 CC3 event
             pub const TIM3_CC3: u32 = 0b01011;
@@ -2210,6 +2221,21 @@ pub mod JSQR {
 
             /// 0b01111: Timer 15 TRGO event
             pub const TIM15_TRGO: u32 = 0b01111;
+
+            /// 0b10000: HRTIM1_ADCTRG2 event
+            pub const HRTIM1_ADCTRG2: u32 = 0b10000;
+
+            /// 0b10001: HRTIM1_ADCTRG4 event
+            pub const HRTIM1_ADCTRG4: u32 = 0b10001;
+
+            /// 0b10010: LPTIM1_OUT event
+            pub const LPTIM1_OUT: u32 = 0b10010;
+
+            /// 0b10011: LPTIM2_OUT event
+            pub const LPTIM2_OUT: u32 = 0b10011;
+
+            /// 0b10100: LPTIM3_OUT event
+            pub const LPTIM3_OUT: u32 = 0b10100;
         }
     }
 
@@ -3506,7 +3532,7 @@ pub struct RegisterBlock {
     /// ADC analog watchdog 2 threshold register
     pub HTR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// ADC group regular sequencer ranks register 1
     pub SQR1: RWRegister<u32>,
@@ -3523,12 +3549,12 @@ pub struct RegisterBlock {
     /// ADC group regular conversion data register
     pub DR: RORegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// ADC group injected sequencer register
     pub JSQR: RWRegister<u32>,
 
-    _reserved3: [u32; 4],
+    _reserved3: [u8; 16],
 
     /// ADC offset number 1 register
     pub OFR1: RWRegister<u32>,
@@ -3542,7 +3568,7 @@ pub struct RegisterBlock {
     /// ADC offset number 4 register
     pub OFR4: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// ADC group injected sequencer rank 1 register
     pub JDR1: RORegister<u32>,
@@ -3556,7 +3582,7 @@ pub struct RegisterBlock {
     /// ADC group injected sequencer rank 4 register
     pub JDR4: RORegister<u32>,
 
-    _reserved5: [u32; 4],
+    _reserved5: [u8; 16],
 
     /// ADC analog watchdog 2 configuration register
     pub AWD2CR: RWRegister<u32>,
@@ -3564,7 +3590,7 @@ pub struct RegisterBlock {
     /// ADC analog watchdog 3 configuration register
     pub AWD3CR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// ADC watchdog lower threshold register 2
     pub LTR2: RWRegister<u32>,

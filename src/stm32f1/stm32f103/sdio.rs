@@ -1473,12 +1473,12 @@ pub struct RegisterBlock {
     /// SDIO mask register (SDIO_MASK)
     pub MASK: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Bits 23:0 = FIFOCOUNT: Remaining number of words to be written to or read from the FIFO
     pub FIFOCNT: RORegister<u32>,
 
-    _reserved2: [u32; 13],
+    _reserved2: [u8; 52],
 
     /// bits 31:0 = FIFOData: Receive and transmit FIFO data
     pub FIFO: RWRegister<u32>,

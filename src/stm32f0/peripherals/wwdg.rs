@@ -122,11 +122,11 @@ pub mod SR {
         /// Read-only values
         pub mod R {
 
-            /// 0b1: The EWI Interrupt Service Routine has been triggered
-            pub const Pending: u32 = 0b1;
-
             /// 0b0: The EWI Interrupt Service Routine has been serviced
             pub const Finished: u32 = 0b0;
+
+            /// 0b1: The EWI Interrupt Service Routine has been triggered
+            pub const Pending: u32 = 0b1;
         }
         /// Write-only values
         pub mod W {

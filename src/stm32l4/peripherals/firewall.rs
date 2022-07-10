@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Firewall
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -99,10 +99,21 @@ pub mod CR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Volatile data segment cannot be executed if VDS = 0
+            pub const NotExecutable: u32 = 0b0;
+
+            /// 0b1: Volatile data segment is declared executable whatever VDS bit value
+            pub const Executable: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Resets volatile data execution bit
+            pub const Reset: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -113,10 +124,21 @@ pub mod CR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Volatile data segment is not shared and cannot be hit by a non protected executable code when the Firewall is closed
+            pub const NotShared: u32 = 0b0;
+
+            /// 0b1: Volatile data segment is shared with non protected application code
+            pub const Shared: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Resets volatile data shared bit
+            pub const Reset: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -129,8 +151,15 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Any code executed outside the protected segment when the Firewall is opened will generate a system reset
+            pub const PreArmReset: u32 = 0b0;
+
+            /// 0b1: Any code executed outside the protected segment will close the Firewall
+            pub const PreArmSet: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -155,7 +184,7 @@ pub struct RegisterBlock {
     /// Volatile data segment length
     pub VDSL: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Configuration register
     pub CR: RWRegister<u32>,

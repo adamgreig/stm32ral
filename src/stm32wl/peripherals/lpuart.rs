@@ -1021,14 +1021,14 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Set the TXE flags. This allows to discard the transmit data
             pub const Discard: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data flush request
@@ -1039,14 +1039,14 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: clears the RXNE flag. This allows to discard the received data without reading it, and avoid an overrun condition
             pub const Discard: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Mute mode request
@@ -1057,14 +1057,14 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Puts the USART in mute mode and sets the RWU flag
             pub const Mute: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Send break request
@@ -1075,14 +1075,14 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: sets the SBKF flag and request to send a BREAK on the line, as soon as the transmit machine is available
             pub const Break: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1395,14 +1395,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the WUF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Character match clear flag
@@ -1413,14 +1413,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the CMF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CTS clear flag
@@ -1431,14 +1431,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the CTSIF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmission complete clear flag
@@ -1449,14 +1449,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the TC flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Idle line detected clear flag
@@ -1467,14 +1467,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the IDLE flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun error clear flag
@@ -1485,14 +1485,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the ORE flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Noise detected clear flag
@@ -1503,14 +1503,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the NF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Framing error clear flag
@@ -1521,14 +1521,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the FE flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Parity error clear flag
@@ -1539,14 +1539,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the PE flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1654,7 +1654,7 @@ pub struct RegisterBlock {
     /// Baud rate register
     pub BRR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Request register
     pub RQR: WORegister<u32>,

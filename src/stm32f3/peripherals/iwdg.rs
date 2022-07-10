@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Independent watchdog
 //!
-//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x4, stm32f3x8
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x4
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -19,10 +19,8 @@ pub mod KR {
         pub const mask: u32 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0101010101010101: Enable access to PR, RLR and WINR registers (0x5555)
             pub const Enable: u32 = 0b0101010101010101;
@@ -33,6 +31,8 @@ pub mod KR {
             /// 0b1100110011001100: Start the watchdog (0xCCCC)
             pub const Start: u32 = 0b1100110011001100;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

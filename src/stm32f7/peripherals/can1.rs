@@ -2361,12 +2361,8 @@ pub mod RIR0 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Standard identifier
             pub const Standard: u32 = 0b0;
@@ -2374,6 +2370,10 @@ pub mod RIR0 {
             /// 0b1: Extended identifier
             pub const Extended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RTR
@@ -2382,12 +2382,8 @@ pub mod RIR0 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data frame
             pub const Data: u32 = 0b0;
@@ -2395,6 +2391,10 @@ pub mod RIR0 {
             /// 0b1: Remote frame
             pub const Remote: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -5052,7 +5052,7 @@ pub struct RegisterBlock {
     /// bit timing register
     pub BTR: RWRegister<u32>,
 
-    _reserved1: [u32; 88],
+    _reserved1: [u8; 352],
 
     /// TX mailbox identifier register
     pub TIR0: RWRegister<u32>,
@@ -5114,7 +5114,7 @@ pub struct RegisterBlock {
     /// receive FIFO mailbox data high register
     pub RDHR1: RORegister<u32>,
 
-    _reserved2: [u32; 12],
+    _reserved2: [u8; 48],
 
     /// filter master register
     pub FMR: RWRegister<u32>,
@@ -5122,22 +5122,22 @@ pub struct RegisterBlock {
     /// filter mode register
     pub FM1R: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// filter scale register
     pub FS1R: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// filter FIFO assignment register
     pub FFA1R: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// filter activation register
     pub FA1R: RWRegister<u32>,
 
-    _reserved6: [u32; 8],
+    _reserved6: [u8; 32],
 
     /// Filter bank 0 register 1
     pub FR10: RWRegister<u32>,

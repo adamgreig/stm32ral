@@ -1490,7 +1490,7 @@ pub struct RegisterBlock {
     /// Power status clear register
     pub SCR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Power Port A pull-up control register
     pub PUCRA: RWRegister<u32>,

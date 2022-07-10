@@ -1115,7 +1115,7 @@ pub struct RegisterBlock {
     /// Ethernet DMA receive status watchdog timer register
     pub DMARSWTR: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// Ethernet DMA current host transmit descriptor register
     pub DMACHTDR: RORegister<u32>,

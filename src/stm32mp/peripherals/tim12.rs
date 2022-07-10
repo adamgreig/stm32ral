@@ -868,7 +868,7 @@ pub struct RegisterBlock {
     /// TIM12 control register 1
     pub TIM12_CR1: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// TIM12 control register 2
     pub TIM12_CR2: RWRegister<u32>,
@@ -879,7 +879,7 @@ pub struct RegisterBlock {
     /// TIM12 interrupt enable register
     pub TIM12_DIER: RWRegister<u16>,
 
-    _reserved2: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// TIM12 status register
     pub TIM12_SR: RWRegister<u32>,
@@ -887,14 +887,14 @@ pub struct RegisterBlock {
     /// TIM12 event generation register
     pub TIM12_EGR: WORegister<u16>,
 
-    _reserved3: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// TIM12_CCMR1_input and TIM12_CCMR1_output
     /// TIM12_CCMR1_input: TIM12 capture/compare mode register 1
     /// TIM12_CCMR1_output: TIM12 capture/compare mode register 1
     pub TIM12_CCMR1: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// TIM12 capture/compare enable register
     pub TIM12_CCER: RWRegister<u32>,
@@ -905,24 +905,22 @@ pub struct RegisterBlock {
     /// TIM12 prescaler
     pub TIM12_PSC: RWRegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved5: [u8; 2],
 
     /// TIM12 auto-reload register
     pub TIM12_ARR: RWRegister<u16>,
 
-    _reserved6: [u32; 1],
-    _reserved7: [u16; 1],
+    _reserved6: [u8; 6],
 
     /// TIM12 capture/compare register 1
     pub TIM12_CCR1: RWRegister<u16>,
 
-    _reserved8: [u16; 1],
+    _reserved7: [u8; 2],
 
     /// TIM12 capture/compare register 2
     pub TIM12_CCR2: RWRegister<u16>,
 
-    _reserved9: [u32; 11],
-    _reserved10: [u16; 1],
+    _reserved8: [u8; 46],
 
     /// TIM12 timer input selection register
     pub TIM12_TISEL: RWRegister<u32>,

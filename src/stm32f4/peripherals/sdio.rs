@@ -136,11 +136,11 @@ pub mod CLKCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: SDIO_CK is only enabled when the bus is active
-            pub const Disabled: u32 = 0b1;
-
             /// 0b0: SDIO_CK clock is always enabled
             pub const Enabled: u32 = 0b0;
+
+            /// 0b1: SDIO_CK is only enabled when the bus is active
+            pub const Disabled: u32 = 0b1;
         }
     }
 
@@ -729,12 +729,8 @@ pub mod STA {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Completion signal not received
             pub const NotReceived: u32 = 0b0;
@@ -742,6 +738,10 @@ pub mod STA {
             /// 0b1: CE-ATA command completion signal received for CMD61
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SDIO interrupt received
@@ -750,12 +750,8 @@ pub mod STA {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: SDIO interrupt not receieved
             pub const NotReceived: u32 = 0b0;
@@ -763,6 +759,10 @@ pub mod STA {
             /// 0b1: SDIO interrupt received
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data available in receive FIFO
@@ -771,12 +771,8 @@ pub mod STA {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data not available in receive FIFO
             pub const NotAvailable: u32 = 0b0;
@@ -784,6 +780,10 @@ pub mod STA {
             /// 0b1: Data available in receive FIFO
             pub const Available: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data available in transmit FIFO
@@ -792,12 +792,8 @@ pub mod STA {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data not available in transmit FIFO
             pub const NotAvailable: u32 = 0b0;
@@ -805,6 +801,10 @@ pub mod STA {
             /// 0b1: Data available in transmit FIFO
             pub const Available: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO empty
@@ -813,12 +813,8 @@ pub mod STA {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Receive FIFO not empty
             pub const NotEmpty: u32 = 0b0;
@@ -826,6 +822,10 @@ pub mod STA {
             /// 0b1: Receive FIFO empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO empty
@@ -834,12 +834,8 @@ pub mod STA {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not empty
             pub const NotEmpty: u32 = 0b0;
@@ -847,6 +843,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO empty. When HW Flow Control is enabled, TXFIFOE signals becomes activated when the FIFO contains 2 words.
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO full
@@ -855,12 +855,8 @@ pub mod STA {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not full
             pub const NotFull: u32 = 0b0;
@@ -868,6 +864,10 @@ pub mod STA {
             /// 0b1: Receive FIFO full. When HW Flow Control is enabled, RXFIFOF signals becomes activated 2 words before the FIFO is full.
             pub const Full: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO full
@@ -876,12 +876,8 @@ pub mod STA {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not full
             pub const NotFull: u32 = 0b0;
@@ -889,6 +885,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO full
             pub const Full: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO half full: there are at least 8 words in the FIFO
@@ -897,12 +897,8 @@ pub mod STA {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Receive FIFO not half full
             pub const NotHalfFull: u32 = 0b0;
@@ -910,6 +906,10 @@ pub mod STA {
             /// 0b1: Receive FIFO half full. At least 8 words in the FIFO
             pub const HalfFull: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO half empty: at least 8 words can be written into the FIFO
@@ -918,12 +918,8 @@ pub mod STA {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not half empty
             pub const NotHalfEmpty: u32 = 0b0;
@@ -931,6 +927,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO half empty. At least 8 words can be written into the FIFO
             pub const HalfEmpty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data receive in progress
@@ -939,12 +939,8 @@ pub mod STA {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data receive not in progress
             pub const NotInProgress: u32 = 0b0;
@@ -952,6 +948,10 @@ pub mod STA {
             /// 0b1: Data receive in progress
             pub const InProgress: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data transmit in progress
@@ -960,12 +960,8 @@ pub mod STA {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data transmit is not in progress
             pub const NotInProgress: u32 = 0b0;
@@ -973,6 +969,10 @@ pub mod STA {
             /// 0b1: Data transmit in progress
             pub const InProgress: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command transfer in progress
@@ -981,12 +981,8 @@ pub mod STA {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command transfer not in progress
             pub const NotInProgress: u32 = 0b0;
@@ -994,6 +990,10 @@ pub mod STA {
             /// 0b1: Command tranfer in progress
             pub const InProgress: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data block sent/received (CRC check passed)
@@ -1002,12 +1002,8 @@ pub mod STA {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data block not sent/received (CRC check failed)
             pub const NotTransferred: u32 = 0b0;
@@ -1015,6 +1011,10 @@ pub mod STA {
             /// 0b1: Data block sent/received (CRC check passed)
             pub const Transferred: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Start bit not detected on all data signals in wide bus mode
@@ -1023,12 +1023,8 @@ pub mod STA {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No start bit detected error
             pub const Detected: u32 = 0b0;
@@ -1036,6 +1032,10 @@ pub mod STA {
             /// 0b1: Start bit not detected error
             pub const NotDetected: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data end (data counter, SDIDCOUNT, is zero)
@@ -1044,19 +1044,19 @@ pub mod STA {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Data end (DCOUNT, is zero)
-            pub const Done: u32 = 0b1;
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Not done
             pub const NotDone: u32 = 0b0;
+
+            /// 0b1: Data end (DCOUNT, is zero)
+            pub const Done: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command sent (no response required)
@@ -1065,12 +1065,8 @@ pub mod STA {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command not sent
             pub const NotSent: u32 = 0b0;
@@ -1078,6 +1074,10 @@ pub mod STA {
             /// 0b1: Command sent (no response required)
             pub const Sent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command response received (CRC check passed)
@@ -1086,12 +1086,8 @@ pub mod STA {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command not done
             pub const NotDone: u32 = 0b0;
@@ -1099,6 +1095,10 @@ pub mod STA {
             /// 0b1: Command response received (CRC check passed)
             pub const Done: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Received FIFO overrun error
@@ -1107,12 +1107,8 @@ pub mod STA {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No FIFO overrun error
             pub const NoOverrun: u32 = 0b0;
@@ -1120,6 +1116,10 @@ pub mod STA {
             /// 0b1: Receive FIFO overrun error
             pub const Overrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO underrun error
@@ -1128,12 +1128,8 @@ pub mod STA {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transmit FIFO underrun error
             pub const NoUnderrun: u32 = 0b0;
@@ -1141,6 +1137,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO underrun error
             pub const Underrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data timeout
@@ -1149,12 +1149,8 @@ pub mod STA {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No data timeout
             pub const NoTimeout: u32 = 0b0;
@@ -1162,6 +1158,10 @@ pub mod STA {
             /// 0b1: Data timeout
             pub const Timeout: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command response timeout
@@ -1170,12 +1170,8 @@ pub mod STA {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Command timeout
             pub const NoTimeout: u32 = 0b0;
@@ -1183,6 +1179,10 @@ pub mod STA {
             /// 0b1: Command timeout
             pub const Timeout: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data block sent/received (CRC check failed)
@@ -1191,12 +1191,8 @@ pub mod STA {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Data block sent/received crc check fail
             pub const NotFailed: u32 = 0b0;
@@ -1204,6 +1200,10 @@ pub mod STA {
             /// 0b1: Data block sent/received crc failed
             pub const Failed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command response received (CRC check failed)
@@ -1212,12 +1212,8 @@ pub mod STA {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command response received, crc check passed
             pub const NotFailed: u32 = 0b0;
@@ -1225,6 +1221,10 @@ pub mod STA {
             /// 0b1: Command response received, crc check failed
             pub const Failed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1815,12 +1815,12 @@ pub struct RegisterBlock {
     /// mask register
     pub MASK: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// FIFO counter register
     pub FIFOCNT: RORegister<u32>,
 
-    _reserved2: [u32; 13],
+    _reserved2: [u8; 52],
 
     /// data FIFO register
     pub FIFO: RWRegister<u32>,

@@ -9,34 +9,35 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::dbg_g070_g071_g07x_g081 as dbg;
-pub use super::instances::flash;
-pub use super::instances::iwdg_g070_g071_g07x_g081 as iwdg;
-pub use super::instances::wwdg_g030_g031_g041_g070_g071_g07x_g081 as wwdg;
+pub use super::instances::flash_g030_g031_g041_g070_g071_g081 as flash;
+pub use super::instances::iwdg_g070_g071_g081 as iwdg;
+pub use super::instances::wwdg;
 pub mod rcc;
-pub use super::instances::crc_g030_g031_g041_g070_g071_g07x_g081 as crc;
-pub use super::instances::dma_g070_g081 as dma;
-pub use super::instances::dmamux_g070_g071_g07x_g081 as dmamux;
-pub use super::instances::exti_g070_g071 as exti;
-pub use super::instances::gpio_g030_g031_g041_g070_g071_g07x_g081 as gpio;
 pub use super::instances::pwr_g070_g071_g07x_g081 as pwr;
+pub mod dma;
+pub use super::instances::crc;
+pub use super::instances::dmamux_g070_g071_g081 as dmamux;
+pub use super::instances::exti_g070_g071 as exti;
+pub use super::instances::gpio_g030_g031_g041_g070_g071_g081 as gpio;
 pub mod tim15;
 pub use super::instances::tim16_g030_g031_g041_g070_g081 as tim16;
 pub use super::instances::tim17_g030_g031_g041_g070_g081 as tim17;
 pub mod usart;
-pub use super::instances::adc_g070_g071_g07x_g081 as adc;
-pub use super::instances::i2c_g030_g031_g041_g070_g071_g07x_g081 as i2c;
-pub use super::instances::mpu;
-pub use super::instances::nvic_g070_g071_g07x_g081 as nvic;
-pub use super::instances::rtc_g070_g071_g07x_g081 as rtc;
-pub use super::instances::scb;
-pub use super::instances::spi_g070_g071_g07x_g081 as spi;
-pub use super::instances::stk;
+pub use super::instances::spi_g070_g071_g081 as spi;
+pub mod tim1;
+pub use super::instances::adc_g070_g071_g081 as adc;
+pub mod syscfg;
+pub use super::instances::i2c_g030_g031_g041_g050_g051_g061_g070_g071_g081_g0b0 as i2c;
+pub use super::instances::rtc_g070_g071_g081 as rtc;
 pub use super::instances::tamp_g070_g071_g07x_g081 as tamp;
 pub use super::instances::tim14_g030_g031_g041_g070_g071_g081 as tim14;
-pub use super::instances::tim1_g070_g071_g081 as tim1;
-pub use super::instances::tim3_g030_g031_g041_g070_g071_g081 as tim3;
-pub use super::instances::tim6_g070_g071_g07x_g081 as tim6;
-pub use super::instances::tim7_g070_g071_g07x_g081 as tim7;
+pub use super::instances::tim6_g070_g071_g081 as tim6;
+pub mod tim3;
+pub use super::instances::mpu;
+pub use super::instances::nvic_g070_g071_g07x_g081 as nvic;
+pub use super::instances::scb;
+pub use super::instances::stk;
+pub use super::instances::tim7_g070_g071_g081 as tim7;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -67,6 +68,7 @@ pub struct Peripherals {
     pub SPI2: spi::Instance,
     pub TIM1: tim1::Instance,
     pub ADC: adc::Instance,
+    pub SYSCFG: syscfg::Instance,
     pub TAMP: tamp::Instance,
     pub I2C1: i2c::Instance,
     pub I2C2: i2c::Instance,
@@ -115,6 +117,7 @@ impl Peripherals {
             SPI2: spi::SPI2::steal(),
             TIM1: tim1::TIM1::steal(),
             ADC: adc::ADC::steal(),
+            SYSCFG: syscfg::SYSCFG::steal(),
             TAMP: tamp::TAMP::steal(),
             I2C1: i2c::I2C1::steal(),
             I2C2: i2c::I2C2::steal(),

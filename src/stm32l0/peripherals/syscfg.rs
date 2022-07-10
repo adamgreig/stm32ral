@@ -17,12 +17,8 @@ pub mod CFGR1 {
         pub const offset: u32 = 8;
         /// Mask (2 bits: 0b11 << 8)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b00: Main Flash memory boot mode
             pub const MainFlash: u32 = 0b00;
@@ -33,6 +29,10 @@ pub mod CFGR1 {
             /// 0b11: Embedded SRAM boot mode
             pub const SRAM: u32 = 0b11;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Memory mapping selection bits
@@ -782,12 +782,8 @@ pub mod CFGR3 {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: VREFINT OFF
             pub const NotReady: u32 = 0b0;
@@ -795,6 +791,10 @@ pub mod CFGR3 {
             /// 0b1: VREFINT ready
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Sensor reference for ADC enable bit
@@ -953,12 +953,8 @@ pub mod COMP1_CSR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: COMP1_CSR\[31:0\] for comparator 1 are read/write
             pub const ReadWrite: u32 = 0b0;
@@ -966,6 +962,10 @@ pub mod COMP1_CSR {
             /// 0b1: COMP1_CSR\[31:0\] for comparator 1 are read-only
             pub const ReadOnly: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 1 output status bit
@@ -1110,12 +1110,8 @@ pub mod COMP2_CSR {
         pub const offset: u32 = 31;
         /// Mask (1 bit: 1 << 31)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: COMP2_CSR\[31:0\] for comparator 2 are read/write
             pub const ReadWrite: u32 = 0b0;
@@ -1123,6 +1119,10 @@ pub mod COMP2_CSR {
             /// 0b1: COMP2_CSR\[31:0\] for comparator 2 are read-only
             pub const ReadOnly: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 2 output status bit

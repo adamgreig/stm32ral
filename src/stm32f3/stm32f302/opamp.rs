@@ -343,12 +343,8 @@ pub mod OPAMP2_CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Non-inverting < inverting
             pub const Low: u32 = 0b0;
@@ -356,6 +352,10 @@ pub mod OPAMP2_CSR {
             /// 0b1: Non-inverting > inverting
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// OPAMP lock
@@ -609,7 +609,7 @@ pub mod OPAMP1_CSR {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 14],
+    _reserved1: [u8; 56],
 
     /// OPAMP1 control register
     pub OPAMP1_CSR: RWRegister<u32>,

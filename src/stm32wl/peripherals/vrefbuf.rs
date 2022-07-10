@@ -17,12 +17,8 @@ pub mod CSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The voltage reference buffer output is not ready
             pub const NotReady: u32 = 0b0;
@@ -30,6 +26,10 @@ pub mod CSR {
             /// 0b1: The voltage reference buffer output reached the requested level
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Voltage reference scale

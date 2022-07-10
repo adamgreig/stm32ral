@@ -2079,7 +2079,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH0DLYR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// CHCFG1R1
     pub CH1CFGR1: RWRegister<u32>,
@@ -2099,7 +2099,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH1DLYR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// CHCFG2R1
     pub CH2CFGR1: RWRegister<u32>,
@@ -2119,7 +2119,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH2DLYR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// CHCFG3R1
     pub CH3CFGR1: RWRegister<u32>,
@@ -2139,7 +2139,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH3DLYR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// CHCFG4R1
     pub CH4CFGR1: RWRegister<u32>,
@@ -2159,7 +2159,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH4DLYR: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// CHCFG5R1
     pub CH5CFGR1: RWRegister<u32>,
@@ -2179,7 +2179,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH5DLYR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// CHCFG6R1
     pub CH6CFGR1: RWRegister<u32>,
@@ -2199,7 +2199,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH6DLYR: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// CHCFG7R1
     pub CH7CFGR1: RWRegister<u32>,
@@ -2219,7 +2219,7 @@ pub struct RegisterBlock {
     /// DFSDM channel y delay register
     pub CH7DLYR: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// control register 1
     pub FLT0CR1: RWRegister<u32>,
@@ -2266,7 +2266,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub FLT0CNVTIMR: RORegister<u32>,
 
-    _reserved9: [u32; 17],
+    _reserved9: [u8; 68],
 
     /// control register 1
     pub FLT1CR1: RWRegister<u32>,
@@ -2292,7 +2292,7 @@ pub struct RegisterBlock {
     /// data register for the regular channel
     pub FLT1RDATAR: RORegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// analog watchdog low threshold register
     pub FLT1AWLTR: RWRegister<u32>,
@@ -2314,7 +2314,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub FLT1CNVTIMR: RORegister<u32>,
 
-    _reserved11: [u32; 17],
+    _reserved11: [u8; 68],
 
     /// control register 1
     pub FLT2CR1: RWRegister<u32>,
@@ -2361,7 +2361,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub FLT2CNVTIMR: RORegister<u32>,
 
-    _reserved12: [u32; 17],
+    _reserved12: [u8; 68],
 
     /// control register 1
     pub FLT3CR1: RWRegister<u32>,

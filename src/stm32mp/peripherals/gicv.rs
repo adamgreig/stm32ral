@@ -371,17 +371,17 @@ pub struct RegisterBlock {
     /// GICV VM aliased highest priority pending interrupt register
     pub GICV_AHPPIR: RORegister<u32>,
 
-    _reserved1: [u32; 41],
+    _reserved1: [u8; 164],
 
     /// The GICV_APR0 is an alias of GICH_APR.
     pub GICV_APR0: RWRegister<u32>,
 
-    _reserved2: [u32; 10],
+    _reserved2: [u8; 40],
 
     /// The GICV_IIDR is an alias of GICC_IIDR.
     pub GICV_IIDR: RORegister<u32>,
 
-    _reserved3: [u32; 960],
+    _reserved3: [u8; 3840],
 
     /// GICV VM deactivate interrupt register
     pub GICV_DIR: WORegister<u32>,

@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// VREF_BUF Control and Status Register
-pub mod VREFBUF_CSR {
+pub mod CSR {
 
     /// Enable Voltage Reference
     pub mod ENVR {
@@ -69,7 +69,7 @@ pub mod VREFBUF_CSR {
 }
 
 /// VREF_BUF Calibration Control Register
-pub mod VREFBUF_CCR {
+pub mod CCR {
 
     /// Trimming code
     pub mod TRIM {
@@ -88,14 +88,14 @@ pub mod VREFBUF_CCR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// VREF_BUF Control and Status Register
-    pub VREFBUF_CSR: RWRegister<u32>,
+    pub CSR: RWRegister<u32>,
 
     /// VREF_BUF Calibration Control Register
-    pub VREFBUF_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub VREFBUF_CSR: u32,
-    pub VREFBUF_CCR: u32,
+    pub CSR: u32,
+    pub CCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -8,8 +8,8 @@
 pub use crate::stm32l5::peripherals::fmc::Instance;
 pub use crate::stm32l5::peripherals::fmc::{RegisterBlock, ResetValues};
 pub use crate::stm32l5::peripherals::fmc::{
-    FMC_BCR1, FMC_BCR2, FMC_BCR3, FMC_BCR4, FMC_BTR1, FMC_BTR2, FMC_BTR3, FMC_BTR4, FMC_BWTR1,
-    FMC_BWTR2, FMC_BWTR3, FMC_BWTR4, FMC_ECCR, FMC_PATT, FMC_PCR, FMC_PMEM, FMC_SR, PCSCNTR,
+    BCR1, BCR2, BCR3, BCR4, BTR1, BTR2, BTR3, BTR4, BWTR1, BWTR2, BWTR3, BWTR4, ECCR, PATT, PCR,
+    PCSCNTR, PMEM, SR,
 };
 
 /// Access functions for the FMC peripheral instance
@@ -27,23 +27,23 @@ pub mod FMC {
 
     /// Reset values for each field in FMC
     pub const reset: ResetValues = ResetValues {
-        FMC_BCR1: 0x000030DB,
-        FMC_BCR2: 0x000030D2,
-        FMC_BCR3: 0x000030D2,
-        FMC_BCR4: 0x000030D2,
-        FMC_BTR1: 0x0FFFFFFF,
-        FMC_BTR2: 0x0FFFFFFF,
-        FMC_BTR3: 0x0FFFFFFF,
-        FMC_BTR4: 0x0FFFFFFF,
-        FMC_PCR: 0x00000018,
-        FMC_SR: 0x00000040,
-        FMC_PMEM: 0xFCFCFCFC,
-        FMC_PATT: 0xFCFCFCFC,
-        FMC_ECCR: 0x00000000,
-        FMC_BWTR1: 0x0FFFFFFF,
-        FMC_BWTR2: 0x0FFFFFFF,
-        FMC_BWTR3: 0x0FFFFFFF,
-        FMC_BWTR4: 0x0FFFFFFF,
+        BCR1: 0x000030DB,
+        BCR2: 0x000030D2,
+        BCR3: 0x000030D2,
+        BCR4: 0x000030D2,
+        BTR1: 0x0FFFFFFF,
+        BTR2: 0x0FFFFFFF,
+        BTR3: 0x0FFFFFFF,
+        BTR4: 0x0FFFFFFF,
+        PCR: 0x00000018,
+        SR: 0x00000040,
+        PMEM: 0xFCFCFCFC,
+        PATT: 0xFCFCFCFC,
+        ECCR: 0x00000000,
+        BWTR1: 0x0FFFFFFF,
+        BWTR2: 0x0FFFFFFF,
+        BWTR3: 0x0FFFFFFF,
+        BWTR4: 0x0FFFFFFF,
         PCSCNTR: 0x00000000,
     };
 
@@ -135,23 +135,23 @@ pub mod SEC_FMC {
 
     /// Reset values for each field in SEC_FMC
     pub const reset: ResetValues = ResetValues {
-        FMC_BCR1: 0x000030DB,
-        FMC_BCR2: 0x000030D2,
-        FMC_BCR3: 0x000030D2,
-        FMC_BCR4: 0x000030D2,
-        FMC_BTR1: 0x0FFFFFFF,
-        FMC_BTR2: 0x0FFFFFFF,
-        FMC_BTR3: 0x0FFFFFFF,
-        FMC_BTR4: 0x0FFFFFFF,
-        FMC_PCR: 0x00000018,
-        FMC_SR: 0x00000040,
-        FMC_PMEM: 0xFCFCFCFC,
-        FMC_PATT: 0xFCFCFCFC,
-        FMC_ECCR: 0x00000000,
-        FMC_BWTR1: 0x0FFFFFFF,
-        FMC_BWTR2: 0x0FFFFFFF,
-        FMC_BWTR3: 0x0FFFFFFF,
-        FMC_BWTR4: 0x0FFFFFFF,
+        BCR1: 0x000030DB,
+        BCR2: 0x000030D2,
+        BCR3: 0x000030D2,
+        BCR4: 0x000030D2,
+        BTR1: 0x0FFFFFFF,
+        BTR2: 0x0FFFFFFF,
+        BTR3: 0x0FFFFFFF,
+        BTR4: 0x0FFFFFFF,
+        PCR: 0x00000018,
+        SR: 0x00000040,
+        PMEM: 0xFCFCFCFC,
+        PATT: 0xFCFCFCFC,
+        ECCR: 0x00000000,
+        BWTR1: 0x0FFFFFFF,
+        BWTR2: 0x0FFFFFFF,
+        BWTR3: 0x0FFFFFFF,
+        BWTR4: 0x0FFFFFFF,
         PCSCNTR: 0x00000000,
     };
 

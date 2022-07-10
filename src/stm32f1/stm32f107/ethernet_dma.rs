@@ -539,12 +539,8 @@ pub mod DMASR {
         pub const offset: u32 = 17;
         /// Mask (3 bits: 0b111 << 17)
         pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b000: Stopped, reset or Stop Receive command issued
             pub const Stopped: u32 = 0b000;
@@ -561,6 +557,10 @@ pub mod DMASR {
             /// 0b111: Running, writing data to host memory buffer
             pub const RunningWriting: u32 = 0b111;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit process state
@@ -569,12 +569,8 @@ pub mod DMASR {
         pub const offset: u32 = 20;
         /// Mask (3 bits: 0b111 << 20)
         pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b000: Stopped, Reset or Stop Transmit command issued
             pub const Stopped: u32 = 0b000;
@@ -594,6 +590,10 @@ pub mod DMASR {
             /// 0b111: Running, closing transmit descriptor
             pub const Running: u32 = 0b111;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Error bits status
@@ -1290,7 +1290,7 @@ pub struct RegisterBlock {
     /// Ethernet DMA missed frame and buffer overflow counter register
     pub DMAMFBOCR: RORegister<u32>,
 
-    _reserved1: [u32; 9],
+    _reserved1: [u8; 36],
 
     /// Ethernet DMA current host transmit descriptor register
     pub DMACHTDR: RORegister<u32>,

@@ -959,7 +959,7 @@ pub struct RegisterBlock {
     /// endpoint 7 register
     pub EP7R: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// control register
     pub CNTR: RWRegister<u32>,

@@ -242,7 +242,7 @@ pub struct RegisterBlock {
     /// ADC common status register
     pub CSR: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// ADC common control register
     pub CCR: RWRegister<u32>,

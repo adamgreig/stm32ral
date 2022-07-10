@@ -3407,7 +3407,7 @@ pub struct RegisterBlock {
     /// TIM alternate function option register 2
     pub AF2: RWRegister<u32>,
 
-    _reserved1: [u32; 221],
+    _reserved1: [u8; 884],
 
     /// control register
     pub DCR: RWRegister<u32>,

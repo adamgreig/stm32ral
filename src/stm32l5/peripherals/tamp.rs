@@ -2141,7 +2141,7 @@ pub struct RegisterBlock {
     /// TAMP privilege mode control register
     pub PRIVCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// TAMP interrupt enable register
     pub IER: RWRegister<u32>,
@@ -2161,12 +2161,12 @@ pub struct RegisterBlock {
     /// TAMP monotonic counter register
     pub COUNTR: RORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// TAMP configuration register
     pub CFGR: RWRegister<u32>,
 
-    _reserved3: [u32; 43],
+    _reserved3: [u8; 172],
 
     /// TAMP backup register
     pub BKP0R: RWRegister<u32>,

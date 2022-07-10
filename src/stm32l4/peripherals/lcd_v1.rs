@@ -1479,42 +1479,42 @@ pub struct RegisterBlock {
     /// clear register
     pub CLR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// display memory
     pub RAM_COM0: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// display memory
     pub RAM_COM1: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// display memory
     pub RAM_COM2: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// display memory
     pub RAM_COM3: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// display memory
     pub RAM_COM4: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// display memory
     pub RAM_COM5: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// display memory
     pub RAM_COM6: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// display memory
     pub RAM_COM7: RWRegister<u32>,

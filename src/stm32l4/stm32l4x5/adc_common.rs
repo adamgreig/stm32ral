@@ -321,8 +321,8 @@ pub mod CSR {
 /// ADC common control register
 pub mod CCR {
 
-    /// Multi ADC mode selection
-    pub mod MULT {
+    /// Dual ADC mode selection
+    pub mod DUAL {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (5 bits: 0b11111 << 0)
@@ -432,6 +432,20 @@ pub mod CCR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// ADC prescaler
+    pub mod PRESC {
+        /// Offset (18 bits)
+        pub const offset: u32 = 18;
+        /// Mask (4 bits: 0b1111 << 18)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// ADC common regular data register for dual and triple modes
@@ -470,7 +484,7 @@ pub struct RegisterBlock {
     /// ADC Common status register
     pub CSR: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// ADC common control register
     pub CCR: RWRegister<u32>,

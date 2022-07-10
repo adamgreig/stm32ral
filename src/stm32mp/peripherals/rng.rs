@@ -227,7 +227,7 @@ pub struct RegisterBlock {
     /// The RNG_DR register is a read-only register.
     pub RNG_DR: RORegister<u32>,
 
-    _reserved1: [u32; 249],
+    _reserved1: [u8; 996],
 
     /// RNG hardware configuration register
     pub RNG_HWCFGR: RORegister<u32>,

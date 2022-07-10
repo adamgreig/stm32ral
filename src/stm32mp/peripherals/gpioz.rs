@@ -3226,12 +3226,12 @@ pub struct RegisterBlock {
     /// GPIO port bit reset register
     pub GPIOZ_BRR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register provides write access security and can be written only by a secure access. It is used to configure a selected I/O as secure. A non-secure write access to this register is discarded.
     pub GPIOZ_SECCFGR: WORegister<u32>,
 
-    _reserved2: [u32; 229],
+    _reserved2: [u8; 916],
 
     /// For GPIOA, B, C, D, E, F, G, H, I, J and GPIOK: For GPIOZ:
     pub GPIOZ_HWCFGR10: RORegister<u32>,

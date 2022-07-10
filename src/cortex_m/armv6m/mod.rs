@@ -7,7 +7,7 @@ pub use super::instances::syst;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
-pub struct Peripherals {
+pub struct CorePeripherals {
     pub CPUID: cpuid::Instance,
     pub DCB: dcb::Instance,
     pub DWT: dwt::Instance,
@@ -16,12 +16,12 @@ pub struct Peripherals {
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
-pub struct Peripherals {}
+pub struct CorePeripherals {}
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
-impl Peripherals {
+impl CorePeripherals {
     pub unsafe fn steal() -> Self {
-        Peripherals {
+        CorePeripherals {
             CPUID: cpuid::CPUID::steal(),
             DCB: dcb::DCB::steal(),
             DWT: dwt::DWT::steal(),
@@ -31,8 +31,8 @@ impl Peripherals {
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
-impl Peripherals {
+impl CorePeripherals {
     pub fn steal() -> Self {
-        Peripherals {}
+        CorePeripherals {}
     }
 }

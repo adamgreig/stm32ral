@@ -3110,7 +3110,7 @@ pub struct RegisterBlock {
     /// GPIO port bit reset register
     pub GPIOA_BRR: WORegister<u32>,
 
-    _reserved1: [u32; 231],
+    _reserved1: [u8; 924],
 
     /// For GPIOA, B, C, D, E, F, G, H, I, J and GPIOK: For GPIOZ:
     pub GPIOA_HWCFGR10: RORegister<u32>,

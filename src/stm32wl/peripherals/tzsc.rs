@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// TZSC control register
-pub mod TZSC_CR {
+pub mod CR {
 
     /// LCK
     pub mod LCK {
@@ -27,7 +27,7 @@ pub mod TZSC_CR {
 }
 
 /// TZSC security configuration register
-pub mod TZSC_SECCFGR1 {
+pub mod SECCFGR1 {
 
     /// AESSEC
     pub mod AESSEC {
@@ -73,7 +73,7 @@ pub mod TZSC_SECCFGR1 {
 }
 
 /// TZSC privilege configuration register 1
-pub mod TZSC_PRIVCFGR1 {
+pub mod PRIVCFGR1 {
 
     /// AESPRIV
     pub mod AESPRIV {
@@ -133,7 +133,7 @@ pub mod TZSC_PRIVCFGR1 {
 }
 
 /// Unprivileged Water Mark 1 register
-pub mod TZSC_MPCWM1_UPWMR {
+pub mod MPCWM1_UPWMR {
 
     /// LGTH
     pub mod LGTH {
@@ -151,58 +151,58 @@ pub mod TZSC_MPCWM1_UPWMR {
 }
 
 /// Unprivileged Writable Water Mark 1 register
-pub mod TZSC_MPCWM1_UPWWMR {
-    pub use super::TZSC_MPCWM1_UPWMR::LGTH;
+pub mod MPCWM1_UPWWMR {
+    pub use super::MPCWM1_UPWMR::LGTH;
 }
 
 /// Unprivileged Water Mark 2 register
-pub mod TZSC_MPCWM2_UPWMR {
-    pub use super::TZSC_MPCWM1_UPWMR::LGTH;
+pub mod MPCWM2_UPWMR {
+    pub use super::MPCWM1_UPWMR::LGTH;
 }
 
 /// Unprivileged Water Mark 3 register
-pub mod TZSC_MPCWM3_UPWMR {
-    pub use super::TZSC_MPCWM1_UPWMR::LGTH;
+pub mod MPCWM3_UPWMR {
+    pub use super::MPCWM1_UPWMR::LGTH;
 }
 #[repr(C)]
 pub struct RegisterBlock {
     /// TZSC control register
-    pub TZSC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// TZSC security configuration register
-    pub TZSC_SECCFGR1: RWRegister<u32>,
+    pub SECCFGR1: RWRegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// TZSC privilege configuration register 1
-    pub TZSC_PRIVCFGR1: RWRegister<u32>,
+    pub PRIVCFGR1: RWRegister<u32>,
 
-    _reserved3: [u32; 67],
+    _reserved3: [u8; 268],
 
     /// Unprivileged Water Mark 1 register
-    pub TZSC_MPCWM1_UPWMR: RWRegister<u32>,
+    pub MPCWM1_UPWMR: RWRegister<u32>,
 
     /// Unprivileged Writable Water Mark 1 register
-    pub TZSC_MPCWM1_UPWWMR: RWRegister<u32>,
+    pub MPCWM1_UPWWMR: RWRegister<u32>,
 
     /// Unprivileged Water Mark 2 register
-    pub TZSC_MPCWM2_UPWMR: RWRegister<u32>,
+    pub MPCWM2_UPWMR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// Unprivileged Water Mark 3 register
-    pub TZSC_MPCWM3_UPWMR: RWRegister<u32>,
+    pub MPCWM3_UPWMR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub TZSC_CR: u32,
-    pub TZSC_SECCFGR1: u32,
-    pub TZSC_PRIVCFGR1: u32,
-    pub TZSC_MPCWM1_UPWMR: u32,
-    pub TZSC_MPCWM1_UPWWMR: u32,
-    pub TZSC_MPCWM2_UPWMR: u32,
-    pub TZSC_MPCWM3_UPWMR: u32,
+    pub CR: u32,
+    pub SECCFGR1: u32,
+    pub PRIVCFGR1: u32,
+    pub MPCWM1_UPWMR: u32,
+    pub MPCWM1_UPWWMR: u32,
+    pub MPCWM2_UPWMR: u32,
+    pub MPCWM3_UPWMR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

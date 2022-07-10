@@ -426,12 +426,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Output is inactive
             pub const Inactive: u32 = 0b0;
@@ -439,6 +435,10 @@ pub mod TIMCISR {
             /// 0b1: Output is active
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 1 Copy
@@ -447,11 +447,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::O2CPY::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::O2CPY::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 2 State
@@ -460,12 +460,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Output was inactive
             pub const Inactive: u32 = 0b0;
@@ -473,6 +469,10 @@ pub mod TIMCISR {
             /// 0b1: Output was active
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 1 State
@@ -481,11 +481,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::O2STAT::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::O2STAT::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Idle Push Pull Status
@@ -494,12 +494,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Protection occurred when the output 1 was active and output 2 forced inactive
             pub const Output1Active: u32 = 0b0;
@@ -507,6 +503,10 @@ pub mod TIMCISR {
             /// 0b1: Protection occurred when the output 2 was active and output 1 forced inactive
             pub const Output2Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Current Push Pull Status
@@ -515,12 +515,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Signal applied on output 1 and output 2 forced inactive
             pub const Output1Active: u32 = 0b0;
@@ -528,6 +524,10 @@ pub mod TIMCISR {
             /// 0b1: Signal applied on output 2 and output 1 forced inactive
             pub const Output2Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Delayed Protection Flag
@@ -536,12 +536,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Not in delayed idle or balanced idle mode
             pub const Inactive: u32 = 0b0;
@@ -549,6 +545,10 @@ pub mod TIMCISR {
             /// 0b1: Delayed idle or balanced idle mode entry
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Reset Interrupt Flag
@@ -557,12 +557,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No TIMx counter reset/roll-over interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -570,6 +566,10 @@ pub mod TIMCISR {
             /// 0b1: TIMx counter reset/roll-over interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 2 Reset Interrupt Flag
@@ -578,12 +578,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Tx output reset interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -591,6 +587,10 @@ pub mod TIMCISR {
             /// 0b1: Tx output reset interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 2 Set Interrupt Flag
@@ -599,12 +599,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Tx output set interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -612,6 +608,10 @@ pub mod TIMCISR {
             /// 0b1: Tx output set interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 1 Reset Interrupt Flag
@@ -620,11 +620,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::RSTx2::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::RSTx2::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 1 Set Interrupt Flag
@@ -633,11 +633,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SETx2::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SETx2::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture2 Interrupt Flag
@@ -646,12 +646,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No timer x capture reset interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -659,6 +655,10 @@ pub mod TIMCISR {
             /// 0b1: Timer x capture reset interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture1 Interrupt Flag
@@ -667,11 +667,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CPT2::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CPT2::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Update Interrupt Flag
@@ -680,12 +680,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No timer update interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -693,6 +689,10 @@ pub mod TIMCISR {
             /// 0b1: Timer update interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Repetition Interrupt Flag
@@ -701,12 +701,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No timer repetition interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -714,6 +710,10 @@ pub mod TIMCISR {
             /// 0b1: Timer repetition interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 4 Interrupt Flag
@@ -722,12 +722,8 @@ pub mod TIMCISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No compare interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -735,6 +731,10 @@ pub mod TIMCISR {
             /// 0b1: Compare interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 3 Interrupt Flag
@@ -743,11 +743,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 2 Interrupt Flag
@@ -756,11 +756,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 1 Interrupt Flag
@@ -769,11 +769,11 @@ pub mod TIMCISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -788,14 +788,14 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears associated flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Reset Interrupt flag Clear
@@ -806,9 +806,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 2 Reset flag Clear
@@ -819,9 +819,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 2 Set flag Clear
@@ -832,9 +832,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 1 Reset flag Clear
@@ -845,9 +845,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output 1 Set flag Clear
@@ -858,9 +858,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture2 Interrupt flag Clear
@@ -871,9 +871,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture1 Interrupt flag Clear
@@ -884,9 +884,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Update Interrupt flag Clear
@@ -897,9 +897,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Repetition Interrupt flag Clear
@@ -910,9 +910,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 4 Interrupt flag Clear
@@ -923,9 +923,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 3 Interrupt flag Clear
@@ -936,9 +936,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 2 Interrupt flag Clear
@@ -949,9 +949,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare 1 Interrupt flag Clear
@@ -962,9 +962,9 @@ pub mod TIMCICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::DLYPRTC::RW;
+        pub use super::DLYPRTC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2204,12 +2204,8 @@ pub mod SETC1R {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No compare interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -2217,6 +2213,10 @@ pub mod SETC1R {
             /// 0b1: Compare interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer A compare 3
@@ -2225,11 +2225,11 @@ pub mod SETC1R {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer A compare 2
@@ -2238,11 +2238,11 @@ pub mod SETC1R {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer A compare 1
@@ -2728,12 +2728,8 @@ pub mod RSTC1R {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No compare interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -2741,6 +2737,10 @@ pub mod RSTC1R {
             /// 0b1: Compare interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CMP3
@@ -2749,11 +2749,11 @@ pub mod RSTC1R {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CMP2
@@ -2762,11 +2762,11 @@ pub mod RSTC1R {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CMP1

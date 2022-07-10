@@ -38,7 +38,7 @@ pub use super::instances::pwr;
 pub use super::instances::rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc;
-pub use super::instances::sai_g431_g441_g471_g473_g474_g483_g484 as sai;
+pub use super::instances::sai;
 pub use super::instances::scb;
 pub use super::instances::scb_actlr;
 pub use super::instances::spi_g431_g441_g491_g4a1 as spi;
@@ -89,6 +89,7 @@ pub struct Peripherals {
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
     pub TIM4: tim4::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
@@ -135,7 +136,6 @@ pub struct Peripherals {
     pub UCPD1: ucpd1::Instance,
     pub USB: usb::Instance,
     pub CRS: crs::Instance,
-    pub TIM3: tim3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -171,6 +171,7 @@ impl Peripherals {
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
             TIM4: tim4::TIM4::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
@@ -217,7 +218,6 @@ impl Peripherals {
             UCPD1: ucpd1::UCPD1::steal(),
             USB: usb::USB::steal(),
             CRS: crs::CRS::steal(),
-            TIM3: tim3::TIM3::steal(),
         }
     }
 }

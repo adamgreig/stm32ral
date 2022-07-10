@@ -162,12 +162,8 @@ pub mod COMP2_CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Non-inverting input below inverting input
             pub const Low: u32 = 0b0;
@@ -175,6 +171,10 @@ pub mod COMP2_CSR {
             /// 0b1: Non-inverting input above inverting input
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 2 lock
@@ -416,12 +416,8 @@ pub mod COMP4_CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Non-inverting input below inverting input
             pub const Low: u32 = 0b0;
@@ -429,6 +425,10 @@ pub mod COMP4_CSR {
             /// 0b1: Non-inverting input above inverting input
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 4 lock
@@ -642,12 +642,8 @@ pub mod COMP6_CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Non-inverting input below inverting input
             pub const Low: u32 = 0b0;
@@ -655,6 +651,10 @@ pub mod COMP6_CSR {
             /// 0b1: Non-inverting input above inverting input
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 6 lock
@@ -866,7 +866,7 @@ pub mod COMP1_CSR {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// control and status register
     pub COMP1_CSR: RWRegister<u32>,
@@ -874,12 +874,12 @@ pub struct RegisterBlock {
     /// control and status register
     pub COMP2_CSR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// control and status register
     pub COMP4_CSR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// control and status register
     pub COMP6_CSR: RWRegister<u32>,

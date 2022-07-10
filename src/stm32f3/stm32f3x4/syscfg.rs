@@ -1345,7 +1345,7 @@ pub struct RegisterBlock {
     /// configuration register 2
     pub CFGR2: RWRegister<u32>,
 
-    _reserved1: [u32; 13],
+    _reserved1: [u8; 52],
 
     /// configuration register 3
     pub CFGR3: RWRegister<u32>,

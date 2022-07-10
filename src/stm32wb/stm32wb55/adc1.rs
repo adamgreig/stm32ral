@@ -1974,7 +1974,7 @@ pub struct RegisterBlock {
     /// ADC sampling time register 2
     pub SMPR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// ADC analog watchdog 1 threshold register
     pub TR1: RWRegister<u32>,
@@ -1985,7 +1985,7 @@ pub struct RegisterBlock {
     /// ADC analog watchdog 3 threshold register
     pub TR3: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// ADC group regular sequencer ranks register 1
     pub SQR1: RWRegister<u32>,
@@ -2002,12 +2002,12 @@ pub struct RegisterBlock {
     /// ADC group regular conversion data register
     pub DR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// ADC group injected sequencer register
     pub JSQR: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// ADC offset number 1 register
     pub OFR1: RWRegister<u32>,
@@ -2021,7 +2021,7 @@ pub struct RegisterBlock {
     /// ADC offset number 4 register
     pub OFR4: RWRegister<u32>,
 
-    _reserved5: [u32; 4],
+    _reserved5: [u8; 16],
 
     /// ADC group injected sequencer rank 1 register
     pub JDR1: RORegister<u32>,
@@ -2035,7 +2035,7 @@ pub struct RegisterBlock {
     /// ADC group injected sequencer rank 4 register
     pub JDR4: RORegister<u32>,
 
-    _reserved6: [u32; 4],
+    _reserved6: [u8; 16],
 
     /// ADC analog watchdog 2 configuration register
     pub AWD2CR: RWRegister<u32>,
@@ -2043,7 +2043,7 @@ pub struct RegisterBlock {
     /// ADC analog watchdog 3 configuration register
     pub AWD3CR: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// ADC channel differential or single-ended mode selection register
     pub DIFSEL: RWRegister<u32>,

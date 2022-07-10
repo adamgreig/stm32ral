@@ -1469,7 +1469,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: capture/compare mode register 1 (input mode)
     pub CCMR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -1492,7 +1492,7 @@ pub struct RegisterBlock {
     /// TIM15 capture/compare register 2
     pub CCR2: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// break and dead-time register
     pub BDTR: RWRegister<u32>,
@@ -1506,7 +1506,7 @@ pub struct RegisterBlock {
     /// TIM15 option register 1
     pub OR1: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// TIM15 option register 2
     pub OR2: RWRegister<u32>,

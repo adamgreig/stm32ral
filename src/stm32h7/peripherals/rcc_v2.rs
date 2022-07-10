@@ -8205,7 +8205,7 @@ pub struct RegisterBlock {
     /// RCC Clock Configuration Register
     pub CFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// RCC Domain 1 Clock Configuration Register
     pub D1CFGR: RWRegister<u32>,
@@ -8216,7 +8216,7 @@ pub struct RegisterBlock {
     /// RCC Domain 3 Clock Configuration Register
     pub D3CFGR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// RCC PLLs Clock Source Selection Register
     pub PLLCKSELR: RWRegister<u32>,
@@ -8242,7 +8242,7 @@ pub struct RegisterBlock {
     /// RCC PLL3 Fractional Divider Register
     pub PLL3FRACR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// RCC Domain 1 Kernel Clock Configuration Register
     pub D1CCIPR: RWRegister<u32>,
@@ -8256,7 +8256,7 @@ pub struct RegisterBlock {
     /// RCC Domain 3 Kernel Clock Configuration Register
     pub D3CCIPR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// RCC Clock Source Interrupt Enable Register
     pub CIER: RWRegister<u32>,
@@ -8267,7 +8267,7 @@ pub struct RegisterBlock {
     /// RCC Clock Source Interrupt Clear Register
     pub CICR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// RCC Backup Domain Control Register
     pub BDCR: RWRegister<u32>,
@@ -8275,7 +8275,7 @@ pub struct RegisterBlock {
     /// RCC Clock Control and Status Register
     pub CSR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// RCC AHB3 Reset Register
     pub AHB3RSTR: RWRegister<u32>,
@@ -8307,12 +8307,12 @@ pub struct RegisterBlock {
     /// RCC Global Control Register
     pub GCR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// RCC D3 Autonomous mode Register
     pub D3AMR: RWRegister<u32>,
 
-    _reserved8: [u32; 9],
+    _reserved8: [u8; 36],
 
     /// RCC Reset Status Register
     pub RSR: RWRegister<u32>,
@@ -8344,7 +8344,7 @@ pub struct RegisterBlock {
     /// RCC APB4 Clock Register
     pub APB4ENR: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// RCC AHB3 Sleep Clock Register
     pub AHB3LPENR: RWRegister<u32>,
@@ -8373,7 +8373,7 @@ pub struct RegisterBlock {
     /// RCC APB4 Sleep Clock Register
     pub APB4LPENR: RWRegister<u32>,
 
-    _reserved10: [u32; 4],
+    _reserved10: [u8; 16],
 
     /// RCC Reset Status Register
     pub C1_RSR: RWRegister<u32>,
@@ -8405,7 +8405,7 @@ pub struct RegisterBlock {
     /// RCC APB4 Clock Register
     pub C1_APB4ENR: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// RCC AHB3 Sleep Clock Register
     pub C1_AHB3LPENR: RWRegister<u32>,

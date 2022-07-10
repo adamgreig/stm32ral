@@ -1168,7 +1168,7 @@ pub struct RegisterBlock {
     /// OTG_FS host frame number/frame time remaining register (OTG_FS_HFNUM)
     pub FS_HFNUM: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// OTG_FS_Host periodic transmit FIFO/queue status register (OTG_FS_HPTXSTS)
     pub FS_HPTXSTS: RWRegister<u32>,
@@ -1179,17 +1179,17 @@ pub struct RegisterBlock {
     /// OTG_FS host all channels interrupt mask register
     pub HAINTMSK: RWRegister<u32>,
 
-    _reserved2: [u32; 9],
+    _reserved2: [u8; 36],
 
     /// OTG_FS host port control and status register (OTG_FS_HPRT)
     pub FS_HPRT: RWRegister<u32>,
 
-    _reserved3: [u32; 47],
+    _reserved3: [u8; 188],
 
     /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
     pub FS_HCCHAR0: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
     pub FS_HCINT0: RWRegister<u32>,
@@ -1200,12 +1200,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-0 transfer size register
     pub FS_HCTSIZ0: RWRegister<u32>,
 
-    _reserved5: [u32; 3],
+    _reserved5: [u8; 12],
 
     /// OTG_FS host channel-1 characteristics register (OTG_FS_HCCHAR1)
     pub FS_HCCHAR1: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// OTG_FS host channel-1 interrupt register (OTG_FS_HCINT1)
     pub FS_HCINT1: RWRegister<u32>,
@@ -1216,12 +1216,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-1 transfer size register
     pub FS_HCTSIZ1: RWRegister<u32>,
 
-    _reserved7: [u32; 3],
+    _reserved7: [u8; 12],
 
     /// OTG_FS host channel-2 characteristics register (OTG_FS_HCCHAR2)
     pub FS_HCCHAR2: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// OTG_FS host channel-2 interrupt register (OTG_FS_HCINT2)
     pub FS_HCINT2: RWRegister<u32>,
@@ -1232,12 +1232,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-2 transfer size register
     pub FS_HCTSIZ2: RWRegister<u32>,
 
-    _reserved9: [u32; 3],
+    _reserved9: [u8; 12],
 
     /// OTG_FS host channel-3 characteristics register (OTG_FS_HCCHAR3)
     pub FS_HCCHAR3: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// OTG_FS host channel-3 interrupt register (OTG_FS_HCINT3)
     pub FS_HCINT3: RWRegister<u32>,
@@ -1248,12 +1248,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-3 transfer size register
     pub FS_HCTSIZ3: RWRegister<u32>,
 
-    _reserved11: [u32; 3],
+    _reserved11: [u8; 12],
 
     /// OTG_FS host channel-4 characteristics register (OTG_FS_HCCHAR4)
     pub FS_HCCHAR4: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// OTG_FS host channel-4 interrupt register (OTG_FS_HCINT4)
     pub FS_HCINT4: RWRegister<u32>,
@@ -1264,12 +1264,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-x transfer size register
     pub FS_HCTSIZ4: RWRegister<u32>,
 
-    _reserved13: [u32; 3],
+    _reserved13: [u8; 12],
 
     /// OTG_FS host channel-5 characteristics register (OTG_FS_HCCHAR5)
     pub FS_HCCHAR5: RWRegister<u32>,
 
-    _reserved14: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// OTG_FS host channel-5 interrupt register (OTG_FS_HCINT5)
     pub FS_HCINT5: RWRegister<u32>,
@@ -1280,12 +1280,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-5 transfer size register
     pub FS_HCTSIZ5: RWRegister<u32>,
 
-    _reserved15: [u32; 3],
+    _reserved15: [u8; 12],
 
     /// OTG_FS host channel-6 characteristics register (OTG_FS_HCCHAR6)
     pub FS_HCCHAR6: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved16: [u8; 4],
 
     /// OTG_FS host channel-6 interrupt register (OTG_FS_HCINT6)
     pub FS_HCINT6: RWRegister<u32>,
@@ -1296,12 +1296,12 @@ pub struct RegisterBlock {
     /// OTG_FS host channel-6 transfer size register
     pub FS_HCTSIZ6: RWRegister<u32>,
 
-    _reserved17: [u32; 3],
+    _reserved17: [u8; 12],
 
     /// OTG_FS host channel-7 characteristics register (OTG_FS_HCCHAR7)
     pub FS_HCCHAR7: RWRegister<u32>,
 
-    _reserved18: [u32; 1],
+    _reserved18: [u8; 4],
 
     /// OTG_FS host channel-7 interrupt register (OTG_FS_HCINT7)
     pub FS_HCINT7: RWRegister<u32>,

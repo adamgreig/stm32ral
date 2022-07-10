@@ -1484,27 +1484,27 @@ pub struct RegisterBlock {
     /// sampling time register
     pub SMPR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// watchdog threshold register
     pub TR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// channel selection register
     pub CHSELR: RWRegister<u32>,
 
-    _reserved3: [u32; 5],
+    _reserved3: [u8; 20],
 
     /// data register
     pub DR: RORegister<u32>,
 
-    _reserved4: [u32; 28],
+    _reserved4: [u8; 112],
 
     /// ADC Calibration factor
     pub CALFACT: RWRegister<u32>,
 
-    _reserved5: [u32; 148],
+    _reserved5: [u8; 592],
 
     /// ADC common configuration register
     pub CCR: RWRegister<u32>,

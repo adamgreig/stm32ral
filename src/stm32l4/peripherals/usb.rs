@@ -625,12 +625,8 @@ pub mod ISTR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: data transmitted by the USB peripheral to the host PC
             pub const To: u32 = 0b0;
@@ -638,6 +634,10 @@ pub mod ISTR {
             /// 0b1: data received by the USB peripheral from the host PC
             pub const From: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LPM L1 state request
@@ -790,16 +790,16 @@ pub mod ISTR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: endpoint has successfully completed a transaction
             pub const Completed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -840,16 +840,16 @@ pub mod FNR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: the frame timer remains in this state until an USB reset or USB suspend event occurs
             pub const Locked: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data - line status
@@ -858,16 +858,16 @@ pub mod FNR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: received data minus upstream port data line
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data + line status
@@ -876,16 +876,16 @@ pub mod FNR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: received data plus upstream port data line
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1113,12 +1113,8 @@ pub mod BCDR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: data lines contact not detected
             pub const NotDetected: u32 = 0b0;
@@ -1126,6 +1122,10 @@ pub mod BCDR {
             /// 0b1: data lines contact detected
             pub const Detected: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Primary detection
@@ -1134,12 +1134,8 @@ pub mod BCDR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: no BCD support detected
             pub const NoBCD: u32 = 0b0;
@@ -1147,6 +1143,10 @@ pub mod BCDR {
             /// 0b1: BCD support detected
             pub const BCD: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Secondary detection
@@ -1155,12 +1155,8 @@ pub mod BCDR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: CDP detected
             pub const CDP: u32 = 0b0;
@@ -1168,6 +1164,10 @@ pub mod BCDR {
             /// 0b1: DCP detected
             pub const DCP: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DM pull-up detection status
@@ -1176,12 +1176,8 @@ pub mod BCDR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Normal port detected
             pub const Normal: u32 = 0b0;
@@ -1189,6 +1185,10 @@ pub mod BCDR {
             /// 0b1: PS2 port or proprietary charger detected
             pub const PS2: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DP pull-up control
@@ -1238,7 +1238,7 @@ pub struct RegisterBlock {
     /// endpoint %s register
     pub EP7R: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// control register
     pub CNTR: RWRegister<u32>,

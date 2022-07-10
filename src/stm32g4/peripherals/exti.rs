@@ -2671,7 +2671,7 @@ pub struct RegisterBlock {
     /// Pending register
     pub PR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Interrupt mask register
     pub IMR2: RWRegister<u32>,

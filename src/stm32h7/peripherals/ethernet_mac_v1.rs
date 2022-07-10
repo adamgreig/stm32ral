@@ -4687,17 +4687,17 @@ pub struct RegisterBlock {
     /// Hash Table 1 register
     pub MACHT1R: RWRegister<u32>,
 
-    _reserved1: [u32; 14],
+    _reserved1: [u8; 56],
 
     /// VLAN tag register
     pub MACVTR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// VLAN Hash table register
     pub MACVHTR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// VLAN inclusion register
     pub MACVIR: RWRegister<u32>,
@@ -4705,17 +4705,17 @@ pub struct RegisterBlock {
     /// Inner VLAN inclusion register
     pub MACIVIR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// Tx Queue flow control register
     pub MACQTxFCR: RWRegister<u32>,
 
-    _reserved5: [u32; 7],
+    _reserved5: [u8; 28],
 
     /// Rx flow control register
     pub MACRxFCR: RWRegister<u32>,
 
-    _reserved6: [u32; 7],
+    _reserved6: [u8; 28],
 
     /// Interrupt status register
     pub MACISR: RORegister<u32>,
@@ -4726,7 +4726,7 @@ pub struct RegisterBlock {
     /// Rx Tx status register
     pub MACRxTxSR: RORegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// PMT control status register
     pub MACPCSR: RWRegister<u32>,
@@ -4734,7 +4734,7 @@ pub struct RegisterBlock {
     /// Remove wakeup packet filter register
     pub MACRWKPFR: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// LPI control status register
     pub MACLCSR: RWRegister<u32>,
@@ -4748,7 +4748,7 @@ pub struct RegisterBlock {
     /// 1-microsecond-tick counter register
     pub MAC1USTCR: RWRegister<u32>,
 
-    _reserved9: [u32; 12],
+    _reserved9: [u8; 48],
 
     /// Version register
     pub MACVR: RORegister<u32>,
@@ -4756,7 +4756,7 @@ pub struct RegisterBlock {
     /// Debug register
     pub MACDR: RORegister<u32>,
 
-    _reserved10: [u32; 2],
+    _reserved10: [u8; 8],
 
     /// HW feature 1 register
     pub MACHWF1R: RORegister<u32>,
@@ -4764,7 +4764,7 @@ pub struct RegisterBlock {
     /// HW feature 2 register
     pub MACHWF2R: RORegister<u32>,
 
-    _reserved11: [u32; 54],
+    _reserved11: [u8; 216],
 
     /// MDIO address register
     pub MACMDIOAR: RWRegister<u32>,
@@ -4772,7 +4772,7 @@ pub struct RegisterBlock {
     /// MDIO data register
     pub MACMDIODR: RWRegister<u32>,
 
-    _reserved12: [u32; 62],
+    _reserved12: [u8; 248],
 
     /// Address 0 high register
     pub MACA0HR: RWRegister<u32>,
@@ -4798,7 +4798,7 @@ pub struct RegisterBlock {
     /// Address 3 low register
     pub MACA3LR: RWRegister<u32>,
 
-    _reserved13: [u32; 248],
+    _reserved13: [u8; 992],
 
     /// MMC control register
     pub MMC_CONTROL: RWRegister<u32>,
@@ -4815,7 +4815,7 @@ pub struct RegisterBlock {
     /// MMC Tx interrupt mask register
     pub MMC_TX_INTERRUPT_MASK: RWRegister<u32>,
 
-    _reserved14: [u32; 14],
+    _reserved14: [u8; 56],
 
     /// Tx single collision good packets register
     pub TX_SINGLE_COLLISION_GOOD_PACKETS: RORegister<u32>,
@@ -4823,12 +4823,12 @@ pub struct RegisterBlock {
     /// Tx multiple collision good packets register
     pub TX_MULTIPLE_COLLISION_GOOD_PACKETS: RORegister<u32>,
 
-    _reserved15: [u32; 5],
+    _reserved15: [u8; 20],
 
     /// Tx packet count good register
     pub TX_PACKET_COUNT_GOOD: RORegister<u32>,
 
-    _reserved16: [u32; 10],
+    _reserved16: [u8; 40],
 
     /// Rx CRC error packets register
     pub RX_CRC_ERROR_PACKETS: RORegister<u32>,
@@ -4836,12 +4836,12 @@ pub struct RegisterBlock {
     /// Rx alignment error packets register
     pub RX_ALIGNMENT_ERROR_PACKETS: RORegister<u32>,
 
-    _reserved17: [u32; 10],
+    _reserved17: [u8; 40],
 
     /// Rx unicast packets good register
     pub RX_UNICAST_PACKETS_GOOD: RORegister<u32>,
 
-    _reserved18: [u32; 9],
+    _reserved18: [u8; 36],
 
     /// Tx LPI microsecond timer register
     pub TX_LPI_USEC_CNTR: RORegister<u32>,
@@ -4855,7 +4855,7 @@ pub struct RegisterBlock {
     /// Rx LPI transition counter register
     pub RX_LPI_TRAN_CNTR: RORegister<u32>,
 
-    _reserved19: [u32; 65],
+    _reserved19: [u8; 260],
 
     /// L3 and L4 control 0 register
     pub MACL3L4C0R: RWRegister<u32>,
@@ -4863,7 +4863,7 @@ pub struct RegisterBlock {
     /// Layer4 address filter 0 register
     pub MACL4A0R: RWRegister<u32>,
 
-    _reserved20: [u32; 2],
+    _reserved20: [u8; 8],
 
     /// MACL3A00R
     pub MACL3A00R: RWRegister<u32>,
@@ -4877,7 +4877,7 @@ pub struct RegisterBlock {
     /// Layer3 Address 3 filter 0 register
     pub MACL3A30: RWRegister<u32>,
 
-    _reserved21: [u32; 4],
+    _reserved21: [u8; 16],
 
     /// L3 and L4 control 1 register
     pub MACL3L4C1R: RWRegister<u32>,
@@ -4885,7 +4885,7 @@ pub struct RegisterBlock {
     /// Layer 4 address filter 1 register
     pub MACL4A1R: RWRegister<u32>,
 
-    _reserved22: [u32; 2],
+    _reserved22: [u8; 8],
 
     /// Layer3 address 0 filter 1 Register
     pub MACL3A01R: RWRegister<u32>,
@@ -4899,12 +4899,12 @@ pub struct RegisterBlock {
     /// Layer3 address 3 filter 1 register
     pub MACL3A31R: RWRegister<u32>,
 
-    _reserved23: [u32; 100],
+    _reserved23: [u8; 400],
 
     /// ARP address register
     pub MACARPAR: RWRegister<u32>,
 
-    _reserved24: [u32; 7],
+    _reserved24: [u8; 28],
 
     /// Timestamp control Register
     pub MACTSCR: RWRegister<u32>,
@@ -4927,12 +4927,12 @@ pub struct RegisterBlock {
     /// Timestamp addend register
     pub MACTSAR: RWRegister<u32>,
 
-    _reserved25: [u32; 1],
+    _reserved25: [u8; 4],
 
     /// Timestamp status register
     pub MACTSSR: RORegister<u32>,
 
-    _reserved26: [u32; 3],
+    _reserved26: [u8; 12],
 
     /// Tx timestamp status nanoseconds register
     pub MACTxTSSNR: RORegister<u32>,
@@ -4940,12 +4940,12 @@ pub struct RegisterBlock {
     /// Tx timestamp status seconds register
     pub MACTxTSSSR: RORegister<u32>,
 
-    _reserved27: [u32; 2],
+    _reserved27: [u8; 8],
 
     /// Auxiliary control register
     pub MACACR: RWRegister<u32>,
 
-    _reserved28: [u32; 1],
+    _reserved28: [u8; 4],
 
     /// Auxiliary timestamp nanoseconds register
     pub MACATSNR: RORegister<u32>,
@@ -4965,12 +4965,12 @@ pub struct RegisterBlock {
     /// Timestamp Egress correction nanosecond register
     pub MACTSECNR: RWRegister<u32>,
 
-    _reserved29: [u32; 4],
+    _reserved29: [u8; 16],
 
     /// PPS control register
     pub MACPPSCR: RWRegister<u32>,
 
-    _reserved30: [u32; 3],
+    _reserved30: [u8; 12],
 
     /// PPS target time seconds register
     pub MACPPSTTSR: RWRegister<u32>,
@@ -4984,7 +4984,7 @@ pub struct RegisterBlock {
     /// PPS width register
     pub MACPPSWR: RWRegister<u32>,
 
-    _reserved31: [u32; 12],
+    _reserved31: [u8; 48],
 
     /// PTP Offload control register
     pub MACPOCR: RWRegister<u32>,

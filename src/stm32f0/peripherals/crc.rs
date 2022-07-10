@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! cyclic redundancy check calculation unit
 //!
-//! Used by: stm32f0x0, stm32f0x1, stm32f0x2, stm32f0x8
+//! Used by: stm32f0x1, stm32f0x2, stm32f0x8
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -190,6 +190,24 @@ pub mod INIT {
         pub mod RW {}
     }
 }
+
+/// CRC polynomial
+pub mod POL {
+
+    /// Programmable polynomial
+    pub mod POL {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// DR and DR16
@@ -205,16 +223,20 @@ pub struct RegisterBlock {
     /// Control register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Initial CRC value
     pub INIT: RWRegister<u32>,
+
+    /// CRC polynomial
+    pub POL: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub DR: u32,
     pub IDR: u32,
     pub CR: u32,
     pub INIT: u32,
+    pub POL: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -581,12 +581,8 @@ pub mod CSR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No synchronization event occured on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ
             pub const NoSyncEvent: u32 = 0b0;
@@ -594,6 +590,10 @@ pub mod CSR {
             /// 0b1: Synchronization event occured on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ
             pub const SyncEvent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF12
@@ -602,11 +602,11 @@ pub mod CSR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF11
@@ -615,11 +615,11 @@ pub mod CSR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF10
@@ -628,11 +628,11 @@ pub mod CSR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF9
@@ -641,11 +641,11 @@ pub mod CSR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF8
@@ -654,11 +654,11 @@ pub mod CSR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF7
@@ -667,11 +667,11 @@ pub mod CSR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF6
@@ -680,11 +680,11 @@ pub mod CSR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF5
@@ -693,11 +693,11 @@ pub mod CSR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF4
@@ -706,11 +706,11 @@ pub mod CSR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF3
@@ -719,11 +719,11 @@ pub mod CSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF2
@@ -732,11 +732,11 @@ pub mod CSR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF1
@@ -745,11 +745,11 @@ pub mod CSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SOF0
@@ -758,11 +758,11 @@ pub mod CSR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::SOF13::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::SOF13::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -777,14 +777,14 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear synchronization flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF12
@@ -795,9 +795,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF11
@@ -808,9 +808,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF10
@@ -821,9 +821,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF9
@@ -834,9 +834,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF8
@@ -847,9 +847,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF7
@@ -860,9 +860,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF6
@@ -873,9 +873,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF5
@@ -886,9 +886,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF4
@@ -899,9 +899,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF3
@@ -912,9 +912,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF2
@@ -925,9 +925,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF1
@@ -938,9 +938,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSOF0
@@ -951,9 +951,9 @@ pub mod CCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSOF13::RW;
+        pub use super::CSOF13::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1158,12 +1158,8 @@ pub mod RGSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No new trigger event occured on DMA request generator channel x, before the request counter underrun
             pub const NoTrigger: u32 = 0b0;
@@ -1171,6 +1167,10 @@ pub mod RGSR {
             /// 0b1: New trigger event occured on DMA request generator channel x, before the request counter underrun
             pub const Trigger: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// OF2
@@ -1179,11 +1179,11 @@ pub mod RGSR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::OF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::OF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// OF1
@@ -1192,11 +1192,11 @@ pub mod RGSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::OF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::OF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// OF0
@@ -1205,11 +1205,11 @@ pub mod RGSR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::OF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::OF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1224,14 +1224,14 @@ pub mod RGCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear overrun flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// COF2
@@ -1242,9 +1242,9 @@ pub mod RGCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::COF3::RW;
+        pub use super::COF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// COF1
@@ -1255,9 +1255,9 @@ pub mod RGCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::COF3::RW;
+        pub use super::COF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// COF0
@@ -1268,9 +1268,9 @@ pub mod RGCFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::COF3::RW;
+        pub use super::COF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]
@@ -1317,7 +1317,7 @@ pub struct RegisterBlock {
     /// C13CR
     pub C13CR: RWRegister<u32>,
 
-    _reserved1: [u32; 18],
+    _reserved1: [u8; 72],
 
     /// request line multiplexer interrupt channel status register
     pub CSR: RORegister<u32>,
@@ -1325,7 +1325,7 @@ pub struct RegisterBlock {
     /// request line multiplexer interrupt channel clear flag register
     pub CCFR: WORegister<u32>,
 
-    _reserved2: [u32; 30],
+    _reserved2: [u8; 120],
 
     /// request generator channel x configuration register
     pub RG0CR: RWRegister<u32>,
@@ -1339,7 +1339,7 @@ pub struct RegisterBlock {
     /// request generator channel x configuration register
     pub RG3CR: RWRegister<u32>,
 
-    _reserved3: [u32; 12],
+    _reserved3: [u8; 48],
 
     /// request generator interrupt status register
     pub RGSR: RORegister<u32>,

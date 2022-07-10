@@ -774,7 +774,7 @@ pub struct RegisterBlock {
     /// SYSCFG peripheral mode configuration set register
     pub SYSCFG_PMCSETR: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// SYSCFG IO control register
     pub SYSCFG_IOCTRLSETR: RWRegister<u32>,
@@ -794,17 +794,17 @@ pub struct RegisterBlock {
     /// SYSCFG control timer break register
     pub SYSCFG_CBR: RWRegister<u32>,
 
-    _reserved2: [u32; 5],
+    _reserved2: [u8; 20],
 
     /// SYSCFG peripheral mode configuration clear register
     pub SYSCFG_PMCCLRR: RWRegister<u32>,
 
-    _reserved3: [u32; 4],
+    _reserved3: [u8; 16],
 
     /// SYSCFG IO control register
     pub SYSCFG_IOCTRLCLRR: RWRegister<u32>,
 
-    _reserved4: [u32; 230],
+    _reserved4: [u8; 920],
 
     /// SYSCFG version register
     pub SYSCFG_VERR: RORegister<u32>,

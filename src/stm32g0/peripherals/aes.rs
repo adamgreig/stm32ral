@@ -852,7 +852,7 @@ pub struct RegisterBlock {
     /// AES suspend register 7
     pub SUSP7R: RWRegister<u32>,
 
-    _reserved1: [u32; 228],
+    _reserved1: [u8; 912],
 
     /// AES hardware configuration register
     pub HWCFR: RORegister<u32>,

@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// MPU type register
-pub mod MPU_TYPER {
+pub mod TYPER {
 
     /// Separate flag
     pub mod SEPARATE {
@@ -53,7 +53,7 @@ pub mod MPU_TYPER {
 }
 
 /// MPU control register
-pub mod MPU_CTRL {
+pub mod CTRL {
 
     /// Enables the MPU
     pub mod ENABLE {
@@ -99,7 +99,7 @@ pub mod MPU_CTRL {
 }
 
 /// MPU region number register
-pub mod MPU_RNR {
+pub mod RNR {
 
     /// MPU region
     pub mod REGION {
@@ -117,7 +117,7 @@ pub mod MPU_RNR {
 }
 
 /// MPU region base address register
-pub mod MPU_RBAR {
+pub mod RBAR {
 
     /// MPU region field
     pub mod REGION {
@@ -163,7 +163,7 @@ pub mod MPU_RBAR {
 }
 
 /// MPU region attribute and size register
-pub mod MPU_RASR {
+pub mod RASR {
 
     /// Region enable bit.
     pub mod ENABLE {
@@ -294,26 +294,26 @@ pub mod MPU_RASR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// MPU type register
-    pub MPU_TYPER: RORegister<u32>,
+    pub TYPER: RORegister<u32>,
 
     /// MPU control register
-    pub MPU_CTRL: RWRegister<u32>,
+    pub CTRL: RWRegister<u32>,
 
     /// MPU region number register
-    pub MPU_RNR: RWRegister<u32>,
+    pub RNR: RWRegister<u32>,
 
     /// MPU region base address register
-    pub MPU_RBAR: RWRegister<u32>,
+    pub RBAR: RWRegister<u32>,
 
     /// MPU region attribute and size register
-    pub MPU_RASR: RWRegister<u32>,
+    pub RASR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub MPU_TYPER: u32,
-    pub MPU_CTRL: u32,
-    pub MPU_RNR: u32,
-    pub MPU_RBAR: u32,
-    pub MPU_RASR: u32,
+    pub TYPER: u32,
+    pub CTRL: u32,
+    pub RNR: u32,
+    pub RBAR: u32,
+    pub RASR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -346,11 +346,11 @@ pub mod MPU {
 
     /// Reset values for each field in MPU
     pub const reset: ResetValues = ResetValues {
-        MPU_TYPER: 0x00000800,
-        MPU_CTRL: 0x00000000,
-        MPU_RNR: 0x00000000,
-        MPU_RBAR: 0x00000000,
-        MPU_RASR: 0x00000000,
+        TYPER: 0x00000800,
+        CTRL: 0x00000000,
+        RNR: 0x00000000,
+        RBAR: 0x00000000,
+        RASR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

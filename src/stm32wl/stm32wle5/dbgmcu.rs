@@ -357,17 +357,17 @@ pub struct RegisterBlock {
     /// DBGMCU Configuration Register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 13],
+    _reserved1: [u8; 52],
 
     /// DBGMCU CPU1 APB1 Peripheral Freeze Register 1
     pub APB1FZR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DBGMCU CPU1 APB1 Peripheral Freeze Register 2
     pub APB1FZR2: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// DBGMCU CPU1 APB2 Peripheral Freeze Register
     pub APB2FZR: RWRegister<u32>,

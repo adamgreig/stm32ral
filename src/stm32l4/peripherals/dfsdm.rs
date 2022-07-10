@@ -1830,7 +1830,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR0: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// channel configuration y register
     pub CFGR11: RWRegister<u32>,
@@ -1847,7 +1847,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR1: RWRegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// channel configuration y register
     pub CFGR12: RWRegister<u32>,
@@ -1864,7 +1864,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR2: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// channel configuration y register
     pub CFGR13: RWRegister<u32>,
@@ -1881,7 +1881,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR3: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// channel configuration y register
     pub CFGR14: RWRegister<u32>,
@@ -1898,7 +1898,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR4: RWRegister<u32>,
 
-    _reserved5: [u32; 3],
+    _reserved5: [u8; 12],
 
     /// channel configuration y register
     pub CFGR15: RWRegister<u32>,
@@ -1915,7 +1915,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR5: RWRegister<u32>,
 
-    _reserved6: [u32; 3],
+    _reserved6: [u8; 12],
 
     /// channel configuration y register
     pub CFGR16: RWRegister<u32>,
@@ -1932,7 +1932,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR6: RWRegister<u32>,
 
-    _reserved7: [u32; 3],
+    _reserved7: [u8; 12],
 
     /// channel configuration y register
     pub CFGR17: RWRegister<u32>,
@@ -1949,7 +1949,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub DATINR7: RWRegister<u32>,
 
-    _reserved8: [u32; 3],
+    _reserved8: [u8; 12],
 
     /// control register 1
     pub CR10: RWRegister<u32>,
@@ -1996,7 +1996,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub CNVTIMR0: RORegister<u32>,
 
-    _reserved9: [u32; 49],
+    _reserved9: [u8; 196],
 
     /// control register 1
     pub CR11: RWRegister<u32>,
@@ -2043,7 +2043,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub CNVTIMR1: RORegister<u32>,
 
-    _reserved10: [u32; 49],
+    _reserved10: [u8; 196],
 
     /// control register 1
     pub CR12: RWRegister<u32>,
@@ -2090,7 +2090,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub CNVTIMR2: RORegister<u32>,
 
-    _reserved11: [u32; 49],
+    _reserved11: [u8; 196],
 
     /// control register 1
     pub CR13: RWRegister<u32>,

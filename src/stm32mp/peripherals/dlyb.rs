@@ -175,7 +175,7 @@ pub struct RegisterBlock {
     /// DLYB configuration register
     pub DLYB_CFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 251],
+    _reserved1: [u8; 1004],
 
     /// DLYB IP version register
     pub DLYB_VERR: RORegister<u32>,

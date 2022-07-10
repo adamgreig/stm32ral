@@ -784,7 +784,7 @@ pub struct RegisterBlock {
     /// Debug information register
     pub SPDIFRX_DIR: RORegister<u32>,
 
-    _reserved1: [u32; 246],
+    _reserved1: [u8; 984],
 
     /// SPDIFRX version register
     pub SPDIFRX_VERR: RORegister<u32>,

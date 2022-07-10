@@ -1488,17 +1488,17 @@ pub struct RegisterBlock {
     /// SPI/I2S interrupt/status flags clear register
     pub SPI2S_IFCR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// SPI/I2S transmit data register
     pub SPI2S_TXDR: WORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// SPI/I2S receive data register
     pub SPI2S_RXDR: RORegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// SPI polynomial register
     pub SPI_CRCPOLY: RWRegister<u32>,
@@ -1515,7 +1515,7 @@ pub struct RegisterBlock {
     /// All documented bits in this register must be configured when the I2S is disabled (SPE = 0).These bits are not used in SPI mode except for I2SMOD which needs to be set to 0 in SPI mode.
     pub SPI_I2SCFGR: RWRegister<u32>,
 
-    _reserved4: [u32; 231],
+    _reserved4: [u8; 924],
 
     /// SPI/I2S hardware configuration register
     pub SPI_I2S_HWCFGR: RORegister<u32>,

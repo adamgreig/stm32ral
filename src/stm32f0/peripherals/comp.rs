@@ -188,12 +188,8 @@ pub mod CSR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Non-inverting input below inverting input
             pub const Low: u32 = 0b0;
@@ -201,6 +197,10 @@ pub mod CSR {
             /// 0b1: Non-inverting input above inverting input
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 1 lock
@@ -360,11 +360,11 @@ pub mod CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::COMP1OUT::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::COMP1OUT::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Comparator 2 lock
@@ -411,7 +411,7 @@ pub mod CSR {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// control and status register
     pub CSR: RWRegister<u32>,

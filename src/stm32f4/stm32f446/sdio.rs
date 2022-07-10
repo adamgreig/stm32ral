@@ -61,11 +61,11 @@ pub mod CLKCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: SDIO_CK is only enabled when the bus is active
-            pub const Disabled: u32 = 0b1;
-
             /// 0b0: SDIO_CK clock is always enabled
             pub const Enabled: u32 = 0b0;
+
+            /// 0b1: SDIO_CK is only enabled when the bus is active
+            pub const Disabled: u32 = 0b1;
         }
     }
 
@@ -607,12 +607,8 @@ pub mod STA {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command response received, crc check passed
             pub const NotFailed: u32 = 0b0;
@@ -620,6 +616,10 @@ pub mod STA {
             /// 0b1: Command response received, crc check failed
             pub const Failed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data block sent/received (CRC check failed). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -628,12 +628,8 @@ pub mod STA {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Data block sent/received crc check fail
             pub const NotFailed: u32 = 0b0;
@@ -641,6 +637,10 @@ pub mod STA {
             /// 0b1: Data block sent/received crc failed
             pub const Failed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command response timeout. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR. The Command Timeout period has a fixed value of 64 SDMMC_CK clock periods.
@@ -649,12 +649,8 @@ pub mod STA {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Command timeout
             pub const NoTimeout: u32 = 0b0;
@@ -662,6 +658,10 @@ pub mod STA {
             /// 0b1: Command timeout
             pub const Timeout: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data timeout. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -670,12 +670,8 @@ pub mod STA {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No data timeout
             pub const NoTimeout: u32 = 0b0;
@@ -683,6 +679,10 @@ pub mod STA {
             /// 0b1: Data timeout
             pub const Timeout: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO underrun error or IDMA read transfer error. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -691,12 +691,8 @@ pub mod STA {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transmit FIFO underrun error
             pub const NoUnderrun: u32 = 0b0;
@@ -704,6 +700,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO underrun error
             pub const Underrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Received FIFO overrun error or IDMA write transfer error. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -712,12 +712,8 @@ pub mod STA {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No FIFO overrun error
             pub const NoOverrun: u32 = 0b0;
@@ -725,6 +721,10 @@ pub mod STA {
             /// 0b1: Receive FIFO overrun error
             pub const Overrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command response received (CRC check passed, or no CRC). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -733,12 +733,8 @@ pub mod STA {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command not done
             pub const NotDone: u32 = 0b0;
@@ -746,6 +742,10 @@ pub mod STA {
             /// 0b1: Command response received (CRC check passed)
             pub const Done: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command sent (no response required). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -754,12 +754,8 @@ pub mod STA {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command not sent
             pub const NotSent: u32 = 0b0;
@@ -767,6 +763,10 @@ pub mod STA {
             /// 0b1: Command sent (no response required)
             pub const Sent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data transfer ended correctly. (data counter, DATACOUNT is zero and no errors occur). Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -775,19 +775,19 @@ pub mod STA {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Data end (DCOUNT, is zero)
-            pub const Done: u32 = 0b1;
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Not done
             pub const NotDone: u32 = 0b0;
+
+            /// 0b1: Data end (DCOUNT, is zero)
+            pub const Done: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data block sent/received. (CRC check passed) and DPSM moves to the READWAIT state. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -796,12 +796,8 @@ pub mod STA {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data block not sent/received (CRC check failed)
             pub const NotTransferred: u32 = 0b0;
@@ -809,6 +805,10 @@ pub mod STA {
             /// 0b1: Data block sent/received (CRC check passed)
             pub const Transferred: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data transfer aborted by CMD12. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -817,12 +817,8 @@ pub mod STA {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Command transfer not in progress
             pub const NotInProgress: u32 = 0b0;
@@ -830,6 +826,10 @@ pub mod STA {
             /// 0b1: Command tranfer in progress
             pub const InProgress: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data path state machine active, i.e. not in Idle state. This is a hardware status flag only, does not generate an interrupt.
@@ -838,12 +838,8 @@ pub mod STA {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data transmit is not in progress
             pub const NotInProgress: u32 = 0b0;
@@ -851,6 +847,10 @@ pub mod STA {
             /// 0b1: Data transmit in progress
             pub const InProgress: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command path state machine active, i.e. not in Idle state. This is a hardware status flag only, does not generate an interrupt.
@@ -859,12 +859,8 @@ pub mod STA {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data receive not in progress
             pub const NotInProgress: u32 = 0b0;
@@ -872,6 +868,10 @@ pub mod STA {
             /// 0b1: Data receive in progress
             pub const InProgress: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO half empty At least half the number of words can be written into the FIFO. This bit is cleared when the FIFO becomes half+1 full.
@@ -880,12 +880,8 @@ pub mod STA {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not half empty
             pub const NotHalfEmpty: u32 = 0b0;
@@ -893,6 +889,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO half empty. At least 8 words can be written into the FIFO
             pub const HalfEmpty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO half full There are at least half the number of words in the FIFO. This bit is cleared when the FIFO becomes half+1 empty.
@@ -901,12 +901,8 @@ pub mod STA {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Receive FIFO not half full
             pub const NotHalfFull: u32 = 0b0;
@@ -914,6 +910,10 @@ pub mod STA {
             /// 0b1: Receive FIFO half full. At least 8 words in the FIFO
             pub const HalfFull: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO full This is a hardware status flag only, does not generate an interrupt. This bit is cleared when one FIFO location becomes empty.
@@ -922,12 +922,8 @@ pub mod STA {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not full
             pub const NotFull: u32 = 0b0;
@@ -935,6 +931,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO full
             pub const Full: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO full This bit is cleared when one FIFO location becomes empty.
@@ -943,12 +943,8 @@ pub mod STA {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not full
             pub const NotFull: u32 = 0b0;
@@ -956,6 +952,10 @@ pub mod STA {
             /// 0b1: Receive FIFO full. When HW Flow Control is enabled, RXFIFOF signals becomes activated 2 words before the FIFO is full.
             pub const Full: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit FIFO empty This bit is cleared when one FIFO location becomes full.
@@ -964,12 +964,8 @@ pub mod STA {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmit FIFO not empty
             pub const NotEmpty: u32 = 0b0;
@@ -977,6 +973,10 @@ pub mod STA {
             /// 0b1: Transmit FIFO empty. When HW Flow Control is enabled, TXFIFOE signals becomes activated when the FIFO contains 2 words.
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO empty This is a hardware status flag only, does not generate an interrupt. This bit is cleared when one FIFO location becomes full.
@@ -985,12 +985,8 @@ pub mod STA {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Receive FIFO not empty
             pub const NotEmpty: u32 = 0b0;
@@ -998,6 +994,10 @@ pub mod STA {
             /// 0b1: Receive FIFO empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Inverted value of SDMMC_D0 line (Busy), sampled at the end of a CMD response and a second time 2 SDMMC_CK cycles after the CMD response. This bit is reset to not busy when the SDMMCD0 line changes from busy to not busy. This bit does not signal busy due to data transfer. This is a hardware status flag only, it does not generate an interrupt.
@@ -1006,12 +1006,8 @@ pub mod STA {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data not available in transmit FIFO
             pub const NotAvailable: u32 = 0b0;
@@ -1019,6 +1015,10 @@ pub mod STA {
             /// 0b1: Data available in transmit FIFO
             pub const Available: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// end of SDMMC_D0 Busy following a CMD response detected. This indicates only end of busy following a CMD response. This bit does not signal busy due to data transfer. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -1027,12 +1027,8 @@ pub mod STA {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data not available in receive FIFO
             pub const NotAvailable: u32 = 0b0;
@@ -1040,6 +1036,10 @@ pub mod STA {
             /// 0b1: Data available in receive FIFO
             pub const Available: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SDIO interrupt received. Interrupt flag is cleared by writing corresponding interrupt clear bit in SDMMC_ICR.
@@ -1048,12 +1048,8 @@ pub mod STA {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: SDIO interrupt not receieved
             pub const NotReceived: u32 = 0b0;
@@ -1061,6 +1057,10 @@ pub mod STA {
             /// 0b1: SDIO interrupt received
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1630,12 +1630,12 @@ pub struct RegisterBlock {
     /// The interrupt mask register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
     pub MASK: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// The SDIO_FIFOCNT register contains the remaining number of words to be written to or read from the FIFO. The FIFO counter loads the value from the data length register (see SDIO_DLEN) when the data transfer enable bit, DTEN, is set in the data control register (SDIO_DCTRL register) and the DPSM is at the Idle state. If the data length is not word-aligned (multiple of 4), the remaining 1 to 3 bytes are regarded as a word.
     pub FIFOCNT: RORegister<u32>,
 
-    _reserved2: [u32; 13],
+    _reserved2: [u8; 52],
 
     /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
     pub FIFO: RWRegister<u32>,

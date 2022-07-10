@@ -426,7 +426,7 @@ pub mod UART9 {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x40018000,
+        addr: 0x40011800,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -517,7 +517,7 @@ pub mod UART9 {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const UART9: *const RegisterBlock = 0x40018000 as *const _;
+pub const UART9: *const RegisterBlock = 0x40011800 as *const _;
 
 /// Access functions for the USART1 peripheral instance
 pub mod USART1 {
@@ -630,7 +630,7 @@ pub mod USART10 {
 
     #[cfg(not(feature = "nosync"))]
     const INSTANCE: Instance = Instance {
-        addr: 0x4001c000,
+        addr: 0x40011c00,
         _marker: ::core::marker::PhantomData,
     };
 
@@ -721,7 +721,7 @@ pub mod USART10 {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const USART10: *const RegisterBlock = 0x4001c000 as *const _;
+pub const USART10: *const RegisterBlock = 0x40011c00 as *const _;
 
 /// Access functions for the USART2 peripheral instance
 pub mod USART2 {

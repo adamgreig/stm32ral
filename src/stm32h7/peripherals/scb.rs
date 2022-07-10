@@ -1166,7 +1166,7 @@ pub struct RegisterBlock {
     /// Hard fault status register
     pub HFSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Memory management fault address register
     pub MMFAR: RWRegister<u32>,

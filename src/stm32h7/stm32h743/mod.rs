@@ -37,7 +37,7 @@ pub use super::instances::fmc;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::gpio;
-pub use super::instances::hrtim_common_h743_h743v_h753_h753v as hrtim_common;
+pub use super::instances::hrtim_common;
 pub use super::instances::hrtim_master;
 pub use super::instances::hrtim_tima;
 pub use super::instances::hrtim_timb;
@@ -210,7 +210,12 @@ pub struct Peripherals {
     pub OPAMP: opamp::Instance,
     pub SWPMI: swpmi::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
     pub TIM5: tim5::Instance,
+    pub TIM12: tim12::Instance,
+    pub TIM13: tim13::Instance,
+    pub TIM14: tim14::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
     pub NVIC: nvic::Instance,
@@ -224,11 +229,6 @@ pub struct Peripherals {
     pub SCB: scb::Instance,
     pub PF: pf::Instance,
     pub AC: ac::Instance,
-    pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
-    pub TIM12: tim12::Instance,
-    pub TIM13: tim13::Instance,
-    pub TIM14: tim14::Instance,
     pub RAMECC1: ramecc::Instance,
     pub RAMECC2: ramecc::Instance,
     pub RAMECC3: ramecc3::Instance,
@@ -352,7 +352,12 @@ impl Peripherals {
             OPAMP: opamp::OPAMP::steal(),
             SWPMI: swpmi::SWPMI::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
             TIM5: tim5::TIM5::steal(),
+            TIM12: tim12::TIM12::steal(),
+            TIM13: tim13::TIM13::steal(),
+            TIM14: tim14::TIM14::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
             NVIC: nvic::NVIC::steal(),
@@ -366,11 +371,6 @@ impl Peripherals {
             SCB: scb::SCB::steal(),
             PF: pf::PF::steal(),
             AC: ac::AC::steal(),
-            TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
-            TIM12: tim12::TIM12::steal(),
-            TIM13: tim13::TIM13::steal(),
-            TIM14: tim14::TIM14::steal(),
             RAMECC1: ramecc::RAMECC1::steal(),
             RAMECC2: ramecc::RAMECC2::steal(),
             RAMECC3: ramecc3::RAMECC3::steal(),

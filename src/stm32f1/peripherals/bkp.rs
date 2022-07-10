@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// Backup data register (BKP_DR)
-pub mod DR0 {
+pub mod DR1 {
 
     /// Backup data
     pub mod D {
@@ -27,208 +27,208 @@ pub mod DR0 {
 }
 
 /// Backup data register (BKP_DR)
-pub mod DR1 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
 pub mod DR2 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR3 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR4 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR5 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR6 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR7 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR8 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod DR9 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
-pub mod BKP_DR0 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR1 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR2 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR3 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR4 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR5 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR6 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR7 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR8 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR9 {
-    pub use super::DR0::D;
-}
-
-/// Backup data register (BKP_DR)
-pub mod BKP_DR10 {
-    pub use super::DR0::D;
+pub mod DR10 {
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR11 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR12 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR13 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR14 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR15 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR16 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR17 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR18 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR19 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR20 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR21 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR22 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR23 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR24 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR25 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR26 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR27 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR28 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR29 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR30 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
 }
 
 /// Backup data register (BKP_DR)
 pub mod BKP_DR31 {
-    pub use super::DR0::D;
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR32 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR33 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR34 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR35 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR36 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR37 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR38 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR39 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR40 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR41 {
+    pub use super::DR1::D;
+}
+
+/// Backup data register (BKP_DR)
+pub mod BKP_DR42 {
+    pub use super::DR1::D;
 }
 
 /// RTC clock calibration register (BKP_RTCCR)
@@ -442,9 +442,6 @@ pub mod CSR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// Backup data register (BKP_DR)
-    pub DR0: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
     pub DR1: RWRegister<u32>,
 
     /// Backup data register (BKP_DR)
@@ -471,6 +468,9 @@ pub struct RegisterBlock {
     /// Backup data register (BKP_DR)
     pub DR9: RWRegister<u32>,
 
+    /// Backup data register (BKP_DR)
+    pub DR10: RWRegister<u32>,
+
     /// RTC clock calibration register (BKP_RTCCR)
     pub RTCCR: RWRegister<u32>,
 
@@ -480,40 +480,7 @@ pub struct RegisterBlock {
     /// BKP_CSR control/status register (BKP_CSR)
     pub CSR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR0: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR1: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR2: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR3: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR4: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR5: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR6: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR7: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR8: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR9: RWRegister<u32>,
-
-    /// Backup data register (BKP_DR)
-    pub BKP_DR10: RWRegister<u32>,
+    _reserved1: [u8; 8],
 
     /// Backup data register (BKP_DR)
     pub BKP_DR11: RWRegister<u32>,
@@ -577,9 +544,41 @@ pub struct RegisterBlock {
 
     /// Backup data register (BKP_DR)
     pub BKP_DR31: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR32: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR33: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR34: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR35: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR36: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR37: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR38: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR39: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR40: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR41: RWRegister<u32>,
+
+    /// Backup data register (BKP_DR)
+    pub BKP_DR42: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub DR0: u32,
     pub DR1: u32,
     pub DR2: u32,
     pub DR3: u32,
@@ -589,20 +588,10 @@ pub struct ResetValues {
     pub DR7: u32,
     pub DR8: u32,
     pub DR9: u32,
+    pub DR10: u32,
     pub RTCCR: u32,
     pub CR: u32,
     pub CSR: u32,
-    pub BKP_DR0: u32,
-    pub BKP_DR1: u32,
-    pub BKP_DR2: u32,
-    pub BKP_DR3: u32,
-    pub BKP_DR4: u32,
-    pub BKP_DR5: u32,
-    pub BKP_DR6: u32,
-    pub BKP_DR7: u32,
-    pub BKP_DR8: u32,
-    pub BKP_DR9: u32,
-    pub BKP_DR10: u32,
     pub BKP_DR11: u32,
     pub BKP_DR12: u32,
     pub BKP_DR13: u32,
@@ -624,6 +613,17 @@ pub struct ResetValues {
     pub BKP_DR29: u32,
     pub BKP_DR30: u32,
     pub BKP_DR31: u32,
+    pub BKP_DR32: u32,
+    pub BKP_DR33: u32,
+    pub BKP_DR34: u32,
+    pub BKP_DR35: u32,
+    pub BKP_DR36: u32,
+    pub BKP_DR37: u32,
+    pub BKP_DR38: u32,
+    pub BKP_DR39: u32,
+    pub BKP_DR40: u32,
+    pub BKP_DR41: u32,
+    pub BKP_DR42: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

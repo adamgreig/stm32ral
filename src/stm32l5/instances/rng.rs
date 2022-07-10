@@ -7,7 +7,7 @@
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l5::peripherals::rng::Instance;
 pub use crate::stm32l5::peripherals::rng::{RegisterBlock, ResetValues};
-pub use crate::stm32l5::peripherals::rng::{RNG_CR, RNG_DR, RNG_HTCR, RNG_SR};
+pub use crate::stm32l5::peripherals::rng::{CR, DR, HTCR, SR};
 
 /// Access functions for the RNG peripheral instance
 pub mod RNG {
@@ -24,10 +24,10 @@ pub mod RNG {
 
     /// Reset values for each field in RNG
     pub const reset: ResetValues = ResetValues {
-        RNG_CR: 0x00000000,
-        RNG_SR: 0x00000000,
-        RNG_DR: 0x00000000,
-        RNG_HTCR: 0x000CAA74,
+        CR: 0x00000000,
+        SR: 0x00000000,
+        DR: 0x00000000,
+        HTCR: 0x000CAA74,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -118,10 +118,10 @@ pub mod SEC_RNG {
 
     /// Reset values for each field in SEC_RNG
     pub const reset: ResetValues = ResetValues {
-        RNG_CR: 0x00000000,
-        RNG_SR: 0x00000000,
-        RNG_DR: 0x00000000,
-        RNG_HTCR: 0x000CAA74,
+        CR: 0x00000000,
+        SR: 0x00000000,
+        DR: 0x00000000,
+        HTCR: 0x000CAA74,
     };
 
     #[cfg(not(feature = "nosync"))]

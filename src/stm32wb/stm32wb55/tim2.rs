@@ -1759,7 +1759,7 @@ pub struct RegisterBlock {
     /// auto-reload register
     pub ARR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare register 1
     pub CCR1: RWRegister<u32>,
@@ -1773,7 +1773,7 @@ pub struct RegisterBlock {
     /// capture/compare register 4
     pub CCR4: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DMA control register
     pub DCR: RWRegister<u32>,
@@ -1784,7 +1784,7 @@ pub struct RegisterBlock {
     /// TIM2 option register
     pub OR: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// TIM2 alternate function option register 1
     pub AF: RWRegister<u32>,

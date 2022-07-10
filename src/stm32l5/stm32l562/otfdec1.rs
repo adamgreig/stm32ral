@@ -509,7 +509,7 @@ pub struct RegisterBlock {
     /// OTFDEC control register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// OTFDEC region x configuration register
     pub R1CFGR: RWRegister<u32>,
@@ -538,7 +538,7 @@ pub struct RegisterBlock {
     /// OTFDEC region x key register 3
     pub R1KEYR3: WORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// OTFDEC region x configuration register
     pub R2CFGR: RWRegister<u32>,
@@ -567,7 +567,7 @@ pub struct RegisterBlock {
     /// OTFDEC region x key register 3
     pub R2KEYR3: WORegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// OTFDEC region x configuration register
     pub R3CFGR: RWRegister<u32>,
@@ -596,7 +596,7 @@ pub struct RegisterBlock {
     /// OTFDEC region x key register 3
     pub R3KEYR3: WORegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// OTFDEC region x configuration register
     pub R4CFGR: RWRegister<u32>,
@@ -625,7 +625,7 @@ pub struct RegisterBlock {
     /// OTFDEC region x key register 3
     pub R4KEYR3: WORegister<u32>,
 
-    _reserved5: [u32; 139],
+    _reserved5: [u8; 556],
 
     /// OTFDEC interrupt status register
     pub ISR: RORegister<u32>,

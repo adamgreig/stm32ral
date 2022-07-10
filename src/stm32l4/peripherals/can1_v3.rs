@@ -1543,12 +1543,8 @@ pub mod RIR0 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Standard identifier
             pub const Standard: u32 = 0b0;
@@ -1556,6 +1552,10 @@ pub mod RIR0 {
             /// 0b1: Extended identifier
             pub const Extended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RTR
@@ -1564,12 +1564,8 @@ pub mod RIR0 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data frame
             pub const Data: u32 = 0b0;
@@ -1577,6 +1573,10 @@ pub mod RIR0 {
             /// 0b1: Remote frame
             pub const Remote: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2095,7 +2095,7 @@ pub struct RegisterBlock {
     /// bit timing register
     pub BTR: RWRegister<u32>,
 
-    _reserved1: [u32; 88],
+    _reserved1: [u8; 352],
 
     /// TX mailbox identifier register
     pub TIR0: RWRegister<u32>,
@@ -2157,7 +2157,7 @@ pub struct RegisterBlock {
     /// receive FIFO mailbox data high register
     pub RDHR1: RORegister<u32>,
 
-    _reserved2: [u32; 28],
+    _reserved2: [u8; 112],
 
     /// Filter bank 0 register 1
     pub FR10: RWRegister<u32>,

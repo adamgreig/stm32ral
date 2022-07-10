@@ -1133,22 +1133,22 @@ pub struct RegisterBlock {
     /// I/O hysteresis control register
     pub IOHCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// I/O analog switch control register
     pub IOASCR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// I/O sampling control register
     pub IOSCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// I/O channel control register
     pub IOCCR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// I/O group control status register
     pub IOGCSR: RWRegister<u32>,

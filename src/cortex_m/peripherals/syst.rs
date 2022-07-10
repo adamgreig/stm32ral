@@ -30,7 +30,7 @@ pub struct RegisterBlock {
     /// SysTick Current Value Register
     pub CVR: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// SysTick Calibration Value Register
     pub CALIB: RORegister<u32>,

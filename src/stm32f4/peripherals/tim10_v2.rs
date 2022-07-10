@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose-timers
 //!
-//! Used by: stm32f405, stm32f407
+//! Used by: stm32f412, stm32f413, stm32f446, stm32f469
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -115,27 +115,6 @@ pub mod CR1 {
             pub const Disabled: u32 = 0b0;
 
             /// 0b1: Counter enabled
-            pub const Enabled: u32 = 0b1;
-        }
-    }
-
-    /// One-pulse mode
-    pub mod OPM {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Counter is not stopped at update event
-            pub const Disabled: u32 = 0b0;
-
-            /// 0b1: Counter stops counting at the next update event (clearing the CEN bit)
             pub const Enabled: u32 = 0b1;
         }
     }
@@ -258,14 +237,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -506,7 +485,7 @@ pub struct RegisterBlock {
     /// control register 1
     pub CR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// DMA/Interrupt enable register
     pub DIER: RWRegister<u32>,
@@ -522,7 +501,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: capture/compare mode register 1 (input mode)
     pub CCMR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -536,7 +515,7 @@ pub struct RegisterBlock {
     /// auto-reload register
     pub ARR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// capture/compare register
     pub CCR1: RWRegister<u32>,

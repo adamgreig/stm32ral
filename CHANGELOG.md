@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [v0.8.0] - 2022-07-10
+
+* The `Peripherals` struct exported from the `cortex_m` modules is now called
+  `CorePeripherals` to avoid conflict with the device `Peripherals` struct.
+* Update stm32-rs to 0.15.0
+
 ## [v0.7.0] - 2021-10-03
 
 * Update cortex-m to 0.7 and cortex-m-rt to 0.7
@@ -42,7 +48,8 @@
 
 * Initial release
 
-[Unreleased]: https://github.com/adamgreig/stm32ral/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/adamgreig/stm32ral/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/adamgreig/stm32ral/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/adamgreig/stm32ral/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/adamgreig/stm32ral/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/adamgreig/stm32ral/compare/v0.4.1...v0.5.0

@@ -42,8 +42,6 @@ extern "C" {
     fn RTC_ALARM_IT_IRQ();
     fn CEC_IRQ();
     fn TIM12_IRQ();
-    fn TIM13_IRQ();
-    fn TIM14_IRQ();
     fn SPI3_IRQ();
     fn TIM6_DAC1();
     fn TIM7_IRQ();
@@ -157,12 +155,8 @@ pub static __INTERRUPTS: [Vector; 82] = [
     Vector {
         _handler: TIM12_IRQ,
     },
-    Vector {
-        _handler: TIM13_IRQ,
-    },
-    Vector {
-        _handler: TIM14_IRQ,
-    },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -312,10 +306,6 @@ pub enum Interrupt {
     CEC_IRQ = 42,
     /// 43: Timer 12 global interrupt
     TIM12_IRQ = 43,
-    /// 44: Timer 13 global interrupt
-    TIM13_IRQ = 44,
-    /// 45: Timer 14 global interrupt
-    TIM14_IRQ = 45,
     /// 51: SPI3 global interrupt
     SPI3_IRQ = 51,
     /// 54: TIM6 global, DAC1 Cahnnel1 and Cahnnel2 underrun error Interrupts

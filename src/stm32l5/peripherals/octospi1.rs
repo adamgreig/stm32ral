@@ -1217,7 +1217,7 @@ pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// device configuration register
     pub DCR1: RWRegister<u32>,
@@ -1231,7 +1231,7 @@ pub struct RegisterBlock {
     /// DCR4
     pub DCR4: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// status register
     pub SR: WORegister<u32>,
@@ -1239,102 +1239,102 @@ pub struct RegisterBlock {
     /// flag clear register
     pub FCR: RWRegister<u32>,
 
-    _reserved3: [u32; 6],
+    _reserved3: [u8; 24],
 
     /// data length register
     pub DLR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// address register
     pub AR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// data register
     pub DR: RWRegister<u32>,
 
-    _reserved6: [u32; 11],
+    _reserved6: [u8; 44],
 
     /// polling status mask register
     pub PSMKR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// polling status match register
     pub PSMAR: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// polling interval register
     pub PIR: RWRegister<u32>,
 
-    _reserved9: [u32; 27],
+    _reserved9: [u8; 108],
 
     /// communication configuration register
     pub CCR: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// timing configuration register
     pub TCR: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// instruction register
     pub IR: RWRegister<u32>,
 
-    _reserved12: [u32; 3],
+    _reserved12: [u8; 12],
 
     /// alternate bytes register
     pub ABR: RWRegister<u32>,
 
-    _reserved13: [u32; 3],
+    _reserved13: [u8; 12],
 
     /// low-power timeout register
     pub LPTR: RWRegister<u32>,
 
-    _reserved14: [u32; 3],
+    _reserved14: [u8; 12],
 
     /// write communication configuration register
     pub WPCCR: RWRegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// write timing configuration register
     pub WPTCR: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved16: [u8; 4],
 
     /// write instruction register
     pub WPIR: RWRegister<u32>,
 
-    _reserved17: [u32; 3],
+    _reserved17: [u8; 12],
 
     /// write alternate bytes register
     pub WPABR: RWRegister<u32>,
 
-    _reserved18: [u32; 7],
+    _reserved18: [u8; 28],
 
     /// WCCR
     pub WCCR: RWRegister<u32>,
 
-    _reserved19: [u32; 1],
+    _reserved19: [u8; 4],
 
     /// WTCR
     pub WTCR: RWRegister<u32>,
 
-    _reserved20: [u32; 1],
+    _reserved20: [u8; 4],
 
     /// WIR
     pub WIR: RWRegister<u32>,
 
-    _reserved21: [u32; 3],
+    _reserved21: [u8; 12],
 
     /// WABR
     pub WABR: RWRegister<u32>,
 
-    _reserved22: [u32; 23],
+    _reserved22: [u8; 92],
 
     /// HyperBusTM latency configuration register
     pub HLCR: RWRegister<u32>,

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal serial bus full-speed device interface
 //!
-//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x8
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f373
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -586,12 +586,8 @@ pub mod ISTR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: data transmitted by the USB peripheral to the host PC
             pub const To: u32 = 0b0;
@@ -599,6 +595,10 @@ pub mod ISTR {
             /// 0b1: data received by the USB peripheral from the host PC
             pub const From: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Expected start frame
@@ -733,16 +733,16 @@ pub mod ISTR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: endpoint has successfully completed a transaction
             pub const Completed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -783,16 +783,16 @@ pub mod FNR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: the frame timer remains in this state until an USB reset or USB suspend event occurs
             pub const Locked: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data - line status
@@ -801,16 +801,16 @@ pub mod FNR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: received data minus upstream port data line
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data + line status
@@ -819,16 +819,16 @@ pub mod FNR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: received data plus upstream port data line
             pub const Received: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -998,7 +998,7 @@ pub struct RegisterBlock {
     /// endpoint 7 register
     pub EP7R: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// control register
     pub CNTR: RWRegister<u32>,

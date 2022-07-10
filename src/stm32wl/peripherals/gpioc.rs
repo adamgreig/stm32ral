@@ -600,19 +600,19 @@ pub mod IDR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Input is logic high
-            pub const High: u32 = 0b1;
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Input is logic low
             pub const Low: u32 = 0b0;
+
+            /// 0b1: Input is logic high
+            pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -621,11 +621,11 @@ pub mod IDR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -634,11 +634,11 @@ pub mod IDR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -647,11 +647,11 @@ pub mod IDR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -660,11 +660,11 @@ pub mod IDR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -673,11 +673,11 @@ pub mod IDR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -686,11 +686,11 @@ pub mod IDR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -699,11 +699,11 @@ pub mod IDR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -712,11 +712,11 @@ pub mod IDR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -725,11 +725,11 @@ pub mod IDR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -749,11 +749,11 @@ pub mod ODR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Set output to logic high
-            pub const High: u32 = 0b1;
-
             /// 0b0: Set output to logic low
             pub const Low: u32 = 0b0;
+
+            /// 0b1: Set output to logic high
+            pub const High: u32 = 0b1;
         }
     }
 
@@ -1162,8 +1162,15 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Port configuration lock key not active
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Port configuration lock key active
+            pub const Active: u32 = 0b1;
+        }
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1176,8 +1183,15 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Port configuration not locked
+            pub const Unlocked: u32 = 0b0;
+
+            /// 0b1: Port configuration locked
+            pub const Locked: u32 = 0b1;
+        }
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1190,8 +1204,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1204,8 +1217,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1218,8 +1230,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1232,8 +1243,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1246,8 +1256,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1260,8 +1269,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1274,8 +1282,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1288,8 +1295,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 
     /// Port x lock bit y (y= 0..15)
@@ -1302,8 +1308,7 @@ pub mod LCKR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::LCK15::RW;
     }
 }
 
@@ -1738,7 +1743,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1751,7 +1756,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1764,7 +1769,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }

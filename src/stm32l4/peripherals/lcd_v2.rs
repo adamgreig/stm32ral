@@ -426,7 +426,7 @@ pub struct RegisterBlock {
     /// clear register
     pub CLR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// display memory
     pub RAM_COM0: RWRegister<u64>,

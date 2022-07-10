@@ -27,7 +27,7 @@ extern "C" {
     fn TIM1_BRK();
     fn TIM1_UP();
     fn TIM1_TRG_COM();
-    fn TIM_CC();
+    fn TIM1_CC();
     fn TIM2();
     fn TIM3();
     fn TIM4();
@@ -69,8 +69,13 @@ extern "C" {
     fn USART6();
     fn I2C3_EV();
     fn I2C3_ER();
-    fn DCMI();
+    fn OTG_HS_EP1_OUT();
+    fn OTG_HS_EP1_IN();
+    fn OTG_HS_WKUP();
+    fn OTG_HS();
+    fn DCMI_PSSI();
     fn CRYP();
+    fn HASH_RNG();
     fn FPU();
     fn UART7();
     fn UART8();
@@ -118,9 +123,16 @@ extern "C" {
     fn LPTIM5();
     fn LPUART();
     fn CRS();
+    fn ECC_DIAG_IT();
     fn SAI4();
     fn WKUP();
     fn OCTOSPI2();
+    fn FMAC();
+    fn CORDIC_IT();
+    fn UART9();
+    fn USART10();
+    fn TIM23();
+    fn TIM24();
 }
 
 #[doc(hidden)]
@@ -133,7 +145,7 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".vector_table.interrupts"]
 #[no_mangle]
-pub static __INTERRUPTS: [Vector; 151] = [
+pub static __INTERRUPTS: [Vector; 163] = [
     Vector { _handler: WWDG1 },
     Vector { _handler: PVD_PVM },
     Vector {
@@ -173,7 +185,7 @@ pub static __INTERRUPTS: [Vector; 151] = [
     Vector {
         _handler: TIM1_TRG_COM,
     },
-    Vector { _handler: TIM_CC },
+    Vector { _handler: TIM1_CC },
     Vector { _handler: TIM2 },
     Vector { _handler: TIM3 },
     Vector { _handler: TIM4 },
@@ -250,13 +262,21 @@ pub static __INTERRUPTS: [Vector; 151] = [
     Vector { _handler: USART6 },
     Vector { _handler: I2C3_EV },
     Vector { _handler: I2C3_ER },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _handler: DCMI },
+    Vector {
+        _handler: OTG_HS_EP1_OUT,
+    },
+    Vector {
+        _handler: OTG_HS_EP1_IN,
+    },
+    Vector {
+        _handler: OTG_HS_WKUP,
+    },
+    Vector { _handler: OTG_HS },
+    Vector {
+        _handler: DCMI_PSSI,
+    },
     Vector { _handler: CRYP },
-    Vector { _reserved: 0 },
+    Vector { _handler: HASH_RNG },
     Vector { _handler: FPU },
     Vector { _handler: UART7 },
     Vector { _handler: UART8 },
@@ -335,12 +355,28 @@ pub static __INTERRUPTS: [Vector; 151] = [
     Vector { _handler: LPUART },
     Vector { _reserved: 0 },
     Vector { _handler: CRS },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: ECC_DIAG_IT,
+    },
     Vector { _handler: SAI4 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: WKUP },
     Vector { _handler: OCTOSPI2 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: FMAC },
+    Vector {
+        _handler: CORDIC_IT,
+    },
+    Vector { _handler: UART9 },
+    Vector { _handler: USART10 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: TIM23 },
+    Vector { _handler: TIM24 },
 ];
 
 /// Available interrupts for this device
@@ -403,7 +439,7 @@ pub enum Interrupt {
     /// 26: TIM1 trigger and commutation
     TIM1_TRG_COM = 26,
     /// 27: TIM1 capture / compare
-    TIM_CC = 27,
+    TIM1_CC = 27,
     /// 28: TIM2 global interrupt
     TIM2 = 28,
     /// 29: TIM3 global interrupt
@@ -486,10 +522,20 @@ pub enum Interrupt {
     I2C3_EV = 72,
     /// 73: I2C3 error interrupt
     I2C3_ER = 73,
-    /// 78: DCMI global interrupt
-    DCMI = 78,
+    /// 74: USB OTG_HS OUT endpoint1 global interrupt
+    OTG_HS_EP1_OUT = 74,
+    /// 75: USB OTG_HS IN endpoint1 global interrupt
+    OTG_HS_EP1_IN = 75,
+    /// 76: USB OTG_HS wakeup Interrupt through EXTI line
+    OTG_HS_WKUP = 76,
+    /// 77: USB OTG_HS global interrupt
+    OTG_HS = 77,
+    /// 78: DCMI/PSSI global interrupt
+    DCMI_PSSI = 78,
     /// 79: Crypto global interrupt
     CRYP = 79,
+    /// 80: HASH OR RNG interrupt
+    HASH_RNG = 80,
     /// 81: Floating point unit interrupt
     FPU = 81,
     /// 82: UART7 global interrupt
@@ -584,12 +630,26 @@ pub enum Interrupt {
     LPUART = 142,
     /// 144: Clock Recovery System global interrupt
     CRS = 144,
+    /// 145: ECC diagnostic global interrupt
+    ECC_DIAG_IT = 145,
     /// 146: SAI4 global interrupt
     SAI4 = 146,
     /// 149: WKUP1 to WKUP6 pins
     WKUP = 149,
     /// 150: OCTOSPI2 global interrupt
     OCTOSPI2 = 150,
+    /// 153: FMAC interrupt
+    FMAC = 153,
+    /// 154: CORDIC interrupt
+    CORDIC_IT = 154,
+    /// 155: UART9 global interrupt
+    UART9 = 155,
+    /// 156: USART10 global interrupt
+    USART10 = 156,
+    /// 161: TIM23 global interrupt
+    TIM23 = 161,
+    /// 162: TIM24 global interrupt
+    TIM24 = 162,
 }
 unsafe impl external_cortex_m::interrupt::InterruptNumber for Interrupt {
     #[inline(always)]

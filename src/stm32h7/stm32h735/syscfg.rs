@@ -1161,7 +1161,7 @@ pub mod UR18 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// peripheral mode configuration register
     pub PMCR: RWRegister<u32>,
@@ -1181,7 +1181,7 @@ pub struct RegisterBlock {
     /// Timer break lockup register
     pub CFGR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// compensation cell control/status register
     pub CCCSR: RWRegister<u32>,
@@ -1192,22 +1192,22 @@ pub struct RegisterBlock {
     /// SYSCFG compensation cell code register
     pub CCCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// ADC2 internal input alternate connection
     pub ADC2ALT: RWRegister<u32>,
 
-    _reserved4: [u32; 60],
+    _reserved4: [u8; 240],
 
     /// SYSCFG package register
     pub PKGR: RORegister<u32>,
 
-    _reserved5: [u32; 118],
+    _reserved5: [u8; 472],
 
     /// SYSCFG user register 0
     pub UR0: RORegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// SYSCFG user register 2
     pub UR2: RWRegister<u32>,
@@ -1227,7 +1227,7 @@ pub struct RegisterBlock {
     /// SYSCFG user register 7
     pub UR7: RORegister<u32>,
 
-    _reserved7: [u32; 3],
+    _reserved7: [u8; 12],
 
     /// SYSCFG user register 11
     pub UR11: RORegister<u32>,

@@ -1478,7 +1478,7 @@ pub struct RegisterBlock {
     /// sample time register 0
     pub SMPR0: RWRegister<u32>,
 
-    _reserved1: [u32; 168],
+    _reserved1: [u8; 672],
 
     /// ADC common status register
     pub CSR: RORegister<u32>,

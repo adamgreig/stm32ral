@@ -1264,7 +1264,7 @@ pub struct RegisterBlock {
     /// Access: No wait states
     pub I2C_TXDR: RWRegister<u32>,
 
-    _reserved1: [u32; 241],
+    _reserved1: [u8; 964],
 
     /// I2C hardware configuration register
     pub I2C_HWCFGR: RORegister<u32>,

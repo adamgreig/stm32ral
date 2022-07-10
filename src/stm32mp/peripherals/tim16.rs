@@ -818,33 +818,32 @@ pub struct RegisterBlock {
     /// TIM16/TIM17 control register 1
     pub TIMx_CR1: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// TIM16/TIM17 control register 2
     pub TIMx_CR2: RWRegister<u16>,
 
-    _reserved2: [u32; 1],
-    _reserved3: [u16; 1],
+    _reserved2: [u8; 6],
 
     /// TIM16/TIM17 DMA/interrupt enable register
     pub TIMx_DIER: RWRegister<u16>,
 
-    _reserved4: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// TIM16/TIM17 status register
     pub TIMx_SR: RWRegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// event generation register
     pub TIMx_EGR: WORegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// TIM16/TIM17 capture/compare enable register
     pub TIMx_CCER: RWRegister<u16>,
 
-    _reserved7: [u16; 1],
+    _reserved6: [u8; 2],
 
     /// TIM16/TIM17 counter
     pub TIMx_CNT: RWRegister<u32>,
@@ -852,23 +851,22 @@ pub struct RegisterBlock {
     /// TIM16/TIM17 prescaler
     pub TIMx_PSC: RWRegister<u16>,
 
-    _reserved8: [u16; 1],
+    _reserved7: [u8; 2],
 
     /// TIM16/TIM17 auto-reload register
     pub TIMx_ARR: RWRegister<u16>,
 
-    _reserved9: [u16; 1],
+    _reserved8: [u8; 2],
 
     /// TIM16/TIM17 repetition counter register
     pub TIMx_RCR: RWRegister<u16>,
 
-    _reserved10: [u16; 1],
+    _reserved9: [u8; 2],
 
     /// TIM16/TIM17 capture/compare register 1
     pub TIMx_CCR1: RWRegister<u16>,
 
-    _reserved11: [u32; 3],
-    _reserved12: [u16; 1],
+    _reserved10: [u8; 14],
 
     /// As the BKBID, BKDSRM, BKF\[3:0\], AOE, BKP, BKE, OSSI, OSSR and DTG\[7:0\] bits may be write-locked depending on the LOCK configuration, it may be necessary to configure all of them during the first write access to the TIMx_BDTR register.
     pub TIMx_BDTR: RWRegister<u32>,
@@ -876,18 +874,17 @@ pub struct RegisterBlock {
     /// TIM16/TIM17 DMA control register
     pub TIMx_DCR: RWRegister<u16>,
 
-    _reserved13: [u16; 1],
+    _reserved11: [u8; 2],
 
     /// TIM16/TIM17 DMA address for full transfer
     pub TIMx_DMAR: RWRegister<u16>,
 
-    _reserved14: [u32; 4],
-    _reserved15: [u16; 1],
+    _reserved12: [u8; 18],
 
     /// TIM17 alternate function register 1
     pub TIMx_AF1: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved13: [u8; 4],
 
     /// TIM17 input selection register
     pub TIMx_TISEL: RWRegister<u32>,

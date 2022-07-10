@@ -600,12 +600,8 @@ pub mod SCSR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No PKA SRAM erase operation is ongoing
             pub const Idle: u32 = 0b0;
@@ -613,6 +609,10 @@ pub mod SCSR {
             /// 0b1: PKA SRAM erase operation is ongoing
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SRAM1, SRAM2 and PKA SRAM busy by erase operation
@@ -621,12 +621,8 @@ pub mod SCSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No SRAM1 or SRAM2 erase operation is ongoing
             pub const Idle: u32 = 0b0;
@@ -634,6 +630,10 @@ pub mod SCSR {
             /// 0b1: SRAM1 or SRAM2 erase operation is ongoing
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SRAM2 erase
@@ -1223,20 +1223,20 @@ pub mod SKR {
         pub const mask: u32 = 0xff << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
-            /// 0b11001010: Step 1 to remove SRAM2ER bits write protection
-            pub const Step1: u32 = 0b11001010;
+            /// 0b00010001: Activate SRAM2ER bits write protection
+            pub const WriteProtect: u32 = 0b00010001;
 
             /// 0b01010011: Step 2 to remove SRAM2ER bits write protection
             pub const Step2: u32 = 0b01010011;
 
-            /// 0b00010001: Activate SRAM2ER bits write protection
-            pub const WriteProtect: u32 = 0b00010001;
+            /// 0b11001010: Step 1 to remove SRAM2ER bits write protection
+            pub const Step1: u32 = 0b11001010;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1296,7 +1296,7 @@ pub struct RegisterBlock {
     /// SKR
     pub SKR: WORegister<u32>,
 
-    _reserved1: [u32; 120],
+    _reserved1: [u8; 480],
 
     /// radio debug control register
     pub RFDCR: RWRegister<u32>,

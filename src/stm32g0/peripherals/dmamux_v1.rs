@@ -335,7 +335,7 @@ pub struct RegisterBlock {
     /// DMAMux - DMA request line multiplexer channel x control register
     pub C6CR: RWRegister<u32>,
 
-    _reserved1: [u32; 57],
+    _reserved1: [u8; 228],
 
     /// DMAMux - DMA request generator channel x control register
     pub RG0CR: RWRegister<u32>,
@@ -349,7 +349,7 @@ pub struct RegisterBlock {
     /// DMAMux - DMA request generator channel x control register
     pub RG3CR: RWRegister<u32>,
 
-    _reserved2: [u32; 12],
+    _reserved2: [u8; 48],
 
     /// DMAMux - DMA request generator status register
     pub RGSR: RORegister<u32>,

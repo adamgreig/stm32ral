@@ -121,7 +121,6 @@ extern "C" {
     fn UART9();
     fn USART10();
     fn LPUART();
-    fn WWDG1_RST();
     fn CRS();
     fn RAMECC();
     fn WKUP();
@@ -347,9 +346,7 @@ pub static __INTERRUPTS: [Vector; 155] = [
     Vector { _handler: UART9 },
     Vector { _handler: USART10 },
     Vector { _handler: LPUART },
-    Vector {
-        _handler: WWDG1_RST,
-    },
+    Vector { _reserved: 0 },
     Vector { _handler: CRS },
     Vector { _handler: RAMECC },
     Vector { _reserved: 0 },
@@ -610,8 +607,6 @@ pub enum Interrupt {
     USART10 = 141,
     /// 142: LPUART global interrupt
     LPUART = 142,
-    /// 143: Window Watchdog interrupt
-    WWDG1_RST = 143,
     /// 144: Clock Recovery System globa
     CRS = 144,
     /// 145: ECC diagnostic global interrupt

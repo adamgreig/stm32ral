@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Basic timers
 //!
-//! Used by: stm32f405, stm32f407, stm32f410, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f410, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::tim6_v1::Instance;

@@ -292,7 +292,7 @@ pub struct RegisterBlock {
     /// PKA clear flag register
     pub CLRFR: RWRegister<u32>,
 
-    _reserved1: [u32; 2042],
+    _reserved1: [u8; 8168],
 
     /// PKA version register
     pub VERR: RORegister<u32>,

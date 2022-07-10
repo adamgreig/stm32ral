@@ -43,7 +43,7 @@ pub use super::instances::quadspi;
 pub use super::instances::rcc_f730_f7x2_f7x3 as rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc_f730_f7x2_f7x3 as rtc;
-pub use super::instances::sai_f730_f7x2_f7x3 as sai;
+pub use super::instances::sai;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::sdmmc;

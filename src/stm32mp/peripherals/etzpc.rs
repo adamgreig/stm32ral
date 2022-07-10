@@ -1033,7 +1033,7 @@ pub struct RegisterBlock {
     /// ETZPC RAM secure size definition
     pub ETZPC_TZMA1_SIZE: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Register reset values
     pub ETZPC_DECPROT0: RWRegister<u32>,
@@ -1053,7 +1053,7 @@ pub struct RegisterBlock {
     /// Register reset values
     pub ETZPC_DECPROT5: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// ETZPC decprot lock 0 register
     pub ETZPC_DECPROT_LOCK0: RWRegister<u32>,
@@ -1064,7 +1064,7 @@ pub struct RegisterBlock {
     /// ETZPC decprot lock 2 register
     pub ETZPC_DECPROT_LOCK2: RWRegister<u32>,
 
-    _reserved3: [u32; 237],
+    _reserved3: [u8; 948],
 
     /// ETZPC IP HW configuration register
     pub ETZPC_HWCFGR: RORegister<u32>,

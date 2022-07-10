@@ -501,22 +501,22 @@ pub struct RegisterBlock {
     /// ICC_AHPPIR is an alias of the non-secure GICC_HPPIR. A secure access to this register is equivalent to a non-secure access to GICC_HPPIR.
     pub GICC_AHPPIR: RORegister<u32>,
 
-    _reserved1: [u32; 41],
+    _reserved1: [u8; 164],
 
     /// GICC active priority register
     pub GICC_APR0: RWRegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// GICC non-secure active priority register
     pub GICC_NSAPR0: RWRegister<u32>,
 
-    _reserved3: [u32; 6],
+    _reserved3: [u8; 24],
 
     /// GICC interface identification register
     pub GICC_IIDR: RORegister<u32>,
 
-    _reserved4: [u32; 960],
+    _reserved4: [u8; 3840],
 
     /// GICC deactivate interrupt register
     pub GICC_DIR: WORegister<u32>,

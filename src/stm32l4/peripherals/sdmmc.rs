@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Secure digital input/output interface
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1501,12 +1501,12 @@ pub struct RegisterBlock {
     /// mask register
     pub MASK: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// FIFO counter register
     pub FIFOCNT: RORegister<u32>,
 
-    _reserved2: [u32; 13],
+    _reserved2: [u8; 52],
 
     /// data FIFO register
     pub FIFO: RWRegister<u32>,

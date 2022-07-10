@@ -944,12 +944,12 @@ pub struct RegisterBlock {
     /// DTS_CFGR1 is the configuration register for temperature sensor 1.
     pub DTS_CFGR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// DTS_T0VALR1 contains the value of the factory calibration temperature (T0) for temperature sensor 1. The system reset value is factory trimmed.
     pub DTS_T0VALR1: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// The DTS_RAMPVALR is the ramp coefficient for the temperature sensor. The system reset value is factory trimmed.
     pub DTS_RAMPVALR: RORegister<u32>,
@@ -957,7 +957,7 @@ pub struct RegisterBlock {
     /// DTS_ITR1 contains the threshold values for sensor 1.
     pub DTS_ITR1: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// The DTS_DR contains the number of REF_CLK cycles used to compute the FM(T) frequency.
     pub DTS_DR: RWRegister<u32>,

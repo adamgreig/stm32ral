@@ -1531,12 +1531,12 @@ pub struct RegisterBlock {
     /// This register allows to reload either immediately or during the vertical blanking period, the shadow registers values to the active registers. The shadow registers are all Layer1 and Layer2 registers except the LTDC_L1CLUTWR and the LTDC_L2CLUTWR.
     pub LTDC_SRCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register defines the background color (RGB888).
     pub LTDC_BCCR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// This register determines which status flags generate an interrupt request by setting the corresponding bit to 1.
     pub LTDC_IER: RWRegister<u32>,
@@ -1556,7 +1556,7 @@ pub struct RegisterBlock {
     /// This register returns the status of the current display phase which is controlled by the HSYNC, VSYNC, and horizontal/vertical DE signals. Example: if the current display phase is the vertical synchronization, the VSYNCS bit is set (active high). If the current display phase is the horizontal synchronization, the HSYNCS bit is active high.
     pub LTDC_CDSR: RORegister<u32>,
 
-    _reserved3: [u32; 14],
+    _reserved3: [u8; 56],
 
     /// LTDC layer 1 control register
     pub LTDC_L1CR: RWRegister<u32>,
@@ -1582,7 +1582,7 @@ pub struct RegisterBlock {
     /// This register defines the blending factors F1 and F2. The general blending formula is: BC = BF1 x C + BF2 x Cs BC = blended color BF1 = blend factor 1 C = current layer color BF2 = blend factor 2 Cs = subjacent layers blended color
     pub LTDC_L1BFCR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// This register defines the color frame buffer start address which has to point to the address where the pixel data of the top left pixel of a layer is stored in the frame buffer.
     pub LTDC_L1CFBAR: RWRegister<u32>,
@@ -1593,12 +1593,12 @@ pub struct RegisterBlock {
     /// This register defines the number of lines in the color frame buffer.
     pub LTDC_L1CFBLNR: RWRegister<u32>,
 
-    _reserved5: [u32; 3],
+    _reserved5: [u8; 12],
 
     /// This register defines the CLUT address and the RGB value.
     pub LTDC_L1CLUTWR: WORegister<u32>,
 
-    _reserved6: [u32; 15],
+    _reserved6: [u8; 60],
 
     /// LTDC layer 2 control register
     pub LTDC_L2CR: RWRegister<u32>,
@@ -1624,7 +1624,7 @@ pub struct RegisterBlock {
     /// This register defines the blending factors F1 and F2. The general blending formula is: BC = BF1 x C + BF2 x Cs BC = blended color BF1 = blend factor 1 C = current layer color BF2 = blend factor 2 Cs = subjacent layers blended color
     pub LTDC_L2BFCR: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// This register defines the color frame buffer start address which has to point to the address where the pixel data of the top left pixel of a layer is stored in the frame buffer.
     pub LTDC_L2CFBAR: RWRegister<u32>,
@@ -1635,7 +1635,7 @@ pub struct RegisterBlock {
     /// This register defines the number of lines in the color frame buffer.
     pub LTDC_L2CFBLNR: RWRegister<u32>,
 
-    _reserved8: [u32; 3],
+    _reserved8: [u8; 12],
 
     /// This register defines the CLUT address and the RGB value.
     pub LTDC_L2CLUTWR: WORegister<u32>,

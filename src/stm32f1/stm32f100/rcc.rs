@@ -2210,7 +2210,7 @@ pub struct RegisterBlock {
     /// Control/status register (RCC_CSR)
     pub CSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Clock configuration register 2
     pub CFGR2: RWRegister<u32>,

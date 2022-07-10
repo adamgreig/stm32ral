@@ -123,7 +123,7 @@ pub struct RegisterBlock {
     /// FlashPatch Comparator Register 15
     pub COMP15: RWRegister<u32>,
 
-    _reserved1: [u32; 986],
+    _reserved1: [u8; 3944],
 
     /// Lock Access Register
     pub LAR: WORegister<u32>,

@@ -9,12 +9,12 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub mod aes;
-pub use super::instances::adc1_f410_f412_f413 as adc1;
-pub use super::instances::tim1_f401_f405_f407_f413_f427_f429_f446_f469 as tim1;
-pub use super::instances::tim8_f405_f407_f413_f427_f429_f446_f469 as tim8;
+pub use super::instances::adc1_f412_f413 as adc1;
+pub use super::instances::tim1;
+pub use super::instances::tim6;
+pub use super::instances::tim7;
+pub use super::instances::tim8;
 pub mod can;
-pub mod tim6;
-pub mod tim7;
 pub use super::instances::crc;
 pub use super::instances::dbgmcu_f401_f410_f411_f412_f413 as dbgmcu;
 pub mod dfsdm;
@@ -24,16 +24,16 @@ pub use super::instances::exti;
 pub mod fmpi2c1;
 pub use super::instances::flash_f401_f411_f412_f413 as flash;
 pub use super::instances::tim12_f412_f413 as tim12;
-pub use super::instances::tim13_f412_f413_f427_f429_f446_f469 as tim13;
-pub use super::instances::tim14_f412_f413_f427_f429_f446_f469 as tim14;
-pub use super::instances::tim2;
+pub use super::instances::tim13_f412_f413_f446_f469 as tim13;
+pub use super::instances::tim14_f412_f413_f446_f469 as tim14;
+pub use super::instances::tim2_f401_f411_f412_f413_f446_f469 as tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim9_f412_f413 as tim9;
 pub mod gpio;
 pub use super::instances::iwdg;
-pub use super::instances::tim10_f401_f411_f412_f413_f427_f429_f446_f469 as tim10;
-pub use super::instances::tim11_f401_f410_f411_f412_f413_f427_f429_f446_f469 as tim11;
+pub use super::instances::tim10_f412_f413_f446_f469 as tim10;
+pub use super::instances::tim11_f410_f412_f413_f446_f469 as tim11;
 pub use super::instances::tim5;
 pub mod i2c;
 pub mod lptim;
@@ -48,9 +48,10 @@ pub use super::instances::sdio;
 pub mod spi;
 pub use super::instances::syscfg_f410_f412_f413 as syscfg;
 pub mod otg_fs_device;
+pub mod uart4;
 pub mod usart;
 pub use super::instances::otg_fs_global_f412_f413 as otg_fs_global;
-pub use super::instances::otg_fs_host;
+pub use super::instances::otg_fs_host_f412_f413_f446_f469 as otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
 pub use super::instances::wwdg;
 pub mod fsmc;
@@ -124,7 +125,6 @@ pub struct Peripherals {
     pub SPI3: spi::Instance,
     pub SYSCFG: syscfg::Instance,
     pub USART3: usart::Instance,
-    pub UART4: usart::Instance,
     pub USART6: usart::Instance,
     pub USART2: usart::Instance,
     pub UART5: usart::Instance,
@@ -133,6 +133,7 @@ pub struct Peripherals {
     pub UART10: usart::Instance,
     pub USART1: usart::Instance,
     pub UART9: usart::Instance,
+    pub UART4: uart4::Instance,
     pub OTG_FS_DEVICE: otg_fs_device::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
     pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
@@ -215,7 +216,6 @@ impl Peripherals {
             SPI3: spi::SPI3::steal(),
             SYSCFG: syscfg::SYSCFG::steal(),
             USART3: usart::USART3::steal(),
-            UART4: usart::UART4::steal(),
             USART6: usart::USART6::steal(),
             USART2: usart::USART2::steal(),
             UART5: usart::UART5::steal(),
@@ -224,6 +224,7 @@ impl Peripherals {
             UART10: usart::UART10::steal(),
             USART1: usart::USART1::steal(),
             UART9: usart::UART9::steal(),
+            UART4: uart4::UART4::steal(),
             OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
             OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),

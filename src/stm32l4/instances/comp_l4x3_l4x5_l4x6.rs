@@ -5,9 +5,9 @@
 //! Used by: stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::comp_v2::Instance;
-pub use crate::stm32l4::peripherals::comp_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::comp_v2::{COMP1_CSR, COMP2_CSR};
+pub use crate::stm32l4::peripherals::comp_v3::Instance;
+pub use crate::stm32l4::peripherals::comp_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::comp_v3::{COMP1_CSR, COMP2_CSR};
 
 /// Access functions for the COMP peripheral instance
 pub mod COMP {

@@ -5,9 +5,9 @@
 //! Used by: stm32h743, stm32h743v
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::dbgmcu_v2::Instance;
-pub use crate::stm32h7::peripherals::dbgmcu_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32h7::peripherals::dbgmcu_v2::{APB1LFZ1, APB2FZ1, APB3FZ1, APB4FZ1, CR, IDC};
+pub use crate::stm32h7::peripherals::dbgmcu_v1::Instance;
+pub use crate::stm32h7::peripherals::dbgmcu_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::dbgmcu_v1::{APB1LFZ1, APB2FZ1, APB3FZ1, APB4FZ1, CR, IDC};
 
 /// Access functions for the DBGMCU peripheral instance
 pub mod DBGMCU {

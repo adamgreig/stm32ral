@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32l4r9, stm32l4x5, stm32l4x6
+//! Used by: stm32l4r5, stm32l4r9, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::sai1::Instance;
@@ -32,7 +32,7 @@ pub mod SAI1 {
         FRCRA: 0x00000007,
         SLOTRA: 0x00000000,
         IMA: 0x00000000,
-        SRA: 0x00000000,
+        SRA: 0x00000008,
         CLRFRA: 0x00000000,
         DRA: 0x00000000,
         CR1B: 0x00000040,
@@ -40,7 +40,7 @@ pub mod SAI1 {
         FRCRB: 0x00000007,
         SLOTRB: 0x00000000,
         IMB: 0x00000000,
-        SRB: 0x00000000,
+        SRB: 0x00000008,
         CLRFRB: 0x00000000,
         DRB: 0x00000000,
     };
@@ -138,7 +138,7 @@ pub mod SAI2 {
         FRCRA: 0x00000007,
         SLOTRA: 0x00000000,
         IMA: 0x00000000,
-        SRA: 0x00000000,
+        SRA: 0x00000008,
         CLRFRA: 0x00000000,
         DRA: 0x00000000,
         CR1B: 0x00000040,
@@ -146,7 +146,7 @@ pub mod SAI2 {
         FRCRB: 0x00000007,
         SLOTRB: 0x00000000,
         IMB: 0x00000000,
-        SRB: 0x00000000,
+        SRB: 0x00000008,
         CLRFRB: 0x00000000,
         DRB: 0x00000000,
     };

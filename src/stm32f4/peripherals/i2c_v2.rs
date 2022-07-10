@@ -681,12 +681,8 @@ pub mod SR1 {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data register not empty
             pub const NotEmpty: u32 = 0b0;
@@ -694,6 +690,10 @@ pub mod SR1 {
             /// 0b1: Data register empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data register not empty (receivers)
@@ -702,12 +702,8 @@ pub mod SR1 {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data register empty
             pub const Empty: u32 = 0b0;
@@ -715,6 +711,10 @@ pub mod SR1 {
             /// 0b1: Data register not empty
             pub const NotEmpty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stop detection (slave mode)
@@ -723,12 +723,8 @@ pub mod SR1 {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Stop condition detected
             pub const NoStop: u32 = 0b0;
@@ -736,6 +732,10 @@ pub mod SR1 {
             /// 0b1: Stop condition detected
             pub const Stop: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// 10-bit header sent (Master mode)
@@ -758,12 +758,8 @@ pub mod SR1 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data byte transfer not done
             pub const NotFinished: u32 = 0b0;
@@ -771,6 +767,10 @@ pub mod SR1 {
             /// 0b1: Data byte transfer successful
             pub const Finished: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Address sent (master mode)/matched (slave mode)
@@ -779,12 +779,8 @@ pub mod SR1 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Adress mismatched or not received
             pub const NotMatch: u32 = 0b0;
@@ -792,6 +788,10 @@ pub mod SR1 {
             /// 0b1: Received slave address matched with one of the enabled slave addresses
             pub const Match: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Start bit (Master mode)
@@ -800,12 +800,8 @@ pub mod SR1 {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Start condition
             pub const NoStart: u32 = 0b0;
@@ -813,6 +809,10 @@ pub mod SR1 {
             /// 0b1: Start condition generated
             pub const Start: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

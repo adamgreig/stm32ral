@@ -2459,7 +2459,7 @@ pub struct RegisterBlock {
     /// FDCAN Core Release Register
     pub ENDN: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register is only writable if bits CCCR.CCE and CCCR.INIT are set. The CAN bit time may be programed in the range of 4 to 25 time quanta. The CAN time quantum may be programmed in the range of 1 to 1024 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock period. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (programmed values) \[DTSEG1 + DTSEG2 + 3\] tq or (functional values) \[Sync_Seg + Prop_Seg + Phase_Seg1 + Phase_Seg2\] tq. The Information Processing Time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
     pub DBTP: RWRegister<u32>,
@@ -2488,7 +2488,7 @@ pub struct RegisterBlock {
     /// FDCAN Timeout Counter Value Register
     pub TOCV: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// FDCAN Error Counter Register
     pub ECR: RORegister<u32>,
@@ -2499,7 +2499,7 @@ pub struct RegisterBlock {
     /// FDCAN Transmitter Delay Compensation Register
     pub TDCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
     pub IR: RWRegister<u32>,
@@ -2513,7 +2513,7 @@ pub struct RegisterBlock {
     /// Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
     pub ILE: RWRegister<u32>,
 
-    _reserved4: [u32; 8],
+    _reserved4: [u8; 32],
 
     /// Global settings for Message ID filtering. The Global Filter Configuration controls the filter path for standard and extended messages as described in Figure706: Standard Message ID filter path and Figure707: Extended Message ID filter path.
     pub RXGFC: RWRegister<u32>,
@@ -2524,7 +2524,7 @@ pub struct RegisterBlock {
     /// This register is updated every time a Message ID filter element configured to generate a priority event match. This can be used to monitor the status of incoming high priority messages and to enable fast access to these messages.
     pub HPMS: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// FDCAN Rx FIFO 0 Status Register
     pub RXF0S: RWRegister<u32>,
@@ -2538,7 +2538,7 @@ pub struct RegisterBlock {
     /// FDCAN Rx FIFO 1 Acknowledge Register
     pub RXF1A: RWRegister<u32>,
 
-    _reserved6: [u32; 8],
+    _reserved6: [u8; 32],
 
     /// FDCAN Tx Buffer Configuration Register
     pub TXBC: RWRegister<u32>,
@@ -2573,7 +2573,7 @@ pub struct RegisterBlock {
     /// FDCAN Tx Event FIFO Acknowledge Register
     pub TXEFA: RWRegister<u32>,
 
-    _reserved7: [u32; 5],
+    _reserved7: [u8; 20],
 
     /// FDCAN CFG clock divider register
     pub CKDIV: RWRegister<u32>,

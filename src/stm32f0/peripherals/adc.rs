@@ -625,14 +625,14 @@ pub mod CFGR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b010: Timer 2 TRGO event
-            pub const TIM2_TRGO: u32 = 0b010;
-
             /// 0b000: Timer 1 TRGO Event
             pub const TIM1_TRGO: u32 = 0b000;
 
             /// 0b001: Timer 1 CC4 event
             pub const TIM1_CC4: u32 = 0b001;
+
+            /// 0b010: Timer 2 TRGO event
+            pub const TIM2_TRGO: u32 = 0b010;
 
             /// 0b011: Timer 3 TRGO event
             pub const TIM3_TRGO: u32 = 0b011;
@@ -1220,22 +1220,22 @@ pub struct RegisterBlock {
     /// sampling time register
     pub SMPR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// watchdog threshold register
     pub TR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// channel selection register
     pub CHSELR: RWRegister<u32>,
 
-    _reserved3: [u32; 5],
+    _reserved3: [u8; 20],
 
     /// data register
     pub DR: RORegister<u32>,
 
-    _reserved4: [u32; 177],
+    _reserved4: [u8; 708],
 
     /// common configuration register
     pub CCR: RWRegister<u32>,

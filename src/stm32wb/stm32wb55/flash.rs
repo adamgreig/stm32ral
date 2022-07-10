@@ -1556,7 +1556,7 @@ pub struct RegisterBlock {
     /// Access control register
     pub ACR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Flash key register
     pub KEYR: WORegister<u32>,
@@ -1573,7 +1573,7 @@ pub struct RegisterBlock {
     /// Flash ECC register
     pub ECCR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Flash option register
     pub OPTR: RWRegister<u32>,
@@ -1599,7 +1599,7 @@ pub struct RegisterBlock {
     /// IPCC mailbox data buffer address register
     pub IPCCBR: RWRegister<u32>,
 
-    _reserved3: [u32; 7],
+    _reserved3: [u8; 28],
 
     /// CPU2 cortex M0 access control register
     pub C2ACR: RWRegister<u32>,
@@ -1610,7 +1610,7 @@ pub struct RegisterBlock {
     /// CPU2 cortex M0 control register
     pub C2CR: RWRegister<u32>,
 
-    _reserved4: [u32; 6],
+    _reserved4: [u8; 24],
 
     /// Secure flash start address register
     pub SFR: RWRegister<u32>,

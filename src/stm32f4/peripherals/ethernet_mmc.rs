@@ -338,9 +338,9 @@ pub mod MMCTIMR {
 
     /// Transmitted good frames mask
     pub mod TGFM {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -482,7 +482,7 @@ pub struct RegisterBlock {
     /// Ethernet MMC transmit interrupt mask register
     pub MMCTIMR: RWRegister<u32>,
 
-    _reserved1: [u32; 14],
+    _reserved1: [u8; 56],
 
     /// Ethernet MMC transmitted good frames after a single collision counter
     pub MMCTGFSCCR: RORegister<u32>,
@@ -490,12 +490,12 @@ pub struct RegisterBlock {
     /// Ethernet MMC transmitted good frames after more than a single collision
     pub MMCTGFMSCCR: RORegister<u32>,
 
-    _reserved2: [u32; 5],
+    _reserved2: [u8; 20],
 
     /// Ethernet MMC transmitted good frames counter register
     pub MMCTGFCR: RORegister<u32>,
 
-    _reserved3: [u32; 10],
+    _reserved3: [u8; 40],
 
     /// Ethernet MMC received frames with CRC error counter register
     pub MMCRFCECR: RORegister<u32>,
@@ -503,7 +503,7 @@ pub struct RegisterBlock {
     /// Ethernet MMC received frames with alignment error counter register
     pub MMCRFAECR: RORegister<u32>,
 
-    _reserved4: [u32; 10],
+    _reserved4: [u8; 40],
 
     /// MMC received good unicast frames counter register
     pub MMCRGUFCR: RORegister<u32>,

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32g050, stm32g051, stm32g061, stm32g0b0, stm32g0b1, stm32g0c1
+//! Used by: stm32g051, stm32g061, stm32g0b0, stm32g0b1, stm32g0c1
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -23,15 +23,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: USART prescaler and outputs disabled, low-power mode
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// USART enable in low-power mode When this bit is cleared, the USART cannot wake up the MCU from low-power mode. When this bit is set, the USART can wake up the MCU from low-power mode. This bit is set and cleared by software. Note: It is recommended to set the UESM bit just before entering low-power mode and clear it when exit from low-power mode. If the USART does not support the wakeup from Stop feature, this bit is reserved and must be kept at reset value. Refer to .
@@ -44,15 +37,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: USART not able to wake up the MCU from low-power mode.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART able to wake up the MCU from low-power mode.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receiver enable This bit enables the receiver. It is set and cleared by software.
@@ -65,15 +51,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Receiver is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Receiver is enabled and begins searching for a start bit
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmitter enable This bit enables the transmitter. It is set and cleared by software. Note: During transmission, a low pulse on the TE bit ('0â followed by '1â) sends a preamble (idle line) after the current word, except in Smartcard mode. In order to generate an idle character, the TE must not be immediately written to '1â. To ensure the required duration, the software can poll the TEACK bit in the USART_ISR register. In Smartcard mode, when TE is set, there is a 1 bit-time delay before the transmission starts.
@@ -86,15 +65,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Transmitter is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Transmitter is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// IDLE interrupt enable This bit is set and cleared by software.
@@ -107,15 +79,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever IDLE = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXFIFO not empty interrupt enable This bit is set and cleared by software.
@@ -128,15 +93,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever ORE = 1 or RXFNE = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmission complete interrupt enable This bit is set and cleared by software.
@@ -149,15 +107,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever TC = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXFIFO not full interrupt enable This bit is set and cleared by software.
@@ -170,15 +121,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever TXFNF =1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PE interrupt enable This bit is set and cleared by software.
@@ -191,15 +135,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever PE = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Parity selection This bit selects the odd or even parity when the parity generation/detection is enabled (PCE bit set). It is set and cleared by software. The parity is selected after the current byte. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -212,15 +149,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Even parity
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Odd parity
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Parity control enable This bit selects the hardware parity control (generation and detection). When the parity control is enabled, the computed parity is inserted at the MSB position (9th bit if MÂ =Â 1; 8th bit if MÂ =Â 0) and the parity is checked on the received data. This bit is set and cleared by software. Once it is set, PCE is active after the current byte (in reception and in transmission). This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -233,15 +163,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Parity control disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Parity control enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receiver wakeup method This bit determines the USART wakeup method from Mute mode. It is set or cleared by software. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -254,15 +177,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Idle line
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Address mark
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Word length This bit is used in conjunction with bit 28 (M1) to determine the word length. It is set or cleared by software (refer to bit 28 (M1)description). This bit can only be written when the USART is disabled (UEÂ =Â 0).
@@ -289,15 +205,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Receiver in active mode permanently
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Receiver can switch between Mute mode and active mode.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Character match interrupt enable This bit is set and cleared by software.
@@ -310,15 +219,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when the CMF bit is set in the USART_ISR register.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Oversampling mode This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: In LIN, IrDA and Smartcard modes, this bit must be kept cleared.
@@ -331,15 +233,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Oversampling by 16
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Oversampling by 8
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Driver Enable deassertion time This 5-bit value defines the time between the end of the last stop bit, in a transmitted message, and the de-activation of the DE (Driver Enable) signal. It is expressed in sample time units (1/8 or 1/16 bit time, depending on the oversampling rate). If the USART_TDR register is written during the DEDT time, the new data is transmitted only when the DEDT and DEAT times have both elapsed. This bitfield can only be written when the USART is disabled (UEÂ =Â 0). Note: If the Driver Enable feature is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -380,15 +275,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when the RTOF bit is set in the USART_ISR register.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of Block interrupt enable This bit is set and cleared by software. Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept at reset value. Refer to .
@@ -401,15 +289,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when the EOBF flag is set in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Word length This bit must be used in conjunction with bit 12 (M0) to determine the word length. It is set or cleared by software. M\[1:0\] = '00â: 1 start bit, 8 Data bits, n Stop bit M\[1:0\] = '01â: 1 start bit, 9 Data bits, n Stop bit M\[1:0\] = '10â: 1 start bit, 7 Data bits, n Stop bit This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: In 7-bits data length mode, the Smartcard mode, LIN master mode and Auto baud rate (0x7F and 0x55 frames detection) are not supported.
@@ -436,15 +317,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: FIFO mode is disabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: FIFO mode is enabled.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXFIFO empty interrupt enable This bit is set and cleared by software.
@@ -457,15 +331,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when TXFE = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXFIFO Full interrupt enable This bit is set and cleared by software.
@@ -478,15 +345,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when RXFF = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data register not empty This bit is set and cleared by software.
@@ -499,15 +359,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever ORE = 1 or RXNE = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit data register empty This bit is set and cleared by software.
@@ -520,15 +373,8 @@ pub mod CR1_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever TXE =1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -545,15 +391,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Slave mode disabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Slave mode enabled.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// When the DIS_NSS bit is set, the NSS pin input is ignored. Note: When SPI slave mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -566,15 +405,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: SPI slave selection depends on NSS input pin.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: SPI slave is always selected and NSS input pin is ignored.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// 7-bit Address Detection/4-bit Address Detection This bit is for selection between 4-bit address detection or 7-bit address detection. This bit can only be written when the USART is disabled (UEÂ =Â 0) Note: In 7-bit and 9-bit data modes, the address detection is done on 6-bit and 8-bit address (ADD\[5:0\] and ADD\[7:0\]) respectively.
@@ -587,15 +419,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: 4-bit address detection
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: 7-bit address detection (in 8-bit data mode)
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LIN break detection length This bit is for selection between 11 bit or 10 bit break detection. This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If LIN mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -608,15 +433,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: 10-bit break detection
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: 11-bit break detection
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LIN break detection interrupt enable Break interrupt mask (break detection using break delimiter). Note: If LIN mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -629,15 +447,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt is inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: An interrupt is generated whenever LBDF = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Last bit clock pulse This bit is used to select whether the clock pulse associated with the last data bit transmitted (MSB) has to be output on the SCLK pin in synchronous mode. The last bit is the 7th or 8th or 9th data bit transmitted depending on the 7 or 8 or 9 bit format selected by the M bit in the USART_CR1 register. This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If synchronous mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -650,15 +461,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock pulse of the last data bit is not output to the SCLK pin
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock pulse of the last data bit is output to the SCLK pin
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock phase This bit is used to select the phase of the clock output on the SCLK pin in synchronous mode. It works in conjunction with the CPOL bit to produce the desired clock/data relationship (see and ) This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If synchronous mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -671,15 +475,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The first clock transition is the first data capture edge
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The second clock transition is the first data capture edge
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock polarity This bit enables the user to select the polarity of the clock output on the SCLK pin in synchronous mode. It works in conjunction with the CPHA bit to produce the desired clock/data relationship This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If synchronous mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -692,15 +489,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Steady low value on SCLK pin outside transmission window
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Steady high value on SCLK pin outside transmission window
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock enable This bit enables the user to enable the SCLK pin. This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If neither synchronous mode nor Smartcard mode is supported, this bit is reserved and must be kept at reset value. Refer to . In Smartcard mode, in order to provide correctly the SCLK clock to the smartcard, the steps below must be respected: UE = 0 SCEN = 1 GTPR configuration CLKEN= 1 UE = 1
@@ -713,15 +503,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: SCLK pin disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: SCLK pin enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// stop bits These bits are used for programming the stop bits. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -734,21 +517,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: 1 stop bit
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: 0.5 stop bit.
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: 2 stop bits
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: 1.5 stop bits
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LIN mode enable This bit is set and cleared by software. The LIN mode enables the capability to send LIN synchronous breaks (13 low bits) using the SBKRQ bit in the USART_CR1 register, and to detect LIN Sync breaks. This bitfield can only be written when the USART is disabled (UEÂ =Â 0). Note: If the USART does not support LIN mode, this bit is reserved and must be kept at reset value. Refer to .
@@ -761,15 +531,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: LIN mode disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: LIN mode enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Swap TX/RX pins This bit is set and cleared by software. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -782,15 +545,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TX/RX pins are used as defined in standard pinout
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The TX and RX pins functions are swapped. This enables to work in the case of a cross-wired connection to another UART.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RX pin active level inversion This bit is set and cleared by software. This enables the use of an external inverter on the RX line. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -803,15 +559,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RX pin signal works using the standard logic levels (VDD =1/idle, Gnd = 0/mark)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RX pin signal values are inverted (VDD =0/mark, Gnd = 1/idle).
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TX pin active level inversion This bit is set and cleared by software. This enables the use of an external inverter on the TX line. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -824,15 +573,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TX pin signal works using the standard logic levels (VDD =1/idle, Gnd = 0/mark)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TX pin signal values are inverted (VDD =0/mark, Gnd = 1/idle).
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Binary data inversion This bit is set and cleared by software. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -845,15 +587,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Logical data from the data register are send/received in positive/direct logic. (1 = H, 0 = L)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Logical data from the data register are send/received in negative/inverse logic. (1 = L, 0 = H). The parity bit is also inverted.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Most significant bit first This bit is set and cleared by software. This bitfield can only be written when the USART is disabled (UEÂ =Â 0).
@@ -866,15 +601,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: data is transmitted/received with data bit 0 first, following the start bit.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: data is transmitted/received with the MSB (bit 7/8) first, following the start bit.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Auto baud rate enable This bit is set and cleared by software. Note: If the USART does not support the auto baud rate feature, this bit is reserved and must be kept at reset value. Refer to .
@@ -887,15 +615,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Auto baud rate detection is disabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Auto baud rate detection is enabled.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Auto baud rate mode These bits are set and cleared by software. This bitfield can only be written when ABREN = 0 or the USART is disabled (UEÂ =Â 0). Note: If DATAINVÂ =Â 1 and/or MSBFIRSTÂ =Â 1 the patterns must be the same on the line, for example 0xAA for MSBFIRST) If the USART does not support the auto baud rate feature, this bit is reserved and must be kept at reset value. Refer to .
@@ -908,21 +629,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Measurement of the start bit is used to detect the baud rate.
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: Falling edge to falling edge measurement (the received frame must start with a single bit = 1 and Frame = Start10xxxxxx)
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: 0x7F frame detection.
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: 0x55 frame detection
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receiver timeout enable This bit is set and cleared by software. When this feature is enabled, the RTOF flag in the USART_ISR register is set if the RX line is idle (no reception) for the duration programmed in the RTOR (receiver timeout register). Note: If the USART does not support the Receiver timeout feature, this bit is reserved and must be kept at reset value. Refer to .
@@ -935,15 +643,8 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Receiver timeout feature disabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Receiver timeout feature enabled.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Address of the USART node ADD\[7:4\]: These bits give the address of the USART node or a character code to be recognized. They are used to wake up the MCU with 7-bit address mark detection in multiprocessor communication during Mute mode or low-power mode. The MSB of the character sent by the transmitter should be equal to 1. They can also be used for character detection during normal reception, Mute mode inactive (for example, end of block detection in ModBus protocol). In this case, the whole received character (8-bit) is compared to the ADD\[7:0\] value and CMF flag is set on match. These bits can only be written when reception is disabled (RE = 0) or the USART is disabled (UEÂ =Â 0). ADD\[3:0\]: These bits give the address of the USART node or a character code to be recognized. They are used for wakeup with address mark detection, in multiprocessor communication during Mute mode or low-power mode. These bits can only be written when reception is disabled (RE = 0) or the USART is disabled (UEÂ =Â 0).
@@ -974,15 +675,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: interrupt generated when FE = 1 or ORE = 1 or NE = 1 or UDR = 1 (in SPI slave mode) in the USART_ISR register.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// IrDA mode enable This bit is set and cleared by software. This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If IrDA mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -995,15 +689,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: IrDA disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: IrDA enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// IrDA low-power This bit is used for selecting between normal and low-power IrDA modes This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If IrDA mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1016,15 +703,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Normal mode
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Low-power mode
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Half-duplex selection Selection of Single-wire Half-duplex mode This bit can only be written when the USART is disabled (UEÂ =Â 0).
@@ -1037,15 +717,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Half duplex mode is not selected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Half duplex mode is selected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Smartcard NACK enable This bitfield can only be written when the USART is disabled (UEÂ =Â 0). Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept at reset value. Refer to .
@@ -1058,15 +731,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: NACK transmission in case of parity error is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: NACK transmission during parity error is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Smartcard mode enable This bit is used for enabling Smartcard mode. This bitfield can only be written when the USART is disabled (UEÂ =Â 0). Note: If the USART does not support Smartcard mode, this bit is reserved and must be kept at reset value. Refer to .
@@ -1079,15 +745,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Smartcard Mode disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Smartcard Mode enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA enable receiver This bit is set/reset by software
@@ -1100,15 +759,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: DMA mode is enabled for reception
-            pub const B_0x1: u32 = 0b1;
-
-            /// 0b0: DMA mode is disabled for reception
-            pub const B_0x0: u32 = 0b0;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA enable transmitter This bit is set/reset by software
@@ -1121,15 +773,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: DMA mode is enabled for transmission
-            pub const B_0x1: u32 = 0b1;
-
-            /// 0b0: DMA mode is disabled for transmission
-            pub const B_0x0: u32 = 0b0;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RTS enable This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If the hardware flow control feature is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1142,15 +787,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RTS hardware flow control disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RTS output enabled, data is only requested when there is space in the receive buffer. The transmission of data is expected to cease after the current character has been transmitted. The nRTS output is asserted (pulled to 0) when data can be received.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CTS enable This bit can only be written when the USART is disabled (UEÂ =Â 0) Note: If the hardware flow control feature is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1163,15 +801,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: CTS hardware flow control disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: CTS mode enabled, data is only transmitted when the nCTS input is asserted (tied to 0). If the nCTS input is deasserted while data is being transmitted, then the transmission is completed before stopping. If data is written into the data register while nCTS is asserted, the transmission is postponed until nCTS is asserted.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CTS interrupt enable Note: If the hardware flow control feature is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1184,15 +815,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt is inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: An interrupt is generated whenever CTSIF = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// One sample bit method enable This bit enables the user to select the sample method. When the one sample bit method is selected the noise detection flag (NE) is disabled. This bit can only be written when the USART is disabled (UEÂ =Â 0).
@@ -1205,15 +829,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Three sample bit method
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: One sample bit method
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun Disable This bit is used to disable the receive overrun detection. the ORE flag is not set and the new received data overwrites the previous content of the USART_RDR register. When FIFO mode is enabled, the RXFIFO is bypassed and data is written directly in USART_RDR register. Even when FIFO management is enabled, the RXNE flag is to be used. This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: This control bit enables checking the communication flow w/o reading the data
@@ -1226,15 +843,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Overrun Error Flag, ORE, is set when received data is not read before receiving new data.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Overrun functionality is disabled. If new data is received while the RXNE flag is still set
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA Disable on Reception Error This bit can only be written when the USART is disabled (UE=0). Note: The reception errors are: parity error, framing error or noise error.
@@ -1247,15 +857,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DMA is not disabled in case of reception error. The corresponding error flag is set but RXNE is kept 0 preventing from overrun. As a consequence, the DMA request is not asserted, so the erroneous data is not transferred (no DMA request), but next correct received data is transferred (used for Smartcard mode).
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DMA is disabled following a reception error. The corresponding error flag is set, as well as RXNE. The DMA request is masked until the error flag is cleared. This means that the software must first disable the DMA request (DMAR = 0) or clear RXNE/RXFNE is case FIFO mode is enabled) before clearing the error flag.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Driver enable mode This bit enables the user to activate the external transceiver control, through the DE signal. This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If the Driver Enable feature is not supported, this bit is reserved and must be kept at reset value. .
@@ -1268,15 +871,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DE function is disabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DE function is enabled. The DE signal is output on the RTS pin.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Driver enable polarity selection This bit can only be written when the USART is disabled (UEÂ =Â 0). Note: If the Driver Enable feature is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1289,15 +885,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DE signal is active high.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DE signal is active low.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Smartcard auto-retry count This bitfield specifies the number of retries for transmission and reception in Smartcard mode. In transmission mode, it specifies the number of automatic retransmission retries, before generating a transmission error (FE bit set). In reception mode, it specifies the number or erroneous reception trials, before generating a reception error (RXNE/RXFNE and PE bits set). This bitfield must be programmed only when the USART is disabled (UEÂ =Â 0). When the USART is enabled (UEÂ =Â 1), this bitfield may only be written to 0x0, in order to stop retransmission. Note: If Smartcard mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1310,33 +899,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: retransmission disabled - No automatic retransmission in transmit mode.
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x1: u32 = 0b001;
-
-            /// 0b010: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x2: u32 = 0b010;
-
-            /// 0b011: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x3: u32 = 0b011;
-
-            /// 0b100: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x5: u32 = 0b101;
-
-            /// 0b110: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x6: u32 = 0b110;
-
-            /// 0b111: number of automatic retransmission attempts (before signaling error)
-            pub const B_0x7: u32 = 0b111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup from low-power mode interrupt flag selection This bitfield specifies the event which activates the WUF (Wakeup from low-power mode flag). This bitfield can only be written when the USART is disabled (UEÂ =Â 0). If the USART does not support the wakeup from Stop feature, this bit is reserved and must be kept at reset value. Refer to pageÂ 835.
@@ -1349,18 +913,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: WUF active on address match (as defined by ADD\[7:0\] and ADDM7)
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b10: WUF active on start bit detection
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: WUF active on RXNE/RXFNE.
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup from low-power mode interrupt enable This bit is set and cleared by software. Note: WUFIE must be set before entering in low-power mode. If the USART does not support the wakeup from Stop feature, this bit is reserved and must be kept at reset value. Refer to pageÂ 835.
@@ -1373,15 +927,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever WUF = 1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXFIFO threshold interrupt enable This bit is set and cleared by software.
@@ -1394,15 +941,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when TXFIFO reaches the threshold programmed in TXFTCFG.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmission Complete before guard time, interrupt enable This bit is set and cleared by software. Note: If the USART does not support the Smartcard mode, this bit is reserved and must be kept at reset value. Refer to .
@@ -1415,15 +955,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated whenever TCBGT=1 in the USART_ISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive FIFO threshold configuration Remaining combinations: Reserved
@@ -1436,27 +969,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: Receive FIFO reaches 1/8 of its depth
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: Receive FIFO reaches 1/4 of its depth
-            pub const B_0x1: u32 = 0b001;
-
-            /// 0b010: Receive FIFO reaches 1/2 of its depth
-            pub const B_0x2: u32 = 0b010;
-
-            /// 0b011: Receive FIFO reaches 3/4 of its depth
-            pub const B_0x3: u32 = 0b011;
-
-            /// 0b100: Receive FIFO reaches 7/8 of its depth
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: Receive FIFO becomes full
-            pub const B_0x5: u32 = 0b101;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXFIFO threshold interrupt enable This bit is set and cleared by software.
@@ -1469,15 +983,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Interrupt inhibited
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: USART interrupt generated when Receive FIFO reaches the threshold programmed in RXFTCFG.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXFIFO threshold configuration Remaining combinations: Reserved
@@ -1490,27 +997,8 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: TXFIFO reaches 1/8 of its depth
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: TXFIFO reaches 1/4 of its depth
-            pub const B_0x1: u32 = 0b001;
-
-            /// 0b010: TXFIFO reaches 1/2 of its depth
-            pub const B_0x2: u32 = 0b010;
-
-            /// 0b011: TXFIFO reaches 3/4 of its depth
-            pub const B_0x3: u32 = 0b011;
-
-            /// 0b100: TXFIFO reaches 7/8 of its depth
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: TXFIFO becomes empty
-            pub const B_0x5: u32 = 0b101;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1545,24 +1033,8 @@ pub mod GTPR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00000000: Reserved - do not program this value
-            pub const B_0x0: u32 = 0b00000000;
-
-            /// 0b00000001: Divides the source clock by 1 (IrDA mode) / by 2 (Smarcard mode)
-            pub const B_0x1: u32 = 0b00000001;
-
-            /// 0b00000010: Divides the source clock by 2 (IrDA mode) / by 4 (Smartcard mode)
-            pub const B_0x2: u32 = 0b00000010;
-
-            /// 0b00000011: Divides the source clock by 3 (IrDA mode) / by 6 (Smartcard mode)
-            pub const B_0x3: u32 = 0b00000011;
-
-            /// 0b00011111: Divides the source clock by 31 (IrDA mode) / by 62 (Smartcard mode)
-            pub const B_0x1F: u32 = 0b00011111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Guard time value This bitfield is used to program the Guard time value in terms of number of baud clock periods. This is used in Smartcard mode. The Transmission Complete flag is set after this guard time value. This bitfield can only be written when the USART is disabled (UEÂ =Â 0). Note: If Smartcard mode is not supported, this bit is reserved and must be kept at reset value. Refer to .
@@ -1701,15 +1173,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No parity error
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Parity error
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Framing error This bit is set by hardware when a de-synchronization, excessive noise or a break character is detected. It is cleared by software, writing 1 to the FECF bit in the USART_ICR register. When transmitting data in Smartcard mode, this bit is set when the maximum number of transmit attempts is reached without success (the card NACKs the data frame). An interrupt is generated if EIEÂ =Â 1 in the USART_CR1 register. Note: This error is associated with the character in the USART_RDR.
@@ -1722,15 +1187,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No Framing error is detected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Framing error or break character is detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Noise detection flag This bit is set by hardware when noise is detected on a received frame. It is cleared by software, writing 1 to the NECF bit in the USART_ICR register. Note: This bit does not generate an interrupt as it appears at the same time as the RXFNE bit which itself generates an interrupt. An interrupt is generated when the NE flag is set during multi buffer communication if the EIE bit is set. When the line is noise-free, the NE flag can be disabled by programming the ONEBIT bit to 1 to increase the USART tolerance to deviations (Refer to Tolerance of the USART receiver to clock deviation on pageÂ 861). This error is associated with the character in the USART_RDR.
@@ -1743,15 +1201,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No noise is detected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Noise is detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun error This bit is set by hardware when the data currently being received in the shift register is ready to be transferred into the USART_RDR register while RXFF = 1. It is cleared by a software, writing 1 to the ORECF, in the USART_ICR register. An interrupt is generated if RXFNEIEÂ =Â 1 or EIE = 1 in the USART_CR1 register. Note: When this bit is set, the USART_RDR register content is not lost but the shift register is overwritten. An interrupt is generated if the ORE flag is set during multi buffer communication if the EIE bit is set. This bit is permanently forced to 0 (no overrun detection) when the bit OVRDIS is set in the USART_CR3 register.
@@ -1764,15 +1215,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No overrun error
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Overrun error is detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Idle line detected This bit is set by hardware when an Idle Line is detected. An interrupt is generated if IDLEIEÂ =Â 1 in the USART_CR1 register. It is cleared by software, writing 1 to the IDLECF in the USART_ICR register. Note: The IDLE bit is not set again until the RXFNE bit has been set (i.e. a new idle line occurs). If Mute mode is enabled (MMEÂ =Â 1), IDLE is set if the USART is not mute (RWUÂ =Â 0), whatever the Mute mode selected by the WAKE bit. If RWUÂ =Â 1, IDLE is not set.
@@ -1785,15 +1229,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No Idle line is detected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Idle line is detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXFIFO not empty RXFNE bit is set by hardware when the RXFIFO is not empty, meaning that data can be read from the USART_RDR register. Every read operation from the USART_RDR frees a location in the RXFIFO. RXFNE is cleared when the RXFIFO is empty. The RXFNE flag can also be cleared by writing 1 to the RXFRQ in the USART_RQR register. An interrupt is generated if RXFNEIEÂ =Â 1 in the USART_CR1 register.
@@ -1806,15 +1243,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Data is not received
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Received data is ready to be read.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmission complete This bit indicates that the last data written in the USART_TDR has been transmitted out of the shift register. It is set by hardware when the transmission of a frame containing data is complete and when TXFE is set. An interrupt is generated if TCIEÂ =Â 1 in the USART_CR1 register. TC bit is is cleared by software, by writing 1 to the TCCF in the USART_ICR register or by a write to the USART_TDR register. Note: If TE bit is reset and no transmission is on going, the TC bit is immediately set.
@@ -1827,15 +1257,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Transmission is not complete
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Transmission is complete
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXFIFO not full TXFNF is set by hardware when TXFIFO is not full meaning that data can be written in the USART_TDR. Every write operation to the USART_TDR places the data in the TXFIFO. This flag remains set until the TXFIFO is full. When the TXFIFO is full, this flag is cleared indicating that data can not be written into the USART_TDR. An interrupt is generated if the TXFNFIE bit =1 in the USART_CR1 register. Note: The TXFNF is kept reset during the flush request until TXFIFO is empty. After sending the flush request (by setting TXFRQ bit), the flag TXFNF should be checked prior to writing in TXFIFO (TXFNF and TXFE are set at the same time). This bit is used during single buffer transmission.
@@ -1848,15 +1271,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Transmit FIFO is full
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Transmit FIFO is not full
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LIN break detection flag This bit is set by hardware when the LIN break is detected. It is cleared by software, by writing 1 to the LBDCF in the USART_ICR. An interrupt is generated if LBDIE = 1 in the USART_CR2 register. Note: If the USART does not support LIN mode, this bit is reserved and kept at reset value. Refer to .
@@ -1869,15 +1285,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: LIN Break not detected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: LIN break detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CTS interrupt flag This bit is set by hardware when the nCTS input toggles, if the CTSE bit is set. It is cleared by software, by writing 1 to the CTSCF bit in the USART_ICR register. An interrupt is generated if CTSIEÂ =Â 1 in the USART_CR3 register. Note: If the hardware flow control feature is not supported, this bit is reserved and kept at reset value.
@@ -1890,15 +1299,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No change occurred on the nCTS status line
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: A change occurred on the nCTS status line
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CTS flag This bit is set/reset by hardware. It is an inverted copy of the status of the nCTS input pin. Note: If the hardware flow control feature is not supported, this bit is reserved and kept at reset value.
@@ -1911,15 +1313,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: nCTS line set
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: nCTS line reset
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receiver timeout This bit is set by hardware when the timeout value, programmed in the RTOR register has lapsed, without any communication. It is cleared by software, writing 1 to the RTOCF bit in the USART_ICR register. An interrupt is generated if RTOIEÂ =Â 1 in the USART_CR2 register. In Smartcard mode, the timeout corresponds to the CWT or BWT timings. Note: If a time equal to the value programmed in RTOR register separates 2 characters, RTOF is not set. If this time exceeds this value + 2 sample times (2/16 or 2/8, depending on the oversampling method), RTOF flag is set. The counter counts even if RE = 0 but RTOF is set only when RE = 1. If the timeout has already elapsed when RE is set, then RTOF is set. If the USART does not support the Receiver timeout feature, this bit is reserved and kept at reset value.
@@ -1932,15 +1327,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Timeout value not reached
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Timeout value reached without any data reception
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of block flag This bit is set by hardware when a complete block has been received (for example TÂ =Â 1 Smartcard mode). The detection is done when the number of received bytes (from the start of the block, including the prologue) is equal or greater than BLEN + 4. An interrupt is generated if the EOBIEÂ =Â 1 in the USART_CR2 register. It is cleared by software, writing 1 to the EOBCF in the USART_ICR register. Note: If Smartcard mode is not supported, this bit is reserved and kept at reset value. Refer to .
@@ -1953,15 +1341,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: End of Block not reached
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: End of Block (number of characters) reached
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SPI slave underrun error flag In slave transmission mode, this flag is set when the first clock pulse for data transmission appears while the software has not yet loaded any value into USART_TDR. This flag is reset by setting UDRCF bit in the USART_ICR register. Note: If the USART does not support the SPI slave mode, this bit is reserved and kept at reset value. Refer to .
@@ -1974,15 +1355,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No underrun error
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: underrun error
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Auto baud rate error This bit is set by hardware if the baud rate measurement failed (baud rate out of range or character comparison failed) It is cleared by software, by writing 1 to the ABRRQ bit in the USART_CR3 register. Note: If the USART does not support the auto baud rate feature, this bit is reserved and kept at reset value.
@@ -2023,15 +1397,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: USART is idle (no reception)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Reception on going
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Character match flag This bit is set by hardware, when a the character defined by ADD\[7:0\] is received. It is cleared by software, writing 1 to the CMCF in the USART_ICR register. An interrupt is generated if CMIEÂ =Â 1in the USART_CR1 register.
@@ -2044,15 +1411,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No Character match detected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Character Match detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Send break flag This bit indicates that a send break character was requested. It is set by software, by writing 1 to the SBKRQ bit in the USART_CR3 register. It is automatically reset by hardware during the stop bit of break transmission.
@@ -2065,15 +1425,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Break character transmitted
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Break character requested by setting SBKRQ bit in USART_RQR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receiver wakeup from Mute mode This bit indicates if the USART is in Mute mode. It is cleared/set by hardware when a wakeup/mute sequence is recognized. The Mute mode control sequence (address or IDLE) is selected by the WAKE bit in the USART_CR1 register. When wakeup on IDLE mode is selected, this bit can only be set by software, writing 1 to the MMRQ bit in the USART_RQR register. Note: If the USART does not support the wakeup from Stop feature, this bit is reserved and kept at reset value. Refer to .
@@ -2086,15 +1439,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Receiver in active mode
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Receiver in Mute mode
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup from low-power mode flag This bit is set by hardware, when a wakeup event is detected. The event is defined by the WUS bitfield. It is cleared by software, writing a 1 to the WUCF in the USART_ICR register. An interrupt is generated if WUFIEÂ =Â 1 in the USART_CR3 register. Note: When UESM is cleared, WUF flag is also cleared. If the USART does not support the wakeup from Stop feature, this bit is reserved and kept at reset value. Refer to .
@@ -2149,15 +1495,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXFIFO not empty.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXFIFO empty.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXFIFO full This bit is set by hardware when the number of received data corresponds to RXFIFOÂ sizeÂ +Â 1 (RXFIFO full + 1 data in the USART_RDR register. An interrupt is generated if the RXFFIE bit Â =Â 1 in the USART_CR1 register.
@@ -2170,15 +1509,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RXFIFO not full.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RXFIFO Full.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmission complete before guard time flag This bit is set when the last data written in the USART_TDR has been transmitted correctly out of the shift register. It is set by hardware in Smartcard mode, if the transmission of a frame containing data is complete and if the smartcard did not send back any NACK. An interrupt is generated if TCBGTIEÂ =Â 1 in the USART_CR3 register. This bit is cleared by software, by writing 1 to the TCBGTCF in the USART_ICR register or by a write to the USART_TDR register. Note: If the USART does not support the Smartcard mode, this bit is reserved and kept at reset value. If the USART supports the Smartcard mode and the Smartcard mode is enabled, the TCBGT reset value is '1â. Refer to on pageÂ 835.
@@ -2191,15 +1523,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Transmission is not complete or transmission is complete unsuccessfully (i.e. a NACK is received from the card)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Transmission is complete successfully (before Guard time completion and there is no NACK from the smart card).
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXFIFO threshold flag This bit is set by hardware when the threshold programmed in RXFTCFG in USART_CR3 register is reached. This means that there are (RXFTCFG - 1) data in the Receive FIFO and one data in the USART_RDR register. An interrupt is generated if the RXFTIE bit Â =Â 1 (bit 27) in the USART_CR3 register. Note: When the RXFTCFG threshold is configured to '101â, RXFT flag is set if 16 data are available i.e. 15 data in the RXFIFO and 1 data in the USART_RDR. Consequently, the 17th received data does not cause an overrun error. The overrun error occurs after receiving the 18th data.
@@ -2212,15 +1537,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Receive FIFO does not reach the programmed threshold.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Receive FIFO reached the programmed threshold.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXFIFO threshold flag This bit is set by hardware when the TXFIFO reaches the threshold programmed in TXFTCFG of USART_CR3 register i.e. the TXFIFO contains TXFTCFG empty locations. An interrupt is generated if the TXFTIE bit Â =Â 1 (bit 31) in the USART_CR3 register.
@@ -2233,15 +1551,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXFIFO does not reach the programmed threshold.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXFIFO reached the programmed threshold.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Read data register not empty RXNE bit is set by hardware when the content of the USART_RDR shift register has been transferred to the USART_RDR register. It is cleared by reading from the USART_RDR register. The RXNE flag can also be cleared by writing 1 to the RXFRQ in the USART_RQR register. An interrupt is generated if RXNEIEÂ =Â 1 in the USART_CR1 register.
@@ -2254,7 +1565,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::RXFNE::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit data register empty TXE is set by hardware when the content of the USART_TDR register has been transferred into the shift register. It is cleared by writing to the USART_TDR register. The TXE flag can also be set by writing 1 to the TXFRQ in the USART_RQR register, in order to discard the data (only in Smartcard TÂ =Â 0 mode, in case of transmission failure). An interrupt is generated if the TXEIE bit Â =Â 1 in the USART_CR1 register.
@@ -2267,15 +1579,8 @@ pub mod ISR_FIFO {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Data register full
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Data register not full
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2542,45 +1847,8 @@ pub mod PRESC {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0000: input clock not divided
-            pub const B_0x0: u32 = 0b0000;
-
-            /// 0b0001: input clock divided by 2
-            pub const B_0x1: u32 = 0b0001;
-
-            /// 0b0010: input clock divided by 4
-            pub const B_0x2: u32 = 0b0010;
-
-            /// 0b0011: input clock divided by 6
-            pub const B_0x3: u32 = 0b0011;
-
-            /// 0b0100: input clock divided by 8
-            pub const B_0x4: u32 = 0b0100;
-
-            /// 0b0101: input clock divided by 10
-            pub const B_0x5: u32 = 0b0101;
-
-            /// 0b0110: input clock divided by 12
-            pub const B_0x6: u32 = 0b0110;
-
-            /// 0b0111: input clock divided by 16
-            pub const B_0x7: u32 = 0b0111;
-
-            /// 0b1000: input clock divided by 32
-            pub const B_0x8: u32 = 0b1000;
-
-            /// 0b1001: input clock divided by 64
-            pub const B_0x9: u32 = 0b1001;
-
-            /// 0b1010: input clock divided by 128
-            pub const B_0xA: u32 = 0b1010;
-
-            /// 0b1011: input clock divided by 256
-            pub const B_0xB: u32 = 0b1011;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]

@@ -686,7 +686,7 @@ pub struct RegisterBlock {
     /// status register
     pub SR: RWRegister<u32>,
 
-    _reserved1: [u32; 52],
+    _reserved1: [u8; 208],
 
     /// context swap registers
     pub CSR0: RWRegister<u32>,
@@ -850,7 +850,7 @@ pub struct RegisterBlock {
     /// context swap registers
     pub CSR53: RWRegister<u32>,
 
-    _reserved2: [u32; 80],
+    _reserved2: [u8; 320],
 
     /// HASH digest register
     pub HASH_HR0: RORegister<u32>,

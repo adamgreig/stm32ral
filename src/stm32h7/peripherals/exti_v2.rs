@@ -5806,7 +5806,7 @@ pub struct RegisterBlock {
     /// EXTI D3 pending clear selection register high
     pub D3PCR1H: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// EXTI rising trigger selection register
     pub RTSR2: RWRegister<u32>,
@@ -5826,7 +5826,7 @@ pub struct RegisterBlock {
     /// EXTI D3 pending clear selection register high
     pub D3PCR2H: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// EXTI rising trigger selection register
     pub RTSR3: RWRegister<u32>,
@@ -5840,12 +5840,12 @@ pub struct RegisterBlock {
     /// EXTI D3 pending mask register
     pub D3PMR3: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// EXTI D3 pending clear selection register high
     pub D3PCR3H: RWRegister<u32>,
 
-    _reserved4: [u32; 10],
+    _reserved4: [u8; 40],
 
     /// EXTI interrupt mask register
     pub C1IMR1: RWRegister<u32>,
@@ -5856,7 +5856,7 @@ pub struct RegisterBlock {
     /// EXTI pending register
     pub C1PR1: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// EXTI interrupt mask register
     pub C1IMR2: RWRegister<u32>,
@@ -5867,7 +5867,7 @@ pub struct RegisterBlock {
     /// EXTI pending register
     pub C1PR2: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// EXTI interrupt mask register
     pub C1IMR3: RWRegister<u32>,
@@ -5878,7 +5878,7 @@ pub struct RegisterBlock {
     /// EXTI pending register
     pub C1PR3: RWRegister<u32>,
 
-    _reserved7: [u32; 5],
+    _reserved7: [u8; 20],
 
     /// CPU2 EXTI interrupt mask register
     pub C2IMR1: RWRegister<u32>,
@@ -5889,7 +5889,7 @@ pub struct RegisterBlock {
     /// CPU2 EXTI pending register
     pub C2PR1: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// CPU2 EXTI interrupt mask register
     pub C2IMR2: RWRegister<u32>,
@@ -5900,7 +5900,7 @@ pub struct RegisterBlock {
     /// CPU2 EXTI pending register
     pub C2PR2: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// CPU2 EXTI interrupt mask register
     pub C2IMR3: RWRegister<u32>,

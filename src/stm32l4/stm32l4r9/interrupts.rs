@@ -78,7 +78,7 @@ extern "C" {
     fn SAI2();
     fn OCTOSPI2();
     fn TSC();
-    fn DSIHSOT();
+    fn DSIHOST();
     fn AES();
     fn RNG_HASH();
     fn FPU();
@@ -206,7 +206,7 @@ pub static __INTERRUPTS: [Vector; 95] = [
     Vector { _handler: SAI2 },
     Vector { _handler: OCTOSPI2 },
     Vector { _handler: TSC },
-    Vector { _handler: DSIHSOT },
+    Vector { _handler: DSIHOST },
     Vector { _handler: AES },
     Vector { _handler: RNG_HASH },
     Vector { _handler: FPU },
@@ -391,7 +391,7 @@ pub enum Interrupt {
     /// 77: TSC global interrupt
     TSC = 77,
     /// 78: DSI global interrupt
-    DSIHSOT = 78,
+    DSIHOST = 78,
     /// 79: AES global interrupt
     AES = 79,
     /// 80: RNG and HASH global interrupt

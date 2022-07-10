@@ -25,8 +25,8 @@ pub mod otg_fs_device_f401_f405_f407_f411_f427_f429;
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f427", feature="stm32f429"))]
 pub mod otg_fs_global_f401_f405_f407_f411_f427_f429;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod otg_fs_host;
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f427", feature="stm32f429"))]
+pub mod otg_fs_host_f401_f405_f407_f411_f427_f429;
 
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f469"))]
 pub mod otg_fs_pwrclk;
@@ -46,26 +46,26 @@ pub mod sdio;
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411"))]
 pub mod syscfg_f401_f411;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim1_f401_f405_f407_f413_f427_f429_f446_f469;
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+pub mod tim1;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim8_f405_f407_f413_f427_f429_f446_f469;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+pub mod tim8;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim10_f401_f411_f412_f413_f427_f429_f446_f469;
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f427", feature="stm32f429"))]
+pub mod tim10_f401_f405_f407_f411_f427_f429;
 
-#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim13_f412_f413_f427_f429_f446_f469;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
+pub mod tim13_f405_f407_f427_f429;
 
-#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim14_f412_f413_f427_f429_f446_f469;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
+pub mod tim14_f405_f407_f427_f429;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f410", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim11_f401_f410_f411_f412_f413_f427_f429_f446_f469;
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f427", feature="stm32f429"))]
+pub mod tim11_f401_f405_f407_f411_f427_f429;
 
-#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
-pub mod tim2;
+#[cfg(any(feature="doc", feature="stm32f401", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
+pub mod tim2_f401_f411_f412_f413_f446_f469;
 
 #[cfg(any(feature="doc", feature="stm32f401", feature="stm32f405", feature="stm32f407", feature="stm32f411", feature="stm32f412", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod tim3;
@@ -163,8 +163,8 @@ pub mod syscfg_f405_f407;
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod adc;
 
-#[cfg(any(feature="doc", feature="stm32f410", feature="stm32f412", feature="stm32f413"))]
-pub mod adc1_f410_f412_f413;
+#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413"))]
+pub mod adc1_f412_f413;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod dac;
@@ -187,22 +187,13 @@ pub mod uart_f427_f429_f446_f469;
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod adc_common_f405_f407_f427_f429_f446_f469;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
-pub mod tim10_f405_f407;
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429"))]
+pub mod tim2_f405_f407_f427_f429;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
-pub mod tim13_f405_f407;
-
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
-pub mod tim14_f405_f407;
-
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
-pub mod tim11_f405_f407;
-
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f410", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod tim6;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f413", feature="stm32f427", feature="stm32f429", feature="stm32f446", feature="stm32f469"))]
 pub mod tim7;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f469"))]
@@ -223,8 +214,11 @@ pub mod otg_hs_host;
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f446"))]
 pub mod otg_hs_device;
 
-#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407"))]
+#[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427"))]
 pub mod sai1;
+
+#[cfg(any(feature="doc", feature="stm32f413", feature="stm32f429", feature="stm32f469"))]
+pub mod sai;
 
 #[cfg(any(feature="doc", feature="stm32f405", feature="stm32f407", feature="stm32f427", feature="stm32f429", feature="stm32f469"))]
 pub mod ltdc;
@@ -250,17 +244,23 @@ pub mod adc_common_f410_f412_f413;
 #[cfg(any(feature="doc", feature="stm32f410", feature="stm32f412", feature="stm32f413"))]
 pub mod syscfg_f410_f412_f413;
 
+#[cfg(any(feature="doc", feature="stm32f410", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
+pub mod tim11_f410_f412_f413_f446_f469;
+
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f469"))]
 pub mod rng_f412_f413_f469;
 
 #[cfg(any(feature="doc", feature="stm32f410", feature="stm32f446"))]
 pub mod fmpi2c1;
 
-#[cfg(any(feature="doc", feature="stm32f411", feature="stm32f412"))]
-pub mod tim1_f411_f412;
+#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
+pub mod tim10_f412_f413_f446_f469;
 
-#[cfg(any(feature="doc", feature="stm32f411", feature="stm32f412"))]
-pub mod tim8_f411_f412;
+#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
+pub mod tim13_f412_f413_f446_f469;
+
+#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
+pub mod tim14_f412_f413_f446_f469;
 
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413"))]
 pub mod tim9_f412_f413;
@@ -271,14 +271,14 @@ pub mod tim12_f412_f413;
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413"))]
 pub mod otg_fs_global_f412_f413;
 
+#[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
+pub mod otg_fs_host_f412_f413_f446_f469;
+
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f469"))]
 pub mod otg_fs_device_f412_f469;
 
 #[cfg(any(feature="doc", feature="stm32f412", feature="stm32f413", feature="stm32f446", feature="stm32f469"))]
 pub mod quadspi;
-
-#[cfg(any(feature="doc", feature="stm32f413", feature="stm32f429"))]
-pub mod sai;
 
 #[cfg(any(feature="doc", feature="stm32f427", feature="stm32f429", feature="stm32f469"))]
 pub mod dbgmcu_f427_f429_f469;

@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! cyclic redundancy check calculation unit
 //!
-//! Used by: stm32f0x0, stm32f0x1, stm32f0x2, stm32f0x8
+//! Used by: stm32f0x1, stm32f0x2, stm32f0x8
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f0::peripherals::crc::Instance;
 pub use crate::stm32f0::peripherals::crc::{RegisterBlock, ResetValues};
-pub use crate::stm32f0::peripherals::crc::{CR, DR, IDR, INIT};
+pub use crate::stm32f0::peripherals::crc::{CR, DR, IDR, INIT, POL};
 
 /// Access functions for the CRC peripheral instance
 pub mod CRC {
@@ -28,6 +28,7 @@ pub mod CRC {
         IDR: 0x00000000,
         CR: 0x00000000,
         INIT: 0xFFFFFFFF,
+        POL: 0x04C11DB7,
     };
 
     #[cfg(not(feature = "nosync"))]

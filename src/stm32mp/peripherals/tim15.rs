@@ -1406,12 +1406,12 @@ pub struct RegisterBlock {
     /// TIM15 control register 1
     pub TIM15_CR1: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// TIM15 control register 2
     pub TIM15_CR2: RWRegister<u16>,
 
-    _reserved2: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// slave mode control register
     pub TIMx_SMCR: RWRegister<u32>,
@@ -1419,12 +1419,12 @@ pub struct RegisterBlock {
     /// TIM15 DMA/interrupt enable register
     pub TIM15_DIER: RWRegister<u16>,
 
-    _reserved3: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// TIM15 status register
     pub TIM15_SR: RWRegister<u16>,
 
-    _reserved4: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// event generation register
     pub TIMx_EGR: WORegister<u32>,
@@ -1434,12 +1434,12 @@ pub struct RegisterBlock {
     /// TIMx_CCMR1_Input: capture/compare mode register 1 (input mode)
     pub TIMx_CCMR1: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// TIM15 capture/compare enable register
     pub TIM15_CCER: RWRegister<u16>,
 
-    _reserved6: [u16; 1],
+    _reserved6: [u8; 2],
 
     /// TIM15 counter
     pub TIM15_CNT: RWRegister<u32>,
@@ -1447,28 +1447,27 @@ pub struct RegisterBlock {
     /// TIM15 prescaler
     pub TIM15_PSC: RWRegister<u16>,
 
-    _reserved7: [u16; 1],
+    _reserved7: [u8; 2],
 
     /// TIM15 auto-reload register
     pub TIM15_ARR: RWRegister<u16>,
 
-    _reserved8: [u16; 1],
+    _reserved8: [u8; 2],
 
     /// TIM15 repetition counter register
     pub TIM15_RCR: RWRegister<u16>,
 
-    _reserved9: [u16; 1],
+    _reserved9: [u8; 2],
 
     /// TIM15 capture/compare register 1
     pub TIM15_CCR1: RWRegister<u16>,
 
-    _reserved10: [u16; 1],
+    _reserved10: [u8; 2],
 
     /// TIM15 capture/compare register 2
     pub TIM15_CCR2: RWRegister<u16>,
 
-    _reserved11: [u32; 2],
-    _reserved12: [u16; 1],
+    _reserved11: [u8; 10],
 
     /// As the bits BK2BID, BKBID, BK2DSRM, BKDSRM, BK2P, BK2E, BK2F\[3:0\], BKF\[3:0\], AOE, BKP, BKE, OSSI, OSSR and DTG\[7:0\] can be write-locked depending on the LOCK configuration, it can be necessary to configure all of them during the first write access to the TIMx_BDTR register.
     pub TIMx_BDTR: RWRegister<u32>,
@@ -1476,18 +1475,17 @@ pub struct RegisterBlock {
     /// TIM15 DMA control register
     pub TIM15_DCR: RWRegister<u16>,
 
-    _reserved13: [u16; 1],
+    _reserved12: [u8; 2],
 
     /// TIM15 DMA address for full transfer
     pub TIM15_DMAR: RWRegister<u16>,
 
-    _reserved14: [u32; 4],
-    _reserved15: [u16; 1],
+    _reserved13: [u8; 18],
 
     /// TIM15 alternate register 1
     pub TIM15_AF1: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// TIM15 input selection register
     pub TIM15_TISEL: RWRegister<u32>,

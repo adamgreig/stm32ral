@@ -17,12 +17,8 @@ pub mod CSR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No overrun occurred
             pub const NoOverrun: u32 = 0b0;
@@ -30,6 +26,10 @@ pub mod CSR {
             /// 0b1: Overrun occurred
             pub const Overrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular channel Start flag of ADC 1
@@ -38,12 +38,8 @@ pub mod CSR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No regular channel conversion started
             pub const NotStarted: u32 = 0b0;
@@ -51,6 +47,10 @@ pub mod CSR {
             /// 0b1: Regular channel conversion has started
             pub const Started: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected channel Start flag of ADC 1
@@ -59,12 +59,8 @@ pub mod CSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No injected channel conversion started
             pub const NotStarted: u32 = 0b0;
@@ -72,6 +68,10 @@ pub mod CSR {
             /// 0b1: Injected channel conversion has started
             pub const Started: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected channel end of conversion of ADC 1
@@ -80,12 +80,8 @@ pub mod CSR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Conversion is not complete
             pub const NotComplete: u32 = 0b0;
@@ -93,6 +89,10 @@ pub mod CSR {
             /// 0b1: Conversion complete
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of conversion of ADC 1
@@ -101,11 +101,11 @@ pub mod CSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::JEOC1::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::JEOC1::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog flag of ADC 1
@@ -114,12 +114,8 @@ pub mod CSR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No analog watchdog event occurred
             pub const NoEvent: u32 = 0b0;
@@ -127,6 +123,10 @@ pub mod CSR {
             /// 0b1: Analog watchdog event occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

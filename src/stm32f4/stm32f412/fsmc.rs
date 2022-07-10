@@ -22,11 +22,11 @@ pub mod BCR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Write operations are performed in synchronous mode
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Write operations are always performed in asynchronous mode
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -322,11 +322,11 @@ pub mod BCR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: FSMC_CLK is generated continuously during asynchronous and synchronous access
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: FSMC_CLK is only generated during the synchronous memory access
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: FSMC_CLK is generated continuously during asynchronous and synchronous access
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -525,11 +525,11 @@ pub mod BCR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Write operations are performed in synchronous mode
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Write operations are always performed in asynchronous mode
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -997,22 +997,22 @@ pub struct RegisterBlock {
     /// SRAM/NOR-Flash chip-select timing register 1
     pub BTR4: RWRegister<u32>,
 
-    _reserved1: [u32; 57],
+    _reserved1: [u8; 228],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR2: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR3: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR4: RWRegister<u32>,

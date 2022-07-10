@@ -8,8 +8,7 @@
 pub use crate::stm32h7::peripherals::tim13_v2::Instance;
 pub use crate::stm32h7::peripherals::tim13_v2::{RegisterBlock, ResetValues};
 pub use crate::stm32h7::peripherals::tim13_v2::{
-    AF1, ARR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC,
-    SMCR, SR, TISEL,
+    AF1, ARR, CCER, CCMR1, CCMR2, CCR1, CNT, CR1, CR2, DCR, DIER, DMAR, EGR, PSC, SMCR, SR, TISEL,
 };
 
 /// Access functions for the TIM14 peripheral instance
@@ -40,9 +39,6 @@ pub mod TIM14 {
         PSC: 0x00000000,
         ARR: 0x00000000,
         CCR1: 0x00000000,
-        CCR2: 0x00000000,
-        CCR3: 0x00000000,
-        CCR4: 0x00000000,
         DCR: 0x00000000,
         DMAR: 0x00000000,
         AF1: 0x00000000,

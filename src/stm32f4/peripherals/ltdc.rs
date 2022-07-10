@@ -324,11 +324,11 @@ pub mod SRCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: The shadow registers are reloaded during the vertical blanking period (at the beginning of the first line after the active display area).
-            pub const Reload: u32 = 0b1;
-
             /// 0b0: This bit is set by software and cleared only by hardware after reload (it cannot be cleared through register write once it is set)
             pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: The shadow registers are reloaded during the vertical blanking period (at the beginning of the first line after the active display area).
+            pub const Reload: u32 = 0b1;
         }
     }
 
@@ -345,11 +345,11 @@ pub mod SRCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: The shadow registers are reloaded immediately. This bit is set by software and cleared only by hardware after reload
-            pub const Reload: u32 = 0b1;
-
             /// 0b0: This bit is set by software and cleared only by hardware after reload (it cannot be cleared through register write once it is set)
             pub const NoEffect: u32 = 0b0;
+
+            /// 0b1: The shadow registers are reloaded immediately. This bit is set by software and cleared only by hardware after reload
+            pub const Reload: u32 = 0b1;
         }
     }
 }
@@ -497,12 +497,8 @@ pub mod ISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No register reload
             pub const NoReload: u32 = 0b0;
@@ -510,6 +506,10 @@ pub mod ISR {
             /// 0b1: Register reload interrupt generated when a vertical blanking reload occurs (and the first line after the active area is reached)
             pub const Reload: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transfer Error interrupt flag
@@ -518,12 +518,8 @@ pub mod ISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer error
             pub const NoError: u32 = 0b0;
@@ -531,6 +527,10 @@ pub mod ISR {
             /// 0b1: Transfer error interrupt generated when a bus error occurs
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// FIFO Underrun Interrupt flag
@@ -539,12 +539,8 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No FIFO underrun
             pub const NoUnderrun: u32 = 0b0;
@@ -552,6 +548,10 @@ pub mod ISR {
             /// 0b1: FIFO underrun interrupt generated, if one of the layer FIFOs is empty and pixel data is read from the FIFO
             pub const Underrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Line Interrupt flag
@@ -560,12 +560,8 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Programmed line not reached
             pub const NotReached: u32 = 0b0;
@@ -573,6 +569,10 @@ pub mod ISR {
             /// 0b1: Line interrupt generated when a programmed line is reached
             pub const Reached: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -587,14 +587,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the RRIF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clears the Transfer Error Interrupt Flag
@@ -605,14 +605,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the TERRIF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clears the FIFO Underrun Interrupt flag
@@ -623,14 +623,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the FUIF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clears the Line Interrupt Flag
@@ -641,14 +641,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the LIF flag in the ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -711,12 +711,8 @@ pub mod CDSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Currently not in HSYNC phase
             pub const NotActive: u32 = 0b0;
@@ -724,6 +720,10 @@ pub mod CDSR {
             /// 0b1: Currently in HSYNC phase
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Vertical Synchronization display Status
@@ -732,12 +732,8 @@ pub mod CDSR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Currently not in VSYNC phase
             pub const NotActive: u32 = 0b0;
@@ -745,6 +741,10 @@ pub mod CDSR {
             /// 0b1: Currently in VSYNC phase
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Horizontal Data Enable display Status
@@ -753,12 +753,8 @@ pub mod CDSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Currently not in horizontal Data Enable phase
             pub const NotActive: u32 = 0b0;
@@ -766,6 +762,10 @@ pub mod CDSR {
             /// 0b1: Currently in horizontal Data Enable phase
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Vertical Data Enable display Status
@@ -774,12 +774,8 @@ pub mod CDSR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Currently not in vertical Data Enable phase
             pub const NotActive: u32 = 0b0;
@@ -787,6 +783,10 @@ pub mod CDSR {
             /// 0b1: Currently in vertical Data Enable phase
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1337,7 +1337,7 @@ pub mod CLUTWR2 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Synchronization Size Configuration Register
     pub SSCR: RWRegister<u32>,
@@ -1354,17 +1354,17 @@ pub struct RegisterBlock {
     /// Global Control Register
     pub GCR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// Shadow Reload Configuration Register
     pub SRCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Background Color Configuration Register
     pub BCCR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// Interrupt Enable Register
     pub IER: RWRegister<u32>,
@@ -1384,7 +1384,7 @@ pub struct RegisterBlock {
     /// Current Display Status Register
     pub CDSR: RORegister<u32>,
 
-    _reserved5: [u32; 14],
+    _reserved5: [u8; 56],
 
     /// Layerx Control Register
     pub CR1: RWRegister<u32>,
@@ -1410,7 +1410,7 @@ pub struct RegisterBlock {
     /// Layerx Blending Factors Configuration Register
     pub BFCR1: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// Layerx Color Frame Buffer Address Register
     pub CFBAR1: RWRegister<u32>,
@@ -1421,12 +1421,12 @@ pub struct RegisterBlock {
     /// Layerx ColorFrame Buffer Line Number Register
     pub CFBLNR1: RWRegister<u32>,
 
-    _reserved7: [u32; 3],
+    _reserved7: [u8; 12],
 
     /// Layerx CLUT Write Register
     pub CLUTWR1: WORegister<u32>,
 
-    _reserved8: [u32; 15],
+    _reserved8: [u8; 60],
 
     /// Layerx Control Register
     pub CR2: RWRegister<u32>,
@@ -1452,7 +1452,7 @@ pub struct RegisterBlock {
     /// Layerx Blending Factors Configuration Register
     pub BFCR2: RWRegister<u32>,
 
-    _reserved9: [u32; 2],
+    _reserved9: [u8; 8],
 
     /// Layerx Color Frame Buffer Address Register
     pub CFBAR2: RWRegister<u32>,
@@ -1463,7 +1463,7 @@ pub struct RegisterBlock {
     /// Layerx ColorFrame Buffer Line Number Register
     pub CFBLNR2: RWRegister<u32>,
 
-    _reserved10: [u32; 3],
+    _reserved10: [u8; 12],
 
     /// Layerx CLUT Write Register
     pub CLUTWR2: WORegister<u32>,

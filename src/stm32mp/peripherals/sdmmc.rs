@@ -2045,7 +2045,7 @@ pub struct RegisterBlock {
     /// The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
     pub SDMMC_ACKTIMER: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
     pub SDMMC_IDMACTRLR: RWRegister<u32>,
@@ -2056,7 +2056,7 @@ pub struct RegisterBlock {
     /// The SDMMC_IDMABASER register contains the memory buffer base address in single buffer configuration and linked list configuration.
     pub SDMMC_IDMABASER: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// SDMMC IDMA linked list address register
     pub SDMMC_IDMALAR: RWRegister<u32>,
@@ -2064,7 +2064,7 @@ pub struct RegisterBlock {
     /// SDMMC IDMA linked list memory base register
     pub SDMMC_IDMABAR: RWRegister<u32>,
 
-    _reserved3: [u32; 5],
+    _reserved3: [u8; 20],
 
     /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO. The FIFO register interface takes care of correct data alignment inside the FIFO, the FIFO register address used by the CPU does matter. When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
     pub SDMMC_FIFOR0: RWRegister<u32>,
@@ -2114,7 +2114,7 @@ pub struct RegisterBlock {
     /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO. The FIFO register interface takes care of correct data alignment inside the FIFO, the FIFO register address used by the CPU does matter. When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
     pub SDMMC_FIFOR15: RWRegister<u32>,
 
-    _reserved4: [u32; 205],
+    _reserved4: [u8; 820],
 
     /// SDMMC version register
     pub SDMMC_VERR: RORegister<u32>,

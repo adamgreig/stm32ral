@@ -300,11 +300,14 @@ pub use stm32l1::stm32l151::*;
 #[cfg(feature="stm32l162")]
 pub use stm32l1::stm32l162::*;
 
-#[cfg(any(feature="doc", feature="stm32l412", feature="stm32l4r9", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
+#[cfg(any(feature="doc", feature="stm32l412", feature="stm32l4r5", feature="stm32l4r9", feature="stm32l4x1", feature="stm32l4x2", feature="stm32l4x3", feature="stm32l4x5", feature="stm32l4x6"))]
 pub mod stm32l4;
 
 #[cfg(feature="stm32l412")]
 pub use stm32l4::stm32l412::*;
+
+#[cfg(feature="stm32l4r5")]
+pub use stm32l4::stm32l4r5::*;
 
 #[cfg(feature="stm32l4r9")]
 pub use stm32l4::stm32l4r9::*;

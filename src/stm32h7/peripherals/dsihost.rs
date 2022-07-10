@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! MIPI DSI Host
 //!
-//! Used by: stm32h735, stm32h747cm4, stm32h747cm7, stm32h7b3
+//! Used by: stm32h747cm4, stm32h747cm7
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -4352,7 +4352,7 @@ pub struct RegisterBlock {
     /// DSI Host low-power mode configuration register
     pub LPMCR: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// DSI Host protocol configuration register
     pub PCR: RWRegister<u32>,
@@ -4429,7 +4429,7 @@ pub struct RegisterBlock {
     /// DSI Host timeout counter configuration register 5
     pub TCCR5: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DSI Host clock lane configuration register
     pub CLCR: RWRegister<u32>,
@@ -4455,7 +4455,7 @@ pub struct RegisterBlock {
     /// DSI Host PHY status register
     pub PSR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// DSI Host interrupt and status register 0
     pub ISR0: RWRegister<u32>,
@@ -4469,7 +4469,7 @@ pub struct RegisterBlock {
     /// DSI Host interrupt enable register 1
     pub IER1: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// DSI Host force interrupt register 0
     pub FIR0: RWRegister<u32>,
@@ -4477,12 +4477,12 @@ pub struct RegisterBlock {
     /// DSI Host force interrupt register 1
     pub FIR1: RWRegister<u32>,
 
-    _reserved5: [u32; 8],
+    _reserved5: [u8; 32],
 
     /// DSI Host video shadow control register
     pub VSCR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// DSI Host LTDC current VCID register
     pub LCVCIDR: RWRegister<u32>,
@@ -4490,12 +4490,12 @@ pub struct RegisterBlock {
     /// DSI Host LTDC current color coding register
     pub LCCCR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// DSI Host low-power mode current configuration register
     pub LPMCCR: RWRegister<u32>,
 
-    _reserved8: [u32; 7],
+    _reserved8: [u8; 28],
 
     /// DSI Host video mode current configuration register
     pub VMCCR: RWRegister<u32>,
@@ -4530,7 +4530,7 @@ pub struct RegisterBlock {
     /// DSI Host video VA current configuration register
     pub VVACCR: RWRegister<u32>,
 
-    _reserved9: [u32; 167],
+    _reserved9: [u8; 668],
 
     /// DSI wrapper configuration register
     pub WCFGR: RWRegister<u32>,
@@ -4547,7 +4547,7 @@ pub struct RegisterBlock {
     /// DSI wrapper interrupt flag clear register
     pub WIFCR: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// DSI wrapper PHY configuration register 0
     pub WPCR0: RWRegister<u32>,
@@ -4564,7 +4564,7 @@ pub struct RegisterBlock {
     /// DSI wrapper PHY configuration register 4
     pub WPCR4: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// DSI wrapper regulator and PLL control register
     pub WRPCR: RWRegister<u32>,

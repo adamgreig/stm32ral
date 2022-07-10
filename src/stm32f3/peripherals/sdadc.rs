@@ -1093,12 +1093,12 @@ pub struct RegisterBlock {
     /// interrupt and status clear register
     pub CLRISR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// injected channel group selection register
     pub JCHGR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// configuration 0 register
     pub CONF0R: RWRegister<u32>,
@@ -1109,7 +1109,7 @@ pub struct RegisterBlock {
     /// configuration 2 register
     pub CONF2R: RWRegister<u32>,
 
-    _reserved3: [u32; 5],
+    _reserved3: [u8; 20],
 
     /// channel configuration register 1
     pub CONFCHR1: RWRegister<u32>,
@@ -1117,7 +1117,7 @@ pub struct RegisterBlock {
     /// channel configuration register 2
     pub CONFCHR2: RWRegister<u32>,
 
-    _reserved4: [u32; 6],
+    _reserved4: [u8; 24],
 
     /// data register for injected group
     pub JDATAR: RORegister<u32>,
@@ -1125,7 +1125,7 @@ pub struct RegisterBlock {
     /// data register for the regular channel
     pub RDATAR: RORegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// SDADC1 and SDADC2 injected data register
     pub JDATA12R: RORegister<u32>,

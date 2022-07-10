@@ -488,14 +488,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears BMPER flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DLL Ready Interrupt flag Clear
@@ -506,14 +506,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears DLL ready flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// System Fault Interrupt Flag Clear
@@ -524,14 +524,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears SYSFLT flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Fault 5 Interrupt Flag Clear
@@ -542,14 +542,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears FLTx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Fault 4 Interrupt Flag Clear
@@ -560,9 +560,9 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::FLT5C::RW;
+        pub use super::FLT5C::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Fault 3 Interrupt Flag Clear
@@ -573,9 +573,9 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::FLT5C::RW;
+        pub use super::FLT5C::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Fault 2 Interrupt Flag Clear
@@ -586,9 +586,9 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::FLT5C::RW;
+        pub use super::FLT5C::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Fault 1 Interrupt Flag Clear
@@ -599,9 +599,9 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::FLT5C::RW;
+        pub use super::FLT5C::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1022,12 +1022,8 @@ pub mod ODSR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Output disabled in idle state
             pub const Idle: u32 = 0b0;
@@ -1035,6 +1031,10 @@ pub mod ODSR {
             /// 0b1: Output disabled in fault state
             pub const Fault: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer E Output 1 disable status
@@ -1043,11 +1043,11 @@ pub mod ODSR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer D Output 2 disable status
@@ -1056,11 +1056,11 @@ pub mod ODSR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer D Output 1 disable status
@@ -1069,11 +1069,11 @@ pub mod ODSR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer C Output 2 disable status
@@ -1082,11 +1082,11 @@ pub mod ODSR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer C Output 1 disable status
@@ -1095,11 +1095,11 @@ pub mod ODSR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer B Output 2 disable status
@@ -1108,11 +1108,11 @@ pub mod ODSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer B Output 1 disable status
@@ -1121,11 +1121,11 @@ pub mod ODSR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer A Output 2 disable status
@@ -1134,11 +1134,11 @@ pub mod ODSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timer A Output 1 disable status
@@ -1147,11 +1147,11 @@ pub mod ODSR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TE2ODS::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TE2ODS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -4838,7 +4838,7 @@ pub struct RegisterBlock {
     pub IER: RWRegister<u32>,
 
     /// Output Enable Register
-    pub OENR: WORegister<u32>,
+    pub OENR: RWRegister<u32>,
 
     /// DISR
     pub ODISR: RWRegister<u32>,

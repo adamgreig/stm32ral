@@ -297,10 +297,8 @@ pub mod SWTRIGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: DAC channel X software trigger disabled
             pub const Disabled: u32 = 0b0;
@@ -308,6 +306,8 @@ pub mod SWTRIGR {
             /// 0b1: DAC channel X software trigger enabled
             pub const Enabled: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DAC channel1 software trigger
@@ -318,9 +318,9 @@ pub mod SWTRIGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SWTRIG2::RW;
+        pub use super::SWTRIG2::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

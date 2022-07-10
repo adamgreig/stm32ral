@@ -38,12 +38,8 @@ pub mod COMP1_CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Comparator output is low
             pub const Low: u32 = 0b0;
@@ -51,6 +47,10 @@ pub mod COMP1_CSR {
             /// 0b1: Comparator output is high
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// comparator 1 input minus extended selection bits.
@@ -327,12 +327,8 @@ pub mod COMP2_CSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Comparator output is low
             pub const Low: u32 = 0b0;
@@ -340,6 +336,10 @@ pub mod COMP2_CSR {
             /// 0b1: Comparator output is high
             pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// comparator 2 input minus extended selection bits.

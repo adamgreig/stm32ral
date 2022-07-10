@@ -87,11 +87,11 @@ pub mod CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1101: Recommended value for config A (NIST certifiable)
-            pub const ConfigA: u32 = 0b1101;
-
             /// 0b0000: Recommended value for config B (not NIST certifiable)
             pub const ConfigB: u32 = 0b0000;
+
+            /// 0b1101: Recommended value for config A (NIST certifiable)
+            pub const ConfigA: u32 = 0b1101;
         }
     }
 
@@ -305,12 +305,8 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No faulty sequence has currently been detected. If the SEIS bit is set, this means that a faulty sequence was detected and the situation has been recovered
             pub const NoFault: u32 = 0b0;
@@ -318,6 +314,10 @@ pub mod SR {
             /// 0b1: At least one faulty sequence has been detected - see ref manual for details
             pub const Fault: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock error current status
@@ -326,11 +326,19 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: The RNG clock is correct (fRNGCLK> fHCLK/32)
+            pub const Correct: u32 = 0b0;
+
+            /// 0b1: The RNG clock before internal divider has been detected too slow (fRNGCLK< fHCLK/32)
+            pub const Slow: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CEIS::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data Ready
@@ -339,12 +347,8 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The RNG_DR register is not yet valid, no random data is available
             pub const Invalid: u32 = 0b0;
@@ -352,6 +356,10 @@ pub mod SR {
             /// 0b1: The RNG_DR register contains valid random data
             pub const Valid: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -389,11 +397,11 @@ pub mod HTCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b00010111010110010000101010111100: Magic number to be written before any write (0x1759_0ABC)
-            pub const Magic: u32 = 0b00010111010110010000101010111100;
-
             /// 0b00000000000000001010101001110100: Recommended value for RNG certification (0x0000_AA74)
             pub const Recommended: u32 = 0b00000000000000001010101001110100;
+
+            /// 0b00010111010110010000101010111100: Magic number to be written before any write (0x1759_0ABC)
+            pub const Magic: u32 = 0b00010111010110010000101010111100;
         }
     }
 }
@@ -408,7 +416,7 @@ pub struct RegisterBlock {
     /// data register
     pub DR: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// health test control register
     pub HTCR: RWRegister<u32>,

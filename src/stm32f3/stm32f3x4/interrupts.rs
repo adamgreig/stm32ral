@@ -296,7 +296,7 @@ pub enum Interrupt {
     HRTIM_TIME = 72,
     /// 73: HRTIM1 fault interrupt
     HRTIM_FLT = 73,
-    /// 81: Floating point unit
+    /// 81: Floating point unit interrupt
     FPU = 81,
 }
 unsafe impl external_cortex_m::interrupt::InterruptNumber for Interrupt {

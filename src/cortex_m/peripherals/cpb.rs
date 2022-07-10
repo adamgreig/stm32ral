@@ -65,7 +65,7 @@ pub struct RegisterBlock {
     /// I-cache invalidate all to PoU
     pub ICIALLU: UnsafeWORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// I-cache invalidate by MVA to PoU
     pub ICIMVAU: UnsafeWORegister<u32>,

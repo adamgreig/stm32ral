@@ -36,17 +36,17 @@ pub struct RegisterBlock {
     /// Current Parallel Port Size Register
     pub CSPSR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Asynchronous Clock Prescaler Register
     pub ACPR: RWRegister<u32>,
 
-    _reserved2: [u32; 55],
+    _reserved2: [u8; 220],
 
     /// Selected Pin Protocol Register
     pub SPPR: RWRegister<u32>,
 
-    _reserved3: [u32; 943],
+    _reserved3: [u8; 3772],
 
     /// Lock Access Register
     pub LAR: WORegister<u32>,
@@ -54,7 +54,7 @@ pub struct RegisterBlock {
     /// Lock Status Register
     pub LSR: RORegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// TPIU Type Register
     pub TYPE: RORegister<u32>,

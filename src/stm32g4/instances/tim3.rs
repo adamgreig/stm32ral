@@ -5,12 +5,12 @@
 //! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32g4::peripherals::tim4::Instance;
-pub use crate::stm32g4::peripherals::tim4::{
+pub use crate::stm32g4::peripherals::tim3::Instance;
+pub use crate::stm32g4::peripherals::tim3::{
     CCMR3_Output, AF1, AF2, ARR, BDTR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CCR5, CCR6, CNT,
     CR1, CR2, DCR, DIER, DMAR, DTR2, ECR, EGR, PSC, RCR, SMCR, SR, TISEL,
 };
-pub use crate::stm32g4::peripherals::tim4::{RegisterBlock, ResetValues};
+pub use crate::stm32g4::peripherals::tim3::{RegisterBlock, ResetValues};
 
 /// Access functions for the TIM3 peripheral instance
 pub mod TIM3 {

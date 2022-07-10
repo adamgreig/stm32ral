@@ -393,7 +393,7 @@ pub struct RegisterBlock {
     /// Interrupt control and state register
     pub ICSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Application interrupt and reset control register
     pub AIRCR: RWRegister<u32>,
@@ -404,7 +404,7 @@ pub struct RegisterBlock {
     /// Configuration and control register
     pub CCR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// System handler priority registers
     pub SHPR2: RWRegister<u32>,

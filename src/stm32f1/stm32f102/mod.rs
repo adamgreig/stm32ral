@@ -23,6 +23,7 @@ pub use super::instances::wwdg;
 pub mod spi1;
 pub use super::instances::usart;
 pub mod adc1;
+pub use super::instances::adc3;
 pub use super::instances::crc;
 pub use super::instances::flash;
 pub mod dbgmcu;
@@ -45,7 +46,6 @@ pub mod can;
 pub use super::instances::usb;
 pub mod spi;
 pub mod uart;
-pub use super::instances::adc3;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
@@ -87,6 +87,7 @@ pub struct Peripherals {
     pub USART2: usart::Instance,
     pub USART3: usart::Instance,
     pub ADC1: adc1::Instance,
+    pub ADC3: adc3::Instance,
     pub CRC: crc::Instance,
     pub FLASH: flash::Instance,
     pub DBGMCU: dbgmcu::Instance,
@@ -124,7 +125,6 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
-    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -160,6 +160,7 @@ impl Peripherals {
             USART2: usart::USART2::steal(),
             USART3: usart::USART3::steal(),
             ADC1: adc1::ADC1::steal(),
+            ADC3: adc3::ADC3::steal(),
             CRC: crc::CRC::steal(),
             FLASH: flash::FLASH::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),
@@ -197,7 +198,6 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
-            ADC3: adc3::ADC3::steal(),
         }
     }
 }

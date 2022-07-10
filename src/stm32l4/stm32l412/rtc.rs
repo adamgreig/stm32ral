@@ -642,10 +642,10 @@ pub mod WUTR {
     }
 }
 
-/// alarm A register
+/// Alarm register
 pub mod ALRMAR {
 
-    /// Alarm A date mask
+    /// Alarm date mask
     pub mod MSK4 {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -701,7 +701,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A hours mask
+    /// Alarm hours mask
     pub mod MSK3 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -757,7 +757,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A minutes mask
+    /// Alarm minutes mask
     pub mod MSK2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -799,7 +799,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A seconds mask
+    /// Alarm seconds mask
     pub mod MSK1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -842,7 +842,7 @@ pub mod ALRMAR {
     }
 }
 
-/// alarm B register
+/// Alarm register
 pub mod ALRMBR {
     pub use super::ALRMAR::DT;
     pub use super::ALRMAR::DU;
@@ -1183,7 +1183,7 @@ pub mod CALR {
     }
 }
 
-/// alarm A sub second register
+/// Alarm sub-second register
 pub mod ALRMASSR {
 
     /// Mask the most-significant bits starting at this bit
@@ -1215,7 +1215,7 @@ pub mod ALRMASSR {
     }
 }
 
-/// alarm B sub second register
+/// Alarm sub-second register
 pub mod ALRMBSSR {
     pub use super::ALRMASSR::MASKSS;
     pub use super::ALRMASSR::SS;
@@ -1609,7 +1609,7 @@ pub struct RegisterBlock {
     /// control register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// write protection register
     pub WPR: WORegister<u32>,
@@ -1629,18 +1629,18 @@ pub struct RegisterBlock {
     /// timestamp sub second register
     pub TSSSR: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
-    /// alarm A register
+    /// Alarm register
     pub ALRMAR: RWRegister<u32>,
 
-    /// alarm A sub second register
+    /// Alarm sub-second register
     pub ALRMASSR: RWRegister<u32>,
 
-    /// alarm B register
+    /// Alarm register
     pub ALRMBR: RWRegister<u32>,
 
-    /// alarm B sub second register
+    /// Alarm sub-second register
     pub ALRMBSSR: RWRegister<u32>,
 
     /// RTC status register
@@ -1649,7 +1649,7 @@ pub struct RegisterBlock {
     /// RTC masked interrupt status register
     pub MISR: RORegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// RTC status clear register
     pub SCR: WORegister<u32>,

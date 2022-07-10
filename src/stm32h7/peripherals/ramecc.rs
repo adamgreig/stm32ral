@@ -390,7 +390,7 @@ pub struct RegisterBlock {
     /// RAMECC interrupt enable register
     pub IER: RWRegister<u32>,
 
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// RAMECC monitor 1 configuration register
     pub M1CR: RWRegister<u32>,
@@ -410,7 +410,7 @@ pub struct RegisterBlock {
     /// RAMECC monitor 1 failing error code register
     pub M1FECR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// RAMECC monitor 2 configuration register
     pub M2CR: RWRegister<u32>,
@@ -430,7 +430,7 @@ pub struct RegisterBlock {
     /// RAMECC monitor 2 failing error code register
     pub M2FECR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// RAMECC monitor 3 configuration register
     pub M3CR: RWRegister<u32>,
@@ -450,7 +450,7 @@ pub struct RegisterBlock {
     /// RAMECC monitor 3 failing error code register
     pub M3FECR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// RAMECC monitor 4 configuration register
     pub M4CR: RWRegister<u32>,
@@ -470,7 +470,7 @@ pub struct RegisterBlock {
     /// RAMECC monitor 4 failing error code register
     pub M4FECR: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// RAMECC monitor 5 configuration register
     pub M5CR: RWRegister<u32>,

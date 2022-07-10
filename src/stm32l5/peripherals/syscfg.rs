@@ -1385,7 +1385,7 @@ pub struct RegisterBlock {
     /// SWPR2
     pub SWPR2: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// RSSCMDR
     pub RSSCMDR: RWRegister<u32>,

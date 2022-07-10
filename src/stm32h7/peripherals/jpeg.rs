@@ -621,7 +621,7 @@ pub struct RegisterBlock {
     /// JPEG codec configuration register 4-7
     pub CONFRN4: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// JPEG control register
     pub CR: RWRegister<u32>,
@@ -632,7 +632,7 @@ pub struct RegisterBlock {
     /// JPEG clear flag register
     pub CFR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// JPEG data input register
     pub DIR: WORegister<u32>,

@@ -1147,7 +1147,7 @@ pub struct RegisterBlock {
     /// SRAM/NOR-Flash chip-select timing register 4
     pub BTR4: RWRegister<u32>,
 
-    _reserved1: [u32; 16],
+    _reserved1: [u8; 64],
 
     /// PC Card/NAND Flash control register 2
     pub PCR2: RWRegister<u32>,
@@ -1161,12 +1161,12 @@ pub struct RegisterBlock {
     /// Attribute memory space timing register 2
     pub PATT2: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// ECC result register 2
     pub ECCR2: RORegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// PC Card/NAND Flash control register 3
     pub PCR3: RWRegister<u32>,
@@ -1180,12 +1180,12 @@ pub struct RegisterBlock {
     /// Attribute memory space timing register 3
     pub PATT3: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// ECC result register 3
     pub ECCR3: RORegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// PC Card/NAND Flash control register 4
     pub PCR4: RWRegister<u32>,
@@ -1202,22 +1202,22 @@ pub struct RegisterBlock {
     /// I/O space timing register 4
     pub PIO4: RWRegister<u32>,
 
-    _reserved6: [u32; 20],
+    _reserved6: [u8; 80],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR1: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 2
     pub BWTR2: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 3
     pub BWTR3: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 4
     pub BWTR4: RWRegister<u32>,

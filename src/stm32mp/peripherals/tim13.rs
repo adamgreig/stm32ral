@@ -448,33 +448,32 @@ pub struct RegisterBlock {
     /// TIM13 control register 1
     pub TIM13_CR1: RWRegister<u16>,
 
-    _reserved1: [u32; 2],
-    _reserved2: [u16; 1],
+    _reserved1: [u8; 10],
 
     /// TIM13 Interrupt enable register
     pub TIM13_DIER: RWRegister<u16>,
 
-    _reserved3: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// TIM13 status register
     pub TIM13_SR: RWRegister<u16>,
 
-    _reserved4: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// TIM13 event generation register
     pub TIM13_EGR: WORegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// The channels can be used in input (capture mode) or in output (compare mode). The direction of a channel is defined by configuring the corresponding CCxS bits. All the other bits of this register have a different function in input and in output mode. For a given bit, OCxx describes its function when the channel is configured in output, ICxx describes its function when the channel is configured in input. So one must take care that the same bit can have a different meaning for the input stage and for the output stage. Output compare mode
     pub TIM13_CCMR1: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// TIM13 capture/compare enable register
     pub TIM13_CCER: RWRegister<u16>,
 
-    _reserved7: [u16; 1],
+    _reserved6: [u8; 2],
 
     /// TIM13 counter
     pub TIM13_CNT: RWRegister<u32>,
@@ -482,19 +481,17 @@ pub struct RegisterBlock {
     /// TIM13 prescaler
     pub TIM13_PSC: RWRegister<u16>,
 
-    _reserved8: [u16; 1],
+    _reserved7: [u8; 2],
 
     /// TIM13 auto-reload register
     pub TIM13_ARR: RWRegister<u16>,
 
-    _reserved9: [u32; 1],
-    _reserved10: [u16; 1],
+    _reserved8: [u8; 6],
 
     /// TIM13 capture/compare register 1
     pub TIM13_CCR1: RWRegister<u16>,
 
-    _reserved11: [u32; 12],
-    _reserved12: [u16; 1],
+    _reserved9: [u8; 50],
 
     /// TIM13 timer input selection register
     pub TIM13_TISEL: RWRegister<u16>,

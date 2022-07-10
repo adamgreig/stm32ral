@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! Memory protection unit
 //!
-//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g07x, stm32g081
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g081
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g0::peripherals::mpu::Instance;
 pub use crate::stm32g0::peripherals::mpu::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::mpu::{MPU_CTRL, MPU_RASR, MPU_RBAR, MPU_RNR, MPU_TYPER};
+pub use crate::stm32g0::peripherals::mpu::{CTRL, RASR, RBAR, RNR, TYPER};
 
 /// Access functions for the MPU peripheral instance
 pub mod MPU {
@@ -24,11 +24,11 @@ pub mod MPU {
 
     /// Reset values for each field in MPU
     pub const reset: ResetValues = ResetValues {
-        MPU_TYPER: 0x00000800,
-        MPU_CTRL: 0x00000000,
-        MPU_RNR: 0x00000000,
-        MPU_RBAR: 0x00000000,
-        MPU_RASR: 0x00000000,
+        TYPER: 0x00000800,
+        CTRL: 0x00000000,
+        RNR: 0x00000000,
+        RBAR: 0x00000000,
+        RASR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

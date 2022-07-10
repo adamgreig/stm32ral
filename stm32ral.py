@@ -68,7 +68,7 @@ edition = "2018"
 exclude = ["/stm32-rs"]
 
 # Change version in stm32ral.py, not in Cargo.toml!
-version = "0.7.0"
+version = "0.8.0"
 
 [package.metadata.docs.rs]
 features = ["doc"]
@@ -1245,6 +1245,7 @@ class Device(Node):
             print(dupnames)
         if not self.special:
             self.to_interrupt_file(familypath)
+        pname = "CorePeripherals" if self.special else "Peripherals"
         mname = os.path.join(devicepath, "mod.rs")
         with open(mname, "w") as f:
             f.write(f"//! stm32ral module for {self.name}\n\n")
@@ -1262,23 +1263,23 @@ class Device(Node):
             f.write("\n\n")
             f.write("#[cfg(all(feature=\"rtic\", not(feature=\"nosync\")))]")
             f.write("\n#[allow(non_snake_case)]\n")
-            f.write("pub struct Peripherals {\n")
+            f.write(f"pub struct {pname} {{\n")
             for peripheral in self.peripherals:
                 f.write("    " + peripheral.to_struct_entry())
             f.write("}\n\n")
             f.write("#[cfg(all(feature=\"rtic\", feature=\"nosync\"))]\n")
             f.write("#[allow(non_snake_case)]\n")
-            f.write("pub struct Peripherals {}\n\n")
+            f.write(f"pub struct {pname} {{}}\n\n")
             f.write("#[cfg(all(feature=\"rtic\", not(feature=\"nosync\")))]")
-            f.write("\nimpl Peripherals {\n")
+            f.write(f"\nimpl {pname} {{\n")
             f.write("    pub unsafe fn steal() -> Self {\n")
-            f.write("        Peripherals {\n")
+            f.write(f"        {pname} {{\n")
             for peripheral in self.peripherals:
                 f.write("        " + peripheral.to_struct_steal())
             f.write("        }\n    }\n}\n\n")
             f.write("#[cfg(all(feature=\"rtic\", feature=\"nosync\"))]\n")
-            f.write("impl Peripherals {\n    pub fn steal() -> Self {\n")
-            f.write("        Peripherals {}\n    }\n}")
+            f.write(f"impl {pname} {{\n    pub fn steal() -> Self {{\n")
+            f.write(f"        {pname} {{}}\n    }}\n}}")
         rustfmt(mname)
         if not self.special:
             dname = os.path.join(devicepath, "device.x")

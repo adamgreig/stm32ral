@@ -1113,20 +1113,20 @@ pub mod WPR {
         pub const mask: u32 = 0xff << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
-            /// 0b11001010: Key 1
-            pub const Deactivate1: u32 = 0b11001010;
+            /// 0b00000000: Activate write protection (any value that is not the keys)
+            pub const Activate: u32 = 0b00000000;
 
             /// 0b01010011: Key 2
             pub const Deactivate2: u32 = 0b01010011;
 
-            /// 0b00000000: Activate write protection (any value that is not the keys)
-            pub const Activate: u32 = 0b00000000;
+            /// 0b11001010: Key 1
+            pub const Deactivate1: u32 = 0b11001010;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1443,10 +1443,10 @@ pub mod TSSSR {
     pub use super::SSR::SS;
 }
 
-/// Alarm A register
+/// Alarm register
 pub mod ALRMAR {
 
-    /// Alarm A date mask
+    /// Alarm date mask
     pub mod MSK4 {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -1516,7 +1516,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A hours mask
+    /// Alarm hours mask
     pub mod MSK3 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -1578,7 +1578,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A minutes mask
+    /// Alarm minutes mask
     pub mod MSK2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -1619,7 +1619,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A seconds mask
+    /// Alarm seconds mask
     pub mod MSK1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -1632,7 +1632,7 @@ pub mod ALRMAR {
         pub use super::MSK4::RW;
     }
 
-    /// Second tens in BCD format.
+    /// Second tens in BCD format
     pub mod ST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -1646,7 +1646,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Second units in BCD format.
+    /// Second units in BCD format
     pub mod SU {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1661,7 +1661,25 @@ pub mod ALRMAR {
     }
 }
 
-/// Alarm A sub second register
+/// Alarm register
+pub mod ALRMBR {
+    pub use super::ALRMAR::DT;
+    pub use super::ALRMAR::DU;
+    pub use super::ALRMAR::HT;
+    pub use super::ALRMAR::HU;
+    pub use super::ALRMAR::MNT;
+    pub use super::ALRMAR::MNU;
+    pub use super::ALRMAR::MSK1;
+    pub use super::ALRMAR::MSK2;
+    pub use super::ALRMAR::MSK3;
+    pub use super::ALRMAR::MSK4;
+    pub use super::ALRMAR::PM;
+    pub use super::ALRMAR::ST;
+    pub use super::ALRMAR::SU;
+    pub use super::ALRMAR::WDSEL;
+}
+
+/// Alarm sub-second register
 pub mod ALRMASSR {
 
     /// Clear synchronous counter on alarm (Binary mode only)
@@ -1714,25 +1732,7 @@ pub mod ALRMASSR {
     }
 }
 
-/// Alarm B register
-pub mod ALRMBR {
-    pub use super::ALRMAR::DT;
-    pub use super::ALRMAR::DU;
-    pub use super::ALRMAR::HT;
-    pub use super::ALRMAR::HU;
-    pub use super::ALRMAR::MNT;
-    pub use super::ALRMAR::MNU;
-    pub use super::ALRMAR::MSK1;
-    pub use super::ALRMAR::MSK2;
-    pub use super::ALRMAR::MSK3;
-    pub use super::ALRMAR::MSK4;
-    pub use super::ALRMAR::PM;
-    pub use super::ALRMAR::ST;
-    pub use super::ALRMAR::SU;
-    pub use super::ALRMAR::WDSEL;
-}
-
-/// Alarm B sub second register
+/// Alarm sub-second register
 pub mod ALRMBSSR {
     pub use super::ALRMASSR::MASKSS;
     pub use super::ALRMASSR::SS;
@@ -1748,16 +1748,16 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the SSR rolls under 0. SSRUF is not set when SSCLR=1
             pub const Underflow: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Internal timestamp flag
@@ -1766,16 +1766,16 @@ pub mod SR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when a timestamp on the internal event occurs
             pub const TimestampEvent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timestamp overflow flag
@@ -1784,16 +1784,16 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when a time-stamp event occurs while TSF is already set
             pub const Overflow: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timestamp flag
@@ -1802,16 +1802,16 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when a time-stamp event occurs
             pub const TimestampEvent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup timer flag
@@ -1820,16 +1820,16 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the wakeup auto-reload counter reaches 0
             pub const Zero: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Alarm B flag
@@ -1838,16 +1838,16 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm B register (RTC_ALRMBR)
             pub const Match: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Alarm A flag
@@ -1856,16 +1856,16 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm A register (RTC_ALRMAR)
             pub const Match: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1878,16 +1878,16 @@ pub mod MISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the SSR rolls under 0. SSRUF is not set when SSCLR=1
             pub const Underflow: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Internal timestamp masked flag
@@ -1896,16 +1896,16 @@ pub mod MISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when a timestamp on the internal event occurs
             pub const TimestampEvent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timestamp overflow masked flag
@@ -1914,16 +1914,16 @@ pub mod MISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when a time-stamp event occurs while TSF is already set
             pub const Overflow: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timestamp masked flag
@@ -1932,16 +1932,16 @@ pub mod MISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when a time-stamp event occurs
             pub const TimestampEvent: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup timer masked flag
@@ -1950,16 +1950,16 @@ pub mod MISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the wakeup auto-reload counter reaches 0
             pub const Zero: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Alarm B masked flag
@@ -1968,16 +1968,16 @@ pub mod MISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm B register (RTC_ALRMBR)
             pub const Match: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Alarm A masked flag
@@ -1986,16 +1986,16 @@ pub mod MISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: This flag is set by hardware when the time/date registers (RTC_TR and RTC_DR) match the Alarm A register (RTC_ALRMAR)
             pub const Match: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2010,14 +2010,14 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear interrupt flag by writing 1
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear internal timestamp flag
@@ -2028,9 +2028,9 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSSRUF::RW;
+        pub use super::CSSRUF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear timestamp overflow flag
@@ -2041,9 +2041,9 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSSRUF::RW;
+        pub use super::CSSRUF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear timestamp flag
@@ -2054,9 +2054,9 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSSRUF::RW;
+        pub use super::CSSRUF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear wakeup timer flag
@@ -2067,9 +2067,9 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSSRUF::RW;
+        pub use super::CSSRUF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear alarm B flag
@@ -2080,9 +2080,9 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSSRUF::RW;
+        pub use super::CSSRUF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear alarm A flag
@@ -2093,9 +2093,9 @@ pub mod SCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CSSRUF::RW;
+        pub use super::CSSRUF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2117,7 +2117,7 @@ pub mod ALRABINR {
     }
 }
 
-/// RTC alarm B binary mode register
+/// RTC alarm A binary mode register
 pub mod ALRBBINR {
     pub use super::ALRABINR::SS;
 }
@@ -2144,7 +2144,7 @@ pub struct RegisterBlock {
     /// Control register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Write protection register
     pub WPR: WORegister<u32>,
@@ -2164,18 +2164,18 @@ pub struct RegisterBlock {
     /// Timestamp sub second register
     pub TSSSR: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
-    /// Alarm A register
+    /// Alarm register
     pub ALRMAR: RWRegister<u32>,
 
-    /// Alarm A sub second register
+    /// Alarm sub-second register
     pub ALRMASSR: RWRegister<u32>,
 
-    /// Alarm B register
+    /// Alarm register
     pub ALRMBR: RWRegister<u32>,
 
-    /// Alarm B sub second register
+    /// Alarm sub-second register
     pub ALRMBSSR: RWRegister<u32>,
 
     /// Status register (interrupts)
@@ -2184,17 +2184,17 @@ pub struct RegisterBlock {
     /// Masked interrupt status register
     pub MISR: RORegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Status clear register (interrupts)
     pub SCR: WORegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// RTC alarm A binary mode register
     pub ALRABINR: RWRegister<u32>,
 
-    /// RTC alarm B binary mode register
+    /// RTC alarm A binary mode register
     pub ALRBBINR: RWRegister<u32>,
 }
 pub struct ResetValues {

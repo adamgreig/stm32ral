@@ -4084,6 +4084,32 @@ pub mod APB2RSTR {
         pub mod W {}
         pub use super::TIM1RST::RW;
     }
+
+    /// UART9 block reset
+    pub mod UART9RST {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1RST::RW;
+    }
+
+    /// USART10 block reset
+    pub mod USART10RST {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1RST::RW;
+    }
 }
 
 /// RCC APB4 Peripheral Reset Register
@@ -6941,6 +6967,32 @@ pub mod APB2ENR {
         pub mod W {}
         pub use super::TIM1EN::RW;
     }
+
+    /// UART9 peripheral clocks enable
+    pub mod UART9EN {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
+
+    /// USART10 peripheral clocks enable
+    pub mod USART10EN {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1EN::RW;
+    }
 }
 
 /// RCC APB4 Clock Register
@@ -8907,6 +8959,32 @@ pub mod APB2LPENR {
         pub mod W {}
         pub use super::TIM1LPEN::RW;
     }
+
+    /// UART9 peripheral clocks enable during CSleep Mode
+    pub mod UART9LPEN {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1LPEN::RW;
+    }
+
+    /// USART10 peripheral clocks enable during CSleep Mode
+    pub mod USART10LPEN {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::TIM1LPEN::RW;
+    }
 }
 
 /// RCC APB2 Sleep Clock Register
@@ -8923,6 +9001,8 @@ pub mod C1_APB2LPENR {
     pub use super::APB2LPENR::TIM17LPEN;
     pub use super::APB2LPENR::TIM1LPEN;
     pub use super::APB2LPENR::TIM8LPEN;
+    pub use super::APB2LPENR::UART9LPEN;
+    pub use super::APB2LPENR::USART10LPEN;
     pub use super::APB2LPENR::USART1LPEN;
     pub use super::APB2LPENR::USART6LPEN;
 }
@@ -9205,7 +9285,7 @@ pub struct RegisterBlock {
     /// RCC Clock Configuration Register
     pub CFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// RCC Domain 1 Clock Configuration Register
     pub D1CFGR: RWRegister<u32>,
@@ -9216,7 +9296,7 @@ pub struct RegisterBlock {
     /// RCC Domain 3 Clock Configuration Register
     pub D3CFGR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// RCC PLLs Clock Source Selection Register
     pub PLLCKSELR: RWRegister<u32>,
@@ -9242,7 +9322,7 @@ pub struct RegisterBlock {
     /// RCC PLL3 Fractional Divider Register
     pub PLL3FRACR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// RCC Domain 1 Kernel Clock Configuration Register
     pub D1CCIPR: RWRegister<u32>,
@@ -9256,7 +9336,7 @@ pub struct RegisterBlock {
     /// RCC Domain 3 Kernel Clock Configuration Register
     pub D3CCIPR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// RCC Clock Source Interrupt Enable Register
     pub CIER: RWRegister<u32>,
@@ -9267,7 +9347,7 @@ pub struct RegisterBlock {
     /// RCC Clock Source Interrupt Clear Register
     pub CICR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// RCC Backup Domain Control Register
     pub BDCR: RWRegister<u32>,
@@ -9275,7 +9355,7 @@ pub struct RegisterBlock {
     /// RCC Clock Control and Status Register
     pub CSR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// RCC AHB3 Reset Register
     pub AHB3RSTR: RWRegister<u32>,
@@ -9307,12 +9387,12 @@ pub struct RegisterBlock {
     /// RCC Global Control Register
     pub GCR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// RCC D3 Autonomous mode Register
     pub D3AMR: RWRegister<u32>,
 
-    _reserved8: [u32; 9],
+    _reserved8: [u8; 36],
 
     /// RCC Reset Status Register
     pub RSR: RWRegister<u32>,
@@ -9344,7 +9424,7 @@ pub struct RegisterBlock {
     /// RCC APB4 Clock Register
     pub APB4ENR: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// RCC AHB3 Sleep Clock Register
     pub AHB3LPENR: RWRegister<u32>,
@@ -9373,7 +9453,7 @@ pub struct RegisterBlock {
     /// RCC APB4 Sleep Clock Register
     pub APB4LPENR: RWRegister<u32>,
 
-    _reserved10: [u32; 4],
+    _reserved10: [u8; 16],
 
     /// RCC Reset Status Register
     pub C1_RSR: RWRegister<u32>,
@@ -9405,7 +9485,7 @@ pub struct RegisterBlock {
     /// RCC APB4 Clock Register
     pub C1_APB4ENR: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// RCC AHB3 Sleep Clock Register
     pub C1_AHB3LPENR: RWRegister<u32>,

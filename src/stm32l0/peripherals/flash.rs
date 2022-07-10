@@ -479,12 +479,8 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No write/erase operation is in progress
             pub const Inactive: u32 = 0b0;
@@ -492,6 +488,10 @@ pub mod SR {
             /// 0b1: No write/erase operation is in progress
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of operation
@@ -521,12 +521,8 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: High voltage is executing a write/erase operation in the NVM
             pub const Active: u32 = 0b0;
@@ -534,6 +530,10 @@ pub mod SR {
             /// 0b1: High voltage is off, no write/erase operation is ongoing
             pub const Inactive: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Flash memory module ready after low power mode
@@ -542,12 +542,8 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The NVM is not ready
             pub const NotReady: u32 = 0b0;
@@ -555,6 +551,10 @@ pub mod SR {
             /// 0b1: The NVM is ready
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Write protected error
@@ -712,22 +712,22 @@ pub mod OPTR {
         pub const offset: u32 = 0;
         /// Mask (8 bits: 0xff << 0)
         pub const mask: u32 = 0xff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b10101010: Level 0
-            pub const Level0: u32 = 0b10101010;
+        /// Read-only values
+        pub mod R {
 
             /// 0b00000000: Level 1
             pub const Level1: u32 = 0b00000000;
 
+            /// 0b10101010: Level 0
+            pub const Level0: u32 = 0b10101010;
+
             /// 0b11001100: Level 2
             pub const Level2: u32 = 0b11001100;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// BOR_LEV
@@ -736,12 +736,8 @@ pub mod OPTR {
         pub const offset: u32 = 16;
         /// Mask (4 bits: 0b1111 << 16)
         pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0000: This is the reset threshold level for the 1.45 V - 1.55 V voltage range (power-down only)
             pub const BOR_Off: u32 = 0b0000;
@@ -761,6 +757,10 @@ pub mod OPTR {
             /// 0b0101: Reset threshold level for VBOR4 (around 3.0 V)
             pub const BOR_Level5: u32 = 0b0101;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Selection of protection mode of WPR bits
@@ -769,12 +769,8 @@ pub mod OPTR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: PCROP disabled. The WRPROT bits are used as a write protection on a sector.
             pub const Disabled: u32 = 0b0;
@@ -782,6 +778,10 @@ pub mod OPTR {
             /// 0b1: PCROP enabled. The WRPROT bits are used as a read protection on a sector.
             pub const Enabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -849,7 +849,7 @@ pub struct RegisterBlock {
     /// Write Protection Register 1
     pub WRPROT1: RORegister<u32>,
 
-    _reserved1: [u32; 23],
+    _reserved1: [u8; 92],
 
     /// Write Protection Register 2
     pub WRPROT2: RORegister<u32>,

@@ -1374,7 +1374,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR1: UnsafeRWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// DMA channel 2 configuration register
     pub CCR2: RWRegister<u32>,
@@ -1388,7 +1388,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR2: UnsafeRWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DMA channel 3 configuration register
     pub CCR3: RWRegister<u32>,
@@ -1402,7 +1402,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR3: UnsafeRWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// DMA channel 3 configuration register
     pub CCR4: RWRegister<u32>,
@@ -1416,7 +1416,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR4: UnsafeRWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// DMA channel 4 configuration register
     pub CCR5: RWRegister<u32>,
@@ -1430,7 +1430,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR5: UnsafeRWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// DMA channel 5 configuration register
     pub CCR6: RWRegister<u32>,
@@ -1444,7 +1444,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR6: UnsafeRWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// DMA channel 6 configuration register
     pub CCR7: RWRegister<u32>,
@@ -1458,7 +1458,7 @@ pub struct RegisterBlock {
     /// DMA channel x memory address register
     pub CMAR7: UnsafeRWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// DMA channel 7 configuration register
     pub CCR8: RWRegister<u32>,

@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// JPEG codec configuration register 0
-pub mod JPEG_CONFR0 {
+pub mod CONFR0 {
 
     /// Start
     pub mod START {
@@ -27,7 +27,7 @@ pub mod JPEG_CONFR0 {
 }
 
 /// JPEG codec configuration register 1
-pub mod JPEG_CONFR1 {
+pub mod CONFR1 {
 
     /// Number of color components
     pub mod NF {
@@ -115,7 +115,7 @@ pub mod JPEG_CONFR1 {
 }
 
 /// JPEG codec configuration register 2
-pub mod JPEG_CONFR2 {
+pub mod CONFR2 {
 
     /// Number of MCU
     pub mod NMCU {
@@ -133,7 +133,7 @@ pub mod JPEG_CONFR2 {
 }
 
 /// JPEG codec configuration register 3
-pub mod JPEG_CONFR3 {
+pub mod CONFR3 {
 
     /// X size
     pub mod XSIZE {
@@ -151,7 +151,7 @@ pub mod JPEG_CONFR3 {
 }
 
 /// JPEG codec configuration register 4
-pub mod JPEG_CONFR4 {
+pub mod CONFR4 {
 
     /// Huffman DC
     pub mod HD {
@@ -239,37 +239,37 @@ pub mod JPEG_CONFR4 {
 }
 
 /// JPEG codec configuration register 5
-pub mod JPEG_CONFR5 {
-    pub use super::JPEG_CONFR4::HA;
-    pub use super::JPEG_CONFR4::HD;
-    pub use super::JPEG_CONFR4::HSF;
-    pub use super::JPEG_CONFR4::NB;
-    pub use super::JPEG_CONFR4::QT;
-    pub use super::JPEG_CONFR4::VSF;
+pub mod CONFR5 {
+    pub use super::CONFR4::HA;
+    pub use super::CONFR4::HD;
+    pub use super::CONFR4::HSF;
+    pub use super::CONFR4::NB;
+    pub use super::CONFR4::QT;
+    pub use super::CONFR4::VSF;
 }
 
 /// JPEG codec configuration register 6
-pub mod JPEG_CONFR6 {
-    pub use super::JPEG_CONFR4::HA;
-    pub use super::JPEG_CONFR4::HD;
-    pub use super::JPEG_CONFR4::HSF;
-    pub use super::JPEG_CONFR4::NB;
-    pub use super::JPEG_CONFR4::QT;
-    pub use super::JPEG_CONFR4::VSF;
+pub mod CONFR6 {
+    pub use super::CONFR4::HA;
+    pub use super::CONFR4::HD;
+    pub use super::CONFR4::HSF;
+    pub use super::CONFR4::NB;
+    pub use super::CONFR4::QT;
+    pub use super::CONFR4::VSF;
 }
 
 /// JPEG codec configuration register 7
-pub mod JPEG_CONFR7 {
-    pub use super::JPEG_CONFR4::HA;
-    pub use super::JPEG_CONFR4::HD;
-    pub use super::JPEG_CONFR4::HSF;
-    pub use super::JPEG_CONFR4::NB;
-    pub use super::JPEG_CONFR4::QT;
-    pub use super::JPEG_CONFR4::VSF;
+pub mod CONFR7 {
+    pub use super::CONFR4::HA;
+    pub use super::CONFR4::HD;
+    pub use super::CONFR4::HSF;
+    pub use super::CONFR4::NB;
+    pub use super::CONFR4::QT;
+    pub use super::CONFR4::VSF;
 }
 
 /// JPEG control register
-pub mod JPEG_CR {
+pub mod CR {
 
     /// JPEG Core Enable
     pub mod JCEN {
@@ -427,7 +427,7 @@ pub mod JPEG_CR {
 }
 
 /// JPEG status register
-pub mod JPEG_SR {
+pub mod SR {
 
     /// Input FIFO Threshold Flag
     pub mod IFTF {
@@ -529,7 +529,7 @@ pub mod JPEG_SR {
 }
 
 /// JPEG clear flag register
-pub mod JPEG_CFR {
+pub mod CFR {
 
     /// Clear End of Conversion Flag
     pub mod CEOCF {
@@ -561,7 +561,7 @@ pub mod JPEG_CFR {
 }
 
 /// JPEG data input register
-pub mod JPEG_DIR {
+pub mod DIR {
 
     /// Data Input FIFO
     pub mod DATAIN {
@@ -579,7 +579,7 @@ pub mod JPEG_DIR {
 }
 
 /// JPEG data output register
-pub mod JPEG_DOR {
+pub mod DOR {
 
     /// Data Output FIFO
     pub mod DATAOUT {
@@ -597,7 +597,7 @@ pub mod JPEG_DOR {
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_0 {
+pub mod QMEM00 {
 
     /// QMem RAM
     pub mod QMem_RAM {
@@ -615,322 +615,322 @@ pub mod QMEM0_0 {
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_1 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM01 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_2 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM02 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_3 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM03 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_4 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM04 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_5 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM05 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_6 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM06 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_7 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM07 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_8 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM08 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_9 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM09 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_10 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM010 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_11 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM011 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_12 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM012 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_13 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM013 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_14 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM014 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM0_15 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM015 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_0 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM10 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_1 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM11 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_2 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM12 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_3 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM13 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_4 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM14 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_5 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM15 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_6 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM16 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_7 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM17 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_8 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM18 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_9 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM19 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_10 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM110 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_11 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM111 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_12 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM112 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_13 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM113 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_14 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM114 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM1_15 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM115 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_0 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM20 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_1 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM21 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_2 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM22 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_3 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM23 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_4 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM24 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_5 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM25 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_6 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM26 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_7 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM27 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_8 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM28 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_9 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM29 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_10 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM210 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_11 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM211 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_12 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM212 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_13 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM213 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_14 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM214 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM2_15 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM215 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_0 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM30 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_1 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM31 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_2 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM32 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_3 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM33 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_4 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM34 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_5 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM35 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_6 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM36 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_7 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM37 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_8 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM38 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_9 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM39 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_10 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM310 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_11 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM311 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_12 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM312 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_13 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM313 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_14 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM314 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG quantization tables
-pub mod QMEM3_15 {
-    pub use super::QMEM0_0::QMem_RAM;
+pub mod QMEM315 {
+    pub use super::QMEM00::QMem_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_0 {
+pub mod HUFFMIN0 {
 
     /// HuffMin RAM
     pub mod HuffMin_RAM {
@@ -948,78 +948,78 @@ pub mod HUFFMIN_0 {
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_1 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN1 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_2 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN2 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_3 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN3 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_4 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN4 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_5 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN5 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_6 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN6 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_7 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN7 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_8 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN8 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_9 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN9 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_10 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN10 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_11 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN11 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_12 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN12 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_13 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN13 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_14 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN14 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffMin tables
-pub mod HUFFMIN_15 {
-    pub use super::HUFFMIN_0::HuffMin_RAM;
+pub mod HUFFMIN15 {
+    pub use super::HUFFMIN0::HuffMin_RAM;
 }
 
 /// JPEG HuffSymb tables
@@ -2201,1251 +2201,1251 @@ pub mod DHTMEM103 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_0 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC00 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_1 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC01 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_2 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC02 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_3 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC03 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_4 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC04 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_5 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC05 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_6 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC06 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_7 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC07 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_8 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC08 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_9 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC09 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_10 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC010 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_11 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC011 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_12 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC012 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_13 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC013 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_14 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC014 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_15 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC015 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_16 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC016 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_17 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC017 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_18 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC018 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_19 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC019 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_20 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC020 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_21 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC021 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_22 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC022 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_23 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC023 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_24 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC024 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_25 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC025 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_26 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC026 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_27 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC027 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_28 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC028 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_29 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC029 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_30 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC030 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_31 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC031 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_32 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC032 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_33 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC033 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_34 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC034 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_35 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC035 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_36 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC036 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_37 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC037 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_38 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC038 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_39 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC039 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_40 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC040 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_41 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC041 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_42 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC042 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_43 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC043 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_44 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC044 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_45 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC045 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_46 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC046 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_47 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC047 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_48 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC048 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_49 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC049 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_50 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC050 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_51 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC051 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_52 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC052 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_53 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC053 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_54 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC054 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_55 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC055 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_56 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC056 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_57 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC057 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_58 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC058 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_59 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC059 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_60 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC060 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_61 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC061 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_62 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC062 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_63 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC063 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_64 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC064 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_65 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC065 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_66 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC066 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_67 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC067 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_68 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC068 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_69 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC069 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_70 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC070 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_71 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC071 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_72 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC072 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_73 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC073 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_74 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC074 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_75 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC075 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_76 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC076 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_77 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC077 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_78 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC078 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_79 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC079 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_80 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC080 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_81 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC081 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_82 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC082 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_83 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC083 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_84 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC084 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_85 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC085 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_86 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC086 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, AC Huffman table 0
-pub mod HUFFENC_AC0_87 {
+/// JPEG encoder, AC Huffman table %s
+pub mod HUFFENC_AC087 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_0 {
+pub mod HUFFENC_AC10 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_1 {
+pub mod HUFFENC_AC11 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_2 {
+pub mod HUFFENC_AC12 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_3 {
+pub mod HUFFENC_AC13 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_4 {
+pub mod HUFFENC_AC14 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_5 {
+pub mod HUFFENC_AC15 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_6 {
+pub mod HUFFENC_AC16 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_7 {
+pub mod HUFFENC_AC17 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_8 {
+pub mod HUFFENC_AC18 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_9 {
+pub mod HUFFENC_AC19 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_10 {
+pub mod HUFFENC_AC110 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_11 {
+pub mod HUFFENC_AC111 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_12 {
+pub mod HUFFENC_AC112 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_13 {
+pub mod HUFFENC_AC113 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_14 {
+pub mod HUFFENC_AC114 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_15 {
+pub mod HUFFENC_AC115 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_16 {
+pub mod HUFFENC_AC116 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_17 {
+pub mod HUFFENC_AC117 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_18 {
+pub mod HUFFENC_AC118 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_19 {
+pub mod HUFFENC_AC119 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_20 {
+pub mod HUFFENC_AC120 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_21 {
+pub mod HUFFENC_AC121 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_22 {
+pub mod HUFFENC_AC122 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_23 {
+pub mod HUFFENC_AC123 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_24 {
+pub mod HUFFENC_AC124 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_25 {
+pub mod HUFFENC_AC125 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_26 {
+pub mod HUFFENC_AC126 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_27 {
+pub mod HUFFENC_AC127 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_28 {
+pub mod HUFFENC_AC128 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_29 {
+pub mod HUFFENC_AC129 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_30 {
+pub mod HUFFENC_AC130 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_31 {
+pub mod HUFFENC_AC131 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_32 {
+pub mod HUFFENC_AC132 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_33 {
+pub mod HUFFENC_AC133 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_34 {
+pub mod HUFFENC_AC134 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_35 {
+pub mod HUFFENC_AC135 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_36 {
+pub mod HUFFENC_AC136 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_37 {
+pub mod HUFFENC_AC137 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_38 {
+pub mod HUFFENC_AC138 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_39 {
+pub mod HUFFENC_AC139 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_40 {
+pub mod HUFFENC_AC140 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_41 {
+pub mod HUFFENC_AC141 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_42 {
+pub mod HUFFENC_AC142 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_43 {
+pub mod HUFFENC_AC143 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_44 {
+pub mod HUFFENC_AC144 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_45 {
+pub mod HUFFENC_AC145 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_46 {
+pub mod HUFFENC_AC146 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_47 {
+pub mod HUFFENC_AC147 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_48 {
+pub mod HUFFENC_AC148 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_49 {
+pub mod HUFFENC_AC149 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_50 {
+pub mod HUFFENC_AC150 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_51 {
+pub mod HUFFENC_AC151 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_52 {
+pub mod HUFFENC_AC152 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_53 {
+pub mod HUFFENC_AC153 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_54 {
+pub mod HUFFENC_AC154 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_55 {
+pub mod HUFFENC_AC155 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_56 {
+pub mod HUFFENC_AC156 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_57 {
+pub mod HUFFENC_AC157 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_58 {
+pub mod HUFFENC_AC158 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_59 {
+pub mod HUFFENC_AC159 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_60 {
+pub mod HUFFENC_AC160 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_61 {
+pub mod HUFFENC_AC161 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_62 {
+pub mod HUFFENC_AC162 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_63 {
+pub mod HUFFENC_AC163 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_64 {
+pub mod HUFFENC_AC164 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_65 {
+pub mod HUFFENC_AC165 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_66 {
+pub mod HUFFENC_AC166 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_67 {
+pub mod HUFFENC_AC167 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_68 {
+pub mod HUFFENC_AC168 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_69 {
+pub mod HUFFENC_AC169 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_70 {
+pub mod HUFFENC_AC170 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_71 {
+pub mod HUFFENC_AC171 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_72 {
+pub mod HUFFENC_AC172 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_73 {
+pub mod HUFFENC_AC173 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_74 {
+pub mod HUFFENC_AC174 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_75 {
+pub mod HUFFENC_AC175 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_76 {
+pub mod HUFFENC_AC176 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_77 {
+pub mod HUFFENC_AC177 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_78 {
+pub mod HUFFENC_AC178 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_79 {
+pub mod HUFFENC_AC179 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_80 {
+pub mod HUFFENC_AC180 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_81 {
+pub mod HUFFENC_AC181 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_82 {
+pub mod HUFFENC_AC182 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_83 {
+pub mod HUFFENC_AC183 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_84 {
+pub mod HUFFENC_AC184 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_85 {
+pub mod HUFFENC_AC185 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_86 {
+pub mod HUFFENC_AC186 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, AC Huffman table 1
-pub mod HUFFENC_AC1_87 {
+pub mod HUFFENC_AC187 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_0 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC00 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_1 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC01 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_2 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC02 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_3 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC03 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_4 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC04 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_5 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC05 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_6 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC06 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
-/// JPEG encoder, DC Huffman table 0
-pub mod HUFFENC_DC0_7 {
+/// JPEG encoder, DC Huffman table %s
+pub mod HUFFENC_DC07 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_0 {
+pub mod HUFFENC_DC10 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_1 {
+pub mod HUFFENC_DC11 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_2 {
+pub mod HUFFENC_DC12 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_3 {
+pub mod HUFFENC_DC13 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_4 {
+pub mod HUFFENC_DC14 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_5 {
+pub mod HUFFENC_DC15 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_6 {
+pub mod HUFFENC_DC16 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 
 /// JPEG encoder, DC Huffman table 1
-pub mod HUFFENC_DC1_7 {
+pub mod HUFFENC_DC17 {
     pub use super::DHTMEM0::DHTMem_RAM;
 }
 #[repr(C)]
 pub struct RegisterBlock {
     /// JPEG codec configuration register 0
-    pub JPEG_CONFR0: WORegister<u32>,
+    pub CONFR0: WORegister<u32>,
 
     /// JPEG codec configuration register 1
-    pub JPEG_CONFR1: RWRegister<u32>,
+    pub CONFR1: RWRegister<u32>,
 
     /// JPEG codec configuration register 2
-    pub JPEG_CONFR2: RWRegister<u32>,
+    pub CONFR2: RWRegister<u32>,
 
     /// JPEG codec configuration register 3
-    pub JPEG_CONFR3: RWRegister<u32>,
+    pub CONFR3: RWRegister<u32>,
 
     /// JPEG codec configuration register 4
-    pub JPEG_CONFR4: RWRegister<u32>,
+    pub CONFR4: RWRegister<u32>,
 
     /// JPEG codec configuration register 5
-    pub JPEG_CONFR5: RWRegister<u32>,
+    pub CONFR5: RWRegister<u32>,
 
     /// JPEG codec configuration register 6
-    pub JPEG_CONFR6: RWRegister<u32>,
+    pub CONFR6: RWRegister<u32>,
 
     /// JPEG codec configuration register 7
-    pub JPEG_CONFR7: RWRegister<u32>,
+    pub CONFR7: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// JPEG control register
-    pub JPEG_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// JPEG status register
-    pub JPEG_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// JPEG clear flag register
-    pub JPEG_CFR: WORegister<u32>,
+    pub CFR: WORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// JPEG data input register
-    pub JPEG_DIR: WORegister<u32>,
+    pub DIR: WORegister<u32>,
 
     /// JPEG data output register
-    pub JPEG_DOR: RORegister<u32>,
+    pub DOR: RORegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// JPEG quantization tables
-    pub QMEM0_0: RWRegister<u32>,
+    pub QMEM00: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_1: RWRegister<u32>,
+    pub QMEM01: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_2: RWRegister<u32>,
+    pub QMEM02: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_3: RWRegister<u32>,
+    pub QMEM03: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_4: RWRegister<u32>,
+    pub QMEM04: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_5: RWRegister<u32>,
+    pub QMEM05: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_6: RWRegister<u32>,
+    pub QMEM06: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_7: RWRegister<u32>,
+    pub QMEM07: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_8: RWRegister<u32>,
+    pub QMEM08: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_9: RWRegister<u32>,
+    pub QMEM09: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_10: RWRegister<u32>,
+    pub QMEM010: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_11: RWRegister<u32>,
+    pub QMEM011: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_12: RWRegister<u32>,
+    pub QMEM012: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_13: RWRegister<u32>,
+    pub QMEM013: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_14: RWRegister<u32>,
+    pub QMEM014: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM0_15: RWRegister<u32>,
+    pub QMEM015: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_0: RWRegister<u32>,
+    pub QMEM10: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_1: RWRegister<u32>,
+    pub QMEM11: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_2: RWRegister<u32>,
+    pub QMEM12: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_3: RWRegister<u32>,
+    pub QMEM13: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_4: RWRegister<u32>,
+    pub QMEM14: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_5: RWRegister<u32>,
+    pub QMEM15: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_6: RWRegister<u32>,
+    pub QMEM16: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_7: RWRegister<u32>,
+    pub QMEM17: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_8: RWRegister<u32>,
+    pub QMEM18: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_9: RWRegister<u32>,
+    pub QMEM19: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_10: RWRegister<u32>,
+    pub QMEM110: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_11: RWRegister<u32>,
+    pub QMEM111: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_12: RWRegister<u32>,
+    pub QMEM112: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_13: RWRegister<u32>,
+    pub QMEM113: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_14: RWRegister<u32>,
+    pub QMEM114: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM1_15: RWRegister<u32>,
+    pub QMEM115: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_0: RWRegister<u32>,
+    pub QMEM20: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_1: RWRegister<u32>,
+    pub QMEM21: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_2: RWRegister<u32>,
+    pub QMEM22: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_3: RWRegister<u32>,
+    pub QMEM23: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_4: RWRegister<u32>,
+    pub QMEM24: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_5: RWRegister<u32>,
+    pub QMEM25: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_6: RWRegister<u32>,
+    pub QMEM26: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_7: RWRegister<u32>,
+    pub QMEM27: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_8: RWRegister<u32>,
+    pub QMEM28: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_9: RWRegister<u32>,
+    pub QMEM29: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_10: RWRegister<u32>,
+    pub QMEM210: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_11: RWRegister<u32>,
+    pub QMEM211: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_12: RWRegister<u32>,
+    pub QMEM212: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_13: RWRegister<u32>,
+    pub QMEM213: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_14: RWRegister<u32>,
+    pub QMEM214: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM2_15: RWRegister<u32>,
+    pub QMEM215: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_0: RWRegister<u32>,
+    pub QMEM30: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_1: RWRegister<u32>,
+    pub QMEM31: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_2: RWRegister<u32>,
+    pub QMEM32: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_3: RWRegister<u32>,
+    pub QMEM33: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_4: RWRegister<u32>,
+    pub QMEM34: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_5: RWRegister<u32>,
+    pub QMEM35: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_6: RWRegister<u32>,
+    pub QMEM36: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_7: RWRegister<u32>,
+    pub QMEM37: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_8: RWRegister<u32>,
+    pub QMEM38: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_9: RWRegister<u32>,
+    pub QMEM39: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_10: RWRegister<u32>,
+    pub QMEM310: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_11: RWRegister<u32>,
+    pub QMEM311: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_12: RWRegister<u32>,
+    pub QMEM312: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_13: RWRegister<u32>,
+    pub QMEM313: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_14: RWRegister<u32>,
+    pub QMEM314: RWRegister<u32>,
 
     /// JPEG quantization tables
-    pub QMEM3_15: RWRegister<u32>,
+    pub QMEM315: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_0: RWRegister<u32>,
+    pub HUFFMIN0: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_1: RWRegister<u32>,
+    pub HUFFMIN1: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_2: RWRegister<u32>,
+    pub HUFFMIN2: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_3: RWRegister<u32>,
+    pub HUFFMIN3: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_4: RWRegister<u32>,
+    pub HUFFMIN4: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_5: RWRegister<u32>,
+    pub HUFFMIN5: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_6: RWRegister<u32>,
+    pub HUFFMIN6: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_7: RWRegister<u32>,
+    pub HUFFMIN7: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_8: RWRegister<u32>,
+    pub HUFFMIN8: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_9: RWRegister<u32>,
+    pub HUFFMIN9: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_10: RWRegister<u32>,
+    pub HUFFMIN10: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_11: RWRegister<u32>,
+    pub HUFFMIN11: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_12: RWRegister<u32>,
+    pub HUFFMIN12: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_13: RWRegister<u32>,
+    pub HUFFMIN13: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_14: RWRegister<u32>,
+    pub HUFFMIN14: RWRegister<u32>,
 
     /// JPEG HuffMin tables
-    pub HUFFMIN_15: RWRegister<u32>,
+    pub HUFFMIN15: RWRegister<u32>,
 
     /// JPEG HuffSymb tables
     pub HUFFBASE0: RWRegister<u32>,
@@ -4104,678 +4104,678 @@ pub struct RegisterBlock {
     /// JPEG DHTMem tables
     pub DHTMEM103: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_0: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC00: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_1: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC01: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_2: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC02: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_3: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC03: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_4: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC04: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_5: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC05: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_6: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC06: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_7: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC07: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_8: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC08: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_9: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC09: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_10: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC010: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_11: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC011: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_12: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC012: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_13: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC013: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_14: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC014: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_15: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC015: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_16: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC016: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_17: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC017: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_18: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC018: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_19: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC019: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_20: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC020: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_21: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC021: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_22: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC022: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_23: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC023: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_24: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC024: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_25: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC025: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_26: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC026: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_27: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC027: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_28: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC028: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_29: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC029: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_30: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC030: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_31: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC031: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_32: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC032: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_33: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC033: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_34: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC034: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_35: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC035: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_36: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC036: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_37: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC037: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_38: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC038: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_39: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC039: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_40: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC040: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_41: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC041: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_42: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC042: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_43: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC043: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_44: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC044: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_45: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC045: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_46: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC046: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_47: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC047: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_48: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC048: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_49: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC049: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_50: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC050: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_51: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC051: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_52: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC052: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_53: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC053: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_54: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC054: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_55: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC055: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_56: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC056: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_57: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC057: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_58: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC058: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_59: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC059: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_60: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC060: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_61: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC061: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_62: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC062: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_63: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC063: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_64: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC064: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_65: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC065: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_66: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC066: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_67: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC067: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_68: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC068: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_69: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC069: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_70: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC070: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_71: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC071: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_72: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC072: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_73: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC073: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_74: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC074: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_75: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC075: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_76: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC076: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_77: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC077: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_78: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC078: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_79: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC079: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_80: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC080: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_81: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC081: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_82: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC082: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_83: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC083: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_84: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC084: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_85: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC085: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_86: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC086: RWRegister<u32>,
 
-    /// JPEG encoder, AC Huffman table 0
-    pub HUFFENC_AC0_87: RWRegister<u32>,
+    /// JPEG encoder, AC Huffman table %s
+    pub HUFFENC_AC087: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_0: RWRegister<u32>,
+    pub HUFFENC_AC10: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_1: RWRegister<u32>,
+    pub HUFFENC_AC11: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_2: RWRegister<u32>,
+    pub HUFFENC_AC12: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_3: RWRegister<u32>,
+    pub HUFFENC_AC13: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_4: RWRegister<u32>,
+    pub HUFFENC_AC14: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_5: RWRegister<u32>,
+    pub HUFFENC_AC15: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_6: RWRegister<u32>,
+    pub HUFFENC_AC16: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_7: RWRegister<u32>,
+    pub HUFFENC_AC17: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_8: RWRegister<u32>,
+    pub HUFFENC_AC18: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_9: RWRegister<u32>,
+    pub HUFFENC_AC19: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_10: RWRegister<u32>,
+    pub HUFFENC_AC110: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_11: RWRegister<u32>,
+    pub HUFFENC_AC111: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_12: RWRegister<u32>,
+    pub HUFFENC_AC112: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_13: RWRegister<u32>,
+    pub HUFFENC_AC113: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_14: RWRegister<u32>,
+    pub HUFFENC_AC114: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_15: RWRegister<u32>,
+    pub HUFFENC_AC115: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_16: RWRegister<u32>,
+    pub HUFFENC_AC116: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_17: RWRegister<u32>,
+    pub HUFFENC_AC117: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_18: RWRegister<u32>,
+    pub HUFFENC_AC118: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_19: RWRegister<u32>,
+    pub HUFFENC_AC119: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_20: RWRegister<u32>,
+    pub HUFFENC_AC120: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_21: RWRegister<u32>,
+    pub HUFFENC_AC121: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_22: RWRegister<u32>,
+    pub HUFFENC_AC122: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_23: RWRegister<u32>,
+    pub HUFFENC_AC123: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_24: RWRegister<u32>,
+    pub HUFFENC_AC124: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_25: RWRegister<u32>,
+    pub HUFFENC_AC125: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_26: RWRegister<u32>,
+    pub HUFFENC_AC126: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_27: RWRegister<u32>,
+    pub HUFFENC_AC127: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_28: RWRegister<u32>,
+    pub HUFFENC_AC128: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_29: RWRegister<u32>,
+    pub HUFFENC_AC129: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_30: RWRegister<u32>,
+    pub HUFFENC_AC130: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_31: RWRegister<u32>,
+    pub HUFFENC_AC131: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_32: RWRegister<u32>,
+    pub HUFFENC_AC132: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_33: RWRegister<u32>,
+    pub HUFFENC_AC133: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_34: RWRegister<u32>,
+    pub HUFFENC_AC134: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_35: RWRegister<u32>,
+    pub HUFFENC_AC135: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_36: RWRegister<u32>,
+    pub HUFFENC_AC136: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_37: RWRegister<u32>,
+    pub HUFFENC_AC137: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_38: RWRegister<u32>,
+    pub HUFFENC_AC138: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_39: RWRegister<u32>,
+    pub HUFFENC_AC139: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_40: RWRegister<u32>,
+    pub HUFFENC_AC140: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_41: RWRegister<u32>,
+    pub HUFFENC_AC141: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_42: RWRegister<u32>,
+    pub HUFFENC_AC142: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_43: RWRegister<u32>,
+    pub HUFFENC_AC143: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_44: RWRegister<u32>,
+    pub HUFFENC_AC144: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_45: RWRegister<u32>,
+    pub HUFFENC_AC145: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_46: RWRegister<u32>,
+    pub HUFFENC_AC146: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_47: RWRegister<u32>,
+    pub HUFFENC_AC147: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_48: RWRegister<u32>,
+    pub HUFFENC_AC148: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_49: RWRegister<u32>,
+    pub HUFFENC_AC149: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_50: RWRegister<u32>,
+    pub HUFFENC_AC150: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_51: RWRegister<u32>,
+    pub HUFFENC_AC151: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_52: RWRegister<u32>,
+    pub HUFFENC_AC152: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_53: RWRegister<u32>,
+    pub HUFFENC_AC153: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_54: RWRegister<u32>,
+    pub HUFFENC_AC154: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_55: RWRegister<u32>,
+    pub HUFFENC_AC155: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_56: RWRegister<u32>,
+    pub HUFFENC_AC156: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_57: RWRegister<u32>,
+    pub HUFFENC_AC157: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_58: RWRegister<u32>,
+    pub HUFFENC_AC158: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_59: RWRegister<u32>,
+    pub HUFFENC_AC159: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_60: RWRegister<u32>,
+    pub HUFFENC_AC160: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_61: RWRegister<u32>,
+    pub HUFFENC_AC161: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_62: RWRegister<u32>,
+    pub HUFFENC_AC162: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_63: RWRegister<u32>,
+    pub HUFFENC_AC163: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_64: RWRegister<u32>,
+    pub HUFFENC_AC164: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_65: RWRegister<u32>,
+    pub HUFFENC_AC165: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_66: RWRegister<u32>,
+    pub HUFFENC_AC166: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_67: RWRegister<u32>,
+    pub HUFFENC_AC167: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_68: RWRegister<u32>,
+    pub HUFFENC_AC168: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_69: RWRegister<u32>,
+    pub HUFFENC_AC169: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_70: RWRegister<u32>,
+    pub HUFFENC_AC170: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_71: RWRegister<u32>,
+    pub HUFFENC_AC171: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_72: RWRegister<u32>,
+    pub HUFFENC_AC172: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_73: RWRegister<u32>,
+    pub HUFFENC_AC173: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_74: RWRegister<u32>,
+    pub HUFFENC_AC174: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_75: RWRegister<u32>,
+    pub HUFFENC_AC175: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_76: RWRegister<u32>,
+    pub HUFFENC_AC176: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_77: RWRegister<u32>,
+    pub HUFFENC_AC177: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_78: RWRegister<u32>,
+    pub HUFFENC_AC178: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_79: RWRegister<u32>,
+    pub HUFFENC_AC179: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_80: RWRegister<u32>,
+    pub HUFFENC_AC180: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_81: RWRegister<u32>,
+    pub HUFFENC_AC181: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_82: RWRegister<u32>,
+    pub HUFFENC_AC182: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_83: RWRegister<u32>,
+    pub HUFFENC_AC183: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_84: RWRegister<u32>,
+    pub HUFFENC_AC184: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_85: RWRegister<u32>,
+    pub HUFFENC_AC185: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_86: RWRegister<u32>,
+    pub HUFFENC_AC186: RWRegister<u32>,
 
     /// JPEG encoder, AC Huffman table 1
-    pub HUFFENC_AC1_87: RWRegister<u32>,
+    pub HUFFENC_AC187: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_0: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC00: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_1: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC01: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_2: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC02: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_3: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC03: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_4: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC04: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_5: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC05: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_6: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC06: RWRegister<u32>,
 
-    /// JPEG encoder, DC Huffman table 0
-    pub HUFFENC_DC0_7: RWRegister<u32>,
+    /// JPEG encoder, DC Huffman table %s
+    pub HUFFENC_DC07: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_0: RWRegister<u32>,
+    pub HUFFENC_DC10: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_1: RWRegister<u32>,
+    pub HUFFENC_DC11: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_2: RWRegister<u32>,
+    pub HUFFENC_DC12: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_3: RWRegister<u32>,
+    pub HUFFENC_DC13: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_4: RWRegister<u32>,
+    pub HUFFENC_DC14: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_5: RWRegister<u32>,
+    pub HUFFENC_DC15: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_6: RWRegister<u32>,
+    pub HUFFENC_DC16: RWRegister<u32>,
 
     /// JPEG encoder, DC Huffman table 1
-    pub HUFFENC_DC1_7: RWRegister<u32>,
+    pub HUFFENC_DC17: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub JPEG_CONFR0: u32,
-    pub JPEG_CONFR1: u32,
-    pub JPEG_CONFR2: u32,
-    pub JPEG_CONFR3: u32,
-    pub JPEG_CONFR4: u32,
-    pub JPEG_CONFR5: u32,
-    pub JPEG_CONFR6: u32,
-    pub JPEG_CONFR7: u32,
-    pub JPEG_CR: u32,
-    pub JPEG_SR: u32,
-    pub JPEG_CFR: u32,
-    pub JPEG_DIR: u32,
-    pub JPEG_DOR: u32,
-    pub QMEM0_0: u32,
-    pub QMEM0_1: u32,
-    pub QMEM0_2: u32,
-    pub QMEM0_3: u32,
-    pub QMEM0_4: u32,
-    pub QMEM0_5: u32,
-    pub QMEM0_6: u32,
-    pub QMEM0_7: u32,
-    pub QMEM0_8: u32,
-    pub QMEM0_9: u32,
-    pub QMEM0_10: u32,
-    pub QMEM0_11: u32,
-    pub QMEM0_12: u32,
-    pub QMEM0_13: u32,
-    pub QMEM0_14: u32,
-    pub QMEM0_15: u32,
-    pub QMEM1_0: u32,
-    pub QMEM1_1: u32,
-    pub QMEM1_2: u32,
-    pub QMEM1_3: u32,
-    pub QMEM1_4: u32,
-    pub QMEM1_5: u32,
-    pub QMEM1_6: u32,
-    pub QMEM1_7: u32,
-    pub QMEM1_8: u32,
-    pub QMEM1_9: u32,
-    pub QMEM1_10: u32,
-    pub QMEM1_11: u32,
-    pub QMEM1_12: u32,
-    pub QMEM1_13: u32,
-    pub QMEM1_14: u32,
-    pub QMEM1_15: u32,
-    pub QMEM2_0: u32,
-    pub QMEM2_1: u32,
-    pub QMEM2_2: u32,
-    pub QMEM2_3: u32,
-    pub QMEM2_4: u32,
-    pub QMEM2_5: u32,
-    pub QMEM2_6: u32,
-    pub QMEM2_7: u32,
-    pub QMEM2_8: u32,
-    pub QMEM2_9: u32,
-    pub QMEM2_10: u32,
-    pub QMEM2_11: u32,
-    pub QMEM2_12: u32,
-    pub QMEM2_13: u32,
-    pub QMEM2_14: u32,
-    pub QMEM2_15: u32,
-    pub QMEM3_0: u32,
-    pub QMEM3_1: u32,
-    pub QMEM3_2: u32,
-    pub QMEM3_3: u32,
-    pub QMEM3_4: u32,
-    pub QMEM3_5: u32,
-    pub QMEM3_6: u32,
-    pub QMEM3_7: u32,
-    pub QMEM3_8: u32,
-    pub QMEM3_9: u32,
-    pub QMEM3_10: u32,
-    pub QMEM3_11: u32,
-    pub QMEM3_12: u32,
-    pub QMEM3_13: u32,
-    pub QMEM3_14: u32,
-    pub QMEM3_15: u32,
-    pub HUFFMIN_0: u32,
-    pub HUFFMIN_1: u32,
-    pub HUFFMIN_2: u32,
-    pub HUFFMIN_3: u32,
-    pub HUFFMIN_4: u32,
-    pub HUFFMIN_5: u32,
-    pub HUFFMIN_6: u32,
-    pub HUFFMIN_7: u32,
-    pub HUFFMIN_8: u32,
-    pub HUFFMIN_9: u32,
-    pub HUFFMIN_10: u32,
-    pub HUFFMIN_11: u32,
-    pub HUFFMIN_12: u32,
-    pub HUFFMIN_13: u32,
-    pub HUFFMIN_14: u32,
-    pub HUFFMIN_15: u32,
+    pub CONFR0: u32,
+    pub CONFR1: u32,
+    pub CONFR2: u32,
+    pub CONFR3: u32,
+    pub CONFR4: u32,
+    pub CONFR5: u32,
+    pub CONFR6: u32,
+    pub CONFR7: u32,
+    pub CR: u32,
+    pub SR: u32,
+    pub CFR: u32,
+    pub DIR: u32,
+    pub DOR: u32,
+    pub QMEM00: u32,
+    pub QMEM01: u32,
+    pub QMEM02: u32,
+    pub QMEM03: u32,
+    pub QMEM04: u32,
+    pub QMEM05: u32,
+    pub QMEM06: u32,
+    pub QMEM07: u32,
+    pub QMEM08: u32,
+    pub QMEM09: u32,
+    pub QMEM010: u32,
+    pub QMEM011: u32,
+    pub QMEM012: u32,
+    pub QMEM013: u32,
+    pub QMEM014: u32,
+    pub QMEM015: u32,
+    pub QMEM10: u32,
+    pub QMEM11: u32,
+    pub QMEM12: u32,
+    pub QMEM13: u32,
+    pub QMEM14: u32,
+    pub QMEM15: u32,
+    pub QMEM16: u32,
+    pub QMEM17: u32,
+    pub QMEM18: u32,
+    pub QMEM19: u32,
+    pub QMEM110: u32,
+    pub QMEM111: u32,
+    pub QMEM112: u32,
+    pub QMEM113: u32,
+    pub QMEM114: u32,
+    pub QMEM115: u32,
+    pub QMEM20: u32,
+    pub QMEM21: u32,
+    pub QMEM22: u32,
+    pub QMEM23: u32,
+    pub QMEM24: u32,
+    pub QMEM25: u32,
+    pub QMEM26: u32,
+    pub QMEM27: u32,
+    pub QMEM28: u32,
+    pub QMEM29: u32,
+    pub QMEM210: u32,
+    pub QMEM211: u32,
+    pub QMEM212: u32,
+    pub QMEM213: u32,
+    pub QMEM214: u32,
+    pub QMEM215: u32,
+    pub QMEM30: u32,
+    pub QMEM31: u32,
+    pub QMEM32: u32,
+    pub QMEM33: u32,
+    pub QMEM34: u32,
+    pub QMEM35: u32,
+    pub QMEM36: u32,
+    pub QMEM37: u32,
+    pub QMEM38: u32,
+    pub QMEM39: u32,
+    pub QMEM310: u32,
+    pub QMEM311: u32,
+    pub QMEM312: u32,
+    pub QMEM313: u32,
+    pub QMEM314: u32,
+    pub QMEM315: u32,
+    pub HUFFMIN0: u32,
+    pub HUFFMIN1: u32,
+    pub HUFFMIN2: u32,
+    pub HUFFMIN3: u32,
+    pub HUFFMIN4: u32,
+    pub HUFFMIN5: u32,
+    pub HUFFMIN6: u32,
+    pub HUFFMIN7: u32,
+    pub HUFFMIN8: u32,
+    pub HUFFMIN9: u32,
+    pub HUFFMIN10: u32,
+    pub HUFFMIN11: u32,
+    pub HUFFMIN12: u32,
+    pub HUFFMIN13: u32,
+    pub HUFFMIN14: u32,
+    pub HUFFMIN15: u32,
     pub HUFFBASE0: u32,
     pub HUFFBASE1: u32,
     pub HUFFBASE2: u32,
@@ -4995,198 +4995,198 @@ pub struct ResetValues {
     pub DHTMEM101: u32,
     pub DHTMEM102: u32,
     pub DHTMEM103: u32,
-    pub HUFFENC_AC0_0: u32,
-    pub HUFFENC_AC0_1: u32,
-    pub HUFFENC_AC0_2: u32,
-    pub HUFFENC_AC0_3: u32,
-    pub HUFFENC_AC0_4: u32,
-    pub HUFFENC_AC0_5: u32,
-    pub HUFFENC_AC0_6: u32,
-    pub HUFFENC_AC0_7: u32,
-    pub HUFFENC_AC0_8: u32,
-    pub HUFFENC_AC0_9: u32,
-    pub HUFFENC_AC0_10: u32,
-    pub HUFFENC_AC0_11: u32,
-    pub HUFFENC_AC0_12: u32,
-    pub HUFFENC_AC0_13: u32,
-    pub HUFFENC_AC0_14: u32,
-    pub HUFFENC_AC0_15: u32,
-    pub HUFFENC_AC0_16: u32,
-    pub HUFFENC_AC0_17: u32,
-    pub HUFFENC_AC0_18: u32,
-    pub HUFFENC_AC0_19: u32,
-    pub HUFFENC_AC0_20: u32,
-    pub HUFFENC_AC0_21: u32,
-    pub HUFFENC_AC0_22: u32,
-    pub HUFFENC_AC0_23: u32,
-    pub HUFFENC_AC0_24: u32,
-    pub HUFFENC_AC0_25: u32,
-    pub HUFFENC_AC0_26: u32,
-    pub HUFFENC_AC0_27: u32,
-    pub HUFFENC_AC0_28: u32,
-    pub HUFFENC_AC0_29: u32,
-    pub HUFFENC_AC0_30: u32,
-    pub HUFFENC_AC0_31: u32,
-    pub HUFFENC_AC0_32: u32,
-    pub HUFFENC_AC0_33: u32,
-    pub HUFFENC_AC0_34: u32,
-    pub HUFFENC_AC0_35: u32,
-    pub HUFFENC_AC0_36: u32,
-    pub HUFFENC_AC0_37: u32,
-    pub HUFFENC_AC0_38: u32,
-    pub HUFFENC_AC0_39: u32,
-    pub HUFFENC_AC0_40: u32,
-    pub HUFFENC_AC0_41: u32,
-    pub HUFFENC_AC0_42: u32,
-    pub HUFFENC_AC0_43: u32,
-    pub HUFFENC_AC0_44: u32,
-    pub HUFFENC_AC0_45: u32,
-    pub HUFFENC_AC0_46: u32,
-    pub HUFFENC_AC0_47: u32,
-    pub HUFFENC_AC0_48: u32,
-    pub HUFFENC_AC0_49: u32,
-    pub HUFFENC_AC0_50: u32,
-    pub HUFFENC_AC0_51: u32,
-    pub HUFFENC_AC0_52: u32,
-    pub HUFFENC_AC0_53: u32,
-    pub HUFFENC_AC0_54: u32,
-    pub HUFFENC_AC0_55: u32,
-    pub HUFFENC_AC0_56: u32,
-    pub HUFFENC_AC0_57: u32,
-    pub HUFFENC_AC0_58: u32,
-    pub HUFFENC_AC0_59: u32,
-    pub HUFFENC_AC0_60: u32,
-    pub HUFFENC_AC0_61: u32,
-    pub HUFFENC_AC0_62: u32,
-    pub HUFFENC_AC0_63: u32,
-    pub HUFFENC_AC0_64: u32,
-    pub HUFFENC_AC0_65: u32,
-    pub HUFFENC_AC0_66: u32,
-    pub HUFFENC_AC0_67: u32,
-    pub HUFFENC_AC0_68: u32,
-    pub HUFFENC_AC0_69: u32,
-    pub HUFFENC_AC0_70: u32,
-    pub HUFFENC_AC0_71: u32,
-    pub HUFFENC_AC0_72: u32,
-    pub HUFFENC_AC0_73: u32,
-    pub HUFFENC_AC0_74: u32,
-    pub HUFFENC_AC0_75: u32,
-    pub HUFFENC_AC0_76: u32,
-    pub HUFFENC_AC0_77: u32,
-    pub HUFFENC_AC0_78: u32,
-    pub HUFFENC_AC0_79: u32,
-    pub HUFFENC_AC0_80: u32,
-    pub HUFFENC_AC0_81: u32,
-    pub HUFFENC_AC0_82: u32,
-    pub HUFFENC_AC0_83: u32,
-    pub HUFFENC_AC0_84: u32,
-    pub HUFFENC_AC0_85: u32,
-    pub HUFFENC_AC0_86: u32,
-    pub HUFFENC_AC0_87: u32,
-    pub HUFFENC_AC1_0: u32,
-    pub HUFFENC_AC1_1: u32,
-    pub HUFFENC_AC1_2: u32,
-    pub HUFFENC_AC1_3: u32,
-    pub HUFFENC_AC1_4: u32,
-    pub HUFFENC_AC1_5: u32,
-    pub HUFFENC_AC1_6: u32,
-    pub HUFFENC_AC1_7: u32,
-    pub HUFFENC_AC1_8: u32,
-    pub HUFFENC_AC1_9: u32,
-    pub HUFFENC_AC1_10: u32,
-    pub HUFFENC_AC1_11: u32,
-    pub HUFFENC_AC1_12: u32,
-    pub HUFFENC_AC1_13: u32,
-    pub HUFFENC_AC1_14: u32,
-    pub HUFFENC_AC1_15: u32,
-    pub HUFFENC_AC1_16: u32,
-    pub HUFFENC_AC1_17: u32,
-    pub HUFFENC_AC1_18: u32,
-    pub HUFFENC_AC1_19: u32,
-    pub HUFFENC_AC1_20: u32,
-    pub HUFFENC_AC1_21: u32,
-    pub HUFFENC_AC1_22: u32,
-    pub HUFFENC_AC1_23: u32,
-    pub HUFFENC_AC1_24: u32,
-    pub HUFFENC_AC1_25: u32,
-    pub HUFFENC_AC1_26: u32,
-    pub HUFFENC_AC1_27: u32,
-    pub HUFFENC_AC1_28: u32,
-    pub HUFFENC_AC1_29: u32,
-    pub HUFFENC_AC1_30: u32,
-    pub HUFFENC_AC1_31: u32,
-    pub HUFFENC_AC1_32: u32,
-    pub HUFFENC_AC1_33: u32,
-    pub HUFFENC_AC1_34: u32,
-    pub HUFFENC_AC1_35: u32,
-    pub HUFFENC_AC1_36: u32,
-    pub HUFFENC_AC1_37: u32,
-    pub HUFFENC_AC1_38: u32,
-    pub HUFFENC_AC1_39: u32,
-    pub HUFFENC_AC1_40: u32,
-    pub HUFFENC_AC1_41: u32,
-    pub HUFFENC_AC1_42: u32,
-    pub HUFFENC_AC1_43: u32,
-    pub HUFFENC_AC1_44: u32,
-    pub HUFFENC_AC1_45: u32,
-    pub HUFFENC_AC1_46: u32,
-    pub HUFFENC_AC1_47: u32,
-    pub HUFFENC_AC1_48: u32,
-    pub HUFFENC_AC1_49: u32,
-    pub HUFFENC_AC1_50: u32,
-    pub HUFFENC_AC1_51: u32,
-    pub HUFFENC_AC1_52: u32,
-    pub HUFFENC_AC1_53: u32,
-    pub HUFFENC_AC1_54: u32,
-    pub HUFFENC_AC1_55: u32,
-    pub HUFFENC_AC1_56: u32,
-    pub HUFFENC_AC1_57: u32,
-    pub HUFFENC_AC1_58: u32,
-    pub HUFFENC_AC1_59: u32,
-    pub HUFFENC_AC1_60: u32,
-    pub HUFFENC_AC1_61: u32,
-    pub HUFFENC_AC1_62: u32,
-    pub HUFFENC_AC1_63: u32,
-    pub HUFFENC_AC1_64: u32,
-    pub HUFFENC_AC1_65: u32,
-    pub HUFFENC_AC1_66: u32,
-    pub HUFFENC_AC1_67: u32,
-    pub HUFFENC_AC1_68: u32,
-    pub HUFFENC_AC1_69: u32,
-    pub HUFFENC_AC1_70: u32,
-    pub HUFFENC_AC1_71: u32,
-    pub HUFFENC_AC1_72: u32,
-    pub HUFFENC_AC1_73: u32,
-    pub HUFFENC_AC1_74: u32,
-    pub HUFFENC_AC1_75: u32,
-    pub HUFFENC_AC1_76: u32,
-    pub HUFFENC_AC1_77: u32,
-    pub HUFFENC_AC1_78: u32,
-    pub HUFFENC_AC1_79: u32,
-    pub HUFFENC_AC1_80: u32,
-    pub HUFFENC_AC1_81: u32,
-    pub HUFFENC_AC1_82: u32,
-    pub HUFFENC_AC1_83: u32,
-    pub HUFFENC_AC1_84: u32,
-    pub HUFFENC_AC1_85: u32,
-    pub HUFFENC_AC1_86: u32,
-    pub HUFFENC_AC1_87: u32,
-    pub HUFFENC_DC0_0: u32,
-    pub HUFFENC_DC0_1: u32,
-    pub HUFFENC_DC0_2: u32,
-    pub HUFFENC_DC0_3: u32,
-    pub HUFFENC_DC0_4: u32,
-    pub HUFFENC_DC0_5: u32,
-    pub HUFFENC_DC0_6: u32,
-    pub HUFFENC_DC0_7: u32,
-    pub HUFFENC_DC1_0: u32,
-    pub HUFFENC_DC1_1: u32,
-    pub HUFFENC_DC1_2: u32,
-    pub HUFFENC_DC1_3: u32,
-    pub HUFFENC_DC1_4: u32,
-    pub HUFFENC_DC1_5: u32,
-    pub HUFFENC_DC1_6: u32,
-    pub HUFFENC_DC1_7: u32,
+    pub HUFFENC_AC00: u32,
+    pub HUFFENC_AC01: u32,
+    pub HUFFENC_AC02: u32,
+    pub HUFFENC_AC03: u32,
+    pub HUFFENC_AC04: u32,
+    pub HUFFENC_AC05: u32,
+    pub HUFFENC_AC06: u32,
+    pub HUFFENC_AC07: u32,
+    pub HUFFENC_AC08: u32,
+    pub HUFFENC_AC09: u32,
+    pub HUFFENC_AC010: u32,
+    pub HUFFENC_AC011: u32,
+    pub HUFFENC_AC012: u32,
+    pub HUFFENC_AC013: u32,
+    pub HUFFENC_AC014: u32,
+    pub HUFFENC_AC015: u32,
+    pub HUFFENC_AC016: u32,
+    pub HUFFENC_AC017: u32,
+    pub HUFFENC_AC018: u32,
+    pub HUFFENC_AC019: u32,
+    pub HUFFENC_AC020: u32,
+    pub HUFFENC_AC021: u32,
+    pub HUFFENC_AC022: u32,
+    pub HUFFENC_AC023: u32,
+    pub HUFFENC_AC024: u32,
+    pub HUFFENC_AC025: u32,
+    pub HUFFENC_AC026: u32,
+    pub HUFFENC_AC027: u32,
+    pub HUFFENC_AC028: u32,
+    pub HUFFENC_AC029: u32,
+    pub HUFFENC_AC030: u32,
+    pub HUFFENC_AC031: u32,
+    pub HUFFENC_AC032: u32,
+    pub HUFFENC_AC033: u32,
+    pub HUFFENC_AC034: u32,
+    pub HUFFENC_AC035: u32,
+    pub HUFFENC_AC036: u32,
+    pub HUFFENC_AC037: u32,
+    pub HUFFENC_AC038: u32,
+    pub HUFFENC_AC039: u32,
+    pub HUFFENC_AC040: u32,
+    pub HUFFENC_AC041: u32,
+    pub HUFFENC_AC042: u32,
+    pub HUFFENC_AC043: u32,
+    pub HUFFENC_AC044: u32,
+    pub HUFFENC_AC045: u32,
+    pub HUFFENC_AC046: u32,
+    pub HUFFENC_AC047: u32,
+    pub HUFFENC_AC048: u32,
+    pub HUFFENC_AC049: u32,
+    pub HUFFENC_AC050: u32,
+    pub HUFFENC_AC051: u32,
+    pub HUFFENC_AC052: u32,
+    pub HUFFENC_AC053: u32,
+    pub HUFFENC_AC054: u32,
+    pub HUFFENC_AC055: u32,
+    pub HUFFENC_AC056: u32,
+    pub HUFFENC_AC057: u32,
+    pub HUFFENC_AC058: u32,
+    pub HUFFENC_AC059: u32,
+    pub HUFFENC_AC060: u32,
+    pub HUFFENC_AC061: u32,
+    pub HUFFENC_AC062: u32,
+    pub HUFFENC_AC063: u32,
+    pub HUFFENC_AC064: u32,
+    pub HUFFENC_AC065: u32,
+    pub HUFFENC_AC066: u32,
+    pub HUFFENC_AC067: u32,
+    pub HUFFENC_AC068: u32,
+    pub HUFFENC_AC069: u32,
+    pub HUFFENC_AC070: u32,
+    pub HUFFENC_AC071: u32,
+    pub HUFFENC_AC072: u32,
+    pub HUFFENC_AC073: u32,
+    pub HUFFENC_AC074: u32,
+    pub HUFFENC_AC075: u32,
+    pub HUFFENC_AC076: u32,
+    pub HUFFENC_AC077: u32,
+    pub HUFFENC_AC078: u32,
+    pub HUFFENC_AC079: u32,
+    pub HUFFENC_AC080: u32,
+    pub HUFFENC_AC081: u32,
+    pub HUFFENC_AC082: u32,
+    pub HUFFENC_AC083: u32,
+    pub HUFFENC_AC084: u32,
+    pub HUFFENC_AC085: u32,
+    pub HUFFENC_AC086: u32,
+    pub HUFFENC_AC087: u32,
+    pub HUFFENC_AC10: u32,
+    pub HUFFENC_AC11: u32,
+    pub HUFFENC_AC12: u32,
+    pub HUFFENC_AC13: u32,
+    pub HUFFENC_AC14: u32,
+    pub HUFFENC_AC15: u32,
+    pub HUFFENC_AC16: u32,
+    pub HUFFENC_AC17: u32,
+    pub HUFFENC_AC18: u32,
+    pub HUFFENC_AC19: u32,
+    pub HUFFENC_AC110: u32,
+    pub HUFFENC_AC111: u32,
+    pub HUFFENC_AC112: u32,
+    pub HUFFENC_AC113: u32,
+    pub HUFFENC_AC114: u32,
+    pub HUFFENC_AC115: u32,
+    pub HUFFENC_AC116: u32,
+    pub HUFFENC_AC117: u32,
+    pub HUFFENC_AC118: u32,
+    pub HUFFENC_AC119: u32,
+    pub HUFFENC_AC120: u32,
+    pub HUFFENC_AC121: u32,
+    pub HUFFENC_AC122: u32,
+    pub HUFFENC_AC123: u32,
+    pub HUFFENC_AC124: u32,
+    pub HUFFENC_AC125: u32,
+    pub HUFFENC_AC126: u32,
+    pub HUFFENC_AC127: u32,
+    pub HUFFENC_AC128: u32,
+    pub HUFFENC_AC129: u32,
+    pub HUFFENC_AC130: u32,
+    pub HUFFENC_AC131: u32,
+    pub HUFFENC_AC132: u32,
+    pub HUFFENC_AC133: u32,
+    pub HUFFENC_AC134: u32,
+    pub HUFFENC_AC135: u32,
+    pub HUFFENC_AC136: u32,
+    pub HUFFENC_AC137: u32,
+    pub HUFFENC_AC138: u32,
+    pub HUFFENC_AC139: u32,
+    pub HUFFENC_AC140: u32,
+    pub HUFFENC_AC141: u32,
+    pub HUFFENC_AC142: u32,
+    pub HUFFENC_AC143: u32,
+    pub HUFFENC_AC144: u32,
+    pub HUFFENC_AC145: u32,
+    pub HUFFENC_AC146: u32,
+    pub HUFFENC_AC147: u32,
+    pub HUFFENC_AC148: u32,
+    pub HUFFENC_AC149: u32,
+    pub HUFFENC_AC150: u32,
+    pub HUFFENC_AC151: u32,
+    pub HUFFENC_AC152: u32,
+    pub HUFFENC_AC153: u32,
+    pub HUFFENC_AC154: u32,
+    pub HUFFENC_AC155: u32,
+    pub HUFFENC_AC156: u32,
+    pub HUFFENC_AC157: u32,
+    pub HUFFENC_AC158: u32,
+    pub HUFFENC_AC159: u32,
+    pub HUFFENC_AC160: u32,
+    pub HUFFENC_AC161: u32,
+    pub HUFFENC_AC162: u32,
+    pub HUFFENC_AC163: u32,
+    pub HUFFENC_AC164: u32,
+    pub HUFFENC_AC165: u32,
+    pub HUFFENC_AC166: u32,
+    pub HUFFENC_AC167: u32,
+    pub HUFFENC_AC168: u32,
+    pub HUFFENC_AC169: u32,
+    pub HUFFENC_AC170: u32,
+    pub HUFFENC_AC171: u32,
+    pub HUFFENC_AC172: u32,
+    pub HUFFENC_AC173: u32,
+    pub HUFFENC_AC174: u32,
+    pub HUFFENC_AC175: u32,
+    pub HUFFENC_AC176: u32,
+    pub HUFFENC_AC177: u32,
+    pub HUFFENC_AC178: u32,
+    pub HUFFENC_AC179: u32,
+    pub HUFFENC_AC180: u32,
+    pub HUFFENC_AC181: u32,
+    pub HUFFENC_AC182: u32,
+    pub HUFFENC_AC183: u32,
+    pub HUFFENC_AC184: u32,
+    pub HUFFENC_AC185: u32,
+    pub HUFFENC_AC186: u32,
+    pub HUFFENC_AC187: u32,
+    pub HUFFENC_DC00: u32,
+    pub HUFFENC_DC01: u32,
+    pub HUFFENC_DC02: u32,
+    pub HUFFENC_DC03: u32,
+    pub HUFFENC_DC04: u32,
+    pub HUFFENC_DC05: u32,
+    pub HUFFENC_DC06: u32,
+    pub HUFFENC_DC07: u32,
+    pub HUFFENC_DC10: u32,
+    pub HUFFENC_DC11: u32,
+    pub HUFFENC_DC12: u32,
+    pub HUFFENC_DC13: u32,
+    pub HUFFENC_DC14: u32,
+    pub HUFFENC_DC15: u32,
+    pub HUFFENC_DC16: u32,
+    pub HUFFENC_DC17: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

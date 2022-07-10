@@ -3986,7 +3986,7 @@ pub struct RegisterBlock {
     /// This register provides TrustZone Write access security, a non-secure write access will generate a bus error. A non-secure read will return the register data. Contains only register bits for TrustZone capable Input events.
     pub EXTI_TZENR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Contains only register bits for configurable events.
     pub EXTI_RTSR2: RWRegister<u32>,
@@ -4006,7 +4006,7 @@ pub struct RegisterBlock {
     /// This register provides TrustZone Write access security, a non-secure write access will generate a bus error. A non-secure read will return the register data. Contains only register bits for TrustZone capable Input events.
     pub EXTI_TZENR2: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// Contains only register bits for configurable events.
     pub EXTI_RTSR3: RWRegister<u32>,
@@ -4026,7 +4026,7 @@ pub struct RegisterBlock {
     /// This register provides TrustZone Write access security, a non-secure write access will generate a bus error. A non-secure read will return the register data. Contains only register bits for TrustZone capable Input events.
     pub EXTI_TZENR3: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// EXTIm fields contain only the number of bits in line with the nb_ioport configuration.
     pub EXTI_EXTICR1: RWRegister<u32>,
@@ -4040,7 +4040,7 @@ pub struct RegisterBlock {
     /// EXTIm fields contain only the number of bits in line with the nb_ioport configuration.
     pub EXTI_EXTICR4: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// Contains register bits for configurable events and Direct events.
     pub EXTI_IMR1: RWRegister<u32>,
@@ -4048,7 +4048,7 @@ pub struct RegisterBlock {
     /// EXTI CPU wakeup with event mask register
     pub EXTI_EMR1: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// Contains register bits for configurable events and direct events.
     pub EXTI_IMR2: RWRegister<u32>,
@@ -4056,7 +4056,7 @@ pub struct RegisterBlock {
     /// EXTI CPU wakeup with event mask register
     pub EXTI_EMR2: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// Contains register bits for configurable events and direct events.
     pub EXTI_IMR3: RWRegister<u32>,
@@ -4064,7 +4064,7 @@ pub struct RegisterBlock {
     /// EXTI CPU wakeup with event mask register
     pub EXTI_EMR3: RWRegister<u32>,
 
-    _reserved7: [u32; 6],
+    _reserved7: [u8; 24],
 
     /// Contains register bits for configurable events and Direct events.
     pub EXTI_C2IMR1: RWRegister<u32>,
@@ -4072,7 +4072,7 @@ pub struct RegisterBlock {
     /// EXTI CPU2 wakeup with event mask register
     pub EXTI_C2EMR1: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// Contains register bits for configurable events and direct events.
     pub EXTI_C2IMR2: RWRegister<u32>,
@@ -4080,7 +4080,7 @@ pub struct RegisterBlock {
     /// EXTI CPU2 wakeup with event mask register
     pub EXTI_C2EMR2: RWRegister<u32>,
 
-    _reserved9: [u32; 2],
+    _reserved9: [u8; 8],
 
     /// Contains register bits for configurable events and direct events.
     pub EXTI_C2IMR3: RWRegister<u32>,
@@ -4088,7 +4088,7 @@ pub struct RegisterBlock {
     /// EXTI CPU2 wakeup with event mask register
     pub EXTI_C2EMR3: RWRegister<u32>,
 
-    _reserved10: [u32; 182],
+    _reserved10: [u8; 728],
 
     /// EXTI hardware configuration register 13
     pub EXTI_HWCFGR13: RORegister<u32>,

@@ -6,7 +6,7 @@ use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R0 {
 
     /// Semaphore ProcessID
@@ -52,217 +52,217 @@ pub mod R0 {
     }
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R1 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R2 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R3 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R4 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R5 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R6 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R7 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R8 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R9 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R10 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R11 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R12 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R13 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R14 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R15 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R16 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R17 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R18 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R19 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R20 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R21 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R22 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R23 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R24 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R25 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R26 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R27 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R28 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R29 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R30 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
     pub use super::R0::PROCID;
 }
 
-/// HSEM register HSEM_R0 HSEM_R31
+/// HSEM register HSEM_R%s HSEM_R31
 pub mod R31 {
     pub use super::R0::LOCK;
     pub use super::R0::MASTERID;
@@ -1559,100 +1559,100 @@ pub mod KEYR {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R0: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R1: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R2: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R3: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R4: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R5: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R6: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R7: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R8: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R9: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R10: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R11: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R12: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R13: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R14: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R15: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R16: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R17: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R18: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R19: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R20: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R21: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R22: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R23: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R24: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R25: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R26: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R27: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R28: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R29: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R30: RWRegister<u32>,
 
-    /// HSEM register HSEM_R0 HSEM_R31
+    /// HSEM register HSEM_R%s HSEM_R31
     pub R31: RWRegister<u32>,
 
     /// HSEM Read lock register
@@ -1763,7 +1763,7 @@ pub struct RegisterBlock {
     /// HSEM Masked interrupt status register
     pub C1MISR: RORegister<u32>,
 
-    _reserved1: [u32; 12],
+    _reserved1: [u8; 48],
 
     /// HSEM Clear register
     pub CR: RWRegister<u32>,

@@ -5,9 +5,9 @@
 //! Used by: stm32l4x3, stm32l4x5, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::spi::Instance;
-pub use crate::stm32l4::peripherals::spi::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::spi::{CR1, CR2, CRCPR, DR, RXCRCR, SR, TXCRCR};
+pub use crate::stm32l4::peripherals::spi_v1::Instance;
+pub use crate::stm32l4::peripherals::spi_v1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::spi_v1::{CR1, CR2, CRCPR, DR, RXCRCR, SR, TXCRCR};
 
 /// Access functions for the SPI1 peripheral instance
 pub mod SPI1 {

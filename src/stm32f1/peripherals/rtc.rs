@@ -190,12 +190,8 @@ pub mod CRL {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Last write operation on RTC registers is still ongoing
             pub const Enabled: u32 = 0b0;
@@ -203,6 +199,10 @@ pub mod CRL {
             /// 0b1: Last write operation on RTC registers terminated
             pub const Disabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

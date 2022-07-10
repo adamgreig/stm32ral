@@ -396,7 +396,7 @@ pub struct RegisterBlock {
     /// OPAMP1 offset trimming register in low-powe mode
     pub OPAMP1_LPOTR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// OPAMP2 control/status register
     pub OPAMP2_CRS: RWRegister<u32>,

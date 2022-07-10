@@ -1059,7 +1059,7 @@ pub mod HYSCR4 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// RI input capture register
     pub ICR: RWRegister<u32>,

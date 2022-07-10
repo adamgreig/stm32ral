@@ -1598,7 +1598,7 @@ pub struct RegisterBlock {
     /// Debug status register
     pub ETH_DMADSR: RORegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// AXI4 transmit channel ACE control register
     pub ETH_DMAA4TxACR: RWRegister<u32>,
@@ -1609,7 +1609,7 @@ pub struct RegisterBlock {
     /// AXI4 descriptor ACE control register
     pub ETH_DMAA4DACR: RWRegister<u32>,
 
-    _reserved2: [u32; 53],
+    _reserved2: [u8; 212],
 
     /// Channel 0 control register
     pub ETH_DMAC0CR: RWRegister<u32>,
@@ -1620,12 +1620,12 @@ pub struct RegisterBlock {
     /// Channel receive control register
     pub ETH_DMAC0RxCR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// Channel i Tx descriptor list address register
     pub ETH_DMAC0TxDLAR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// Channel Rx descriptor list address register
     pub ETH_DMAC0RxDLAR: RWRegister<u32>,
@@ -1633,7 +1633,7 @@ pub struct RegisterBlock {
     /// Channel Tx descriptor tail pointer register
     pub ETH_DMAC0TxDTPR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// Channel Rx descriptor tail pointer register
     pub ETH_DMAC0RxDTPR: RWRegister<u32>,
@@ -1653,22 +1653,22 @@ pub struct RegisterBlock {
     /// Channel i slot function control status register
     pub ETH_DMAC0SFCSR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// Channel current application transmit descriptor register
     pub ETH_DMAC0CATxDR: RORegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// Channel 0 current application receive descriptor register
     pub ETH_DMAC0CARxDR: RORegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// Channel 0 current application transmit buffer register
     pub ETH_DMAC0CATxBR: RORegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// Channel current application receive buffer register
     pub ETH_DMAC0CARxBR: RORegister<u32>,
@@ -1676,12 +1676,12 @@ pub struct RegisterBlock {
     /// Channel status register
     pub ETH_DMAC0SR: RWRegister<u32>,
 
-    _reserved10: [u32; 2],
+    _reserved10: [u8; 8],
 
     /// Channel missed frame count register
     pub ETH_DMAC0MFCR: RORegister<u32>,
 
-    _reserved11: [u32; 4],
+    _reserved11: [u8; 16],
 
     /// Channel 1 control register
     pub ETH_DMAC1CR: RWRegister<u32>,
@@ -1689,47 +1689,47 @@ pub struct RegisterBlock {
     /// Channel 1 transmit control register
     pub ETH_DMAC1TxCR: RWRegister<u32>,
 
-    _reserved12: [u32; 3],
+    _reserved12: [u8; 12],
 
     /// Channel i Tx descriptor list address register
     pub ETH_DMAC1TxDLAR: RWRegister<u32>,
 
-    _reserved13: [u32; 2],
+    _reserved13: [u8; 8],
 
     /// Channel Tx descriptor tail pointer register
     pub ETH_DMAC1TxDTPR: RWRegister<u32>,
 
-    _reserved14: [u32; 2],
+    _reserved14: [u8; 8],
 
     /// Channel Tx descriptor ring length register
     pub ETH_DMAC1TxRLR: RWRegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// Channel interrupt enable register
     pub ETH_DMAC1IER: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved16: [u8; 4],
 
     /// Channel i slot function control status register
     pub ETH_DMAC1SFCSR: RWRegister<u32>,
 
-    _reserved17: [u32; 1],
+    _reserved17: [u8; 4],
 
     /// Channel current application transmit descriptor register
     pub ETH_DMAC1CATxDR: RORegister<u32>,
 
-    _reserved18: [u32; 3],
+    _reserved18: [u8; 12],
 
     /// Channel 0 current application transmit buffer register
     pub ETH_DMAC1CATxBR: RORegister<u32>,
 
-    _reserved19: [u32; 2],
+    _reserved19: [u8; 8],
 
     /// Channel status register
     pub ETH_DMAC1SR: RWRegister<u32>,
 
-    _reserved20: [u32; 2],
+    _reserved20: [u8; 8],
 
     /// Channel missed frame count register
     pub ETH_DMAC1MFCR: RORegister<u32>,

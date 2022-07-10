@@ -15,7 +15,7 @@ pub use super::instances::axi;
 pub mod bdma;
 pub mod can_ccu;
 pub use super::instances::cec;
-pub mod comp1;
+pub use super::instances::comp1;
 pub mod crc;
 pub use super::instances::crs;
 pub use super::instances::cryp_h747cm4_h747cm7_h7b3 as cryp;
@@ -36,7 +36,7 @@ pub use super::instances::fpu_cpacr;
 pub mod flash;
 pub use super::instances::gpio;
 pub use super::instances::hash;
-pub use super::instances::hrtim_common_h747cm4_h747cm7_h7b3 as hrtim_common;
+pub use super::instances::hrtim_common;
 pub use super::instances::hrtim_master;
 pub use super::instances::hrtim_tima;
 pub use super::instances::hrtim_timb;
@@ -56,7 +56,7 @@ pub use super::instances::mdma;
 pub use super::instances::mpu;
 pub mod nvic;
 pub use super::instances::nvic_stir;
-pub mod octospi2;
+pub mod octospi;
 pub use super::instances::opamp;
 pub mod otfdec;
 pub mod otg1_hs_device;
@@ -81,20 +81,19 @@ pub use super::instances::swpmi;
 pub mod syscfg;
 pub mod tim1;
 pub use super::instances::tim2_h735_h7b3 as tim2;
+pub use super::instances::tim3_h735_h7b3 as tim3;
+pub use super::instances::tim4_h735_h7b3 as tim4;
 pub use super::instances::tim5_h735_h7b3 as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub mod tim8;
+pub use super::instances::tim12_h735_h7b3 as tim12;
+pub use super::instances::tim13_h735_h7b3 as tim13;
+pub use super::instances::tim14_h735_h7b3 as tim14;
 pub use super::instances::tim15_h735_h7b3 as tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
 pub mod usart;
-pub use super::instances::dsihost;
-pub use super::instances::tim12_h735_h7b3 as tim12;
-pub use super::instances::tim13_h735_h7b3 as tim13;
-pub use super::instances::tim14_h735_h7b3 as tim14;
-pub use super::instances::tim3_h735_h7b3 as tim3;
-pub use super::instances::tim4_h735_h7b3 as tim4;
 pub use super::instances::vrefbuf;
 pub use super::instances::wwdg_h743_h743v_h753_h753v_h7b3 as wwdg;
 
@@ -172,8 +171,8 @@ pub struct Peripherals {
     pub MPU: mpu::Instance,
     pub NVIC: nvic::Instance,
     pub NVIC_STIR: nvic_stir::Instance,
-    pub OCTOSPI2: octospi2::Instance,
-    pub OCTOSPI1_CONTROL_REGISTER: octospi2::Instance,
+    pub OCTOSPI2: octospi::Instance,
+    pub OCTOSPI1: octospi::Instance,
     pub OPAMP: opamp::Instance,
     pub OTFDEC1: otfdec::Instance,
     pub OTFDEC2: otfdec::Instance,
@@ -206,10 +205,15 @@ pub struct Peripherals {
     pub SYSCFG: syscfg::Instance,
     pub TIM1: tim1::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
     pub TIM5: tim5::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
     pub TIM8: tim8::Instance,
+    pub TIM12: tim12::Instance,
+    pub TIM13: tim13::Instance,
+    pub TIM14: tim14::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
     pub TIM17: tim17::Instance,
@@ -225,12 +229,6 @@ pub struct Peripherals {
     pub USART10: usart::Instance,
     pub VREFBUF: vrefbuf::Instance,
     pub WWDG: wwdg::Instance,
-    pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
-    pub TIM12: tim12::Instance,
-    pub TIM13: tim13::Instance,
-    pub TIM14: tim14::Instance,
-    pub DSIHOST: dsihost::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -312,8 +310,8 @@ impl Peripherals {
             MPU: mpu::MPU::steal(),
             NVIC: nvic::NVIC::steal(),
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
-            OCTOSPI2: octospi2::OCTOSPI2::steal(),
-            OCTOSPI1_CONTROL_REGISTER: octospi2::OCTOSPI1_CONTROL_REGISTER::steal(),
+            OCTOSPI2: octospi::OCTOSPI2::steal(),
+            OCTOSPI1: octospi::OCTOSPI1::steal(),
             OPAMP: opamp::OPAMP::steal(),
             OTFDEC1: otfdec::OTFDEC1::steal(),
             OTFDEC2: otfdec::OTFDEC2::steal(),
@@ -346,10 +344,15 @@ impl Peripherals {
             SYSCFG: syscfg::SYSCFG::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
             TIM5: tim5::TIM5::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
             TIM8: tim8::TIM8::steal(),
+            TIM12: tim12::TIM12::steal(),
+            TIM13: tim13::TIM13::steal(),
+            TIM14: tim14::TIM14::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
             TIM17: tim17::TIM17::steal(),
@@ -365,12 +368,6 @@ impl Peripherals {
             USART10: usart::USART10::steal(),
             VREFBUF: vrefbuf::VREFBUF::steal(),
             WWDG: wwdg::WWDG::steal(),
-            TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
-            TIM12: tim12::TIM12::steal(),
-            TIM13: tim13::TIM13::steal(),
-            TIM14: tim14::TIM14::steal(),
-            DSIHOST: dsihost::DSIHOST::steal(),
         }
     }
 }

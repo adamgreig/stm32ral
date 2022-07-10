@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! External interrupt/event controller
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -2053,7 +2053,7 @@ pub struct RegisterBlock {
     /// Pending register
     pub PR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Interrupt mask register
     pub IMR2: RWRegister<u32>,

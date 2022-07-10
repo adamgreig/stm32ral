@@ -150,7 +150,7 @@ pub struct RegisterBlock {
     /// CRC control register
     pub CRC_CR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// CRC initial value
     pub CRC_INIT: RWRegister<u32>,

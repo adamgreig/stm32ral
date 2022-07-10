@@ -2299,7 +2299,7 @@ pub struct RegisterBlock {
     /// EXTI pending register
     pub PR1: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// rising trigger selection register
     pub RTSR2: RWRegister<u32>,
@@ -2313,7 +2313,7 @@ pub struct RegisterBlock {
     /// pending register
     pub PR2: RWRegister<u32>,
 
-    _reserved2: [u32; 20],
+    _reserved2: [u8; 80],
 
     /// interrupt mask register
     pub C1IMR1: RWRegister<u32>,
@@ -2321,7 +2321,7 @@ pub struct RegisterBlock {
     /// event mask register
     pub C1EMR1: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// wakeup with interrupt mask register
     pub C1IMR2: RWRegister<u32>,
@@ -2329,7 +2329,7 @@ pub struct RegisterBlock {
     /// wakeup with event mask register
     pub C1EMR2: RWRegister<u32>,
 
-    _reserved4: [u32; 10],
+    _reserved4: [u8; 40],
 
     /// interrupt mask register
     pub C2IMR1: RWRegister<u32>,
@@ -2337,7 +2337,7 @@ pub struct RegisterBlock {
     /// event mask register
     pub C2EMR1: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// wakeup with interrupt mask register
     pub C2IMR2: RWRegister<u32>,

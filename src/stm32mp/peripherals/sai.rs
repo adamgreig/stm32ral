@@ -1275,7 +1275,7 @@ pub struct RegisterBlock {
     /// PDM delay register
     pub SAI_PDMDLY: RWRegister<u32>,
 
-    _reserved1: [u32; 233],
+    _reserved1: [u8; 932],
 
     /// SAI hardware configuration register
     pub SAI_HWCFGR: RORegister<u32>,

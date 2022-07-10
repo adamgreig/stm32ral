@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 
-use crate::RWRegister;
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -360,7 +360,7 @@ pub mod CR2A {
     }
 
     /// Mute counter
-    pub mod MUTECN {
+    pub mod MUTECNT {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (6 bits: 0x3f << 7)
@@ -1086,7 +1086,7 @@ pub mod CR2B {
     pub use super::CR2A::FFLUSH;
     pub use super::CR2A::FTH;
     pub use super::CR2A::MUTE;
-    pub use super::CR2A::MUTECN;
+    pub use super::CR2A::MUTECNT;
     pub use super::CR2A::MUTEVAL;
     pub use super::CR2A::TRIS;
 }
@@ -1166,10 +1166,10 @@ pub struct RegisterBlock {
     pub IMA: RWRegister<u32>,
 
     /// AStatus register
-    pub SRA: RWRegister<u32>,
+    pub SRA: RORegister<u32>,
 
     /// AClear flag register
-    pub CLRFRA: RWRegister<u32>,
+    pub CLRFRA: WORegister<u32>,
 
     /// AData register
     pub DRA: RWRegister<u32>,
@@ -1190,10 +1190,10 @@ pub struct RegisterBlock {
     pub IMB: RWRegister<u32>,
 
     /// AStatus register
-    pub SRB: RWRegister<u32>,
+    pub SRB: RORegister<u32>,
 
     /// AClear flag register
-    pub CLRFRB: RWRegister<u32>,
+    pub CLRFRB: WORegister<u32>,
 
     /// AData register
     pub DRB: RWRegister<u32>,
@@ -1254,7 +1254,7 @@ pub mod SAI1 {
         FRCRA: 0x00000007,
         SLOTRA: 0x00000000,
         IMA: 0x00000000,
-        SRA: 0x00000000,
+        SRA: 0x00000008,
         CLRFRA: 0x00000000,
         DRA: 0x00000000,
         CR1B: 0x00000040,
@@ -1262,7 +1262,7 @@ pub mod SAI1 {
         FRCRB: 0x00000007,
         SLOTRB: 0x00000000,
         IMB: 0x00000000,
-        SRB: 0x00000000,
+        SRB: 0x00000008,
         CLRFRB: 0x00000000,
         DRB: 0x00000000,
     };
@@ -1361,7 +1361,7 @@ pub mod SAI2 {
         FRCRA: 0x00000007,
         SLOTRA: 0x00000000,
         IMA: 0x00000000,
-        SRA: 0x00000000,
+        SRA: 0x00000008,
         CLRFRA: 0x00000000,
         DRA: 0x00000000,
         CR1B: 0x00000040,
@@ -1369,7 +1369,7 @@ pub mod SAI2 {
         FRCRB: 0x00000007,
         SLOTRB: 0x00000000,
         IMB: 0x00000000,
-        SRB: 0x00000000,
+        SRB: 0x00000008,
         CLRFRB: 0x00000000,
         DRB: 0x00000000,
     };

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Touch sensing controller
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1133,22 +1133,22 @@ pub struct RegisterBlock {
     /// I/O hysteresis control register
     pub IOHCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// I/O analog switch control register
     pub IOASCR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// I/O sampling control register
     pub IOSCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// I/O channel control register
     pub IOCCR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// I/O group control status register
     pub IOGCSR: RWRegister<u32>,

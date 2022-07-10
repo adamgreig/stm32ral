@@ -1,6 +1,6 @@
 #![allow(non_snake_case, non_upper_case_globals)]
 #![allow(non_camel_case_types)]
-//! Debug support
+//! Microcontroller Debug Unit
 //!
 //! Used by: stm32h747cm4, stm32h747cm7
 
@@ -26,15 +26,15 @@ pub mod DBGMCU {
 
     /// Reset values for each field in DBGMCU
     pub const reset: ResetValues = ResetValues {
-        IDC: 0x10006480,
+        IDC: 0x10006450,
         CR: 0x00000000,
         APB3FZ1: 0x00000000,
-        APB1LFZ1: 0x00000000,
-        APB2FZ1: 0x00000000,
-        APB4FZ1: 0x00000000,
         APB3FZ2: 0x00000000,
+        APB1LFZ1: 0x00000000,
         APB1LFZ2: 0x00000000,
+        APB2FZ1: 0x00000000,
         APB2FZ2: 0x00000000,
+        APB4FZ1: 0x00000000,
         APB4FZ2: 0x00000000,
     };
 

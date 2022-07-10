@@ -435,7 +435,7 @@ pub struct RegisterBlock {
     /// Debug MCU Configuration Register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 13],
+    _reserved1: [u8; 52],
 
     /// APB1 Low Freeze Register CPU1
     pub APB1FZR1: RWRegister<u32>,

@@ -939,7 +939,7 @@ pub struct RegisterBlock {
     /// Interrupt clear for each filter.
     pub TZC_INT_CLEAR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Address low bits of the first failed access in the associated filter (0 to 1).
     pub TZC_FAIL_ADDRESS_LOW0: RORegister<u32>,
@@ -965,7 +965,7 @@ pub struct RegisterBlock {
     /// Contains the master AXI ARID or AWID of the first access that failed a region permission check in the associated filter unit. This occurs even if the ACTION register is set to not drive the interrupt signal. AXI ID mapping is described in Table4: NSAID definition table (TBD).
     pub TZC_FAIL_ID1: RORegister<u32>,
 
-    _reserved2: [u32; 49],
+    _reserved2: [u8; 196],
 
     /// Base address high are not used with 32-bit address.
     pub TZC_REGION_BASE_HIGH0: RORegister<u32>,
@@ -982,7 +982,7 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS0: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW1: RWRegister<u32>,
@@ -1002,7 +1002,7 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS1: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW2: RWRegister<u32>,
@@ -1022,7 +1022,7 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS2: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW3: RWRegister<u32>,
@@ -1042,7 +1042,7 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS3: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW4: RWRegister<u32>,
@@ -1062,7 +1062,7 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS4: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW5: RWRegister<u32>,
@@ -1082,7 +1082,7 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS5: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW6: RWRegister<u32>,
@@ -1102,17 +1102,17 @@ pub struct RegisterBlock {
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS6: RWRegister<u32>,
 
-    _reserved9: [u32; 4],
+    _reserved9: [u8; 16],
 
     /// Top address bits \[31:12\] for region x.
     pub TZC_REGION_TOP_LOW7: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// Region x attributes.
     pub TZC_REGION_ATTRIBUTE7: RWRegister<u32>,
 
-    _reserved11: [u32; 3],
+    _reserved11: [u8; 12],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW8: RWRegister<u32>,
@@ -1120,12 +1120,12 @@ pub struct RegisterBlock {
     /// Base address high are not used with 32-bit address.
     pub TZC_REGION_BASE_HIGH8: RORegister<u32>,
 
-    _reserved12: [u32; 2],
+    _reserved12: [u8; 8],
 
     /// Region x attributes.
     pub TZC_REGION_ATTRIBUTE8: RWRegister<u32>,
 
-    _reserved13: [u32; 51],
+    _reserved13: [u8; 204],
 
     /// Base address low for regions 1 to 8.
     pub TZC_REGION_BASE_LOW7: RWRegister<u32>,
@@ -1133,17 +1133,17 @@ pub struct RegisterBlock {
     /// Base address high are not used with 32-bit address.
     pub TZC_REGION_BASE_HIGH7: RORegister<u32>,
 
-    _reserved14: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// Top address high of region are not used with 32-bit address.
     pub TZC_REGION_TOP_HIGH7: RORegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS7: RWRegister<u32>,
 
-    _reserved16: [u32; 4],
+    _reserved16: [u8; 16],
 
     /// Top address bits \[31:12\] for region x.
     pub TZC_REGION_TOP_LOW8: RWRegister<u32>,
@@ -1151,12 +1151,12 @@ pub struct RegisterBlock {
     /// Top address high of region are not used with 32-bit address.
     pub TZC_REGION_TOP_HIGH8: RORegister<u32>,
 
-    _reserved17: [u32; 1],
+    _reserved17: [u8; 4],
 
     /// Region non-secure access based on NSAID.
     pub TZC_REGION_ID_ACCESS8: RWRegister<u32>,
 
-    _reserved18: [u32; 814],
+    _reserved18: [u8; 3256],
 
     /// Peripheral ID 4.
     pub TZC_PID4: RORegister<u32>,

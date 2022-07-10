@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
-use crate::RWRegister;
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -330,7 +330,7 @@ pub mod CR2A {
     }
 
     /// Mute counter
-    pub mod MUTECN {
+    pub mod MUTECNT {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
         /// Mask (6 bits: 0x3f << 7)
@@ -1056,7 +1056,7 @@ pub mod CR2B {
     pub use super::CR2A::FFLUSH;
     pub use super::CR2A::FTH;
     pub use super::CR2A::MUTE;
-    pub use super::CR2A::MUTECN;
+    pub use super::CR2A::MUTECNT;
     pub use super::CR2A::MUTEVAL;
     pub use super::CR2A::TRIS;
 }
@@ -1117,7 +1117,7 @@ pub mod DRB {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// AConfiguration register 1
     pub CR1A: RWRegister<u32>,
@@ -1135,10 +1135,10 @@ pub struct RegisterBlock {
     pub IMA: RWRegister<u32>,
 
     /// AStatus register
-    pub SRA: RWRegister<u32>,
+    pub SRA: RORegister<u32>,
 
     /// AClear flag register
-    pub CLRFRA: RWRegister<u32>,
+    pub CLRFRA: WORegister<u32>,
 
     /// AData register
     pub DRA: RWRegister<u32>,
@@ -1159,10 +1159,10 @@ pub struct RegisterBlock {
     pub IMB: RWRegister<u32>,
 
     /// AStatus register
-    pub SRB: RWRegister<u32>,
+    pub SRB: RORegister<u32>,
 
     /// AClear flag register
-    pub CLRFRB: RWRegister<u32>,
+    pub CLRFRB: WORegister<u32>,
 
     /// AData register
     pub DRB: RWRegister<u32>,

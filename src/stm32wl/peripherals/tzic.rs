@@ -612,12 +612,12 @@ pub struct RegisterBlock {
     /// TZIC interrupt enable register 1
     pub IER1: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// TZIC status register 1
     pub MISR1: RORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// TZIC interrupt status clear register 1
     pub ICR1: RWRegister<u32>,

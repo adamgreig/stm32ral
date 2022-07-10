@@ -2389,7 +2389,7 @@ pub struct RegisterBlock {
     /// FDCAN Core Release Register
     pub FDCAN_ENDN: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// FDCAN Data Bit Timing and Prescaler Register
     pub FDCAN_DBTP: RWRegister<u32>,
@@ -2418,7 +2418,7 @@ pub struct RegisterBlock {
     /// FDCAN Timeout Counter Value Register
     pub FDCAN_TOCV: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// FDCAN Error Counter Register
     pub FDCAN_ECR: RWRegister<u32>,
@@ -2429,7 +2429,7 @@ pub struct RegisterBlock {
     /// FDCAN Transmitter Delay Compensation Register
     pub FDCAN_TDCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// FDCAN Interrupt Register
     pub FDCAN_IR: RWRegister<u32>,
@@ -2443,7 +2443,7 @@ pub struct RegisterBlock {
     /// FDCAN Interrupt Line Enable Register
     pub FDCAN_ILE: RWRegister<u32>,
 
-    _reserved4: [u32; 8],
+    _reserved4: [u8; 32],
 
     /// FDCAN Global Filter Configuration Register
     pub FDCAN_RXGFC: RWRegister<u32>,
@@ -2454,7 +2454,7 @@ pub struct RegisterBlock {
     /// FDCAN High Priority Message Status Register
     pub FDCAN_HPMS: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// FDCAN Rx FIFO 0 Status Register
     pub FDCAN_RXF0S: RWRegister<u32>,
@@ -2468,7 +2468,7 @@ pub struct RegisterBlock {
     /// FDCAN Rx FIFO 1 Acknowledge Register
     pub FDCAN_RXF1A: RWRegister<u32>,
 
-    _reserved6: [u32; 8],
+    _reserved6: [u8; 32],
 
     /// FDCAN Tx buffer configuration register
     pub FDCAN_TXBC: RWRegister<u32>,
@@ -2503,7 +2503,7 @@ pub struct RegisterBlock {
     /// FDCAN Tx Event FIFO Acknowledge Register
     pub FDCAN_TXEFA: RWRegister<u32>,
 
-    _reserved7: [u32; 5],
+    _reserved7: [u8; 20],
 
     /// FDCAN TT Trigger Memory Configuration Register
     pub FDCAN_CKDIV: RWRegister<u32>,

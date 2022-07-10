@@ -84,8 +84,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter is not stopped at update event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Counter stops counting at the next update event (clearing the CEN bit)
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Direction
@@ -98,8 +105,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter used as upcounter
+            pub const Up: u32 = 0b0;
+
+            /// 0b1: Counter used as downcounter
+            pub const Down: u32 = 0b1;
+        }
     }
 
     /// Center-aligned mode selection
@@ -112,8 +126,21 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: The counter counts up or down depending on the direction bit
+            pub const EdgeAligned: u32 = 0b00;
+
+            /// 0b01: The counter counts up and down alternatively. Output compare interrupt flags are set only when the counter is counting down.
+            pub const CenterAligned1: u32 = 0b01;
+
+            /// 0b10: The counter counts up and down alternatively. Output compare interrupt flags are set only when the counter is counting up.
+            pub const CenterAligned2: u32 = 0b10;
+
+            /// 0b11: The counter counts up and down alternatively. Output compare interrupt flags are set both when the counter is counting up or down.
+            pub const CenterAligned3: u32 = 0b11;
+        }
     }
 
     /// Auto-reload preload enable
@@ -175,8 +202,27 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Reset - the UG bit from the TIMx_EGR register is used as trigger output (TRGO)
+            pub const Reset: u32 = 0b000;
+
+            /// 0b001: Enable - the Counter enable signal, CNT_EN, is used as trigger output (TRGO)
+            pub const Enable: u32 = 0b001;
+
+            /// 0b010: Update - The update event is selected as trigger output (TRGO)
+            pub const Update: u32 = 0b010;
+
+            /// 0b011: Compare Pulse - The trigger output send a positive pulse when the CC1IF flag is to be set (even if it was already high), as soon as a capture or a compare match occurred
+            pub const ComparePulse: u32 = 0b011;
+
+            /// 0b100: OC1REF signal is used as trigger output (TRGO)
+            pub const OC1REF: u32 = 0b100;
+
+            /// 0b101: OC2REF signal is used as trigger output (TRGO)
+            pub const OC2REF: u32 = 0b101;
+        }
     }
 }
 
@@ -193,8 +239,33 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Slave mode disabled - if CEN = ‘1 then the prescaler is clocked directly by the internal clock.
+            pub const Disabled: u32 = 0b000;
+
+            /// 0b001: Encoder mode 1 - Counter counts up/down on TI2FP1 edge depending on TI1FP2 level.
+            pub const Encoder_Mode_1: u32 = 0b001;
+
+            /// 0b010: Encoder mode 2 - Counter counts up/down on TI1FP2 edge depending on TI2FP1 level.
+            pub const Encoder_Mode_2: u32 = 0b010;
+
+            /// 0b011: Encoder mode 3 - Counter counts up/down on both TI1FP1 and TI2FP2 edges depending on the level of the other input.
+            pub const Encoder_Mode_3: u32 = 0b011;
+
+            /// 0b100: Reset Mode - Rising edge of the selected trigger input (TRGI) reinitializes the counter and generates an update of the registers.
+            pub const Reset_Mode: u32 = 0b100;
+
+            /// 0b101: Gated Mode - The counter clock is enabled when the trigger input (TRGI) is high. The counter stops (but is not reset) as soon as the trigger becomes low. Both start and stop of the counter are controlled.
+            pub const Gated_Mode: u32 = 0b101;
+
+            /// 0b110: Trigger Mode - The counter starts at a rising edge of the trigger TRGI (but it is not reset). Only the start of the counter is controlled.
+            pub const Trigger_Mode: u32 = 0b110;
+
+            /// 0b111: External Clock Mode 1 - Rising edges of the selected trigger (TRGI) clock the counter.
+            pub const Ext_Clock_Mode: u32 = 0b111;
+        }
     }
 
     /// Trigger selection
@@ -207,8 +278,30 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Internal Trigger 0 (ITR0)
+            pub const ITR0: u32 = 0b000;
+
+            /// 0b001: Internal Trigger 1 (ITR1)
+            pub const ITR1: u32 = 0b001;
+
+            /// 0b010: Internal Trigger 2 (ITR2)
+            pub const ITR2: u32 = 0b010;
+
+            /// 0b100: TI1 Edge Detector (TI1F_ED)
+            pub const TI1F_ED: u32 = 0b100;
+
+            /// 0b101: Filtered Timer Input 1 (TI1FP1)
+            pub const TI1FP1: u32 = 0b101;
+
+            /// 0b110: Filtered Timer Input 2 (TI2FP2)
+            pub const TI2FP2: u32 = 0b110;
+
+            /// 0b111: External Trigger input (ETRF)
+            pub const ETRF: u32 = 0b111;
+        }
     }
 
     /// Master/Slave mode
@@ -221,8 +314,15 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No action
+            pub const NoSync: u32 = 0b0;
+
+            /// 0b1: The effect of an event on the trigger input (TRGI) is delayed to allow a perfect synchronization between the current timer and its slaves (through TRGO). It is useful if we want to synchronize several timers on a single external event.
+            pub const Sync: u32 = 0b1;
+        }
     }
 
     /// External trigger filter
@@ -235,8 +335,57 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filter, sampling is done at fDTS
+            pub const NoFilter: u32 = 0b0000;
+
+            /// 0b0001: fSAMPLING=fCK_INT, N=2
+            pub const FCK_INT_N2: u32 = 0b0001;
+
+            /// 0b0010: fSAMPLING=fCK_INT, N=4
+            pub const FCK_INT_N4: u32 = 0b0010;
+
+            /// 0b0011: fSAMPLING=fCK_INT, N=8
+            pub const FCK_INT_N8: u32 = 0b0011;
+
+            /// 0b0100: fSAMPLING=fDTS/2, N=6
+            pub const FDTS_Div2_N6: u32 = 0b0100;
+
+            /// 0b0101: fSAMPLING=fDTS/2, N=8
+            pub const FDTS_Div2_N8: u32 = 0b0101;
+
+            /// 0b0110: fSAMPLING=fDTS/4, N=6
+            pub const FDTS_Div4_N6: u32 = 0b0110;
+
+            /// 0b0111: fSAMPLING=fDTS/4, N=8
+            pub const FDTS_Div4_N8: u32 = 0b0111;
+
+            /// 0b1000: fSAMPLING=fDTS/8, N=6
+            pub const FDTS_Div8_N6: u32 = 0b1000;
+
+            /// 0b1001: fSAMPLING=fDTS/8, N=8
+            pub const FDTS_Div8_N8: u32 = 0b1001;
+
+            /// 0b1010: fSAMPLING=fDTS/16, N=5
+            pub const FDTS_Div16_N5: u32 = 0b1010;
+
+            /// 0b1011: fSAMPLING=fDTS/16, N=6
+            pub const FDTS_Div16_N6: u32 = 0b1011;
+
+            /// 0b1100: fSAMPLING=fDTS/16, N=8
+            pub const FDTS_Div16_N8: u32 = 0b1100;
+
+            /// 0b1101: fSAMPLING=fDTS/32, N=5
+            pub const FDTS_Div32_N5: u32 = 0b1101;
+
+            /// 0b1110: fSAMPLING=fDTS/32, N=6
+            pub const FDTS_Div32_N6: u32 = 0b1110;
+
+            /// 0b1111: fSAMPLING=fDTS/32, N=8
+            pub const FDTS_Div32_N8: u32 = 0b1111;
+        }
     }
 
     /// External trigger prescaler
@@ -249,8 +398,21 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Prescaler OFF
+            pub const Div1: u32 = 0b00;
+
+            /// 0b01: ETRP frequency divided by 2
+            pub const Div2: u32 = 0b01;
+
+            /// 0b10: ETRP frequency divided by 4
+            pub const Div4: u32 = 0b10;
+
+            /// 0b11: ETRP frequency divided by 8
+            pub const Div8: u32 = 0b11;
+        }
     }
 
     /// External clock enable
@@ -263,8 +425,15 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: External clock mode 2 disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: External clock mode 2 enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// External trigger polarity
@@ -277,8 +446,15 @@ pub mod SMCR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ETR is non-inverted, active at high level or rising edge
+            pub const RisingEdge: u32 = 0b0;
+
+            /// 0b1: ETR is inverted, active at low level or falling edge
+            pub const FallingEdge: u32 = 0b1;
+        }
     }
 }
 
@@ -295,8 +471,15 @@ pub mod DIER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Trigger interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Trigger interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Capture/Compare 2 interrupt enable
@@ -309,8 +492,15 @@ pub mod DIER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CCx interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CCx interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Capture/Compare 1 interrupt enable
@@ -323,8 +513,7 @@ pub mod DIER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CC2IE::RW;
     }
 
     /// Update interrupt enable
@@ -358,10 +547,18 @@ pub mod SR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: The counter value has been captured in TIMx_CCRx register while CCxIF flag was already set
+            pub const Overcapture: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -372,10 +569,8 @@ pub mod SR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::CC2OF::R;
+        pub use super::CC2OF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -386,10 +581,16 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No trigger event occurred
+            pub const NoTrigger: u32 = 0b0;
+
+            /// 0b1: Trigger interrupt pending
+            pub const Trigger: u32 = 0b1;
+        }
+        pub use super::CC2OF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -400,10 +601,13 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: If CC1 is an output: The content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. If CC1 is an input: The counter value has been captured in TIMx_CCR1 register.
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::CC2OF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -414,10 +618,13 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: If CC1 is an output: The content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. If CC1 is an input: The counter value has been captured in TIMx_CCR1 register.
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::CC2OF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -455,8 +662,12 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: The TIF flag is set in TIMx_SR register. Related interrupt or DMA transfer can occur if enabled.
+            pub const Trigger: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -469,8 +680,12 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: If CC1 is an output: CC1IF flag is set, Corresponding interrupt or DMA request is sent if enabled. If CC1 is an input: The current value of the counter is captured in TIMx_CCR1 register.
+            pub const Trigger: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -483,8 +698,12 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: If CCx is an output: CCxIF flag is set, Corresponding interrupt or DMA request is sent if enabled. If CCx is an input: The current value of the counter is captured in TIMx_CCR1 register.
+            pub const Trigger: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -497,14 +716,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -562,8 +781,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload register on CCR1 disabled. New values written to CCR1 are taken into account immediately
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload register on CCR1 enabled. Preload value is loaded into active register on each update event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output Compare 2 fast enable
@@ -590,8 +816,12 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CC1 channel is configured as output
+            pub const Output: u32 = 0b00;
+        }
     }
 
     /// Output Compare 1 mode
@@ -617,8 +847,15 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Preload register on CCRx disabled. New values written to CCRx are taken into account immediately
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Preload register on CCRx enabled. Preload value is loaded into active register on each update event
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Output Compare 1 fast enable
@@ -645,8 +882,12 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: CCx channel is configured as output
+            pub const Output: u32 = 0b00;
+        }
     }
 
     /// Input capture 2 filter
@@ -659,8 +900,57 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: No filter, sampling is done at fDTS
+            pub const NoFilter: u32 = 0b0000;
+
+            /// 0b0001: fSAMPLING=fCK_INT, N=2
+            pub const FCK_INT_N2: u32 = 0b0001;
+
+            /// 0b0010: fSAMPLING=fCK_INT, N=4
+            pub const FCK_INT_N4: u32 = 0b0010;
+
+            /// 0b0011: fSAMPLING=fCK_INT, N=8
+            pub const FCK_INT_N8: u32 = 0b0011;
+
+            /// 0b0100: fSAMPLING=fDTS/2, N=6
+            pub const FDTS_Div2_N6: u32 = 0b0100;
+
+            /// 0b0101: fSAMPLING=fDTS/2, N=8
+            pub const FDTS_Div2_N8: u32 = 0b0101;
+
+            /// 0b0110: fSAMPLING=fDTS/4, N=6
+            pub const FDTS_Div4_N6: u32 = 0b0110;
+
+            /// 0b0111: fSAMPLING=fDTS/4, N=8
+            pub const FDTS_Div4_N8: u32 = 0b0111;
+
+            /// 0b1000: fSAMPLING=fDTS/8, N=6
+            pub const FDTS_Div8_N6: u32 = 0b1000;
+
+            /// 0b1001: fSAMPLING=fDTS/8, N=8
+            pub const FDTS_Div8_N8: u32 = 0b1001;
+
+            /// 0b1010: fSAMPLING=fDTS/16, N=5
+            pub const FDTS_Div16_N5: u32 = 0b1010;
+
+            /// 0b1011: fSAMPLING=fDTS/16, N=6
+            pub const FDTS_Div16_N6: u32 = 0b1011;
+
+            /// 0b1100: fSAMPLING=fDTS/16, N=8
+            pub const FDTS_Div16_N8: u32 = 0b1100;
+
+            /// 0b1101: fSAMPLING=fDTS/32, N=5
+            pub const FDTS_Div32_N5: u32 = 0b1101;
+
+            /// 0b1110: fSAMPLING=fDTS/32, N=6
+            pub const FDTS_Div32_N6: u32 = 0b1110;
+
+            /// 0b1111: fSAMPLING=fDTS/32, N=8
+            pub const FDTS_Div32_N8: u32 = 0b1111;
+        }
     }
 
     /// Input capture 2 prescaler
@@ -687,8 +977,7 @@ pub mod CCMR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::IC2F::RW;
     }
 
     /// Input capture 1 prescaler
@@ -719,8 +1008,15 @@ pub mod CCER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Negative polarity
+            pub const Negative: u32 = 0b0;
+
+            /// 0b1: Positive polarity
+            pub const Positive: u32 = 0b1;
+        }
     }
 
     /// Capture/Compare 2 output Polarity
@@ -733,8 +1029,15 @@ pub mod CCER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Noninverted/rising edge
+            pub const RisingEdge: u32 = 0b0;
+
+            /// 0b1: Inverted/falling edge
+            pub const FallingEdge: u32 = 0b1;
+        }
     }
 
     /// Capture/Compare 2 output enable
@@ -747,8 +1050,15 @@ pub mod CCER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Capture disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Capture enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Capture/Compare 1 output Polarity
@@ -761,8 +1071,7 @@ pub mod CCER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CC2NP::RW;
     }
 
     /// Capture/Compare 1 output Polarity
@@ -775,8 +1084,7 @@ pub mod CCER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CC2P::RW;
     }
 
     /// Capture/Compare 1 output enable
@@ -789,8 +1097,7 @@ pub mod CCER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::CC2E::RW;
     }
 }
 
@@ -884,8 +1191,21 @@ pub mod OR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: TIM2x ETR input connected to GPIO
+            pub const GPIO: u32 = 0b00;
+
+            /// 0b01: TIM2x ETR input connected to COMP2_OUT
+            pub const COMP2_OUT: u32 = 0b01;
+
+            /// 0b10: TIM2x ETR input connected to COMP1_OUT
+            pub const COMP1_OUT: u32 = 0b10;
+
+            /// 0b11: TIM2x ETR input connected to LSE clock
+            pub const LSE: u32 = 0b11;
+        }
     }
 
     /// Timer22 TI1
@@ -898,8 +1218,18 @@ pub mod OR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: TIM2x TI1 input connected to GPIO
+            pub const GPIO: u32 = 0b00;
+
+            /// 0b01: TIM2x TI1 input connected to COMP2_OUT
+            pub const COMP2_OUT: u32 = 0b01;
+
+            /// 0b10: TIM2x TI1 input connected to COMP1_OUT
+            pub const COMP1_OUT: u32 = 0b10;
+        }
     }
 }
 #[repr(C)]
@@ -927,7 +1257,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: capture/compare mode register 1 (input mode)
     pub CCMR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -935,7 +1265,7 @@ pub struct RegisterBlock {
     /// counter
     pub CNT: RWRegister<u16>,
 
-    _reserved2: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// prescaler
     pub PSC: RWRegister<u32>,
@@ -943,19 +1273,17 @@ pub struct RegisterBlock {
     /// auto-reload register
     pub ARR: RWRegister<u16>,
 
-    _reserved3: [u32; 1],
-    _reserved4: [u16; 1],
+    _reserved3: [u8; 6],
 
     /// capture/compare register
     pub CCR1: RWRegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// capture/compare register
     pub CCR2: RWRegister<u16>,
 
-    _reserved6: [u32; 5],
-    _reserved7: [u16; 1],
+    _reserved5: [u8; 22],
 
     /// TIM22 option register
     pub OR: RWRegister<u32>,

@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_CR1 {
+pub mod CR1 {
 
     /// TAMP1E
     pub mod TAMP1E {
@@ -139,7 +139,7 @@ pub mod TAMP_CR1 {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_CR2 {
+pub mod CR2 {
 
     /// TAMP1NOER
     pub mod TAMP1NOER {
@@ -269,7 +269,7 @@ pub mod TAMP_CR2 {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_FLTCR {
+pub mod FLTCR {
 
     /// TAMPFREQ
     pub mod TAMPFREQ {
@@ -329,7 +329,7 @@ pub mod TAMP_FLTCR {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_ATCR1 {
+pub mod ATCR1 {
 
     /// TAMP1AM
     pub mod TAMP1AM {
@@ -473,7 +473,7 @@ pub mod TAMP_ATCR1 {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_ATSEEDR {
+pub mod ATSEEDR {
 
     /// SEED
     pub mod SEED {
@@ -491,7 +491,7 @@ pub mod TAMP_ATSEEDR {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_ATOR {
+pub mod ATOR {
 
     /// PRNG
     pub mod PRNG {
@@ -537,7 +537,7 @@ pub mod TAMP_ATOR {
 }
 
 /// This register can be written only when the APB access is secure.
-pub mod TAMP_SMCR {
+pub mod SMCR {
 
     /// BKPRWDPROT
     pub mod BKPRWDPROT {
@@ -583,7 +583,7 @@ pub mod TAMP_SMCR {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_IER {
+pub mod IER {
 
     /// TAMP1IE
     pub mod TAMP1IE {
@@ -713,7 +713,7 @@ pub mod TAMP_IER {
 }
 
 /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-pub mod TAMP_SR {
+pub mod SR {
 
     /// TAMP1F
     pub mod TAMP1F {
@@ -843,7 +843,7 @@ pub mod TAMP_SR {
 }
 
 /// TAMP non-secure masked interrupt status register
-pub mod TAMP_MISR {
+pub mod MISR {
 
     /// TAMP1MF
     pub mod TAMP1MF {
@@ -973,20 +973,20 @@ pub mod TAMP_MISR {
 }
 
 /// TAMP secure masked interrupt status register
-pub mod TAMP_SMISR {
-    pub use super::TAMP_MISR::ITAMP1MF;
-    pub use super::TAMP_MISR::ITAMP2MF;
-    pub use super::TAMP_MISR::ITAMP3MF;
-    pub use super::TAMP_MISR::ITAMP4MF;
-    pub use super::TAMP_MISR::ITAMP5MF;
-    pub use super::TAMP_MISR::ITAMP8MF;
-    pub use super::TAMP_MISR::TAMP1MF;
-    pub use super::TAMP_MISR::TAMP2MF;
-    pub use super::TAMP_MISR::TAMP3MF;
+pub mod SMISR {
+    pub use super::MISR::ITAMP1MF;
+    pub use super::MISR::ITAMP2MF;
+    pub use super::MISR::ITAMP3MF;
+    pub use super::MISR::ITAMP4MF;
+    pub use super::MISR::ITAMP5MF;
+    pub use super::MISR::ITAMP8MF;
+    pub use super::MISR::TAMP1MF;
+    pub use super::MISR::TAMP2MF;
+    pub use super::MISR::TAMP3MF;
 }
 
 /// TAMP status clear register
-pub mod TAMP_SCR {
+pub mod SCR {
 
     /// CTAMP1F
     pub mod CTAMP1F {
@@ -1116,7 +1116,7 @@ pub mod TAMP_SCR {
 }
 
 /// TAMP monotonic counter register
-pub mod TAMP_COUNTR {
+pub mod COUNTR {
 
     /// COUNT
     pub mod COUNT {
@@ -1134,7 +1134,7 @@ pub mod TAMP_COUNTR {
 }
 
 /// TAMP configuration register
-pub mod TAMP_CFGR {
+pub mod CFGR {
 
     /// OUT3_RMP
     pub mod OUT3_RMP {
@@ -1151,8 +1151,8 @@ pub mod TAMP_CFGR {
     }
 }
 
-/// TAMP backup 0 register
-pub mod TAMP_BKP0R {
+/// TAMP backup %s register
+pub mod BKP0R {
 
     /// BKP
     pub mod BKP {
@@ -1169,163 +1169,163 @@ pub mod TAMP_BKP0R {
     }
 }
 
-/// TAMP backup 1 register
-pub mod TAMP_BKP1R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP1R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 2 register
-pub mod TAMP_BKP2R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP2R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 3 register
-pub mod TAMP_BKP3R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP3R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 4 register
-pub mod TAMP_BKP4R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP4R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 5 register
-pub mod TAMP_BKP5R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP5R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 6 register
-pub mod TAMP_BKP6R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP6R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 7 register
-pub mod TAMP_BKP7R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP7R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 8 register
-pub mod TAMP_BKP8R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP8R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 9 register
-pub mod TAMP_BKP9R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP9R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 10 register
-pub mod TAMP_BKP10R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP10R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 11 register
-pub mod TAMP_BKP11R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP11R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 12 register
-pub mod TAMP_BKP12R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP12R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 13 register
-pub mod TAMP_BKP13R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP13R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 14 register
-pub mod TAMP_BKP14R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP14R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 15 register
-pub mod TAMP_BKP15R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP15R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 16 register
-pub mod TAMP_BKP16R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP16R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 17 register
-pub mod TAMP_BKP17R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP17R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 18 register
-pub mod TAMP_BKP18R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP18R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 19 register
-pub mod TAMP_BKP19R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP19R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 20 register
-pub mod TAMP_BKP20R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP20R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 21 register
-pub mod TAMP_BKP21R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP21R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 22 register
-pub mod TAMP_BKP22R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP22R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 23 register
-pub mod TAMP_BKP23R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP23R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 24 register
-pub mod TAMP_BKP24R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP24R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 25 register
-pub mod TAMP_BKP25R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP25R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 26 register
-pub mod TAMP_BKP26R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP26R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 27 register
-pub mod TAMP_BKP27R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP27R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 28 register
-pub mod TAMP_BKP28R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP28R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 29 register
-pub mod TAMP_BKP29R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP29R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 30 register
-pub mod TAMP_BKP30R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP30R {
+    pub use super::BKP0R::BKP;
 }
 
-/// TAMP backup 31 register
-pub mod TAMP_BKP31R {
-    pub use super::TAMP_BKP0R::BKP;
+/// TAMP backup %s register
+pub mod BKP31R {
+    pub use super::BKP0R::BKP;
 }
 
 /// TAMP hardware configuration register 2
-pub mod TAMP_HWCFGR2 {
+pub mod HWCFGR2 {
 
     /// OPTIONREG_OUT
     pub mod OPTIONREG_OUT {
@@ -1357,7 +1357,7 @@ pub mod TAMP_HWCFGR2 {
 }
 
 /// TAMP hardware configuration register 1
-pub mod TAMP_HWCFGR1 {
+pub mod HWCFGR1 {
 
     /// BACKUP_REGS
     pub mod BACKUP_REGS {
@@ -1417,7 +1417,7 @@ pub mod TAMP_HWCFGR1 {
 }
 
 /// TAMP version register
-pub mod TAMP_VERR {
+pub mod VERR {
 
     /// MINREV
     pub mod MINREV {
@@ -1449,7 +1449,7 @@ pub mod TAMP_VERR {
 }
 
 /// TAMP identification register
-pub mod TAMP_IPIDR {
+pub mod IPIDR {
 
     /// ID
     pub mod ID {
@@ -1467,7 +1467,7 @@ pub mod TAMP_IPIDR {
 }
 
 /// TAMP size identification register
-pub mod TAMP_SIDR {
+pub mod SIDR {
 
     /// SID
     pub mod SID {
@@ -1486,222 +1486,222 @@ pub mod TAMP_SIDR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_CR1: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_CR2: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
-
-    /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_FLTCR: RWRegister<u32>,
+    _reserved1: [u8; 4],
 
     /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_ATCR1: RWRegister<u32>,
+    pub FLTCR: RWRegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_ATSEEDR: WORegister<u32>,
+    pub ATCR1: RWRegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_ATOR: RORegister<u32>,
+    pub ATSEEDR: WORegister<u32>,
 
-    _reserved2: [u32; 1],
+    /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
+    pub ATOR: RORegister<u32>,
+
+    _reserved2: [u8; 4],
 
     /// This register can be written only when the APB access is secure.
-    pub TAMP_SMCR: RWRegister<u32>,
+    pub SMCR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
-
-    /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_IER: RWRegister<u32>,
+    _reserved3: [u8; 8],
 
     /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
-    pub TAMP_SR: RORegister<u32>,
+    pub IER: RWRegister<u32>,
+
+    /// This register can be protected against non-secure access. Refer to Section51.3.3: TAMP secure protection modes.
+    pub SR: RORegister<u32>,
 
     /// TAMP non-secure masked interrupt status register
-    pub TAMP_MISR: RORegister<u32>,
+    pub MISR: RORegister<u32>,
 
     /// TAMP secure masked interrupt status register
-    pub TAMP_SMISR: RORegister<u32>,
+    pub SMISR: RORegister<u32>,
 
     /// TAMP status clear register
-    pub TAMP_SCR: WORegister<u32>,
+    pub SCR: WORegister<u32>,
 
     /// TAMP monotonic counter register
-    pub TAMP_COUNTR: RORegister<u32>,
+    pub COUNTR: RORegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// TAMP configuration register
-    pub TAMP_CFGR: RWRegister<u32>,
+    pub CFGR: RWRegister<u32>,
 
-    _reserved5: [u32; 43],
+    _reserved5: [u8; 172],
 
-    /// TAMP backup 0 register
-    pub TAMP_BKP0R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP0R: RWRegister<u32>,
 
-    /// TAMP backup 1 register
-    pub TAMP_BKP1R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP1R: RWRegister<u32>,
 
-    /// TAMP backup 2 register
-    pub TAMP_BKP2R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP2R: RWRegister<u32>,
 
-    /// TAMP backup 3 register
-    pub TAMP_BKP3R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP3R: RWRegister<u32>,
 
-    /// TAMP backup 4 register
-    pub TAMP_BKP4R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP4R: RWRegister<u32>,
 
-    /// TAMP backup 5 register
-    pub TAMP_BKP5R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP5R: RWRegister<u32>,
 
-    /// TAMP backup 6 register
-    pub TAMP_BKP6R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP6R: RWRegister<u32>,
 
-    /// TAMP backup 7 register
-    pub TAMP_BKP7R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP7R: RWRegister<u32>,
 
-    /// TAMP backup 8 register
-    pub TAMP_BKP8R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP8R: RWRegister<u32>,
 
-    /// TAMP backup 9 register
-    pub TAMP_BKP9R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP9R: RWRegister<u32>,
 
-    /// TAMP backup 10 register
-    pub TAMP_BKP10R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP10R: RWRegister<u32>,
 
-    /// TAMP backup 11 register
-    pub TAMP_BKP11R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP11R: RWRegister<u32>,
 
-    /// TAMP backup 12 register
-    pub TAMP_BKP12R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP12R: RWRegister<u32>,
 
-    /// TAMP backup 13 register
-    pub TAMP_BKP13R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP13R: RWRegister<u32>,
 
-    /// TAMP backup 14 register
-    pub TAMP_BKP14R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP14R: RWRegister<u32>,
 
-    /// TAMP backup 15 register
-    pub TAMP_BKP15R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP15R: RWRegister<u32>,
 
-    /// TAMP backup 16 register
-    pub TAMP_BKP16R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP16R: RWRegister<u32>,
 
-    /// TAMP backup 17 register
-    pub TAMP_BKP17R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP17R: RWRegister<u32>,
 
-    /// TAMP backup 18 register
-    pub TAMP_BKP18R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP18R: RWRegister<u32>,
 
-    /// TAMP backup 19 register
-    pub TAMP_BKP19R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP19R: RWRegister<u32>,
 
-    /// TAMP backup 20 register
-    pub TAMP_BKP20R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP20R: RWRegister<u32>,
 
-    /// TAMP backup 21 register
-    pub TAMP_BKP21R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP21R: RWRegister<u32>,
 
-    /// TAMP backup 22 register
-    pub TAMP_BKP22R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP22R: RWRegister<u32>,
 
-    /// TAMP backup 23 register
-    pub TAMP_BKP23R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP23R: RWRegister<u32>,
 
-    /// TAMP backup 24 register
-    pub TAMP_BKP24R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP24R: RWRegister<u32>,
 
-    /// TAMP backup 25 register
-    pub TAMP_BKP25R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP25R: RWRegister<u32>,
 
-    /// TAMP backup 26 register
-    pub TAMP_BKP26R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP26R: RWRegister<u32>,
 
-    /// TAMP backup 27 register
-    pub TAMP_BKP27R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP27R: RWRegister<u32>,
 
-    /// TAMP backup 28 register
-    pub TAMP_BKP28R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP28R: RWRegister<u32>,
 
-    /// TAMP backup 29 register
-    pub TAMP_BKP29R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP29R: RWRegister<u32>,
 
-    /// TAMP backup 30 register
-    pub TAMP_BKP30R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP30R: RWRegister<u32>,
 
-    /// TAMP backup 31 register
-    pub TAMP_BKP31R: RWRegister<u32>,
+    /// TAMP backup %s register
+    pub BKP31R: RWRegister<u32>,
 
-    _reserved6: [u32; 155],
+    _reserved6: [u8; 620],
 
     /// TAMP hardware configuration register 2
-    pub TAMP_HWCFGR2: RORegister<u32>,
+    pub HWCFGR2: RORegister<u32>,
 
     /// TAMP hardware configuration register 1
-    pub TAMP_HWCFGR1: RORegister<u32>,
+    pub HWCFGR1: RORegister<u32>,
 
     /// TAMP version register
-    pub TAMP_VERR: RORegister<u32>,
+    pub VERR: RORegister<u32>,
 
     /// TAMP identification register
-    pub TAMP_IPIDR: RORegister<u32>,
+    pub IPIDR: RORegister<u32>,
 
     /// TAMP size identification register
-    pub TAMP_SIDR: RORegister<u32>,
+    pub SIDR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub TAMP_CR1: u32,
-    pub TAMP_CR2: u32,
-    pub TAMP_FLTCR: u32,
-    pub TAMP_ATCR1: u32,
-    pub TAMP_ATSEEDR: u32,
-    pub TAMP_ATOR: u32,
-    pub TAMP_SMCR: u32,
-    pub TAMP_IER: u32,
-    pub TAMP_SR: u32,
-    pub TAMP_MISR: u32,
-    pub TAMP_SMISR: u32,
-    pub TAMP_SCR: u32,
-    pub TAMP_COUNTR: u32,
-    pub TAMP_CFGR: u32,
-    pub TAMP_BKP0R: u32,
-    pub TAMP_BKP1R: u32,
-    pub TAMP_BKP2R: u32,
-    pub TAMP_BKP3R: u32,
-    pub TAMP_BKP4R: u32,
-    pub TAMP_BKP5R: u32,
-    pub TAMP_BKP6R: u32,
-    pub TAMP_BKP7R: u32,
-    pub TAMP_BKP8R: u32,
-    pub TAMP_BKP9R: u32,
-    pub TAMP_BKP10R: u32,
-    pub TAMP_BKP11R: u32,
-    pub TAMP_BKP12R: u32,
-    pub TAMP_BKP13R: u32,
-    pub TAMP_BKP14R: u32,
-    pub TAMP_BKP15R: u32,
-    pub TAMP_BKP16R: u32,
-    pub TAMP_BKP17R: u32,
-    pub TAMP_BKP18R: u32,
-    pub TAMP_BKP19R: u32,
-    pub TAMP_BKP20R: u32,
-    pub TAMP_BKP21R: u32,
-    pub TAMP_BKP22R: u32,
-    pub TAMP_BKP23R: u32,
-    pub TAMP_BKP24R: u32,
-    pub TAMP_BKP25R: u32,
-    pub TAMP_BKP26R: u32,
-    pub TAMP_BKP27R: u32,
-    pub TAMP_BKP28R: u32,
-    pub TAMP_BKP29R: u32,
-    pub TAMP_BKP30R: u32,
-    pub TAMP_BKP31R: u32,
-    pub TAMP_HWCFGR2: u32,
-    pub TAMP_HWCFGR1: u32,
-    pub TAMP_VERR: u32,
-    pub TAMP_IPIDR: u32,
-    pub TAMP_SIDR: u32,
+    pub CR1: u32,
+    pub CR2: u32,
+    pub FLTCR: u32,
+    pub ATCR1: u32,
+    pub ATSEEDR: u32,
+    pub ATOR: u32,
+    pub SMCR: u32,
+    pub IER: u32,
+    pub SR: u32,
+    pub MISR: u32,
+    pub SMISR: u32,
+    pub SCR: u32,
+    pub COUNTR: u32,
+    pub CFGR: u32,
+    pub BKP0R: u32,
+    pub BKP1R: u32,
+    pub BKP2R: u32,
+    pub BKP3R: u32,
+    pub BKP4R: u32,
+    pub BKP5R: u32,
+    pub BKP6R: u32,
+    pub BKP7R: u32,
+    pub BKP8R: u32,
+    pub BKP9R: u32,
+    pub BKP10R: u32,
+    pub BKP11R: u32,
+    pub BKP12R: u32,
+    pub BKP13R: u32,
+    pub BKP14R: u32,
+    pub BKP15R: u32,
+    pub BKP16R: u32,
+    pub BKP17R: u32,
+    pub BKP18R: u32,
+    pub BKP19R: u32,
+    pub BKP20R: u32,
+    pub BKP21R: u32,
+    pub BKP22R: u32,
+    pub BKP23R: u32,
+    pub BKP24R: u32,
+    pub BKP25R: u32,
+    pub BKP26R: u32,
+    pub BKP27R: u32,
+    pub BKP28R: u32,
+    pub BKP29R: u32,
+    pub BKP30R: u32,
+    pub BKP31R: u32,
+    pub HWCFGR2: u32,
+    pub HWCFGR1: u32,
+    pub VERR: u32,
+    pub IPIDR: u32,
+    pub SIDR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

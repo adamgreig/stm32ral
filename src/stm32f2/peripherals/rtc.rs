@@ -1394,7 +1394,7 @@ pub struct RegisterBlock {
     /// write protection register
     pub WPR: WORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// time stamp time register
     pub TSTR: RORegister<u32>,
@@ -1402,12 +1402,12 @@ pub struct RegisterBlock {
     /// time stamp date register
     pub TSDR: RORegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// tamper and alternate function configuration register
     pub TAFCR: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// backup register
     pub BKP0R: RWRegister<u32>,

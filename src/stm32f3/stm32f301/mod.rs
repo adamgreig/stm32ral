@@ -31,11 +31,9 @@ pub use super::instances::sdadc;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
 pub mod dac2;
-pub use super::instances::tim13;
-pub use super::instances::tim14;
 pub use super::instances::tim18;
-pub use super::instances::tim6_f301_f373_f3x8 as tim6;
-pub use super::instances::tim7_f301_f373_f3x8 as tim7;
+pub use super::instances::tim6_f301_f373 as tim6;
+pub use super::instances::tim7_f301_f373 as tim7;
 pub mod dac1;
 pub mod tim12;
 pub use super::instances::dbgmcu;
@@ -50,7 +48,7 @@ pub use super::instances::scb_actrl;
 pub use super::instances::stk;
 pub mod adc1_2;
 pub mod exti;
-pub use super::instances::opamp_f301_f3x4 as opamp;
+pub use super::instances::opamp;
 pub use super::instances::tim1;
 pub mod comp;
 
@@ -99,8 +97,6 @@ pub struct Peripherals {
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
     pub TIM18: tim18::Instance,
-    pub TIM13: tim13::Instance,
-    pub TIM14: tim14::Instance,
     pub TIM12: tim12::Instance,
     pub DAC1: dac1::Instance,
     pub DBGMCU: dbgmcu::Instance,
@@ -170,8 +166,6 @@ impl Peripherals {
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
             TIM18: tim18::TIM18::steal(),
-            TIM13: tim13::TIM13::steal(),
-            TIM14: tim14::TIM14::steal(),
             TIM12: tim12::TIM12::steal(),
             DAC1: dac1::DAC1::steal(),
             DBGMCU: dbgmcu::DBGMCU::steal(),

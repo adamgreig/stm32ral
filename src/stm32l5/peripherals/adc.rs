@@ -1923,7 +1923,7 @@ pub struct RegisterBlock {
     /// sample time register 2
     pub SMPR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// watchdog threshold register 1
     pub TR1: RWRegister<u32>,
@@ -1934,7 +1934,7 @@ pub struct RegisterBlock {
     /// watchdog threshold register 3
     pub TR3: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// regular sequence register 1
     pub SQR1: RWRegister<u32>,
@@ -1951,12 +1951,12 @@ pub struct RegisterBlock {
     /// regular Data Register
     pub DR: RORegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// injected sequence register
     pub JSQR: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// offset register 1
     pub OFR1: RWRegister<u32>,
@@ -1970,7 +1970,7 @@ pub struct RegisterBlock {
     /// offset register 4
     pub OFR4: RWRegister<u32>,
 
-    _reserved5: [u32; 4],
+    _reserved5: [u8; 16],
 
     /// injected data register 1
     pub JDR1: RORegister<u32>,
@@ -1984,7 +1984,7 @@ pub struct RegisterBlock {
     /// injected data register 4
     pub JDR4: RORegister<u32>,
 
-    _reserved6: [u32; 4],
+    _reserved6: [u8; 16],
 
     /// Analog Watchdog 2 Configuration Register
     pub AWD2CR: RWRegister<u32>,
@@ -1992,7 +1992,7 @@ pub struct RegisterBlock {
     /// Analog Watchdog 3 Configuration Register
     pub AWD3CR: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// Differential Mode Selection Register 2
     pub DIFSEL: RWRegister<u32>,

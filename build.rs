@@ -155,6 +155,8 @@ fn main() {
             "src/stm32l1/stm32l162/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L412").is_some() {
             "src/stm32l4/stm32l412/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32L4R5").is_some() {
+            "src/stm32l4/stm32l4r5/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L4R9").is_some() {
             "src/stm32l4/stm32l4r9/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L4X1").is_some() {

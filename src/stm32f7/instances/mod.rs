@@ -103,8 +103,8 @@ pub mod sdmmc;
 #[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f7x6"))]
 pub mod sdmmc1;
 
-#[cfg(any(feature="doc", feature="stm32f730", feature="stm32f7x2", feature="stm32f7x3"))]
-pub mod sai_f730_f7x2_f7x3;
+#[cfg(any(feature="doc", feature="stm32f730", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
+pub mod sai;
 
 #[cfg(any(feature="doc", feature="stm32f730", feature="stm32f7x2", feature="stm32f7x3"))]
 pub mod spi_f730_f7x2_f7x3;
@@ -243,9 +243,6 @@ pub mod exti_f745_f750_f765_f7x6_f7x7_f7x9;
 
 #[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod ltdc;
-
-#[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
-pub mod sai_f745_f750_f765_f7x6_f7x7_f7x9;
 
 #[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod dma2d;

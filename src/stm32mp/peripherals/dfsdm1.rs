@@ -2222,7 +2222,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 0 delay register
     pub DFSDM_CH0DLYR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH1CFGR1: RWRegister<u32>,
@@ -2242,7 +2242,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 1 delay register
     pub DFSDM_CH1DLYR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH2CFGR1: RWRegister<u32>,
@@ -2262,7 +2262,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 2 delay register
     pub DFSDM_CH2DLYR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH3CFGR1: RWRegister<u32>,
@@ -2282,7 +2282,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 3 delay register
     pub DFSDM_CH3DLYR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH4CFGR1: RWRegister<u32>,
@@ -2302,7 +2302,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 4 delay register
     pub DFSDM_CH4DLYR: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH5CFGR1: RWRegister<u32>,
@@ -2322,7 +2322,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 5 delay register
     pub DFSDM_CH5DLYR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH6CFGR1: RWRegister<u32>,
@@ -2342,7 +2342,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 6 delay register
     pub DFSDM_CH6DLYR: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// This register specifies the parameters used by channel y.
     pub DFSDM_CH7CFGR1: RWRegister<u32>,
@@ -2362,7 +2362,7 @@ pub struct RegisterBlock {
     /// DFSDM channel 7 delay register
     pub DFSDM_CH7DLYR: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// DFSDM filter 0 control register 1
     pub DFSDM_FLT0CR1: RWRegister<u32>,
@@ -2409,7 +2409,7 @@ pub struct RegisterBlock {
     /// DFSDM filter 0 conversion timer register
     pub DFSDM_FLT0CNVTIMR: RORegister<u32>,
 
-    _reserved9: [u32; 17],
+    _reserved9: [u8; 68],
 
     /// DFSDM filter 1 control register 1
     pub DFSDM_FLT1CR1: RWRegister<u32>,
@@ -2456,7 +2456,7 @@ pub struct RegisterBlock {
     /// DFSDM filter 1 conversion timer register
     pub DFSDM_FLT1CNVTIMR: RORegister<u32>,
 
-    _reserved10: [u32; 17],
+    _reserved10: [u8; 68],
 
     /// DFSDM filter 2 control register 1
     pub DFSDM_FLT2CR1: RWRegister<u32>,
@@ -2503,7 +2503,7 @@ pub struct RegisterBlock {
     /// DFSDM filter 2 conversion timer register
     pub DFSDM_FLT2CNVTIMR: RORegister<u32>,
 
-    _reserved11: [u32; 17],
+    _reserved11: [u8; 68],
 
     /// DFSDM filter 3 control register 1
     pub DFSDM_FLT3CR1: RWRegister<u32>,
@@ -2550,7 +2550,7 @@ pub struct RegisterBlock {
     /// DFSDM filter 3 conversion timer register
     pub DFSDM_FLT3CNVTIMR: RORegister<u32>,
 
-    _reserved12: [u32; 17],
+    _reserved12: [u8; 68],
 
     /// DFSDM filter 4 control register 1
     pub DFSDM_FLT4CR1: RWRegister<u32>,
@@ -2597,7 +2597,7 @@ pub struct RegisterBlock {
     /// DFSDM filter 4 conversion timer register
     pub DFSDM_FLT4CNVTIMR: RORegister<u32>,
 
-    _reserved13: [u32; 17],
+    _reserved13: [u8; 68],
 
     /// DFSDM filter 5 control register 1
     pub DFSDM_FLT5CR1: RWRegister<u32>,
@@ -2644,7 +2644,7 @@ pub struct RegisterBlock {
     /// DFSDM filter 5 conversion timer register
     pub DFSDM_FLT5CNVTIMR: RORegister<u32>,
 
-    _reserved14: [u32; 269],
+    _reserved14: [u8; 1076],
 
     /// This register specifies the hardware configuration of DFSDM peripheral.
     pub DFSDM_HWCFGR: RORegister<u32>,

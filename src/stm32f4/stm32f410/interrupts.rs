@@ -314,7 +314,7 @@ pub enum Interrupt {
     EXTI20 = 76,
     /// 80: RNG global interrupt
     RNG = 80,
-    /// 81: Floating point unit
+    /// 81: Floating point unit interrupt
     FPU = 81,
     /// 85: SPI 5 global interrupt
     SPI5 = 85,

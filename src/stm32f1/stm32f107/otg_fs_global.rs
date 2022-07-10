@@ -1593,7 +1593,7 @@ pub struct RegisterBlock {
     /// FS_GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
     pub FS_GRXSTSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
     pub FS_GRXFSIZ: RWRegister<u32>,
@@ -1606,7 +1606,7 @@ pub struct RegisterBlock {
     /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
     pub FS_GNPTXSTS: RORegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// OTG_FS general core configuration register (OTG_FS_GCCFG)
     pub FS_GCCFG: RWRegister<u32>,
@@ -1614,7 +1614,7 @@ pub struct RegisterBlock {
     /// core ID register
     pub FS_CID: RWRegister<u32>,
 
-    _reserved3: [u32; 48],
+    _reserved3: [u8; 192],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
     pub FS_HPTXFSIZ: RWRegister<u32>,

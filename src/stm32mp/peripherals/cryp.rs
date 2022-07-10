@@ -2748,7 +2748,7 @@ pub struct RegisterBlock {
     /// Please refer to Section39.6.21: CRYP context swap GCM-CCM registers (CRYP_CSGCMCCMxR) for details.
     pub CRYP_CSGCM7R: RWRegister<u32>,
 
-    _reserved1: [u32; 216],
+    _reserved1: [u8; 864],
 
     /// CRYP hardware configuration register
     pub CRYP_HWCFGR: RORegister<u32>,

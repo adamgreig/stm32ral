@@ -1307,14 +1307,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Break 2 generation
@@ -2881,7 +2881,7 @@ pub struct RegisterBlock {
     /// DMA address for full transfer
     pub DMAR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare mode register 3 (output mode)
     pub CCMR3_Output: RWRegister<u32>,

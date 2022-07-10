@@ -1906,7 +1906,7 @@ pub struct RegisterBlock {
     /// The SDMMC_ACKTIMER register contains the acknowledgment timeout period, in SDMMC_CK bus clock periods. A counter loads the value from the SDMMC_ACKTIMER register, and starts decrementing when the data path state machine (DPSM) enters the Wait_Ack state. If the timer reaches 0 while the DPSM is in this states, the acknowledgment timeout status flag is set.
     pub ACKTIMER: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// The receive and transmit FIFOs can be read or written as 32-bit wide registers. The FIFOs contain 32 entries on 32 sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.
     pub IDMACTRLR: RWRegister<u32>,
@@ -1920,12 +1920,12 @@ pub struct RegisterBlock {
     /// The SDMMC_IDMABASE1R register contains the double buffer configuration second buffer memory base address.
     pub IDMABASE1R: RWRegister<u32>,
 
-    _reserved2: [u32; 8],
+    _reserved2: [u8; 32],
 
     /// The receive and transmit FIFOs can be only read or written as word (32-bit) wide registers. The FIFOs contain 16 entries on sequential addresses. This allows the CPU to use its load and store multiple operands to read from/write to the FIFO.When accessing SDMMC_FIFOR with half word or byte access an AHB bus fault is generated.
     pub FIFOR: RWRegister<u32>,
 
-    _reserved3: [u32; 220],
+    _reserved3: [u8; 880],
 
     /// SDMMC IP version register
     pub VER: RORegister<u32>,

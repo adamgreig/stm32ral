@@ -22,11 +22,11 @@ pub mod BCR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: The FMC_CLK is only generated during the synchronous memory access (read/write transaction)
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: The FMC_CLK is generated continuously during asynchronous and synchronous access. The FMC_CLK clock is activated when the CCLKEN is set
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The FMC_CLK is only generated during the synchronous memory access (read/write transaction)
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -43,11 +43,11 @@ pub mod BCR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Write operations are performed in synchronous mode
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Write operations are always performed in asynchronous mode
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -539,11 +539,11 @@ pub mod BCR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Write operations are performed in synchronous mode
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Write operations are always performed in asynchronous mode
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -1064,12 +1064,8 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: FIFO not empty
             pub const NotEmpty: u32 = 0b0;
@@ -1077,6 +1073,10 @@ pub mod SR {
             /// 0b1: FIFO empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// IFEN
@@ -1843,10 +1843,8 @@ pub mod SDCMR {
         pub const mask: u32 = 0b111 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b000: Normal Mode
             pub const Normal: u32 = 0b000;
@@ -1869,6 +1867,8 @@ pub mod SDCMR {
             /// 0b110: Power-down command
             pub const PowerDownCommand: u32 = 0b110;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command target bank 2
@@ -1879,10 +1879,8 @@ pub mod SDCMR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: Command not issued to SDRAM Bank 1
             pub const NotIssued: u32 = 0b0;
@@ -1890,6 +1888,8 @@ pub mod SDCMR {
             /// 0b1: Command issued to SDRAM Bank 1
             pub const Issued: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Command target bank 1
@@ -1900,9 +1900,9 @@ pub mod SDCMR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTB2::RW;
+        pub use super::CTB2::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Number of Auto-refresh
@@ -1945,14 +1945,14 @@ pub mod SDRTR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Refresh Error Flag is cleared
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Refresh Timer Count
@@ -2000,12 +2000,8 @@ pub mod SDSR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No refresh error has been detected
             pub const NoError: u32 = 0b0;
@@ -2013,6 +2009,10 @@ pub mod SDSR {
             /// 0b1: A refresh error has been detected
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Status Mode for Bank 1
@@ -2021,12 +2021,8 @@ pub mod SDSR {
         pub const offset: u32 = 1;
         /// Mask (2 bits: 0b11 << 1)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b00: Normal Mode
             pub const Normal: u32 = 0b00;
@@ -2037,6 +2033,10 @@ pub mod SDSR {
             /// 0b10: Power-down mode
             pub const PowerDown: u32 = 0b10;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Status Mode for Bank 2
@@ -2045,11 +2045,11 @@ pub mod SDSR {
         pub const offset: u32 = 3;
         /// Mask (2 bits: 0b11 << 3)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MODES1::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MODES1::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Busy status
@@ -2058,12 +2058,8 @@ pub mod SDSR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: SDRAM Controller is ready to accept a new request
             pub const NotBusy: u32 = 0b0;
@@ -2071,6 +2067,10 @@ pub mod SDSR {
             /// 0b1: SDRAM Controller is not ready to accept a new request
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]
@@ -2099,7 +2099,7 @@ pub struct RegisterBlock {
     /// SRAM/NOR-Flash chip-select timing register 1
     pub BTR4: RWRegister<u32>,
 
-    _reserved1: [u32; 24],
+    _reserved1: [u8; 96],
 
     /// PC Card/NAND Flash control register 3
     pub PCR: RWRegister<u32>,
@@ -2113,32 +2113,32 @@ pub struct RegisterBlock {
     /// Attribute memory space timing register 3
     pub PATT: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// ECC result register 3
     pub ECCR: RORegister<u32>,
 
-    _reserved3: [u32; 27],
+    _reserved3: [u8; 108],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR1: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR2: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR3: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR4: RWRegister<u32>,
 
-    _reserved7: [u32; 8],
+    _reserved7: [u8; 32],
 
     /// SDRAM Control Register 1
     pub SDCR1: RWRegister<u32>,

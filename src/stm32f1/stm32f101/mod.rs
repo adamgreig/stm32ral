@@ -51,6 +51,7 @@ pub use super::instances::ethernet_mmc;
 pub use super::instances::ethernet_ptp;
 pub use super::instances::usb;
 pub mod adc2;
+pub mod adc3;
 pub use super::instances::tim1_f100_f101_f102 as tim1;
 pub use super::instances::tim8;
 pub mod sdio;
@@ -60,7 +61,6 @@ pub use super::instances::nvic_stir;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
-pub mod adc3;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -122,6 +122,7 @@ pub struct Peripherals {
     pub Ethernet_DMA: ethernet_dma::Instance,
     pub USB: usb::Instance,
     pub ADC2: adc2::Instance,
+    pub ADC3: adc3::Instance,
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
     pub SDIO: sdio::Instance,
@@ -131,7 +132,6 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
-    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -199,6 +199,7 @@ impl Peripherals {
             Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
             USB: usb::USB::steal(),
             ADC2: adc2::ADC2::steal(),
+            ADC3: adc3::ADC3::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
             SDIO: sdio::SDIO::steal(),
@@ -208,7 +209,6 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
-            ADC3: adc3::ADC3::steal(),
         }
     }
 }

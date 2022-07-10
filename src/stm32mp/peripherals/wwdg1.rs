@@ -200,7 +200,7 @@ pub struct RegisterBlock {
     /// Status register
     pub WWDG_SR: RWRegister<u32>,
 
-    _reserved1: [u32; 249],
+    _reserved1: [u8; 996],
 
     /// WWDG hardware configuration register
     pub WWDG_HWCFGR: RORegister<u32>,

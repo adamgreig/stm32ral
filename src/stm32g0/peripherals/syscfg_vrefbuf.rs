@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! System configuration controller
 //!
-//! Used by: stm32g071, stm32g07x, stm32g081
+//! Used by: stm32g07x, stm32g081
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1333,12 +1333,12 @@ pub struct RegisterBlock {
     /// SYSCFG configuration register 1
     pub CFGR1: RWRegister<u32>,
 
-    _reserved1: [u32; 5],
+    _reserved1: [u8; 20],
 
     /// SYSCFG configuration register 1
     pub CFGR2: RWRegister<u32>,
 
-    _reserved2: [u32; 5],
+    _reserved2: [u8; 20],
 
     /// VREFBUF control and status register
     pub VREFBUF_CSR: RWRegister<u32>,
@@ -1346,7 +1346,7 @@ pub struct RegisterBlock {
     /// VREFBUF calibration control register
     pub VREFBUF_CCR: RWRegister<u32>,
 
-    _reserved3: [u32; 18],
+    _reserved3: [u8; 72],
 
     /// interrupt line 0 status register
     pub ITLINE0: RORegister<u32>,

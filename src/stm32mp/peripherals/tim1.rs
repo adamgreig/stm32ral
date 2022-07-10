@@ -2342,7 +2342,7 @@ pub struct RegisterBlock {
     /// TIM1 control register 1
     pub TIM1_CR1: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// TIM1 control register 2
     pub TIM1_CR2: RWRegister<u32>,
@@ -2353,7 +2353,7 @@ pub struct RegisterBlock {
     /// TIM1 DMA/interrupt enable register
     pub TIM1_DIER: RWRegister<u16>,
 
-    _reserved2: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// TIM1 status register
     pub TIM1_SR: RWRegister<u32>,
@@ -2361,7 +2361,7 @@ pub struct RegisterBlock {
     /// TIM1 event generation register
     pub TIM1_EGR: WORegister<u16>,
 
-    _reserved3: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// The same register can be used for input capture mode (this section) or for output compare mode (next section). The direction of a channel is defined by configuring the corresponding CCxS bits. All the other bits of this register have a different function for input capture and for output compare modes. It is possible to combine both modes independently (e.g. channel 1 in input capture mode and channel 2 in output compare mode). Input capture mode:
     pub TIM1_CCMR1ALTERNATE1: RWRegister<u32>,
@@ -2378,37 +2378,37 @@ pub struct RegisterBlock {
     /// TIM1 prescaler
     pub TIM1_PSC: RWRegister<u16>,
 
-    _reserved4: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// TIM1 auto-reload register
     pub TIM1_ARR: RWRegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved5: [u8; 2],
 
     /// TIM1 repetition counter register
     pub TIM1_RCR: RWRegister<u16>,
 
-    _reserved6: [u16; 1],
+    _reserved6: [u8; 2],
 
     /// TIM1 capture/compare register 1
     pub TIM1_CCR1: RWRegister<u16>,
 
-    _reserved7: [u16; 1],
+    _reserved7: [u8; 2],
 
     /// TIM1 capture/compare register 2
     pub TIM1_CCR2: RWRegister<u16>,
 
-    _reserved8: [u16; 1],
+    _reserved8: [u8; 2],
 
     /// TIM1 capture/compare register 3
     pub TIM1_CCR3: RWRegister<u16>,
 
-    _reserved9: [u16; 1],
+    _reserved9: [u8; 2],
 
     /// TIM1 capture/compare register 4
     pub TIM1_CCR4: RWRegister<u16>,
 
-    _reserved10: [u16; 1],
+    _reserved10: [u8; 2],
 
     /// As the bits BK2BID, BKBID, BK2DSRM, BKDSRM, BK2P, BK2E, BK2F\[3:0\], BKF\[3:0\], AOE, BKP, BKE, OSSI, OSSR and DTG\[7:0\] can be write-locked depending on the LOCK configuration, it can be necessary to configure all of them during the first write access to the TIMx_BDTR register.
     pub TIM1_BDTR: RWRegister<u32>,
@@ -2416,12 +2416,12 @@ pub struct RegisterBlock {
     /// TIM1 DMA control register
     pub TIM1_DCR: RWRegister<u16>,
 
-    _reserved11: [u16; 1],
+    _reserved11: [u8; 2],
 
     /// TIM1 DMA address for full transfer
     pub TIM1_DMAR: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// The channels 5 and 6 can only be configured in output. Output compare mode:
     pub TIM1_CCMR3: RWRegister<u32>,
@@ -2432,7 +2432,7 @@ pub struct RegisterBlock {
     /// TIM1 capture/compare register 6
     pub TIM1_CCR6: RWRegister<u16>,
 
-    _reserved13: [u16; 1],
+    _reserved13: [u8; 2],
 
     /// TIM1 alternate function option register 1
     pub TIM1_AF1: RWRegister<u32>,

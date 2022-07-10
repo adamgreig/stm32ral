@@ -216,7 +216,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 0
     pub FUNCTION0: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Comparator Register 1
     pub COMP1: RWRegister<u32>,
@@ -227,7 +227,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 1
     pub FUNCTION1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Comparator Register 2
     pub COMP2: RWRegister<u32>,
@@ -238,7 +238,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 2
     pub FUNCTION2: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Comparator Register 3
     pub COMP3: RWRegister<u32>,
@@ -249,7 +249,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 3
     pub FUNCTION3: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// Comparator Register 4
     pub COMP4: RWRegister<u32>,
@@ -260,7 +260,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 4
     pub FUNCTION4: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// Comparator Register 5
     pub COMP5: RWRegister<u32>,
@@ -271,7 +271,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 5
     pub FUNCTION5: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// Comparator Register 6
     pub COMP6: RWRegister<u32>,
@@ -282,7 +282,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 6
     pub FUNCTION6: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// Comparator Register 7
     pub COMP7: RWRegister<u32>,
@@ -293,7 +293,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 7
     pub FUNCTION7: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// Comparator Register 8
     pub COMP8: RWRegister<u32>,
@@ -304,7 +304,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 8
     pub FUNCTION8: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// Comparator Register 9
     pub COMP9: RWRegister<u32>,
@@ -315,7 +315,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 9
     pub FUNCTION9: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// Comparator Register 10
     pub COMP10: RWRegister<u32>,
@@ -326,7 +326,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 10
     pub FUNCTION10: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// Comparator Register 11
     pub COMP11: RWRegister<u32>,
@@ -337,7 +337,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 11
     pub FUNCTION11: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// Comparator Register 12
     pub COMP12: RWRegister<u32>,
@@ -348,7 +348,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 12
     pub FUNCTION12: RWRegister<u32>,
 
-    _reserved13: [u32; 1],
+    _reserved13: [u8; 4],
 
     /// Comparator Register 13
     pub COMP13: RWRegister<u32>,
@@ -359,7 +359,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 13
     pub FUNCTION13: RWRegister<u32>,
 
-    _reserved14: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// Comparator Register 14
     pub COMP14: RWRegister<u32>,
@@ -370,7 +370,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 14
     pub FUNCTION14: RWRegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// Comparator Register 15
     pub COMP15: RWRegister<u32>,
@@ -381,7 +381,7 @@ pub struct RegisterBlock {
     /// Comparator Function Register 15
     pub FUNCTION15: RWRegister<u32>,
 
-    _reserved16: [u32; 933],
+    _reserved16: [u8; 3732],
 
     /// Lock Access Register
     pub LAR: WORegister<u32>,

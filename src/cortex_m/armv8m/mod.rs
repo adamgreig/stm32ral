@@ -2,22 +2,22 @@
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
-pub struct Peripherals {}
+pub struct CorePeripherals {}
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
-pub struct Peripherals {}
+pub struct CorePeripherals {}
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
-impl Peripherals {
+impl CorePeripherals {
     pub unsafe fn steal() -> Self {
-        Peripherals {}
+        CorePeripherals {}
     }
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
-impl Peripherals {
+impl CorePeripherals {
     pub fn steal() -> Self {
-        Peripherals {}
+        CorePeripherals {}
     }
 }

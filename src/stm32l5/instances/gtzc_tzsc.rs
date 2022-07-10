@@ -8,8 +8,8 @@
 pub use crate::stm32l5::peripherals::gtzc_tzsc::Instance;
 pub use crate::stm32l5::peripherals::gtzc_tzsc::{RegisterBlock, ResetValues};
 pub use crate::stm32l5::peripherals::gtzc_tzsc::{
-    TZSC_CR, TZSC_MPCWM1_NSWMR1, TZSC_MPCWM1_NSWMR2, TZSC_MPCWM2_NSWMR1, TZSC_MPCWM2_NSWMR2,
-    TZSC_MPCWM3_NSWMR1, TZSC_PRIVCFGR1, TZSC_PRIVCFGR2, TZSC_SECCFGR1, TZSC_SECCFGR2,
+    CR, MPCWM1_NSWMR1, MPCWM1_NSWMR2, MPCWM2_NSWMR1, MPCWM2_NSWMR2, MPCWM3_NSWMR1, PRIVCFGR1,
+    PRIVCFGR2, SECCFGR1, SECCFGR2,
 };
 
 /// Access functions for the GTZC_TZSC peripheral instance
@@ -27,16 +27,16 @@ pub mod GTZC_TZSC {
 
     /// Reset values for each field in GTZC_TZSC
     pub const reset: ResetValues = ResetValues {
-        TZSC_CR: 0x00000000,
-        TZSC_SECCFGR1: 0x00000000,
-        TZSC_SECCFGR2: 0x00000000,
-        TZSC_PRIVCFGR1: 0x00000000,
-        TZSC_PRIVCFGR2: 0x00000000,
-        TZSC_MPCWM1_NSWMR1: 0x00000000,
-        TZSC_MPCWM1_NSWMR2: 0x00000000,
-        TZSC_MPCWM2_NSWMR1: 0x00000000,
-        TZSC_MPCWM3_NSWMR1: 0x00000000,
-        TZSC_MPCWM2_NSWMR2: 0x00000000,
+        CR: 0x00000000,
+        SECCFGR1: 0x00000000,
+        SECCFGR2: 0x00000000,
+        PRIVCFGR1: 0x00000000,
+        PRIVCFGR2: 0x00000000,
+        MPCWM1_NSWMR1: 0x00000000,
+        MPCWM1_NSWMR2: 0x00000000,
+        MPCWM2_NSWMR1: 0x00000000,
+        MPCWM3_NSWMR1: 0x00000000,
+        MPCWM2_NSWMR2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -127,16 +127,16 @@ pub mod SEC_GTZC_TZSC {
 
     /// Reset values for each field in SEC_GTZC_TZSC
     pub const reset: ResetValues = ResetValues {
-        TZSC_CR: 0x00000000,
-        TZSC_SECCFGR1: 0x00000000,
-        TZSC_SECCFGR2: 0x00000000,
-        TZSC_PRIVCFGR1: 0x00000000,
-        TZSC_PRIVCFGR2: 0x00000000,
-        TZSC_MPCWM1_NSWMR1: 0x00000000,
-        TZSC_MPCWM1_NSWMR2: 0x00000000,
-        TZSC_MPCWM2_NSWMR1: 0x00000000,
-        TZSC_MPCWM3_NSWMR1: 0x00000000,
-        TZSC_MPCWM2_NSWMR2: 0x00000000,
+        CR: 0x00000000,
+        SECCFGR1: 0x00000000,
+        SECCFGR2: 0x00000000,
+        PRIVCFGR1: 0x00000000,
+        PRIVCFGR2: 0x00000000,
+        MPCWM1_NSWMR1: 0x00000000,
+        MPCWM1_NSWMR2: 0x00000000,
+        MPCWM2_NSWMR1: 0x00000000,
+        MPCWM3_NSWMR1: 0x00000000,
+        MPCWM2_NSWMR2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

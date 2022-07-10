@@ -1546,7 +1546,7 @@ pub struct RegisterBlock {
     /// Power status clear register
     pub SCR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Power Port A pull-up control register
     pub PUCRA: RWRegister<u32>,
@@ -1572,7 +1572,7 @@ pub struct RegisterBlock {
     /// Power Port D pull-down control register
     pub PDCRD: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// Power Port F pull-up control register
     pub PUCRF: RWRegister<u32>,

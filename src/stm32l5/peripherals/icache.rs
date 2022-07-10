@@ -393,7 +393,7 @@ pub struct RegisterBlock {
     /// ICACHE miss monitor register
     pub ICACHE_MMONR: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// ICACHE region configuration register
     pub ICACHE_CRR0: RWRegister<u32>,

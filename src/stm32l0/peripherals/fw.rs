@@ -184,7 +184,7 @@ pub struct RegisterBlock {
     /// Volatile data segment length
     pub VDSL: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Configuration register
     pub CR: RWRegister<u32>,

@@ -6,7 +6,7 @@ use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
-/// Semaphore 0 register
+/// Semaphore %s register
 pub mod R0 {
 
     /// lock indication
@@ -52,224 +52,224 @@ pub mod R0 {
     }
 }
 
-/// Semaphore 1 register
+/// Semaphore %s register
 pub mod R1 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 2 register
+/// Semaphore %s register
 pub mod R2 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 3 register
+/// Semaphore %s register
 pub mod R3 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 4 register
+/// Semaphore %s register
 pub mod R4 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 5 register
+/// Semaphore %s register
 pub mod R5 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 6 register
+/// Semaphore %s register
 pub mod R6 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 7 register
+/// Semaphore %s register
 pub mod R7 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 8 register
+/// Semaphore %s register
 pub mod R8 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 9 register
+/// Semaphore %s register
 pub mod R9 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 10 register
+/// Semaphore %s register
 pub mod R10 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 11 register
+/// Semaphore %s register
 pub mod R11 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 12 register
+/// Semaphore %s register
 pub mod R12 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 13 register
+/// Semaphore %s register
 pub mod R13 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 14 register
+/// Semaphore %s register
 pub mod R14 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 15 register
+/// Semaphore %s register
 pub mod R15 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 16 register
+/// Semaphore %s register
 pub mod R16 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 17 register
+/// Semaphore %s register
 pub mod R17 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 18 register
+/// Semaphore %s register
 pub mod R18 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 19 register
+/// Semaphore %s register
 pub mod R19 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 20 register
+/// Semaphore %s register
 pub mod R20 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 21 register
+/// Semaphore %s register
 pub mod R21 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 22 register
+/// Semaphore %s register
 pub mod R22 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 23 register
+/// Semaphore %s register
 pub mod R23 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 24 register
+/// Semaphore %s register
 pub mod R24 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 25 register
+/// Semaphore %s register
 pub mod R25 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 26 register
+/// Semaphore %s register
 pub mod R26 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 27 register
+/// Semaphore %s register
 pub mod R27 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 28 register
+/// Semaphore %s register
 pub mod R28 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 29 register
+/// Semaphore %s register
 pub mod R29 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 30 register
+/// Semaphore %s register
 pub mod R30 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 31 register
+/// Semaphore %s register
 pub mod R31 {
     pub use super::R0::COREID;
     pub use super::R0::LOCK;
     pub use super::R0::PROCID;
 }
 
-/// Semaphore 0 read lock register
+/// Semaphore %s read lock register
 pub mod RLR0 {
 
     /// lock indication
@@ -315,217 +315,217 @@ pub mod RLR0 {
     }
 }
 
-/// Semaphore 1 read lock register
+/// Semaphore %s read lock register
 pub mod RLR1 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 2 read lock register
+/// Semaphore %s read lock register
 pub mod RLR2 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 3 read lock register
+/// Semaphore %s read lock register
 pub mod RLR3 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 4 read lock read lock register
+/// Semaphore %s read lock register
 pub mod RLR4 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 5 read lock register
+/// Semaphore %s read lock register
 pub mod RLR5 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 6 read lock register
+/// Semaphore %s read lock register
 pub mod RLR6 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 7 read lock register
+/// Semaphore %s read lock register
 pub mod RLR7 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 8 read lock register
+/// Semaphore %s read lock register
 pub mod RLR8 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 9 read lock register
+/// Semaphore %s read lock register
 pub mod RLR9 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 10 read lock register
+/// Semaphore %s read lock register
 pub mod RLR10 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 11 read lock register
+/// Semaphore %s read lock register
 pub mod RLR11 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 12 read lock register
+/// Semaphore %s read lock register
 pub mod RLR12 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 13 read lock register
+/// Semaphore %s read lock register
 pub mod RLR13 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 14 read lock register
+/// Semaphore %s read lock register
 pub mod RLR14 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 15 read lock register
+/// Semaphore %s read lock register
 pub mod RLR15 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 16 read lock register
+/// Semaphore %s read lock register
 pub mod RLR16 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 17 read lock register
+/// Semaphore %s read lock register
 pub mod RLR17 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 18 read lock register
+/// Semaphore %s read lock register
 pub mod RLR18 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 19 read lock register
+/// Semaphore %s read lock register
 pub mod RLR19 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 20 read lock register
+/// Semaphore %s read lock register
 pub mod RLR20 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 21 read lock register
+/// Semaphore %s read lock register
 pub mod RLR21 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 22 read lock register
+/// Semaphore %s read lock register
 pub mod RLR22 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 23 read lock register
+/// Semaphore %s read lock register
 pub mod RLR23 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 24 read lock register
+/// Semaphore %s read lock register
 pub mod RLR24 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 25 read lock register
+/// Semaphore %s read lock register
 pub mod RLR25 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 26 read lock register
+/// Semaphore %s read lock register
 pub mod RLR26 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 27 read lock register
+/// Semaphore %s read lock register
 pub mod RLR27 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 28 read lock register
+/// Semaphore %s read lock register
 pub mod RLR28 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 29 read lock register
+/// Semaphore %s read lock register
 pub mod RLR29 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 30 read lock register
+/// Semaphore %s read lock register
 pub mod RLR30 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
     pub use super::RLR0::PROCID;
 }
 
-/// Semaphore 31 read lock register
+/// Semaphore %s read lock register
 pub mod RLR31 {
     pub use super::RLR0::COREID;
     pub use super::RLR0::LOCK;
@@ -835,196 +835,196 @@ pub mod C2MISR {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    /// Semaphore 0 register
+    /// Semaphore %s register
     pub R0: RWRegister<u32>,
 
-    /// Semaphore 1 register
+    /// Semaphore %s register
     pub R1: RWRegister<u32>,
 
-    /// Semaphore 2 register
+    /// Semaphore %s register
     pub R2: RWRegister<u32>,
 
-    /// Semaphore 3 register
+    /// Semaphore %s register
     pub R3: RWRegister<u32>,
 
-    /// Semaphore 4 register
+    /// Semaphore %s register
     pub R4: RWRegister<u32>,
 
-    /// Semaphore 5 register
+    /// Semaphore %s register
     pub R5: RWRegister<u32>,
 
-    /// Semaphore 6 register
+    /// Semaphore %s register
     pub R6: RWRegister<u32>,
 
-    /// Semaphore 7 register
+    /// Semaphore %s register
     pub R7: RWRegister<u32>,
 
-    /// Semaphore 8 register
+    /// Semaphore %s register
     pub R8: RWRegister<u32>,
 
-    /// Semaphore 9 register
+    /// Semaphore %s register
     pub R9: RWRegister<u32>,
 
-    /// Semaphore 10 register
+    /// Semaphore %s register
     pub R10: RWRegister<u32>,
 
-    /// Semaphore 11 register
+    /// Semaphore %s register
     pub R11: RWRegister<u32>,
 
-    /// Semaphore 12 register
+    /// Semaphore %s register
     pub R12: RWRegister<u32>,
 
-    /// Semaphore 13 register
+    /// Semaphore %s register
     pub R13: RWRegister<u32>,
 
-    /// Semaphore 14 register
+    /// Semaphore %s register
     pub R14: RWRegister<u32>,
 
-    /// Semaphore 15 register
+    /// Semaphore %s register
     pub R15: RWRegister<u32>,
 
-    /// Semaphore 16 register
+    /// Semaphore %s register
     pub R16: RWRegister<u32>,
 
-    /// Semaphore 17 register
+    /// Semaphore %s register
     pub R17: RWRegister<u32>,
 
-    /// Semaphore 18 register
+    /// Semaphore %s register
     pub R18: RWRegister<u32>,
 
-    /// Semaphore 19 register
+    /// Semaphore %s register
     pub R19: RWRegister<u32>,
 
-    /// Semaphore 20 register
+    /// Semaphore %s register
     pub R20: RWRegister<u32>,
 
-    /// Semaphore 21 register
+    /// Semaphore %s register
     pub R21: RWRegister<u32>,
 
-    /// Semaphore 22 register
+    /// Semaphore %s register
     pub R22: RWRegister<u32>,
 
-    /// Semaphore 23 register
+    /// Semaphore %s register
     pub R23: RWRegister<u32>,
 
-    /// Semaphore 24 register
+    /// Semaphore %s register
     pub R24: RWRegister<u32>,
 
-    /// Semaphore 25 register
+    /// Semaphore %s register
     pub R25: RWRegister<u32>,
 
-    /// Semaphore 26 register
+    /// Semaphore %s register
     pub R26: RWRegister<u32>,
 
-    /// Semaphore 27 register
+    /// Semaphore %s register
     pub R27: RWRegister<u32>,
 
-    /// Semaphore 28 register
+    /// Semaphore %s register
     pub R28: RWRegister<u32>,
 
-    /// Semaphore 29 register
+    /// Semaphore %s register
     pub R29: RWRegister<u32>,
 
-    /// Semaphore 30 register
+    /// Semaphore %s register
     pub R30: RWRegister<u32>,
 
-    /// Semaphore 31 register
+    /// Semaphore %s register
     pub R31: RWRegister<u32>,
 
-    /// Semaphore 0 read lock register
+    /// Semaphore %s read lock register
     pub RLR0: RORegister<u32>,
 
-    /// Semaphore 1 read lock register
+    /// Semaphore %s read lock register
     pub RLR1: RORegister<u32>,
 
-    /// Semaphore 2 read lock register
+    /// Semaphore %s read lock register
     pub RLR2: RORegister<u32>,
 
-    /// Semaphore 3 read lock register
+    /// Semaphore %s read lock register
     pub RLR3: RORegister<u32>,
 
-    /// Semaphore 4 read lock read lock register
+    /// Semaphore %s read lock register
     pub RLR4: RORegister<u32>,
 
-    /// Semaphore 5 read lock register
+    /// Semaphore %s read lock register
     pub RLR5: RORegister<u32>,
 
-    /// Semaphore 6 read lock register
+    /// Semaphore %s read lock register
     pub RLR6: RORegister<u32>,
 
-    /// Semaphore 7 read lock register
+    /// Semaphore %s read lock register
     pub RLR7: RORegister<u32>,
 
-    /// Semaphore 8 read lock register
+    /// Semaphore %s read lock register
     pub RLR8: RORegister<u32>,
 
-    /// Semaphore 9 read lock register
+    /// Semaphore %s read lock register
     pub RLR9: RORegister<u32>,
 
-    /// Semaphore 10 read lock register
+    /// Semaphore %s read lock register
     pub RLR10: RORegister<u32>,
 
-    /// Semaphore 11 read lock register
+    /// Semaphore %s read lock register
     pub RLR11: RORegister<u32>,
 
-    /// Semaphore 12 read lock register
+    /// Semaphore %s read lock register
     pub RLR12: RORegister<u32>,
 
-    /// Semaphore 13 read lock register
+    /// Semaphore %s read lock register
     pub RLR13: RORegister<u32>,
 
-    /// Semaphore 14 read lock register
+    /// Semaphore %s read lock register
     pub RLR14: RORegister<u32>,
 
-    /// Semaphore 15 read lock register
+    /// Semaphore %s read lock register
     pub RLR15: RORegister<u32>,
 
-    /// Semaphore 16 read lock register
+    /// Semaphore %s read lock register
     pub RLR16: RORegister<u32>,
 
-    /// Semaphore 17 read lock register
+    /// Semaphore %s read lock register
     pub RLR17: RORegister<u32>,
 
-    /// Semaphore 18 read lock register
+    /// Semaphore %s read lock register
     pub RLR18: RORegister<u32>,
 
-    /// Semaphore 19 read lock register
+    /// Semaphore %s read lock register
     pub RLR19: RORegister<u32>,
 
-    /// Semaphore 20 read lock register
+    /// Semaphore %s read lock register
     pub RLR20: RORegister<u32>,
 
-    /// Semaphore 21 read lock register
+    /// Semaphore %s read lock register
     pub RLR21: RORegister<u32>,
 
-    /// Semaphore 22 read lock register
+    /// Semaphore %s read lock register
     pub RLR22: RORegister<u32>,
 
-    /// Semaphore 23 read lock register
+    /// Semaphore %s read lock register
     pub RLR23: RORegister<u32>,
 
-    /// Semaphore 24 read lock register
+    /// Semaphore %s read lock register
     pub RLR24: RORegister<u32>,
 
-    /// Semaphore 25 read lock register
+    /// Semaphore %s read lock register
     pub RLR25: RORegister<u32>,
 
-    /// Semaphore 26 read lock register
+    /// Semaphore %s read lock register
     pub RLR26: RORegister<u32>,
 
-    /// Semaphore 27 read lock register
+    /// Semaphore %s read lock register
     pub RLR27: RORegister<u32>,
 
-    /// Semaphore 28 read lock register
+    /// Semaphore %s read lock register
     pub RLR28: RORegister<u32>,
 
-    /// Semaphore 29 read lock register
+    /// Semaphore %s read lock register
     pub RLR29: RORegister<u32>,
 
-    /// Semaphore 30 read lock register
+    /// Semaphore %s read lock register
     pub RLR30: RORegister<u32>,
 
-    /// Semaphore 31 read lock register
+    /// Semaphore %s read lock register
     pub RLR31: RORegister<u32>,
 
     /// HSEM Interrupt enable register
@@ -1051,7 +1051,7 @@ pub struct RegisterBlock {
     /// HSEM Masked interrupt status register
     pub C2MISR: RORegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// Semaphore Clear register
     pub CR: RWRegister<u32>,
@@ -1059,7 +1059,7 @@ pub struct RegisterBlock {
     /// Interrupt clear register
     pub KEYR: RWRegister<u32>,
 
-    _reserved2: [u32; 169],
+    _reserved2: [u8; 676],
 
     /// Semaphore hardware configuration register 2
     pub HWCFGR2: RORegister<u32>,

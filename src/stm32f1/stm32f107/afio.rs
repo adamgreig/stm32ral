@@ -669,7 +669,7 @@ pub struct RegisterBlock {
     /// External interrupt configuration register 4 (AFIO_EXTICR4)
     pub EXTICR4: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// AF remap and debug I/O configuration register
     pub MAPR2: RWRegister<u32>,

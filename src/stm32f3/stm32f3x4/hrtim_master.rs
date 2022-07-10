@@ -400,12 +400,8 @@ pub mod MISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No master update interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -413,6 +409,10 @@ pub mod MISR {
             /// 0b1: Master update interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Sync Input Interrupt Flag
@@ -421,12 +421,8 @@ pub mod MISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No sync input interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -434,6 +430,10 @@ pub mod MISR {
             /// 0b1: Sync input interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Repetition Interrupt Flag
@@ -442,12 +442,8 @@ pub mod MISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No master repetition interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -455,6 +451,10 @@ pub mod MISR {
             /// 0b1: Master repetition interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 4 Interrupt Flag
@@ -463,12 +463,8 @@ pub mod MISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No master compare interrupt occurred
             pub const NoEvent: u32 = 0b0;
@@ -476,6 +472,10 @@ pub mod MISR {
             /// 0b1: Master compare interrupt occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 3 Interrupt Flag
@@ -484,11 +484,11 @@ pub mod MISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MCMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 2 Interrupt Flag
@@ -497,11 +497,11 @@ pub mod MISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MCMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 1 Interrupt Flag
@@ -510,11 +510,11 @@ pub mod MISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MCMP4::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MCMP4::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -529,14 +529,14 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears flag in MISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Sync Input Interrupt flag clear
@@ -547,9 +547,9 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MUPDC::RW;
+        pub use super::MUPDC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Repetition Interrupt flag clear
@@ -560,9 +560,9 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MUPDC::RW;
+        pub use super::MUPDC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 4 Interrupt flag clear
@@ -573,9 +573,9 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MUPDC::RW;
+        pub use super::MUPDC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 3 Interrupt flag clear
@@ -586,9 +586,9 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MUPDC::RW;
+        pub use super::MUPDC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 2 Interrupt flag clear
@@ -599,9 +599,9 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MUPDC::RW;
+        pub use super::MUPDC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Master Compare 1 Interrupt flag clear
@@ -612,9 +612,9 @@ pub mod MICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::MUPDC::RW;
+        pub use super::MUPDC::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -971,7 +971,7 @@ pub struct RegisterBlock {
     /// Master Timer Compare 1 Register
     pub MCMP1R: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Master Timer Compare 2 Register
     pub MCMP2R: RWRegister<u32>,

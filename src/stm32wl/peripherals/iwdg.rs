@@ -19,10 +19,8 @@ pub mod KR {
         pub const mask: u32 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0101010101010101: Enable access to PR, RLR and WINR registers (0x5555)
             pub const Enable: u32 = 0b0101010101010101;
@@ -33,6 +31,8 @@ pub mod KR {
             /// 0b1100110011001100: Start the watchdog (0xCCCC)
             pub const Start: u32 = 0b1100110011001100;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -106,12 +106,8 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No update on-going
             pub const Idle: u32 = 0b0;
@@ -119,6 +115,10 @@ pub mod SR {
             /// 0b1: Update on-going
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Watchdog counter reload value update
@@ -127,11 +127,11 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::WVU::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::WVU::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Watchdog prescaler value update
@@ -140,11 +140,11 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::WVU::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::WVU::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]

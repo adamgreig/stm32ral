@@ -3803,7 +3803,7 @@ pub struct RegisterBlock {
     /// DDRCTRL operating mode status register
     pub DDRCTRL_STAT: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Mode Register Read/Write Control Register 0. Do not enable more than one of the following fields simultaneously: sw_init_int pda_en mpr_en
     pub DDRCTRL_MRCTRL0: RWRegister<u32>,
@@ -3814,7 +3814,7 @@ pub struct RegisterBlock {
     /// DDRCTRL mode register read/write status register
     pub DDRCTRL_MRSTAT: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DDRCTRL temperature derate enable register
     pub DDRCTRL_DERATEEN: RWRegister<u32>,
@@ -3822,7 +3822,7 @@ pub struct RegisterBlock {
     /// DDRCTRL temperature derate interval register
     pub DDRCTRL_DERATEINT: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// DDRCTRL low power control register
     pub DDRCTRL_PWRCTL: RWRegister<u32>,
@@ -3833,12 +3833,12 @@ pub struct RegisterBlock {
     /// DDRCTRL hardware low power control register
     pub DDRCTRL_HWLPCTL: RWRegister<u32>,
 
-    _reserved4: [u32; 5],
+    _reserved4: [u8; 20],
 
     /// DDRCTRL refresh control register 0
     pub DDRCTRL_RFSHCTL0: RWRegister<u32>,
 
-    _reserved5: [u32; 3],
+    _reserved5: [u8; 12],
 
     /// DDRCTRL refresh control register 3
     pub DDRCTRL_RFSHCTL3: RWRegister<u32>,
@@ -3846,12 +3846,12 @@ pub struct RegisterBlock {
     /// DDRCTRL refresh timing register
     pub DDRCTRL_RFSHTMG: RWRegister<u32>,
 
-    _reserved6: [u32; 22],
+    _reserved6: [u8; 88],
 
     /// DDRCTRL CRC parity control register 0
     pub DDRCTRL_CRCPARCTL0: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// DDRCTRL CRC parity status register
     pub DDRCTRL_CRCPARSTAT: RORegister<u32>,
@@ -3874,12 +3874,12 @@ pub struct RegisterBlock {
     /// DDRCTRL SDRAM initialization register 5
     pub DDRCTRL_INIT5: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// DDRCTRL DIMM control register
     pub DDRCTRL_DIMMCTL: RWRegister<u32>,
 
-    _reserved9: [u32; 3],
+    _reserved9: [u8; 12],
 
     /// DDRCTRL SDRAM timing register 0
     pub DDRCTRL_DRAMTMG0: RWRegister<u32>,
@@ -3908,7 +3908,7 @@ pub struct RegisterBlock {
     /// DDRCTRL SDRAM timing register 8
     pub DDRCTRL_DRAMTMG8: RWRegister<u32>,
 
-    _reserved10: [u32; 5],
+    _reserved10: [u8; 20],
 
     /// DDRCTRL SDRAM timing register 14
     pub DDRCTRL_DRAMTMG14: RWRegister<u32>,
@@ -3916,7 +3916,7 @@ pub struct RegisterBlock {
     /// DDRCTRL SDRAM timing register 15
     pub DDRCTRL_DRAMTMG15: RWRegister<u32>,
 
-    _reserved11: [u32; 16],
+    _reserved11: [u8; 64],
 
     /// DDRCTRL ZQ control register 0
     pub DDRCTRL_ZQCTL0: RWRegister<u32>,
@@ -3939,7 +3939,7 @@ pub struct RegisterBlock {
     /// DDRCTRL low power configuration register 0
     pub DDRCTRL_DFILPCFG0: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// DDRCTRL DFI update register 0
     pub DDRCTRL_DFIUPD0: RWRegister<u32>,
@@ -3950,22 +3950,22 @@ pub struct RegisterBlock {
     /// DDRCTRL DFI update register 2
     pub DDRCTRL_DFIUPD2: RWRegister<u32>,
 
-    _reserved13: [u32; 1],
+    _reserved13: [u8; 4],
 
     /// DDRCTRL DFI miscellaneous control register
     pub DDRCTRL_DFIMISC: RWRegister<u32>,
 
-    _reserved14: [u32; 2],
+    _reserved14: [u8; 8],
 
     /// DDRCTRL DFI status register
     pub DDRCTRL_DFISTAT: RORegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// DDRCTRL DFI PHY master register
     pub DDRCTRL_DFIPHYMSTR: RWRegister<u32>,
 
-    _reserved16: [u32; 15],
+    _reserved16: [u8; 60],
 
     /// DDRCTRL address map register 1
     pub DDRCTRL_ADDRMAP1: RWRegister<u32>,
@@ -3985,7 +3985,7 @@ pub struct RegisterBlock {
     /// DDRCTRL address register 6
     pub DDRCTRL_ADDRMAP6: RWRegister<u32>,
 
-    _reserved17: [u32; 2],
+    _reserved17: [u8; 8],
 
     /// DDRCTRL address map register 9
     pub DDRCTRL_ADDRMAP9: RWRegister<u32>,
@@ -3996,7 +3996,7 @@ pub struct RegisterBlock {
     /// DDRCTRL address map register 11
     pub DDRCTRL_ADDRMAP11: RWRegister<u32>,
 
-    _reserved18: [u32; 4],
+    _reserved18: [u8; 16],
 
     /// DDRCTRL ODT configuration register
     pub DDRCTRL_ODTCFG: RWRegister<u32>,
@@ -4004,7 +4004,7 @@ pub struct RegisterBlock {
     /// DDRCTRL ODT/Rank map register
     pub DDRCTRL_ODTMAP: RWRegister<u32>,
 
-    _reserved19: [u32; 2],
+    _reserved19: [u8; 8],
 
     /// DDRCTRL scheduler control register
     pub DDRCTRL_SCHED: RWRegister<u32>,
@@ -4012,22 +4012,22 @@ pub struct RegisterBlock {
     /// DDRCTRL scheduler control register 1
     pub DDRCTRL_SCHED1: RWRegister<u32>,
 
-    _reserved20: [u32; 1],
+    _reserved20: [u8; 4],
 
     /// DDRCTRL high priority read CAM register 1
     pub DDRCTRL_PERFHPR1: RWRegister<u32>,
 
-    _reserved21: [u32; 1],
+    _reserved21: [u8; 4],
 
     /// DDRCTRL low priority read CAM register 1
     pub DDRCTRL_PERFLPR1: RWRegister<u32>,
 
-    _reserved22: [u32; 1],
+    _reserved22: [u8; 4],
 
     /// DDRCTRL write CAM register 1
     pub DDRCTRL_PERFWR1: RWRegister<u32>,
 
-    _reserved23: [u32; 36],
+    _reserved23: [u8; 144],
 
     /// DDRCTRL debug register 0
     pub DDRCTRL_DBG0: RWRegister<u32>,
@@ -4044,7 +4044,7 @@ pub struct RegisterBlock {
     /// DDRCTRL status debug register
     pub DDRCTRL_DBGSTAT: RORegister<u32>,
 
-    _reserved24: [u32; 3],
+    _reserved24: [u8; 12],
 
     /// DDRCTRL software register programming control enable
     pub DDRCTRL_SWCTL: RWRegister<u32>,
@@ -4052,7 +4052,7 @@ pub struct RegisterBlock {
     /// DDRCTRL software register programming control status
     pub DDRCTRL_SWSTAT: RORegister<u32>,
 
-    _reserved25: [u32; 17],
+    _reserved25: [u8; 68],
 
     /// AXI Poison configuration register common for all AXI ports.
     pub DDRCTRL_POISONCFG: RWRegister<u32>,
@@ -4060,7 +4060,7 @@ pub struct RegisterBlock {
     /// DDRCTRL AXI Poison status register
     pub DDRCTRL_POISONSTAT: RORegister<u32>,
 
-    _reserved26: [u32; 34],
+    _reserved26: [u8; 136],
 
     /// DDRCTRL port status register
     pub DDRCTRL_PSTAT: RORegister<u32>,
@@ -4074,7 +4074,7 @@ pub struct RegisterBlock {
     /// DDRCTRL port 0 configuration write register
     pub DDRCTRL_PCFGW_0: RWRegister<u32>,
 
-    _reserved27: [u32; 33],
+    _reserved27: [u8; 132],
 
     /// DDRCTRL port 0 control register
     pub DDRCTRL_PCTRL_0: RWRegister<u32>,
@@ -4091,7 +4091,7 @@ pub struct RegisterBlock {
     /// DDRCTRL port 0 write Q0S configuration register 1
     pub DDRCTRL_PCFGWQOS1_0: RWRegister<u32>,
 
-    _reserved28: [u32; 4],
+    _reserved28: [u8; 16],
 
     /// DDRCTRL port 1 configuration read register
     pub DDRCTRL_PCFGR_1: RWRegister<u32>,
@@ -4099,7 +4099,7 @@ pub struct RegisterBlock {
     /// DDRCTRL port 1 configuration write register
     pub DDRCTRL_PCFGW_1: RWRegister<u32>,
 
-    _reserved29: [u32; 33],
+    _reserved29: [u8; 132],
 
     /// DDRCTRL port 1 control register
     pub DDRCTRL_PCTRL_1: RWRegister<u32>,

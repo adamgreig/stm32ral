@@ -17,8 +17,15 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No transfer error, half event, complete event
+            pub const NoEvent: u32 = 0b0;
+
+            /// 0b1: A transfer error, half event or complete event has occured
+            pub const Event: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -31,8 +38,15 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No transfer complete event
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: A transfer complete event has occured
+            pub const Complete: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -45,8 +59,15 @@ pub mod ISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No half transfer event
+            pub const NotHalf: u32 = 0b0;
+
+            /// 0b1: A half transfer event has occured
+            pub const Half: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -59,8 +80,15 @@ pub mod ISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No transfer error
+            pub const NoError: u32 = 0b0;
+
+            /// 0b1: A transfer error has occured
+            pub const Error: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -73,8 +101,7 @@ pub mod ISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -87,8 +114,7 @@ pub mod ISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -101,8 +127,7 @@ pub mod ISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -115,8 +140,7 @@ pub mod ISR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -129,8 +153,7 @@ pub mod ISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -143,8 +166,7 @@ pub mod ISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -157,8 +179,7 @@ pub mod ISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -171,8 +192,7 @@ pub mod ISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -185,8 +205,7 @@ pub mod ISR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -199,8 +218,7 @@ pub mod ISR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -213,8 +231,7 @@ pub mod ISR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -227,8 +244,7 @@ pub mod ISR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -241,8 +257,7 @@ pub mod ISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -255,8 +270,7 @@ pub mod ISR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -269,8 +283,7 @@ pub mod ISR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -283,8 +296,7 @@ pub mod ISR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -301,8 +313,12 @@ pub mod IFCR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: Clears the GIF, TEIF, HTIF, TCIF flags in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -315,8 +331,12 @@ pub mod IFCR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: Clears the TCIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -329,8 +349,12 @@ pub mod IFCR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: Clears the HTIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -343,8 +367,12 @@ pub mod IFCR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: Clears the TEIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -357,8 +385,7 @@ pub mod IFCR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CGIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -371,8 +398,7 @@ pub mod IFCR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -385,8 +411,7 @@ pub mod IFCR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CHTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -399,8 +424,7 @@ pub mod IFCR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -413,8 +437,7 @@ pub mod IFCR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CGIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -427,8 +450,7 @@ pub mod IFCR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -441,8 +463,7 @@ pub mod IFCR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CHTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -455,8 +476,7 @@ pub mod IFCR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -469,8 +489,7 @@ pub mod IFCR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CGIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -483,8 +502,7 @@ pub mod IFCR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -497,8 +515,7 @@ pub mod IFCR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CHTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -506,13 +523,12 @@ pub mod IFCR {
     }
 
     /// Clear channel 4 transfer error flag
-    pub mod CTEIF15 {
+    pub mod CTEIF4 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -525,8 +541,7 @@ pub mod IFCR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CGIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -539,8 +554,7 @@ pub mod IFCR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTCIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -553,8 +567,7 @@ pub mod IFCR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CHTIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -567,8 +580,7 @@ pub mod IFCR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CTEIF1::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -589,8 +601,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Channel disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Channel enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer complete interrupt enable
@@ -603,8 +622,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transfer Complete interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Transfer Complete interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Half transfer interrupt enable
@@ -617,8 +643,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Half Transfer interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Half Transfer interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transfer error interrupt enable
@@ -631,8 +664,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transfer Error interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Transfer Error interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Data transfer direction
@@ -645,8 +685,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Read from peripheral
+            pub const FromPeripheral: u32 = 0b0;
+
+            /// 0b1: Read from memory
+            pub const FromMemory: u32 = 0b1;
+        }
     }
 
     /// Circular mode
@@ -659,8 +706,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Circular buffer disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Circular buffer enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Peripherarl increment mode
@@ -673,8 +727,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Increment mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Increment mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Memory increment mode
@@ -687,8 +748,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PINC::RW;
     }
 
     /// Peripheral size
@@ -701,8 +761,18 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 8-bit size
+            pub const Bits8: u32 = 0b00;
+
+            /// 0b01: 16-bit size
+            pub const Bits16: u32 = 0b01;
+
+            /// 0b10: 32-bit size
+            pub const Bits32: u32 = 0b10;
+        }
     }
 
     /// Memory size
@@ -715,8 +785,7 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::PSIZE::RW;
     }
 
     /// Channel priority level
@@ -729,8 +798,21 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Low priority
+            pub const Low: u32 = 0b00;
+
+            /// 0b01: Medium priority
+            pub const Medium: u32 = 0b01;
+
+            /// 0b10: High priority
+            pub const High: u32 = 0b10;
+
+            /// 0b11: Very high priority
+            pub const VeryHigh: u32 = 0b11;
+        }
     }
 
     /// Memory to memory mode
@@ -743,8 +825,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Memory to memory mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Memory to memory mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -945,7 +1034,7 @@ pub struct RegisterBlock {
     /// DMA channel 1 memory address
     pub MAR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// DMA channel 1 configuration register
     pub CR2: RWRegister<u32>,
@@ -959,7 +1048,7 @@ pub struct RegisterBlock {
     /// DMA channel 1 memory address
     pub MAR2: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DMA channel 1 configuration register
     pub CR3: RWRegister<u32>,
@@ -973,7 +1062,7 @@ pub struct RegisterBlock {
     /// DMA channel 1 memory address
     pub MAR3: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// DMA channel 1 configuration register
     pub CR4: RWRegister<u32>,
@@ -987,7 +1076,7 @@ pub struct RegisterBlock {
     /// DMA channel 1 memory address
     pub MAR4: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// DMA channel 1 configuration register
     pub CR5: RWRegister<u32>,

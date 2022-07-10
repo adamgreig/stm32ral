@@ -57,7 +57,7 @@ pub mod dma;
 pub use super::instances::ac;
 pub use super::instances::art;
 pub use super::instances::can_ccu;
-pub use super::instances::dbgmcu_h735_h747cm4_h747cm7 as dbgmcu;
+pub use super::instances::dbgmcu_h747cm4_h747cm7 as dbgmcu;
 pub use super::instances::dfsdm_h747cm4_h747cm7_h753_h753v as dfsdm;
 pub use super::instances::dsihost;
 pub use super::instances::ethernet_dma_h747cm4_h747cm7 as ethernet_dma;
@@ -66,7 +66,7 @@ pub use super::instances::fdcan;
 pub use super::instances::flash_h747cm4_h747cm7 as flash;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
-pub use super::instances::hrtim_common_h747cm4_h747cm7_h7b3 as hrtim_common;
+pub use super::instances::hrtim_common;
 pub use super::instances::hrtim_master;
 pub use super::instances::hrtim_tima;
 pub use super::instances::hrtim_timb;
@@ -215,7 +215,12 @@ pub struct Peripherals {
     pub OPAMP: opamp::Instance,
     pub SWPMI: swpmi::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
     pub TIM5: tim5::Instance,
+    pub TIM12: tim12::Instance,
+    pub TIM13: tim13::Instance,
+    pub TIM14: tim14::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
     pub NVIC: nvic::Instance,
@@ -230,11 +235,6 @@ pub struct Peripherals {
     pub PF: pf::Instance,
     pub AC: ac::Instance,
     pub ART: art::Instance,
-    pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
-    pub TIM12: tim12::Instance,
-    pub TIM13: tim13::Instance,
-    pub TIM14: tim14::Instance,
     pub Ethernet_DMA: ethernet_dma::Instance,
     pub Ethernet_MTL: ethernet_mtl::Instance,
     pub DSIHOST: dsihost::Instance,
@@ -363,7 +363,12 @@ impl Peripherals {
             OPAMP: opamp::OPAMP::steal(),
             SWPMI: swpmi::SWPMI::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
             TIM5: tim5::TIM5::steal(),
+            TIM12: tim12::TIM12::steal(),
+            TIM13: tim13::TIM13::steal(),
+            TIM14: tim14::TIM14::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
             NVIC: nvic::NVIC::steal(),
@@ -378,11 +383,6 @@ impl Peripherals {
             PF: pf::PF::steal(),
             AC: ac::AC::steal(),
             ART: art::ART::steal(),
-            TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
-            TIM12: tim12::TIM12::steal(),
-            TIM13: tim13::TIM13::steal(),
-            TIM14: tim14::TIM14::steal(),
             Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
             Ethernet_MTL: ethernet_mtl::Ethernet_MTL::steal(),
             DSIHOST: dsihost::DSIHOST::steal(),

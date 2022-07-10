@@ -15,12 +15,8 @@ pub mod LISR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer complete event on stream x
             pub const NotComplete: u32 = 0b0;
@@ -28,6 +24,10 @@ pub mod LISR {
             /// 0b1: A transfer complete event occurred on stream x
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=3..0)
@@ -36,12 +36,8 @@ pub mod LISR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No half transfer event on stream x
             pub const NotHalf: u32 = 0b0;
@@ -49,6 +45,10 @@ pub mod LISR {
             /// 0b1: A half transfer event occurred on stream x
             pub const Half: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=3..0)
@@ -57,12 +57,8 @@ pub mod LISR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer error on stream x
             pub const NoError: u32 = 0b0;
@@ -70,6 +66,10 @@ pub mod LISR {
             /// 0b1: A transfer error occurred on stream x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=3..0)
@@ -78,12 +78,8 @@ pub mod LISR {
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Direct Mode error on stream x
             pub const NoError: u32 = 0b0;
@@ -91,6 +87,10 @@ pub mod LISR {
             /// 0b1: A Direct Mode error occurred on stream x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=3..0)
@@ -99,12 +99,8 @@ pub mod LISR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No FIFO error event on stream x
             pub const NoError: u32 = 0b0;
@@ -112,6 +108,10 @@ pub mod LISR {
             /// 0b1: A FIFO error event occurred on stream x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer complete interrupt flag (x = 3..0)
@@ -120,11 +120,11 @@ pub mod LISR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=3..0)
@@ -133,11 +133,11 @@ pub mod LISR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=3..0)
@@ -146,11 +146,11 @@ pub mod LISR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=3..0)
@@ -159,11 +159,11 @@ pub mod LISR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::DMEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=3..0)
@@ -172,11 +172,11 @@ pub mod LISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::FEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::FEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer complete interrupt flag (x = 3..0)
@@ -185,11 +185,11 @@ pub mod LISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=3..0)
@@ -198,11 +198,11 @@ pub mod LISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=3..0)
@@ -211,11 +211,11 @@ pub mod LISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=3..0)
@@ -224,11 +224,11 @@ pub mod LISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::DMEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=3..0)
@@ -237,11 +237,11 @@ pub mod LISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::FEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::FEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer complete interrupt flag (x = 3..0)
@@ -250,11 +250,11 @@ pub mod LISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=3..0)
@@ -263,11 +263,11 @@ pub mod LISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=3..0)
@@ -276,11 +276,11 @@ pub mod LISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=3..0)
@@ -289,11 +289,11 @@ pub mod LISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::DMEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=3..0)
@@ -302,11 +302,11 @@ pub mod LISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::FEIF3::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::FEIF3::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -319,12 +319,8 @@ pub mod HISR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer complete event on stream x
             pub const NotComplete: u32 = 0b0;
@@ -332,6 +328,10 @@ pub mod HISR {
             /// 0b1: A transfer complete event occurred on stream x
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=7..4)
@@ -340,12 +340,8 @@ pub mod HISR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No half transfer event on stream x
             pub const NotHalf: u32 = 0b0;
@@ -353,6 +349,10 @@ pub mod HISR {
             /// 0b1: A half transfer event occurred on stream x
             pub const Half: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=7..4)
@@ -361,12 +361,8 @@ pub mod HISR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer error on stream x
             pub const NoError: u32 = 0b0;
@@ -374,6 +370,10 @@ pub mod HISR {
             /// 0b1: A transfer error occurred on stream x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=7..4)
@@ -382,12 +382,8 @@ pub mod HISR {
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Direct Mode error on stream x
             pub const NoError: u32 = 0b0;
@@ -395,6 +391,10 @@ pub mod HISR {
             /// 0b1: A Direct Mode error occurred on stream x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=7..4)
@@ -403,12 +403,8 @@ pub mod HISR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No FIFO error event on stream x
             pub const NoError: u32 = 0b0;
@@ -416,6 +412,10 @@ pub mod HISR {
             /// 0b1: A FIFO error event occurred on stream x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer complete interrupt flag (x=7..4)
@@ -424,11 +424,11 @@ pub mod HISR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=7..4)
@@ -437,11 +437,11 @@ pub mod HISR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=7..4)
@@ -450,11 +450,11 @@ pub mod HISR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=7..4)
@@ -463,11 +463,11 @@ pub mod HISR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::DMEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=7..4)
@@ -476,11 +476,11 @@ pub mod HISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::FEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::FEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer complete interrupt flag (x=7..4)
@@ -489,11 +489,11 @@ pub mod HISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=7..4)
@@ -502,11 +502,11 @@ pub mod HISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=7..4)
@@ -515,11 +515,11 @@ pub mod HISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=7..4)
@@ -528,11 +528,11 @@ pub mod HISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::DMEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=7..4)
@@ -541,11 +541,11 @@ pub mod HISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::FEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::FEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer complete interrupt flag (x=7..4)
@@ -554,11 +554,11 @@ pub mod HISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x half transfer interrupt flag (x=7..4)
@@ -567,11 +567,11 @@ pub mod HISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x transfer error interrupt flag (x=7..4)
@@ -580,11 +580,11 @@ pub mod HISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x direct mode error interrupt flag (x=7..4)
@@ -593,11 +593,11 @@ pub mod HISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::DMEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DMEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x FIFO error interrupt flag (x=7..4)
@@ -606,11 +606,11 @@ pub mod HISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::FEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::FEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -625,14 +625,14 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding TCIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 3..0)
@@ -643,14 +643,14 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding HTIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 3..0)
@@ -661,14 +661,14 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding TEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 3..0)
@@ -679,14 +679,14 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding DMEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 3..0)
@@ -697,14 +697,14 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding CFEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer complete interrupt flag (x = 3..0)
@@ -715,9 +715,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTCIF3::RW;
+        pub use super::CTCIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 3..0)
@@ -728,9 +728,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CHTIF3::RW;
+        pub use super::CHTIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 3..0)
@@ -741,9 +741,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTEIF3::RW;
+        pub use super::CTEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 3..0)
@@ -754,9 +754,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CDMEIF3::RW;
+        pub use super::CDMEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 3..0)
@@ -767,9 +767,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CFEIF3::RW;
+        pub use super::CFEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer complete interrupt flag (x = 3..0)
@@ -780,9 +780,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTCIF3::RW;
+        pub use super::CTCIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 3..0)
@@ -793,9 +793,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CHTIF3::RW;
+        pub use super::CHTIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 3..0)
@@ -806,9 +806,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTEIF3::RW;
+        pub use super::CTEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 3..0)
@@ -819,9 +819,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CDMEIF3::RW;
+        pub use super::CDMEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 3..0)
@@ -832,9 +832,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CFEIF3::RW;
+        pub use super::CFEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer complete interrupt flag (x = 3..0)
@@ -845,9 +845,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTCIF3::RW;
+        pub use super::CTCIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 3..0)
@@ -858,9 +858,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CHTIF3::RW;
+        pub use super::CHTIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 3..0)
@@ -871,9 +871,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTEIF3::RW;
+        pub use super::CTEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 3..0)
@@ -884,9 +884,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CDMEIF3::RW;
+        pub use super::CDMEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 3..0)
@@ -897,9 +897,9 @@ pub mod LIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CFEIF3::RW;
+        pub use super::CFEIF3::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -914,14 +914,14 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding TCIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 7..4)
@@ -932,14 +932,14 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding HTIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 7..4)
@@ -950,14 +950,14 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding TEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 7..4)
@@ -968,14 +968,14 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding DMEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 7..4)
@@ -986,14 +986,14 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding CFEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer complete interrupt flag (x = 7..4)
@@ -1004,9 +1004,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTCIF7::RW;
+        pub use super::CTCIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 7..4)
@@ -1017,9 +1017,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CHTIF7::RW;
+        pub use super::CHTIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 7..4)
@@ -1030,9 +1030,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTEIF7::RW;
+        pub use super::CTEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 7..4)
@@ -1043,9 +1043,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CDMEIF7::RW;
+        pub use super::CDMEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 7..4)
@@ -1056,9 +1056,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CFEIF7::RW;
+        pub use super::CFEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer complete interrupt flag (x = 7..4)
@@ -1069,9 +1069,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTCIF7::RW;
+        pub use super::CTCIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 7..4)
@@ -1082,9 +1082,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CHTIF7::RW;
+        pub use super::CHTIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 7..4)
@@ -1095,9 +1095,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTEIF7::RW;
+        pub use super::CTEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 7..4)
@@ -1108,9 +1108,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CDMEIF7::RW;
+        pub use super::CDMEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 7..4)
@@ -1121,9 +1121,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CFEIF7::RW;
+        pub use super::CFEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer complete interrupt flag (x = 7..4)
@@ -1134,9 +1134,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTCIF7::RW;
+        pub use super::CTCIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear half transfer interrupt flag (x = 7..4)
@@ -1147,9 +1147,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CHTIF7::RW;
+        pub use super::CHTIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear transfer error interrupt flag (x = 7..4)
@@ -1160,9 +1160,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CTEIF7::RW;
+        pub use super::CTEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear direct mode error interrupt flag (x = 7..4)
@@ -1173,9 +1173,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CDMEIF7::RW;
+        pub use super::CDMEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stream x clear FIFO error interrupt flag (x = 7..4)
@@ -1186,9 +1186,9 @@ pub mod HIFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::CFEIF7::RW;
+        pub use super::CFEIF7::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1684,12 +1684,8 @@ pub mod FCR0 {
         pub const offset: u32 = 3;
         /// Mask (3 bits: 0b111 << 3)
         pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b000: 0 < fifo_level < 1/4
             pub const Quarter1: u32 = 0b000;
@@ -1709,6 +1705,10 @@ pub mod FCR0 {
             /// 0b101: FIFO is full
             pub const Full: u32 = 0b101;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Direct mode disable

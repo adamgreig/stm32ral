@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page1830 and Reading the calendar on page1831. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_TR {
+pub mod TR {
 
     /// SU
     pub mod SU {
@@ -111,7 +111,7 @@ pub mod RTC_TR {
 }
 
 /// The RTC_DR is the calendar date shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page1830 and Reading the calendar on page1831. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_DR {
+pub mod DR {
 
     /// DU
     pub mod DU {
@@ -213,7 +213,7 @@ pub mod RTC_DR {
 }
 
 /// RTC sub second register
-pub mod RTC_SSR {
+pub mod SSR {
 
     /// SS
     pub mod SS {
@@ -231,7 +231,7 @@ pub mod RTC_SSR {
 }
 
 /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be globally protected, or each bit of this register can be individually protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_ICSR {
+pub mod ICSR {
 
     /// ALRAWF
     pub mod ALRAWF {
@@ -361,7 +361,7 @@ pub mod RTC_ICSR {
 }
 
 /// This register must be written in initialization mode only. The initialization must be performed in two separate write accesses. Refer to Calendar initialization and configuration on page1830. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_PRER {
+pub mod PRER {
 
     /// PREDIV_S
     pub mod PREDIV_S {
@@ -393,7 +393,7 @@ pub mod RTC_PRER {
 }
 
 /// This register can be written only when WUTWF is set to 1 in RTC_ICSR. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_WUTR {
+pub mod WUTR {
 
     /// WUT
     pub mod WUT {
@@ -411,7 +411,7 @@ pub mod RTC_WUTR {
 }
 
 /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be globally protected, or each bit of this register can be individually protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_CR {
+pub mod CR {
 
     /// WUCKSEL
     pub mod WUCKSEL {
@@ -779,7 +779,7 @@ pub mod RTC_CR {
 }
 
 /// This register can be written only when the APB access is secure.
-pub mod RTC_SMCR {
+pub mod SMCR {
 
     /// ALRADPROT
     pub mod ALRADPROT {
@@ -881,7 +881,7 @@ pub mod RTC_SMCR {
 }
 
 /// RTC write protection register
-pub mod RTC_WPR {
+pub mod WPR {
 
     /// KEY
     pub mod KEY {
@@ -899,7 +899,7 @@ pub mod RTC_WPR {
 }
 
 /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_CALR {
+pub mod CALR {
 
     /// CALM
     pub mod CALM {
@@ -959,7 +959,7 @@ pub mod RTC_CALR {
 }
 
 /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_SHIFTR {
+pub mod SHIFTR {
 
     /// SUBFS
     pub mod SUBFS {
@@ -991,7 +991,7 @@ pub mod RTC_SHIFTR {
 }
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_TSTR {
+pub mod TSTR {
 
     /// SU
     pub mod SU {
@@ -1093,7 +1093,7 @@ pub mod RTC_TSTR {
 }
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_TSDR {
+pub mod TSDR {
 
     /// DU
     pub mod DU {
@@ -1167,14 +1167,14 @@ pub mod RTC_TSDR {
 }
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when the TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_TSSSR {
-    pub use super::RTC_SSR::SS;
+pub mod TSSSR {
+    pub use super::SSR::SS;
 }
 
 /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_ALRMAR {
+pub mod ALRMAR {
 
-    /// SU
+    /// Second units in BCD format
     pub mod SU {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1188,7 +1188,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// ST
+    /// Second tens in BCD format
     pub mod ST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -1202,7 +1202,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// MSK1
+    /// Alarm seconds mask
     pub mod MSK1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -1216,7 +1216,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// MNU
+    /// Minute units in BCD format
     pub mod MNU {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -1230,7 +1230,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// MNT
+    /// Minute tens in BCD format
     pub mod MNT {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -1244,7 +1244,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// MSK2
+    /// Alarm minutes mask
     pub mod MSK2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -1258,7 +1258,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// HU
+    /// Hour units in BCD format
     pub mod HU {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -1272,7 +1272,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// HT
+    /// Hour tens in BCD format
     pub mod HT {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -1300,7 +1300,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// MSK3
+    /// Alarm hours mask
     pub mod MSK3 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -1314,7 +1314,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// DU
+    /// Date units or day in BCD format
     pub mod DU {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -1328,7 +1328,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// DT
+    /// Date tens in BCD format
     pub mod DT {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -1356,7 +1356,7 @@ pub mod RTC_ALRMAR {
         pub mod RW {}
     }
 
-    /// MSK4
+    /// Alarm date mask
     pub mod MSK4 {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -1372,7 +1372,25 @@ pub mod RTC_ALRMAR {
 }
 
 /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_ALRMASSR {
+pub mod ALRMBR {
+    pub use super::ALRMAR::DT;
+    pub use super::ALRMAR::DU;
+    pub use super::ALRMAR::HT;
+    pub use super::ALRMAR::HU;
+    pub use super::ALRMAR::MNT;
+    pub use super::ALRMAR::MNU;
+    pub use super::ALRMAR::MSK1;
+    pub use super::ALRMAR::MSK2;
+    pub use super::ALRMAR::MSK3;
+    pub use super::ALRMAR::MSK4;
+    pub use super::ALRMAR::PM;
+    pub use super::ALRMAR::ST;
+    pub use super::ALRMAR::SU;
+    pub use super::ALRMAR::WDSEL;
+}
+
+/// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+pub mod ALRMASSR {
 
     /// SS
     pub mod SS {
@@ -1403,32 +1421,14 @@ pub mod RTC_ALRMASSR {
     }
 }
 
-/// This register can be written only when ALRBWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_ALRMBR {
-    pub use super::RTC_ALRMAR::DT;
-    pub use super::RTC_ALRMAR::DU;
-    pub use super::RTC_ALRMAR::HT;
-    pub use super::RTC_ALRMAR::HU;
-    pub use super::RTC_ALRMAR::MNT;
-    pub use super::RTC_ALRMAR::MNU;
-    pub use super::RTC_ALRMAR::MSK1;
-    pub use super::RTC_ALRMAR::MSK2;
-    pub use super::RTC_ALRMAR::MSK3;
-    pub use super::RTC_ALRMAR::MSK4;
-    pub use super::RTC_ALRMAR::PM;
-    pub use super::RTC_ALRMAR::ST;
-    pub use super::RTC_ALRMAR::SU;
-    pub use super::RTC_ALRMAR::WDSEL;
-}
-
-/// This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode. This register is write protected.The write access procedure is described in Section: RTC register write protection. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_ALRMBSSR {
-    pub use super::RTC_ALRMASSR::MASKSS;
-    pub use super::RTC_ALRMASSR::SS;
+/// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+pub mod ALRMBSSR {
+    pub use super::ALRMASSR::MASKSS;
+    pub use super::ALRMASSR::SS;
 }
 
 /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_SR {
+pub mod SR {
 
     /// ALRAF
     pub mod ALRAF {
@@ -1516,7 +1516,7 @@ pub mod RTC_SR {
 }
 
 /// RTC non-secure masked interrupt status register
-pub mod RTC_MISR {
+pub mod MISR {
 
     /// ALRAMF
     pub mod ALRAMF {
@@ -1604,17 +1604,17 @@ pub mod RTC_MISR {
 }
 
 /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_SMISR {
-    pub use super::RTC_MISR::ALRAMF;
-    pub use super::RTC_MISR::ALRBMF;
-    pub use super::RTC_MISR::ITSMF;
-    pub use super::RTC_MISR::TSMF;
-    pub use super::RTC_MISR::TSOVMF;
-    pub use super::RTC_MISR::WUTMF;
+pub mod SMISR {
+    pub use super::MISR::ALRAMF;
+    pub use super::MISR::ALRBMF;
+    pub use super::MISR::ITSMF;
+    pub use super::MISR::TSMF;
+    pub use super::MISR::TSOVMF;
+    pub use super::MISR::WUTMF;
 }
 
 /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod RTC_SCR {
+pub mod SCR {
 
     /// CALRAF
     pub mod CALRAF {
@@ -1702,7 +1702,7 @@ pub mod RTC_SCR {
 }
 
 /// RTC configuration register
-pub mod RTC_CFGR {
+pub mod CFGR {
 
     /// OUT2_RMP
     pub mod OUT2_RMP {
@@ -1734,7 +1734,7 @@ pub mod RTC_CFGR {
 }
 
 /// RTC hardware configuration register
-pub mod RTC_HWCFGR {
+pub mod HWCFGR {
 
     /// ALARMB
     pub mod ALARMB {
@@ -1822,7 +1822,7 @@ pub mod RTC_HWCFGR {
 }
 
 /// RTC version register
-pub mod RTC_VERR {
+pub mod VERR {
 
     /// MINREV
     pub mod MINREV {
@@ -1854,7 +1854,7 @@ pub mod RTC_VERR {
 }
 
 /// RTC identification register
-pub mod RTC_IPIDR {
+pub mod IPIDR {
 
     /// ID
     pub mod ID {
@@ -1872,7 +1872,7 @@ pub mod RTC_IPIDR {
 }
 
 /// RTC size identification register
-pub mod RTC_SIDR {
+pub mod SIDR {
 
     /// SID
     pub mod SID {
@@ -1891,120 +1891,120 @@ pub mod RTC_SIDR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page1830 and Reading the calendar on page1831. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_TR: RWRegister<u32>,
+    pub TR: RWRegister<u32>,
 
     /// The RTC_DR is the calendar date shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page1830 and Reading the calendar on page1831. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_DR: RWRegister<u32>,
+    pub DR: RWRegister<u32>,
 
     /// RTC sub second register
-    pub RTC_SSR: RORegister<u32>,
+    pub SSR: RORegister<u32>,
 
     /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be globally protected, or each bit of this register can be individually protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_ICSR: RWRegister<u32>,
+    pub ICSR: RWRegister<u32>,
 
     /// This register must be written in initialization mode only. The initialization must be performed in two separate write accesses. Refer to Calendar initialization and configuration on page1830. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_PRER: RWRegister<u32>,
+    pub PRER: RWRegister<u32>,
 
     /// This register can be written only when WUTWF is set to 1 in RTC_ICSR. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_WUTR: RWRegister<u32>,
+    pub WUTR: RWRegister<u32>,
 
     /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be globally protected, or each bit of this register can be individually protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register can be written only when the APB access is secure.
-    pub RTC_SMCR: RWRegister<u32>,
+    pub SMCR: RWRegister<u32>,
 
     /// RTC write protection register
-    pub RTC_WPR: WORegister<u32>,
+    pub WPR: WORegister<u32>,
 
     /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be write-protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_CALR: RWRegister<u32>,
+    pub CALR: RWRegister<u32>,
 
     /// This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_SHIFTR: WORegister<u32>,
+    pub SHIFTR: WORegister<u32>,
 
     /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_TSTR: RORegister<u32>,
+    pub TSTR: RORegister<u32>,
 
     /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_TSDR: RORegister<u32>,
+    pub TSDR: RORegister<u32>,
 
     /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when the TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_TSSSR: RORegister<u32>,
+    pub TSSSR: RORegister<u32>,
 
-    _reserved2: [u32; 1],
-
-    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_ALRMAR: RWRegister<u32>,
+    _reserved2: [u8; 4],
 
     /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_ALRMASSR: RWRegister<u32>,
+    pub ALRMAR: RWRegister<u32>,
 
-    /// This register can be written only when ALRBWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_ALRMBR: RWRegister<u32>,
+    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    pub ALRMASSR: RWRegister<u32>,
 
-    /// This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode. This register is write protected.The write access procedure is described in Section: RTC register write protection. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_ALRMBSSR: RWRegister<u32>,
+    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    pub ALRMBR: RWRegister<u32>,
+
+    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    pub ALRMBSSR: RWRegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// RTC non-secure masked interrupt status register
-    pub RTC_MISR: RORegister<u32>,
+    pub MISR: RORegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_SMISR: RORegister<u32>,
+    pub SMISR: RORegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-    pub RTC_SCR: WORegister<u32>,
+    pub SCR: WORegister<u32>,
 
     /// RTC configuration register
-    pub RTC_CFGR: RWRegister<u32>,
+    pub CFGR: RWRegister<u32>,
 
-    _reserved3: [u32; 227],
+    _reserved3: [u8; 908],
 
     /// RTC hardware configuration register
-    pub RTC_HWCFGR: RORegister<u32>,
+    pub HWCFGR: RORegister<u32>,
 
     /// RTC version register
-    pub RTC_VERR: RORegister<u32>,
+    pub VERR: RORegister<u32>,
 
     /// RTC identification register
-    pub RTC_IPIDR: RORegister<u32>,
+    pub IPIDR: RORegister<u32>,
 
     /// RTC size identification register
-    pub RTC_SIDR: RORegister<u32>,
+    pub SIDR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub RTC_TR: u32,
-    pub RTC_DR: u32,
-    pub RTC_SSR: u32,
-    pub RTC_ICSR: u32,
-    pub RTC_PRER: u32,
-    pub RTC_WUTR: u32,
-    pub RTC_CR: u32,
-    pub RTC_SMCR: u32,
-    pub RTC_WPR: u32,
-    pub RTC_CALR: u32,
-    pub RTC_SHIFTR: u32,
-    pub RTC_TSTR: u32,
-    pub RTC_TSDR: u32,
-    pub RTC_TSSSR: u32,
-    pub RTC_ALRMAR: u32,
-    pub RTC_ALRMASSR: u32,
-    pub RTC_ALRMBR: u32,
-    pub RTC_ALRMBSSR: u32,
-    pub RTC_SR: u32,
-    pub RTC_MISR: u32,
-    pub RTC_SMISR: u32,
-    pub RTC_SCR: u32,
-    pub RTC_CFGR: u32,
-    pub RTC_HWCFGR: u32,
-    pub RTC_VERR: u32,
-    pub RTC_IPIDR: u32,
-    pub RTC_SIDR: u32,
+    pub TR: u32,
+    pub DR: u32,
+    pub SSR: u32,
+    pub ICSR: u32,
+    pub PRER: u32,
+    pub WUTR: u32,
+    pub CR: u32,
+    pub SMCR: u32,
+    pub WPR: u32,
+    pub CALR: u32,
+    pub SHIFTR: u32,
+    pub TSTR: u32,
+    pub TSDR: u32,
+    pub TSSSR: u32,
+    pub ALRMAR: u32,
+    pub ALRMASSR: u32,
+    pub ALRMBR: u32,
+    pub ALRMBSSR: u32,
+    pub SR: u32,
+    pub MISR: u32,
+    pub SMISR: u32,
+    pub SCR: u32,
+    pub CFGR: u32,
+    pub HWCFGR: u32,
+    pub VERR: u32,
+    pub IPIDR: u32,
+    pub SIDR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

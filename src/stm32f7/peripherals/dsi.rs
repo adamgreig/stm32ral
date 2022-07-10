@@ -4547,7 +4547,7 @@ pub struct RegisterBlock {
     /// DSI Host Low-Power mode Configuration Register
     pub LPMCR: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// DSI Host Protocol Configuration Register
     pub PCR: RWRegister<u32>,
@@ -4624,7 +4624,7 @@ pub struct RegisterBlock {
     /// DSI Host Timeout Counter Configuration Register 5
     pub TCCR5: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DSI Host Clock Lane Configuration Register
     pub CLCR: RWRegister<u32>,
@@ -4650,7 +4650,7 @@ pub struct RegisterBlock {
     /// DSI Host PHY Status Register
     pub PSR: RORegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// DSI Host Interrupt & Status Register 0
     pub ISR0: RORegister<u32>,
@@ -4664,7 +4664,7 @@ pub struct RegisterBlock {
     /// DSI Host Interrupt Enable Register 1
     pub IER1: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// DSI Host Force Interrupt Register 0
     pub FIR0: WORegister<u32>,
@@ -4672,12 +4672,12 @@ pub struct RegisterBlock {
     /// DSI Host Force Interrupt Register 1
     pub FIR1: WORegister<u32>,
 
-    _reserved5: [u32; 8],
+    _reserved5: [u8; 32],
 
     /// DSI Host Video Shadow Control Register
     pub VSCR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// DSI Host LTDC Current VCID Register
     pub LCVCIDR: RORegister<u32>,
@@ -4685,12 +4685,12 @@ pub struct RegisterBlock {
     /// DSI Host LTDC Current Color Coding Register
     pub LCCCR: RORegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// DSI Host Low-Power mode Current Configuration Register
     pub LPMCCR: RORegister<u32>,
 
-    _reserved8: [u32; 7],
+    _reserved8: [u8; 28],
 
     /// DSI Host Video mode Current Configuration Register
     pub VMCCR: RORegister<u32>,
@@ -4725,7 +4725,7 @@ pub struct RegisterBlock {
     /// DSI Host Video VA Current Configuration Register
     pub VVACCR: RORegister<u32>,
 
-    _reserved9: [u32; 167],
+    _reserved9: [u8; 668],
 
     /// DSI Wrapper Configuration Register
     pub WCFGR: RWRegister<u32>,
@@ -4742,7 +4742,7 @@ pub struct RegisterBlock {
     /// DSI Wrapper Interrupt Flag Clear Register
     pub WIFCR: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// DSI Wrapper PHY Configuration Register 1
     pub WPCR1: RWRegister<u32>,
@@ -4759,7 +4759,7 @@ pub struct RegisterBlock {
     /// DSI Wrapper PHY Configuration Register 5
     pub WPCR5: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// DSI Wrapper Regulator and PLL Control Register
     pub WRPCR: RWRegister<u32>,

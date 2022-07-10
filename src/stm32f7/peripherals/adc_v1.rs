@@ -481,26 +481,50 @@ pub mod CR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0000: Timer 1 CC1 event
-            pub const TIM1CC1: u32 = 0b0000;
+            /// 0b0000: Timer 1 CH1
+            pub const TIM1CH1: u32 = 0b0000;
 
-            /// 0b0001: Timer 1 CC2 event
-            pub const TIM1CC2: u32 = 0b0001;
+            /// 0b0001: Timer 1 CH2
+            pub const TIM1CH2: u32 = 0b0001;
 
-            /// 0b0010: Timer 1 CC3 event
-            pub const TIM1CC3: u32 = 0b0010;
+            /// 0b0010: Timer 1 CH3
+            pub const TIM1CH3: u32 = 0b0010;
 
-            /// 0b0011: Timer 2 CC2 event
-            pub const TIM2CC2: u32 = 0b0011;
+            /// 0b0011: Timer 2 CH2
+            pub const TIM2CH2: u32 = 0b0011;
 
-            /// 0b0100: Timer 2 CC3 event
-            pub const TIM2CC3: u32 = 0b0100;
+            /// 0b0100: Timer 5 TRGO
+            pub const TIM5TRGO: u32 = 0b0100;
 
-            /// 0b0101: Timer 2 CC4 event
-            pub const TIM2CC4: u32 = 0b0101;
+            /// 0b0101: Timer 4 CH4
+            pub const TIM4CH4: u32 = 0b0101;
 
-            /// 0b0110: Timer 2 TRGO event
-            pub const TIM2TRGO: u32 = 0b0110;
+            /// 0b0110: Timer 3 CH4
+            pub const TIM3CH4: u32 = 0b0110;
+
+            /// 0b0111: Timer 8 TRGO
+            pub const TIM8TRGO: u32 = 0b0111;
+
+            /// 0b1000: Timer 8 TRGO(2)
+            pub const TIM8TRGO2: u32 = 0b1000;
+
+            /// 0b1001: Timer 1 TRGO
+            pub const TIM1TRGO: u32 = 0b1001;
+
+            /// 0b1010: Timer 1 TRGO(2)
+            pub const TIM1TRGO2: u32 = 0b1010;
+
+            /// 0b1011: Timer 2 TRGO
+            pub const TIM2TRGO: u32 = 0b1011;
+
+            /// 0b1100: Timer 4 TRGO
+            pub const TIM4TRGO: u32 = 0b1100;
+
+            /// 0b1101: Timer 6 TRGO
+            pub const TIM6TRGO: u32 = 0b1101;
+
+            /// 0b1111: EXTI line 11
+            pub const EXTI11: u32 = 0b1111;
         }
     }
 
@@ -548,46 +572,46 @@ pub mod CR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0000: Timer 1 TRGO event
+            /// 0b0000: Timer 1 TRGO
             pub const TIM1TRGO: u32 = 0b0000;
 
-            /// 0b0001: Timer 1 CC4 event
-            pub const TIM1CC4: u32 = 0b0001;
+            /// 0b0001: Timer 1 CH4
+            pub const TIM1CH4: u32 = 0b0001;
 
-            /// 0b0010: Timer 2 TRGO event
+            /// 0b0010: Timer 2 TRGO
             pub const TIM2TRGO: u32 = 0b0010;
 
-            /// 0b0011: Timer 2 CC1 event
-            pub const TIM2CC1: u32 = 0b0011;
+            /// 0b0011: Timer 2 CH1
+            pub const TIM2CH1: u32 = 0b0011;
 
-            /// 0b0100: Timer 3 CC4 event
-            pub const TIM3CC4: u32 = 0b0100;
+            /// 0b0100: Timer 3 CH4
+            pub const TIM3CH4: u32 = 0b0100;
 
-            /// 0b0101: Timer 4 TRGO event
+            /// 0b0101: Timer 4 TRGO
             pub const TIM4TRGO: u32 = 0b0101;
 
-            /// 0b0111: Timer 8 CC4 event
-            pub const TIM8CC4: u32 = 0b0111;
+            /// 0b0111: Timer 8 CH4
+            pub const TIM8CH4: u32 = 0b0111;
 
-            /// 0b1000: Timer 1 TRGO(2) event
+            /// 0b1000: Timer 1 TRGO(2)
             pub const TIM1TRGO2: u32 = 0b1000;
 
-            /// 0b1001: Timer 8 TRGO event
+            /// 0b1001: Timer 8 TRGO
             pub const TIM8TRGO: u32 = 0b1001;
 
-            /// 0b1010: Timer 8 TRGO(2) event
+            /// 0b1010: Timer 8 TRGO(2)
             pub const TIM8TRGO2: u32 = 0b1010;
 
-            /// 0b1011: Timer 3 CC3 event
-            pub const TIM3CC3: u32 = 0b1011;
+            /// 0b1011: Timer 3 CH3
+            pub const TIM3CH3: u32 = 0b1011;
 
-            /// 0b1100: Timer 5 TRGO event
+            /// 0b1100: Timer 5 TRGO
             pub const TIM5TRGO: u32 = 0b1100;
 
-            /// 0b1101: Timer 3 CC1 event
-            pub const TIM3CC1: u32 = 0b1101;
+            /// 0b1101: Timer 3 CH1
+            pub const TIM3CH1: u32 = 0b1101;
 
-            /// 0b1110: Timer 6 TRGO event
+            /// 0b1110: Timer 6 TRGO
             pub const TIM6TRGO: u32 = 0b1110;
         }
     }

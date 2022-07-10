@@ -1363,7 +1363,7 @@ pub struct RegisterBlock {
     /// Baud rate register
     pub BRR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Request register
     pub RQR: WORegister<u32>,

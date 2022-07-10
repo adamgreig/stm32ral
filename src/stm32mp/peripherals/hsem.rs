@@ -1053,7 +1053,7 @@ pub struct RegisterBlock {
     /// HSEM i2terrupt status register
     pub HSEM_C2MISR: RORegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// Only Write accesses with authorized AHB bus master IDs are granted. Write accesses with unauthorized AHB bus master IDs are discarded.
     pub HSEM_CR: WORegister<u32>,
@@ -1061,7 +1061,7 @@ pub struct RegisterBlock {
     /// HSEM interrupt clear register
     pub HSEM_KEYR: RWRegister<u32>,
 
-    _reserved2: [u32; 169],
+    _reserved2: [u8; 676],
 
     /// HSEM hardware configuration register 2
     pub HSEM_HWCFGR2: RORegister<u32>,

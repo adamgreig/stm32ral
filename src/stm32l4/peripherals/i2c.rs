@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Inter-integrated circuit
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -1025,12 +1025,8 @@ pub mod ISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Write transfer, slave enters receiver mode
             pub const Write: u32 = 0b0;
@@ -1038,6 +1034,10 @@ pub mod ISR {
             /// 0b1: Read transfer, slave enters transmitter mode
             pub const Read: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Bus busy
@@ -1046,12 +1046,8 @@ pub mod ISR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No communication is in progress on the bus
             pub const NotBusy: u32 = 0b0;
@@ -1059,6 +1055,10 @@ pub mod ISR {
             /// 0b1: A communication is in progress on the bus
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SMBus alert
@@ -1067,12 +1067,8 @@ pub mod ISR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: SMBA alert is not detected
             pub const NoAlert: u32 = 0b0;
@@ -1080,6 +1076,10 @@ pub mod ISR {
             /// 0b1: SMBA alert event is detected on SMBA pin
             pub const Alert: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timeout or t_low detection flag
@@ -1088,12 +1088,8 @@ pub mod ISR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No timeout occured
             pub const NoTimeout: u32 = 0b0;
@@ -1101,6 +1097,10 @@ pub mod ISR {
             /// 0b1: Timeout occured
             pub const Timeout: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PEC Error in reception
@@ -1109,12 +1109,8 @@ pub mod ISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Received PEC does match with PEC register
             pub const Match: u32 = 0b0;
@@ -1122,6 +1118,10 @@ pub mod ISR {
             /// 0b1: Received PEC does not match with PEC register
             pub const NoMatch: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun/Underrun (slave mode)
@@ -1130,12 +1130,8 @@ pub mod ISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No overrun/underrun error occurs
             pub const NoOverrun: u32 = 0b0;
@@ -1143,6 +1139,10 @@ pub mod ISR {
             /// 0b1: slave mode with NOSTRETCH=1, when an overrun/underrun error occurs
             pub const Overrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Arbitration lost
@@ -1151,12 +1151,8 @@ pub mod ISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No arbitration lost
             pub const NotLost: u32 = 0b0;
@@ -1164,6 +1160,10 @@ pub mod ISR {
             /// 0b1: Arbitration lost
             pub const Lost: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Bus error
@@ -1172,12 +1172,8 @@ pub mod ISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No bus error
             pub const NoError: u32 = 0b0;
@@ -1185,6 +1181,10 @@ pub mod ISR {
             /// 0b1: Misplaced Start and Stop condition is detected
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transfer Complete Reload
@@ -1193,12 +1193,8 @@ pub mod ISR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transfer is not complete
             pub const NotComplete: u32 = 0b0;
@@ -1206,6 +1202,10 @@ pub mod ISR {
             /// 0b1: NBYTES has been transfered
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transfer Complete (master mode)
@@ -1214,11 +1214,11 @@ pub mod ISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCR::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCR::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stop detection flag
@@ -1227,12 +1227,8 @@ pub mod ISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Stop condition detected
             pub const NoStop: u32 = 0b0;
@@ -1240,6 +1236,10 @@ pub mod ISR {
             /// 0b1: Stop condition detected
             pub const Stop: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Not acknowledge received flag
@@ -1248,12 +1248,8 @@ pub mod ISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No NACK has been received
             pub const NoNack: u32 = 0b0;
@@ -1261,6 +1257,10 @@ pub mod ISR {
             /// 0b1: NACK has been received
             pub const Nack: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Address matched (slave mode)
@@ -1269,12 +1269,8 @@ pub mod ISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Adress mismatched or not received
             pub const NotMatch: u32 = 0b0;
@@ -1282,6 +1278,10 @@ pub mod ISR {
             /// 0b1: Received slave address matched with one of the enabled slave addresses
             pub const Match: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data register not empty (receivers)
@@ -1290,12 +1290,8 @@ pub mod ISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The RXDR register is empty
             pub const Empty: u32 = 0b0;
@@ -1303,6 +1299,10 @@ pub mod ISR {
             /// 0b1: Received data is copied into the RXDR register, and is ready to be read
             pub const NotEmpty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit interrupt status (transmitters)
@@ -1359,14 +1359,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the ALERT flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timeout detection flag clear
@@ -1377,14 +1377,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the TIMOUT flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PEC Error flag clear
@@ -1395,14 +1395,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the PEC flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun/Underrun flag clear
@@ -1413,14 +1413,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the OVR flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Arbitration lost flag clear
@@ -1431,14 +1431,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the ARLO flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Bus error flag clear
@@ -1449,14 +1449,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the BERR flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stop detection flag clear
@@ -1467,14 +1467,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the STOP flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Not Acknowledge flag clear
@@ -1485,14 +1485,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the NACK flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Address Matched flag clear
@@ -1503,14 +1503,14 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clears the ADDR flag in ISR register
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

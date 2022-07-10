@@ -19,7 +19,7 @@ pub use super::instances::crc;
 pub use super::instances::crs;
 pub mod cryp;
 pub use super::instances::dac;
-pub use super::instances::dbgmcu_h735_h747cm4_h747cm7 as dbgmcu;
+pub mod dbgmcu;
 pub use super::instances::dcmi;
 pub use super::instances::dlyb_h735_h7b3 as dlyb;
 pub mod dfsdm;
@@ -42,7 +42,7 @@ pub use super::instances::lptim;
 pub use super::instances::lptim3;
 pub use super::instances::lpuart1;
 pub use super::instances::ltdc;
-pub mod mdios;
+pub use super::instances::mdios;
 pub use super::instances::mdma;
 pub use super::instances::mpu;
 pub use super::instances::nvic_h735_h747cm4_h747cm7 as nvic;
@@ -73,24 +73,27 @@ pub use super::instances::swpmi;
 pub mod syscfg;
 pub mod tim1;
 pub use super::instances::tim2_h735_h7b3 as tim2;
+pub use super::instances::tim3_h735_h7b3 as tim3;
+pub use super::instances::tim4_h735_h7b3 as tim4;
 pub use super::instances::tim5_h735_h7b3 as tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub mod tim8;
-pub use super::instances::tim15_h735_h7b3 as tim15;
-pub use super::instances::tim16;
-pub use super::instances::tim17;
-pub use super::instances::usart;
-pub use super::instances::vrefbuf;
-pub mod wwdg1;
 pub use super::instances::tim12_h735_h7b3 as tim12;
 pub use super::instances::tim13_h735_h7b3 as tim13;
 pub use super::instances::tim14_h735_h7b3 as tim14;
-pub use super::instances::tim3_h735_h7b3 as tim3;
-pub use super::instances::tim4_h735_h7b3 as tim4;
+pub use super::instances::tim15_h735_h7b3 as tim15;
+pub use super::instances::tim16;
+pub use super::instances::tim17;
+pub mod usart;
+pub use super::instances::vrefbuf;
 pub mod bdma;
+pub mod cordic;
 pub mod ethernet_dma;
-pub use super::instances::dsihost;
+pub mod fmac;
+pub mod tim23;
+pub mod tim24;
+pub mod wwdg1;
 pub use super::instances::ethernet_mtl_h735_h747cm4_h747cm7 as ethernet_mtl;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
@@ -195,10 +198,15 @@ pub struct Peripherals {
     pub SYSCFG: syscfg::Instance,
     pub TIM1: tim1::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
+    pub TIM4: tim4::Instance,
     pub TIM5: tim5::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
     pub TIM8: tim8::Instance,
+    pub TIM12: tim12::Instance,
+    pub TIM13: tim13::Instance,
+    pub TIM14: tim14::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
     pub TIM17: tim17::Instance,
@@ -210,17 +218,17 @@ pub struct Peripherals {
     pub USART6: usart::Instance,
     pub UART7: usart::Instance,
     pub UART8: usart::Instance,
+    pub UART9: usart::Instance,
+    pub USART10: usart::Instance,
     pub VREFBUF: vrefbuf::Instance,
     pub WWDG1: wwdg1::Instance,
-    pub TIM3: tim3::Instance,
-    pub TIM4: tim4::Instance,
-    pub TIM12: tim12::Instance,
-    pub TIM13: tim13::Instance,
-    pub TIM14: tim14::Instance,
     pub BDMA: bdma::Instance,
+    pub TIM23: tim23::Instance,
+    pub TIM24: tim24::Instance,
+    pub CORDIC: cordic::Instance,
+    pub FMAC: fmac::Instance,
     pub Ethernet_DMA: ethernet_dma::Instance,
     pub Ethernet_MTL: ethernet_mtl::Instance,
-    pub DSIHOST: dsihost::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -330,10 +338,15 @@ impl Peripherals {
             SYSCFG: syscfg::SYSCFG::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
+            TIM4: tim4::TIM4::steal(),
             TIM5: tim5::TIM5::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
             TIM8: tim8::TIM8::steal(),
+            TIM12: tim12::TIM12::steal(),
+            TIM13: tim13::TIM13::steal(),
+            TIM14: tim14::TIM14::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
             TIM17: tim17::TIM17::steal(),
@@ -345,17 +358,17 @@ impl Peripherals {
             USART6: usart::USART6::steal(),
             UART7: usart::UART7::steal(),
             UART8: usart::UART8::steal(),
+            UART9: usart::UART9::steal(),
+            USART10: usart::USART10::steal(),
             VREFBUF: vrefbuf::VREFBUF::steal(),
             WWDG1: wwdg1::WWDG1::steal(),
-            TIM3: tim3::TIM3::steal(),
-            TIM4: tim4::TIM4::steal(),
-            TIM12: tim12::TIM12::steal(),
-            TIM13: tim13::TIM13::steal(),
-            TIM14: tim14::TIM14::steal(),
             BDMA: bdma::BDMA::steal(),
+            TIM23: tim23::TIM23::steal(),
+            TIM24: tim24::TIM24::steal(),
+            CORDIC: cordic::CORDIC::steal(),
+            FMAC: fmac::FMAC::steal(),
             Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
             Ethernet_MTL: ethernet_mtl::Ethernet_MTL::steal(),
-            DSIHOST: dsihost::DSIHOST::steal(),
         }
     }
 }

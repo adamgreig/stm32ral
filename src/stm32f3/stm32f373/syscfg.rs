@@ -1022,7 +1022,7 @@ pub struct RegisterBlock {
     /// configuration register 1
     pub CFGR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// external interrupt configuration register 1
     pub EXTICR1: RWRegister<u32>,

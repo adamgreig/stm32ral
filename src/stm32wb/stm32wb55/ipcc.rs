@@ -629,7 +629,7 @@ pub struct RegisterBlock {
     /// CPU2 to CPU1 status register
     pub C2TOC1SR: RORegister<u32>,
 
-    _reserved1: [u32; 244],
+    _reserved1: [u8; 976],
 
     /// IPCC Hardware configuration register
     pub HWCFGR: RORegister<u32>,

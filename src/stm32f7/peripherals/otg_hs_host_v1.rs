@@ -2084,7 +2084,7 @@ pub struct RegisterBlock {
     /// OTG_HS host frame number/frame time remaining register
     pub OTG_HS_HFNUM: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// OTG_HS_Host periodic transmit FIFO/queue status register
     pub OTG_HS_HPTXSTS: RWRegister<u32>,
@@ -2095,12 +2095,12 @@ pub struct RegisterBlock {
     /// OTG_HS host all channels interrupt mask register
     pub OTG_HS_HAINTMSK: RWRegister<u32>,
 
-    _reserved2: [u32; 9],
+    _reserved2: [u8; 36],
 
     /// OTG_HS host port control and status register
     pub OTG_HS_HPRT: RWRegister<u32>,
 
-    _reserved3: [u32; 47],
+    _reserved3: [u8; 188],
 
     /// OTG_HS host channel-0 characteristics register
     pub OTG_HS_HCCHAR0: RWRegister<u32>,
@@ -2120,7 +2120,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-0 DMA address register
     pub OTG_HS_HCDMA0: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// OTG_HS host channel-1 characteristics register
     pub OTG_HS_HCCHAR1: RWRegister<u32>,
@@ -2140,7 +2140,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-1 DMA address register
     pub OTG_HS_HCDMA1: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// OTG_HS host channel-2 characteristics register
     pub OTG_HS_HCCHAR2: RWRegister<u32>,
@@ -2160,7 +2160,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-2 DMA address register
     pub OTG_HS_HCDMA2: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// OTG_HS host channel-3 characteristics register
     pub OTG_HS_HCCHAR3: RWRegister<u32>,
@@ -2180,7 +2180,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-3 DMA address register
     pub OTG_HS_HCDMA3: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// OTG_HS host channel-4 characteristics register
     pub OTG_HS_HCCHAR4: RWRegister<u32>,
@@ -2200,7 +2200,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-4 DMA address register
     pub OTG_HS_HCDMA4: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// OTG_HS host channel-5 characteristics register
     pub OTG_HS_HCCHAR5: RWRegister<u32>,
@@ -2220,7 +2220,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-5 DMA address register
     pub OTG_HS_HCDMA5: RWRegister<u32>,
 
-    _reserved9: [u32; 2],
+    _reserved9: [u8; 8],
 
     /// OTG_HS host channel-6 characteristics register
     pub OTG_HS_HCCHAR6: RWRegister<u32>,
@@ -2240,7 +2240,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-6 DMA address register
     pub OTG_HS_HCDMA6: RWRegister<u32>,
 
-    _reserved10: [u32; 2],
+    _reserved10: [u8; 8],
 
     /// OTG_HS host channel-7 characteristics register
     pub OTG_HS_HCCHAR7: RWRegister<u32>,
@@ -2260,7 +2260,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-7 DMA address register
     pub OTG_HS_HCDMA7: RWRegister<u32>,
 
-    _reserved11: [u32; 2],
+    _reserved11: [u8; 8],
 
     /// OTG_HS host channel-8 characteristics register
     pub OTG_HS_HCCHAR8: RWRegister<u32>,
@@ -2280,7 +2280,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-8 DMA address register
     pub OTG_HS_HCDMA8: RWRegister<u32>,
 
-    _reserved12: [u32; 2],
+    _reserved12: [u8; 8],
 
     /// OTG_HS host channel-9 characteristics register
     pub OTG_HS_HCCHAR9: RWRegister<u32>,
@@ -2300,7 +2300,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-9 DMA address register
     pub OTG_HS_HCDMA9: RWRegister<u32>,
 
-    _reserved13: [u32; 2],
+    _reserved13: [u8; 8],
 
     /// OTG_HS host channel-10 characteristics register
     pub OTG_HS_HCCHAR10: RWRegister<u32>,
@@ -2320,7 +2320,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-10 DMA address register
     pub OTG_HS_HCDMA10: RWRegister<u32>,
 
-    _reserved14: [u32; 2],
+    _reserved14: [u8; 8],
 
     /// OTG_HS host channel-11 characteristics register
     pub OTG_HS_HCCHAR11: RWRegister<u32>,
@@ -2340,7 +2340,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-11 DMA address register
     pub OTG_HS_HCDMA11: RWRegister<u32>,
 
-    _reserved15: [u32; 2],
+    _reserved15: [u8; 8],
 
     /// OTG_HS host channel-12 characteristics register
     pub OTG_HS_HCCHAR12: RWRegister<u32>,
@@ -2360,7 +2360,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-12 DMA address register
     pub OTG_HS_HCDMA12: RWRegister<u32>,
 
-    _reserved16: [u32; 2],
+    _reserved16: [u8; 8],
 
     /// OTG_HS host channel-13 characteristics register
     pub OTG_HS_HCCHAR13: RWRegister<u32>,
@@ -2380,7 +2380,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-13 DMA address register
     pub OTG_HS_HCDMA13: RWRegister<u32>,
 
-    _reserved17: [u32; 2],
+    _reserved17: [u8; 8],
 
     /// OTG_HS host channel-14 characteristics register
     pub OTG_HS_HCCHAR14: RWRegister<u32>,
@@ -2400,7 +2400,7 @@ pub struct RegisterBlock {
     /// OTG_HS host channel-14 DMA address register
     pub OTG_HS_HCDMA14: RWRegister<u32>,
 
-    _reserved18: [u32; 2],
+    _reserved18: [u8; 8],
 
     /// OTG_HS host channel-15 characteristics register
     pub OTG_HS_HCCHAR15: RWRegister<u32>,

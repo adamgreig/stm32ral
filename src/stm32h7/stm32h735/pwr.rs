@@ -996,12 +996,12 @@ pub struct RegisterBlock {
     /// This register allows controlling CPU1 power.
     pub CPUCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register allows controlling D3 domain power.Following reset VOSRDY will be read 1 by software
     pub D3CR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// reset only by system reset, not reset by wakeup from Standby mode5 wait states are required when writing this register (when clearing a WKUPF bit in PWR_WKUPFR, the AHB write access will complete after the WKUPF has been cleared).
     pub WKUPCR: RWRegister<u32>,

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32l4r9, stm32l4x6
+//! Used by: stm32l4r5, stm32l4r9, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -486,7 +486,7 @@ pub struct RegisterBlock {
     /// ADC Common status register
     pub CSR: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// ADC common control register
     pub CCR: RWRegister<u32>,

@@ -418,14 +418,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -816,7 +816,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: capture/compare mode register 1 (input mode)
     pub CCMR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -830,7 +830,7 @@ pub struct RegisterBlock {
     /// auto-reload register
     pub ARR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// capture/compare register
     pub CCR1: RWRegister<u32>,

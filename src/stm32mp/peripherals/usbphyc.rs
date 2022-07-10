@@ -484,22 +484,22 @@ pub struct RegisterBlock {
     /// This register is used to control the PLL of the HS PHY.
     pub USBPHYC_PLL: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register is used to control the switch between controllers for the HS PHY.
     pub USBPHYC_MISC: RWRegister<u32>,
 
-    _reserved2: [u32; 64],
+    _reserved2: [u8; 256],
 
     /// This register is used to control the tune interface of the HS PHY, port #x.
     pub USBPHYC_TUNE1: RWRegister<u32>,
 
-    _reserved3: [u32; 63],
+    _reserved3: [u8; 252],
 
     /// This register is used to control the tune interface of the HS PHY, port #x.
     pub USBPHYC_TUNE2: RWRegister<u32>,
 
-    _reserved4: [u32; 891],
+    _reserved4: [u8; 3564],
 
     /// This register defines the version of this IP.
     pub USBPHYC_VERR: RORegister<u32>,

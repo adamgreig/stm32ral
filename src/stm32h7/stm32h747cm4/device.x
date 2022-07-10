@@ -116,6 +116,7 @@ PROVIDE(MDIOS_WKUP = DefaultHandler);
 PROVIDE(MDIOS = DefaultHandler);
 PROVIDE(JPEG = DefaultHandler);
 PROVIDE(MDMA = DefaultHandler);
+PROVIDE(DSI = DefaultHandler);
 PROVIDE(SDMMC = DefaultHandler);
 PROVIDE(HSEM0 = DefaultHandler);
 PROVIDE(ADC3 = DefaultHandler);

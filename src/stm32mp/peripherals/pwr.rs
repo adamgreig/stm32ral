@@ -1163,7 +1163,7 @@ pub struct RegisterBlock {
     /// See individual bits for reset condition. Access 6 wait states when writing this register. This register is always non-secure. When a system reset occurs during the register write cycle the written data is not guaranteed.
     pub PWR_MCUCR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Not reset by wakeup from Standby mode, but by any application reset (such as NRST, IWDG). Access 6 wait states when writing this register (when clearing a WKUPF, the AHB write access completes after the WKUPF has cleared). This register provides Write access security when enabled by TZEN register bit in Section10: Reset and clock control (RCC). When security is enabled a non-secure write access on individual WKUPC\[6:1\], WKUPP\[6:1\] bits and WKUPPUPD\[6:1\] bit pairs are discarded when the corresponding WKUPEN\[6:1\] bit in PWR MPU wakeup enable register (PWR_MPUWKUPENR) is set. No bus error is generated. Secure and non-secure read accesses are granted and return the register value. When a system reset occurs during the register write cycle the written data is not guaranteed.
     pub PWR_WKUPCR: RWRegister<u32>,
@@ -1177,7 +1177,7 @@ pub struct RegisterBlock {
     /// Not reset by wakeup from Standby mode but by any Application reset (NRST, IWDG, ...) Access 6 wait states when writing this register. When a system reset occurs during the register write cycle the written data is not guaranteed.
     pub PWR_MCUWKUPENR: RWRegister<u32>,
 
-    _reserved2: [u32; 241],
+    _reserved2: [u8; 964],
 
     /// PWR IP version register
     pub PWR_VER: RORegister<u32>,

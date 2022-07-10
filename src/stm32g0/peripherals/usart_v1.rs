@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g071, stm32g07x, stm32g081
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g071, stm32g081
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART interrupt generated when RXFF = 1 in the USART_ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// TXFIFO empty interrupt enable
@@ -35,8 +42,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART interrupt generated when TXFE = 1 in the USART_ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// FIFO mode enable
@@ -49,8 +63,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: FIFO mode is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: FIFO mode is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Word length
@@ -63,8 +84,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Use M0 to set the data bits
+            pub const M0: u32 = 0b0;
+
+            /// 0b1: 1 start bit, 7 data bits, n stop bits
+            pub const Bit7: u32 = 0b1;
+        }
     }
 
     /// End of Block interrupt enable
@@ -77,8 +105,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: A USART interrupt is generated when the EOBF flag is set in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Receiver timeout interrupt enable
@@ -91,8 +126,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An USART interrupt is generated when the RTOF bit is set in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DEAT
@@ -133,8 +175,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Oversampling by 16
+            pub const Oversampling16: u32 = 0b0;
+
+            /// 0b1: Oversampling by 8
+            pub const Oversampling8: u32 = 0b1;
+        }
     }
 
     /// Character match interrupt enable
@@ -147,8 +196,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated when the CMF bit is set in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Mute mode enable
@@ -161,8 +217,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receiver in active mode permanently
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Receiver can switch between mute mode and active mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Word length
@@ -175,8 +238,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 1 start bit, 8 data bits, n stop bits
+            pub const Bit8: u32 = 0b0;
+
+            /// 0b1: 1 start bit, 9 data bits, n stop bits
+            pub const Bit9: u32 = 0b1;
+        }
     }
 
     /// Receiver wakeup method
@@ -189,8 +259,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Idle line
+            pub const Idle: u32 = 0b0;
+
+            /// 0b1: Address mask
+            pub const Address: u32 = 0b1;
+        }
     }
 
     /// Parity control enable
@@ -203,8 +280,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Parity control disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Parity control enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Parity selection
@@ -217,8 +301,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Even parity
+            pub const Even: u32 = 0b0;
+
+            /// 0b1: Odd parity
+            pub const Odd: u32 = 0b1;
+        }
     }
 
     /// PE interrupt enable
@@ -231,8 +322,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated whenever PE=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// interrupt enable
@@ -245,8 +343,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated whenever TXE=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transmission complete interrupt enable
@@ -259,8 +364,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated whenever TC=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RXNE interrupt enable
@@ -273,8 +385,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated whenever ORE=1 or RXNE=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// IDLE interrupt enable
@@ -287,8 +406,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Interrupt is generated whenever IDLE=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Transmitter enable
@@ -301,8 +427,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Transmitter is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Transmitter is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Receiver enable
@@ -315,8 +448,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receiver is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Receiver is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// USART enable in Stop mode
@@ -329,8 +469,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: USART not able to wake up the MCU from Stop mode
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART able to wake up the MCU from Stop mode
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// USART enable
@@ -343,41 +490,20 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: UART is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: UART is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// Control register 2
 pub mod CR2 {
-
-    /// Address of the USART node
-    pub mod ADD4_7 {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (4 bits: 0b1111 << 28)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Address of the USART node
-    pub mod ADD0_3 {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (4 bits: 0b1111 << 24)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 
     /// Receiver timeout enable
     pub mod RTOEN {
@@ -389,8 +515,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Receiver timeout feature disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Receiver timeout feature enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Auto baud rate mode
@@ -403,8 +536,21 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: Measurement of the start bit is used to detect the baud rate
+            pub const Start: u32 = 0b00;
+
+            /// 0b01: Falling edge to falling edge measurement
+            pub const Edge: u32 = 0b01;
+
+            /// 0b10: 0x7F frame detection
+            pub const Frame7F: u32 = 0b10;
+
+            /// 0b11: 0x55 frame detection
+            pub const Frame55: u32 = 0b11;
+        }
     }
 
     /// Auto baud rate enable
@@ -417,8 +563,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Auto baud rate detection is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Auto baud rate detection is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Most significant bit first
@@ -431,12 +584,19 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: data is transmitted/received with data bit 0 first, following the start bit
+            pub const LSB: u32 = 0b0;
+
+            /// 0b1: data is transmitted/received with MSB (bit 7/8/9) first, following the start bit
+            pub const MSB: u32 = 0b1;
+        }
     }
 
     /// Binary data inversion
-    pub mod TAINV {
+    pub mod DATAINV {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -445,8 +605,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Logical data from the data register are send/received in positive/direct logic
+            pub const Positive: u32 = 0b0;
+
+            /// 0b1: Logical data from the data register are send/received in negative/inverse logic
+            pub const Negative: u32 = 0b1;
+        }
     }
 
     /// TX pin active level inversion
@@ -459,8 +626,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TX pin signal works using the standard logic levels
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: TX pin signal values are inverted
+            pub const Inverted: u32 = 0b1;
+        }
     }
 
     /// RX pin active level inversion
@@ -473,8 +647,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RX pin signal works using the standard logic levels
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: RX pin signal values are inverted
+            pub const Inverted: u32 = 0b1;
+        }
     }
 
     /// Swap TX/RX pins
@@ -487,8 +668,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TX/RX pins are used as defined in standard pinout
+            pub const Standard: u32 = 0b0;
+
+            /// 0b1: The TX and RX pins functions are swapped
+            pub const Swapped: u32 = 0b1;
+        }
     }
 
     /// LIN mode enable
@@ -501,8 +689,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: LIN mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: LIN mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// STOP bits
@@ -515,8 +710,21 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: 1 stop bit
+            pub const Stop1: u32 = 0b00;
+
+            /// 0b01: 0.5 stop bit
+            pub const Stop0p5: u32 = 0b01;
+
+            /// 0b10: 2 stop bit
+            pub const Stop2: u32 = 0b10;
+
+            /// 0b11: 1.5 stop bit
+            pub const Stop1p5: u32 = 0b11;
+        }
     }
 
     /// Clock enable
@@ -529,8 +737,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CK pin disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CK pin enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Clock polarity
@@ -543,8 +758,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Steady low value on CK pin outside transmission window
+            pub const Low: u32 = 0b0;
+
+            /// 0b1: Steady high value on CK pin outside transmission window
+            pub const High: u32 = 0b1;
+        }
     }
 
     /// Clock phase
@@ -557,8 +779,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The first clock transition is the first data capture edge
+            pub const First: u32 = 0b0;
+
+            /// 0b1: The second clock transition is the first data capture edge
+            pub const Second: u32 = 0b1;
+        }
     }
 
     /// Last bit clock pulse
@@ -571,8 +800,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: The clock pulse of the last data bit is not output to the CK pin
+            pub const NotOutput: u32 = 0b0;
+
+            /// 0b1: The clock pulse of the last data bit is output to the CK pin
+            pub const Output: u32 = 0b1;
+        }
     }
 
     /// LIN break detection interrupt enable
@@ -585,8 +821,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An interrupt is generated whenever LBDF=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// LIN break detection length
@@ -599,8 +842,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 10-bit break detection
+            pub const Bit10: u32 = 0b0;
+
+            /// 0b1: 11-bit break detection
+            pub const Bit11: u32 = 0b1;
+        }
     }
 
     /// 7-bit Address Detection/4-bit Address Detection
@@ -613,8 +863,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: 4-bit address detection
+            pub const Bit4: u32 = 0b0;
+
+            /// 0b1: 7-bit address detection
+            pub const Bit7: u32 = 0b1;
+        }
     }
 
     /// When the DSI_NSS bit is set, the NSS pin input will be ignored
@@ -627,8 +884,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: SPI slave selection depends on NSS input pin
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: SPI slave is always selected and NSS input pin is ignored
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Synchronous Slave mode enable
@@ -637,6 +901,27 @@ pub mod CR2 {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Slave mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Slave mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
+    }
+
+    /// Address of the USART node
+    pub mod ADD {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (8 bits: 0xff << 24)
+        pub const mask: u32 = 0xff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -659,8 +944,27 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: TXFIFO reaches 1/8 of its depth
+            pub const Depth_1_8: u32 = 0b000;
+
+            /// 0b001: TXFIFO reaches 1/4 of its depth
+            pub const Depth_1_4: u32 = 0b001;
+
+            /// 0b010: TXFIFO reaches 1/2 of its depth
+            pub const Depth_1_2: u32 = 0b010;
+
+            /// 0b011: TXFIFO reaches 3/4 of its depth
+            pub const Depth_3_4: u32 = 0b011;
+
+            /// 0b100: TXFIFO reaches 7/8 of its depth
+            pub const Depth_7_8: u32 = 0b100;
+
+            /// 0b101: TXFIFO becomes empty
+            pub const Empty: u32 = 0b101;
+        }
     }
 
     /// RXFIFO threshold interrupt enable
@@ -673,8 +977,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART interrupt generated when Receive FIFO reaches the threshold programmed in RXFTCFG
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Receive FIFO threshold configuration
@@ -687,8 +998,27 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: RXFIFO reaches 1/8 of its depth
+            pub const Depth_1_8: u32 = 0b000;
+
+            /// 0b001: RXFIFO reaches 1/4 of its depth
+            pub const Depth_1_4: u32 = 0b001;
+
+            /// 0b010: RXFIFO reaches 1/2 of its depth
+            pub const Depth_1_2: u32 = 0b010;
+
+            /// 0b011: RXFIFO reaches 3/4 of its depth
+            pub const Depth_3_4: u32 = 0b011;
+
+            /// 0b100: RXFIFO reaches 7/8 of its depth
+            pub const Depth_7_8: u32 = 0b100;
+
+            /// 0b101: RXFIFO becomes full
+            pub const Full: u32 = 0b101;
+        }
     }
 
     /// Tr Complete before guard time, interrupt enable
@@ -701,8 +1031,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART interrupt generated whenever TCBGT=1 in the USART_ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// threshold interrupt enable
@@ -715,8 +1052,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: USART interrupt generated when Transmit FIFO reaches the threshold programmed in TXFTCFG
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Wakeup from Stop mode interrupt enable
@@ -729,8 +1073,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An USART interrupt is generated whenever WUF=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Wakeup from Stop mode interrupt flag selection
@@ -743,8 +1094,18 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: WUF active on address match
+            pub const Address: u32 = 0b00;
+
+            /// 0b10: WuF active on Start bit detection
+            pub const Start: u32 = 0b10;
+
+            /// 0b11: WUF active on RXNE
+            pub const RXNE: u32 = 0b11;
+        }
     }
 
     /// Smartcard auto-retry count
@@ -771,8 +1132,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DE signal is active high
+            pub const High: u32 = 0b0;
+
+            /// 0b1: DE signal is active low
+            pub const Low: u32 = 0b1;
+        }
     }
 
     /// Driver enable mode
@@ -785,8 +1153,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DE function is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The DE signal is output on the RTS pin
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMA Disable on Reception Error
@@ -799,8 +1174,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA is not disabled in case of reception error
+            pub const NotDisabled: u32 = 0b0;
+
+            /// 0b1: DMA is disabled following a reception error
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// Overrun Disable
@@ -813,8 +1195,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Overrun Error Flag, ORE, is set when received data is not read before receiving new data
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Overrun functionality is disabled. If new data is received while the RXNE flag is still set the ORE flag is not set and the new received data overwrites the previous content of the RDR register
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// One sample bit method enable
@@ -827,8 +1216,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Three sample bit method
+            pub const Sample3: u32 = 0b0;
+
+            /// 0b1: One sample bit method
+            pub const Sample1: u32 = 0b1;
+        }
     }
 
     /// CTS interrupt enable
@@ -841,8 +1237,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An interrupt is generated whenever CTSIF=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// CTS enable
@@ -855,8 +1258,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: CTS hardware flow control disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: CTS mode enabled, data is only transmitted when the CTS input is asserted
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// RTS enable
@@ -869,8 +1279,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: RTS hardware flow control disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: RTS output enabled, data is only requested when there is space in the receive buffer
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMA enable transmitter
@@ -883,8 +1300,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA mode is disabled for transmission
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA mode is enabled for transmission
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// DMA enable receiver
@@ -897,8 +1321,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: DMA mode is disabled for reception
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: DMA mode is enabled for reception
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Smartcard mode enable
@@ -911,8 +1342,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Smartcard Mode disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Smartcard Mode enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Smartcard NACK enable
@@ -925,8 +1363,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: NACK transmission in case of parity error is disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: NACK transmission during parity error is enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Half-duplex selection
@@ -939,8 +1384,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Half duplex mode is not selected
+            pub const NotSelected: u32 = 0b0;
+
+            /// 0b1: Half duplex mode is selected
+            pub const Selected: u32 = 0b1;
+        }
     }
 
     /// Ir low-power
@@ -953,8 +1405,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Normal mode
+            pub const Normal: u32 = 0b0;
+
+            /// 0b1: Low-power mode
+            pub const LowPower: u32 = 0b1;
+        }
     }
 
     /// Ir mode enable
@@ -967,8 +1426,15 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: IrDA disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: IrDA enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Error interrupt enable
@@ -981,34 +1447,27 @@ pub mod CR3 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Interrupt is inhibited
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: An interrupt is generated when FE=1 or ORE=1 or NF=1 in the ISR register
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
 /// Baud rate register
 pub mod BRR {
 
-    /// BRR_4_15
-    pub mod BRR_4_15 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (12 bits: 0xfff << 4)
-        pub const mask: u32 = 0xfff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// BRR_0_3
-    pub mod BRR_0_3 {
+    /// Baud rate
+    pub mod BRR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u32 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1093,8 +1552,12 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Set the TXE flags. This allows to discard the transmit data
+            pub const Discard: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1107,8 +1570,12 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: clears the RXNE flag. This allows to discard the received data without reading it, and avoid an overrun condition
+            pub const Discard: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1121,8 +1588,12 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Puts the USART in mute mode and sets the RWU flag
+            pub const Mute: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1135,8 +1606,12 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: sets the SBKF flag and request to send a BREAK on the line, as soon as the transmit machine is available
+            pub const Break: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1149,8 +1624,12 @@ pub mod RQR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: resets the ABRF flag in the USART_ISR and request an automatic baud rate measurement on the next received data frame
+            pub const Request: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1563,8 +2042,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the WUF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1577,8 +2060,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the CMF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1591,8 +2078,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear the UDR flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1605,8 +2096,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the EOBF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1619,8 +2114,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the RTOF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1633,8 +2132,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the CTSIF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1647,8 +2150,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the LBDF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1661,8 +2168,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear the TCBGT flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1675,8 +2186,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the TC flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1689,8 +2204,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear the TXFE flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1703,8 +2222,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the IDLE flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1717,8 +2240,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the ORE flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1731,8 +2258,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the NF flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1745,8 +2276,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the FE flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1759,8 +2294,12 @@ pub mod ICR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clears the PE flag in the ISR register
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1815,8 +2354,45 @@ pub mod PRESC {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: /1
+            pub const Div1: u32 = 0b0000;
+
+            /// 0b0001: /2
+            pub const Div2: u32 = 0b0001;
+
+            /// 0b0010: /4
+            pub const Div4: u32 = 0b0010;
+
+            /// 0b0011: /6
+            pub const Div6: u32 = 0b0011;
+
+            /// 0b0100: /8
+            pub const Div8: u32 = 0b0100;
+
+            /// 0b0101: /10
+            pub const Div10: u32 = 0b0101;
+
+            /// 0b0110: /12
+            pub const Div12: u32 = 0b0110;
+
+            /// 0b0111: /16
+            pub const Div16: u32 = 0b0111;
+
+            /// 0b1000: /32
+            pub const Div32: u32 = 0b1000;
+
+            /// 0b1001: /64
+            pub const Div64: u32 = 0b1001;
+
+            /// 0b1010: /128
+            pub const Div128: u32 = 0b1010;
+
+            /// 0b1011: /256
+            pub const Div256: u32 = 0b1011;
+        }
     }
 }
 #[repr(C)]

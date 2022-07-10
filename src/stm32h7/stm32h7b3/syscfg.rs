@@ -617,7 +617,7 @@ pub mod CFGR {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// peripheral mode configuration register
     pub PMCR: RWRegister<u32>,
@@ -637,7 +637,7 @@ pub struct RegisterBlock {
     /// SYSCFG timer break lockup register
     pub CFGR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// compensation cell control/status register
     pub CCCSR: RWRegister<u32>,

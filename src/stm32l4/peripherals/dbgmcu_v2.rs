@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Debug support
 //!
-//! Used by: stm32l4r9, stm32l4x5, stm32l4x6
+//! Used by: stm32l4r5, stm32l4r9, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -115,7 +115,7 @@ pub mod CR {
 }
 
 /// APB Low Freeze Register 1
-pub mod APB1_FZR1 {
+pub mod APB1FZR1 {
 
     /// Debug Timer 2 stopped when Core is halted
     pub mod DBG_TIMER2_STOP {
@@ -315,7 +315,7 @@ pub mod APB1_FZR1 {
 }
 
 /// APB Low Freeze Register 2
-pub mod APB1_FZR2 {
+pub mod APB1FZR2 {
 
     /// LPTIM2 counter stopped when core is halted
     pub mod DBG_LPTIM2_STOP {
@@ -333,7 +333,7 @@ pub mod APB1_FZR2 {
 }
 
 /// APB High Freeze Register
-pub mod APB2_FZR {
+pub mod APB2FZR {
 
     /// TIM1 counter stopped when core is halted
     pub mod DBG_TIM1_STOP {
@@ -414,20 +414,20 @@ pub struct RegisterBlock {
     pub CR: RWRegister<u32>,
 
     /// APB Low Freeze Register 1
-    pub APB1_FZR1: RWRegister<u32>,
+    pub APB1FZR1: RWRegister<u32>,
 
     /// APB Low Freeze Register 2
-    pub APB1_FZR2: RWRegister<u32>,
+    pub APB1FZR2: RWRegister<u32>,
 
     /// APB High Freeze Register
-    pub APB2_FZR: RWRegister<u32>,
+    pub APB2FZR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub IDCODE: u32,
     pub CR: u32,
-    pub APB1_FZR1: u32,
-    pub APB1_FZR2: u32,
-    pub APB2_FZR: u32,
+    pub APB1FZR1: u32,
+    pub APB1FZR2: u32,
+    pub APB2FZR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

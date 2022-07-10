@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-digital converter
 //!
-//! Used by: stm32f405, stm32f407, stm32f410, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -501,6 +501,33 @@ pub mod CR2 {
 
             /// 0b0110: Timer 2 TRGO event
             pub const TIM2TRGO: u32 = 0b0110;
+
+            /// 0b0111: Timer 3 CC1 event
+            pub const TIM3CC1: u32 = 0b0111;
+
+            /// 0b1000: Timer 3 TRGO event
+            pub const TIM3TRGO: u32 = 0b1000;
+
+            /// 0b1001: Timer 4 CC4 event
+            pub const TIM4CC4: u32 = 0b1001;
+
+            /// 0b1010: Timer 5 CC1 event
+            pub const TIM5CC1: u32 = 0b1010;
+
+            /// 0b1011: Timer 5 CC2 event
+            pub const TIM5CC2: u32 = 0b1011;
+
+            /// 0b1100: Timer 5 CC3 event
+            pub const TIM5CC3: u32 = 0b1100;
+
+            /// 0b1101: Timer 8 CC1 event
+            pub const TIM8CC1: u32 = 0b1101;
+
+            /// 0b1110: Timer 8 TRGO event
+            pub const TIM8TRGO: u32 = 0b1110;
+
+            /// 0b1111: EXTI line 11
+            pub const EXTI11: u32 = 0b1111;
         }
     }
 
@@ -548,47 +575,53 @@ pub mod CR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0000: Timer 1 TRGO event
-            pub const TIM1TRGO: u32 = 0b0000;
+            /// 0b0000: Timer 1 CC4 event
+            pub const TIM1CC4: u32 = 0b0000;
 
-            /// 0b0001: Timer 1 CC4 event
-            pub const TIM1CC4: u32 = 0b0001;
+            /// 0b0001: Timer 1 TRGO event
+            pub const TIM1TRGO: u32 = 0b0001;
 
-            /// 0b0010: Timer 2 TRGO event
-            pub const TIM2TRGO: u32 = 0b0010;
+            /// 0b0010: Timer 2 CC1 event
+            pub const TIM2CC1: u32 = 0b0010;
 
-            /// 0b0011: Timer 2 CC1 event
-            pub const TIM2CC1: u32 = 0b0011;
+            /// 0b0011: Timer 2 TRGO event
+            pub const TIM2TRGO: u32 = 0b0011;
 
-            /// 0b0100: Timer 3 CC4 event
-            pub const TIM3CC4: u32 = 0b0100;
+            /// 0b0100: Timer 3 CC2 event
+            pub const TIM3CC2: u32 = 0b0100;
 
-            /// 0b0101: Timer 4 TRGO event
-            pub const TIM4TRGO: u32 = 0b0101;
+            /// 0b0101: Timer 3 CC4 event
+            pub const TIM3CC4: u32 = 0b0101;
 
-            /// 0b0111: Timer 8 CC4 event
-            pub const TIM8CC4: u32 = 0b0111;
+            /// 0b0110: Timer 4 CC1 event
+            pub const TIM4CC1: u32 = 0b0110;
 
-            /// 0b1000: Timer 1 TRGO(2) event
-            pub const TIM1TRGO2: u32 = 0b1000;
+            /// 0b0111: Timer 4 CC2 event
+            pub const TIM4CC2: u32 = 0b0111;
 
-            /// 0b1001: Timer 8 TRGO event
-            pub const TIM8TRGO: u32 = 0b1001;
+            /// 0b1000: Timer 4 CC3 event
+            pub const TIM4CC3: u32 = 0b1000;
 
-            /// 0b1010: Timer 8 TRGO(2) event
-            pub const TIM8TRGO2: u32 = 0b1010;
+            /// 0b1001: Timer 4 TRGO event
+            pub const TIM4TRGO: u32 = 0b1001;
 
-            /// 0b1011: Timer 3 CC3 event
-            pub const TIM3CC3: u32 = 0b1011;
+            /// 0b1010: Timer 5 CC4 event
+            pub const TIM5CC4: u32 = 0b1010;
 
-            /// 0b1100: Timer 5 TRGO event
-            pub const TIM5TRGO: u32 = 0b1100;
+            /// 0b1011: Timer 5 TRGO event
+            pub const TIM5TRGO: u32 = 0b1011;
 
-            /// 0b1101: Timer 3 CC1 event
-            pub const TIM3CC1: u32 = 0b1101;
+            /// 0b1100: Timer 8 CC2 event
+            pub const TIM8CC2: u32 = 0b1100;
 
-            /// 0b1110: Timer 6 TRGO event
-            pub const TIM6TRGO: u32 = 0b1110;
+            /// 0b1101: Timer 8 CC3 event
+            pub const TIM8CC3: u32 = 0b1101;
+
+            /// 0b1110: Timer 8 CC4 event
+            pub const TIM8CC4: u32 = 0b1110;
+
+            /// 0b1111: EXTI line 15
+            pub const EXTI15: u32 = 0b1111;
         }
     }
 

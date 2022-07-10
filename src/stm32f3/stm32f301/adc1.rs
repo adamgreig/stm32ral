@@ -548,15 +548,26 @@ pub mod CR {
     }
 
     /// ADC stop of injected conversion command
-    pub mod JADST {
+    pub mod JADSTP {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No stop command active
+            pub const NotStopping: u32 = 0b0;
+
+            /// 0b1: ADC stopping conversion
+            pub const Stopping: u32 = 0b1;
+        }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Stop the active conversion
+            pub const StopConversion: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -567,16 +578,10 @@ pub mod CR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Stop conversion of channel
-            pub const Stop: u32 = 0b1;
-        }
+        pub use super::JADSTP::R;
+        pub use super::JADSTP::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC start of injected conversion
@@ -585,16 +590,23 @@ pub mod CR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
-            /// 0b1: Starts conversion of channel
-            pub const Start: u32 = 0b1;
+            /// 0b0: No conversion ongoing
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: ADC operating and may be converting
+            pub const Active: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Start the ADC conversion (may be delayed for hardware triggers)
+            pub const StartConversion: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC start of regular conversion
@@ -603,11 +615,10 @@ pub mod CR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::JADSTART::RW;
+        pub use super::JADSTART::R;
+        pub use super::JADSTART::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADC disable command
@@ -616,13 +627,20 @@ pub mod CR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No disable command active
+            pub const NotDisabling: u32 = 0b0;
+
+            /// 0b1: ADC disabling
+            pub const Disabling: u32 = 0b1;
+        }
         /// Write-only values
         pub mod W {
 
-            /// 0b0: Disable ADC conversion and go to power down mode
-            pub const Disable: u32 = 0b0;
+            /// 0b1: Disable the ADC
+            pub const Disable: u32 = 0b1;
         }
         /// Read-write values (empty)
         pub mod RW {}
@@ -634,13 +652,20 @@ pub mod CR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: ADC disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: ADC enabled
+            pub const Enabled: u32 = 0b1;
+        }
         /// Write-only values
         pub mod W {
 
-            /// 0b1: Enable ADC
-            pub const Enable: u32 = 0b1;
+            /// 0b1: Enable the ADC
+            pub const Enabled: u32 = 0b1;
         }
         /// Read-write values (empty)
         pub mod RW {}
@@ -928,12 +953,6 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0111: HRTIM_ADCTRG1 event
-            pub const HRTIM_ADCTRG1: u32 = 0b0111;
-
-            /// 0b1000: HRTIM_ADCTRG3 event
-            pub const HRTIM_ADCTRG3: u32 = 0b1000;
-
             /// 0b0000: Timer 1 CC1 event
             pub const TIM1_CC1: u32 = 0b0000;
 
@@ -951,6 +970,12 @@ pub mod CFGR {
 
             /// 0b0110: EXTI line 11
             pub const EXTI11: u32 = 0b0110;
+
+            /// 0b0111: HRTIM_ADCTRG1 event
+            pub const HRTIM_ADCTRG1: u32 = 0b0111;
+
+            /// 0b1000: HRTIM_ADCTRG3 event
+            pub const HRTIM_ADCTRG3: u32 = 0b1000;
 
             /// 0b1001: Timer 1 TRGO event
             pub const TIM1_TRGO: u32 = 0b1001;
@@ -1824,12 +1849,6 @@ pub mod JSQR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1001: HRTIM_ADCTRG2 event
-            pub const HRTIM_ADCTRG2: u32 = 0b1001;
-
-            /// 0b1010: HRTIM_ADCTRG4 event
-            pub const HRTIM_ADCTRG4: u32 = 0b1010;
-
             /// 0b0000: Timer 1 TRGO event
             pub const TIM1_TRGO: u32 = 0b0000;
 
@@ -1850,6 +1869,12 @@ pub mod JSQR {
 
             /// 0b1000: Timer 1 TRGO2 event
             pub const TIM1_TRGO2: u32 = 0b1000;
+
+            /// 0b1001: HRTIM_ADCTRG2 event
+            pub const HRTIM_ADCTRG2: u32 = 0b1001;
+
+            /// 0b1010: HRTIM_ADCTRG4 event
+            pub const HRTIM_ADCTRG4: u32 = 0b1010;
 
             /// 0b1011: Timer 3 CC3 event
             pub const TIM3_CC3: u32 = 0b1011;
@@ -2911,7 +2936,7 @@ pub struct RegisterBlock {
     /// ADC configuration register
     pub CFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// ADC sample time register 1
     pub SMPR1: RWRegister<u32>,
@@ -2919,7 +2944,7 @@ pub struct RegisterBlock {
     /// ADC sample time register 2
     pub SMPR2: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// ADC watchdog threshold register 1
     pub TR1: RWRegister<u32>,
@@ -2930,7 +2955,7 @@ pub struct RegisterBlock {
     /// read-write
     pub TR3: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// ADC regular sequence register 1
     pub SQR1: RWRegister<u32>,
@@ -2947,12 +2972,12 @@ pub struct RegisterBlock {
     /// ADC regular Data Register
     pub DR: RORegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// ADC injected sequence register
     pub JSQR: RWRegister<u32>,
 
-    _reserved5: [u32; 4],
+    _reserved5: [u8; 16],
 
     /// ADC offset register1
     pub OFR1: RWRegister<u32>,
@@ -2966,7 +2991,7 @@ pub struct RegisterBlock {
     /// ADC offset register4
     pub OFR4: RWRegister<u32>,
 
-    _reserved6: [u32; 4],
+    _reserved6: [u8; 16],
 
     /// ADC offset register1
     pub JDR1: RORegister<u32>,
@@ -2980,7 +3005,7 @@ pub struct RegisterBlock {
     /// ADC offset register4
     pub JDR4: RORegister<u32>,
 
-    _reserved7: [u32; 4],
+    _reserved7: [u8; 16],
 
     /// ADC Analog Watchdog 2 Configuration Register
     pub AWD2CR: RWRegister<u32>,
@@ -2988,7 +3013,7 @@ pub struct RegisterBlock {
     /// ADC Analog Watchdog 3 Configuration Register
     pub AWD3CR: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// ADC Differential Mode Selection Register
     pub DIFSEL: RWRegister<u32>,

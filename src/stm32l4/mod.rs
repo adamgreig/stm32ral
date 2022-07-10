@@ -9,6 +9,9 @@ pub(crate) mod instances;
 #[cfg(any(feature="stm32l412", feature="doc"))]
 pub mod stm32l412;
 
+#[cfg(any(feature="stm32l4r5", feature="doc"))]
+pub mod stm32l4r5;
+
 #[cfg(any(feature="stm32l4r9", feature="doc"))]
 pub mod stm32l4r9;
 

@@ -8,73 +8,73 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::dac;
-pub mod dma;
-pub mod dmamux1;
+pub use super::instances::comp_l4r5_l4r9 as comp;
 pub use super::instances::crc;
-pub mod ltcd;
-pub use super::instances::comp_l4r9_l4x3_l4x5_l4x6 as comp;
+pub use super::instances::dac_l4r5_l4r9 as dac;
+pub use super::instances::dma_l4r5_l4r9 as dma;
+pub use super::instances::dmamux1;
 pub use super::instances::firewall;
-pub use super::instances::i2c_l4r9_l4x6 as i2c;
+pub use super::instances::i2c_l4r5_l4r9_l4x6 as i2c;
 pub use super::instances::iwdg;
+pub use super::instances::ltcd;
 pub use super::instances::tsc;
 pub use super::instances::wwdg;
 pub mod flash;
-pub use super::instances::dbgmcu_l4r9_l4x5_l4x6 as dbgmcu;
-pub mod octospi;
+pub use super::instances::dbgmcu_l4r5_l4r9_l4x5_l4x6 as dbgmcu;
+pub use super::instances::octospi;
 pub mod rcc;
 pub use super::instances::pwr;
 pub use super::instances::syscfg;
 pub mod dfsdm1;
+pub use super::instances::adc1;
+pub use super::instances::adc_common_l4r5_l4r9_l4x6 as adc_common;
 pub use super::instances::aes;
-pub use super::instances::rng;
-pub mod adc;
-pub use super::instances::adc_common_l4r9_l4x6 as adc_common;
-pub use super::instances::gpio_l4r9_l4x6 as gpio;
+pub use super::instances::can1_l4r5_l4r9 as can1;
+pub use super::instances::crs;
+pub use super::instances::dcmi;
+pub use super::instances::dma2d;
+pub use super::instances::exti;
+pub use super::instances::fmc;
+pub use super::instances::gpio_l4r5_l4r9_l4x6 as gpio;
 pub use super::instances::gpioi;
-pub use super::instances::sai;
-pub use super::instances::tim2;
-pub mod tim3;
-pub mod tim4;
+pub use super::instances::hash;
 pub use super::instances::lptim;
-pub use super::instances::lpuart1;
+pub use super::instances::lpuart1_l4r5_l4r9 as lpuart1;
+pub use super::instances::nvic;
+pub use super::instances::opamp_l412_l4r5_l4r9 as opamp;
+pub use super::instances::otg_fs_device;
+pub use super::instances::otg_fs_global;
+pub use super::instances::otg_fs_host;
+pub use super::instances::otg_fs_pwrclk;
+pub use super::instances::rng;
+pub use super::instances::rtc;
+pub use super::instances::sai;
+pub use super::instances::sdmmc1;
+pub use super::instances::spi_l4r5_l4r9 as spi;
+pub use super::instances::swpmi1;
 pub use super::instances::tim1;
-pub use super::instances::tim15;
+pub use super::instances::tim15_l412_l4r5_l4r9_l4x2_l4x3_l4x6 as tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
+pub use super::instances::tim2;
+pub use super::instances::tim3;
+pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim8;
 pub use super::instances::usart_l4r9_l4x6 as usart;
-pub mod sdmmc1;
-pub mod spi;
-pub use super::instances::exti;
 pub use super::instances::vrefbuf;
-pub mod can1;
-pub use super::instances::rtc;
-pub mod otg_fs_device;
-pub mod otg_fs_global;
-pub mod otg_fs_host;
-pub mod otg_fs_pwrclk;
-pub use super::instances::crs;
-pub use super::instances::dcmi;
-pub use super::instances::dma2d;
-pub use super::instances::fmc;
-pub use super::instances::hash;
-pub use super::instances::nvic;
-pub use super::instances::opamp;
-pub use super::instances::swpmi1;
 pub mod dsi;
-pub mod gfxmmu;
-pub mod octospim;
 pub use super::instances::fpu;
-pub mod mpu;
-pub use super::instances::stk;
-pub mod scb;
 pub use super::instances::fpu_cpacr;
+pub use super::instances::gfxmmu;
+pub use super::instances::mpu_l4r5_l4r9 as mpu;
 pub use super::instances::nvic_stir;
+pub use super::instances::octospim;
 pub use super::instances::scb_actrl;
+pub use super::instances::scb_l4r5_l4r9 as scb;
+pub use super::instances::stk;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -104,7 +104,7 @@ pub struct Peripherals {
     pub DFSDM1: dfsdm1::Instance,
     pub RNG: rng::Instance,
     pub AES: aes::Instance,
-    pub ADC: adc::Instance,
+    pub ADC1: adc1::Instance,
     pub ADC_Common: adc_common::Instance,
     pub GPIOA: gpio::Instance,
     pub GPIOB: gpio::Instance,
@@ -201,7 +201,7 @@ impl Peripherals {
             DFSDM1: dfsdm1::DFSDM1::steal(),
             RNG: rng::RNG::steal(),
             AES: aes::AES::steal(),
-            ADC: adc::ADC::steal(),
+            ADC1: adc1::ADC1::steal(),
             ADC_Common: adc_common::ADC_Common::steal(),
             GPIOA: gpio::GPIOA::steal(),
             GPIOB: gpio::GPIOB::steal(),

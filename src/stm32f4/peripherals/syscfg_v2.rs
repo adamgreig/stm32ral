@@ -335,7 +335,7 @@ pub struct RegisterBlock {
     /// external interrupt configuration register 4
     pub EXTICR4: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Compensation cell control register
     pub CMPCR: RORegister<u32>,

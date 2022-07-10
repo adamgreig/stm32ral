@@ -124,6 +124,7 @@
 | `stm32l4x3` | STM32L433, STM32L443 | [RM0394](https://www.st.com/resource/en/reference_manual/dm00151940.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x3.html) |
 | `stm32l4x5` | STM32L475 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x5.html) |
 | `stm32l4x6` | STM32L476, STM32L486, STM32L496, STM32L4A6 | [RM0351](https://www.st.com/resource/en/reference_manual/dm00083560.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4x6.html) |
+| `stm32l4r5` | STM32L4R5, STM32L4S5 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4r5-s5.html) |
 | `stm32l4r9` | STM32L4R9, STM32L4S9 | [RM0432](https://www.st.com/resource/en/reference_manual/dm00310109.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32l4r9-s9.html) |
 
 

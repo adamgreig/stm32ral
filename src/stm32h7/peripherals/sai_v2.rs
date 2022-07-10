@@ -481,27 +481,6 @@ pub mod CR1A {
         }
     }
 
-    /// No divider
-    pub mod NOMCK {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: MCLK output is enabled. Forces the ratio between FS and MCLK to 256 or 512 according to the OSR value
-            pub const MasterClock: u32 = 0b0;
-
-            /// 0b1: MCLK output enable set by the MCKEN bit (where present, else 0). Ratio between FS and MCLK depends on FRL.
-            pub const NoDiv: u32 = 0b1;
-        }
-    }
-
     /// Master clock divider. These bits are set and cleared by software. These bits are meaningless when the audio block operates in slave mode. They have to be configured when the audio block is disabled. Others: the master clock frequency is calculated accordingly to the following formula:
     pub mod MCKDIV {
         /// Offset (20 bits)
@@ -540,7 +519,15 @@ pub mod CR1A {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::NOMCK::RW;
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: MCLK output is enabled. Forces the ratio between FS and MCLK to 256 or 512 according to the OSR value
+            pub const MasterClock: u32 = 0b0;
+
+            /// 0b1: MCLK output enable set by the MCKEN bit (where present, else 0). Ratio between FS and MCLK depends on FRL.
+            pub const NoDiv: u32 = 0b1;
+        }
     }
 }
 
@@ -585,10 +572,8 @@ pub mod CR2A {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: No FIFO flush
             pub const NoFlush: u32 = 0b0;
@@ -596,6 +581,8 @@ pub mod CR2A {
             /// 0b1: FIFO flush. Programming this bit to 1 triggers the FIFO Flush. All the internal FIFO pointers (read and write) are cleared
             pub const Flush: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tristate management on data line. This bit is set and cleared by software. It is meaningful only if the audio block is configured as a transmitter. This bit is not used when the audio block is configured in SPDIF mode. It should be configured when SAI is disabled. Refer to Section: Output data line management on an inactive slot for more details.
@@ -1306,7 +1293,6 @@ pub mod CR1B {
     pub use super::CR1A::MODE;
     pub use super::CR1A::MONO;
     pub use super::CR1A::NODIV;
-    pub use super::CR1A::NOMCK;
     pub use super::CR1A::OSR;
     pub use super::CR1A::OUTDRIV;
     pub use super::CR1A::PRTCFG;

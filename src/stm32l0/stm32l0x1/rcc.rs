@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Reset and clock control
 
-use crate::{RORegister, RWRegister};
+use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -653,6 +653,33 @@ pub mod CFGR {
         pub const offset: u32 = 2;
         /// Mask (2 bits: 0b11 << 2)
         pub const mask: u32 = 0b11 << offset;
+        /// Read-only values
+        pub mod R {
+
+            /// 0b00: MSI oscillator used as system clock
+            pub const MSI: u32 = 0b00;
+
+            /// 0b01: HSI oscillator used as system clock
+            pub const HSI16: u32 = 0b01;
+
+            /// 0b10: HSE oscillator used as system clock
+            pub const HSE: u32 = 0b10;
+
+            /// 0b11: PLL used as system clock
+            pub const PLL: u32 = 0b11;
+        }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// System clock switch
+    pub mod SW {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (2 bits: 0b11 << 0)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -673,19 +700,6 @@ pub mod CFGR {
             pub const PLL: u32 = 0b11;
         }
     }
-
-    /// System clock switch
-    pub mod SW {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::SWS::RW;
-    }
 }
 
 /// Clock interrupt enable register
@@ -697,12 +711,8 @@ pub mod CIER {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: LSE CSS interrupt disabled
             pub const Disabled: u32 = 0b0;
@@ -710,6 +720,10 @@ pub mod CIER {
             /// 0b1: LSE CSS interrupt enabled
             pub const Enabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// MSI ready interrupt flag
@@ -718,12 +732,8 @@ pub mod CIER {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Ready interrupt disabled
             pub const Disabled: u32 = 0b0;
@@ -731,6 +741,10 @@ pub mod CIER {
             /// 0b1: Ready interrupt enabled
             pub const Enabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL ready interrupt flag
@@ -739,11 +753,11 @@ pub mod CIER {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MSIRDYIE::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSIRDYIE::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSE ready interrupt flag
@@ -752,11 +766,11 @@ pub mod CIER {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MSIRDYIE::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSIRDYIE::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSI16 ready interrupt flag
@@ -765,11 +779,11 @@ pub mod CIER {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MSIRDYIE::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSIRDYIE::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LSE ready interrupt flag
@@ -778,11 +792,11 @@ pub mod CIER {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MSIRDYIE::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSIRDYIE::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LSI ready interrupt flag
@@ -791,11 +805,11 @@ pub mod CIER {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::MSIRDYIE::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MSIRDYIE::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -808,12 +822,8 @@ pub mod CIFR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No clock security interrupt caused by HSE clock failure
             pub const NoClock: u32 = 0b0;
@@ -821,6 +831,10 @@ pub mod CIFR {
             /// 0b1: Clock security interrupt caused by HSE clock failure
             pub const Clock: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LSE Clock Security System Interrupt flag
@@ -829,12 +843,8 @@ pub mod CIFR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No failure detected on LSE clock failure
             pub const NoFailure: u32 = 0b0;
@@ -842,6 +852,10 @@ pub mod CIFR {
             /// 0b1: Failure detected on LSE clock failure
             pub const Failure: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// MSI ready interrupt flag
@@ -2898,12 +2912,8 @@ pub mod CSR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Oscillator not ready
             pub const NotReady: u32 = 0b0;
@@ -2911,6 +2921,10 @@ pub mod CSR {
             /// 0b1: Oscillator ready
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// External low-speed oscillator enable bit
@@ -2932,11 +2946,11 @@ pub mod CSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::LSERDY::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::LSERDY::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Internal low-speed oscillator enable
@@ -2978,7 +2992,7 @@ pub struct RegisterBlock {
     /// Internal clock sources calibration register
     pub ICSCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Clock configuration register
     pub CFGR: RWRegister<u32>,
@@ -2990,7 +3004,7 @@ pub struct RegisterBlock {
     pub CIFR: RORegister<u32>,
 
     /// Clock interrupt clear register
-    pub CICR: RORegister<u32>,
+    pub CICR: WORegister<u32>,
 
     /// GPIO reset register
     pub IOPRSTR: RWRegister<u32>,

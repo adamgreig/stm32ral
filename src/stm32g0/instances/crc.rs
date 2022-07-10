@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Cyclic redundancy check calculation unit
 //!
-//! Used by: stm32g030, stm32g031, stm32g041, stm32g070, stm32g071, stm32g07x, stm32g081
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g050, stm32g051, stm32g061, stm32g070, stm32g071, stm32g07x, stm32g081, stm32g0b0, stm32g0b1, stm32g0c1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g0::peripherals::crc::Instance;

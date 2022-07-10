@@ -490,7 +490,7 @@ pub struct RegisterBlock {
     /// control register 1
     pub CR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// DMA/Interrupt enable register
     pub DIER: RWRegister<u32>,
@@ -506,7 +506,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: capture/compare mode register 1 (input mode)
     pub CCMR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -520,12 +520,12 @@ pub struct RegisterBlock {
     /// auto-reload register
     pub ARR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// capture/compare register 1
     pub CCR1: RWRegister<u32>,
 
-    _reserved4: [u32; 12],
+    _reserved4: [u8; 48],
 
     /// TIM timer input selection register
     pub TISEL: RWRegister<u32>,

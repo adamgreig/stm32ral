@@ -626,7 +626,7 @@ pub struct RegisterBlock {
     /// Write protection register
     pub WRPR1: RWRegister<u32>,
 
-    _reserved1: [u32; 23],
+    _reserved1: [u8; 92],
 
     /// Write protection register
     pub WRPR2: RWRegister<u32>,

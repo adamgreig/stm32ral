@@ -5811,7 +5811,7 @@ pub struct RegisterBlock {
     /// FDCAN Endian register
     pub FDCAN_ENDN: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register is dedicated to data bit timing phase and only writable if bits FDCAN_CCCR.CCE and FDCAN_CCCR.INIT are set. The CAN time quantum may be programmed in the range from 1 to 32 FDCAN clock periods. tq = (DBRP + 1) FDCAN clock periods. DTSEG1 is the sum of Prop_Seg and Phase_Seg1. DTSEG2 is Phase_Seg2. Therefore the length of the bit time is (DTSEG1 + DTSEG2 + 3) tq for programmed values, or (Sync_Seg+Prop_Seg+Phase_Seg1+Phase_Seg2) tq for functional values. The information processing time (IPT) is zero, meaning the data for the next bit is available at the first clock edge after the sample point.
     pub FDCAN_DBTP: RWRegister<u32>,
@@ -5840,7 +5840,7 @@ pub struct RegisterBlock {
     /// FDCAN timeout counter value register
     pub FDCAN_TOCV: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// FDCAN error counter register
     pub FDCAN_ECR: RWRegister<u32>,
@@ -5851,7 +5851,7 @@ pub struct RegisterBlock {
     /// FDCAN transmitter delay compensation register
     pub FDCAN_TDCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// The flags are set when one of the listed conditions is detected (edge-sensitive). The flags remain set until the Host clears them. A flag is cleared by writing a 1 to the corresponding bit position. Writing a 0 has no effect. A hard reset will clear the register. The configuration of IE controls whether an interrupt is generated. The configuration of ILS controls on which interrupt line an interrupt is signaled.
     pub FDCAN_IR: RWRegister<u32>,
@@ -5865,7 +5865,7 @@ pub struct RegisterBlock {
     /// Each of the two interrupt lines to the CPU can be enabled/disabled separately by programming bits EINT0 and EINT1.
     pub FDCAN_ILE: RWRegister<u32>,
 
-    _reserved4: [u32; 8],
+    _reserved4: [u8; 32],
 
     /// Global settings for message ID filtering. The global filter configuration register controls the filter path for standard and extended messages as described in Figure708: Standard message ID filter path and Figure709: Extended message ID filter path.
     pub FDCAN_GFC: RWRegister<u32>,
@@ -5876,7 +5876,7 @@ pub struct RegisterBlock {
     /// Settings for 29-bit extended message ID filtering. The FDCAN extended ID filter configuration register controls the filter path for standard messages as described in Figure709: Extended message ID filter path.
     pub FDCAN_XIDFC: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// FDCAN extended ID and mask register
     pub FDCAN_XIDAM: RWRegister<u32>,
@@ -5923,7 +5923,7 @@ pub struct RegisterBlock {
     /// Configures the number of data bytes belonging to a Tx buffer element. Data field sizes &gt;8 bytes are intended for CAN FD operation only.
     pub FDCAN_TXESC: RORegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// FDCAN Tx buffer add request register
     pub FDCAN_TXBAR: RWRegister<u32>,
@@ -5943,7 +5943,7 @@ pub struct RegisterBlock {
     /// FDCAN Tx buffer cancellation finished interrupt enable register
     pub FDCAN_TXBCIE: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// FDCAN Tx event FIFO configuration register
     pub FDCAN_TXEFC: RWRegister<u32>,
@@ -5954,7 +5954,7 @@ pub struct RegisterBlock {
     /// FDCAN Tx event FIFO acknowledge register
     pub FDCAN_TXEFA: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// FDCAN TT trigger memory configuration register
     pub FDCAN_TTTMC: RWRegister<u32>,
@@ -6007,7 +6007,7 @@ pub struct RegisterBlock {
     /// FDCAN TT cycle sync mark register
     pub FDCAN_TTCSM: RORegister<u32>,
 
-    _reserved9: [u32; 111],
+    _reserved9: [u8; 444],
 
     /// The settings in the FDCAN_TTTS register select the input to be used as event trigger and stop watch trigger.
     pub FDCAN_TTTS: RWRegister<u32>,

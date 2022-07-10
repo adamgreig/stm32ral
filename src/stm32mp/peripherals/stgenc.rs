@@ -439,12 +439,12 @@ pub struct RegisterBlock {
     /// the control interface must clear the STGENC_CNTCR.EN bit before writing to this register.
     pub STGENC_CNTCVU: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// the control interface must clear the STGEN_CNTCR.EN bit before writing to this register.
     pub STGENC_CNTFID0: RWRegister<u32>,
 
-    _reserved2: [u32; 1003],
+    _reserved2: [u8; 4012],
 
     /// STGENC peripheral ID4 register
     pub STGENC_PIDR4: RORegister<u32>,

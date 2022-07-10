@@ -158,13 +158,13 @@ pub mod ethernet_dma;
 pub mod usb;
 
 #[cfg(any(feature="doc", feature="stm32f102", feature="stm32f107"))]
+pub mod adc3;
+
+#[cfg(any(feature="doc", feature="stm32f102", feature="stm32f107"))]
 pub mod sdio;
 
 #[cfg(any(feature="doc", feature="stm32f102", feature="stm32f107"))]
 pub mod adc2;
-
-#[cfg(any(feature="doc", feature="stm32f102", feature="stm32f107"))]
-pub mod adc3;
 
 #[cfg(any(feature="doc", feature="stm32f103", feature="stm32f107"))]
 pub mod tim1_f103_f107;

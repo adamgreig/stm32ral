@@ -667,7 +667,7 @@ pub struct RegisterBlock {
     /// SWPMI Bitrate register
     pub BRR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// SWPMI Interrupt and Status register
     pub ISR: RORegister<u32>,

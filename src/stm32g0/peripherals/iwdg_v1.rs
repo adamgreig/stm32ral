@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Independent watchdog
 //!
-//! Used by: stm32g030, stm32g031, stm32g041
+//! Used by: stm32g030, stm32g031, stm32g041, stm32g050, stm32g051, stm32g061, stm32g0b0, stm32g0b1, stm32g0c1
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -19,8 +19,18 @@ pub mod KR {
         pub const mask: u32 = 0xffff << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0101010101010101: Enable access to PR, RLR and WINR registers (0x5555)
+            pub const Enable: u32 = 0b0101010101010101;
+
+            /// 0b1010101010101010: Reset the watchdog value (0xAAAA)
+            pub const Reset: u32 = 0b1010101010101010;
+
+            /// 0b1100110011001100: Start the watchdog (0xCCCC)
+            pub const Start: u32 = 0b1100110011001100;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -39,8 +49,33 @@ pub mod PR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b000: Divider /4
+            pub const DivideBy4: u32 = 0b000;
+
+            /// 0b001: Divider /8
+            pub const DivideBy8: u32 = 0b001;
+
+            /// 0b010: Divider /16
+            pub const DivideBy16: u32 = 0b010;
+
+            /// 0b011: Divider /32
+            pub const DivideBy32: u32 = 0b011;
+
+            /// 0b100: Divider /64
+            pub const DivideBy64: u32 = 0b100;
+
+            /// 0b101: Divider /128
+            pub const DivideBy128: u32 = 0b101;
+
+            /// 0b110: Divider /256
+            pub const DivideBy256: u32 = 0b110;
+
+            /// 0b111: Divider /256
+            pub const DivideBy256bis: u32 = 0b111;
+        }
     }
 }
 

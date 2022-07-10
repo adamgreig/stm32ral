@@ -1348,7 +1348,7 @@ pub struct RegisterBlock {
     /// Ethernet MAC VLAN tag register
     pub MACVLANTR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Ethernet MAC remote wakeup frame filter register
     pub MACRWUFFR: RWRegister<u32>,
@@ -1356,7 +1356,7 @@ pub struct RegisterBlock {
     /// Ethernet MAC PMT control and status register
     pub MACPMTCSR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Ethernet MAC debug register
     pub MACDBGR: RORegister<u32>,

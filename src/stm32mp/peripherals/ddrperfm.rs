@@ -350,32 +350,32 @@ pub struct RegisterBlock {
     /// Write-only register. A read request returns all zeros
     pub DDRPERFM_ICR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// DDRPERFM time counter register
     pub DDRPERFM_TCNT: RORegister<u32>,
 
-    _reserved2: [u32; 15],
+    _reserved2: [u8; 60],
 
     /// DDRPERFM event counter 0 register
     pub DDRPERFM_CNT0: RORegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// DDRPERFM event counter 1 register
     pub DDRPERFM_CNT1: RORegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// DDRPERFM event counter 2 register
     pub DDRPERFM_CNT2: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// DDRPERFM event counter 3 register
     pub DDRPERFM_CNT3: RORegister<u32>,
 
-    _reserved6: [u32; 221],
+    _reserved6: [u8; 884],
 
     /// DDRPERFM hardware configuration register
     pub DDRPERFM_HWCFG: RORegister<u32>,

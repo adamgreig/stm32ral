@@ -116,18 +116,6 @@ pub mod ethernet_ptp;
 pub mod ethernet_dma;
 
 #[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
-pub mod otg_fs_global;
-
-#[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
-pub mod otg_fs_host;
-
-#[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
-pub mod otg_fs_device;
-
-#[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
-pub mod otg_fs_pwrclk;
-
-#[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]
 pub mod exti;
 
 #[cfg(any(feature="doc", feature="stm32f215", feature="stm32f217"))]

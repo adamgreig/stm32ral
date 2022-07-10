@@ -1364,7 +1364,7 @@ pub mod UR17 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// peripheral mode configuration register
     pub PMCR: RWRegister<u32>,
@@ -1384,7 +1384,7 @@ pub struct RegisterBlock {
     /// configuration register
     pub CFGR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// compensation cell control/status register
     pub CCCSR: RWRegister<u32>,
@@ -1398,12 +1398,12 @@ pub struct RegisterBlock {
     /// SYSCFG power control register
     pub PWRCR: RWRegister<u32>,
 
-    _reserved3: [u32; 61],
+    _reserved3: [u8; 244],
 
     /// SYSCFG package register
     pub PKGR: RORegister<u32>,
 
-    _reserved4: [u32; 118],
+    _reserved4: [u8; 472],
 
     /// SYSCFG user register 0
     pub UR0: RORegister<u32>,

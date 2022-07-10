@@ -392,7 +392,7 @@ pub enum Interrupt {
     I2C3_ER = 73,
     /// 78: DCMI global interrupt
     DCMI = 78,
-    /// 81: Floating point unit
+    /// 81: Floating point unit interrupt
     FPU = 81,
     /// 82: UART 7 global interrupt
     UART7 = 82,

@@ -17,12 +17,8 @@ pub mod ISR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer error on channel x
             pub const NoError: u32 = 0b0;
@@ -30,6 +26,10 @@ pub mod ISR {
             /// 0b1: A transfer error occurred on channel x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 7
@@ -38,12 +38,8 @@ pub mod ISR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No half transfer event on channel x
             pub const NotHalf: u32 = 0b0;
@@ -51,6 +47,10 @@ pub mod ISR {
             /// 0b1: A half transfer event occurred on channel x
             pub const Half: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 7
@@ -59,12 +59,8 @@ pub mod ISR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer complete event on channel x
             pub const NotComplete: u32 = 0b0;
@@ -72,6 +68,10 @@ pub mod ISR {
             /// 0b1: A transfer complete event occurred on channel x
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 7
@@ -80,12 +80,8 @@ pub mod ISR {
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No TE, HT or TC event on channel x
             pub const NoEvent: u32 = 0b0;
@@ -93,6 +89,10 @@ pub mod ISR {
             /// 0b1: A TE, HT or TC event occurred on channel x
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error (TE) flag for channel 6
@@ -101,11 +101,11 @@ pub mod ISR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 6
@@ -114,11 +114,11 @@ pub mod ISR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 6
@@ -127,11 +127,11 @@ pub mod ISR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 6
@@ -140,11 +140,11 @@ pub mod ISR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error (TE) flag for channel 5
@@ -153,11 +153,11 @@ pub mod ISR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 5
@@ -166,11 +166,11 @@ pub mod ISR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 5
@@ -179,11 +179,11 @@ pub mod ISR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 5
@@ -192,11 +192,11 @@ pub mod ISR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error (TE) flag for channel 4
@@ -205,11 +205,11 @@ pub mod ISR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 4
@@ -218,11 +218,11 @@ pub mod ISR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 4
@@ -231,11 +231,11 @@ pub mod ISR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 4
@@ -244,11 +244,11 @@ pub mod ISR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error (TE) flag for channel 3
@@ -257,11 +257,11 @@ pub mod ISR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 3
@@ -270,11 +270,11 @@ pub mod ISR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 3
@@ -283,11 +283,11 @@ pub mod ISR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 3
@@ -296,11 +296,11 @@ pub mod ISR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error (TE) flag for channel 2
@@ -309,11 +309,11 @@ pub mod ISR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 2
@@ -322,11 +322,11 @@ pub mod ISR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 2
@@ -335,11 +335,11 @@ pub mod ISR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 2
@@ -348,11 +348,11 @@ pub mod ISR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error (TE) flag for channel 1
@@ -361,11 +361,11 @@ pub mod ISR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer (HT) flag for channel 1
@@ -374,11 +374,11 @@ pub mod ISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete (TC) flag for channel 1
@@ -387,11 +387,11 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag for channel 1
@@ -400,11 +400,11 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -417,12 +417,8 @@ pub mod IFCR {
         pub const offset: u32 = 27;
         /// Mask (1 bit: 1 << 27)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer error on channel x
             pub const NoError: u32 = 0b0;
@@ -430,6 +426,10 @@ pub mod IFCR {
             /// 0b1: A transfer error occurred on channel x
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 7
@@ -438,12 +438,8 @@ pub mod IFCR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No half transfer event on channel x
             pub const NotHalf: u32 = 0b0;
@@ -451,6 +447,10 @@ pub mod IFCR {
             /// 0b1: A half transfer event occurred on channel x
             pub const Half: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 7
@@ -459,12 +459,8 @@ pub mod IFCR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No transfer complete event on channel x
             pub const NotComplete: u32 = 0b0;
@@ -472,6 +468,10 @@ pub mod IFCR {
             /// 0b1: A transfer complete event occurred on channel x
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 7
@@ -480,12 +480,8 @@ pub mod IFCR {
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No TE, HT or TC event on channel x
             pub const NoEvent: u32 = 0b0;
@@ -493,6 +489,10 @@ pub mod IFCR {
             /// 0b1: A TE, HT or TC event occurred on channel x
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error flag clear for channel 6
@@ -501,11 +501,11 @@ pub mod IFCR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 6
@@ -514,11 +514,11 @@ pub mod IFCR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 6
@@ -527,11 +527,11 @@ pub mod IFCR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 6
@@ -540,11 +540,11 @@ pub mod IFCR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error flag clear for channel 5
@@ -553,11 +553,11 @@ pub mod IFCR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 5
@@ -566,11 +566,11 @@ pub mod IFCR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 5
@@ -579,11 +579,11 @@ pub mod IFCR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 5
@@ -592,11 +592,11 @@ pub mod IFCR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error flag clear for channel 4
@@ -605,11 +605,11 @@ pub mod IFCR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 4
@@ -618,11 +618,11 @@ pub mod IFCR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 4
@@ -631,11 +631,11 @@ pub mod IFCR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 4
@@ -644,11 +644,11 @@ pub mod IFCR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error flag clear for channel 3
@@ -657,11 +657,11 @@ pub mod IFCR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 3
@@ -670,11 +670,11 @@ pub mod IFCR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 3
@@ -683,11 +683,11 @@ pub mod IFCR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 3
@@ -696,11 +696,11 @@ pub mod IFCR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error flag clear for channel 2
@@ -709,11 +709,11 @@ pub mod IFCR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TEIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TEIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 2
@@ -722,11 +722,11 @@ pub mod IFCR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::HTIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::HTIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 2
@@ -735,11 +735,11 @@ pub mod IFCR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TCIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TCIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 2
@@ -748,11 +748,11 @@ pub mod IFCR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::GIF7::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::GIF7::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer error flag clear for channel 1
@@ -763,14 +763,14 @@ pub mod IFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding TEIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// half transfer flag clear for channel 1
@@ -781,14 +781,14 @@ pub mod IFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding HTIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// transfer complete flag clear for channel 1
@@ -799,14 +799,14 @@ pub mod IFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding TCIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// global interrupt flag clear for channel 1
@@ -817,14 +817,14 @@ pub mod IFCR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear the corresponding CGIFx flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1367,7 +1367,7 @@ pub struct RegisterBlock {
     /// channel x memory address register
     pub CMAR1: UnsafeRWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// channel x configuration register
     pub CCR2: RWRegister<u32>,
@@ -1381,7 +1381,7 @@ pub struct RegisterBlock {
     /// channel x memory address register
     pub CMAR2: UnsafeRWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// channel x configuration register
     pub CCR3: RWRegister<u32>,
@@ -1395,7 +1395,7 @@ pub struct RegisterBlock {
     /// channel x memory address register
     pub CMAR3: UnsafeRWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// channel x configuration register
     pub CCR4: RWRegister<u32>,
@@ -1409,7 +1409,7 @@ pub struct RegisterBlock {
     /// channel x memory address register
     pub CMAR4: UnsafeRWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// channel x configuration register
     pub CCR5: RWRegister<u32>,
@@ -1423,7 +1423,7 @@ pub struct RegisterBlock {
     /// channel x memory address register
     pub CMAR5: UnsafeRWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// channel x configuration register
     pub CCR6: RWRegister<u32>,
@@ -1437,7 +1437,7 @@ pub struct RegisterBlock {
     /// channel x memory address register
     pub CMAR6: UnsafeRWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// channel x configuration register
     pub CCR7: RWRegister<u32>,

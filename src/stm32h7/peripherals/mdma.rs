@@ -2696,7 +2696,7 @@ pub struct RegisterBlock {
     /// MDMA Global Interrupt/Status Register
     pub GISR0: RORegister<u32>,
 
-    _reserved1: [u32; 15],
+    _reserved1: [u8; 60],
 
     /// MDMA channel x interrupt/status register
     pub ISR0: RORegister<u32>,
@@ -2731,7 +2731,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR0: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR0: RWRegister<u32>,
@@ -2739,7 +2739,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR0: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR1: RORegister<u32>,
@@ -2774,7 +2774,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR1: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR1: RWRegister<u32>,
@@ -2782,7 +2782,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR1: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR2: RORegister<u32>,
@@ -2817,7 +2817,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR2: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR2: RWRegister<u32>,
@@ -2825,7 +2825,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR2: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR3: RORegister<u32>,
@@ -2860,7 +2860,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR3: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR3: RWRegister<u32>,
@@ -2868,7 +2868,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR3: RWRegister<u32>,
 
-    _reserved9: [u32; 2],
+    _reserved9: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR4: RORegister<u32>,
@@ -2903,7 +2903,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR4: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR4: RWRegister<u32>,
@@ -2911,7 +2911,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR4: RWRegister<u32>,
 
-    _reserved11: [u32; 2],
+    _reserved11: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR5: RORegister<u32>,
@@ -2946,7 +2946,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR5: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR5: RWRegister<u32>,
@@ -2954,7 +2954,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR5: RWRegister<u32>,
 
-    _reserved13: [u32; 2],
+    _reserved13: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR6: RORegister<u32>,
@@ -2989,7 +2989,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR6: RWRegister<u32>,
 
-    _reserved14: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR6: RWRegister<u32>,
@@ -2997,7 +2997,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR6: RWRegister<u32>,
 
-    _reserved15: [u32; 2],
+    _reserved15: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR7: RORegister<u32>,
@@ -3032,7 +3032,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR7: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved16: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR7: RWRegister<u32>,
@@ -3040,7 +3040,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR7: RWRegister<u32>,
 
-    _reserved17: [u32; 2],
+    _reserved17: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR8: RORegister<u32>,
@@ -3075,7 +3075,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR8: RWRegister<u32>,
 
-    _reserved18: [u32; 1],
+    _reserved18: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR8: RWRegister<u32>,
@@ -3083,7 +3083,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR8: RWRegister<u32>,
 
-    _reserved19: [u32; 2],
+    _reserved19: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR9: RORegister<u32>,
@@ -3118,7 +3118,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR9: RWRegister<u32>,
 
-    _reserved20: [u32; 1],
+    _reserved20: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR9: RWRegister<u32>,
@@ -3126,7 +3126,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR9: RWRegister<u32>,
 
-    _reserved21: [u32; 2],
+    _reserved21: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR10: RORegister<u32>,
@@ -3161,7 +3161,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR10: RWRegister<u32>,
 
-    _reserved22: [u32; 1],
+    _reserved22: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR10: RWRegister<u32>,
@@ -3169,7 +3169,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR10: RWRegister<u32>,
 
-    _reserved23: [u32; 2],
+    _reserved23: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR11: RORegister<u32>,
@@ -3204,7 +3204,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR11: RWRegister<u32>,
 
-    _reserved24: [u32; 1],
+    _reserved24: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR11: RWRegister<u32>,
@@ -3212,7 +3212,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR11: RWRegister<u32>,
 
-    _reserved25: [u32; 2],
+    _reserved25: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR12: RORegister<u32>,
@@ -3247,7 +3247,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR12: RWRegister<u32>,
 
-    _reserved26: [u32; 1],
+    _reserved26: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR12: RWRegister<u32>,
@@ -3255,7 +3255,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR12: RWRegister<u32>,
 
-    _reserved27: [u32; 2],
+    _reserved27: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR13: RORegister<u32>,
@@ -3290,7 +3290,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR13: RWRegister<u32>,
 
-    _reserved28: [u32; 1],
+    _reserved28: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR13: RWRegister<u32>,
@@ -3298,7 +3298,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR13: RWRegister<u32>,
 
-    _reserved29: [u32; 2],
+    _reserved29: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR14: RORegister<u32>,
@@ -3333,7 +3333,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR14: RWRegister<u32>,
 
-    _reserved30: [u32; 1],
+    _reserved30: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR14: RWRegister<u32>,
@@ -3341,7 +3341,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Mask Data register
     pub MDR14: RWRegister<u32>,
 
-    _reserved31: [u32; 2],
+    _reserved31: [u8; 8],
 
     /// MDMA channel x interrupt/status register
     pub ISR15: RORegister<u32>,
@@ -3376,7 +3376,7 @@ pub struct RegisterBlock {
     /// MDMA channel x Trigger and Bus selection Register
     pub TBR15: RWRegister<u32>,
 
-    _reserved32: [u32; 1],
+    _reserved32: [u8; 4],
 
     /// MDMA channel x Mask address register
     pub MAR15: RWRegister<u32>,

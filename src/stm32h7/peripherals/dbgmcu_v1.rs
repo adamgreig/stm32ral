@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Microcontroller Debug Unit
 //!
-//! Used by: stm32h735, stm32h747cm4, stm32h747cm7
+//! Used by: stm32h743, stm32h743v
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -44,7 +44,7 @@ pub mod IDC {
 pub mod CR {
 
     /// Allow D1 domain debug in Sleep mode
-    pub mod DBGSLPD1 {
+    pub mod DBGSLEEP_D1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
@@ -58,7 +58,7 @@ pub mod CR {
     }
 
     /// Allow D1 domain debug in Stop mode
-    pub mod DBGSTPD1 {
+    pub mod DBGSTOP_D1 {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
@@ -72,80 +72,10 @@ pub mod CR {
     }
 
     /// Allow D1 domain debug in Standby mode
-    pub mod DBGSTBD1 {
+    pub mod DBGSTBY_D1 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow D2 domain debug in Sleep mode
-    pub mod DBGSLPD2 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow D2 domain debug in Stop mode
-    pub mod DBGSTPD2 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow D2 domain debug in Standby mode
-    pub mod DBGSTBD2 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D3 Stop mode
-    pub mod DBGSTPD3 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Allow debug in D3 Standby mode
-    pub mod DBGSTBD3 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -212,7 +142,7 @@ pub mod CR {
     }
 }
 
-/// DBGMCU APB3 peripheral freeze register CPU1
+/// DBGMCU APB3 peripheral freeze register
 pub mod APB3FZ1 {
 
     /// WWDG1 stop in debug
@@ -228,11 +158,6 @@ pub mod APB3FZ1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
-}
-
-/// DBGMCU APB3 peripheral freeze register CPU2
-pub mod APB3FZ2 {
-    pub use super::APB3FZ1::WWDG1;
 }
 
 /// DBGMCU APB1L peripheral freeze register
@@ -378,20 +303,6 @@ pub mod APB1LFZ1 {
         pub mod RW {}
     }
 
-    /// WWDG2 stop in debug
-    pub mod DBG_WWDG2 {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// I2C1 SMBUS timeout stop in debug
     pub mod DBG_I2C1 {
         /// Offset (21 bits)
@@ -433,24 +344,6 @@ pub mod APB1LFZ1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
-}
-
-/// DBGMCU APB1L peripheral freeze register CPU2
-pub mod APB1LFZ2 {
-    pub use super::APB1LFZ1::DBG_I2C1;
-    pub use super::APB1LFZ1::DBG_I2C2;
-    pub use super::APB1LFZ1::DBG_I2C3;
-    pub use super::APB1LFZ1::DBG_LPTIM1;
-    pub use super::APB1LFZ1::DBG_TIM12;
-    pub use super::APB1LFZ1::DBG_TIM13;
-    pub use super::APB1LFZ1::DBG_TIM14;
-    pub use super::APB1LFZ1::DBG_TIM2;
-    pub use super::APB1LFZ1::DBG_TIM3;
-    pub use super::APB1LFZ1::DBG_TIM4;
-    pub use super::APB1LFZ1::DBG_TIM5;
-    pub use super::APB1LFZ1::DBG_TIM6;
-    pub use super::APB1LFZ1::DBG_TIM7;
-    pub use super::APB1LFZ1::DBG_WWDG2;
 }
 
 /// DBGMCU APB2 peripheral freeze register
@@ -541,16 +434,6 @@ pub mod APB2FZ1 {
     }
 }
 
-/// DBGMCU APB2 peripheral freeze register CPU2
-pub mod APB2FZ2 {
-    pub use super::APB2FZ1::DBG_HRTIM;
-    pub use super::APB2FZ1::DBG_TIM1;
-    pub use super::APB2FZ1::DBG_TIM15;
-    pub use super::APB2FZ1::DBG_TIM16;
-    pub use super::APB2FZ1::DBG_TIM17;
-    pub use super::APB2FZ1::DBG_TIM8;
-}
-
 /// DBGMCU APB4 peripheral freeze register
 pub mod APB4FZ1 {
 
@@ -639,7 +522,7 @@ pub mod APB4FZ1 {
     }
 
     /// Independent watchdog for D1 stop in debug
-    pub mod DBG_WDGLSD1 {
+    pub mod DBG_IWDG1 {
         /// Offset (18 bits)
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
@@ -651,32 +534,6 @@ pub mod APB4FZ1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
-
-    /// Independent watchdog for D2 stop in debug
-    pub mod DBG_WDGLSD2 {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// DBGMCU APB4 peripheral freeze register CPU2
-pub mod APB4FZ2 {
-    pub use super::APB4FZ1::DBG_I2C4;
-    pub use super::APB4FZ1::DBG_LPTIM2;
-    pub use super::APB4FZ1::DBG_LPTIM3;
-    pub use super::APB4FZ1::DBG_LPTIM4;
-    pub use super::APB4FZ1::DBG_LPTIM5;
-    pub use super::APB4FZ1::DBG_RTC;
-    pub use super::APB4FZ1::DBG_WDGLSD1;
-    pub use super::APB4FZ1::DBG_WDGLSD2;
 }
 #[repr(C)]
 pub struct RegisterBlock {
@@ -686,45 +543,33 @@ pub struct RegisterBlock {
     /// DBGMCU Configuration Register
     pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 11],
+    _reserved1: [u8; 44],
 
-    /// DBGMCU APB3 peripheral freeze register CPU1
+    /// DBGMCU APB3 peripheral freeze register
     pub APB3FZ1: RWRegister<u32>,
 
-    /// DBGMCU APB3 peripheral freeze register CPU2
-    pub APB3FZ2: RWRegister<u32>,
+    _reserved2: [u8; 4],
 
     /// DBGMCU APB1L peripheral freeze register
     pub APB1LFZ1: RWRegister<u32>,
 
-    /// DBGMCU APB1L peripheral freeze register CPU2
-    pub APB1LFZ2: RWRegister<u32>,
-
-    _reserved2: [u32; 2],
+    _reserved3: [u8; 12],
 
     /// DBGMCU APB2 peripheral freeze register
     pub APB2FZ1: RWRegister<u32>,
 
-    /// DBGMCU APB2 peripheral freeze register CPU2
-    pub APB2FZ2: RWRegister<u32>,
+    _reserved4: [u8; 4],
 
     /// DBGMCU APB4 peripheral freeze register
     pub APB4FZ1: RWRegister<u32>,
-
-    /// DBGMCU APB4 peripheral freeze register CPU2
-    pub APB4FZ2: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub IDC: u32,
     pub CR: u32,
     pub APB3FZ1: u32,
-    pub APB3FZ2: u32,
     pub APB1LFZ1: u32,
-    pub APB1LFZ2: u32,
     pub APB2FZ1: u32,
-    pub APB2FZ2: u32,
     pub APB4FZ1: u32,
-    pub APB4FZ2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

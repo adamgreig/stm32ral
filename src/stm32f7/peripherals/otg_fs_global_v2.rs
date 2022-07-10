@@ -2466,7 +2466,7 @@ pub struct RegisterBlock {
     /// OTG I2C access register
     pub OTG_FS_GI2CCTL: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// OTG_FS general core configuration register (OTG_FS_GCCFG)
     pub OTG_FS_GCCFG: RWRegister<u32>,
@@ -2474,7 +2474,7 @@ pub struct RegisterBlock {
     /// core ID register
     pub OTG_FS_CID: RWRegister<u32>,
 
-    _reserved2: [u32; 5],
+    _reserved2: [u8; 20],
 
     /// OTG core LPM configuration register
     pub OTG_FS_GLPMCFG: RWRegister<u32>,
@@ -2482,12 +2482,12 @@ pub struct RegisterBlock {
     /// OTG power down register
     pub OTG_FS_GPWRDN: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// OTG ADP timer, control and status register
     pub OTG_FS_GADPCTL: RWRegister<u32>,
 
-    _reserved4: [u32; 39],
+    _reserved4: [u8; 156],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
     pub OTG_FS_HPTXFSIZ: RWRegister<u32>,

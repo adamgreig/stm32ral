@@ -8,6 +8,23 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
+pub use super::instances::dcb;
+pub use super::instances::dfsdm1;
+pub use super::instances::dmamux1;
+pub use super::instances::exti;
+pub use super::instances::flash;
+pub use super::instances::gpio;
+pub use super::instances::i2c;
+pub use super::instances::icache;
+pub use super::instances::iwdg;
+pub use super::instances::lptim;
+pub use super::instances::tamp;
+pub mod gtzc_mpcbb;
+pub use super::instances::pwr;
+pub use super::instances::rcc;
+pub use super::instances::rtc;
+pub use super::instances::s;
+pub mod dma;
 pub use super::instances::adc;
 pub use super::instances::adc_common;
 pub use super::instances::comp;
@@ -15,34 +32,19 @@ pub use super::instances::crc;
 pub use super::instances::crs;
 pub use super::instances::dac;
 pub use super::instances::dbgmcu;
-pub use super::instances::dcb;
-pub use super::instances::dfsdm1;
-pub use super::instances::dma;
-pub use super::instances::dmamux1;
-pub use super::instances::exti;
 pub use super::instances::fdcan1;
-pub use super::instances::flash;
 pub use super::instances::fmc;
-pub use super::instances::gpio;
-pub use super::instances::gtzc_mpcbb1;
-pub use super::instances::gtzc_mpcbb2;
 pub use super::instances::gtzc_tzic;
 pub use super::instances::gtzc_tzsc;
-pub use super::instances::i2c;
-pub use super::instances::icache;
-pub use super::instances::iwdg;
-pub use super::instances::lptim;
 pub use super::instances::lpuart1;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::octospi1;
 pub use super::instances::opamp;
-pub use super::instances::pwr;
-pub use super::instances::rcc;
 pub use super::instances::rng;
-pub use super::instances::rtc;
-pub use super::instances::s;
 pub use super::instances::sdmmc1;
+pub use super::instances::sec_gtzc_mpcbb1;
+pub use super::instances::sec_gtzc_mpcbb2;
 pub use super::instances::sec_tim1;
 pub use super::instances::sec_tim15;
 pub use super::instances::sec_tim16;
@@ -56,7 +58,6 @@ pub use super::instances::sec_tim7;
 pub use super::instances::sec_tim8;
 pub use super::instances::spi;
 pub use super::instances::syscfg;
-pub use super::instances::tamp;
 pub use super::instances::tim1;
 pub use super::instances::tim15;
 pub use super::instances::tim16;
@@ -123,10 +124,8 @@ pub struct Peripherals {
     pub SEC_LPTIM1: lptim::Instance,
     pub SEC_LPTIM2: lptim::Instance,
     pub SEC_LPTIM3: lptim::Instance,
-    pub GTZC_MPCBB1: gtzc_mpcbb1::Instance,
-    pub SEC_GTZC_MPCBB1: gtzc_mpcbb1::Instance,
-    pub GTZC_MPCBB2: gtzc_mpcbb2::Instance,
-    pub SEC_GTZC_MPCBB2: gtzc_mpcbb2::Instance,
+    pub GTZC_MPCBB1: gtzc_mpcbb::Instance,
+    pub GTZC_MPCBB2: gtzc_mpcbb::Instance,
     pub PWR: pwr::Instance,
     pub SEC_PWR: pwr::Instance,
     pub RCC: rcc::Instance,
@@ -141,6 +140,8 @@ pub struct Peripherals {
     pub SEC_DMA1: dma::Instance,
     pub DMA2: dma::Instance,
     pub SEC_DMA2: dma::Instance,
+    pub SEC_GTZC_MPCBB1: sec_gtzc_mpcbb1::Instance,
+    pub SEC_GTZC_MPCBB2: sec_gtzc_mpcbb2::Instance,
     pub SPI1: spi::Instance,
     pub SPI2: spi::Instance,
     pub SPI3: spi::Instance,
@@ -279,10 +280,8 @@ impl Peripherals {
             SEC_LPTIM1: lptim::SEC_LPTIM1::steal(),
             SEC_LPTIM2: lptim::SEC_LPTIM2::steal(),
             SEC_LPTIM3: lptim::SEC_LPTIM3::steal(),
-            GTZC_MPCBB1: gtzc_mpcbb1::GTZC_MPCBB1::steal(),
-            SEC_GTZC_MPCBB1: gtzc_mpcbb1::SEC_GTZC_MPCBB1::steal(),
-            GTZC_MPCBB2: gtzc_mpcbb2::GTZC_MPCBB2::steal(),
-            SEC_GTZC_MPCBB2: gtzc_mpcbb2::SEC_GTZC_MPCBB2::steal(),
+            GTZC_MPCBB1: gtzc_mpcbb::GTZC_MPCBB1::steal(),
+            GTZC_MPCBB2: gtzc_mpcbb::GTZC_MPCBB2::steal(),
             PWR: pwr::PWR::steal(),
             SEC_PWR: pwr::SEC_PWR::steal(),
             RCC: rcc::RCC::steal(),
@@ -297,6 +296,8 @@ impl Peripherals {
             SEC_DMA1: dma::SEC_DMA1::steal(),
             DMA2: dma::DMA2::steal(),
             SEC_DMA2: dma::SEC_DMA2::steal(),
+            SEC_GTZC_MPCBB1: sec_gtzc_mpcbb1::SEC_GTZC_MPCBB1::steal(),
+            SEC_GTZC_MPCBB2: sec_gtzc_mpcbb2::SEC_GTZC_MPCBB2::steal(),
             SPI1: spi::SPI1::steal(),
             SPI2: spi::SPI2::steal(),
             SPI3: spi::SPI3::steal(),

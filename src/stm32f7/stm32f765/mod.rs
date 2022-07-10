@@ -45,7 +45,7 @@ pub use super::instances::quadspi;
 pub use super::instances::rcc_f765_f7x7_f7x9 as rcc;
 pub use super::instances::rng;
 pub use super::instances::rtc_f745_f750_f765_f7x6_f7x7_f7x9 as rtc;
-pub use super::instances::sai_f745_f750_f765_f7x6_f7x7_f7x9 as sai;
+pub use super::instances::sai;
 pub use super::instances::sdmmc;
 pub use super::instances::spdifrx;
 pub use super::instances::spi_f745_f765_f7x7 as spi;
@@ -59,6 +59,7 @@ pub use super::instances::tim1_f765_f7x6_f7x9 as tim1;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
+pub use super::instances::tim5;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim8_f765_f7x6_f7x9 as tim8;
@@ -79,7 +80,6 @@ pub mod mdios;
 pub use super::instances::jpeg;
 pub mod dfsdm1;
 pub use super::instances::dsi;
-pub use super::instances::tim5;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -124,6 +124,7 @@ pub struct Peripherals {
     pub TIM2: tim2::Instance,
     pub TIM3: tim3::Instance,
     pub TIM4: tim4::Instance,
+    pub TIM5: tim5::Instance,
     pub TIM9: tim9::Instance,
     pub TIM12: tim12::Instance,
     pub TIM10: tim10::Instance,
@@ -187,7 +188,6 @@ pub struct Peripherals {
     pub JPEG: jpeg::Instance,
     pub DFSDM1: dfsdm1::Instance,
     pub DSI: dsi::Instance,
-    pub TIM5: tim5::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -238,6 +238,7 @@ impl Peripherals {
             TIM2: tim2::TIM2::steal(),
             TIM3: tim3::TIM3::steal(),
             TIM4: tim4::TIM4::steal(),
+            TIM5: tim5::TIM5::steal(),
             TIM9: tim9::TIM9::steal(),
             TIM12: tim12::TIM12::steal(),
             TIM10: tim10::TIM10::steal(),
@@ -301,7 +302,6 @@ impl Peripherals {
             JPEG: jpeg::JPEG::steal(),
             DFSDM1: dfsdm1::DFSDM1::steal(),
             DSI: dsi::DSI::steal(),
-            TIM5: tim5::TIM5::steal(),
         }
     }
 }

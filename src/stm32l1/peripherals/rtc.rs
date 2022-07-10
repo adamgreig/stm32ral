@@ -834,10 +834,10 @@ pub mod CALIBR {
     }
 }
 
-/// alarm A register
+/// Alarm register
 pub mod ALRMAR {
 
-    /// Alarm A date mask
+    /// Alarm date mask
     pub mod MSK4 {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -865,7 +865,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Date tens in BCD format.
+    /// Date tens in BCD format
     pub mod DT {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -879,7 +879,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Date units or day in BCD format.
+    /// Date units or day in BCD format
     pub mod DU {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -893,7 +893,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A hours mask
+    /// Alarm hours mask
     pub mod MSK3 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -921,7 +921,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Hour tens in BCD format.
+    /// Hour tens in BCD format
     pub mod HT {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -935,7 +935,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Hour units in BCD format.
+    /// Hour units in BCD format
     pub mod HU {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -949,7 +949,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A minutes mask
+    /// Alarm minutes mask
     pub mod MSK2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -963,7 +963,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Minute tens in BCD format.
+    /// Minute tens in BCD format
     pub mod MNT {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -977,7 +977,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Minute units in BCD format.
+    /// Minute units in BCD format
     pub mod MNU {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -991,7 +991,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A seconds mask
+    /// Alarm seconds mask
     pub mod MSK1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -1005,7 +1005,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Second tens in BCD format.
+    /// Second tens in BCD format
     pub mod ST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -1019,7 +1019,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Second units in BCD format.
+    /// Second units in BCD format
     pub mod SU {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -1034,7 +1034,7 @@ pub mod ALRMAR {
     }
 }
 
-/// alarm B register
+/// Alarm register
 pub mod ALRMBR {
     pub use super::ALRMAR::DT;
     pub use super::ALRMAR::DU;
@@ -1547,7 +1547,7 @@ pub mod TAFCR {
     }
 }
 
-/// alarm A sub second register
+/// Alarm sub-second register
 pub mod ALRMASSR {
 
     /// Mask the most-significant bits starting at this bit
@@ -1579,7 +1579,7 @@ pub mod ALRMASSR {
     }
 }
 
-/// alarm B sub second register
+/// Alarm sub-second register
 pub mod ALRMBSSR {
     pub use super::ALRMASSR::MASKSS;
     pub use super::ALRMASSR::SS;
@@ -1780,10 +1780,10 @@ pub struct RegisterBlock {
     /// calibration register
     pub CALIBR: RWRegister<u32>,
 
-    /// alarm A register
+    /// Alarm register
     pub ALRMAR: RWRegister<u32>,
 
-    /// alarm B register
+    /// Alarm register
     pub ALRMBR: RWRegister<u32>,
 
     /// write protection register
@@ -1810,13 +1810,13 @@ pub struct RegisterBlock {
     /// tamper and alternate function configuration register
     pub TAFCR: RWRegister<u32>,
 
-    /// alarm A sub second register
+    /// Alarm sub-second register
     pub ALRMASSR: RWRegister<u32>,
 
-    /// alarm B sub second register
+    /// Alarm sub-second register
     pub ALRMBSSR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// backup register
     pub BKP0R: RWRegister<u32>,

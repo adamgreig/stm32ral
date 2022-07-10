@@ -954,12 +954,12 @@ pub struct RegisterBlock {
     /// AHB master timer configuration register
     pub AMTCR: RWRegister<u32>,
 
-    _reserved1: [u32; 236],
+    _reserved1: [u8; 944],
 
     /// FGCLUT
     pub FGCLUT: RWRegister<u32>,
 
-    _reserved2: [u32; 255],
+    _reserved2: [u8; 1020],
 
     /// BGCLUT
     pub BGCLUT: RWRegister<u32>,

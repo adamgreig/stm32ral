@@ -1061,7 +1061,7 @@ pub struct RegisterBlock {
     /// DAC sample and hold refresh time register
     pub DAC_SHRR: RWRegister<u32>,
 
-    _reserved1: [u32; 232],
+    _reserved1: [u8; 928],
 
     /// DAC IP hardware configuration register
     pub DAC_HWCFGR0: RORegister<u32>,

@@ -118,6 +118,7 @@ extern "C" {
     fn MDIOS();
     fn JPEG();
     fn MDMA();
+    fn DSI();
     fn SDMMC();
     fn HSEM0();
     fn ADC3();
@@ -360,7 +361,7 @@ pub static __INTERRUPTS: [Vector; 150] = [
     Vector { _handler: MDIOS },
     Vector { _handler: JPEG },
     Vector { _handler: MDMA },
-    Vector { _reserved: 0 },
+    Vector { _handler: DSI },
     Vector { _handler: SDMMC },
     Vector { _handler: HSEM0 },
     Vector { _reserved: 0 },
@@ -636,6 +637,8 @@ pub enum Interrupt {
     JPEG = 121,
     /// 122: MDMA
     MDMA = 122,
+    /// 123: DSI Host global interrupt
+    DSI = 123,
     /// 124: SDMMC global interrupt
     SDMMC = 124,
     /// 125: HSEM global interrupt 1

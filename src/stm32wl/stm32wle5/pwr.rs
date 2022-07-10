@@ -580,12 +580,8 @@ pub mod SR1 {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: All internal wakeup sources are cleared
             pub const Clear: u32 = 0b0;
@@ -593,6 +589,10 @@ pub mod SR1 {
             /// 0b1: wakeup is detected on the internal wakeup line
             pub const Wakeup: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Radio BUSY wakeup flag
@@ -601,12 +601,8 @@ pub mod SR1 {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No wakeup event detected on radio busy
             pub const Clear: u32 = 0b0;
@@ -614,6 +610,10 @@ pub mod SR1 {
             /// 0b1: Wakeup event detected on radio busy
             pub const Wakeup: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup PVD flag
@@ -622,12 +622,8 @@ pub mod SR1 {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No wakeup event detected on PVD
             pub const Clear: u32 = 0b0;
@@ -635,6 +631,10 @@ pub mod SR1 {
             /// 0b1: Wakeup event detected on PVD
             pub const Wakeup: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup flag 3
@@ -643,12 +643,8 @@ pub mod SR1 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No wakeup event detected on WKUP3
             pub const Clear: u32 = 0b0;
@@ -656,6 +652,10 @@ pub mod SR1 {
             /// 0b1: Wakeup event detected on WKUP3
             pub const Wakeup: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup flag 2
@@ -664,12 +664,8 @@ pub mod SR1 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No wakeup event detected on WKUP2
             pub const Clear: u32 = 0b0;
@@ -677,6 +673,10 @@ pub mod SR1 {
             /// 0b1: Wakeup event detected on WKUP2
             pub const Wakeup: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup flag 1
@@ -685,12 +685,8 @@ pub mod SR1 {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No wakeup event detected on WKUP1
             pub const Clear: u32 = 0b0;
@@ -698,6 +694,10 @@ pub mod SR1 {
             /// 0b1: Wakeup event detected on WKUP1
             pub const Wakeup: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -710,12 +710,8 @@ pub mod SR2 {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: VDDA voltage above PVM3 threshold (around 1.62 V)
             pub const Above: u32 = 0b0;
@@ -723,6 +719,10 @@ pub mod SR2 {
             /// 0b1: VDDA voltage below PVM3 threshold (around 1.62 V)
             pub const Below: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Power voltage detector output
@@ -731,12 +731,8 @@ pub mod SR2 {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: VDD or voltage level on PVD_IN above the selected PVD threshold
             pub const Above: u32 = 0b0;
@@ -744,6 +740,10 @@ pub mod SR2 {
             /// 0b1: VDD or voltage level on PVD_IN below the selected PVD threshold
             pub const Below: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Voltage scaling flag
@@ -752,12 +752,8 @@ pub mod SR2 {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Regulator ready in the selected voltage range
             pub const Ready: u32 = 0b0;
@@ -765,6 +761,10 @@ pub mod SR2 {
             /// 0b1: Regulator output voltage changed to the required voltage level
             pub const Change: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// regulator1 low power flag
@@ -773,12 +773,8 @@ pub mod SR2 {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Main regulator (MR) ready and used
             pub const Main: u32 = 0b0;
@@ -786,6 +782,10 @@ pub mod SR2 {
             /// 0b1: Low-power regulator (LPR) used
             pub const LowPower: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// regulator1 started
@@ -794,12 +794,8 @@ pub mod SR2 {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: LPR not ready
             pub const NotReady: u32 = 0b0;
@@ -807,6 +803,10 @@ pub mod SR2 {
             /// 0b1: LPR ready
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Flash ready
@@ -815,12 +815,8 @@ pub mod SR2 {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Flash memory not ready to be accessed
             pub const NotReady: u32 = 0b0;
@@ -828,6 +824,10 @@ pub mod SR2 {
             /// 0b1: Flash memory ready to be accessed
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// regulator2 low power flag
@@ -836,12 +836,8 @@ pub mod SR2 {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Main regulator supplied directly from VDD
             pub const V_DD: u32 = 0b0;
@@ -849,6 +845,10 @@ pub mod SR2 {
             /// 0b1: Main regulator supplied through LDO or SMPS
             pub const LDO_SMPS: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Radio end of life flag
@@ -857,12 +857,8 @@ pub mod SR2 {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Supply voltage above radio end-of-life operating low level
             pub const Above: u32 = 0b0;
@@ -870,6 +866,10 @@ pub mod SR2 {
             /// 0b1: Supply voltage below radio end-of-life operating low level
             pub const Below: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LDO ready flag
@@ -878,12 +878,8 @@ pub mod SR2 {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: LDO not ready or off
             pub const NotReady: u32 = 0b0;
@@ -891,6 +887,10 @@ pub mod SR2 {
             /// 0b1: LDO ready
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SMPS ready flag
@@ -899,12 +899,8 @@ pub mod SR2 {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: SMPS step-down converter not ready or off
             pub const NotReady: u32 = 0b0;
@@ -912,6 +908,10 @@ pub mod SR2 {
             /// 0b1: SMPS step-down converter ready
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Radio BUSY masked signal status
@@ -920,12 +920,8 @@ pub mod SR2 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: radio busy masked signal low (not busy)
             pub const NotBusy: u32 = 0b0;
@@ -933,6 +929,10 @@ pub mod SR2 {
             /// 0b1: radio busy masked signal high (busy)
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Radio BUSY signal status
@@ -941,12 +941,8 @@ pub mod SR2 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: radio busy signal low (not busy)
             pub const NotBusy: u32 = 0b0;
@@ -954,6 +950,10 @@ pub mod SR2 {
             /// 0b1: radio busy signal high (busy)
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2352,12 +2352,8 @@ pub mod EXTSCR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: CPU is running or in sleep
             pub const RunningOrSleep: u32 = 0b0;
@@ -2365,6 +2361,10 @@ pub mod EXTSCR {
             /// 0b1: CPU is in Deep-Sleep
             pub const DeepSleep: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// System Stop0, 1 flag for CPU1. (All core states retained)
@@ -2373,12 +2373,8 @@ pub mod EXTSCR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: System has not been in Stop 0 or 1 mode
             pub const NoStop: u32 = 0b0;
@@ -2386,6 +2382,10 @@ pub mod EXTSCR {
             /// 0b1: System has been in Stop 0 or 1 mode
             pub const Stop: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// System Stop2 flag for CPU1. (partial core states retained)
@@ -2394,12 +2394,8 @@ pub mod EXTSCR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: System has not been in Stop 2 mode
             pub const NoStop: u32 = 0b0;
@@ -2407,6 +2403,10 @@ pub mod EXTSCR {
             /// 0b1: System has been in Stop 2 mode
             pub const Stop: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// System Standby flag for CPU1. (no core states retained)
@@ -2415,12 +2415,8 @@ pub mod EXTSCR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: System has not been in Standby mode
             pub const NoStandby: u32 = 0b0;
@@ -2428,6 +2424,10 @@ pub mod EXTSCR {
             /// 0b1: System has been in Standby mode
             pub const Standby: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear CPU1 Stop Standby flags
@@ -2517,7 +2517,7 @@ pub struct RegisterBlock {
     /// Power Port C pull-down control register
     pub PDCRC: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// Power Port H pull-up control register
     pub PUCRH: RWRegister<u32>,
@@ -2525,12 +2525,12 @@ pub struct RegisterBlock {
     /// Power Port H pull-down control register
     pub PDCRH: RWRegister<u32>,
 
-    _reserved2: [u32; 10],
+    _reserved2: [u8; 40],
 
     /// Power extended status and status clear register
     pub EXTSCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Power SPI3 control register
     pub SUBGHZSPICR: RWRegister<u32>,

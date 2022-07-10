@@ -2885,7 +2885,7 @@ pub struct RegisterBlock {
     /// DMA address for full transfer
     pub DMAR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare mode register 3 (output mode)
     pub CCMR3_Output: RWRegister<u32>,

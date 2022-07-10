@@ -346,12 +346,12 @@ pub struct RegisterBlock {
     /// USBPHYC PLL1 control register
     pub PLL1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// USBPHYC tuning control register
     pub TUNE: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// USBPHYC LDO control and status register
     pub LDO: RWRegister<u32>,

@@ -1581,7 +1581,7 @@ pub struct RegisterBlock {
     /// Stimulus Port Register 255
     pub STIM255: RWRegister<u32>,
 
-    _reserved1: [u32; 640],
+    _reserved1: [u8; 2560],
 
     /// Trace Enable Register 0
     pub TER0: RWRegister<u32>,
@@ -1607,17 +1607,17 @@ pub struct RegisterBlock {
     /// Trace Enable Register 7
     pub TER7: RWRegister<u32>,
 
-    _reserved2: [u32; 8],
+    _reserved2: [u8; 32],
 
     /// Trace Privilege Register
     pub TPR: RWRegister<u32>,
 
-    _reserved3: [u32; 15],
+    _reserved3: [u8; 60],
 
     /// Trace Control Register
     pub TCR: RWRegister<u32>,
 
-    _reserved4: [u32; 75],
+    _reserved4: [u8; 300],
 
     /// Lock Access Register
     pub LAR: WORegister<u32>,

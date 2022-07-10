@@ -594,12 +594,12 @@ pub struct RegisterBlock {
     /// Operating mode Register
     pub MTLOMR: RWRegister<u32>,
 
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// Interrupt status Register
     pub MTLISR: RWRegister<u32>,
 
-    _reserved2: [u32; 55],
+    _reserved2: [u8; 220],
 
     /// Tx queue operating mode Register
     pub MTLTxQOMR: RWRegister<u32>,
@@ -610,7 +610,7 @@ pub struct RegisterBlock {
     /// Tx queue debug Register
     pub MTLTxQDR: RWRegister<u32>,
 
-    _reserved3: [u32; 8],
+    _reserved3: [u8; 32],
 
     /// Queue interrupt control status Register
     pub MTLQICSR: RWRegister<u32>,

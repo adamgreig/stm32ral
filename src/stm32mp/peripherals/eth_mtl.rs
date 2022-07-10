@@ -908,12 +908,12 @@ pub struct RegisterBlock {
     /// The Operating Mode register establishes the Transmit and Receive operating modes and commands.
     pub ETH_MTLOMR: RWRegister<u32>,
 
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// The software driver (application) reads this register during interrupt service routine or polling to determine the interrupt status of MTL queues and the MAC.
     pub ETH_MTLISR: RORegister<u32>,
 
-    _reserved2: [u32; 55],
+    _reserved2: [u8; 220],
 
     /// Tx queue 0 operating mode Register
     pub ETH_MTLTxQ0OMR: RWRegister<u32>,
@@ -924,12 +924,12 @@ pub struct RegisterBlock {
     /// Tx queue 0 underflow register
     pub ETH_MTLTxQ0DR: RORegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// Tx queue x ETS status Register
     pub ETH_MTLTxQ0ESR: RORegister<u32>,
 
-    _reserved4: [u32; 5],
+    _reserved4: [u8; 20],
 
     /// Queue 0 interrupt control status Register
     pub ETH_MTLQ0ICSR: RWRegister<u32>,
@@ -955,7 +955,7 @@ pub struct RegisterBlock {
     /// Tx queue 1 underflow register
     pub ETH_MTLTxQ1DR: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// The Queue ETS Control register controls the enhanced transmission selection operation.
     pub ETH_MTLTxQ1ECR: RWRegister<u32>,
@@ -975,7 +975,7 @@ pub struct RegisterBlock {
     /// The loCredit register contains the loCredit value required for the credit-based shaper algorithm for the Queue.
     pub ETH_MTLTxQ1LCR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// Queue 1 interrupt control status Register
     pub ETH_MTLQ1ICSR: RWRegister<u32>,

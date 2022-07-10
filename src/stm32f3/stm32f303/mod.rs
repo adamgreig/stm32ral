@@ -19,8 +19,9 @@ pub use super::instances::spi;
 pub use super::instances::tim15;
 pub use super::instances::tim16_f302_f303_f3x4 as tim16;
 pub use super::instances::tim17_f302_f303_f3x4 as tim17;
-pub use super::instances::tim2_f302_f303_f3x4 as tim2;
-pub use super::instances::tim4_f302_f303 as tim4;
+pub use super::instances::tim2;
+pub use super::instances::tim3;
+pub use super::instances::tim4;
 pub use super::instances::usart_f302_f303_f3x8 as usart;
 pub mod pwr;
 pub use super::instances::can;
@@ -37,20 +38,19 @@ pub use super::instances::tim8;
 pub use super::instances::usb;
 pub use super::instances::wwdg;
 pub mod adc;
-pub use super::instances::adc_common;
+pub mod adc_common;
 pub mod syscfg;
-pub use super::instances::comp;
 pub use super::instances::fmc;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
-pub use super::instances::opamp_f303_f3x8 as opamp;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
-pub use super::instances::tim3_f302_f303 as tim3;
+pub mod comp;
+pub mod opamp;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -70,6 +70,7 @@ pub struct Peripherals {
     pub DMA1: dma::Instance,
     pub DMA2: dma::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
     pub TIM4: tim4::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
@@ -119,7 +120,6 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
-    pub TIM3: tim3::Instance,
     pub OPAMP: opamp::Instance,
     pub COMP: comp::Instance,
 }
@@ -147,6 +147,7 @@ impl Peripherals {
             DMA1: dma::DMA1::steal(),
             DMA2: dma::DMA2::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
             TIM4: tim4::TIM4::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
@@ -196,7 +197,6 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
-            TIM3: tim3::TIM3::steal(),
             OPAMP: opamp::OPAMP::steal(),
             COMP: comp::COMP::steal(),
         }

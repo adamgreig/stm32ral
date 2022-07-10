@@ -19,10 +19,8 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: Watchdog disabled
             pub const Disabled: u32 = 0b0;
@@ -30,6 +28,8 @@ pub mod CR {
             /// 0b1: Watchdog enabled
             pub const Enabled: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// 7-bit counter (MSB to LSB)
@@ -122,11 +122,11 @@ pub mod SR {
         /// Read-only values
         pub mod R {
 
-            /// 0b1: The EWI Interrupt Service Routine has been triggered
-            pub const Pending: u32 = 0b1;
-
             /// 0b0: The EWI Interrupt Service Routine has been serviced
             pub const Finished: u32 = 0b0;
+
+            /// 0b1: The EWI Interrupt Service Routine has been triggered
+            pub const Pending: u32 = 0b1;
         }
         /// Write-only values
         pub mod W {

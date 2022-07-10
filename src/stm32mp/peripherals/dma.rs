@@ -2269,7 +2269,7 @@ pub struct RegisterBlock {
     /// DMA stream 7 FIFO control register
     pub DMA_S7FCR: RWRegister<u32>,
 
-    _reserved1: [u32; 199],
+    _reserved1: [u8; 796],
 
     /// DMA hardware configuration 2register
     pub DMA_HWCFGR2: RORegister<u32>,

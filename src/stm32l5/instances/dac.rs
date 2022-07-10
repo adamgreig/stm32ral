@@ -8,9 +8,8 @@
 pub use crate::stm32l5::peripherals::dac::Instance;
 pub use crate::stm32l5::peripherals::dac::{RegisterBlock, ResetValues};
 pub use crate::stm32l5::peripherals::dac::{
-    DAC_CCR, DAC_CR, DAC_DHR12L1, DAC_DHR12L2, DAC_DHR12LD, DAC_DHR12R1, DAC_DHR12R2, DAC_DHR12RD,
-    DAC_DHR8R1, DAC_DHR8R2, DAC_DHR8RD, DAC_DOR1, DAC_DOR2, DAC_MCR, DAC_SHHR, DAC_SHRR, DAC_SHSR1,
-    DAC_SHSR2, DAC_SR, DAC_SWTRGR,
+    CCR, CR, DHR12L1, DHR12L2, DHR12LD, DHR12R1, DHR12R2, DHR12RD, DHR8R1, DHR8R2, DHR8RD, DOR1,
+    DOR2, MCR, SHHR, SHRR, SHSR1, SHSR2, SR, SWTRGR,
 };
 
 /// Access functions for the DAC peripheral instance
@@ -28,26 +27,26 @@ pub mod DAC {
 
     /// Reset values for each field in DAC
     pub const reset: ResetValues = ResetValues {
-        DAC_CR: 0x00000000,
-        DAC_SWTRGR: 0x00000000,
-        DAC_DHR12R1: 0x00000000,
-        DAC_DHR12L1: 0x00000000,
-        DAC_DHR8R1: 0x00000000,
-        DAC_DHR12R2: 0x00000000,
-        DAC_DHR12L2: 0x00000000,
-        DAC_DHR8R2: 0x00000000,
-        DAC_DHR12RD: 0x00000000,
-        DAC_DHR12LD: 0x00000000,
-        DAC_DHR8RD: 0x00000000,
-        DAC_DOR1: 0x00000000,
-        DAC_DOR2: 0x00000000,
-        DAC_SR: 0x00000000,
-        DAC_CCR: 0x00000000,
-        DAC_MCR: 0x00000000,
-        DAC_SHSR1: 0x00000000,
-        DAC_SHSR2: 0x00000000,
-        DAC_SHHR: 0x00010001,
-        DAC_SHRR: 0x00010001,
+        CR: 0x00000000,
+        SWTRGR: 0x00000000,
+        DHR12R1: 0x00000000,
+        DHR12L1: 0x00000000,
+        DHR8R1: 0x00000000,
+        DHR12R2: 0x00000000,
+        DHR12L2: 0x00000000,
+        DHR8R2: 0x00000000,
+        DHR12RD: 0x00000000,
+        DHR12LD: 0x00000000,
+        DHR8RD: 0x00000000,
+        DOR1: 0x00000000,
+        DOR2: 0x00000000,
+        SR: 0x00000000,
+        CCR: 0x00000000,
+        MCR: 0x00000000,
+        SHSR1: 0x00000000,
+        SHSR2: 0x00000000,
+        SHHR: 0x00010001,
+        SHRR: 0x00010001,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -138,26 +137,26 @@ pub mod SEC_DAC {
 
     /// Reset values for each field in SEC_DAC
     pub const reset: ResetValues = ResetValues {
-        DAC_CR: 0x00000000,
-        DAC_SWTRGR: 0x00000000,
-        DAC_DHR12R1: 0x00000000,
-        DAC_DHR12L1: 0x00000000,
-        DAC_DHR8R1: 0x00000000,
-        DAC_DHR12R2: 0x00000000,
-        DAC_DHR12L2: 0x00000000,
-        DAC_DHR8R2: 0x00000000,
-        DAC_DHR12RD: 0x00000000,
-        DAC_DHR12LD: 0x00000000,
-        DAC_DHR8RD: 0x00000000,
-        DAC_DOR1: 0x00000000,
-        DAC_DOR2: 0x00000000,
-        DAC_SR: 0x00000000,
-        DAC_CCR: 0x00000000,
-        DAC_MCR: 0x00000000,
-        DAC_SHSR1: 0x00000000,
-        DAC_SHSR2: 0x00000000,
-        DAC_SHHR: 0x00010001,
-        DAC_SHRR: 0x00010001,
+        CR: 0x00000000,
+        SWTRGR: 0x00000000,
+        DHR12R1: 0x00000000,
+        DHR12L1: 0x00000000,
+        DHR8R1: 0x00000000,
+        DHR12R2: 0x00000000,
+        DHR12L2: 0x00000000,
+        DHR8R2: 0x00000000,
+        DHR12RD: 0x00000000,
+        DHR12LD: 0x00000000,
+        DHR8RD: 0x00000000,
+        DOR1: 0x00000000,
+        DOR2: 0x00000000,
+        SR: 0x00000000,
+        CCR: 0x00000000,
+        MCR: 0x00000000,
+        SHSR1: 0x00000000,
+        SHSR2: 0x00000000,
+        SHHR: 0x00010001,
+        SHRR: 0x00010001,
     };
 
     #[cfg(not(feature = "nosync"))]

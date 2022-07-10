@@ -8,9 +8,8 @@
 pub use crate::stm32mp::peripherals::rtc::Instance;
 pub use crate::stm32mp::peripherals::rtc::{RegisterBlock, ResetValues};
 pub use crate::stm32mp::peripherals::rtc::{
-    RTC_ALRMAR, RTC_ALRMASSR, RTC_ALRMBR, RTC_ALRMBSSR, RTC_CALR, RTC_CFGR, RTC_CR, RTC_DR,
-    RTC_HWCFGR, RTC_ICSR, RTC_IPIDR, RTC_MISR, RTC_PRER, RTC_SCR, RTC_SHIFTR, RTC_SIDR, RTC_SMCR,
-    RTC_SMISR, RTC_SR, RTC_SSR, RTC_TR, RTC_TSDR, RTC_TSSSR, RTC_TSTR, RTC_VERR, RTC_WPR, RTC_WUTR,
+    ALRMAR, ALRMASSR, ALRMBR, ALRMBSSR, CALR, CFGR, CR, DR, HWCFGR, ICSR, IPIDR, MISR, PRER, SCR,
+    SHIFTR, SIDR, SMCR, SMISR, SR, SSR, TR, TSDR, TSSSR, TSTR, VERR, WPR, WUTR,
 };
 
 /// Access functions for the RTC peripheral instance
@@ -28,33 +27,33 @@ pub mod RTC {
 
     /// Reset values for each field in RTC
     pub const reset: ResetValues = ResetValues {
-        RTC_TR: 0x00000000,
-        RTC_DR: 0x00002101,
-        RTC_SSR: 0x00000000,
-        RTC_ICSR: 0x00000007,
-        RTC_PRER: 0x007F00FF,
-        RTC_WUTR: 0x0000FFFF,
-        RTC_CR: 0x00000000,
-        RTC_SMCR: 0x0000E00F,
-        RTC_WPR: 0x00000000,
-        RTC_CALR: 0x00000000,
-        RTC_SHIFTR: 0x00000000,
-        RTC_TSTR: 0x00000000,
-        RTC_TSDR: 0x00000000,
-        RTC_TSSSR: 0x00000000,
-        RTC_ALRMAR: 0x00000000,
-        RTC_ALRMASSR: 0x00000000,
-        RTC_ALRMBR: 0x00000000,
-        RTC_ALRMBSSR: 0x00000000,
-        RTC_SR: 0x00000000,
-        RTC_MISR: 0x00000000,
-        RTC_SMISR: 0x00000000,
-        RTC_SCR: 0x00000000,
-        RTC_CFGR: 0x00000000,
-        RTC_HWCFGR: 0x01031111,
-        RTC_VERR: 0x00000010,
-        RTC_IPIDR: 0x00120033,
-        RTC_SIDR: 0xA3C5DD01,
+        TR: 0x00000000,
+        DR: 0x00002101,
+        SSR: 0x00000000,
+        ICSR: 0x00000007,
+        PRER: 0x007F00FF,
+        WUTR: 0x0000FFFF,
+        CR: 0x00000000,
+        SMCR: 0x0000E00F,
+        WPR: 0x00000000,
+        CALR: 0x00000000,
+        SHIFTR: 0x00000000,
+        TSTR: 0x00000000,
+        TSDR: 0x00000000,
+        TSSSR: 0x00000000,
+        ALRMAR: 0x00000000,
+        ALRMBR: 0x00000000,
+        ALRMASSR: 0x00000000,
+        ALRMBSSR: 0x00000000,
+        SR: 0x00000000,
+        MISR: 0x00000000,
+        SMISR: 0x00000000,
+        SCR: 0x00000000,
+        CFGR: 0x00000000,
+        HWCFGR: 0x01031111,
+        VERR: 0x00000010,
+        IPIDR: 0x00120033,
+        SIDR: 0xA3C5DD01,
     };
 
     #[cfg(not(feature = "nosync"))]

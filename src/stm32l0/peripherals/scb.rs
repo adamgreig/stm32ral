@@ -493,7 +493,7 @@ pub struct RegisterBlock {
     /// Configuration and control register
     pub CCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// System handler priority registers
     pub SHPR2: RWRegister<u32>,

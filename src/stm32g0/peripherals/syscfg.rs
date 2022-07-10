@@ -328,7 +328,7 @@ pub struct RegisterBlock {
     /// SYSCFG configuration register 1
     pub CFGR1: RWRegister<u32>,
 
-    _reserved1: [u32; 5],
+    _reserved1: [u8; 20],
 
     /// SYSCFG configuration register 1
     pub CFGR2: RWRegister<u32>,

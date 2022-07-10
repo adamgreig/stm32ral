@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose I/Os
 //!
-//! Used by: stm32l4r9, stm32l4x6
+//! Used by: stm32l4x1, stm32l4x2, stm32l4x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -912,19 +912,19 @@ pub mod IDR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Input is logic high
-            pub const High: u32 = 0b1;
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Input is logic low
             pub const Low: u32 = 0b0;
+
+            /// 0b1: Input is logic high
+            pub const High: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -933,11 +933,11 @@ pub mod IDR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -946,11 +946,11 @@ pub mod IDR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -959,11 +959,11 @@ pub mod IDR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -972,11 +972,11 @@ pub mod IDR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -985,11 +985,11 @@ pub mod IDR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -998,11 +998,11 @@ pub mod IDR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1011,11 +1011,11 @@ pub mod IDR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1024,11 +1024,11 @@ pub mod IDR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1037,11 +1037,11 @@ pub mod IDR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1050,11 +1050,11 @@ pub mod IDR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1063,11 +1063,11 @@ pub mod IDR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1076,11 +1076,11 @@ pub mod IDR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1089,11 +1089,11 @@ pub mod IDR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1102,11 +1102,11 @@ pub mod IDR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Port input data (y = 0..15)
@@ -1115,11 +1115,11 @@ pub mod IDR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::IDR15::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::IDR15::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1139,11 +1139,11 @@ pub mod ODR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Set output to logic high
-            pub const High: u32 = 0b1;
-
             /// 0b0: Set output to logic low
             pub const Low: u32 = 0b0;
+
+            /// 0b1: Set output to logic high
+            pub const High: u32 = 0b1;
         }
     }
 
@@ -2333,7 +2333,7 @@ pub mod AFRH {
 /// GPIO port bit reset register
 pub mod BRR {
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -2347,14 +2347,14 @@ pub mod BRR {
             /// 0b0: No action on the corresponding ODx bit
             pub const NoAction: u32 = 0b0;
 
-            /// 0b1: Reset the ODx bit
+            /// 0b1: Reset the corresponding ODx bit
             pub const Reset: u32 = 0b1;
         }
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR1 {
         /// Offset (1 bits)
         pub const offset: u32 = 1;
@@ -2372,7 +2372,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR2 {
         /// Offset (2 bits)
         pub const offset: u32 = 2;
@@ -2385,7 +2385,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR3 {
         /// Offset (3 bits)
         pub const offset: u32 = 3;
@@ -2398,7 +2398,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR4 {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -2411,7 +2411,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR5 {
         /// Offset (5 bits)
         pub const offset: u32 = 5;
@@ -2424,7 +2424,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR6 {
         /// Offset (6 bits)
         pub const offset: u32 = 6;
@@ -2437,7 +2437,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR7 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -2450,7 +2450,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR8 {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -2463,7 +2463,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR9 {
         /// Offset (9 bits)
         pub const offset: u32 = 9;
@@ -2476,7 +2476,7 @@ pub mod BRR {
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR10 {
         /// Offset (10 bits)
         pub const offset: u32 = 10;
@@ -2484,12 +2484,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR11 {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
@@ -2497,12 +2497,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR12 {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -2510,12 +2510,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR13 {
         /// Offset (13 bits)
         pub const offset: u32 = 13;
@@ -2523,12 +2523,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR14 {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -2536,12 +2536,12 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
 
-    /// Port Reset bit
+    /// These bits are write-only. A read to these bits returns the value 0x0000
     pub mod BR15 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -2549,235 +2549,7 @@ pub mod BRR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        pub use super::BR0::W;
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// GPIO port analog switch control register
-pub mod ASCR {
-
-    /// Port analog switch control
-    pub mod ASC0 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC1 {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC2 {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (1 bit: 1 << 2)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC3 {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC4 {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC5 {
-        /// Offset (5 bits)
-        pub const offset: u32 = 5;
-        /// Mask (1 bit: 1 << 5)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC6 {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC7 {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC8 {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (1 bit: 1 << 8)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC9 {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC10 {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (1 bit: 1 << 10)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC11 {
-        /// Offset (11 bits)
-        pub const offset: u32 = 11;
-        /// Mask (1 bit: 1 << 11)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC12 {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC13 {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (1 bit: 1 << 13)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC14 {
-        /// Offset (14 bits)
-        pub const offset: u32 = 14;
-        /// Mask (1 bit: 1 << 14)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Port analog switch control
-    pub mod ASC15 {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::BR1::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2815,10 +2587,7 @@ pub struct RegisterBlock {
     pub AFRH: RWRegister<u32>,
 
     /// GPIO port bit reset register
-    pub BRR: WORegister<u32>,
-
-    /// GPIO port analog switch control register
-    pub ASCR: RWRegister<u32>,
+    pub BRR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub MODER: u32,
@@ -2832,7 +2601,6 @@ pub struct ResetValues {
     pub AFRL: u32,
     pub AFRH: u32,
     pub BRR: u32,
-    pub ASCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

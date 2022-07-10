@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Advanced-timers
 //!
-//! Used by: stm32g070, stm32g071, stm32g081
+//! Used by: stm32g071, stm32g081
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Counter enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// One-pulse mode
@@ -35,8 +42,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter is not stopped at update event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Counter stops counting at the next update event (clearing the CEN bit)
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Update disable
@@ -49,8 +63,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update event enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Update event disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// Update request source
@@ -63,8 +84,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Any of counter overflow/underflow, setting UG, or update through slave mode, generates an update interrupt or DMA request
+            pub const AnyEvent: u32 = 0b0;
+
+            /// 0b1: Only counter overflow/underflow generates an update interrupt or DMA request
+            pub const CounterOnly: u32 = 0b1;
+        }
     }
 
     /// Direction
@@ -77,8 +105,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter used as upcounter
+            pub const Up: u32 = 0b0;
+
+            /// 0b1: Counter used as downcounter
+            pub const Down: u32 = 0b1;
+        }
     }
 
     /// Center-aligned mode selection
@@ -91,8 +126,21 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: The counter counts up or down depending on the direction bit
+            pub const EdgeAligned: u32 = 0b00;
+
+            /// 0b01: The counter counts up and down alternatively. Output compare interrupt flags are set only when the counter is counting down.
+            pub const CenterAligned1: u32 = 0b01;
+
+            /// 0b10: The counter counts up and down alternatively. Output compare interrupt flags are set only when the counter is counting up.
+            pub const CenterAligned2: u32 = 0b10;
+
+            /// 0b11: The counter counts up and down alternatively. Output compare interrupt flags are set both when the counter is counting up or down.
+            pub const CenterAligned3: u32 = 0b11;
+        }
     }
 
     /// Auto-reload preload enable
@@ -105,8 +153,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TIMx_APRR register is not buffered
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TIMx_APRR register is buffered
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Clock division
@@ -119,8 +174,18 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: t_DTS = t_CK_INT
+            pub const Div1: u32 = 0b00;
+
+            /// 0b01: t_DTS = 2 × t_CK_INT
+            pub const Div2: u32 = 0b01;
+
+            /// 0b10: t_DTS = 4 × t_CK_INT
+            pub const Div4: u32 = 0b10;
+        }
     }
 
     /// UIF status bit remapping
@@ -509,8 +574,15 @@ pub mod DIER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Capture/Compare 1 interrupt enable
@@ -723,8 +795,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No update occurred
+            pub const Clear: u32 = 0b0;
+
+            /// 0b1: Update interrupt pending.
+            pub const UpdatePending: u32 = 0b1;
+        }
     }
 
     /// Capture/compare 1 interrupt flag
@@ -949,8 +1028,12 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Re-initializes the timer counter and generates an update of the registers.
+            pub const Update: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1971,8 +2054,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: When inactive, OC/OCN outputs are disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: When inactive, OC/OCN outputs are forced to idle level
+            pub const IdleLevel: u32 = 0b1;
+        }
     }
 
     /// Off-state selection for Run mode
@@ -1985,8 +2075,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: When inactive, OC/OCN outputs are disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: When inactive, OC/OCN outputs are enabled with their inactive level
+            pub const IdleLevel: u32 = 0b1;
+        }
     }
 
     /// Break enable
@@ -2041,8 +2138,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OC/OCN are disabled or forced idle depending on OSSI
+            pub const DisabledIdle: u32 = 0b0;
+
+            /// 0b1: OC/OCN are enabled if CCxE/CCxNE are set
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Break filter

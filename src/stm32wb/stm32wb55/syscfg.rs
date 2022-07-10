@@ -2190,7 +2190,7 @@ pub struct RegisterBlock {
     /// SRAM2 write protection register 2
     pub SWPR2: WORegister<u32>,
 
-    _reserved1: [u32; 53],
+    _reserved1: [u8; 212],
 
     /// CPU1 interrupt mask register 1
     pub IMR1: RWRegister<u32>,

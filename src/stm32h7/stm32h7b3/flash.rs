@@ -1873,7 +1873,7 @@ pub struct RegisterBlock {
     /// FLASH register with boot address
     pub BOOT_PRGR: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// FLASH CRC control register for bank 1
     pub CRCCR1: RWRegister<u32>,
@@ -1890,7 +1890,7 @@ pub struct RegisterBlock {
     /// FLASH ECC fail address for bank 1
     pub FAR1: RORegister<u32>,
 
-    _reserved2: [u32; 39],
+    _reserved2: [u8; 156],
 
     /// Access control register
     pub ACR_: RWRegister<u32>,
@@ -1940,7 +1940,7 @@ pub struct RegisterBlock {
     /// FLASH write sector protection for bank 1
     pub WPSN_PRGR2: RWRegister<u32>,
 
-    _reserved3: [u32; 4],
+    _reserved3: [u8; 16],
 
     /// FLASH CRC control register for bank 1
     pub CRCCR2: RWRegister<u32>,
@@ -1951,7 +1951,7 @@ pub struct RegisterBlock {
     /// FLASH CRC end address register for bank 1
     pub CRCEADDR2: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// FLASH ECC fail address for bank 1
     pub FAR2: RORegister<u32>,

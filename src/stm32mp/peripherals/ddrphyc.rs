@@ -3925,23 +3925,22 @@ pub struct RegisterBlock {
     /// DDRPHYC MR0 register for DDR3
     pub DDRPHYC_DDR3_MR0: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// DDRPHYC MR1 register for DDR3
     pub DDRPHYC_DDR3_MR1: RWRegister<u16>,
 
-    _reserved2: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// DDRPHYC MR2 register for DDR3
     pub DDRPHYC_DDR3_MR2: RWRegister<u16>,
 
-    _reserved3: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// DDRPHYC MR3 register for DDR3
     pub DDRPHYC_DDR3_MR3: RWRegister<u8>,
 
-    _reserved4: [u16; 1],
-    _reserved5: [u8; 1],
+    _reserved4: [u8; 3],
 
     /// DDRPHYC ODTC register
     pub DDRPHYC_ODTCR: RWRegister<u32>,
@@ -3955,7 +3954,7 @@ pub struct RegisterBlock {
     /// DDRPHYC DTD register 1
     pub DDRPHYC_DTDR1: RWRegister<u32>,
 
-    _reserved6: [u32; 70],
+    _reserved5: [u8; 280],
 
     /// DDRPHYC general purpose register 0
     pub DDRPHYC_GPR0: RWRegister<u32>,
@@ -3969,8 +3968,7 @@ pub struct RegisterBlock {
     /// DDRPHYC ZQ0CR1 register
     pub DDRPHYC_ZQ0CR1: RWRegister<u8>,
 
-    _reserved7: [u16; 1],
-    _reserved8: [u8; 1],
+    _reserved6: [u8; 3],
 
     /// DDRPHYC ZQ0S register 0
     pub DDRPHYC_ZQ0SR0: RORegister<u32>,
@@ -3978,9 +3976,7 @@ pub struct RegisterBlock {
     /// DDRPHYC ZQ0S register 1
     pub DDRPHYC_ZQ0SR1: RORegister<u8>,
 
-    _reserved9: [u32; 12],
-    _reserved10: [u16; 1],
-    _reserved11: [u8; 1],
+    _reserved7: [u8; 51],
 
     /// DDRPHYC byte lane 0 GC register
     pub DDRPHYC_DX0GCR: RWRegister<u32>,
@@ -3988,7 +3984,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 0 GS register 0
     pub DDRPHYC_DX0GSR0: RORegister<u16>,
 
-    _reserved12: [u16; 1],
+    _reserved8: [u8; 2],
 
     /// DDRPHYC byte lane 0 GS register 1
     pub DDRPHYC_DX0GSR1: RORegister<u32>,
@@ -4002,7 +3998,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 0 DQST register
     pub DDRPHYC_DX0DQSTR: RWRegister<u32>,
 
-    _reserved13: [u32; 10],
+    _reserved9: [u8; 40],
 
     /// DDRPHYC byte lane 1 GC register
     pub DDRPHYC_DX1GCR: RWRegister<u32>,
@@ -4010,7 +4006,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 1 GS register 0
     pub DDRPHYC_DX1GSR0: RORegister<u16>,
 
-    _reserved14: [u16; 1],
+    _reserved10: [u8; 2],
 
     /// DDRPHYC byte lane 1 GS register 1
     pub DDRPHYC_DX1GSR1: RORegister<u32>,
@@ -4024,7 +4020,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 1 DQST register
     pub DDRPHYC_DX1DQSTR: RWRegister<u32>,
 
-    _reserved15: [u32; 10],
+    _reserved11: [u8; 40],
 
     /// DDRPHYC byte lane 2 GC register
     pub DDRPHYC_DX2GCR: RWRegister<u32>,
@@ -4032,7 +4028,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 2 GS register 0
     pub DDRPHYC_DX2GSR0: RORegister<u16>,
 
-    _reserved16: [u16; 1],
+    _reserved12: [u8; 2],
 
     /// DDRPHYC byte lane 2 GS register 1
     pub DDRPHYC_DX2GSR1: RORegister<u32>,
@@ -4046,7 +4042,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 2 DQST register
     pub DDRPHYC_DX2DQSTR: RWRegister<u32>,
 
-    _reserved17: [u32; 10],
+    _reserved13: [u8; 40],
 
     /// DDRPHYC byte lane 3 GC register
     pub DDRPHYC_DX3GCR: RWRegister<u32>,
@@ -4054,7 +4050,7 @@ pub struct RegisterBlock {
     /// DDRPHYC byte lane 3 GS register 0
     pub DDRPHYC_DX3GSR0: RORegister<u16>,
 
-    _reserved18: [u16; 1],
+    _reserved14: [u8; 2],
 
     /// DDRPHYC byte lane 3 GS register 1
     pub DDRPHYC_DX3GSR1: RORegister<u32>,

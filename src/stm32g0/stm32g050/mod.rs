@@ -8,13 +8,13 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc_g050_g051_g061 as adc;
-pub use super::instances::crc_g050_g051_g061_g0b0_g0b1_g0c1 as crc;
+pub use super::instances::adc_g050_g051_g061_g0b1_g0c1 as adc;
+pub use super::instances::crc;
 pub mod dbg;
 pub mod dmamux;
 pub use super::instances::gpio_g050_g0b0_g0b1_g0c1 as gpio;
-pub use super::instances::i2c_g050_g051_g061_g0b0_g0b1_g0c1 as i2c;
-pub use super::instances::iwdg_g050_g051_g061_g0b0_g0b1_g0c1 as iwdg;
+pub use super::instances::i2c_g030_g031_g041_g050_g051_g061_g070_g071_g081_g0b0 as i2c;
+pub use super::instances::iwdg_g030_g031_g041_g050_g051_g061_g0b0_g0b1_g0c1 as iwdg;
 pub mod tim1;
 pub mod tim3;
 pub use super::instances::tim14_g050_g051_g061_g0b0_g0b1_g0c1 as tim14;
@@ -23,8 +23,8 @@ pub use super::instances::tim7_g050_g051_g061_g0b0_g0b1_g0c1 as tim7;
 pub mod tim15;
 pub mod tim16;
 pub mod tim17;
-pub use super::instances::usart_g050_g051_g061 as usart;
-pub use super::instances::wwdg_g050_g051_g061_g0b0_g0b1_g0c1 as wwdg;
+pub mod usart;
+pub use super::instances::wwdg;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]

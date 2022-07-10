@@ -761,11 +761,11 @@ pub mod MACFCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: In full duplex, initiate a Pause control frame. In half duplex, assert back pressure
-            pub const PauseOrBackPressure: u32 = 0b1;
-
             /// 0b0: In half duplex only, deasserts back pressure
             pub const DisableBackPressure: u32 = 0b0;
+
+            /// 0b1: In full duplex, initiate a Pause control frame. In half duplex, assert back pressure
+            pub const PauseOrBackPressure: u32 = 0b1;
         }
     }
 
@@ -1539,7 +1539,7 @@ pub struct RegisterBlock {
     /// Ethernet MAC VLAN tag register (ETH_MACVLANTR)
     pub MACVLANTR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Ethernet MAC remote wakeup frame filter register (ETH_MACRWUFFR)
     pub MACRWUFFR: RWRegister<u32>,
@@ -1547,7 +1547,7 @@ pub struct RegisterBlock {
     /// Ethernet MAC PMT control and status register (ETH_MACPMTCSR)
     pub MACPMTCSR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// Ethernet MAC interrupt status register (ETH_MACSR)
     pub MACSR: RWRegister<u32>,

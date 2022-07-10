@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// DFSDM channel configuration 0 register 1
-pub mod DFSDM_CHCFG0R1 {
+pub mod CHCFG0R1 {
 
     /// Serial interface type for channel 0
     pub mod SITP {
@@ -165,112 +165,112 @@ pub mod DFSDM_CHCFG0R1 {
 }
 
 /// DFSDM channel configuration 1 register 1
-pub mod DFSDM_CHCFG1R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG1R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 2 register 1
-pub mod DFSDM_CHCFG2R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG2R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 3 register 1
-pub mod DFSDM_CHCFG3R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG3R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 4 register 1
-pub mod DFSDM_CHCFG4R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG4R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 5 register 1
-pub mod DFSDM_CHCFG5R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG5R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 6 register 1
-pub mod DFSDM_CHCFG6R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG6R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 7 register 1
-pub mod DFSDM_CHCFG7R1 {
-    pub use super::DFSDM_CHCFG0R1::CHEN;
-    pub use super::DFSDM_CHCFG0R1::CHINSEL;
-    pub use super::DFSDM_CHCFG0R1::CKABEN;
-    pub use super::DFSDM_CHCFG0R1::CKOUTDIV;
-    pub use super::DFSDM_CHCFG0R1::CKOUTSRC;
-    pub use super::DFSDM_CHCFG0R1::DATMPX;
-    pub use super::DFSDM_CHCFG0R1::DATPACK;
-    pub use super::DFSDM_CHCFG0R1::DFSDMEN;
-    pub use super::DFSDM_CHCFG0R1::SCDEN;
-    pub use super::DFSDM_CHCFG0R1::SITP;
-    pub use super::DFSDM_CHCFG0R1::SPICKSEL;
+pub mod CHCFG7R1 {
+    pub use super::CHCFG0R1::CHEN;
+    pub use super::CHCFG0R1::CHINSEL;
+    pub use super::CHCFG0R1::CKABEN;
+    pub use super::CHCFG0R1::CKOUTDIV;
+    pub use super::CHCFG0R1::CKOUTSRC;
+    pub use super::CHCFG0R1::DATMPX;
+    pub use super::CHCFG0R1::DATPACK;
+    pub use super::CHCFG0R1::DFSDMEN;
+    pub use super::CHCFG0R1::SCDEN;
+    pub use super::CHCFG0R1::SITP;
+    pub use super::CHCFG0R1::SPICKSEL;
 }
 
 /// DFSDM channel configuration 0 register 2
-pub mod DFSDM_CHCFG0R2 {
+pub mod CHCFG0R2 {
 
     /// Data right bit-shift for channel 0
     pub mod DTRBS {
@@ -302,49 +302,49 @@ pub mod DFSDM_CHCFG0R2 {
 }
 
 /// DFSDM channel configuration 1 register 2
-pub mod DFSDM_CHCFG1R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG1R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM channel configuration 2 register 2
-pub mod DFSDM_CHCFG2R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG2R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM channel configuration 3 register 2
-pub mod DFSDM_CHCFG3R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG3R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM channel configuration 4 register 2
-pub mod DFSDM_CHCFG4R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG4R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM channel configuration 5 register 2
-pub mod DFSDM_CHCFG5R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG5R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM channel configuration 6 register 2
-pub mod DFSDM_CHCFG6R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG6R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM channel configuration 7 register 2
-pub mod DFSDM_CHCFG7R2 {
-    pub use super::DFSDM_CHCFG0R2::DTRBS;
-    pub use super::DFSDM_CHCFG0R2::OFFSET;
+pub mod CHCFG7R2 {
+    pub use super::CHCFG0R2::DTRBS;
+    pub use super::CHCFG0R2::OFFSET;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD0R {
+pub mod AWSCD0R {
 
     /// short-circuit detector threshold for channel 0
     pub mod SCDT {
@@ -404,63 +404,63 @@ pub mod DFSDM_AWSCD0R {
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD1R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD1R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD2R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD2R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD3R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD3R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD4R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD4R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD5R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD5R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD6R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD6R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM analog watchdog and short-circuit detector register
-pub mod DFSDM_AWSCD7R {
-    pub use super::DFSDM_AWSCD0R::AWFORD;
-    pub use super::DFSDM_AWSCD0R::AWFOSR;
-    pub use super::DFSDM_AWSCD0R::BKSCD;
-    pub use super::DFSDM_AWSCD0R::SCDT;
+pub mod AWSCD7R {
+    pub use super::AWSCD0R::AWFORD;
+    pub use super::AWSCD0R::AWFOSR;
+    pub use super::AWSCD0R::BKSCD;
+    pub use super::AWSCD0R::SCDT;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT0R {
+pub mod CHWDAT0R {
 
     /// Input channel y watchdog data
     pub mod WDATA {
@@ -478,42 +478,42 @@ pub mod DFSDM_CHWDAT0R {
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT1R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT1R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT2R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT2R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT3R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT3R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT4R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT4R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT5R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT5R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT6R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT6R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel watchdog filter data register
-pub mod DFSDM_CHWDAT7R {
-    pub use super::DFSDM_CHWDAT0R::WDATA;
+pub mod CHWDAT7R {
+    pub use super::CHWDAT0R::WDATA;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN0R {
+pub mod CHDATIN0R {
 
     /// Input data for channel 0
     pub mod INDAT0 {
@@ -545,45 +545,45 @@ pub mod DFSDM_CHDATIN0R {
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN1R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN1R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN2R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN2R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN3R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN3R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN4R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN4R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN5R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN5R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN6R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN6R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM channel data input register
-pub mod DFSDM_CHDATIN7R {
-    pub use super::DFSDM_CHDATIN0R::INDAT0;
-    pub use super::DFSDM_CHDATIN0R::INDAT1;
+pub mod CHDATIN7R {
+    pub use super::CHDATIN0R::INDAT0;
+    pub use super::CHDATIN0R::INDAT1;
 }
 
 /// DFSDM control register 1
@@ -1814,124 +1814,124 @@ pub mod DFSDM3_CNVTIMR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// DFSDM channel configuration 0 register 1
-    pub DFSDM_CHCFG0R1: RWRegister<u32>,
+    pub CHCFG0R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 1 register 1
-    pub DFSDM_CHCFG1R1: RWRegister<u32>,
+    pub CHCFG1R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 2 register 1
-    pub DFSDM_CHCFG2R1: RWRegister<u32>,
+    pub CHCFG2R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 3 register 1
-    pub DFSDM_CHCFG3R1: RWRegister<u32>,
+    pub CHCFG3R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 4 register 1
-    pub DFSDM_CHCFG4R1: RWRegister<u32>,
+    pub CHCFG4R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 5 register 1
-    pub DFSDM_CHCFG5R1: RWRegister<u32>,
+    pub CHCFG5R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 6 register 1
-    pub DFSDM_CHCFG6R1: RWRegister<u32>,
+    pub CHCFG6R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 7 register 1
-    pub DFSDM_CHCFG7R1: RWRegister<u32>,
+    pub CHCFG7R1: RWRegister<u32>,
 
     /// DFSDM channel configuration 0 register 2
-    pub DFSDM_CHCFG0R2: RWRegister<u32>,
+    pub CHCFG0R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 1 register 2
-    pub DFSDM_CHCFG1R2: RWRegister<u32>,
+    pub CHCFG1R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 2 register 2
-    pub DFSDM_CHCFG2R2: RWRegister<u32>,
+    pub CHCFG2R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 3 register 2
-    pub DFSDM_CHCFG3R2: RWRegister<u32>,
+    pub CHCFG3R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 4 register 2
-    pub DFSDM_CHCFG4R2: RWRegister<u32>,
+    pub CHCFG4R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 5 register 2
-    pub DFSDM_CHCFG5R2: RWRegister<u32>,
+    pub CHCFG5R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 6 register 2
-    pub DFSDM_CHCFG6R2: RWRegister<u32>,
+    pub CHCFG6R2: RWRegister<u32>,
 
     /// DFSDM channel configuration 7 register 2
-    pub DFSDM_CHCFG7R2: RWRegister<u32>,
+    pub CHCFG7R2: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD0R: RWRegister<u32>,
+    pub AWSCD0R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD1R: RWRegister<u32>,
+    pub AWSCD1R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD2R: RWRegister<u32>,
+    pub AWSCD2R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD3R: RWRegister<u32>,
+    pub AWSCD3R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD4R: RWRegister<u32>,
+    pub AWSCD4R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD5R: RWRegister<u32>,
+    pub AWSCD5R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD6R: RWRegister<u32>,
+    pub AWSCD6R: RWRegister<u32>,
 
     /// DFSDM analog watchdog and short-circuit detector register
-    pub DFSDM_AWSCD7R: RWRegister<u32>,
+    pub AWSCD7R: RWRegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT0R: RORegister<u32>,
+    pub CHWDAT0R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT1R: RORegister<u32>,
+    pub CHWDAT1R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT2R: RORegister<u32>,
+    pub CHWDAT2R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT3R: RORegister<u32>,
+    pub CHWDAT3R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT4R: RORegister<u32>,
+    pub CHWDAT4R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT5R: RORegister<u32>,
+    pub CHWDAT5R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT6R: RORegister<u32>,
+    pub CHWDAT6R: RORegister<u32>,
 
     /// DFSDM channel watchdog filter data register
-    pub DFSDM_CHWDAT7R: RORegister<u32>,
+    pub CHWDAT7R: RORegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN0R: RWRegister<u32>,
+    pub CHDATIN0R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN1R: RWRegister<u32>,
+    pub CHDATIN1R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN2R: RWRegister<u32>,
+    pub CHDATIN2R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN3R: RWRegister<u32>,
+    pub CHDATIN3R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN4R: RWRegister<u32>,
+    pub CHDATIN4R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN5R: RWRegister<u32>,
+    pub CHDATIN5R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN6R: RWRegister<u32>,
+    pub CHDATIN6R: RWRegister<u32>,
 
     /// DFSDM channel data input register
-    pub DFSDM_CHDATIN7R: RWRegister<u32>,
+    pub CHDATIN7R: RWRegister<u32>,
 
     /// DFSDM control register 1
     pub DFSDM0_CR1: RWRegister<u32>,
@@ -2114,46 +2114,46 @@ pub struct RegisterBlock {
     pub DFSDM3_CNVTIMR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub DFSDM_CHCFG0R1: u32,
-    pub DFSDM_CHCFG1R1: u32,
-    pub DFSDM_CHCFG2R1: u32,
-    pub DFSDM_CHCFG3R1: u32,
-    pub DFSDM_CHCFG4R1: u32,
-    pub DFSDM_CHCFG5R1: u32,
-    pub DFSDM_CHCFG6R1: u32,
-    pub DFSDM_CHCFG7R1: u32,
-    pub DFSDM_CHCFG0R2: u32,
-    pub DFSDM_CHCFG1R2: u32,
-    pub DFSDM_CHCFG2R2: u32,
-    pub DFSDM_CHCFG3R2: u32,
-    pub DFSDM_CHCFG4R2: u32,
-    pub DFSDM_CHCFG5R2: u32,
-    pub DFSDM_CHCFG6R2: u32,
-    pub DFSDM_CHCFG7R2: u32,
-    pub DFSDM_AWSCD0R: u32,
-    pub DFSDM_AWSCD1R: u32,
-    pub DFSDM_AWSCD2R: u32,
-    pub DFSDM_AWSCD3R: u32,
-    pub DFSDM_AWSCD4R: u32,
-    pub DFSDM_AWSCD5R: u32,
-    pub DFSDM_AWSCD6R: u32,
-    pub DFSDM_AWSCD7R: u32,
-    pub DFSDM_CHWDAT0R: u32,
-    pub DFSDM_CHWDAT1R: u32,
-    pub DFSDM_CHWDAT2R: u32,
-    pub DFSDM_CHWDAT3R: u32,
-    pub DFSDM_CHWDAT4R: u32,
-    pub DFSDM_CHWDAT5R: u32,
-    pub DFSDM_CHWDAT6R: u32,
-    pub DFSDM_CHWDAT7R: u32,
-    pub DFSDM_CHDATIN0R: u32,
-    pub DFSDM_CHDATIN1R: u32,
-    pub DFSDM_CHDATIN2R: u32,
-    pub DFSDM_CHDATIN3R: u32,
-    pub DFSDM_CHDATIN4R: u32,
-    pub DFSDM_CHDATIN5R: u32,
-    pub DFSDM_CHDATIN6R: u32,
-    pub DFSDM_CHDATIN7R: u32,
+    pub CHCFG0R1: u32,
+    pub CHCFG1R1: u32,
+    pub CHCFG2R1: u32,
+    pub CHCFG3R1: u32,
+    pub CHCFG4R1: u32,
+    pub CHCFG5R1: u32,
+    pub CHCFG6R1: u32,
+    pub CHCFG7R1: u32,
+    pub CHCFG0R2: u32,
+    pub CHCFG1R2: u32,
+    pub CHCFG2R2: u32,
+    pub CHCFG3R2: u32,
+    pub CHCFG4R2: u32,
+    pub CHCFG5R2: u32,
+    pub CHCFG6R2: u32,
+    pub CHCFG7R2: u32,
+    pub AWSCD0R: u32,
+    pub AWSCD1R: u32,
+    pub AWSCD2R: u32,
+    pub AWSCD3R: u32,
+    pub AWSCD4R: u32,
+    pub AWSCD5R: u32,
+    pub AWSCD6R: u32,
+    pub AWSCD7R: u32,
+    pub CHWDAT0R: u32,
+    pub CHWDAT1R: u32,
+    pub CHWDAT2R: u32,
+    pub CHWDAT3R: u32,
+    pub CHWDAT4R: u32,
+    pub CHWDAT5R: u32,
+    pub CHWDAT6R: u32,
+    pub CHWDAT7R: u32,
+    pub CHDATIN0R: u32,
+    pub CHDATIN1R: u32,
+    pub CHDATIN2R: u32,
+    pub CHDATIN3R: u32,
+    pub CHDATIN4R: u32,
+    pub CHDATIN5R: u32,
+    pub CHDATIN6R: u32,
+    pub CHDATIN7R: u32,
     pub DFSDM0_CR1: u32,
     pub DFSDM1_CR1: u32,
     pub DFSDM2_CR1: u32,
@@ -2246,46 +2246,46 @@ pub mod DFSDM {
 
     /// Reset values for each field in DFSDM
     pub const reset: ResetValues = ResetValues {
-        DFSDM_CHCFG0R1: 0x00000000,
-        DFSDM_CHCFG1R1: 0x00000000,
-        DFSDM_CHCFG2R1: 0x00000000,
-        DFSDM_CHCFG3R1: 0x00000000,
-        DFSDM_CHCFG4R1: 0x00000000,
-        DFSDM_CHCFG5R1: 0x00000000,
-        DFSDM_CHCFG6R1: 0x00000000,
-        DFSDM_CHCFG7R1: 0x00000000,
-        DFSDM_CHCFG0R2: 0x00000000,
-        DFSDM_CHCFG1R2: 0x00000000,
-        DFSDM_CHCFG2R2: 0x00000000,
-        DFSDM_CHCFG3R2: 0x00000000,
-        DFSDM_CHCFG4R2: 0x00000000,
-        DFSDM_CHCFG5R2: 0x00000000,
-        DFSDM_CHCFG6R2: 0x00000000,
-        DFSDM_CHCFG7R2: 0x00000000,
-        DFSDM_AWSCD0R: 0x00000000,
-        DFSDM_AWSCD1R: 0x00000000,
-        DFSDM_AWSCD2R: 0x00000000,
-        DFSDM_AWSCD3R: 0x00000000,
-        DFSDM_AWSCD4R: 0x00000000,
-        DFSDM_AWSCD5R: 0x00000000,
-        DFSDM_AWSCD6R: 0x00000000,
-        DFSDM_AWSCD7R: 0x00000000,
-        DFSDM_CHWDAT0R: 0x00000000,
-        DFSDM_CHWDAT1R: 0x00000000,
-        DFSDM_CHWDAT2R: 0x00000000,
-        DFSDM_CHWDAT3R: 0x00000000,
-        DFSDM_CHWDAT4R: 0x00000000,
-        DFSDM_CHWDAT5R: 0x00000000,
-        DFSDM_CHWDAT6R: 0x00000000,
-        DFSDM_CHWDAT7R: 0x00000000,
-        DFSDM_CHDATIN0R: 0x00000000,
-        DFSDM_CHDATIN1R: 0x00000000,
-        DFSDM_CHDATIN2R: 0x00000000,
-        DFSDM_CHDATIN3R: 0x00000000,
-        DFSDM_CHDATIN4R: 0x00000000,
-        DFSDM_CHDATIN5R: 0x00000000,
-        DFSDM_CHDATIN6R: 0x00000000,
-        DFSDM_CHDATIN7R: 0x00000000,
+        CHCFG0R1: 0x00000000,
+        CHCFG1R1: 0x00000000,
+        CHCFG2R1: 0x00000000,
+        CHCFG3R1: 0x00000000,
+        CHCFG4R1: 0x00000000,
+        CHCFG5R1: 0x00000000,
+        CHCFG6R1: 0x00000000,
+        CHCFG7R1: 0x00000000,
+        CHCFG0R2: 0x00000000,
+        CHCFG1R2: 0x00000000,
+        CHCFG2R2: 0x00000000,
+        CHCFG3R2: 0x00000000,
+        CHCFG4R2: 0x00000000,
+        CHCFG5R2: 0x00000000,
+        CHCFG6R2: 0x00000000,
+        CHCFG7R2: 0x00000000,
+        AWSCD0R: 0x00000000,
+        AWSCD1R: 0x00000000,
+        AWSCD2R: 0x00000000,
+        AWSCD3R: 0x00000000,
+        AWSCD4R: 0x00000000,
+        AWSCD5R: 0x00000000,
+        AWSCD6R: 0x00000000,
+        AWSCD7R: 0x00000000,
+        CHWDAT0R: 0x00000000,
+        CHWDAT1R: 0x00000000,
+        CHWDAT2R: 0x00000000,
+        CHWDAT3R: 0x00000000,
+        CHWDAT4R: 0x00000000,
+        CHWDAT5R: 0x00000000,
+        CHWDAT6R: 0x00000000,
+        CHWDAT7R: 0x00000000,
+        CHDATIN0R: 0x00000000,
+        CHDATIN1R: 0x00000000,
+        CHDATIN2R: 0x00000000,
+        CHDATIN3R: 0x00000000,
+        CHDATIN4R: 0x00000000,
+        CHDATIN5R: 0x00000000,
+        CHDATIN6R: 0x00000000,
+        CHDATIN7R: 0x00000000,
         DFSDM0_CR1: 0x00000000,
         DFSDM1_CR1: 0x00000000,
         DFSDM2_CR1: 0x00000000,

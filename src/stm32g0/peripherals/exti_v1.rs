@@ -2006,7 +2006,7 @@ pub struct RegisterBlock {
     /// EXTI falling edge pending register
     pub FPR1: RWRegister<u32>,
 
-    _reserved1: [u32; 19],
+    _reserved1: [u8; 76],
 
     /// EXTI external interrupt selection register
     pub EXTICR1: RWRegister<u32>,
@@ -2020,7 +2020,7 @@ pub struct RegisterBlock {
     /// EXTI external interrupt selection register
     pub EXTICR4: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// EXTI CPU wakeup with interrupt mask register
     pub IMR1: RWRegister<u32>,

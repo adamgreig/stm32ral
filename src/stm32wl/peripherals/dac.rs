@@ -266,10 +266,8 @@ pub mod SWTRGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: No trigger
             pub const NoTrigger: u32 = 0b0;
@@ -277,6 +275,8 @@ pub mod SWTRGR {
             /// 0b1: Trigger
             pub const Trigger: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -376,12 +376,8 @@ pub mod SR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: There is no write operation of DAC_SHSR1 ongoing: DAC_SHSR1 can be written
             pub const Idle: u32 = 0b0;
@@ -389,6 +385,10 @@ pub mod SR {
             /// 0b1: There is a write operation of DAC_SHSR1 ongoing: DAC_SHSR1 cannot be written
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DAC Channel 1 calibration offset status
@@ -397,12 +397,8 @@ pub mod SR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Calibration trimming value is lower than the offset correction value
             pub const Lower: u32 = 0b0;
@@ -410,6 +406,10 @@ pub mod SR {
             /// 0b1: Calibration trimming value is equal or greater than the offset correction value
             pub const Equal_Higher: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DAC channel1 DMA underrun flag
@@ -565,7 +565,7 @@ pub struct RegisterBlock {
     /// channel1 8-bit right aligned data holding register
     pub DHR8R1: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// Dual DAC 12-bit right-aligned data holding register
     pub DHR12RD: RWRegister<u32>,
@@ -579,7 +579,7 @@ pub struct RegisterBlock {
     /// DAC channel1 data output register
     pub DOR1: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// status register
     pub SR: RWRegister<u32>,
@@ -593,7 +593,7 @@ pub struct RegisterBlock {
     /// Sample and Hold sample time register 1
     pub SHSR1: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Sample and Hold hold time register
     pub SHHR: RWRegister<u32>,

@@ -9,10 +9,10 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::aes;
-pub use super::instances::comp_l4r9_l4x3_l4x5_l4x6 as comp;
+pub use super::instances::comp_l4x3_l4x5_l4x6 as comp;
 pub use super::instances::crc;
-pub use super::instances::dac1;
-pub use super::instances::dma;
+pub use super::instances::dac_l4x1_l4x2_l4x3_l4x5_l4x6 as dac;
+pub use super::instances::dma_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as dma;
 pub use super::instances::firewall;
 pub use super::instances::flash;
 pub use super::instances::i2c_l4x3_l4x5 as i2c;
@@ -28,10 +28,11 @@ pub mod gpio;
 pub use super::instances::lptim;
 pub use super::instances::sai;
 pub use super::instances::tim1;
-pub use super::instances::tim15;
+pub use super::instances::tim15_l4x1_l4x5 as tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
 pub use super::instances::tim2;
+pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim6;
@@ -39,7 +40,7 @@ pub use super::instances::tim7;
 pub mod usart;
 pub use super::instances::can1_l4x3_l4x5 as can1;
 pub use super::instances::exti;
-pub use super::instances::lpuart1;
+pub use super::instances::lpuart1_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as lpuart1;
 pub use super::instances::rtc;
 pub use super::instances::sdmmc;
 pub use super::instances::spi_l4x3_l4x5_l4x6 as spi;
@@ -47,7 +48,7 @@ pub use super::instances::vrefbuf;
 pub mod swpmi1;
 pub use super::instances::crs;
 pub use super::instances::nvic;
-pub use super::instances::opamp;
+pub use super::instances::opamp_l4x1_l4x2_l4x3_l4x5_l4x6 as opamp;
 pub mod usb;
 pub use super::instances::quadspi;
 pub mod fmc;
@@ -55,20 +56,19 @@ pub use super::instances::dfsdm;
 pub use super::instances::tim8;
 pub mod adc_common;
 pub mod rcc;
-pub use super::instances::dbgmcu_l4r9_l4x5_l4x6 as dbgmcu;
+pub use super::instances::dbgmcu_l4r5_l4r9_l4x5_l4x6 as dbgmcu;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
-pub use super::instances::mpu;
+pub use super::instances::mpu_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as mpu;
 pub use super::instances::nvic_stir;
-pub use super::instances::scb;
 pub use super::instances::scb_actrl;
+pub use super::instances::scb_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as scb;
 pub use super::instances::stk;
-pub use super::instances::tim3;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
-    pub DAC1: dac1::Instance,
+    pub DAC: dac::Instance,
     pub DMA1: dma::Instance,
     pub DMA2: dma::Instance,
     pub CRC: crc::Instance,
@@ -102,6 +102,7 @@ pub struct Peripherals {
     pub TIM2: tim2::Instance,
     pub TIM5: tim5::Instance,
     pub TIM4: tim4::Instance,
+    pub TIM3: tim3::Instance,
     pub TIM15: tim15::Instance,
     pub TIM16: tim16::Instance,
     pub TIM17: tim17::Instance,
@@ -143,7 +144,6 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub FPU_CPACR: fpu_cpacr::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
-    pub TIM3: tim3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -154,7 +154,7 @@ pub struct Peripherals {}
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
-            DAC1: dac1::DAC1::steal(),
+            DAC: dac::DAC::steal(),
             DMA1: dma::DMA1::steal(),
             DMA2: dma::DMA2::steal(),
             CRC: crc::CRC::steal(),
@@ -188,6 +188,7 @@ impl Peripherals {
             TIM2: tim2::TIM2::steal(),
             TIM5: tim5::TIM5::steal(),
             TIM4: tim4::TIM4::steal(),
+            TIM3: tim3::TIM3::steal(),
             TIM15: tim15::TIM15::steal(),
             TIM16: tim16::TIM16::steal(),
             TIM17: tim17::TIM17::steal(),
@@ -229,7 +230,6 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FPU_CPACR: fpu_cpacr::FPU_CPACR::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),
-            TIM3: tim3::TIM3::steal(),
         }
     }
 }

@@ -1219,7 +1219,7 @@ pub struct RegisterBlock {
     /// UCPD configuration register 2
     pub CFG2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// UCPD configuration register 2
     pub CR: RWRegister<u32>,

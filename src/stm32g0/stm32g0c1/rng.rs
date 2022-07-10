@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// control register
-pub mod RNG_CR {
+pub mod CR {
 
     /// True random number generator enable
     pub mod RNGEN {
@@ -19,15 +19,8 @@ pub mod RNG_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: True random number generator is disabled. Analog noise sources are powered off and logic clocked by the RNG clock is gated.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: True random number generator is enabled.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Interrupt Enable
@@ -40,15 +33,8 @@ pub mod RNG_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RNG Interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RNG Interrupt is enabled. An interrupt is pending as soon as DRDY='1', SEIS='1' or CEIS=1 in the RNG_SR register.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock error detection The clock error detection cannot be enabled nor disabled on-the-fly when the RNG is enabled, i.e. to enable or disable CED the RNG must be disabled.
@@ -61,20 +47,13 @@ pub mod RNG_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Clock error detection is enable
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Clock error detection is disable
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
 /// status register
-pub mod RNG_SR {
+pub mod SR {
 
     /// Data Ready Once the output buffer becomes empty (after reading the RNG_DR register), this bit returns to 0 until a new random value is generated. Note: The DRDY bit can rise when the peripheral is disabled (RNGEN=0 in the RNG_CR register). If IE=1 in the RNG_CR register, an interrupt is generated when DRDY=1.
     pub mod DRDY {
@@ -86,15 +65,8 @@ pub mod RNG_SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The RNG_DR register is not yet valid, no random data is available.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The RNG_DR register contains valid random data.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock error current status Note: CECS bit is valid only if the CED bit in the RNG_CR register is set to 0.
@@ -107,15 +79,8 @@ pub mod RNG_SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The RNG clock is correct (fRNGCLK> fHCLK/32). If the CEIS bit is set, this means that a slow clock was detected and the situation has been recovered.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The RNG clock is too slow (fRNGCLK< fHCLK/32).
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Seed error current status One of the noise source has provided more than 64 consecutive bits at a constant value (â0â or â1â), or more than 32 consecutive occurrence of two bit patterns (â01â or â10â) Both noise sources have delivered more than 32 consecutive bits at a constant value (â0â or â1â), or more than 16 consecutive occurrence of two bit patterns (â01â or â10â)
@@ -128,15 +93,8 @@ pub mod RNG_SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No faulty sequence has currently been detected. If the SEIS bit is set, this means that a faulty sequence was detected and the situation has been recovered.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: At least one of the following faulty sequence has been detected:
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock error interrupt status This bit is set at the same time as CECS. It is cleared by writing 0. Writing 1 has no effect. An interrupt is pending if IE = 1 in the RNG_CR register.
@@ -149,15 +107,8 @@ pub mod RNG_SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The RNG clock is correct (fRNGCLK> fHCLK/32)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The RNG has been detected too slow (fRNGCLK< fHCLK/32)
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Seed error interrupt status This bit is set at the same time as SECS. It is cleared by writing 0. Writing 1 has no effect. An interrupt is pending if IE = 1 in the RNG_CR register.
@@ -170,20 +121,13 @@ pub mod RNG_SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No faulty sequence detected
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: At least one faulty sequence has been detected. See SECS bit description for details.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
 /// data register
-pub mod RNG_DR {
+pub mod DR {
 
     /// Random data
     pub mod RNDATA {
@@ -202,18 +146,18 @@ pub mod RNG_DR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// control register
-    pub RNG_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// status register
-    pub RNG_SR: RWRegister<u32>,
+    pub SR: RWRegister<u32>,
 
     /// data register
-    pub RNG_DR: RORegister<u32>,
+    pub DR: RORegister<u32>,
 }
 pub struct ResetValues {
-    pub RNG_CR: u32,
-    pub RNG_SR: u32,
-    pub RNG_DR: u32,
+    pub CR: u32,
+    pub SR: u32,
+    pub DR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -246,9 +190,9 @@ pub mod RNG {
 
     /// Reset values for each field in RNG
     pub const reset: ResetValues = ResetValues {
-        RNG_CR: 0x00000000,
-        RNG_SR: 0x00000000,
-        RNG_DR: 0x00000000,
+        CR: 0x00000000,
+        SR: 0x00000000,
+        DR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

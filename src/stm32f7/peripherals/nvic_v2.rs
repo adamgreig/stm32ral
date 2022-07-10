@@ -418,7 +418,7 @@ pub struct RegisterBlock {
     /// Interrupt Set-Enable Register
     pub ISER2: RWRegister<u32>,
 
-    _reserved1: [u32; 29],
+    _reserved1: [u8; 116],
 
     /// Interrupt Clear-Enable Register
     pub ICER0: RWRegister<u32>,
@@ -429,7 +429,7 @@ pub struct RegisterBlock {
     /// Interrupt Clear-Enable Register
     pub ICER2: RWRegister<u32>,
 
-    _reserved2: [u32; 29],
+    _reserved2: [u8; 116],
 
     /// Interrupt Set-Pending Register
     pub ISPR0: RWRegister<u32>,
@@ -440,7 +440,7 @@ pub struct RegisterBlock {
     /// Interrupt Set-Pending Register
     pub ISPR2: RWRegister<u32>,
 
-    _reserved3: [u32; 29],
+    _reserved3: [u8; 116],
 
     /// Interrupt Clear-Pending Register
     pub ICPR0: RWRegister<u32>,
@@ -451,7 +451,7 @@ pub struct RegisterBlock {
     /// Interrupt Clear-Pending Register
     pub ICPR2: RWRegister<u32>,
 
-    _reserved4: [u32; 29],
+    _reserved4: [u8; 116],
 
     /// Interrupt Active Bit Register
     pub IABR0: RORegister<u32>,
@@ -462,7 +462,7 @@ pub struct RegisterBlock {
     /// Interrupt Active Bit Register
     pub IABR2: RORegister<u32>,
 
-    _reserved5: [u32; 61],
+    _reserved5: [u8; 244],
 
     /// Interrupt Priority Register
     pub IPR0: RWRegister<u32>,

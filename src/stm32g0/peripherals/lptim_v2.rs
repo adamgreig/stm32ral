@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Low power timer
 //!
-//! Used by: stm32g051, stm32g061, stm32g0b1, stm32g0c1
+//! Used by: stm32g051, stm32g061
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -225,15 +225,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: CMPM interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: CMPM interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Autoreload match Interrupt Enable
@@ -246,15 +239,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: ARRM interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: ARRM interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// External trigger valid edge Interrupt Enable
@@ -267,15 +253,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: EXTTRIG interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: EXTTRIG interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Compare register update OK Interrupt Enable
@@ -288,15 +267,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: CMPOK interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: CMPOK interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Autoreload register update OK Interrupt Enable
@@ -309,15 +281,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: ARROK interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: ARROK interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Direction change to UP Interrupt Enable Note: If the LPTIM does not support encoder mode feature, this bit is reserved. Please refer to .
@@ -330,15 +295,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: UP interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: UP interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Direction change to down Interrupt Enable Note: If the LPTIM does not support encoder mode feature, this bit is reserved. Please refer to .
@@ -351,15 +309,8 @@ pub mod LPTIM_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DOWN interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DOWN interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -376,15 +327,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: LPTIM is clocked by internal clock source (APB clock or any of the embedded oscillators)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: LPTIM is clocked by an external clock source through the LPTIM external Input1
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock Polarity If LPTIM is clocked by an external clock source: When the LPTIM is clocked by an external clock source, CKPOL bits is used to configure the active edge or edges used by the counter: If the LPTIM is configured in Encoder mode (ENC bit is set), the encoder sub-mode 1 is active. If the LPTIM is configured in Encoder mode (ENC bit is set), the encoder sub-mode 2 is active. Refer to for more details about Encoder mode sub-modes.
@@ -397,21 +341,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: the rising edge is the active edge used for counting.
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: the falling edge is the active edge used for counting
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: both edges are active edges. When both external clock signal edges are considered active ones, the LPTIM must also be clocked by an internal clock source with a frequency equal to at least four times the external clock frequency.If the LPTIM is configured in Encoder mode (ENC bit is set), the encoder sub-mode 3 is active.
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: not allowed
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Configurable digital filter for external clock The CKFLT value sets the number of consecutive equal samples that should be detected when a level change occurs on an external clock signal before it is considered as a valid level transition. An internal clock source must be present to use this feature
@@ -424,21 +355,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: any external clock signal level change is considered as a valid transition
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: external clock signal level change must be stable for at least 2 clock periods before it is considered as valid transition.
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: external clock signal level change must be stable for at least 4 clock periods before it is considered as valid transition.
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: external clock signal level change must be stable for at least 8 clock periods before it is considered as valid transition.
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Configurable digital filter for trigger The TRGFLT value sets the number of consecutive equal samples that should be detected when a level change occurs on an internal trigger before it is considered as a valid level transition. An internal clock source must be present to use this feature
@@ -451,21 +369,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: any trigger active level change is considered as a valid trigger
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: trigger active level change must be stable for at least 2 clock periods before it is considered as valid trigger.
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: trigger active level change must be stable for at least 4 clock periods before it is considered as valid trigger.
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: trigger active level change must be stable for at least 8 clock periods before it is considered as valid trigger.
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock prescaler The PRESC bits configure the prescaler division factor. It can be one among the following division factors:
@@ -478,33 +383,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: /1
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: /2
-            pub const B_0x1: u32 = 0b001;
-
-            /// 0b010: /4
-            pub const B_0x2: u32 = 0b010;
-
-            /// 0b011: /8
-            pub const B_0x3: u32 = 0b011;
-
-            /// 0b100: /16
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: /32
-            pub const B_0x5: u32 = 0b101;
-
-            /// 0b110: /64
-            pub const B_0x6: u32 = 0b110;
-
-            /// 0b111: /128
-            pub const B_0x7: u32 = 0b111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Trigger selector The TRIGSEL bits select the trigger source that will serve as a trigger event for the LPTIM among the below 8 available sources: See for details.
@@ -517,33 +397,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: lptim_ext_trig0
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: lptim_ext_trig1
-            pub const B_0x1: u32 = 0b001;
-
-            /// 0b010: lptim_ext_trig2
-            pub const B_0x2: u32 = 0b010;
-
-            /// 0b011: lptim_ext_trig3
-            pub const B_0x3: u32 = 0b011;
-
-            /// 0b100: lptim_ext_trig4
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: lptim_ext_trig5
-            pub const B_0x5: u32 = 0b101;
-
-            /// 0b110: lptim_ext_trig6
-            pub const B_0x6: u32 = 0b110;
-
-            /// 0b111: lptim_ext_trig7
-            pub const B_0x7: u32 = 0b111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Trigger enable and polarity The TRIGEN bits controls whether the LPTIM counter is started by an external trigger or not. If the external trigger option is selected, three configurations are possible for the trigger active edge:
@@ -556,21 +411,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: software trigger (counting start is initiated by software)
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: rising edge is the active edge
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: falling edge is the active edge
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: both edges are active edges
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timeout enable The TIMOUT bit controls the Timeout feature
@@ -583,15 +425,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: A trigger event arriving when the timer is already started will be ignored
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: A trigger event arriving when the timer is already started will reset and restart the counter
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Waveform shape The WAVE bit controls the output shape
@@ -604,15 +439,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Deactivate Set-once mode, PWM or One Pulse waveform depending on how the timer was started, CNTSTRT for PWM or SNGSTRT for One Pulse waveform.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Activate the Set-once mode
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Waveform shape polarity The WAVEPOL bit controls the output polarity
@@ -625,15 +453,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The LPTIM output reflects the compare results between LPTIM_CNT and LPTIM_CMP registers
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The LPTIM output reflects the inverse of the compare results between LPTIM_CNT and LPTIM_CMP registers
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Registers update mode The PRELOAD bit controls the LPTIM_ARR and the LPTIM_CMP registers update modality
@@ -646,15 +467,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Registers are updated after each APB bus write access
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Registers are updated at the end of the current LPTIM period
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// counter mode enabled The COUNTMODE bit selects which clock source is used by the LPTIM to clock the counter:
@@ -667,15 +481,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: the counter is incremented following each internal clock pulse
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: the counter is incremented following each valid clock pulse on the LPTIM external Input1
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Encoder mode enable The ENC bit controls the Encoder mode Note: If the LPTIM does not support encoder mode feature, this bit is reserved. Please refer to .
@@ -688,15 +495,8 @@ pub mod LPTIM_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Encoder mode disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Encoder mode enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -713,15 +513,8 @@ pub mod LPTIM_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: LPTIM is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: LPTIM is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LPTIM start in Single mode This bit is set by software and cleared by hardware. In case of software start (TRIGEN\[1:0\] = '00â), setting this bit starts the LPTIM in single pulse mode. If the software start is disabled (TRIGEN\[1:0\] different than '00â), setting this bit starts the LPTIM in single pulse mode as soon as an external trigger is detected. If this bit is set when the LPTIM is in continuous counting mode, then the LPTIM will stop at the following match between LPTIM_ARR and LPTIM_CNT registers. This bit can only be set when the LPTIM is enabled. It will be automatically reset by hardware.
@@ -848,21 +641,8 @@ pub mod LPTIM_CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: lptim_in1_mux0
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: lptim_in1_mux1
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: lptim_in1_mux2
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: lptim_in1_mux3
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LPTIM input 2 selection The IN2SEL bits control the LPTIM Input 2 multiplexer, which connect LPTIM Input 2 to one of the available inputs. For connection details refer to . Note: If the LPTIM does not support encoder mode feature, these bits are reserved. Please refer to .
@@ -875,21 +655,8 @@ pub mod LPTIM_CFGR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: lptim_in2_mux0
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: lptim_in2_mux1
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: lptim_in2_mux2
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: lptim_in2_mux3
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]
@@ -918,7 +685,7 @@ pub struct RegisterBlock {
     /// Counter Register
     pub LPTIM_CNT: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// LPTIM configuration register 2
     pub LPTIM_CFGR2: RWRegister<u32>,

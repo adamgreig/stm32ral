@@ -915,7 +915,7 @@ pub struct RegisterBlock {
     /// DMA Multiplexer Channel 13 Control register
     pub C13CR: RWRegister<u32>,
 
-    _reserved1: [u32; 18],
+    _reserved1: [u8; 72],
 
     /// DMA Multiplexer Channel Status register
     pub CSR: RORegister<u32>,
@@ -923,7 +923,7 @@ pub struct RegisterBlock {
     /// DMA Channel Clear Flag Register
     pub CFR: WORegister<u32>,
 
-    _reserved2: [u32; 30],
+    _reserved2: [u8; 120],
 
     /// DMA Request Generator 0 Control Register
     pub RG0CR: RWRegister<u32>,
@@ -937,7 +937,7 @@ pub struct RegisterBlock {
     /// DMA Request Generator 3 Control Register
     pub RG3CR: RWRegister<u32>,
 
-    _reserved3: [u32; 12],
+    _reserved3: [u8; 48],
 
     /// DMA Request Generator Status Register
     pub RGSR: RORegister<u32>,

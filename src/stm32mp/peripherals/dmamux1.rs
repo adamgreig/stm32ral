@@ -1295,7 +1295,7 @@ pub struct RegisterBlock {
     /// DMAMUX request line multiplexer channel 15 configuration register
     pub DMAMUX_C15CR: RWRegister<u32>,
 
-    _reserved1: [u32; 16],
+    _reserved1: [u8; 64],
 
     /// DMAMUX request line multiplexer interrupt channel status register
     pub DMAMUX_CSR: RORegister<u32>,
@@ -1303,7 +1303,7 @@ pub struct RegisterBlock {
     /// DMAMUX request line multiplexer interrupt clear flag register
     pub DMAMUX_CFR: WORegister<u32>,
 
-    _reserved2: [u32; 30],
+    _reserved2: [u8; 120],
 
     /// DMAMUX request generator channel 0 configuration register
     pub DMAMUX_RG0CR: RWRegister<u32>,
@@ -1329,7 +1329,7 @@ pub struct RegisterBlock {
     /// DMAMUX request generator channel 7 configuration register
     pub DMAMUX_RG7CR: RWRegister<u32>,
 
-    _reserved3: [u32; 8],
+    _reserved3: [u8; 32],
 
     /// DMAMUX request generator interrupt status register
     pub DMAMUX_RGSR: RORegister<u32>,
@@ -1337,7 +1337,7 @@ pub struct RegisterBlock {
     /// DMAMUX request generator interrupt clear flag register
     pub DMAMUX_RGCFR: WORegister<u32>,
 
-    _reserved4: [u32; 169],
+    _reserved4: [u8; 676],
 
     /// DMAMUX hardware configuration 2 register
     pub DMAMUX_HWCFGR2: RORegister<u32>,

@@ -2404,7 +2404,7 @@ pub struct RegisterBlock {
     /// ADC watchdog threshold register 1
     pub ADC_HTR1: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// ADC regular sequence register 1
     pub ADC_SQR1: RWRegister<u32>,
@@ -2421,12 +2421,12 @@ pub struct RegisterBlock {
     /// ADC regular Data Register
     pub ADC_DR: RORegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// ADC injected sequence register
     pub ADC_JSQR: RWRegister<u32>,
 
-    _reserved3: [u32; 4],
+    _reserved3: [u8; 16],
 
     /// ADC offset register
     pub ADC_OFR1: RWRegister<u32>,
@@ -2440,7 +2440,7 @@ pub struct RegisterBlock {
     /// ADC offset register
     pub ADC_OFR4: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// ADC injected data register
     pub ADC_JDR1: RORegister<u32>,
@@ -2454,7 +2454,7 @@ pub struct RegisterBlock {
     /// ADC injected data register
     pub ADC_JDR4: RORegister<u32>,
 
-    _reserved5: [u32; 4],
+    _reserved5: [u8; 16],
 
     /// ADC analog watchdog 2 configuration register
     pub ADC_AWD2CR: RWRegister<u32>,
@@ -2462,7 +2462,7 @@ pub struct RegisterBlock {
     /// ADC analog watchdog 3 configuration register
     pub ADC_AWD3CR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// ADC watchdog lower threshold register 2
     pub ADC_LTR2: RWRegister<u32>,
@@ -2485,7 +2485,7 @@ pub struct RegisterBlock {
     /// ADC calibration factor register 2
     pub ADC_CALFACT2: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// ADC2 option register
     pub ADC2_OR: RWRegister<u32>,

@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::sai::Instance;
 pub use crate::stm32g4::peripherals::sai::{RegisterBlock, ResetValues};
 pub use crate::stm32g4::peripherals::sai::{
-    ACLRFR, ACR1, ACR2, ADR, AFRCR, AIM, ASLOTR, ASR, BCLRFR, BCR1, BCR2, BDR, BFRCR, BIM, BSLOTR,
-    BSR, PDMCR, PDMDLY,
+    CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, IMA, IMB, PDMCR, PDMDLY,
+    SLOTRA, SLOTRB, SRA, SRB,
 };
 
 /// Access functions for the SAI peripheral instance
@@ -27,24 +27,24 @@ pub mod SAI {
 
     /// Reset values for each field in SAI
     pub const reset: ResetValues = ResetValues {
-        BCR1: 0x00000040,
-        BCR2: 0x00000000,
-        BFRCR: 0x00000007,
-        BSLOTR: 0x00000000,
-        BIM: 0x00000000,
-        BSR: 0x00000000,
-        BCLRFR: 0x00000000,
-        BDR: 0x00000000,
-        ACR1: 0x00000040,
-        ACR2: 0x00000000,
-        AFRCR: 0x00000007,
-        ASLOTR: 0x00000000,
-        AIM: 0x00000000,
-        ASR: 0x00000000,
-        ACLRFR: 0x00000000,
-        ADR: 0x00000000,
         PDMCR: 0x00000000,
         PDMDLY: 0x00000000,
+        CR1A: 0x00000040,
+        CR2A: 0x00000000,
+        FRCRA: 0x00000007,
+        SLOTRA: 0x00000000,
+        IMA: 0x00000000,
+        SRA: 0x00000008,
+        CLRFRA: 0x00000000,
+        DRA: 0x00000000,
+        CR1B: 0x00000040,
+        CR2B: 0x00000000,
+        FRCRB: 0x00000007,
+        SLOTRB: 0x00000000,
+        IMB: 0x00000000,
+        SRB: 0x00000008,
+        CLRFRB: 0x00000000,
+        DRB: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

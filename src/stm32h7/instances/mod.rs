@@ -16,7 +16,7 @@ pub mod can_ccu;
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod cec;
 
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod comp1;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
@@ -27,9 +27,6 @@ pub mod crs;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod dac;
-
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h747cm4", feature="stm32h747cm7"))]
-pub mod dbgmcu_h735_h747cm4_h747cm7;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod dcmi;
@@ -101,6 +98,9 @@ pub mod lpuart1;
 pub mod ltdc;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
+pub mod mdios;
+
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod mdma;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
@@ -169,11 +169,26 @@ pub mod tim2_h735_h7b3;
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
 pub mod tim5_h735_h7b3;
 
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
+pub mod tim3_h735_h7b3;
+
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
+pub mod tim4_h735_h7b3;
+
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod tim6;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod tim7;
+
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
+pub mod tim12_h735_h7b3;
+
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
+pub mod tim13_h735_h7b3;
+
+#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
+pub mod tim14_h735_h7b3;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
 pub mod tim15_h735_h7b3;
@@ -184,7 +199,7 @@ pub mod tim16;
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod tim17;
 
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
+#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod usart;
 
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
@@ -196,26 +211,8 @@ pub mod wwdg_h743_h743v_h753_h753v_h7b3;
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod wwdg_h747cm4_h747cm7;
 
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
-pub mod tim3_h735_h7b3;
-
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
-pub mod tim4_h735_h7b3;
-
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
-pub mod tim12_h735_h7b3;
-
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
-pub mod tim13_h735_h7b3;
-
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h7b3"))]
-pub mod tim14_h735_h7b3;
-
 #[cfg(any(feature="doc", feature="stm32h735", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod ethernet_mtl_h735_h747cm4_h747cm7;
-
-#[cfg(any(feature="doc", feature="stm32h735", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h7b3"))]
-pub mod dsihost;
 
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod bdma;
@@ -277,8 +274,8 @@ pub mod hrtim_timd;
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
 pub mod hrtim_time;
 
-#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h753", feature="stm32h753v"))]
-pub mod hrtim_common_h743_h743v_h753_h753v;
+#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
+pub mod hrtim_common;
 
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v"))]
 pub mod dfsdm_h743_h743v;
@@ -292,20 +289,11 @@ pub mod tim1_h743_h743v_h753_h753v;
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h753", feature="stm32h753v"))]
 pub mod tim8_h743_h743v_h753_h753v;
 
-#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v", feature="stm32h7b3"))]
-pub mod mdios;
-
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod tim2_h743_h743v_h747cm4_h747cm7_h753_h753v;
 
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod tim5_h743_h743v_h747cm4_h747cm7_h753_h753v;
-
-#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h753", feature="stm32h753v"))]
-pub mod nvic_h743_h743v_h753_h753v;
-
-#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v"))]
-pub mod dbgmcu_h743_h743v;
 
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod tim3_h743_h743v_h747cm4_h747cm7_h753_h753v;
@@ -321,6 +309,12 @@ pub mod tim13_h743_h743v_h747cm4_h747cm7_h753_h753v;
 
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod tim14_h743_h743v_h747cm4_h747cm7_h753_h753v;
+
+#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h753", feature="stm32h753v"))]
+pub mod nvic_h743_h743v_h753_h753v;
+
+#[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v"))]
+pub mod dbgmcu_h743_h743v;
 
 #[cfg(any(feature="doc", feature="stm32h743", feature="stm32h743v", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h753", feature="stm32h753v"))]
 pub mod ramecc;
@@ -355,9 +349,6 @@ pub mod hash;
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h7b3"))]
 pub mod cryp_h747cm4_h747cm7_h7b3;
 
-#[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h7b3"))]
-pub mod hrtim_common_h747cm4_h747cm7_h7b3;
-
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod tim1_h747cm4_h747cm7;
 
@@ -365,10 +356,16 @@ pub mod tim1_h747cm4_h747cm7;
 pub mod tim8_h747cm4_h747cm7;
 
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
+pub mod dbgmcu_h747cm4_h747cm7;
+
+#[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod art;
 
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod ethernet_dma_h747cm4_h747cm7;
+
+#[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
+pub mod dsihost;
 
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod flash_h747cm4_h747cm7;

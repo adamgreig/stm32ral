@@ -1887,7 +1887,7 @@ pub struct RegisterBlock {
     /// OTG_HS nonperiodic transmit FIFO/queue status register
     pub GNPTXSTS: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// OTG_HS general core configuration register
     pub GCCFG: RWRegister<u32>,
@@ -1895,7 +1895,7 @@ pub struct RegisterBlock {
     /// OTG_HS core ID register
     pub CID: RWRegister<u32>,
 
-    _reserved2: [u32; 48],
+    _reserved2: [u8; 192],
 
     /// OTG_HS Host periodic transmit FIFO size register
     pub HPTXFSIZ: RWRegister<u32>,

@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C0CR {
+pub mod C0CR {
 
     /// DMA request identification Selects the input DMA request. See the DMAMUX table about assignments of multiplexer inputs to resources.
     pub mod DMAREQ_ID {
@@ -33,15 +33,8 @@ pub mod DMAMUX_C0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Event generation enable
@@ -54,15 +47,8 @@ pub mod DMAMUX_C0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: event generation disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: event generation enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Synchronization enable
@@ -75,15 +61,8 @@ pub mod DMAMUX_C0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: synchronization disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: synchronization enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Synchronization polarity Defines the edge polarity of the selected synchronization input:
@@ -96,21 +75,8 @@ pub mod DMAMUX_C0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: no event, i.e. no synchronization nor detection.
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: rising edge
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: falling edge
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: rising and falling edge
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Number of DMA requests minus 1 to forward Defines the number of DMA requests to forward to the DMA controller after a synchronization event, and/or the number of DMA requests before an output event is generated. This field shall only be written when both SE and EGE bits are low.
@@ -143,128 +109,128 @@ pub mod DMAMUX_C0CR {
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C1CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C1CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C2CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C2CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C3CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C3CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C4CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C4CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C5CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C5CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C6CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C6CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C7CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C7CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C8CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C8CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C9CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C9CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C10CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C10CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer channel x configuration register
-pub mod DMAMUX_C11CR {
-    pub use super::DMAMUX_C0CR::DMAREQ_ID;
-    pub use super::DMAMUX_C0CR::EGE;
-    pub use super::DMAMUX_C0CR::NBREQ;
-    pub use super::DMAMUX_C0CR::SE;
-    pub use super::DMAMUX_C0CR::SOIE;
-    pub use super::DMAMUX_C0CR::SPOL;
-    pub use super::DMAMUX_C0CR::SYNC_ID;
+pub mod C11CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
 }
 
 /// DMAMUX request line multiplexer interrupt channel status register
-pub mod DMAMUX_CSR {
+pub mod CSR {
 
     /// Synchronization overrun event flag The flag is set when a synchronization event occurs on a DMA request line multiplexer channel x, while the DMA request counter value is lower than NBREQ. The flag is cleared by writing 1 to the corresponding CSOFx bit in DMAMUX_CFR register.
     pub mod SOF0 {
@@ -436,7 +402,7 @@ pub mod DMAMUX_CSR {
 }
 
 /// DMAMUX request line multiplexer interrupt clear flag register
-pub mod DMAMUX_CFR {
+pub mod CFR {
 
     /// Clear synchronization overrun event flag Writing 1 in each bit clears the corresponding overrun flag SOFx in the DMAMUX_CSR register.
     pub mod CSOF0 {
@@ -608,7 +574,7 @@ pub mod DMAMUX_CFR {
 }
 
 /// DMAMUX request generator channel x configuration register
-pub mod DMAMUX_RG0CR {
+pub mod RG0CR {
 
     /// Signal identification Selects the DMA request trigger input used for the channel x of the DMA request generator
     pub mod SIG_ID {
@@ -634,15 +600,8 @@ pub mod DMAMUX_RG0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: interrupt on a trigger overrun event occurrence is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: interrupt on a trigger overrun event occurrence is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA request generator channel x enable
@@ -655,15 +614,8 @@ pub mod DMAMUX_RG0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DMA request generator channel x disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DMA request generator channel x enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA request generator trigger polarity Defines the edge polarity of the selected trigger input
@@ -676,21 +628,8 @@ pub mod DMAMUX_RG0CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: no event. I.e. none trigger detection nor generation.
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: rising edge
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: falling edge
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: rising and falling edge
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Number of DMA requests to be generated (minus 1) Defines the number of DMA requests to be generated after a trigger event. The actual number of generated DMA requests is GNBREQ +1. Note: This field shall only be written when GE bit is disabled.
@@ -709,34 +648,34 @@ pub mod DMAMUX_RG0CR {
 }
 
 /// DMAMUX request generator channel x configuration register
-pub mod DMAMUX_RG1CR {
-    pub use super::DMAMUX_RG0CR::GE;
-    pub use super::DMAMUX_RG0CR::GNBREQ;
-    pub use super::DMAMUX_RG0CR::GPOL;
-    pub use super::DMAMUX_RG0CR::OIE;
-    pub use super::DMAMUX_RG0CR::SIG_ID;
+pub mod RG1CR {
+    pub use super::RG0CR::GE;
+    pub use super::RG0CR::GNBREQ;
+    pub use super::RG0CR::GPOL;
+    pub use super::RG0CR::OIE;
+    pub use super::RG0CR::SIG_ID;
 }
 
 /// DMAMUX request generator channel x configuration register
-pub mod DMAMUX_RG2CR {
-    pub use super::DMAMUX_RG0CR::GE;
-    pub use super::DMAMUX_RG0CR::GNBREQ;
-    pub use super::DMAMUX_RG0CR::GPOL;
-    pub use super::DMAMUX_RG0CR::OIE;
-    pub use super::DMAMUX_RG0CR::SIG_ID;
+pub mod RG2CR {
+    pub use super::RG0CR::GE;
+    pub use super::RG0CR::GNBREQ;
+    pub use super::RG0CR::GPOL;
+    pub use super::RG0CR::OIE;
+    pub use super::RG0CR::SIG_ID;
 }
 
 /// DMAMUX request generator channel x configuration register
-pub mod DMAMUX_RG3CR {
-    pub use super::DMAMUX_RG0CR::GE;
-    pub use super::DMAMUX_RG0CR::GNBREQ;
-    pub use super::DMAMUX_RG0CR::GPOL;
-    pub use super::DMAMUX_RG0CR::OIE;
-    pub use super::DMAMUX_RG0CR::SIG_ID;
+pub mod RG3CR {
+    pub use super::RG0CR::GE;
+    pub use super::RG0CR::GNBREQ;
+    pub use super::RG0CR::GPOL;
+    pub use super::RG0CR::OIE;
+    pub use super::RG0CR::SIG_ID;
 }
 
 /// DMAMUX request generator interrupt status register
-pub mod DMAMUX_RGSR {
+pub mod RGSR {
 
     /// Trigger overrun event flag The flag is set when a new trigger event occurs on DMA request generator channel x, before the request counter underrun (the internal request counter programmed via the GNBREQ field of the DMAMUX_RGxCR register). The flag is cleared by writing 1 to the corresponding COFx bit in the DMAMUX_RGCFR register.
     pub mod OF0 {
@@ -796,7 +735,7 @@ pub mod DMAMUX_RGSR {
 }
 
 /// DMAMUX request generator interrupt clear flag register
-pub mod DMAMUX_RGCFR {
+pub mod RGCFR {
 
     /// Clear trigger overrun event flag Writing 1 in each bit clears the corresponding overrun flag OFx in the DMAMUX_RGSR register.
     pub mod COF0 {
@@ -857,92 +796,92 @@ pub mod DMAMUX_RGCFR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C0CR: RWRegister<u32>,
+    pub C0CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C1CR: RWRegister<u32>,
+    pub C1CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C2CR: RWRegister<u32>,
+    pub C2CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C3CR: RWRegister<u32>,
+    pub C3CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C4CR: RWRegister<u32>,
+    pub C4CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C5CR: RWRegister<u32>,
+    pub C5CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C6CR: RWRegister<u32>,
+    pub C6CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C7CR: RWRegister<u32>,
+    pub C7CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C8CR: RWRegister<u32>,
+    pub C8CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C9CR: RWRegister<u32>,
+    pub C9CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C10CR: RWRegister<u32>,
+    pub C10CR: RWRegister<u32>,
 
     /// DMAMUX request line multiplexer channel x configuration register
-    pub DMAMUX_C11CR: RWRegister<u32>,
+    pub C11CR: RWRegister<u32>,
 
-    _reserved1: [u32; 20],
+    _reserved1: [u8; 80],
 
     /// DMAMUX request line multiplexer interrupt channel status register
-    pub DMAMUX_CSR: RORegister<u32>,
+    pub CSR: RORegister<u32>,
 
     /// DMAMUX request line multiplexer interrupt clear flag register
-    pub DMAMUX_CFR: WORegister<u32>,
+    pub CFR: WORegister<u32>,
 
-    _reserved2: [u32; 30],
-
-    /// DMAMUX request generator channel x configuration register
-    pub DMAMUX_RG0CR: RWRegister<u32>,
+    _reserved2: [u8; 120],
 
     /// DMAMUX request generator channel x configuration register
-    pub DMAMUX_RG1CR: RWRegister<u32>,
+    pub RG0CR: RWRegister<u32>,
 
     /// DMAMUX request generator channel x configuration register
-    pub DMAMUX_RG2CR: RWRegister<u32>,
+    pub RG1CR: RWRegister<u32>,
 
     /// DMAMUX request generator channel x configuration register
-    pub DMAMUX_RG3CR: RWRegister<u32>,
+    pub RG2CR: RWRegister<u32>,
 
-    _reserved3: [u32; 12],
+    /// DMAMUX request generator channel x configuration register
+    pub RG3CR: RWRegister<u32>,
+
+    _reserved3: [u8; 48],
 
     /// DMAMUX request generator interrupt status register
-    pub DMAMUX_RGSR: RORegister<u32>,
+    pub RGSR: RORegister<u32>,
 
     /// DMAMUX request generator interrupt clear flag register
-    pub DMAMUX_RGCFR: WORegister<u32>,
+    pub RGCFR: WORegister<u32>,
 }
 pub struct ResetValues {
-    pub DMAMUX_C0CR: u32,
-    pub DMAMUX_C1CR: u32,
-    pub DMAMUX_C2CR: u32,
-    pub DMAMUX_C3CR: u32,
-    pub DMAMUX_C4CR: u32,
-    pub DMAMUX_C5CR: u32,
-    pub DMAMUX_C6CR: u32,
-    pub DMAMUX_C7CR: u32,
-    pub DMAMUX_C8CR: u32,
-    pub DMAMUX_C9CR: u32,
-    pub DMAMUX_C10CR: u32,
-    pub DMAMUX_C11CR: u32,
-    pub DMAMUX_CSR: u32,
-    pub DMAMUX_CFR: u32,
-    pub DMAMUX_RG0CR: u32,
-    pub DMAMUX_RG1CR: u32,
-    pub DMAMUX_RG2CR: u32,
-    pub DMAMUX_RG3CR: u32,
-    pub DMAMUX_RGSR: u32,
-    pub DMAMUX_RGCFR: u32,
+    pub C0CR: u32,
+    pub C1CR: u32,
+    pub C2CR: u32,
+    pub C3CR: u32,
+    pub C4CR: u32,
+    pub C5CR: u32,
+    pub C6CR: u32,
+    pub C7CR: u32,
+    pub C8CR: u32,
+    pub C9CR: u32,
+    pub C10CR: u32,
+    pub C11CR: u32,
+    pub CSR: u32,
+    pub CFR: u32,
+    pub RG0CR: u32,
+    pub RG1CR: u32,
+    pub RG2CR: u32,
+    pub RG3CR: u32,
+    pub RGSR: u32,
+    pub RGCFR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -975,26 +914,26 @@ pub mod DMAMUX {
 
     /// Reset values for each field in DMAMUX
     pub const reset: ResetValues = ResetValues {
-        DMAMUX_C0CR: 0x00000000,
-        DMAMUX_C1CR: 0x00000000,
-        DMAMUX_C2CR: 0x00000000,
-        DMAMUX_C3CR: 0x00000000,
-        DMAMUX_C4CR: 0x00000000,
-        DMAMUX_C5CR: 0x00000000,
-        DMAMUX_C6CR: 0x00000000,
-        DMAMUX_C7CR: 0x00000000,
-        DMAMUX_C8CR: 0x00000000,
-        DMAMUX_C9CR: 0x00000000,
-        DMAMUX_C10CR: 0x00000000,
-        DMAMUX_C11CR: 0x00000000,
-        DMAMUX_CSR: 0x00000000,
-        DMAMUX_CFR: 0x00000000,
-        DMAMUX_RG0CR: 0x00000000,
-        DMAMUX_RG1CR: 0x00000000,
-        DMAMUX_RG2CR: 0x00000000,
-        DMAMUX_RG3CR: 0x00000000,
-        DMAMUX_RGSR: 0x00000000,
-        DMAMUX_RGCFR: 0x00000000,
+        C0CR: 0x00000000,
+        C1CR: 0x00000000,
+        C2CR: 0x00000000,
+        C3CR: 0x00000000,
+        C4CR: 0x00000000,
+        C5CR: 0x00000000,
+        C6CR: 0x00000000,
+        C7CR: 0x00000000,
+        C8CR: 0x00000000,
+        C9CR: 0x00000000,
+        C10CR: 0x00000000,
+        C11CR: 0x00000000,
+        CSR: 0x00000000,
+        CFR: 0x00000000,
+        RG0CR: 0x00000000,
+        RG1CR: 0x00000000,
+        RG2CR: 0x00000000,
+        RG3CR: 0x00000000,
+        RGSR: 0x00000000,
+        RGCFR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

@@ -143,10 +143,8 @@ pub mod ACR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: Instruction cache is not reset
             pub const NotReset: u32 = 0b0;
@@ -154,6 +152,8 @@ pub mod ACR {
             /// 0b1: Instruction cache is reset
             pub const Reset: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data cache reset

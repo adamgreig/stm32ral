@@ -2804,299 +2804,6 @@ pub mod FA1R {
     }
 }
 
-/// Filter bank 0 register 1
-pub mod FR10 {
-
-    /// Filter bits
-    pub mod FB {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// Filter bank 0 register 2
-pub mod FR20 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR11 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR21 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR12 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR22 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR13 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR23 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR14 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR24 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR15 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR25 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR16 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR26 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR17 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR27 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR18 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR28 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR19 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR29 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR110 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR210 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR111 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR211 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR112 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR212 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR113 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR213 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR114 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR214 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR115 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR215 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR116 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR216 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR117 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR217 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR118 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR218 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR119 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR219 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR120 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR220 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR121 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR221 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR122 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR222 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR123 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR223 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR124 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR224 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR125 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR225 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR126 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR226 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 1
-pub mod FR127 {
-    pub use super::FR10::FB;
-}
-
-/// Filter bank 0 register 2
-pub mod FR227 {
-    pub use super::FR10::FB;
-}
-
 /// TX mailbox identifier register
 pub mod TIR0 {
 
@@ -3452,12 +3159,8 @@ pub mod RIR0 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Standard identifier
             pub const Standard: u32 = 0b0;
@@ -3465,6 +3168,10 @@ pub mod RIR0 {
             /// 0b1: Extended identifier
             pub const Extended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RTR
@@ -3473,12 +3180,8 @@ pub mod RIR0 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data frame
             pub const Data: u32 = 0b0;
@@ -3486,6 +3189,10 @@ pub mod RIR0 {
             /// 0b1: Remote frame
             pub const Remote: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -3685,6 +3392,299 @@ pub mod RDHR1 {
     pub use super::RDHR0::DATA6;
     pub use super::RDHR0::DATA7;
 }
+
+/// Filter bank 0 register 1
+pub mod FR10 {
+
+    /// Filter bits
+    pub mod FB {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// Filter bank 0 register 2
+pub mod FR20 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR11 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR21 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR12 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR22 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR13 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR23 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR14 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR24 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR15 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR25 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR16 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR26 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR17 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR27 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR18 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR28 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR19 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR29 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR110 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR210 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR111 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR211 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR112 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR212 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR113 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR213 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR114 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR214 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR115 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR215 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR116 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR216 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR117 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR217 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR118 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR218 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR119 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR219 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR120 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR220 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR121 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR221 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR122 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR222 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR123 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR223 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR124 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR224 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR125 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR225 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR126 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR226 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 1
+pub mod FR127 {
+    pub use super::FR10::FB;
+}
+
+/// Filter bank 0 register 2
+pub mod FR227 {
+    pub use super::FR10::FB;
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// master control register
@@ -3711,7 +3711,7 @@ pub struct RegisterBlock {
     /// bit timing register
     pub BTR: RWRegister<u32>,
 
-    _reserved1: [u32; 88],
+    _reserved1: [u8; 352],
 
     /// TX mailbox identifier register
     pub TIR0: RWRegister<u32>,
@@ -3773,7 +3773,7 @@ pub struct RegisterBlock {
     /// receive FIFO mailbox data high register
     pub RDHR1: RORegister<u32>,
 
-    _reserved2: [u32; 12],
+    _reserved2: [u8; 48],
 
     /// filter master register
     pub FMR: RWRegister<u32>,
@@ -3781,22 +3781,22 @@ pub struct RegisterBlock {
     /// filter mode register
     pub FM1R: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// filter scale register
     pub FS1R: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// filter FIFO assignment register
     pub FFA1R: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// filter activation register
     pub FA1R: RWRegister<u32>,
 
-    _reserved6: [u32; 8],
+    _reserved6: [u8; 32],
 
     /// Filter bank 0 register 1
     pub FR10: RWRegister<u32>,

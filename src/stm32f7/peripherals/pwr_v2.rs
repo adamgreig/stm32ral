@@ -171,14 +171,14 @@ pub mod CR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b11: Scale 1 mode (reset value)
-            pub const SCALE1: u32 = 0b11;
+            /// 0b01: Scale 3 mode
+            pub const SCALE3: u32 = 0b01;
 
             /// 0b10: Scale 2 mode
             pub const SCALE2: u32 = 0b10;
 
-            /// 0b01: Scale 3 mode
-            pub const SCALE3: u32 = 0b01;
+            /// 0b11: Scale 1 mode (reset value)
+            pub const SCALE1: u32 = 0b11;
         }
     }
 

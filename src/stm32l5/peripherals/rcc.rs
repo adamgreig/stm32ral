@@ -129,10 +129,8 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: Clock security system disabled (clock detector OFF)
             pub const Off: u32 = 0b0;
@@ -140,6 +138,8 @@ pub mod CR {
             /// 0b1: Clock security system enable (clock detector ON if the HSE is ready, OFF if not)
             pub const On: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSE crystal oscillator bypass
@@ -382,12 +382,8 @@ pub mod CFGR {
         pub const offset: u32 = 28;
         /// Mask (3 bits: 0b111 << 28)
         pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b000: MCO divided by 1
             pub const Div1: u32 = 0b000;
@@ -404,6 +400,10 @@ pub mod CFGR {
             /// 0b100: MCO divided by 16
             pub const Div16: u32 = 0b100;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Microcontroller clock output
@@ -6305,7 +6305,7 @@ pub struct RegisterBlock {
     /// Clock interrupt clear register
     pub CICR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// AHB1 peripheral reset register
     pub AHB1RSTR: RWRegister<u32>,
@@ -6316,7 +6316,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral reset register
     pub AHB3RSTR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// APB1 peripheral reset register 1
     pub APB1RSTR1: RWRegister<u32>,
@@ -6327,7 +6327,7 @@ pub struct RegisterBlock {
     /// APB2 peripheral reset register
     pub APB2RSTR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// AHB1 peripheral clock enable register
     pub AHB1ENR: RWRegister<u32>,
@@ -6338,7 +6338,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clock enable register
     pub AHB3ENR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// APB1ENR1
     pub APB1ENR1: RWRegister<u32>,
@@ -6349,7 +6349,7 @@ pub struct RegisterBlock {
     /// APB2ENR
     pub APB2ENR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// AHB1 peripheral clocks enable in Sleep and Stop modes register
     pub AHB1SMENR: RWRegister<u32>,
@@ -6360,7 +6360,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clocks enable in Sleep and Stop modes register
     pub AHB3SMENR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// APB1SMENR1
     pub APB1SMENR1: RWRegister<u32>,
@@ -6371,12 +6371,12 @@ pub struct RegisterBlock {
     /// APB2SMENR
     pub APB2SMENR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// CCIPR1
     pub CCIPR1: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// BDCR
     pub BDCR: RWRegister<u32>,
@@ -6390,7 +6390,7 @@ pub struct RegisterBlock {
     /// Peripherals independent clock configuration register
     pub CCIPR2: RWRegister<u32>,
 
-    _reserved9: [u32; 6],
+    _reserved9: [u8; 24],
 
     /// RCC secure configuration register
     pub SECCFGR: RWRegister<u32>,
@@ -6398,7 +6398,7 @@ pub struct RegisterBlock {
     /// RCC secure status register
     pub SECSR: RWRegister<u32>,
 
-    _reserved10: [u32; 10],
+    _reserved10: [u8; 40],
 
     /// RCC AHB1 security status register
     pub AHB1SECSR: RORegister<u32>,
@@ -6409,7 +6409,7 @@ pub struct RegisterBlock {
     /// RCC AHB3 security status register
     pub AHB3SECSR: RORegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// RCC APB1 security status register 1
     pub APB1SECSR1: RORegister<u32>,

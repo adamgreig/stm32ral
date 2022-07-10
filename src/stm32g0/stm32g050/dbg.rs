@@ -39,7 +39,7 @@ pub mod IDCODE {
 }
 
 /// DBG configuration register
-pub mod DBG_CR {
+pub mod CR {
 
     /// Debug Stop mode Debug options in Stop mode. Upon Stop mode exit, the software must re-establish the desired clock configuration.
     pub mod DBG_STOP {
@@ -51,15 +51,8 @@ pub mod DBG_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: All clocks disabled, including FCLK and HCLK. Upon Stop mode exit, the CPU is clocked by the HSI internal RC oscillator.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: FCLK and HCLK running, derived from the internal RC oscillator remaining active. If Systick is enabled, it may generate periodic interrupt and wake up events.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Debug Standby and Shutdown modes Debug options in Standby or Shutdown mode.
@@ -72,20 +65,13 @@ pub mod DBG_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Digital part powered. From software point of view, exiting Standby and Shutdown modes is identical as fetching reset vector (except for status bits indicating that the MCU exits Standby)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Digital part powered and FCLK and HCLK running, derived from the internal RC oscillator remaining active. The MCU generates a system reset so that exiting Standby and Shutdown has the same effect as starting from reset.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
 /// DBG APB freeze register 1
-pub mod DBG_APB_FZ1 {
+pub mod APB_FZ1 {
 
     /// Clocking of TIM3 counter when the core is halted This bit enables/disables the clock to the counter of TIM3 when the core is halted:
     pub mod DBG_TIM3_STOP {
@@ -97,15 +83,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Enable
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Disable
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of TIM6 counter when the core is halted This bit enables/disables the clock to the counter of TIM6 when the core is halted:
@@ -118,7 +97,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM3_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of TIM7 counter when the core is halted. This bit enables/disables the clock to the counter of ITIM7 when the core is halted:
@@ -131,7 +111,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM3_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of RTC counter when the core is halted This bit enables/disables the clock to the counter of RTC when the core is halted:
@@ -144,7 +125,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM3_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of WWDG counter when the core is halted This bit enables/disables the clock to the counter of WWDG when the core is halted:
@@ -157,7 +139,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM3_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of IWDG counter when the core is halted This bit enables/disables the clock to the counter of IWDG when the core is halted:
@@ -170,7 +153,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM3_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SMBUS timeout when core is halted
@@ -183,15 +167,8 @@ pub mod DBG_APB_FZ1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Same behavior as in normal mode
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The SMBUS timeout is frozen
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SMBUS timeout when core is halted
@@ -210,7 +187,7 @@ pub mod DBG_APB_FZ1 {
 }
 
 /// DBG APB freeze register 2
-pub mod DBG_APB_FZ2 {
+pub mod APB_FZ2 {
 
     /// Clocking of TIM1 counter when the core is halted This bit enables/disables the clock to the counter of TIM1 when the core is halted:
     pub mod DBG_TIM1_STOP {
@@ -222,15 +199,8 @@ pub mod DBG_APB_FZ2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Enable
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Disable
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of TIM14 counter when the core is halted This bit enables/disables the clock to the counter of TIM14 when the core is halted:
@@ -243,7 +213,8 @@ pub mod DBG_APB_FZ2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM1_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of TIM15 counter when the core is halted This bit enables/disables the clock to the counter of TIM15 when the core is halted: Only available on STM32G071xx and STM32G081xx, reserved on STM32G031xx and STM32G041xx.
@@ -256,7 +227,8 @@ pub mod DBG_APB_FZ2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM1_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of TIM16 counter when the core is halted This bit enables/disables the clock to the counter of TIM16 when the core is halted:
@@ -269,7 +241,8 @@ pub mod DBG_APB_FZ2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM1_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clocking of TIM17 counter when the core is halted This bit enables/disables the clock to the counter of TIM17 when the core is halted:
@@ -282,7 +255,8 @@ pub mod DBG_APB_FZ2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::DBG_TIM1_STOP::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]
@@ -291,19 +265,19 @@ pub struct RegisterBlock {
     pub IDCODE: RORegister<u32>,
 
     /// DBG configuration register
-    pub DBG_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// DBG APB freeze register 1
-    pub DBG_APB_FZ1: RWRegister<u32>,
+    pub APB_FZ1: RWRegister<u32>,
 
     /// DBG APB freeze register 2
-    pub DBG_APB_FZ2: RWRegister<u32>,
+    pub APB_FZ2: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub IDCODE: u32,
-    pub DBG_CR: u32,
-    pub DBG_APB_FZ1: u32,
-    pub DBG_APB_FZ2: u32,
+    pub CR: u32,
+    pub APB_FZ1: u32,
+    pub APB_FZ2: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -337,9 +311,9 @@ pub mod DBG {
     /// Reset values for each field in DBG
     pub const reset: ResetValues = ResetValues {
         IDCODE: 0x00000000,
-        DBG_CR: 0x00000000,
-        DBG_APB_FZ1: 0x00000000,
-        DBG_APB_FZ2: 0x00000000,
+        CR: 0x00000000,
+        APB_FZ1: 0x00000000,
+        APB_FZ2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

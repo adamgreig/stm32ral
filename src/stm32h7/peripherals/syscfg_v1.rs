@@ -593,8 +593,8 @@ pub mod PWRCR {
     pub mod ODEN {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1083,7 +1083,7 @@ pub mod UR17 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// peripheral mode configuration register
     pub PMCR: RWRegister<u32>,
@@ -1100,7 +1100,7 @@ pub struct RegisterBlock {
     /// external interrupt configuration register 4
     pub EXTICR4: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// compensation cell control/status register
     pub CCCSR: RWRegister<u32>,
@@ -1114,17 +1114,17 @@ pub struct RegisterBlock {
     /// SYSCFG power control register
     pub PWRCR: RWRegister<u32>,
 
-    _reserved3: [u32; 61],
+    _reserved3: [u8; 244],
 
     /// SYSCFG package register
     pub PKGR: RORegister<u32>,
 
-    _reserved4: [u32; 118],
+    _reserved4: [u8; 472],
 
     /// SYSCFG user register 0
     pub UR0: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// SYSCFG user register 2
     pub UR2: RWRegister<u32>,

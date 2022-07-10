@@ -192,9 +192,6 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b11: HSI48 selected as system clock (when available)
-            pub const HSI48: u32 = 0b11;
-
             /// 0b00: HSI selected as system clock
             pub const HSI: u32 = 0b00;
 
@@ -203,6 +200,9 @@ pub mod CFGR {
 
             /// 0b10: PLL selected as system clock
             pub const PLL: u32 = 0b10;
+
+            /// 0b11: HSI48 selected as system clock (when available)
+            pub const HSI48: u32 = 0b11;
         }
     }
 
@@ -215,9 +215,6 @@ pub mod CFGR {
         /// Read-only values
         pub mod R {
 
-            /// 0b11: HSI48 used as system clock (when avaiable)
-            pub const HSI48: u32 = 0b11;
-
             /// 0b00: HSI oscillator used as system clock
             pub const HSI: u32 = 0b00;
 
@@ -226,6 +223,9 @@ pub mod CFGR {
 
             /// 0b10: PLL used as system clock
             pub const PLL: u32 = 0b10;
+
+            /// 0b11: HSI48 used as system clock (when avaiable)
+            pub const HSI48: u32 = 0b11;
         }
         /// Write-only values (empty)
         pub mod W {}
@@ -305,7 +305,7 @@ pub mod CFGR {
         }
     }
 
-    /// APCPRE is deprecated. See ADC field in CFGR2 register.
+    /// ADCPRE is deprecated. See ADC field in CFGR2 register.
     pub mod ADCPRE {
         /// Offset (14 bits)
         pub const offset: u32 = 14;
@@ -332,9 +332,6 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b11: HSI48 divided by PREDIV selected as PLL input clock
-            pub const HSI48_Div_PREDIV: u32 = 0b11;
-
             /// 0b00: HSI divided by 2 selected as PLL input clock
             pub const HSI_Div2: u32 = 0b00;
 
@@ -343,6 +340,9 @@ pub mod CFGR {
 
             /// 0b10: HSE divided by PREDIV selected as PLL input clock
             pub const HSE_Div_PREDIV: u32 = 0b10;
+
+            /// 0b11: HSI48 divided by PREDIV selected as PLL input clock
+            pub const HSI48_Div_PREDIV: u32 = 0b11;
         }
     }
 
@@ -443,14 +443,11 @@ pub mod CFGR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0001: Internal RC 14 MHz (HSI14) oscillator clock selected
-            pub const HSI14: u32 = 0b0001;
-
-            /// 0b1000: Internal RC 48 MHz (HSI48) oscillator clock selected
-            pub const HSI48: u32 = 0b1000;
-
             /// 0b0000: MCO output disabled, no clock on MCO
             pub const NoMCO: u32 = 0b0000;
+
+            /// 0b0001: Internal RC 14 MHz (HSI14) oscillator clock selected
+            pub const HSI14: u32 = 0b0001;
 
             /// 0b0010: Internal low speed (LSI) oscillator clock selected
             pub const LSI: u32 = 0b0010;
@@ -469,6 +466,9 @@ pub mod CFGR {
 
             /// 0b0111: PLL clock selected (divided by 1 or 2, depending en PLLNODIV)
             pub const PLL: u32 = 0b0111;
+
+            /// 0b1000: Internal RC 48 MHz (HSI48) oscillator clock selected
+            pub const HSI48: u32 = 0b1000;
         }
     }
 

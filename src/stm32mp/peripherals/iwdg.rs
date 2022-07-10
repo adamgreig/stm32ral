@@ -242,7 +242,7 @@ pub struct RegisterBlock {
     /// Window register
     pub IWDG_WINR: RWRegister<u32>,
 
-    _reserved1: [u32; 247],
+    _reserved1: [u8; 988],
 
     /// IWDG hardware configuration register
     pub IWDG_HWCFGR: RORegister<u32>,

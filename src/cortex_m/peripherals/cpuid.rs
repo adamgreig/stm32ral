@@ -145,7 +145,7 @@ pub struct RegisterBlock {
     /// Provides identification information for the processor
     pub Base: RORegister<u32>,
 
-    _reserved1: [u32; 15],
+    _reserved1: [u8; 60],
 
     /// Processor Feature Register 0
     pub PFR0: RORegister<u32>,
@@ -186,7 +186,7 @@ pub struct RegisterBlock {
     /// Instruction Set Attribute Register 4
     pub ISAR4: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Cache Level ID Register
     pub CLIDR: RORegister<u32>,

@@ -8,8 +8,7 @@
 pub use crate::stm32wl::peripherals::tzsc::Instance;
 pub use crate::stm32wl::peripherals::tzsc::{RegisterBlock, ResetValues};
 pub use crate::stm32wl::peripherals::tzsc::{
-    TZSC_CR, TZSC_MPCWM1_UPWMR, TZSC_MPCWM1_UPWWMR, TZSC_MPCWM2_UPWMR, TZSC_MPCWM3_UPWMR,
-    TZSC_PRIVCFGR1, TZSC_SECCFGR1,
+    CR, MPCWM1_UPWMR, MPCWM1_UPWWMR, MPCWM2_UPWMR, MPCWM3_UPWMR, PRIVCFGR1, SECCFGR1,
 };
 
 /// Access functions for the TZSC peripheral instance
@@ -27,13 +26,13 @@ pub mod TZSC {
 
     /// Reset values for each field in TZSC
     pub const reset: ResetValues = ResetValues {
-        TZSC_CR: 0x00000000,
-        TZSC_SECCFGR1: 0x00000000,
-        TZSC_PRIVCFGR1: 0x00000000,
-        TZSC_MPCWM1_UPWMR: 0x0FFF0000,
-        TZSC_MPCWM1_UPWWMR: 0x0FFF0000,
-        TZSC_MPCWM2_UPWMR: 0x0FFF0000,
-        TZSC_MPCWM3_UPWMR: 0x0FFF0000,
+        CR: 0x00000000,
+        SECCFGR1: 0x00000000,
+        PRIVCFGR1: 0x00000000,
+        MPCWM1_UPWMR: 0x0FFF0000,
+        MPCWM1_UPWWMR: 0x0FFF0000,
+        MPCWM2_UPWMR: 0x0FFF0000,
+        MPCWM3_UPWMR: 0x0FFF0000,
     };
 
     #[cfg(not(feature = "nosync"))]

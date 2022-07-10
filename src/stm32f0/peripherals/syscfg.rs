@@ -562,9 +562,6 @@ pub mod EXTICR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE3 as the source input for the EXTI3 external interrupt
-            pub const PE3: u32 = 0b0100;
-
             /// 0b0000: Select PA3 as the source input for the EXTI3 external interrupt
             pub const PA3: u32 = 0b0000;
 
@@ -576,6 +573,9 @@ pub mod EXTICR1 {
 
             /// 0b0011: Select PD3 as the source input for the EXTI3 external interrupt
             pub const PD3: u32 = 0b0011;
+
+            /// 0b0100: Select PE3 as the source input for the EXTI3 external interrupt
+            pub const PE3: u32 = 0b0100;
 
             /// 0b0101: Select PF3 as the source input for the EXTI3 external interrupt
             pub const PF3: u32 = 0b0101;
@@ -595,9 +595,6 @@ pub mod EXTICR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE2 as the source input for the EXTI2 external interrupt
-            pub const PE2: u32 = 0b0100;
-
             /// 0b0000: Select PA2 as the source input for the EXTI2 external interrupt
             pub const PA2: u32 = 0b0000;
 
@@ -609,6 +606,9 @@ pub mod EXTICR1 {
 
             /// 0b0011: Select PD2 as the source input for the EXTI2 external interrupt
             pub const PD2: u32 = 0b0011;
+
+            /// 0b0100: Select PE2 as the source input for the EXTI2 external interrupt
+            pub const PE2: u32 = 0b0100;
 
             /// 0b0101: Select PF2 as the source input for the EXTI2 external interrupt
             pub const PF2: u32 = 0b0101;
@@ -628,9 +628,6 @@ pub mod EXTICR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE1 as the source input for the EXTI1 external interrupt
-            pub const PE1: u32 = 0b0100;
-
             /// 0b0000: Select PA1 as the source input for the EXTI1 external interrupt
             pub const PA1: u32 = 0b0000;
 
@@ -642,6 +639,9 @@ pub mod EXTICR1 {
 
             /// 0b0011: Select PD1 as the source input for the EXTI1 external interrupt
             pub const PD1: u32 = 0b0011;
+
+            /// 0b0100: Select PE1 as the source input for the EXTI1 external interrupt
+            pub const PE1: u32 = 0b0100;
 
             /// 0b0101: Select PF1 as the source input for the EXTI1 external interrupt
             pub const PF1: u32 = 0b0101;
@@ -661,9 +661,6 @@ pub mod EXTICR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE0 as the source input for the EXTI0 external interrupt
-            pub const PE0: u32 = 0b0100;
-
             /// 0b0000: Select PA0 as the source input for the EXTI0 external interrupt
             pub const PA0: u32 = 0b0000;
 
@@ -675,6 +672,9 @@ pub mod EXTICR1 {
 
             /// 0b0011: Select PD0 as the source input for the EXTI0 external interrupt
             pub const PD0: u32 = 0b0011;
+
+            /// 0b0100: Select PE0 as the source input for the EXTI0 external interrupt
+            pub const PE0: u32 = 0b0100;
 
             /// 0b0101: Select PF0 as the source input for the EXTI0 external interrupt
             pub const PF0: u32 = 0b0101;
@@ -698,9 +698,6 @@ pub mod EXTICR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE7 as the source input for the EXTI7 external interrupt
-            pub const PE7: u32 = 0b0100;
-
             /// 0b0000: Select PA7 as the source input for the EXTI7 external interrupt
             pub const PA7: u32 = 0b0000;
 
@@ -712,6 +709,9 @@ pub mod EXTICR2 {
 
             /// 0b0011: Select PD7 as the source input for the EXTI7 external interrupt
             pub const PD7: u32 = 0b0011;
+
+            /// 0b0100: Select PE7 as the source input for the EXTI7 external interrupt
+            pub const PE7: u32 = 0b0100;
 
             /// 0b0101: Select PF7 as the source input for the EXTI7 external interrupt
             pub const PF7: u32 = 0b0101;
@@ -731,9 +731,6 @@ pub mod EXTICR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE6 as the source input for the EXTI6 external interrupt
-            pub const PE6: u32 = 0b0100;
-
             /// 0b0000: Select PA6 as the source input for the EXTI6 external interrupt
             pub const PA6: u32 = 0b0000;
 
@@ -745,6 +742,9 @@ pub mod EXTICR2 {
 
             /// 0b0011: Select PD6 as the source input for the EXTI6 external interrupt
             pub const PD6: u32 = 0b0011;
+
+            /// 0b0100: Select PE6 as the source input for the EXTI6 external interrupt
+            pub const PE6: u32 = 0b0100;
 
             /// 0b0101: Select PF6 as the source input for the EXTI6 external interrupt
             pub const PF6: u32 = 0b0101;
@@ -764,9 +764,6 @@ pub mod EXTICR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE5 as the source input for the EXTI5 external interrupt
-            pub const PE5: u32 = 0b0100;
-
             /// 0b0000: Select PA5 as the source input for the EXTI5 external interrupt
             pub const PA5: u32 = 0b0000;
 
@@ -778,6 +775,9 @@ pub mod EXTICR2 {
 
             /// 0b0011: Select PD5 as the source input for the EXTI5 external interrupt
             pub const PD5: u32 = 0b0011;
+
+            /// 0b0100: Select PE5 as the source input for the EXTI5 external interrupt
+            pub const PE5: u32 = 0b0100;
 
             /// 0b0101: Select PF5 as the source input for the EXTI5 external interrupt
             pub const PF5: u32 = 0b0101;
@@ -797,9 +797,6 @@ pub mod EXTICR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE4 as the source input for the EXTI4 external interrupt
-            pub const PE4: u32 = 0b0100;
-
             /// 0b0000: Select PA4 as the source input for the EXTI4 external interrupt
             pub const PA4: u32 = 0b0000;
 
@@ -811,6 +808,9 @@ pub mod EXTICR2 {
 
             /// 0b0011: Select PD4 as the source input for the EXTI4 external interrupt
             pub const PD4: u32 = 0b0011;
+
+            /// 0b0100: Select PE4 as the source input for the EXTI4 external interrupt
+            pub const PE4: u32 = 0b0100;
 
             /// 0b0101: Select PF4 as the source input for the EXTI4 external interrupt
             pub const PF4: u32 = 0b0101;
@@ -834,9 +834,6 @@ pub mod EXTICR3 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE11 as the source input for the EXTI11 external interrupt
-            pub const PE11: u32 = 0b0100;
-
             /// 0b0000: Select PA11 as the source input for the EXTI11 external interrupt
             pub const PA11: u32 = 0b0000;
 
@@ -848,6 +845,9 @@ pub mod EXTICR3 {
 
             /// 0b0011: Select PD11 as the source input for the EXTI11 external interrupt
             pub const PD11: u32 = 0b0011;
+
+            /// 0b0100: Select PE11 as the source input for the EXTI11 external interrupt
+            pub const PE11: u32 = 0b0100;
 
             /// 0b0101: Select PF11 as the source input for the EXTI11 external interrupt
             pub const PF11: u32 = 0b0101;
@@ -867,9 +867,6 @@ pub mod EXTICR3 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE10 as the source input for the EXTI10 external interrupt
-            pub const PE10: u32 = 0b0100;
-
             /// 0b0000: Select PA10 as the source input for the EXTI10 external interrupt
             pub const PA10: u32 = 0b0000;
 
@@ -881,6 +878,9 @@ pub mod EXTICR3 {
 
             /// 0b0011: Select PD10 as the source input for the EXTI10 external interrupt
             pub const PD10: u32 = 0b0011;
+
+            /// 0b0100: Select PE10 as the source input for the EXTI10 external interrupt
+            pub const PE10: u32 = 0b0100;
 
             /// 0b0101: Select PF10 as the source input for the EXTI10 external interrupt
             pub const PF10: u32 = 0b0101;
@@ -900,9 +900,6 @@ pub mod EXTICR3 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE9 as the source input for the EXTI9 external interrupt
-            pub const PE9: u32 = 0b0100;
-
             /// 0b0000: Select PA9 as the source input for the EXTI9 external interrupt
             pub const PA9: u32 = 0b0000;
 
@@ -914,6 +911,9 @@ pub mod EXTICR3 {
 
             /// 0b0011: Select PD9 as the source input for the EXTI9 external interrupt
             pub const PD9: u32 = 0b0011;
+
+            /// 0b0100: Select PE9 as the source input for the EXTI9 external interrupt
+            pub const PE9: u32 = 0b0100;
 
             /// 0b0101: Select PF9 as the source input for the EXTI9 external interrupt
             pub const PF9: u32 = 0b0101;
@@ -933,9 +933,6 @@ pub mod EXTICR3 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE8 as the source input for the EXTI8 external interrupt
-            pub const PE8: u32 = 0b0100;
-
             /// 0b0000: Select PA8 as the source input for the EXTI8 external interrupt
             pub const PA8: u32 = 0b0000;
 
@@ -947,6 +944,9 @@ pub mod EXTICR3 {
 
             /// 0b0011: Select PD8 as the source input for the EXTI8 external interrupt
             pub const PD8: u32 = 0b0011;
+
+            /// 0b0100: Select PE8 as the source input for the EXTI8 external interrupt
+            pub const PE8: u32 = 0b0100;
 
             /// 0b0101: Select PF8 as the source input for the EXTI8 external interrupt
             pub const PF8: u32 = 0b0101;
@@ -970,9 +970,6 @@ pub mod EXTICR4 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE15 as the source input for the EXTI15 external interrupt
-            pub const PE15: u32 = 0b0100;
-
             /// 0b0000: Select PA15 as the source input for the EXTI15 external interrupt
             pub const PA15: u32 = 0b0000;
 
@@ -984,6 +981,9 @@ pub mod EXTICR4 {
 
             /// 0b0011: Select PD15 as the source input for the EXTI15 external interrupt
             pub const PD15: u32 = 0b0011;
+
+            /// 0b0100: Select PE15 as the source input for the EXTI15 external interrupt
+            pub const PE15: u32 = 0b0100;
 
             /// 0b0101: Select PF15 as the source input for the EXTI15 external interrupt
             pub const PF15: u32 = 0b0101;
@@ -1003,9 +1003,6 @@ pub mod EXTICR4 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE14 as the source input for the EXTI14 external interrupt
-            pub const PE14: u32 = 0b0100;
-
             /// 0b0000: Select PA14 as the source input for the EXTI14 external interrupt
             pub const PA14: u32 = 0b0000;
 
@@ -1017,6 +1014,9 @@ pub mod EXTICR4 {
 
             /// 0b0011: Select PD14 as the source input for the EXTI14 external interrupt
             pub const PD14: u32 = 0b0011;
+
+            /// 0b0100: Select PE14 as the source input for the EXTI14 external interrupt
+            pub const PE14: u32 = 0b0100;
 
             /// 0b0101: Select PF14 as the source input for the EXTI14 external interrupt
             pub const PF14: u32 = 0b0101;
@@ -1036,9 +1036,6 @@ pub mod EXTICR4 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE13 as the source input for the EXTI13 external interrupt
-            pub const PE13: u32 = 0b0100;
-
             /// 0b0000: Select PA13 as the source input for the EXTI13 external interrupt
             pub const PA13: u32 = 0b0000;
 
@@ -1050,6 +1047,9 @@ pub mod EXTICR4 {
 
             /// 0b0011: Select PD13 as the source input for the EXTI13 external interrupt
             pub const PD13: u32 = 0b0011;
+
+            /// 0b0100: Select PE13 as the source input for the EXTI13 external interrupt
+            pub const PE13: u32 = 0b0100;
 
             /// 0b0101: Select PF13 as the source input for the EXTI13 external interrupt
             pub const PF13: u32 = 0b0101;
@@ -1069,9 +1069,6 @@ pub mod EXTICR4 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0100: Select PE12 as the source input for the EXTI12 external interrupt
-            pub const PE12: u32 = 0b0100;
-
             /// 0b0000: Select PA12 as the source input for the EXTI12 external interrupt
             pub const PA12: u32 = 0b0000;
 
@@ -1083,6 +1080,9 @@ pub mod EXTICR4 {
 
             /// 0b0011: Select PD12 as the source input for the EXTI12 external interrupt
             pub const PD12: u32 = 0b0011;
+
+            /// 0b0100: Select PE12 as the source input for the EXTI12 external interrupt
+            pub const PE12: u32 = 0b0100;
 
             /// 0b0101: Select PF12 as the source input for the EXTI12 external interrupt
             pub const PF12: u32 = 0b0101;
@@ -1186,7 +1186,7 @@ pub struct RegisterBlock {
     /// configuration register 1
     pub CFGR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// external interrupt configuration register 1
     pub EXTICR1: RWRegister<u32>,

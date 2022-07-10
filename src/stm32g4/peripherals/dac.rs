@@ -1239,7 +1239,7 @@ pub struct RegisterBlock {
     /// DAC Sample and Hold refresh time register
     pub DAC_SHRR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Sawtooth register
     pub DAC_STR1: RWRegister<u32>,

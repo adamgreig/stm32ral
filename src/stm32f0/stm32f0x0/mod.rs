@@ -8,7 +8,7 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::crc;
+pub mod crc;
 pub mod gpio;
 pub mod pwr;
 pub mod spi;

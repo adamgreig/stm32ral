@@ -589,7 +589,7 @@ pub struct RegisterBlock {
     /// AXIMC master 0 packing functionality register
     pub AXIMC_M0_FN_MOD2: RWRegister<u32>,
 
-    _reserved1: [u32; 54],
+    _reserved1: [u8; 216],
 
     /// AXIMC master 0 read priority register
     pub AXIMC_M0_READ_QOS: RWRegister<u32>,
@@ -600,12 +600,12 @@ pub struct RegisterBlock {
     /// AXIMC master 0 write priority register
     pub AXIMC_M0_WRITE_QOS: RWRegister<u32>,
 
-    _reserved2: [u32; 966],
+    _reserved2: [u8; 3864],
 
     /// AXIMC master 1 packing functionality register
     pub AXIMC_M1_FN_MOD2: RWRegister<u32>,
 
-    _reserved3: [u32; 54],
+    _reserved3: [u8; 216],
 
     /// AXIMC master 1 read priority register
     pub AXIMC_M1_READ_QOS: RWRegister<u32>,
@@ -616,7 +616,7 @@ pub struct RegisterBlock {
     /// AXIMC master 1 issuing capability override functionality register
     pub AXIMC_M1_FN_MOD: RWRegister<u32>,
 
-    _reserved4: [u32; 954],
+    _reserved4: [u8; 3816],
 
     /// AXIMC peripheral ID4 register
     pub AXIMC_PERIPH_ID_4: RORegister<u32>,
@@ -657,7 +657,7 @@ pub struct RegisterBlock {
     /// AXIMC master 2 packing functionality register
     pub AXIMC_M2_FN_MOD2: RWRegister<u32>,
 
-    _reserved5: [u32; 54],
+    _reserved5: [u8; 216],
 
     /// AXIMC master 2 read priority register
     pub AXIMC_M2_READ_QOS: RWRegister<u32>,
@@ -668,12 +668,12 @@ pub struct RegisterBlock {
     /// AXIMC master 2 issuing capability override functionality register
     pub AXIMC_M2_FN_MOD: RWRegister<u32>,
 
-    _reserved6: [u32; 966],
+    _reserved6: [u8; 3864],
 
     /// AXIMC master 5 packing functionality register
     pub AXIMC_M5_FN_MOD2: RWRegister<u32>,
 
-    _reserved7: [u32; 54],
+    _reserved7: [u8; 216],
 
     /// AXIMC master 5 read priority register
     pub AXIMC_M5_READ_QOS: RWRegister<u32>,
@@ -684,7 +684,7 @@ pub struct RegisterBlock {
     /// AXIMC master 5 issuing capability override functionality register
     pub AXIMC_M5_FN_MOD: RWRegister<u32>,
 
-    _reserved8: [u32; 1021],
+    _reserved8: [u8; 4084],
 
     /// AXIMC master 3 read priority register
     pub AXIMC_M3_READ_QOS: RWRegister<u32>,
@@ -695,7 +695,7 @@ pub struct RegisterBlock {
     /// AXIMC master 3 packing functionality register
     pub AXIMC_M3_FN_MOD: RWRegister<u32>,
 
-    _reserved9: [u32; 1021],
+    _reserved9: [u8; 4084],
 
     /// AXIMC master 7 read priority register
     pub AXIMC_M7_READ_QOS: RWRegister<u32>,
@@ -706,7 +706,7 @@ pub struct RegisterBlock {
     /// AXIMC master 7 issuing capability override functionality register
     pub AXIMC_M7_FN_MOD: RWRegister<u32>,
 
-    _reserved10: [u32; 1021],
+    _reserved10: [u8; 4084],
 
     /// AXIMC master 8 read priority register
     pub AXIMC_M8_READ_QOS: RWRegister<u32>,
@@ -717,12 +717,12 @@ pub struct RegisterBlock {
     /// AXIMC master 8 issuing capability override functionality register
     pub AXIMC_M8_FN_MOD: RWRegister<u32>,
 
-    _reserved11: [u32; 1990],
+    _reserved11: [u8; 7960],
 
     /// AXIMC master 4 packing functionality register
     pub AXIMC_M4_FN_MOD2: RWRegister<u32>,
 
-    _reserved12: [u32; 54],
+    _reserved12: [u8; 216],
 
     /// AXIMC master 4 read priority register
     pub AXIMC_M4_READ_QOS: RWRegister<u32>,
@@ -733,7 +733,7 @@ pub struct RegisterBlock {
     /// AXIMC master 4 packing functionality register
     pub AXIMC_M4_FN_MOD: RWRegister<u32>,
 
-    _reserved13: [u32; 1021],
+    _reserved13: [u8; 4084],
 
     /// AXIMC master 9 read priority register
     pub AXIMC_M9_READ_QOS: RWRegister<u32>,
@@ -744,7 +744,7 @@ pub struct RegisterBlock {
     /// AXIMC master 9 issuing capability override functionality register
     pub AXIMC_M9_FN_MOD: RWRegister<u32>,
 
-    _reserved14: [u32; 1021],
+    _reserved14: [u8; 4084],
 
     /// AXIMC master 10 read priority register
     pub AXIMC_M10_READ_QOS: RWRegister<u32>,
@@ -755,12 +755,12 @@ pub struct RegisterBlock {
     /// AXIMC master 10 issuing capability override functionality register
     pub AXIMC_M10_FN_MOD: RWRegister<u32>,
 
-    _reserved15: [u32; 966],
+    _reserved15: [u8; 3864],
 
     /// AXIMC master 6 packing functionality register
     pub AXIMC_M6_FN_MOD2: RWRegister<u32>,
 
-    _reserved16: [u32; 54],
+    _reserved16: [u8; 216],
 
     /// AXIMC master 6 read priority register
     pub AXIMC_M6_READ_QOS: RWRegister<u32>,
@@ -771,32 +771,32 @@ pub struct RegisterBlock {
     /// AXIMC master 6 issuing capability override functionality register
     pub AXIMC_M6_FN_MOD: RWRegister<u32>,
 
-    _reserved17: [u32; 56272],
+    _reserved17: [u8; 225088],
 
     /// AXIMC master 0 AHB conversion override functionality register
     pub AXIMC_M0_FN_MOD_AHB: RWRegister<u32>,
 
-    _reserved18: [u32; 1023],
+    _reserved18: [u8; 4092],
 
     /// AXIMC master 1 AHB conversion override functionality register
     pub AXIMC_M1_FN_MOD_AHB: RWRegister<u32>,
 
-    _reserved19: [u32; 1023],
+    _reserved19: [u8; 4092],
 
     /// AXIMC master 2 AHB conversion override functionality register
     pub AXIMC_M2_FN_MOD_AHB: RWRegister<u32>,
 
-    _reserved20: [u32; 1023],
+    _reserved20: [u8; 4092],
 
     /// AXIMC master 5 AHB conversion override functionality register
     pub AXIMC_M5_FN_MOD_AHB: RWRegister<u32>,
 
-    _reserved21: [u32; 5120],
+    _reserved21: [u8; 20480],
 
     /// AXIMC long burst capability inhibition register
     pub AXIMC_FN_MOD_LB: RWRegister<u32>,
 
-    _reserved22: [u32; 3070],
+    _reserved22: [u8; 12280],
 
     /// AXIMC master 6 AHB conversion override functionality register
     pub AXIMC_M6_FN_MOD_AHB: RWRegister<u32>,

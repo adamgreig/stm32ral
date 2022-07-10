@@ -805,7 +805,7 @@ pub mod ITLINE29 {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 32],
+    _reserved1: [u8; 128],
 
     /// interrupt line 0 status register
     pub ITLINE0: RORegister<u32>,
@@ -831,7 +831,7 @@ pub struct RegisterBlock {
     /// interrupt line 7 status register
     pub ITLINE7: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// interrupt line 9 status register
     pub ITLINE9: RORegister<u32>,
@@ -866,7 +866,7 @@ pub struct RegisterBlock {
     /// interrupt line 19 status register
     pub ITLINE19: RORegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// interrupt line 21 status register
     pub ITLINE21: RORegister<u32>,

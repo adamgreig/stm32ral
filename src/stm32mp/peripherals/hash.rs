@@ -1527,7 +1527,7 @@ pub struct RegisterBlock {
     /// HASH status register
     pub HASH_SR: RWRegister<u32>,
 
-    _reserved1: [u32; 52],
+    _reserved1: [u8; 208],
 
     /// These registers contain the complete internal register states of the hash processor. They are useful when a context swap has to be done because a high-priority task needs to use the hash processor while it is already used by another task. When such an event occurs, the HASH_CSRx registers have to be read and the read values have to be saved in the system memory space. Then the hash processor can be used by the preemptive task, and when the hash computation is complete, the saved context can be read from memory and written back into the HASH_CSRx registers.
     pub HASH_CSR0: RWRegister<u32>,
@@ -1691,7 +1691,7 @@ pub struct RegisterBlock {
     /// HASH context swap registers
     pub HASH_CSR53: RWRegister<u32>,
 
-    _reserved2: [u32; 85],
+    _reserved2: [u8; 340],
 
     /// HASH digest register 5
     pub HASH_HR5: RORegister<u32>,
@@ -1702,7 +1702,7 @@ pub struct RegisterBlock {
     /// HASH digest register 7
     pub HASH_HR7: RORegister<u32>,
 
-    _reserved3: [u32; 48],
+    _reserved3: [u8; 192],
 
     /// HASH Hardware Configuration Register
     pub HASH_HWCFGR: RORegister<u32>,

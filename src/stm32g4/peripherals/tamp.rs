@@ -888,12 +888,12 @@ pub struct RegisterBlock {
     /// control register 2
     pub CR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// TAMP filter control register
     pub FLTCR: RWRegister<u32>,
 
-    _reserved2: [u32; 7],
+    _reserved2: [u8; 28],
 
     /// TAMP interrupt enable register
     pub IER: RWRegister<u32>,
@@ -904,12 +904,12 @@ pub struct RegisterBlock {
     /// TAMP masked interrupt status register
     pub MISR: RORegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// TAMP status clear register
     pub SCR: RWRegister<u32>,
 
-    _reserved4: [u32; 48],
+    _reserved4: [u8; 192],
 
     /// TAMP backup register
     pub BKP0R: RWRegister<u32>,

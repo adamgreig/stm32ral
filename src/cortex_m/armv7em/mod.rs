@@ -11,7 +11,7 @@ pub use super::instances::tpiu;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
-pub struct Peripherals {
+pub struct CorePeripherals {
     pub CPB: cpb::Instance,
     pub CPUID: cpuid::Instance,
     pub DCB: dcb::Instance,
@@ -24,12 +24,12 @@ pub struct Peripherals {
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
 #[allow(non_snake_case)]
-pub struct Peripherals {}
+pub struct CorePeripherals {}
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
-impl Peripherals {
+impl CorePeripherals {
     pub unsafe fn steal() -> Self {
-        Peripherals {
+        CorePeripherals {
             CPB: cpb::CPB::steal(),
             CPUID: cpuid::CPUID::steal(),
             DCB: dcb::DCB::steal(),
@@ -43,8 +43,8 @@ impl Peripherals {
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
-impl Peripherals {
+impl CorePeripherals {
     pub fn steal() -> Self {
-        Peripherals {}
+        CorePeripherals {}
     }
 }

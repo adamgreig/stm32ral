@@ -95,18 +95,6 @@ pub mod CFR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b100: Counter clock (PCLK1 div 4096) div 16
-            pub const Div16: u32 = 0b100;
-
-            /// 0b101: Counter clock (PCLK1 div 4096) div 32
-            pub const Div32: u32 = 0b101;
-
-            /// 0b110: Counter clock (PCLK1 div 4096) div 64
-            pub const Div64: u32 = 0b110;
-
-            /// 0b111: Counter clock (PCLK1 div 4096) div 128
-            pub const Div128: u32 = 0b111;
-
             /// 0b000: Counter clock (PCLK1 div 4096) div 1
             pub const Div1: u32 = 0b000;
 
@@ -118,6 +106,18 @@ pub mod CFR {
 
             /// 0b011: Counter clock (PCLK1 div 4096) div 8
             pub const Div8: u32 = 0b011;
+
+            /// 0b100: Counter clock (PCLK1 div 4096) div 16
+            pub const Div16: u32 = 0b100;
+
+            /// 0b101: Counter clock (PCLK1 div 4096) div 32
+            pub const Div32: u32 = 0b101;
+
+            /// 0b110: Counter clock (PCLK1 div 4096) div 64
+            pub const Div64: u32 = 0b110;
+
+            /// 0b111: Counter clock (PCLK1 div 4096) div 128
+            pub const Div128: u32 = 0b111;
         }
     }
 }
@@ -134,11 +134,11 @@ pub mod SR {
         /// Read-only values
         pub mod R {
 
-            /// 0b1: The EWI Interrupt Service Routine has been triggered
-            pub const Pending: u32 = 0b1;
-
             /// 0b0: The EWI Interrupt Service Routine has been serviced
             pub const Finished: u32 = 0b0;
+
+            /// 0b1: The EWI Interrupt Service Routine has been triggered
+            pub const Pending: u32 = 0b1;
         }
         /// Write-only values
         pub mod W {

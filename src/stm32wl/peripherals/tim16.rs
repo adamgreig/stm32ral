@@ -90,11 +90,11 @@ pub mod CR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: Not stopped at update event
-            pub const NotStopped: u32 = 0b0;
+            /// 0b0: Counter is not stopped at update event
+            pub const Disabled: u32 = 0b0;
 
-            /// 0b1: Counter stops counting at next update event
-            pub const Stopped: u32 = 0b1;
+            /// 0b1: Counter stops counting at the next update event (clearing the CEN bit)
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -576,14 +576,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1428,7 +1428,7 @@ pub struct RegisterBlock {
     /// TIM16/TIM17 control register 2
     pub CR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// TIM16/TIM17 DMA/interrupt enable register
     pub DIER: RWRegister<u32>,
@@ -1444,7 +1444,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: TIM16/TIM17 capture/compare mode register 1
     pub CCMR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// TIM16/TIM17 capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -1464,7 +1464,7 @@ pub struct RegisterBlock {
     /// TIM16/TIM17 capture/compare register 1
     pub CCR1: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// TIM16/TIM17 break and dead-time register
     pub BDTR: RWRegister<u32>,
@@ -1478,12 +1478,12 @@ pub struct RegisterBlock {
     /// TIM16 option register 1
     pub OR1: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// TIM16 alternate function register 1
     pub AF1: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// TIM16 input selection register
     pub TISEL: RWRegister<u32>,

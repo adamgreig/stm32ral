@@ -21,8 +21,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Counter enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Update disable
@@ -35,8 +42,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update event enabled
+            pub const Enabled: u32 = 0b0;
+
+            /// 0b1: Update event disabled
+            pub const Disabled: u32 = 0b1;
+        }
     }
 
     /// Update request source
@@ -49,8 +63,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Any of counter overflow/underflow, setting UG, or update through slave mode, generates an update interrupt or DMA request
+            pub const AnyEvent: u32 = 0b0;
+
+            /// 0b1: Only counter overflow/underflow generates an update interrupt or DMA request
+            pub const CounterOnly: u32 = 0b1;
+        }
     }
 
     /// One-pulse mode
@@ -63,8 +84,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Counter is not stopped at update event
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Counter stops counting at the next update event (clearing the CEN bit)
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Auto-reload preload enable
@@ -77,8 +105,15 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: TIMx_APRR register is not buffered
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: TIMx_APRR register is buffered
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Clock division
@@ -91,8 +126,18 @@ pub mod CR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: t_DTS = t_CK_INT
+            pub const Div1: u32 = 0b00;
+
+            /// 0b01: t_DTS = 2 × t_CK_INT
+            pub const Div2: u32 = 0b01;
+
+            /// 0b10: t_DTS = 4 × t_CK_INT
+            pub const Div4: u32 = 0b10;
+        }
     }
 
     /// UIF status bit remapping
@@ -281,8 +326,15 @@ pub mod DIER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Update interrupt disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Update interrupt enabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 }
 
@@ -355,8 +407,15 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: No update occurred
+            pub const Clear: u32 = 0b0;
+
+            /// 0b1: Update interrupt pending.
+            pub const UpdatePending: u32 = 0b1;
+        }
     }
 }
 
@@ -413,8 +472,12 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Re-initializes the timer counter and generates an update of the registers.
+            pub const Update: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1062,7 +1125,7 @@ pub struct RegisterBlock {
     /// control register 2
     pub CR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// DMA/Interrupt enable register
     pub DIER: RWRegister<u32>,
@@ -1078,7 +1141,7 @@ pub struct RegisterBlock {
     /// CCMR1_Input: capture/compare mode register 1 (input mode)
     pub CCMR1: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// capture/compare enable register
     pub CCER: RWRegister<u32>,
@@ -1098,7 +1161,7 @@ pub struct RegisterBlock {
     /// capture/compare register 1
     pub CCR1: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// break and dead-time register
     pub BDTR: RWRegister<u32>,
@@ -1109,12 +1172,12 @@ pub struct RegisterBlock {
     /// DMA address for full transfer
     pub DMAR: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// TIM17 option register 1
     pub AF1: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// input selection register
     pub TISEL: RWRegister<u32>,

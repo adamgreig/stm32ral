@@ -119,7 +119,6 @@ PROVIDE(LPTIM3 = DefaultHandler);
 PROVIDE(UART9 = DefaultHandler);
 PROVIDE(USART10 = DefaultHandler);
 PROVIDE(LPUART = DefaultHandler);
-PROVIDE(WWDG1_RST = DefaultHandler);
 PROVIDE(CRS = DefaultHandler);
 PROVIDE(RAMECC = DefaultHandler);
 PROVIDE(WKUP = DefaultHandler);

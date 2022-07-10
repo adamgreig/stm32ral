@@ -22,11 +22,11 @@ pub mod C1CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Enable an unmasked processor receive channel occupied to generate an RX occupied interrupt
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Processor RX occupied interrupt disabled
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable an unmasked processor receive channel occupied to generate an RX occupied interrupt
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -43,11 +43,11 @@ pub mod C1CR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Enable an unmasked processor transmit channel free to generate a TX free interrupt
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Processor TX free interrupt disabled
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Enable an unmasked processor transmit channel free to generate a TX free interrupt
+            pub const Enabled: u32 = 0b1;
         }
     }
 }
@@ -68,11 +68,11 @@ pub mod C1MR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Receive channel n occupied interrupt masked
-            pub const Masked: u32 = 0b1;
-
             /// 0b0: Receive channel n occupied interrupt not masked
             pub const Unmasked: u32 = 0b0;
+
+            /// 0b1: Receive channel n occupied interrupt masked
+            pub const Masked: u32 = 0b1;
         }
     }
 
@@ -154,11 +154,11 @@ pub mod C1MR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Transmit channel n free interrupt masked
-            pub const Masked: u32 = 0b1;
-
             /// 0b0: Transmit channel n free interrupt not masked
             pub const Unmasked: u32 = 0b0;
+
+            /// 0b1: Transmit channel n free interrupt masked
+            pub const Masked: u32 = 0b1;
         }
     }
 
@@ -244,11 +244,11 @@ pub mod C1SCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Processor receive channel n status bit clear
-            pub const Clear: u32 = 0b1;
-
             /// 0b0: No action
             pub const NoAction: u32 = 0b0;
+
+            /// 0b1: Processor receive channel n status bit clear
+            pub const Clear: u32 = 0b1;
         }
     }
 
@@ -330,11 +330,11 @@ pub mod C1SCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Processor transmit channel n status bit set
-            pub const Set: u32 = 0b1;
-
             /// 0b0: No action
             pub const NoAction: u32 = 0b0;
+
+            /// 0b1: Processor transmit channel n status bit set
+            pub const Set: u32 = 0b1;
         }
     }
 
@@ -539,19 +539,19 @@ pub mod C2TOC1SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b1: Channel occupied, data can be read by the receiving processor. Generates a channel RX occupied interrupt to the other processor, when unmasked
-            pub const Occupied: u32 = 0b1;
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Channel free, data can be written by the sending processor. Generates a channel TX free interrupt to the current processor, when unmasked
             pub const Free: u32 = 0b0;
+
+            /// 0b1: Channel occupied, data can be read by the receiving processor. Generates a channel RX occupied interrupt to the other processor, when unmasked
+            pub const Occupied: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CH2F
@@ -560,11 +560,11 @@ pub mod C2TOC1SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CH1F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CH1F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CH3F
@@ -573,11 +573,11 @@ pub mod C2TOC1SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CH1F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CH1F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CH4F
@@ -586,11 +586,11 @@ pub mod C2TOC1SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CH1F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CH1F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CH5F
@@ -599,11 +599,11 @@ pub mod C2TOC1SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CH1F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::CH1F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CH6F
@@ -732,7 +732,7 @@ pub struct RegisterBlock {
     /// IPCC processor 2 to processor 1 status register
     pub C2TOC1SR: RORegister<u32>,
 
-    _reserved1: [u32; 244],
+    _reserved1: [u8; 976],
 
     /// IPCC Hardware configuration register
     pub HWCFGR: RORegister<u32>,

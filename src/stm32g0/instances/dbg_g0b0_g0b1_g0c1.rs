@@ -7,7 +7,7 @@
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g0::peripherals::dbg_v3::Instance;
 pub use crate::stm32g0::peripherals::dbg_v3::{RegisterBlock, ResetValues};
-pub use crate::stm32g0::peripherals::dbg_v3::{DBG_APB_FZ1, DBG_APB_FZ2, DBG_CR, IDCODE};
+pub use crate::stm32g0::peripherals::dbg_v3::{APB_FZ1, APB_FZ2, CR, IDCODE};
 
 /// Access functions for the DBG peripheral instance
 pub mod DBG {
@@ -25,9 +25,9 @@ pub mod DBG {
     /// Reset values for each field in DBG
     pub const reset: ResetValues = ResetValues {
         IDCODE: 0x00000000,
-        DBG_CR: 0x00000000,
-        DBG_APB_FZ1: 0x00000000,
-        DBG_APB_FZ2: 0x00000000,
+        CR: 0x00000000,
+        APB_FZ1: 0x00000000,
+        APB_FZ2: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

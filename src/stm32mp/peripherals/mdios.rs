@@ -714,7 +714,7 @@ pub struct RegisterBlock {
     /// MDIOS clear flag register
     pub MDIOS_CLRFR: RWRegister<u32>,
 
-    _reserved1: [u32; 57],
+    _reserved1: [u8; 228],
 
     /// MDIOS input data register
     pub MDIOS_DINR0: RORegister<u32>,
@@ -908,7 +908,7 @@ pub struct RegisterBlock {
     /// MDIOS output data register
     pub MDIOS_DOUTR31: RORegister<u32>,
 
-    _reserved2: [u32; 124],
+    _reserved2: [u8; 496],
 
     /// MDIOS HW configuration register
     pub MDIOS_HWCFGR: RORegister<u32>,

@@ -17,7 +17,7 @@ pub mod rcc;
 pub use super::instances::tim15;
 pub use super::instances::tim16_f302_f303_f3x4 as tim16;
 pub use super::instances::tim17_f302_f303_f3x4 as tim17;
-pub use super::instances::tim2_f302_f303_f3x4 as tim2;
+pub use super::instances::tim2;
 pub use super::instances::usart_f301_f373_f3x4 as usart;
 pub mod spi;
 pub use super::instances::exti;
@@ -35,7 +35,7 @@ pub use super::instances::wwdg;
 pub mod syscfg;
 pub mod tim3;
 pub use super::instances::can;
-pub mod adc_common;
+pub mod adc1_2;
 pub mod hrtim_common;
 pub mod hrtim_master;
 pub mod hrtim_tima;
@@ -48,7 +48,7 @@ pub use super::instances::fpu_cpacr;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
-pub use super::instances::opamp_f301_f3x4 as opamp;
+pub use super::instances::opamp;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
@@ -98,7 +98,7 @@ pub struct Peripherals {
     pub SYSCFG: syscfg::Instance,
     pub TIM3: tim3::Instance,
     pub CAN: can::Instance,
-    pub ADC_Common: adc_common::Instance,
+    pub ADC1_2: adc1_2::Instance,
     pub HRTIM_Master: hrtim_master::Instance,
     pub HRTIM_TIMA: hrtim_tima::Instance,
     pub HRTIM_TIMB: hrtim_timb::Instance,
@@ -167,7 +167,7 @@ impl Peripherals {
             SYSCFG: syscfg::SYSCFG::steal(),
             TIM3: tim3::TIM3::steal(),
             CAN: can::CAN::steal(),
-            ADC_Common: adc_common::ADC_Common::steal(),
+            ADC1_2: adc1_2::ADC1_2::steal(),
             HRTIM_Master: hrtim_master::HRTIM_Master::steal(),
             HRTIM_TIMA: hrtim_tima::HRTIM_TIMA::steal(),
             HRTIM_TIMB: hrtim_timb::HRTIM_TIMB::steal(),

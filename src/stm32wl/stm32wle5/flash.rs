@@ -411,12 +411,8 @@ pub mod SR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The OBL user option OPTVAL indicates "valid"
             pub const Valid: u32 = 0b0;
@@ -424,6 +420,10 @@ pub mod SR {
             /// 0b1: The OBL user option OPTVAL indicates "invalid"
             pub const Invalid: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PCROP read error
@@ -472,12 +472,8 @@ pub mod SR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No write/erase operation is in progress
             pub const Inactive: u32 = 0b0;
@@ -485,6 +481,10 @@ pub mod SR {
             /// 0b1: No write/erase operation is in progress
             pub const Active: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Programming or erase configuration busy
@@ -493,12 +493,8 @@ pub mod SR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: PG, PNB, PER, MER bits available for writing
             pub const Free: u32 = 0b0;
@@ -506,6 +502,10 @@ pub mod SR {
             /// 0b1: PG, PNB, PER, MER bits not available for writing (operation ongoing)
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Programming / erase operation suspended
@@ -514,12 +514,8 @@ pub mod SR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Flash program and erase operations granted
             pub const Granted: u32 = 0b0;
@@ -527,6 +523,10 @@ pub mod SR {
             /// 0b1: Any new Flash program and erase operation is suspended until this bit is cleared. This bit is set when the PES bit in FLASH_ACR is set
             pub const Suspended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -821,12 +821,8 @@ pub mod ECCR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No System Flash memory ECC fail
             pub const NotInFlash: u32 = 0b0;
@@ -834,6 +830,10 @@ pub mod ECCR {
             /// 0b1: System Flash memory ECC fail
             pub const InFlash: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ECC correction interrupt enable
@@ -919,14 +919,14 @@ pub mod OPTR {
         /// Read-write values
         pub mod RW {
 
+            /// 0b10001000: Level 1, memories readout protection active (writes 0x88)
+            pub const Level1: u32 = 0b10001000;
+
             /// 0b10101010: Level 0, readout protection not active
             pub const Level0: u32 = 0b10101010;
 
             /// 0b11001100: Level 2, chip readout protection active
             pub const Level2: u32 = 0b11001100;
-
-            /// 0b10001000: Level 1, memories readout protection active (writes 0x88)
-            pub const Level1: u32 = 0b10001000;
         }
     }
 
@@ -1401,7 +1401,7 @@ pub struct RegisterBlock {
     /// Access control register
     pub ACR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Flash key register
     pub KEYR: WORegister<u32>,
@@ -1418,7 +1418,7 @@ pub struct RegisterBlock {
     /// Flash ECC register
     pub ECCR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Flash option register
     pub OPTR: RWRegister<u32>,

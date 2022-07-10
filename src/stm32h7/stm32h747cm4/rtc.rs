@@ -817,7 +817,7 @@ pub mod WUTR {
 /// This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
 pub mod ALRMAR {
 
-    /// Second units in BCD format.
+    /// Second units in BCD format
     pub mod SU {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
@@ -831,7 +831,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Second tens in BCD format.
+    /// Second tens in BCD format
     pub mod ST {
         /// Offset (4 bits)
         pub const offset: u32 = 4;
@@ -845,7 +845,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A seconds mask
+    /// Alarm seconds mask
     pub mod MSK1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -859,7 +859,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Minute units in BCD format.
+    /// Minute units in BCD format
     pub mod MNU {
         /// Offset (8 bits)
         pub const offset: u32 = 8;
@@ -873,7 +873,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Minute tens in BCD format.
+    /// Minute tens in BCD format
     pub mod MNT {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
@@ -887,7 +887,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A minutes mask
+    /// Alarm minutes mask
     pub mod MSK2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -901,7 +901,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Hour units in BCD format.
+    /// Hour units in BCD format
     pub mod HU {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
@@ -915,7 +915,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Hour tens in BCD format.
+    /// Hour tens in BCD format
     pub mod HT {
         /// Offset (20 bits)
         pub const offset: u32 = 20;
@@ -943,7 +943,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A hours mask
+    /// Alarm hours mask
     pub mod MSK3 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -957,7 +957,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Date units or day in BCD format.
+    /// Date units or day in BCD format
     pub mod DU {
         /// Offset (24 bits)
         pub const offset: u32 = 24;
@@ -971,7 +971,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Date tens in BCD format.
+    /// Date tens in BCD format
     pub mod DT {
         /// Offset (28 bits)
         pub const offset: u32 = 28;
@@ -999,7 +999,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A date mask
+    /// Alarm date mask
     pub mod MSK4 {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -1014,7 +1014,7 @@ pub mod ALRMAR {
     }
 }
 
-/// This register can be written only when ALRBWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
+/// This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
 pub mod ALRMBR {
     pub use super::ALRMAR::DT;
     pub use super::ALRMAR::DU;
@@ -1671,7 +1671,7 @@ pub mod ALRMASSR {
     }
 }
 
-/// This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode.This register is write protected.The write access procedure is described in Section: RTC register write protection.
+/// This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
 pub mod ALRMBSSR {
     pub use super::ALRMASSR::MASKSS;
     pub use super::ALRMASSR::SS;
@@ -1770,38 +1770,6 @@ pub mod BKP15R {
     pub use super::BKP0R::BKP;
 }
 
-/// RTC option register
-pub mod OR {
-
-    /// RTC_ALARM output type on PC13
-    pub mod RTC_ALARM_TYPE {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// RTC_OUT remap
-    pub mod RTC_OUT_RMP {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// RTC backup registers
 pub mod BKP16R {
     pub use super::BKP0R::BKP;
@@ -1881,6 +1849,38 @@ pub mod BKP30R {
 pub mod BKP31R {
     pub use super::BKP0R::BKP;
 }
+
+/// RTC option register
+pub mod OR {
+
+    /// RTC_ALARM output type on PC13
+    pub mod RTC_ALARM_TYPE {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// RTC_OUT remap
+    pub mod RTC_OUT_RMP {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// The RTC_TR is the calendar time shadow register. This register must be written in initialization mode only. Refer to Calendar initialization and configuration on page9 and Reading the calendar on page10.This register is write protected. The write access procedure is described in RTC register write protection on page9.
@@ -1901,12 +1901,12 @@ pub struct RegisterBlock {
     /// This register can be written only when WUTWF is set to 1 in RTC_ISR.This register is write protected. The write access procedure is described in RTC register write protection on page9.
     pub WUTR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
     pub ALRMAR: RWRegister<u32>,
 
-    /// This register can be written only when ALRBWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
+    /// This register can be written only when ALRAWF is set to 1 in RTC_ISR, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9.
     pub ALRMBR: RWRegister<u32>,
 
     /// RTC write protection register
@@ -1936,7 +1936,7 @@ pub struct RegisterBlock {
     /// This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
     pub ALRMASSR: RWRegister<u32>,
 
-    /// This register can be written only when ALRBE is reset in RTC_CR register, or in initialization mode.This register is write protected.The write access procedure is described in Section: RTC register write protection.
+    /// This register can be written only when ALRAE is reset in RTC_CR register, or in initialization mode.This register is write protected. The write access procedure is described in RTC register write protection on page9
     pub ALRMBSSR: RWRegister<u32>,
 
     /// RTC option register
@@ -2156,7 +2156,6 @@ pub mod RTC {
         BKP13R: 0x00000000,
         BKP14R: 0x00000000,
         BKP15R: 0x00000000,
-        OR: 0x00000000,
         BKP16R: 0x00000000,
         BKP17R: 0x00000000,
         BKP18R: 0x00000000,
@@ -2173,6 +2172,7 @@ pub mod RTC {
         BKP29R: 0x00000000,
         BKP30R: 0x00000000,
         BKP31R: 0x00000000,
+        OR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

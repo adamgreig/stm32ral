@@ -1713,17 +1713,245 @@ pub mod DR {
 pub mod AWD2CR {
 
     /// AWD2CH
-    pub mod AWD2CH {
+    pub mod AWD2CH0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (18 bits: 0x3ffff << 0)
-        pub const mask: u32 = 0x3ffff << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC analog channel-x is not monitored by AWD2
+            pub const NotMonitored: u32 = 0b0;
+
+            /// 0b1: ADC analog channel-x is monitored by AWD2
+            pub const Monitored: u32 = 0b1;
+        }
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
+    }
+
+    /// AWD2CH
+    pub mod AWD2CH17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD2CH0::RW;
     }
 }
 
@@ -1731,17 +1959,245 @@ pub mod AWD2CR {
 pub mod AWD3CR {
 
     /// AWD3CH
-    pub mod AWD3CH {
+    pub mod AWD3CH0 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (18 bits: 0x3ffff << 0)
-        pub const mask: u32 = 0x3ffff << offset;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: ADC analog channel-x is not monitored by AWD3
+            pub const NotMonitored: u32 = 0b0;
+
+            /// 0b1: ADC analog channel-x is monitored by AWD3
+            pub const Monitored: u32 = 0b1;
+        }
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH1 {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH2 {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH3 {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH4 {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH5 {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH6 {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH7 {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH8 {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (1 bit: 1 << 8)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH9 {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH10 {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (1 bit: 1 << 10)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH11 {
+        /// Offset (11 bits)
+        pub const offset: u32 = 11;
+        /// Mask (1 bit: 1 << 11)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH12 {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH13 {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (1 bit: 1 << 13)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH14 {
+        /// Offset (14 bits)
+        pub const offset: u32 = 14;
+        /// Mask (1 bit: 1 << 14)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH15 {
+        /// Offset (15 bits)
+        pub const offset: u32 = 15;
+        /// Mask (1 bit: 1 << 15)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH16 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
+    }
+
+    /// AWD3CH
+    pub mod AWD3CH17 {
+        /// Offset (17 bits)
+        pub const offset: u32 = 17;
+        /// Mask (1 bit: 1 << 17)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        pub use super::AWD3CH0::RW;
     }
 }
 
@@ -1900,7 +2356,7 @@ pub struct RegisterBlock {
     /// ADC sampling time register
     pub SMPR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// ADC watchdog threshold register
     pub AWD1TR: RWRegister<u32>,
@@ -1916,12 +2372,12 @@ pub struct RegisterBlock {
     /// ADC watchdog threshold register
     pub AWD3TR: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// ADC data register
     pub DR: RORegister<u32>,
 
-    _reserved3: [u32; 23],
+    _reserved3: [u8; 92],
 
     /// ADC Analog Watchdog 2 Configuration register
     pub AWD2CR: RWRegister<u32>,
@@ -1929,12 +2385,12 @@ pub struct RegisterBlock {
     /// ADC Analog Watchdog 3 Configuration register
     pub AWD3CR: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// ADC Calibration factor
     pub CALFACT: RWRegister<u32>,
 
-    _reserved5: [u32; 148],
+    _reserved5: [u8; 592],
 
     /// ADC common configuration register
     pub CCR: RWRegister<u32>,

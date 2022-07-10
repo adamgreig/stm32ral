@@ -2847,7 +2847,7 @@ pub struct RegisterBlock {
     /// Power Port E pull-down control register
     pub PDCRE: RWRegister<u32>,
 
-    _reserved1: [u32; 4],
+    _reserved1: [u8; 16],
 
     /// Power Port H pull-up control register
     pub PUCRH: RWRegister<u32>,
@@ -2855,7 +2855,7 @@ pub struct RegisterBlock {
     /// Power Port H pull-down control register
     pub PDCRH: RWRegister<u32>,
 
-    _reserved2: [u32; 8],
+    _reserved2: [u8; 32],
 
     /// CPU2 Power control register 1
     pub C2CR1: RWRegister<u32>,

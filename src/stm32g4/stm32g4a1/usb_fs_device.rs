@@ -769,7 +769,7 @@ pub struct RegisterBlock {
     /// USB endpoint n register
     pub EP7R: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// USB control register
     pub CNTR: RWRegister<u32>,

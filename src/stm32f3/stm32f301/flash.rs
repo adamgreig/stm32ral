@@ -60,12 +60,8 @@ pub mod ACR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Prefetch buffer is disabled
             pub const Disabled: u32 = 0b0;
@@ -73,6 +69,10 @@ pub mod ACR {
             /// 0b1: Prefetch buffer is enabled
             pub const Enabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Flash half cycle access enable
@@ -481,16 +481,16 @@ pub mod OBR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1: The loaded option byte and its complement do not match
             pub const OptionByteError: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Read protection Level status
@@ -499,12 +499,8 @@ pub mod OBR {
         pub const offset: u32 = 1;
         /// Mask (2 bits: 0b11 << 1)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b00: Level 0
             pub const Level0: u32 = 0b00;
@@ -515,6 +511,10 @@ pub mod OBR {
             /// 0b11: Level 2
             pub const Level2: u32 = 0b11;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// WDG_SW
@@ -523,12 +523,8 @@ pub mod OBR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Hardware watchdog
             pub const Hardware: u32 = 0b0;
@@ -536,6 +532,10 @@ pub mod OBR {
             /// 0b1: Software watchdog
             pub const Software: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// nRST_STOP
@@ -544,12 +544,8 @@ pub mod OBR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Reset generated when entering Stop mode
             pub const Reset: u32 = 0b0;
@@ -557,6 +553,10 @@ pub mod OBR {
             /// 0b1: No reset generated
             pub const NoReset: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// nRST_STDBY
@@ -565,12 +565,8 @@ pub mod OBR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Reset generated when entering Standby mode
             pub const Reset: u32 = 0b0;
@@ -578,6 +574,10 @@ pub mod OBR {
             /// 0b1: No reset generated
             pub const NoReset: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// BOOT1
@@ -586,12 +586,8 @@ pub mod OBR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Together with BOOT0, select the device boot mode
             pub const Disabled: u32 = 0b0;
@@ -599,6 +595,10 @@ pub mod OBR {
             /// 0b1: Together with BOOT0, select the device boot mode
             pub const Enabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// VDDA_MONITOR
@@ -607,12 +607,8 @@ pub mod OBR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: VDDA power supply supervisor disabled
             pub const Disabled: u32 = 0b0;
@@ -620,6 +616,10 @@ pub mod OBR {
             /// 0b1: VDDA power supply supervisor enabled
             pub const Enabled: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data0
@@ -688,7 +688,7 @@ pub struct RegisterBlock {
     /// Flash address register
     pub AR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Option byte register
     pub OBR: RORegister<u32>,

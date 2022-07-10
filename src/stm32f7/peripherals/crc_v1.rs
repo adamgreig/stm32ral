@@ -105,10 +105,8 @@ pub mod CR {
         pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b00: 32-bit polynomial
             pub const Polysize32: u32 = 0b00;
@@ -122,6 +120,8 @@ pub mod CR {
             /// 0b11: 7-bit polynomial
             pub const Polysize7: u32 = 0b11;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Reverse input data
@@ -132,10 +132,8 @@ pub mod CR {
         pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b00: Bit order not affected
             pub const Normal: u32 = 0b00;
@@ -149,6 +147,8 @@ pub mod CR {
             /// 0b11: Bit reversal done by word
             pub const Word: u32 = 0b11;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Reverse output data
@@ -159,10 +159,8 @@ pub mod CR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b0: Bit order not affected
             pub const Normal: u32 = 0b0;
@@ -170,6 +168,8 @@ pub mod CR {
             /// 0b1: Bit reversed output
             pub const Reversed: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -223,7 +223,7 @@ pub struct RegisterBlock {
     /// Control register
     pub CR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Initial CRC value
     pub INIT: RWRegister<u32>,

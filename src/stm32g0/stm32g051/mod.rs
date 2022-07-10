@@ -8,26 +8,26 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc_g050_g051_g061 as adc;
-pub use super::instances::crc_g050_g051_g061_g0b0_g0b1_g0c1 as crc;
+pub use super::instances::adc_g050_g051_g061_g0b1_g0c1 as adc;
+pub use super::instances::crc;
 pub use super::instances::dac_g051_g061_g0b1_g0c1 as dac;
 pub use super::instances::dmamux_g051_g061_g0b0_g0b1_g0c1 as dmamux;
 pub use super::instances::hdmi_cec_g051_g061_g0b1_g0c1 as hdmi_cec;
-pub use super::instances::i2c_g050_g051_g061_g0b0_g0b1_g0c1 as i2c;
-pub use super::instances::iwdg_g050_g051_g061_g0b0_g0b1_g0c1 as iwdg;
-pub use super::instances::lptim_g051_g061_g0b1_g0c1 as lptim;
+pub use super::instances::i2c_g030_g031_g041_g050_g051_g061_g070_g071_g081_g0b0 as i2c;
+pub use super::instances::iwdg_g030_g031_g041_g050_g051_g061_g0b0_g0b1_g0c1 as iwdg;
+pub use super::instances::lptim_g051_g061 as lptim;
 pub use super::instances::tim14_g050_g051_g061_g0b0_g0b1_g0c1 as tim14;
-pub use super::instances::tim15;
+pub use super::instances::tim15_g051_g061 as tim15;
 pub use super::instances::tim16_g051_g061_g0b0_g0b1_g0c1 as tim16;
 pub use super::instances::tim17_g051_g061_g0b0_g0b1_g0c1 as tim17;
-pub use super::instances::tim1_g051_g061_g0b0_g0b1_g0c1 as tim1;
+pub use super::instances::tim1_g051_g061_g0b0 as tim1;
 pub use super::instances::tim2_g051_g0b1_g0c1 as tim2;
 pub use super::instances::tim3_g051_g0b0_g0b1_g0c1 as tim3;
 pub use super::instances::tim6_g050_g051_g061_g0b0_g0b1_g0c1 as tim6;
 pub use super::instances::tim7_g050_g051_g061_g0b0_g0b1_g0c1 as tim7;
-pub use super::instances::usart_g050_g051_g061 as usart;
+pub use super::instances::usart_g051_g061 as usart;
 pub use super::instances::vrefbuf_g051_g061_g0b0_g0b1_g0c1 as vrefbuf;
-pub use super::instances::wwdg_g050_g051_g061_g0b0_g0b1_g0c1 as wwdg;
+pub use super::instances::wwdg;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]

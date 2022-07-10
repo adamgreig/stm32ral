@@ -289,7 +289,7 @@ pub struct RegisterBlock {
     /// HDP multiplexing
     pub HDP_MUX: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// HDP value
     pub HDP_VAL: RORegister<u32>,
@@ -303,7 +303,7 @@ pub struct RegisterBlock {
     /// HDP GPO value
     pub HDP_GPOVAL: RWRegister<u32>,
 
-    _reserved2: [u32; 245],
+    _reserved2: [u8; 980],
 
     /// HDP version register
     pub HDP_VERR: RORegister<u32>,

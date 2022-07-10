@@ -2221,7 +2221,7 @@ pub struct RegisterBlock {
     /// PLL configuration register
     pub PLLSYSCFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Clock interrupt enable register
     pub CIER: RWRegister<u32>,
@@ -2271,7 +2271,7 @@ pub struct RegisterBlock {
     /// Peripherals independent clock configuration register
     pub CCIPR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// RTC domain control register
     pub BDCR: RWRegister<u32>,

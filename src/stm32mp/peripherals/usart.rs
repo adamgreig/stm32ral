@@ -2073,7 +2073,7 @@ pub struct RegisterBlock {
     /// Prescaler register
     pub PRESC: RWRegister<u32>,
 
-    _reserved1: [u32; 239],
+    _reserved1: [u8; 956],
 
     /// USART Hardware Configuration register 2
     pub HWCFGR2: RORegister<u32>,

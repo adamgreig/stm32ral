@@ -953,7 +953,7 @@ pub struct RegisterBlock {
     /// Counter Register
     pub CNT: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// LPTIM configuration register 2
     pub CFGR2: RWRegister<u32>,

@@ -1105,7 +1105,7 @@ pub struct RegisterBlock {
     /// option register
     pub OR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// repetition register
     pub RCR: RWRegister<u32>,

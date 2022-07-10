@@ -1677,7 +1677,7 @@ pub struct RegisterBlock {
     /// Flash low voltage key register
     pub LVEKEYR: WORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Flash status register
     pub NSSR: RWRegister<u32>,
@@ -1694,7 +1694,7 @@ pub struct RegisterBlock {
     /// Flash ECC register
     pub ECCR: RWRegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// Flash option register
     pub OPTR: RWRegister<u32>,
@@ -1732,7 +1732,7 @@ pub struct RegisterBlock {
     /// Flash WPR2 area B address register
     pub WRP2BR: RWRegister<u32>,
 
-    _reserved3: [u32; 4],
+    _reserved3: [u8; 16],
 
     /// FLASH secure block based bank 1 register
     pub SECBB1R1: RWRegister<u32>,
@@ -1746,7 +1746,7 @@ pub struct RegisterBlock {
     /// FLASH secure block based bank 1 register
     pub SECBB1R4: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    _reserved4: [u8; 16],
 
     /// FLASH secure block based bank 2 register
     pub SECBB2R1: RWRegister<u32>,
@@ -1760,7 +1760,7 @@ pub struct RegisterBlock {
     /// FLASH secure block based bank 2 register
     pub SECBB2R4: RWRegister<u32>,
 
-    _reserved5: [u32; 4],
+    _reserved5: [u8; 16],
 
     /// FLASH secure HDP control register
     pub SECHDPCR: RWRegister<u32>,

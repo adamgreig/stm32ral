@@ -1596,63 +1596,62 @@ pub struct RegisterBlock {
     /// endpoint 0 register
     pub EP0R: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// endpoint 1 register
     pub EP1R: RWRegister<u16>,
 
-    _reserved2: [u16; 1],
+    _reserved2: [u8; 2],
 
     /// endpoint 2 register
     pub EP2R: RWRegister<u16>,
 
-    _reserved3: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// endpoint 3 register
     pub EP3R: RWRegister<u16>,
 
-    _reserved4: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// endpoint 4 register
     pub EP4R: RWRegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved5: [u8; 2],
 
     /// endpoint 5 register
     pub EP5R: RWRegister<u16>,
 
-    _reserved6: [u16; 1],
+    _reserved6: [u8; 2],
 
     /// endpoint 6 register
     pub EP6R: RWRegister<u16>,
 
-    _reserved7: [u16; 1],
+    _reserved7: [u8; 2],
 
     /// endpoint 7 register
     pub EP7R: RWRegister<u16>,
 
-    _reserved8: [u32; 8],
-    _reserved9: [u16; 1],
+    _reserved8: [u8; 34],
 
     /// control register
     pub CNTR: RWRegister<u16>,
 
-    _reserved10: [u16; 1],
+    _reserved9: [u8; 2],
 
     /// interrupt status register
     pub ISTR: RWRegister<u16>,
 
-    _reserved11: [u16; 1],
+    _reserved10: [u8; 2],
 
     /// frame number register
     pub FNR: RORegister<u16>,
 
-    _reserved12: [u16; 1],
+    _reserved11: [u8; 2],
 
     /// device address
     pub DADDR: RWRegister<u16>,
 
-    _reserved13: [u16; 1],
+    _reserved12: [u8; 2],
 
     /// Buffer table address
     pub BTABLE: RWRegister<u16>,
@@ -1678,7 +1677,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT1_RX: RWRegister<u16>,
 
-    _reserved14: [u16; 1],
+    _reserved13: [u8; 2],
 
     /// Transmission byte count 0
     pub COUNT2_TX: RWRegister<u16>,
@@ -1689,7 +1688,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT2_RX: RWRegister<u16>,
 
-    _reserved15: [u16; 1],
+    _reserved14: [u8; 2],
 
     /// Transmission byte count 0
     pub COUNT3_TX: RWRegister<u16>,
@@ -1700,7 +1699,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT3_RX: RWRegister<u16>,
 
-    _reserved16: [u16; 1],
+    _reserved15: [u8; 2],
 
     /// Transmission byte count 0
     pub COUNT4_TX: RWRegister<u16>,
@@ -1711,7 +1710,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT4_RX: RWRegister<u16>,
 
-    _reserved17: [u16; 1],
+    _reserved16: [u8; 2],
 
     /// Transmission byte count 0
     pub COUNT5_TX: RWRegister<u16>,
@@ -1722,7 +1721,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT5_RX: RWRegister<u16>,
 
-    _reserved18: [u16; 1],
+    _reserved17: [u8; 2],
 
     /// Transmission byte count 0
     pub COUNT6_TX: RWRegister<u16>,
@@ -1733,7 +1732,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT6_RX: RWRegister<u16>,
 
-    _reserved19: [u16; 1],
+    _reserved18: [u8; 2],
 
     /// Transmission byte count 0
     pub COUNT7_TX: RWRegister<u16>,
@@ -1744,7 +1743,7 @@ pub struct RegisterBlock {
     /// Reception byte count 0
     pub COUNT7_RX: RWRegister<u16>,
 
-    _reserved20: [u32; 1],
+    _reserved19: [u8; 4],
 
     /// Reception buffer address 0
     pub ADDR7_RX: RWRegister<u16>,

@@ -2052,7 +2052,7 @@ pub struct RegisterBlock {
     /// OTG_FS device status register (OTG_FS_DSTS)
     pub OTG_FS_DSTS: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// OTG_FS device IN endpoint common interrupt mask register (OTG_FS_DIEPMSK)
     pub OTG_FS_DIEPMSK: RWRegister<u32>,
@@ -2066,7 +2066,7 @@ pub struct RegisterBlock {
     /// OTG_FS all endpoints interrupt mask register (OTG_FS_DAINTMSK)
     pub OTG_FS_DAINTMSK: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// OTG_FS device VBUS discharge time register
     pub OTG_FS_DVBUSDIS: RWRegister<u32>,
@@ -2074,217 +2074,217 @@ pub struct RegisterBlock {
     /// OTG_FS device VBUS pulsing time register
     pub OTG_FS_DVBUSPULSE: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// OTG_FS device IN endpoint FIFO empty interrupt mask register
     pub OTG_FS_DIEPEMPMSK: RWRegister<u32>,
 
-    _reserved4: [u32; 50],
+    _reserved4: [u8; 200],
 
     /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
     pub OTG_FS_DIEPCTL0: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// device endpoint-x interrupt register
     pub OTG_FS_DIEPINT0: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// device endpoint-0 transfer size register
     pub OTG_FS_DIEPTSIZ0: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
     pub OTG_FS_DTXFSTS0: RORegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// OTG device endpoint-1 control register
     pub OTG_FS_DIEPCTL1: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// device endpoint-1 interrupt register
     pub OTG_FS_DIEPINT1: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// device endpoint-1 transfer size register
     pub OTG_FS_DIEPTSIZ1: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
     pub OTG_FS_DTXFSTS1: RORegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// OTG device endpoint-2 control register
     pub OTG_FS_DIEPCTL2: RWRegister<u32>,
 
-    _reserved13: [u32; 1],
+    _reserved13: [u8; 4],
 
     /// device endpoint-2 interrupt register
     pub OTG_FS_DIEPINT2: RWRegister<u32>,
 
-    _reserved14: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// device endpoint-2 transfer size register
     pub OTG_FS_DIEPTSIZ2: RWRegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
     pub OTG_FS_DTXFSTS2: RORegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved16: [u8; 4],
 
     /// OTG device endpoint-3 control register
     pub OTG_FS_DIEPCTL3: RWRegister<u32>,
 
-    _reserved17: [u32; 1],
+    _reserved17: [u8; 4],
 
     /// device endpoint-3 interrupt register
     pub OTG_FS_DIEPINT3: RWRegister<u32>,
 
-    _reserved18: [u32; 1],
+    _reserved18: [u8; 4],
 
     /// device endpoint-3 transfer size register
     pub OTG_FS_DIEPTSIZ3: RWRegister<u32>,
 
-    _reserved19: [u32; 1],
+    _reserved19: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
     pub OTG_FS_DTXFSTS3: RORegister<u32>,
 
-    _reserved20: [u32; 1],
+    _reserved20: [u8; 4],
 
     /// OTG device endpoint-4 control register
     pub OTG_FS_DIEPCTL4: RWRegister<u32>,
 
-    _reserved21: [u32; 1],
+    _reserved21: [u8; 4],
 
     /// device endpoint-4 interrupt register
     pub OTG_FS_DIEPINT4: RWRegister<u32>,
 
-    _reserved22: [u32; 1],
+    _reserved22: [u8; 4],
 
     /// device endpoint-4 transfer size register
     pub OTG_FS_DIEPTSIZ4: RWRegister<u32>,
 
-    _reserved23: [u32; 1],
+    _reserved23: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
     pub OTG_FS_DTXFSTS4: RWRegister<u32>,
 
-    _reserved24: [u32; 1],
+    _reserved24: [u8; 4],
 
     /// OTG device endpoint-5 control register
     pub OTG_FS_DIEPCTL5: RWRegister<u32>,
 
-    _reserved25: [u32; 1],
+    _reserved25: [u8; 4],
 
     /// device endpoint-5 interrupt register
     pub OTG_FS_DIEPINT5: RWRegister<u32>,
 
-    _reserved26: [u32; 1],
+    _reserved26: [u8; 4],
 
     /// device endpoint-5 transfer size register
     pub OTG_FS_DIEPTSIZ5: RWRegister<u32>,
 
-    _reserved27: [u32; 1],
+    _reserved27: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
     pub OTG_FS_DTXFSTS5: RWRegister<u32>,
 
-    _reserved28: [u32; 81],
+    _reserved28: [u8; 324],
 
     /// device endpoint-0 control register
     pub OTG_FS_DOEPCTL0: RWRegister<u32>,
 
-    _reserved29: [u32; 1],
+    _reserved29: [u8; 4],
 
     /// device endpoint-0 interrupt register
     pub OTG_FS_DOEPINT0: RWRegister<u32>,
 
-    _reserved30: [u32; 1],
+    _reserved30: [u8; 4],
 
     /// device OUT endpoint-0 transfer size register
     pub OTG_FS_DOEPTSIZ0: RWRegister<u32>,
 
-    _reserved31: [u32; 3],
+    _reserved31: [u8; 12],
 
     /// device endpoint-1 control register
     pub OTG_FS_DOEPCTL1: RWRegister<u32>,
 
-    _reserved32: [u32; 1],
+    _reserved32: [u8; 4],
 
     /// device endpoint-1 interrupt register
     pub OTG_FS_DOEPINT1: RWRegister<u32>,
 
-    _reserved33: [u32; 1],
+    _reserved33: [u8; 4],
 
     /// device OUT endpoint-1 transfer size register
     pub OTG_FS_DOEPTSIZ1: RWRegister<u32>,
 
-    _reserved34: [u32; 3],
+    _reserved34: [u8; 12],
 
     /// device endpoint-2 control register
     pub OTG_FS_DOEPCTL2: RWRegister<u32>,
 
-    _reserved35: [u32; 1],
+    _reserved35: [u8; 4],
 
     /// device endpoint-2 interrupt register
     pub OTG_FS_DOEPINT2: RWRegister<u32>,
 
-    _reserved36: [u32; 1],
+    _reserved36: [u8; 4],
 
     /// device OUT endpoint-2 transfer size register
     pub OTG_FS_DOEPTSIZ2: RWRegister<u32>,
 
-    _reserved37: [u32; 3],
+    _reserved37: [u8; 12],
 
     /// device endpoint-3 control register
     pub OTG_FS_DOEPCTL3: RWRegister<u32>,
 
-    _reserved38: [u32; 1],
+    _reserved38: [u8; 4],
 
     /// device endpoint-3 interrupt register
     pub OTG_FS_DOEPINT3: RWRegister<u32>,
 
-    _reserved39: [u32; 1],
+    _reserved39: [u8; 4],
 
     /// device OUT endpoint-3 transfer size register
     pub OTG_FS_DOEPTSIZ3: RWRegister<u32>,
 
-    _reserved40: [u32; 3],
+    _reserved40: [u8; 12],
 
     /// device endpoint-4 control register
     pub OTG_FS_DOEPCTL4: RWRegister<u32>,
 
-    _reserved41: [u32; 1],
+    _reserved41: [u8; 4],
 
     /// device endpoint-4 interrupt register
     pub OTG_FS_DOEPINT4: RWRegister<u32>,
 
-    _reserved42: [u32; 1],
+    _reserved42: [u8; 4],
 
     /// device OUT endpoint-4 transfer size register
     pub OTG_FS_DOEPTSIZ4: RWRegister<u32>,
 
-    _reserved43: [u32; 3],
+    _reserved43: [u8; 12],
 
     /// device endpoint-5 control register
     pub OTG_FS_DOEPCTL5: RWRegister<u32>,
 
-    _reserved44: [u32; 1],
+    _reserved44: [u8; 4],
 
     /// device endpoint-5 interrupt register
     pub OTG_FS_DOEPINT5: RWRegister<u32>,
 
-    _reserved45: [u32; 1],
+    _reserved45: [u8; 4],
 
     /// device OUT endpoint-5 transfer size register
     pub OTG_FS_DOEPTSIZ5: RWRegister<u32>,

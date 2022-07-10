@@ -4684,12 +4684,12 @@ pub struct RegisterBlock {
     /// MDMA global interrupt/status register
     pub MDMA_GISR0: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// MDMA secure global interrupt/status register
     pub MDMA_SGISR0: RORegister<u32>,
 
-    _reserved2: [u32; 13],
+    _reserved2: [u8; 52],
 
     /// MDMA channel 0 interrupt/status register
     pub MDMA_C0ISR: RORegister<u32>,
@@ -4724,7 +4724,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C0TBR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C0MAR: RWRegister<u32>,
@@ -4732,7 +4732,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C0MDR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// MDMA channel 1 interrupt/status register
     pub MDMA_C1ISR: RORegister<u32>,
@@ -4767,7 +4767,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C1TBR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C1MAR: RWRegister<u32>,
@@ -4775,7 +4775,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C1MDR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// MDMA channel 2 interrupt/status register
     pub MDMA_C2ISR: RORegister<u32>,
@@ -4810,7 +4810,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C2TBR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C2MAR: RWRegister<u32>,
@@ -4818,7 +4818,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C2MDR: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     /// MDMA channel 3 interrupt/status register
     pub MDMA_C3ISR: RORegister<u32>,
@@ -4853,7 +4853,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C3TBR: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C3MAR: RWRegister<u32>,
@@ -4861,7 +4861,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C3MDR: RWRegister<u32>,
 
-    _reserved10: [u32; 2],
+    _reserved10: [u8; 8],
 
     /// MDMA channel 4 interrupt/status register
     pub MDMA_C4ISR: RORegister<u32>,
@@ -4896,7 +4896,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C4TBR: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C4MAR: RWRegister<u32>,
@@ -4904,7 +4904,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C4MDR: RWRegister<u32>,
 
-    _reserved12: [u32; 2],
+    _reserved12: [u8; 8],
 
     /// MDMA channel 5 interrupt/status register
     pub MDMA_C5ISR: RORegister<u32>,
@@ -4939,7 +4939,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C5TBR: RWRegister<u32>,
 
-    _reserved13: [u32; 1],
+    _reserved13: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C5MAR: RWRegister<u32>,
@@ -4947,7 +4947,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C5MDR: RWRegister<u32>,
 
-    _reserved14: [u32; 2],
+    _reserved14: [u8; 8],
 
     /// MDMA channel 6 interrupt/status register
     pub MDMA_C6ISR: RORegister<u32>,
@@ -4982,7 +4982,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C6TBR: RWRegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C6MAR: RWRegister<u32>,
@@ -4990,7 +4990,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C6MDR: RWRegister<u32>,
 
-    _reserved16: [u32; 2],
+    _reserved16: [u8; 8],
 
     /// MDMA channel 7 interrupt/status register
     pub MDMA_C7ISR: RORegister<u32>,
@@ -5025,7 +5025,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C7TBR: RWRegister<u32>,
 
-    _reserved17: [u32; 1],
+    _reserved17: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C7MAR: RWRegister<u32>,
@@ -5033,7 +5033,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C7MDR: RWRegister<u32>,
 
-    _reserved18: [u32; 2],
+    _reserved18: [u8; 8],
 
     /// MDMA channel 8 interrupt/status register
     pub MDMA_C8ISR: RORegister<u32>,
@@ -5068,7 +5068,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C8TBR: RWRegister<u32>,
 
-    _reserved19: [u32; 1],
+    _reserved19: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C8MAR: RWRegister<u32>,
@@ -5076,7 +5076,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C8MDR: RWRegister<u32>,
 
-    _reserved20: [u32; 2],
+    _reserved20: [u8; 8],
 
     /// MDMA channel 9 interrupt/status register
     pub MDMA_C9ISR: RORegister<u32>,
@@ -5111,7 +5111,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C9TBR: RWRegister<u32>,
 
-    _reserved21: [u32; 1],
+    _reserved21: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C9MAR: RWRegister<u32>,
@@ -5119,7 +5119,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C9MDR: RWRegister<u32>,
 
-    _reserved22: [u32; 2],
+    _reserved22: [u8; 8],
 
     /// MDMA channel 10 interrupt/status register
     pub MDMA_C10ISR: RORegister<u32>,
@@ -5154,7 +5154,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C10TBR: RWRegister<u32>,
 
-    _reserved23: [u32; 1],
+    _reserved23: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C10MAR: RWRegister<u32>,
@@ -5162,7 +5162,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C10MDR: RWRegister<u32>,
 
-    _reserved24: [u32; 2],
+    _reserved24: [u8; 8],
 
     /// MDMA channel 11 interrupt/status register
     pub MDMA_C11ISR: RORegister<u32>,
@@ -5197,7 +5197,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C11TBR: RWRegister<u32>,
 
-    _reserved25: [u32; 1],
+    _reserved25: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C11MAR: RWRegister<u32>,
@@ -5205,7 +5205,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C11MDR: RWRegister<u32>,
 
-    _reserved26: [u32; 2],
+    _reserved26: [u8; 8],
 
     /// MDMA channel 12 interrupt/status register
     pub MDMA_C12ISR: RORegister<u32>,
@@ -5240,7 +5240,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C12TBR: RWRegister<u32>,
 
-    _reserved27: [u32; 1],
+    _reserved27: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C12MAR: RWRegister<u32>,
@@ -5248,7 +5248,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C12MDR: RWRegister<u32>,
 
-    _reserved28: [u32; 2],
+    _reserved28: [u8; 8],
 
     /// MDMA channel 13 interrupt/status register
     pub MDMA_C13ISR: RORegister<u32>,
@@ -5283,7 +5283,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C13TBR: RWRegister<u32>,
 
-    _reserved29: [u32; 1],
+    _reserved29: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C13MAR: RWRegister<u32>,
@@ -5291,7 +5291,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C13MDR: RWRegister<u32>,
 
-    _reserved30: [u32; 2],
+    _reserved30: [u8; 8],
 
     /// MDMA channel 14 interrupt/status register
     pub MDMA_C14ISR: RORegister<u32>,
@@ -5326,7 +5326,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C14TBR: RWRegister<u32>,
 
-    _reserved31: [u32; 1],
+    _reserved31: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C14MAR: RWRegister<u32>,
@@ -5334,7 +5334,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C14MDR: RWRegister<u32>,
 
-    _reserved32: [u32; 2],
+    _reserved32: [u8; 8],
 
     /// MDMA channel 15 interrupt/status register
     pub MDMA_C15ISR: RORegister<u32>,
@@ -5369,7 +5369,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C15TBR: RWRegister<u32>,
 
-    _reserved33: [u32; 1],
+    _reserved33: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C15MAR: RWRegister<u32>,
@@ -5377,7 +5377,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C15MDR: RWRegister<u32>,
 
-    _reserved34: [u32; 2],
+    _reserved34: [u8; 8],
 
     /// MDMA channel 16 interrupt/status register
     pub MDMA_C16ISR: RORegister<u32>,
@@ -5412,7 +5412,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C16TBR: RWRegister<u32>,
 
-    _reserved35: [u32; 1],
+    _reserved35: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C16MAR: RWRegister<u32>,
@@ -5420,7 +5420,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C16MDR: RWRegister<u32>,
 
-    _reserved36: [u32; 2],
+    _reserved36: [u8; 8],
 
     /// MDMA channel 17 interrupt/status register
     pub MDMA_C17ISR: RORegister<u32>,
@@ -5455,7 +5455,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C17TBR: RWRegister<u32>,
 
-    _reserved37: [u32; 1],
+    _reserved37: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C17MAR: RWRegister<u32>,
@@ -5463,7 +5463,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C17MDR: RWRegister<u32>,
 
-    _reserved38: [u32; 2],
+    _reserved38: [u8; 8],
 
     /// MDMA channel 18 interrupt/status register
     pub MDMA_C18ISR: RORegister<u32>,
@@ -5498,7 +5498,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C18TBR: RWRegister<u32>,
 
-    _reserved39: [u32; 1],
+    _reserved39: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C18MAR: RWRegister<u32>,
@@ -5506,7 +5506,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C18MDR: RWRegister<u32>,
 
-    _reserved40: [u32; 2],
+    _reserved40: [u8; 8],
 
     /// MDMA channel 19 interrupt/status register
     pub MDMA_C19ISR: RORegister<u32>,
@@ -5541,7 +5541,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C19TBR: RWRegister<u32>,
 
-    _reserved41: [u32; 1],
+    _reserved41: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C19MAR: RWRegister<u32>,
@@ -5549,7 +5549,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C19MDR: RWRegister<u32>,
 
-    _reserved42: [u32; 2],
+    _reserved42: [u8; 8],
 
     /// MDMA channel 20 interrupt/status register
     pub MDMA_C20ISR: RORegister<u32>,
@@ -5584,7 +5584,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C20TBR: RWRegister<u32>,
 
-    _reserved43: [u32; 1],
+    _reserved43: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C20MAR: RWRegister<u32>,
@@ -5592,7 +5592,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C20MDR: RWRegister<u32>,
 
-    _reserved44: [u32; 2],
+    _reserved44: [u8; 8],
 
     /// MDMA channel 21 interrupt/status register
     pub MDMA_C21ISR: RORegister<u32>,
@@ -5627,7 +5627,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C21TBR: RWRegister<u32>,
 
-    _reserved45: [u32; 1],
+    _reserved45: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C21MAR: RWRegister<u32>,
@@ -5635,7 +5635,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C21MDR: RWRegister<u32>,
 
-    _reserved46: [u32; 2],
+    _reserved46: [u8; 8],
 
     /// MDMA channel 22 interrupt/status register
     pub MDMA_C22ISR: RORegister<u32>,
@@ -5670,7 +5670,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C22TBR: RWRegister<u32>,
 
-    _reserved47: [u32; 1],
+    _reserved47: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C22MAR: RWRegister<u32>,
@@ -5678,7 +5678,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C22MDR: RWRegister<u32>,
 
-    _reserved48: [u32; 2],
+    _reserved48: [u8; 8],
 
     /// MDMA channel 23 interrupt/status register
     pub MDMA_C23ISR: RORegister<u32>,
@@ -5713,7 +5713,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C23TBR: RWRegister<u32>,
 
-    _reserved49: [u32; 1],
+    _reserved49: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C23MAR: RWRegister<u32>,
@@ -5721,7 +5721,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C23MDR: RWRegister<u32>,
 
-    _reserved50: [u32; 2],
+    _reserved50: [u8; 8],
 
     /// MDMA channel 24 interrupt/status register
     pub MDMA_C24ISR: RORegister<u32>,
@@ -5756,7 +5756,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C24TBR: RWRegister<u32>,
 
-    _reserved51: [u32; 1],
+    _reserved51: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C24MAR: RWRegister<u32>,
@@ -5764,7 +5764,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C24MDR: RWRegister<u32>,
 
-    _reserved52: [u32; 2],
+    _reserved52: [u8; 8],
 
     /// MDMA channel 25 interrupt/status register
     pub MDMA_C25ISR: RORegister<u32>,
@@ -5799,7 +5799,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C25TBR: RWRegister<u32>,
 
-    _reserved53: [u32; 1],
+    _reserved53: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C25MAR: RWRegister<u32>,
@@ -5807,7 +5807,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C25MDR: RWRegister<u32>,
 
-    _reserved54: [u32; 2],
+    _reserved54: [u8; 8],
 
     /// MDMA channel 26 interrupt/status register
     pub MDMA_C26ISR: RORegister<u32>,
@@ -5842,7 +5842,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C26TBR: RWRegister<u32>,
 
-    _reserved55: [u32; 1],
+    _reserved55: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C26MAR: RWRegister<u32>,
@@ -5850,7 +5850,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C26MDR: RWRegister<u32>,
 
-    _reserved56: [u32; 2],
+    _reserved56: [u8; 8],
 
     /// MDMA channel 27 interrupt/status register
     pub MDMA_C27ISR: RORegister<u32>,
@@ -5885,7 +5885,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C27TBR: RWRegister<u32>,
 
-    _reserved57: [u32; 1],
+    _reserved57: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C27MAR: RWRegister<u32>,
@@ -5893,7 +5893,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C27MDR: RWRegister<u32>,
 
-    _reserved58: [u32; 2],
+    _reserved58: [u8; 8],
 
     /// MDMA channel 28 interrupt/status register
     pub MDMA_C28ISR: RORegister<u32>,
@@ -5928,7 +5928,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C28TBR: RWRegister<u32>,
 
-    _reserved59: [u32; 1],
+    _reserved59: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C28MAR: RWRegister<u32>,
@@ -5936,7 +5936,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C28MDR: RWRegister<u32>,
 
-    _reserved60: [u32; 2],
+    _reserved60: [u8; 8],
 
     /// MDMA channel 29 interrupt/status register
     pub MDMA_C29ISR: RORegister<u32>,
@@ -5971,7 +5971,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C29TBR: RWRegister<u32>,
 
-    _reserved61: [u32; 1],
+    _reserved61: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C29MAR: RWRegister<u32>,
@@ -5979,7 +5979,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C29MDR: RWRegister<u32>,
 
-    _reserved62: [u32; 2],
+    _reserved62: [u8; 8],
 
     /// MDMA channel 30 interrupt/status register
     pub MDMA_C30ISR: RORegister<u32>,
@@ -6014,7 +6014,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C30TBR: RWRegister<u32>,
 
-    _reserved63: [u32; 1],
+    _reserved63: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C30MAR: RWRegister<u32>,
@@ -6022,7 +6022,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x24).
     pub MDMA_C30MDR: RWRegister<u32>,
 
-    _reserved64: [u32; 2],
+    _reserved64: [u8; 8],
 
     /// MDMA channel 31 interrupt/status register
     pub MDMA_C31ISR: RORegister<u32>,
@@ -6057,7 +6057,7 @@ pub struct RegisterBlock {
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x18).
     pub MDMA_C31TBR: RWRegister<u32>,
 
-    _reserved65: [u32; 1],
+    _reserved65: [u8; 4],
 
     /// In Linked List mode, at the end of a block (single or last block in repeated block transfer mode), this register will be loaded from memory (from address given by current LAR\[31:0\] + 0x20).
     pub MDMA_C31MAR: RWRegister<u32>,

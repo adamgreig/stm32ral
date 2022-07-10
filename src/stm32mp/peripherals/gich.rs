@@ -612,27 +612,27 @@ pub struct RegisterBlock {
     /// GICH virtual machine control register
     pub GICH_VMCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// GICH maintenance interrupt status register
     pub GICH_MISR: RORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// GICH end of interrupt status register
     pub GICH_EISR0: RORegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// GICH empty list status register
     pub GICH_ELSR0: RORegister<u32>,
 
-    _reserved4: [u32; 47],
+    _reserved4: [u8; 188],
 
     /// GICH active priority register
     pub GICH_APR0: RWRegister<u32>,
 
-    _reserved5: [u32; 3],
+    _reserved5: [u8; 12],
 
     /// GICH list register 0
     pub GICH_LR0: RWRegister<u32>,

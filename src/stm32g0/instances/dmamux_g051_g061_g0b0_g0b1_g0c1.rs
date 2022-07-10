@@ -8,9 +8,7 @@
 pub use crate::stm32g0::peripherals::dmamux_v2::Instance;
 pub use crate::stm32g0::peripherals::dmamux_v2::{RegisterBlock, ResetValues};
 pub use crate::stm32g0::peripherals::dmamux_v2::{
-    DMAMUX_C0CR, DMAMUX_C1CR, DMAMUX_C2CR, DMAMUX_C3CR, DMAMUX_C4CR, DMAMUX_C5CR, DMAMUX_C6CR,
-    DMAMUX_CFR, DMAMUX_CSR, DMAMUX_RG0CR, DMAMUX_RG1CR, DMAMUX_RG2CR, DMAMUX_RG3CR, DMAMUX_RGCFR,
-    DMAMUX_RGSR,
+    C0CR, C1CR, C2CR, C3CR, C4CR, C5CR, C6CR, CFR, CSR, RG0CR, RG1CR, RG2CR, RG3CR, RGCFR, RGSR,
 };
 
 /// Access functions for the DMAMUX peripheral instance
@@ -28,21 +26,21 @@ pub mod DMAMUX {
 
     /// Reset values for each field in DMAMUX
     pub const reset: ResetValues = ResetValues {
-        DMAMUX_C0CR: 0x00000000,
-        DMAMUX_C1CR: 0x00000000,
-        DMAMUX_C2CR: 0x00000000,
-        DMAMUX_C3CR: 0x00000000,
-        DMAMUX_C4CR: 0x00000000,
-        DMAMUX_C5CR: 0x00000000,
-        DMAMUX_C6CR: 0x00000000,
-        DMAMUX_CSR: 0x00000000,
-        DMAMUX_CFR: 0x00000000,
-        DMAMUX_RG0CR: 0x00000000,
-        DMAMUX_RG1CR: 0x00000000,
-        DMAMUX_RG2CR: 0x00000000,
-        DMAMUX_RG3CR: 0x00000000,
-        DMAMUX_RGSR: 0x00000000,
-        DMAMUX_RGCFR: 0x00000000,
+        C0CR: 0x00000000,
+        C1CR: 0x00000000,
+        C2CR: 0x00000000,
+        C3CR: 0x00000000,
+        C4CR: 0x00000000,
+        C5CR: 0x00000000,
+        C6CR: 0x00000000,
+        CSR: 0x00000000,
+        CFR: 0x00000000,
+        RG0CR: 0x00000000,
+        RG1CR: 0x00000000,
+        RG2CR: 0x00000000,
+        RG3CR: 0x00000000,
+        RGSR: 0x00000000,
+        RGCFR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

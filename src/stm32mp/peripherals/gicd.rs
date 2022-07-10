@@ -3852,7 +3852,7 @@ pub struct RegisterBlock {
     /// GICD implementer identification register
     pub GICD_IIDR: RORegister<u32>,
 
-    _reserved1: [u32; 29],
+    _reserved1: [u8; 116],
 
     /// For interrupts ID
     pub GICD_IGROUPR0: RWRegister<u32>,
@@ -3881,7 +3881,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_IGROUPR8: RWRegister<u32>,
 
-    _reserved2: [u32; 23],
+    _reserved2: [u8; 92],
 
     /// For interrupts ID = 0 to ID = 31
     pub GICD_ISENABLER0: RWRegister<u32>,
@@ -3910,7 +3910,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_ISENABLER8: RWRegister<u32>,
 
-    _reserved3: [u32; 23],
+    _reserved3: [u8; 92],
 
     /// For interrupts ID = 0 to ID = 31
     pub GICD_ICENABLER0: RWRegister<u32>,
@@ -3939,7 +3939,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_ICENABLER8: RWRegister<u32>,
 
-    _reserved4: [u32; 23],
+    _reserved4: [u8; 92],
 
     /// For interrupts ID
     pub GICD_ISPENDR0: RWRegister<u32>,
@@ -3968,7 +3968,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_ISPENDR8: RWRegister<u32>,
 
-    _reserved5: [u32; 23],
+    _reserved5: [u8; 92],
 
     /// For interrupts ID
     pub GICD_ICPENDR0: RWRegister<u32>,
@@ -3997,7 +3997,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_ICPENDR8: RWRegister<u32>,
 
-    _reserved6: [u32; 23],
+    _reserved6: [u8; 92],
 
     /// For interrupts ID
     pub GICD_ISACTIVER0: RWRegister<u32>,
@@ -4026,7 +4026,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_ISACTIVER8: RWRegister<u32>,
 
-    _reserved7: [u32; 23],
+    _reserved7: [u8; 92],
 
     /// For interrupts ID
     pub GICD_ICACTIVER0: RWRegister<u32>,
@@ -4055,7 +4055,7 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_ICACTIVER8: RWRegister<u32>,
 
-    _reserved8: [u32; 23],
+    _reserved8: [u8; 92],
 
     /// GICD interrupt priority register 0
     pub GICD_IPRIORITYR0: RWRegister<u32>,
@@ -4273,7 +4273,7 @@ pub struct RegisterBlock {
     /// GICD interrupt priority register 71
     pub GICD_IPRIORITYR71: RWRegister<u32>,
 
-    _reserved9: [u32; 184],
+    _reserved9: [u8; 736],
 
     /// For existing SGIs and PPIs, read of CPU targets field returns the number of the processor performing the read.
     pub GICD_ITARGETSR0: RORegister<u32>,
@@ -4491,7 +4491,7 @@ pub struct RegisterBlock {
     /// GICD interrupt processor target register 71
     pub GICD_ITARGETSR71: RWRegister<u32>,
 
-    _reserved10: [u32; 184],
+    _reserved10: [u8; 736],
 
     /// GICD interrupt configuration register
     pub GICD_ICFGR0: RWRegister<u32>,
@@ -4547,12 +4547,12 @@ pub struct RegisterBlock {
     /// GICD interrupt configuration register 17
     pub GICD_ICFGR17: RWRegister<u32>,
 
-    _reserved11: [u32; 46],
+    _reserved11: [u8; 184],
 
     /// GICD private peripheral interrupt status register
     pub GICD_PPISR: RORegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// For interrupts ID = SPI number+32, from SPI \[x*32+31\] to SPI \[x*32\]
     pub GICD_SPISR1: RORegister<u32>,
@@ -4575,12 +4575,12 @@ pub struct RegisterBlock {
     /// For interrupts ID
     pub GICD_SPISR7: RORegister<u32>,
 
-    _reserved13: [u32; 119],
+    _reserved13: [u8; 476],
 
     /// GICD software generated interrupt register
     pub GICD_SGIR: WORegister<u32>,
 
-    _reserved14: [u32; 3],
+    _reserved14: [u8; 12],
 
     /// For SGI x*4 to SGI x*4+3
     pub GICD_CPENDSGIR0: RWRegister<u32>,
@@ -4606,7 +4606,7 @@ pub struct RegisterBlock {
     /// For SGI x*4 to SGI x*4+3
     pub GICD_SPENDSGIR3: RWRegister<u32>,
 
-    _reserved15: [u32; 40],
+    _reserved15: [u8; 160],
 
     /// GICD peripheral ID4 register
     pub GICD_PIDR4: RORegister<u32>,

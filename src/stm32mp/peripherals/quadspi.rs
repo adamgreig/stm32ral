@@ -942,7 +942,7 @@ pub struct RegisterBlock {
     /// QUADSPI low-power timeout register
     pub QUADSPI_LPTR: RWRegister<u32>,
 
-    _reserved1: [u32; 239],
+    _reserved1: [u8; 956],
 
     /// QUADSPI HW configuration register
     pub QUADSPI_HWCFGR: RORegister<u32>,

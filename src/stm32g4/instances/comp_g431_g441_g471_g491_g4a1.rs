@@ -7,7 +7,7 @@
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::comp_v1::Instance;
 pub use crate::stm32g4::peripherals::comp_v1::{RegisterBlock, ResetValues};
-pub use crate::stm32g4::peripherals::comp_v1::{COMP_C1CSR, COMP_C2CSR, COMP_C3CSR, COMP_C4CSR};
+pub use crate::stm32g4::peripherals::comp_v1::{C1CSR, C2CSR, C3CSR, C4CSR};
 
 /// Access functions for the COMP peripheral instance
 pub mod COMP {
@@ -24,10 +24,10 @@ pub mod COMP {
 
     /// Reset values for each field in COMP
     pub const reset: ResetValues = ResetValues {
-        COMP_C1CSR: 0x00000000,
-        COMP_C2CSR: 0x00000000,
-        COMP_C3CSR: 0x00000000,
-        COMP_C4CSR: 0x00000000,
+        C1CSR: 0x00000000,
+        C2CSR: 0x00000000,
+        C3CSR: 0x00000000,
+        C4CSR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

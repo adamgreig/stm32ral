@@ -1100,7 +1100,7 @@ pub struct RegisterBlock {
     /// Flash ECC register
     pub ECCR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Flash option register
     pub OPTR: RWRegister<u32>,
@@ -1117,7 +1117,7 @@ pub struct RegisterBlock {
     /// Flash Bank 1 WRP area B address register
     pub WRP1BR: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// Flash Bank 2 PCROP Start address register
     pub PCROP2SR: RWRegister<u32>,

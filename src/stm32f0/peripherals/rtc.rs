@@ -1453,12 +1453,12 @@ pub struct RegisterBlock {
     /// prescaler register
     pub PRER: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// alarm A register
     pub ALRMAR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// write protection register
     pub WPR: WORegister<u32>,
@@ -1487,7 +1487,7 @@ pub struct RegisterBlock {
     /// alarm A sub second register
     pub ALRMASSR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// backup register
     pub BKP0R: RWRegister<u32>,

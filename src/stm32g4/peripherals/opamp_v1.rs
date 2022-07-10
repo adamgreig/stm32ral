@@ -1488,7 +1488,7 @@ pub struct RegisterBlock {
     /// OPAMP3 control/status register
     pub OPAMP3_CSR: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// OPAMP1 control/status register
     pub OPAMP1_TCMR: RWRegister<u32>,

@@ -985,14 +985,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1716,20 +1716,6 @@ pub mod CCER {
 /// counter
 pub mod CNT {
 
-    /// High counter value (TIM2 only)
-    pub mod CNT_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// Counter value
     pub mod CNT {
         /// Offset (0 bits)
@@ -1766,20 +1752,6 @@ pub mod PSC {
 /// auto-reload register
 pub mod ARR {
 
-    /// High Auto-reload value (TIM2 only)
-    pub mod ARR_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
     /// Auto-reload value
     pub mod ARR {
         /// Offset (0 bits)
@@ -1797,20 +1769,6 @@ pub mod ARR {
 
 /// capture/compare register
 pub mod CCR1 {
-
-    /// High Capture/Compare 1 value (TIM2 only)
-    pub mod CCR1_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 
     /// Capture/Compare value
     pub mod CCR {
@@ -1830,19 +1788,16 @@ pub mod CCR1 {
 /// capture/compare register
 pub mod CCR2 {
     pub use super::CCR1::CCR;
-    pub use super::CCR1::CCR1_H;
 }
 
 /// capture/compare register
 pub mod CCR3 {
     pub use super::CCR1::CCR;
-    pub use super::CCR1::CCR1_H;
 }
 
 /// capture/compare register
 pub mod CCR4 {
     pub use super::CCR1::CCR;
-    pub use super::CCR1::CCR1_H;
 }
 
 /// DMA control register
@@ -1936,7 +1891,7 @@ pub struct RegisterBlock {
     /// auto-reload register
     pub ARR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// capture/compare register
     pub CCR1: RWRegister<u32>,
@@ -1950,7 +1905,7 @@ pub struct RegisterBlock {
     /// capture/compare register
     pub CCR4: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DMA control register
     pub DCR: RWRegister<u32>,

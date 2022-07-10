@@ -398,7 +398,7 @@ pub enum Interrupt {
     I2C3_ER = 73,
     /// 80: Hash and Rng global interrupt
     HASH_RNG = 80,
-    /// 81: Floating point unit
+    /// 81: Floating point unit interrupt
     FPU = 81,
     /// 84: SPI4 global interrupt
     SPI4 = 84,

@@ -7446,7 +7446,7 @@ pub struct RegisterBlock {
     /// In device mode, this register is not valid. This read-only register contains the free space information for the non-periodic Tx FIFO and the non-periodic transmit request queue.
     pub OTG_HNPTXSTS: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// OTG general core configuration register
     pub OTG_GCCFG: RWRegister<u32>,
@@ -7454,12 +7454,12 @@ pub struct RegisterBlock {
     /// This is a register containing the Product ID as reset value.
     pub OTG_CID: RWRegister<u32>,
 
-    _reserved2: [u32; 5],
+    _reserved2: [u8; 20],
 
     /// OTG core LPM configuration register
     pub OTG_GLPMCFG: RWRegister<u32>,
 
-    _reserved3: [u32; 42],
+    _reserved3: [u8; 168],
 
     /// OTG host periodic transmit FIFO size register
     pub OTG_HPTXFSIZ: RWRegister<u32>,
@@ -7488,7 +7488,7 @@ pub struct RegisterBlock {
     /// OTG device IN endpoint transmit FIFO 8 size register
     pub OTG_DIEPTXF8: RWRegister<u32>,
 
-    _reserved4: [u32; 183],
+    _reserved4: [u8; 732],
 
     /// This register configures the core after power-on. Do not make changes to this register after initializing the host.
     pub OTG_HCFG: RWRegister<u32>,
@@ -7499,7 +7499,7 @@ pub struct RegisterBlock {
     /// This register indicates the current frame number. It also indicates the time remaining (in terms of the number of PHY clocks) in the current frame.
     pub OTG_HFNUM: RORegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// This read-only register contains the free space information for the periodic Tx FIFO and the periodic transmit request queue.
     pub OTG_HPTXSTS: RORegister<u32>,
@@ -7513,12 +7513,12 @@ pub struct RegisterBlock {
     /// This register holds the starting address of the frame list information (scatter/gather mode).
     pub OTG_HFLBADDR: RWRegister<u32>,
 
-    _reserved6: [u32; 8],
+    _reserved6: [u8; 32],
 
     /// This register is available only in host mode. Currently, the OTG host supports only one port. A single register holds USB port-related information such as USB reset, enable, suspend, resume, connect status, and test mode for each port. It is shown in Figure724. The rc_w1 bits in this register can trigger an interrupt to the application through the host port interrupt bit of the core interrupt register (HPRTINT bit in OTG_GINTSTS). On a port interrupt, the application must read this register and clear the bit that caused the interrupt. For the rc_w1 bits, the application must write a 1 to the bit to clear the interrupt.
     pub OTG_HPRT: RWRegister<u32>,
 
-    _reserved7: [u32; 47],
+    _reserved7: [u8; 188],
 
     /// OTG host channel 0 characteristics register
     pub OTG_HCCHAR0: RWRegister<u32>,
@@ -7538,7 +7538,7 @@ pub struct RegisterBlock {
     /// OTG host channel 0 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA0: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB0: RORegister<u32>,
@@ -7561,7 +7561,7 @@ pub struct RegisterBlock {
     /// OTG host channel 1 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA1: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB1: RORegister<u32>,
@@ -7584,7 +7584,7 @@ pub struct RegisterBlock {
     /// OTG host channel 2 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA2: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB2: RORegister<u32>,
@@ -7607,7 +7607,7 @@ pub struct RegisterBlock {
     /// OTG host channel 3 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA3: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB3: RORegister<u32>,
@@ -7630,7 +7630,7 @@ pub struct RegisterBlock {
     /// OTG host channel 4 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA4: RWRegister<u32>,
 
-    _reserved12: [u32; 1],
+    _reserved12: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB4: RORegister<u32>,
@@ -7653,7 +7653,7 @@ pub struct RegisterBlock {
     /// OTG host channel 5 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA5: RWRegister<u32>,
 
-    _reserved13: [u32; 1],
+    _reserved13: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB5: RORegister<u32>,
@@ -7676,7 +7676,7 @@ pub struct RegisterBlock {
     /// OTG host channel 6 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA6: RWRegister<u32>,
 
-    _reserved14: [u32; 1],
+    _reserved14: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB6: RORegister<u32>,
@@ -7699,7 +7699,7 @@ pub struct RegisterBlock {
     /// OTG host channel 7 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA7: RWRegister<u32>,
 
-    _reserved15: [u32; 1],
+    _reserved15: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB7: RORegister<u32>,
@@ -7722,7 +7722,7 @@ pub struct RegisterBlock {
     /// OTG host channel 8 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA8: RWRegister<u32>,
 
-    _reserved16: [u32; 1],
+    _reserved16: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB8: RORegister<u32>,
@@ -7745,7 +7745,7 @@ pub struct RegisterBlock {
     /// OTG host channel 9 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA9: RWRegister<u32>,
 
-    _reserved17: [u32; 1],
+    _reserved17: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB9: RORegister<u32>,
@@ -7768,7 +7768,7 @@ pub struct RegisterBlock {
     /// OTG host channel 10 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA10: RWRegister<u32>,
 
-    _reserved18: [u32; 1],
+    _reserved18: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB10: RORegister<u32>,
@@ -7791,7 +7791,7 @@ pub struct RegisterBlock {
     /// OTG host channel 11 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA11: RWRegister<u32>,
 
-    _reserved19: [u32; 1],
+    _reserved19: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB11: RORegister<u32>,
@@ -7814,7 +7814,7 @@ pub struct RegisterBlock {
     /// OTG host channel 12 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA12: RWRegister<u32>,
 
-    _reserved20: [u32; 1],
+    _reserved20: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB12: RORegister<u32>,
@@ -7837,7 +7837,7 @@ pub struct RegisterBlock {
     /// OTG host channel 13 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA13: RWRegister<u32>,
 
-    _reserved21: [u32; 1],
+    _reserved21: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB13: RORegister<u32>,
@@ -7860,7 +7860,7 @@ pub struct RegisterBlock {
     /// OTG host channel 14 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA14: RWRegister<u32>,
 
-    _reserved22: [u32; 1],
+    _reserved22: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB14: RORegister<u32>,
@@ -7883,12 +7883,12 @@ pub struct RegisterBlock {
     /// OTG host channel 15 DMA address register in buffer DMA \[alternate\]
     pub OTG_HCDMA15: RWRegister<u32>,
 
-    _reserved23: [u32; 1],
+    _reserved23: [u8; 4],
 
     /// OTG host channel-n DMA address buffer register
     pub OTG_HCDMAB15: RORegister<u32>,
 
-    _reserved24: [u32; 64],
+    _reserved24: [u8; 256],
 
     /// This register configures the core in device mode after power-on or after certain control commands or enumeration. Do not make changes to this register after initial programming.
     pub OTG_DCFG: RWRegister<u32>,
@@ -7899,7 +7899,7 @@ pub struct RegisterBlock {
     /// This register indicates the status of the core with respect to USB-related events. It must be read on interrupts from the device all interrupts (OTG_DAINT) register.
     pub OTG_DSTS: RORegister<u32>,
 
-    _reserved25: [u32; 1],
+    _reserved25: [u8; 4],
 
     /// This register works with each of the OTG_DIEPINTx registers for all endpoints to generate an interrupt per IN endpoint. The IN endpoint interrupt for a specific status in the OTG_DIEPINTx register can be masked by writing to the corresponding bit in this register. Status bits are masked by default.
     pub OTG_DIEPMSK: RWRegister<u32>,
@@ -7913,7 +7913,7 @@ pub struct RegisterBlock {
     /// The OTG_DAINTMSK register works with the device endpoint interrupt register to interrupt the application when an event occurs on a device endpoint. However, the OTG_DAINT register bit corresponding to that interrupt is still set.
     pub OTG_DAINTMSK: RWRegister<u32>,
 
-    _reserved26: [u32; 2],
+    _reserved26: [u8; 8],
 
     /// This register specifies the VBUS discharge time after VBUS pulsing during SRP.
     pub OTG_DVBUSDIS: RWRegister<u32>,
@@ -7933,27 +7933,27 @@ pub struct RegisterBlock {
     /// There is one interrupt bit for endpoint 1 IN and one interrupt bit for endpoint 1 OUT.
     pub OTG_DEACHINTMSK: RWRegister<u32>,
 
-    _reserved27: [u32; 1],
+    _reserved27: [u8; 4],
 
     /// This register works with the OTG_DIEPINT1 register to generate a dedicated interrupt OTG_HS_EP1_IN for endpoint #1. The IN endpoint interrupt for a specific status in the OTG_DOEPINT1 register can be masked by writing into the corresponding bit in this register. Status bits are masked by default.
     pub OTG_HS_DIEPEACHMSK1: RWRegister<u32>,
 
-    _reserved28: [u32; 15],
+    _reserved28: [u8; 60],
 
     /// This register works with the OTG_DOEPINT1 register to generate a dedicated interrupt OTG_HS_EP1_OUT for endpoint #1. The OUT endpoint interrupt for a specific status in the OTG_DOEPINT1 register can be masked by writing into the corresponding bit in this register. Status bits are masked by default.
     pub OTG_HS_DOEPEACHMSK1: RWRegister<u32>,
 
-    _reserved29: [u32; 30],
+    _reserved29: [u8; 120],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL0: RWRegister<u32>,
 
-    _reserved30: [u32; 1],
+    _reserved30: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT0: RWRegister<u32>,
 
-    _reserved31: [u32; 1],
+    _reserved31: [u8; 4],
 
     /// The application must modify this register before enabling endpoint 0.
     pub OTG_DIEPTSIZ0: RWRegister<u32>,
@@ -7964,17 +7964,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS0: RORegister<u32>,
 
-    _reserved32: [u32; 1],
+    _reserved32: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL1: RWRegister<u32>,
 
-    _reserved33: [u32; 1],
+    _reserved33: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT1: RWRegister<u32>,
 
-    _reserved34: [u32; 1],
+    _reserved34: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ1: RWRegister<u32>,
@@ -7985,17 +7985,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS1: RORegister<u32>,
 
-    _reserved35: [u32; 1],
+    _reserved35: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL2: RWRegister<u32>,
 
-    _reserved36: [u32; 1],
+    _reserved36: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT2: RWRegister<u32>,
 
-    _reserved37: [u32; 1],
+    _reserved37: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ2: RWRegister<u32>,
@@ -8006,17 +8006,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS2: RORegister<u32>,
 
-    _reserved38: [u32; 1],
+    _reserved38: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL3: RWRegister<u32>,
 
-    _reserved39: [u32; 1],
+    _reserved39: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT3: RWRegister<u32>,
 
-    _reserved40: [u32; 1],
+    _reserved40: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ3: RWRegister<u32>,
@@ -8027,17 +8027,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS3: RORegister<u32>,
 
-    _reserved41: [u32; 1],
+    _reserved41: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL4: RWRegister<u32>,
 
-    _reserved42: [u32; 1],
+    _reserved42: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT4: RWRegister<u32>,
 
-    _reserved43: [u32; 1],
+    _reserved43: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ4: RWRegister<u32>,
@@ -8048,17 +8048,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS4: RORegister<u32>,
 
-    _reserved44: [u32; 1],
+    _reserved44: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL5: RWRegister<u32>,
 
-    _reserved45: [u32; 1],
+    _reserved45: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT5: RWRegister<u32>,
 
-    _reserved46: [u32; 1],
+    _reserved46: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ5: RWRegister<u32>,
@@ -8069,17 +8069,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS5: RORegister<u32>,
 
-    _reserved47: [u32; 1],
+    _reserved47: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL6: RWRegister<u32>,
 
-    _reserved48: [u32; 1],
+    _reserved48: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT6: RWRegister<u32>,
 
-    _reserved49: [u32; 1],
+    _reserved49: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ6: RWRegister<u32>,
@@ -8090,17 +8090,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS6: RORegister<u32>,
 
-    _reserved50: [u32; 1],
+    _reserved50: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL7: RWRegister<u32>,
 
-    _reserved51: [u32; 1],
+    _reserved51: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT7: RWRegister<u32>,
 
-    _reserved52: [u32; 1],
+    _reserved52: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ7: RWRegister<u32>,
@@ -8111,17 +8111,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS7: RORegister<u32>,
 
-    _reserved53: [u32; 1],
+    _reserved53: [u8; 4],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DIEPCTL8: RWRegister<u32>,
 
-    _reserved54: [u32; 1],
+    _reserved54: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the IN endpoints interrupt bit of the core interrupt register (IEPINT in OTG_GINTSTS) is set. Before the application can read this register, it must first read the device all endpoints interrupt (OTG_DAINT) register to get the exact endpoint number for the device endpoint-x interrupt register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DIEPINT8: RWRegister<u32>,
 
-    _reserved55: [u32; 1],
+    _reserved55: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using the endpoint enable bit in the OTG_DIEPCTLx registers (EPENA bit in OTG_DIEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DIEPTSIZ8: RWRegister<u32>,
@@ -8132,17 +8132,17 @@ pub struct RegisterBlock {
     /// This read-only register contains the free space information for the device IN endpoint Tx FIFO.
     pub OTG_DTXFSTS8: RORegister<u32>,
 
-    _reserved56: [u32; 57],
+    _reserved56: [u8; 228],
 
     /// This section describes the OTG_DOEPCTL0 register.
     pub OTG_DOEPCTL0: RWRegister<u32>,
 
-    _reserved57: [u32; 1],
+    _reserved57: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT0: RWRegister<u32>,
 
-    _reserved58: [u32; 1],
+    _reserved58: [u8; 4],
 
     /// The application must modify this register before enabling endpoint 0.
     pub OTG_DOEPTSIZ0: RWRegister<u32>,
@@ -8150,17 +8150,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 0 DMA address register
     pub OTG_DOEPDMA0: RWRegister<u32>,
 
-    _reserved59: [u32; 2],
+    _reserved59: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL1: RWRegister<u32>,
 
-    _reserved60: [u32; 1],
+    _reserved60: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT1: RWRegister<u32>,
 
-    _reserved61: [u32; 1],
+    _reserved61: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ1: RWRegister<u32>,
@@ -8168,17 +8168,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 1 DMA address register
     pub OTG_DOEPDMA1: RWRegister<u32>,
 
-    _reserved62: [u32; 2],
+    _reserved62: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL2: RWRegister<u32>,
 
-    _reserved63: [u32; 1],
+    _reserved63: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT2: RWRegister<u32>,
 
-    _reserved64: [u32; 1],
+    _reserved64: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ2: RWRegister<u32>,
@@ -8186,17 +8186,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 2 DMA address register
     pub OTG_DOEPDMA2: RWRegister<u32>,
 
-    _reserved65: [u32; 2],
+    _reserved65: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL3: RWRegister<u32>,
 
-    _reserved66: [u32; 1],
+    _reserved66: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT3: RWRegister<u32>,
 
-    _reserved67: [u32; 1],
+    _reserved67: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ3: RWRegister<u32>,
@@ -8204,17 +8204,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 3 DMA address register
     pub OTG_DOEPDMA3: RWRegister<u32>,
 
-    _reserved68: [u32; 2],
+    _reserved68: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL4: RWRegister<u32>,
 
-    _reserved69: [u32; 1],
+    _reserved69: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT4: RWRegister<u32>,
 
-    _reserved70: [u32; 1],
+    _reserved70: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ4: RWRegister<u32>,
@@ -8222,17 +8222,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 4 DMA address register
     pub OTG_DOEPDMA4: RWRegister<u32>,
 
-    _reserved71: [u32; 2],
+    _reserved71: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL5: RWRegister<u32>,
 
-    _reserved72: [u32; 1],
+    _reserved72: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT5: RWRegister<u32>,
 
-    _reserved73: [u32; 1],
+    _reserved73: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ5: RWRegister<u32>,
@@ -8240,17 +8240,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 5 DMA address register
     pub OTG_DOEPDMA5: RWRegister<u32>,
 
-    _reserved74: [u32; 2],
+    _reserved74: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL6: RWRegister<u32>,
 
-    _reserved75: [u32; 1],
+    _reserved75: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT6: RWRegister<u32>,
 
-    _reserved76: [u32; 1],
+    _reserved76: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ6: RWRegister<u32>,
@@ -8258,17 +8258,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 6 DMA address register
     pub OTG_DOEPDMA6: RWRegister<u32>,
 
-    _reserved77: [u32; 2],
+    _reserved77: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL7: RWRegister<u32>,
 
-    _reserved78: [u32; 1],
+    _reserved78: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT7: RWRegister<u32>,
 
-    _reserved79: [u32; 1],
+    _reserved79: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ7: RWRegister<u32>,
@@ -8276,17 +8276,17 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 7 DMA address register
     pub OTG_DOEPDMA7: RWRegister<u32>,
 
-    _reserved80: [u32; 2],
+    _reserved80: [u8; 8],
 
     /// The application uses this register to control the behavior of each logical endpoint other than endpoint 0.
     pub OTG_DOEPCTL8: RWRegister<u32>,
 
-    _reserved81: [u32; 1],
+    _reserved81: [u8; 4],
 
     /// This register indicates the status of an endpoint with respect to USB- and AHB-related events. It is shown in Figure724. The application must read this register when the OUT endpoints interrupt bit of the OTG_GINTSTS register (OEPINT bit in OTG_GINTSTS) is set. Before the application can read this register, it must first read the OTG_DAINT register to get the exact endpoint number for the OTG_DOEPINTx register. The application must clear the appropriate bit in this register to clear the corresponding bits in the OTG_DAINT and OTG_GINTSTS registers.
     pub OTG_DOEPINT8: RWRegister<u32>,
 
-    _reserved82: [u32; 1],
+    _reserved82: [u8; 4],
 
     /// The application must modify this register before enabling the endpoint. Once the endpoint is enabled using endpoint enable bit of the OTG_DOEPCTLx registers (EPENA bit in OTG_DOEPCTLx), the core modifies this register. The application can only read this register once the core has cleared the endpoint enable bit.
     pub OTG_DOEPTSIZ8: RWRegister<u32>,
@@ -8294,7 +8294,7 @@ pub struct RegisterBlock {
     /// OTG device OUT endpoint 8 DMA address register
     pub OTG_DOEPDMA8: RWRegister<u32>,
 
-    _reserved83: [u32; 122],
+    _reserved83: [u8; 488],
 
     /// This register is available in host and device modes.
     pub OTG_PCGCCTL: RWRegister<u32>,

@@ -256,7 +256,7 @@ pub struct RegisterBlock {
     /// IPCC processor 2 to processor 1 status register
     pub IPCC_C2TOC1SR: RORegister<u32>,
 
-    _reserved1: [u32; 244],
+    _reserved1: [u8; 976],
 
     /// IPCC Hardware configuration register
     pub IPCC_HWCFGR: RORegister<u32>,

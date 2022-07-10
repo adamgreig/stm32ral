@@ -1041,7 +1041,7 @@ pub struct RegisterBlock {
     /// Debug status register
     pub DMADSR: RWRegister<u32>,
 
-    _reserved1: [u32; 60],
+    _reserved1: [u8; 240],
 
     /// Channel control register
     pub DMACCR: RWRegister<u32>,
@@ -1052,12 +1052,12 @@ pub struct RegisterBlock {
     /// Channel receive control register
     pub DMACRxCR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// Channel Tx descriptor list address register
     pub DMACTxDLAR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Channel Rx descriptor list address register
     pub DMACRxDLAR: RWRegister<u32>,
@@ -1065,7 +1065,7 @@ pub struct RegisterBlock {
     /// Channel Tx descriptor tail pointer register
     pub DMACTxDTPR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// Channel Rx descriptor tail pointer register
     pub DMACRxDTPR: RWRegister<u32>,
@@ -1082,22 +1082,22 @@ pub struct RegisterBlock {
     /// Channel Rx interrupt watchdog timer register
     pub DMACRxIWTR: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// Channel current application transmit descriptor register
     pub DMACCATxDR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// Channel current application receive descriptor register
     pub DMACCARxDR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// Channel current application transmit buffer register
     pub DMACCATxBR: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// Channel current application receive buffer register
     pub DMACCARxBR: RWRegister<u32>,
@@ -1105,7 +1105,7 @@ pub struct RegisterBlock {
     /// Channel status register
     pub DMACSR: RWRegister<u32>,
 
-    _reserved9: [u32; 2],
+    _reserved9: [u8; 8],
 
     /// Channel missed frame count register
     pub DMACMFCR: RWRegister<u32>,

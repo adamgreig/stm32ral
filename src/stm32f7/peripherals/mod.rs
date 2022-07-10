@@ -79,8 +79,8 @@ pub mod rcc_v1;
 #[cfg(any(feature="doc", feature="stm32f730", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod sdmmc;
 
-#[cfg(any(feature="doc", feature="stm32f730", feature="stm32f7x2", feature="stm32f7x3"))]
-pub mod sai_v1;
+#[cfg(any(feature="doc", feature="stm32f730", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
+pub mod sai;
 
 #[cfg(any(feature="doc", feature="stm32f730", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x2", feature="stm32f7x3", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod spi;
@@ -212,9 +212,6 @@ pub mod exti_v2;
 pub mod ltdc;
 
 #[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
-pub mod sai_v2;
-
-#[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod dma2d;
 
 #[cfg(any(feature="doc", feature="stm32f745", feature="stm32f750", feature="stm32f765", feature="stm32f7x6", feature="stm32f7x7", feature="stm32f7x9"))]
@@ -270,9 +267,6 @@ pub mod flash_v3;
 
 #[cfg(any(feature="doc", feature="stm32f765", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod jpeg;
-
-#[cfg(any(feature="doc", feature="stm32f765", feature="stm32f7x7"))]
-pub mod dfsdm1;
 
 #[cfg(any(feature="doc", feature="stm32f765", feature="stm32f7x7", feature="stm32f7x9"))]
 pub mod dsi;

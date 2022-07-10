@@ -1904,12 +1904,12 @@ pub struct RegisterBlock {
     /// configuration register 2
     pub CFGR2: RWRegister<u32>,
 
-    _reserved1: [u32; 11],
+    _reserved1: [u8; 44],
 
     /// configuration register 4
     pub CFGR4: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// configuration register 3
     pub CFGR3: RWRegister<u32>,

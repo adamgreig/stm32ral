@@ -4628,7 +4628,7 @@ pub struct RegisterBlock {
     /// peripheral reset register
     pub AHB3RSTR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// APB1 peripheral reset register
     pub APB1RSTR: RWRegister<u32>,
@@ -4636,7 +4636,7 @@ pub struct RegisterBlock {
     /// APB2 peripheral reset register
     pub APB2RSTR: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// AHB1 peripheral clock register
     pub AHB1ENR: RWRegister<u32>,
@@ -4647,7 +4647,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clock enable register
     pub AHB3ENR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// APB1 peripheral clock enable register
     pub APB1ENR: RWRegister<u32>,
@@ -4655,7 +4655,7 @@ pub struct RegisterBlock {
     /// APB2 peripheral clock enable register
     pub APB2ENR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// AHB1 peripheral clock enable in low power mode register
     pub AHB1LPENR: RWRegister<u32>,
@@ -4666,7 +4666,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clock enable in low power mode register
     pub AHB3LPENR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// APB1 peripheral clock enable in low power mode register
     pub APB1LPENR: RWRegister<u32>,
@@ -4674,7 +4674,7 @@ pub struct RegisterBlock {
     /// APB2 peripheral clock enabled in low power mode register
     pub APB2LPENR: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// Backup domain control register
     pub BDCR: RWRegister<u32>,
@@ -4682,7 +4682,7 @@ pub struct RegisterBlock {
     /// clock control & status register
     pub CSR: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// spread spectrum clock generation register
     pub SSCGR: RWRegister<u32>,
@@ -4690,7 +4690,7 @@ pub struct RegisterBlock {
     /// PLLI2S configuration register
     pub PLLI2SCFGR: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// Dedicated Clocks Configuration Register
     pub DCKCFGR: RWRegister<u32>,

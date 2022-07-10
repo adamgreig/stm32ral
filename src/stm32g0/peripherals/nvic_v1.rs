@@ -567,22 +567,22 @@ pub struct RegisterBlock {
     /// Interrupt Set Enable Register
     pub ISER: RWRegister<u32>,
 
-    _reserved1: [u32; 31],
+    _reserved1: [u8; 124],
 
     /// Interrupt Clear Enable Register
     pub ICER: RWRegister<u32>,
 
-    _reserved2: [u32; 31],
+    _reserved2: [u8; 124],
 
     /// Interrupt Set-Pending Register
     pub ISPR: RWRegister<u32>,
 
-    _reserved3: [u32; 31],
+    _reserved3: [u8; 124],
 
     /// Interrupt Clear-Pending Register
     pub ICPR: RWRegister<u32>,
 
-    _reserved4: [u32; 95],
+    _reserved4: [u8; 380],
 
     /// Interrupt Priority Register 0
     pub IPR0: RWRegister<u32>,

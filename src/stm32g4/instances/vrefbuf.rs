@@ -7,7 +7,7 @@
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32g4::peripherals::vrefbuf::Instance;
 pub use crate::stm32g4::peripherals::vrefbuf::{RegisterBlock, ResetValues};
-pub use crate::stm32g4::peripherals::vrefbuf::{VREFBUF_CCR, VREFBUF_CSR};
+pub use crate::stm32g4::peripherals::vrefbuf::{CCR, CSR};
 
 /// Access functions for the VREFBUF peripheral instance
 pub mod VREFBUF {
@@ -24,8 +24,8 @@ pub mod VREFBUF {
 
     /// Reset values for each field in VREFBUF
     pub const reset: ResetValues = ResetValues {
-        VREFBUF_CSR: 0x00000002,
-        VREFBUF_CCR: 0x00000000,
+        CSR: 0x00000002,
+        CCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

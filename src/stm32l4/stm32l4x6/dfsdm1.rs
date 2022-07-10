@@ -1542,7 +1542,7 @@ pub mod DFSDM0_CNVTIMR {
 }
 
 /// control register 1
-pub mod DFSDM1_CR1 {
+pub mod CR1 {
     pub use super::DFSDM0_CR1::AWFSEL;
     pub use super::DFSDM0_CR1::DFEN;
     pub use super::DFSDM0_CR1::FAST;
@@ -1560,7 +1560,7 @@ pub mod DFSDM1_CR1 {
 }
 
 /// control register 2
-pub mod DFSDM1_CR2 {
+pub mod CR2 {
     pub use super::DFSDM0_CR2::AWDCH;
     pub use super::DFSDM0_CR2::AWDIE;
     pub use super::DFSDM0_CR2::CKABIE;
@@ -1573,7 +1573,7 @@ pub mod DFSDM1_CR2 {
 }
 
 /// interrupt and status register
-pub mod DFSDM1_ISR {
+pub mod ISR {
     pub use super::DFSDM0_ISR::AWDF;
     pub use super::DFSDM0_ISR::CKABF;
     pub use super::DFSDM0_ISR::JCIP;
@@ -1586,7 +1586,7 @@ pub mod DFSDM1_ISR {
 }
 
 /// interrupt flag clear register
-pub mod DFSDM1_ICR {
+pub mod ICR {
     pub use super::DFSDM0_ICR::CLRCKABF;
     pub use super::DFSDM0_ICR::CLRJOVRF;
     pub use super::DFSDM0_ICR::CLRROVRF;
@@ -1594,68 +1594,68 @@ pub mod DFSDM1_ICR {
 }
 
 /// injected channel group selection register
-pub mod DFSDM1_JCHGR {
+pub mod JCHGR {
     pub use super::DFSDM0_JCHGR::JCHG;
 }
 
 /// filter control register
-pub mod DFSDM1_FCR {
+pub mod FCR {
     pub use super::DFSDM0_FCR::FORD;
     pub use super::DFSDM0_FCR::FOSR;
     pub use super::DFSDM0_FCR::IOSR;
 }
 
 /// data register for injected group
-pub mod DFSDM1_JDATAR {
+pub mod JDATAR {
     pub use super::DFSDM0_JDATAR::JDATA;
     pub use super::DFSDM0_JDATAR::JDATACH;
 }
 
 /// data register for the regular channel
-pub mod DFSDM1_RDATAR {
+pub mod RDATAR {
     pub use super::DFSDM0_RDATAR::RDATA;
     pub use super::DFSDM0_RDATAR::RDATACH;
     pub use super::DFSDM0_RDATAR::RPEND;
 }
 
 /// analog watchdog high threshold register
-pub mod DFSDM1_AWHTR {
+pub mod AWHTR {
     pub use super::DFSDM0_AWHTR::AWHT;
     pub use super::DFSDM0_AWHTR::BKAWH;
 }
 
 /// analog watchdog low threshold register
-pub mod DFSDM1_AWLTR {
+pub mod AWLTR {
     pub use super::DFSDM0_AWLTR::AWLT;
     pub use super::DFSDM0_AWLTR::BKAWL;
 }
 
 /// analog watchdog status register
-pub mod DFSDM1_AWSR {
+pub mod AWSR {
     pub use super::DFSDM0_AWSR::AWHTF;
     pub use super::DFSDM0_AWSR::AWLTF;
 }
 
 /// analog watchdog clear flag register
-pub mod DFSDM1_AWCFR {
+pub mod AWCFR {
     pub use super::DFSDM0_AWCFR::CLRAWHTF;
     pub use super::DFSDM0_AWCFR::CLRAWLTF;
 }
 
 /// Extremes detector maximum register
-pub mod DFSDM1_EXMAX {
+pub mod EXMAX {
     pub use super::DFSDM0_EXMAX::EXMAX;
     pub use super::DFSDM0_EXMAX::EXMAXCH;
 }
 
 /// Extremes detector minimum register
-pub mod DFSDM1_EXMIN {
+pub mod EXMIN {
     pub use super::DFSDM0_EXMIN::EXMIN;
     pub use super::DFSDM0_EXMIN::EXMINCH;
 }
 
 /// conversion timer register
-pub mod DFSDM1_CNVTIMR {
+pub mod CNVTIMR {
     pub use super::DFSDM0_CNVTIMR::CNVCNT;
 }
 
@@ -1911,7 +1911,7 @@ pub struct RegisterBlock {
     /// channel data input register
     pub CHDATIN0R: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// CHCFG1R1
     pub CHCFG1R1: RWRegister<u32>,
@@ -1928,7 +1928,7 @@ pub struct RegisterBlock {
     /// CHDATIN1R
     pub CHDATIN1R: RWRegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// CHCFG2R1
     pub CHCFG2R1: RWRegister<u32>,
@@ -1945,7 +1945,7 @@ pub struct RegisterBlock {
     /// CHDATIN2R
     pub CHDATIN2R: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// CHCFG3R1
     pub CHCFG3R1: RWRegister<u32>,
@@ -1962,7 +1962,7 @@ pub struct RegisterBlock {
     /// CHDATIN3R
     pub CHDATIN3R: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// CHCFG4R1
     pub CHCFG4R1: RWRegister<u32>,
@@ -1979,7 +1979,7 @@ pub struct RegisterBlock {
     /// CHDATIN4R
     pub CHDATIN4R: RWRegister<u32>,
 
-    _reserved5: [u32; 3],
+    _reserved5: [u8; 12],
 
     /// CHCFG5R1
     pub CHCFG5R1: RWRegister<u32>,
@@ -1996,7 +1996,7 @@ pub struct RegisterBlock {
     /// CHDATIN5R
     pub CHDATIN5R: RWRegister<u32>,
 
-    _reserved6: [u32; 3],
+    _reserved6: [u8; 12],
 
     /// CHCFG6R1
     pub CHCFG6R1: RWRegister<u32>,
@@ -2013,7 +2013,7 @@ pub struct RegisterBlock {
     /// CHDATIN6R
     pub CHDATIN6R: RWRegister<u32>,
 
-    _reserved7: [u32; 3],
+    _reserved7: [u8; 12],
 
     /// CHCFG7R1
     pub CHCFG7R1: RWRegister<u32>,
@@ -2030,7 +2030,7 @@ pub struct RegisterBlock {
     /// CHDATIN7R
     pub CHDATIN7R: RWRegister<u32>,
 
-    _reserved8: [u32; 3],
+    _reserved8: [u8; 12],
 
     /// control register 1
     pub DFSDM0_CR1: RWRegister<u32>,
@@ -2077,54 +2077,54 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub DFSDM0_CNVTIMR: RORegister<u32>,
 
-    _reserved9: [u32; 49],
+    _reserved9: [u8; 196],
 
     /// control register 1
-    pub DFSDM1_CR1: RWRegister<u32>,
+    pub CR1: RWRegister<u32>,
 
     /// control register 2
-    pub DFSDM1_CR2: RWRegister<u32>,
+    pub CR2: RWRegister<u32>,
 
     /// interrupt and status register
-    pub DFSDM1_ISR: RORegister<u32>,
+    pub ISR: RORegister<u32>,
 
     /// interrupt flag clear register
-    pub DFSDM1_ICR: RWRegister<u32>,
+    pub ICR: RWRegister<u32>,
 
     /// injected channel group selection register
-    pub DFSDM1_JCHGR: RWRegister<u32>,
+    pub JCHGR: RWRegister<u32>,
 
     /// filter control register
-    pub DFSDM1_FCR: RWRegister<u32>,
+    pub FCR: RWRegister<u32>,
 
     /// data register for injected group
-    pub DFSDM1_JDATAR: RORegister<u32>,
+    pub JDATAR: RORegister<u32>,
 
     /// data register for the regular channel
-    pub DFSDM1_RDATAR: RORegister<u32>,
+    pub RDATAR: RORegister<u32>,
 
     /// analog watchdog high threshold register
-    pub DFSDM1_AWHTR: RWRegister<u32>,
+    pub AWHTR: RWRegister<u32>,
 
     /// analog watchdog low threshold register
-    pub DFSDM1_AWLTR: RWRegister<u32>,
+    pub AWLTR: RWRegister<u32>,
 
     /// analog watchdog status register
-    pub DFSDM1_AWSR: RORegister<u32>,
+    pub AWSR: RORegister<u32>,
 
     /// analog watchdog clear flag register
-    pub DFSDM1_AWCFR: RWRegister<u32>,
+    pub AWCFR: RWRegister<u32>,
 
     /// Extremes detector maximum register
-    pub DFSDM1_EXMAX: RORegister<u32>,
+    pub EXMAX: RORegister<u32>,
 
     /// Extremes detector minimum register
-    pub DFSDM1_EXMIN: RORegister<u32>,
+    pub EXMIN: RORegister<u32>,
 
     /// conversion timer register
-    pub DFSDM1_CNVTIMR: RORegister<u32>,
+    pub CNVTIMR: RORegister<u32>,
 
-    _reserved10: [u32; 49],
+    _reserved10: [u8; 196],
 
     /// control register 1
     pub DFSDM2_CR1: RWRegister<u32>,
@@ -2171,7 +2171,7 @@ pub struct RegisterBlock {
     /// conversion timer register
     pub DFSDM2_CNVTIMR: RORegister<u32>,
 
-    _reserved11: [u32; 49],
+    _reserved11: [u8; 196],
 
     /// control register 1
     pub DFSDM3_CR1: RWRegister<u32>,
@@ -2274,21 +2274,21 @@ pub struct ResetValues {
     pub DFSDM0_EXMAX: u32,
     pub DFSDM0_EXMIN: u32,
     pub DFSDM0_CNVTIMR: u32,
-    pub DFSDM1_CR1: u32,
-    pub DFSDM1_CR2: u32,
-    pub DFSDM1_ISR: u32,
-    pub DFSDM1_ICR: u32,
-    pub DFSDM1_JCHGR: u32,
-    pub DFSDM1_FCR: u32,
-    pub DFSDM1_JDATAR: u32,
-    pub DFSDM1_RDATAR: u32,
-    pub DFSDM1_AWHTR: u32,
-    pub DFSDM1_AWLTR: u32,
-    pub DFSDM1_AWSR: u32,
-    pub DFSDM1_AWCFR: u32,
-    pub DFSDM1_EXMAX: u32,
-    pub DFSDM1_EXMIN: u32,
-    pub DFSDM1_CNVTIMR: u32,
+    pub CR1: u32,
+    pub CR2: u32,
+    pub ISR: u32,
+    pub ICR: u32,
+    pub JCHGR: u32,
+    pub FCR: u32,
+    pub JDATAR: u32,
+    pub RDATAR: u32,
+    pub AWHTR: u32,
+    pub AWLTR: u32,
+    pub AWSR: u32,
+    pub AWCFR: u32,
+    pub EXMAX: u32,
+    pub EXMIN: u32,
+    pub CNVTIMR: u32,
     pub DFSDM2_CR1: u32,
     pub DFSDM2_CR2: u32,
     pub DFSDM2_ISR: u32,
@@ -2406,21 +2406,21 @@ pub mod DFSDM1 {
         DFSDM0_EXMAX: 0x80000000,
         DFSDM0_EXMIN: 0x7FFFFF00,
         DFSDM0_CNVTIMR: 0x00000000,
-        DFSDM1_CR1: 0x00000000,
-        DFSDM1_CR2: 0x00000000,
-        DFSDM1_ISR: 0x00FF0000,
-        DFSDM1_ICR: 0x00000000,
-        DFSDM1_JCHGR: 0x00000001,
-        DFSDM1_FCR: 0x00000000,
-        DFSDM1_JDATAR: 0x00000000,
-        DFSDM1_RDATAR: 0x00000000,
-        DFSDM1_AWHTR: 0x00000000,
-        DFSDM1_AWLTR: 0x00000000,
-        DFSDM1_AWSR: 0x00000000,
-        DFSDM1_AWCFR: 0x00000000,
-        DFSDM1_EXMAX: 0x80000000,
-        DFSDM1_EXMIN: 0x7FFFFF00,
-        DFSDM1_CNVTIMR: 0x00000000,
+        CR1: 0x00000000,
+        CR2: 0x00000000,
+        ISR: 0x00FF0000,
+        ICR: 0x00000000,
+        JCHGR: 0x00000001,
+        FCR: 0x00000000,
+        JDATAR: 0x00000000,
+        RDATAR: 0x00000000,
+        AWHTR: 0x00000000,
+        AWLTR: 0x00000000,
+        AWSR: 0x00000000,
+        AWCFR: 0x00000000,
+        EXMAX: 0x80000000,
+        EXMIN: 0x7FFFFF00,
+        CNVTIMR: 0x00000000,
         DFSDM2_CR1: 0x00000000,
         DFSDM2_CR2: 0x00000000,
         DFSDM2_ISR: 0x00FF0000,

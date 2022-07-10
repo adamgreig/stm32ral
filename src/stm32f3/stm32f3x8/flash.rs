@@ -716,7 +716,7 @@ pub struct RegisterBlock {
     /// Flash address register
     pub AR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Option byte register
     pub OBR: RORegister<u32>,

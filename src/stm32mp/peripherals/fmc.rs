@@ -2471,7 +2471,7 @@ pub struct RegisterBlock {
     /// This register contains the PSRAM chip select counter value for synchronous mode. The chip select counter is common to all banks and can be enabled separately on each bank. During PSRAM read or write accesses, this value is loaded into a timer which is decremented using the fmc_ker_ck while the NE signal is held low. When the timer reaches 0, the PSRAM controller splits the current access, toggles NE to allow PSRAM device refresh and restarts a new access. The programmed counter value guarantees a maximum NE pulse width (tCEM) as specified for PSRAM devices. The counter is reloaded and starts decrementing each time a new access is started by a transition of NE from high to low. h
     pub FMC_PCSCNTR: RWRegister<u32>,
 
-    _reserved1: [u32; 23],
+    _reserved1: [u8; 92],
 
     /// NAND Flash Programmable control register
     pub FMC_PCR: RWRegister<u32>,
@@ -2491,27 +2491,27 @@ pub struct RegisterBlock {
     /// This register contain the current error correction code value computed by the FMC NAND controller Hamming module.When the CPU reads/writes data from/to a NAND Flash memory page at the correct address (refer to Section25.8.6: NAND ECC controller), the data read/written from/to the NAND Flash memory are automatically processed by the Hamming computation module. When X bytes have been read (according to the sector size ECCSS field in the FMC_PCR register), the CPU must read the computed ECC value from the FMC_HECCR register. It then verifies if these computed parity data are the same as the parity value recorded in the spare area, to determine whether a page is valid, and to correct it otherwise. The FMC_HECCR register should be cleared after being read by setting the ECCEN bit to 0. To compute a new data block, the ECCEN bit must be set to 1.
     pub FMC_HECCR: RORegister<u32>,
 
-    _reserved2: [u32; 27],
+    _reserved2: [u8; 108],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, FRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
     pub FMC_BWTR1: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, FRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
     pub FMC_BWTR2: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, FRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
     pub FMC_BWTR3: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// This register contains the control information of each memory bank. It is used for SRAMs, FRAMs, PSRAMs and NOR Flash memories. When the EXTMOD bit is set in the FMC_BCRx register, then this register is active for write access.
     pub FMC_BWTR4: RWRegister<u32>,
 
-    _reserved6: [u32; 56],
+    _reserved6: [u8; 224],
 
     /// FMC NAND Command Sequencer Control Register
     pub FMC_CSQCR: WORegister<u32>,
@@ -2531,7 +2531,7 @@ pub struct RegisterBlock {
     /// This register is used to program the fifth address cycle and the address offset in spare area. It also selects the chip enable.
     pub FMC_CSQAR2: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// FMC NAND Command Sequencer Interrupt Enable Register
     pub FMC_CSQIER: RWRegister<u32>,
@@ -2542,12 +2542,12 @@ pub struct RegisterBlock {
     /// FMC NAND Command Sequencer Interrupt Clear Register
     pub FMC_CSQICR: WORegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// This register holds a sector error mapping status when the whole transfer is complete.
     pub FMC_CSQEMSR: RORegister<u32>,
 
-    _reserved9: [u32; 7],
+    _reserved9: [u8; 28],
 
     /// FMC BCH Interrupt enable register
     pub FMC_BCHIER: RWRegister<u32>,
@@ -2558,7 +2558,7 @@ pub struct RegisterBlock {
     /// FMC BCH Interrupt Clear Register
     pub FMC_BCHICR: WORegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// These registers contain the BCH parity bits (BCHPB). For the BCH 4-bit, only BCHPB\[51:0\] are significant and for the BCH 8-bit BCHPB\[103:0\] are significant.
     pub FMC_BCHPBR1: RORegister<u32>,
@@ -2572,7 +2572,7 @@ pub struct RegisterBlock {
     /// FMC BCH Parity Bits Register 4
     pub FMC_BCHPBR4: RORegister<u32>,
 
-    _reserved11: [u32; 3],
+    _reserved11: [u8; 12],
 
     /// This register contains some fields already available in other registers but that require to be saved when error correction is performed on several sectors at a time (for example a whole NAND Flash page). This allows a DMA channel to transfer the content of FMC_BCHDSR0..4 to a decoding status buffer. .
     pub FMC_BCHDSR0: RORegister<u32>,
@@ -2589,7 +2589,7 @@ pub struct RegisterBlock {
     /// The maximum error correction capability of the BCH block embedded in the FMC is 8 errors. This register contains the positions of the 7th and 8th error bits in EBP7 and EPB8 fields, respectively. .
     pub FMC_BCHDSR4: RORegister<u32>,
 
-    _reserved12: [u32; 87],
+    _reserved12: [u8; 348],
 
     /// FMC Hardware configuration register 2
     pub FMC_HWCFGR2: RORegister<u32>,

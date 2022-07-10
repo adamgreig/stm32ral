@@ -899,7 +899,7 @@ pub struct RegisterBlock {
     /// endpoint 7 register
     pub EP7R: RWRegister<u32>,
 
-    _reserved1: [u32; 8],
+    _reserved1: [u8; 32],
 
     /// control register
     pub CNTR: RWRegister<u32>,
@@ -916,7 +916,7 @@ pub struct RegisterBlock {
     /// Buffer table address
     pub BTABLE: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Battery charging detector
     pub BCDR: RWRegister<u16>,

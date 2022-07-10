@@ -4256,7 +4256,7 @@ pub struct RegisterBlock {
     /// PLLSAI1 configuration register
     pub PLLSAI1CFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Clock interrupt enable register
     pub CIER: RWRegister<u32>,
@@ -4279,7 +4279,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral reset register
     pub AHB3RSTR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// APB1 peripheral reset register 1
     pub APB1RSTR1: RWRegister<u32>,
@@ -4302,7 +4302,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clock enable register
     pub AHB3ENR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// APB1ENR1
     pub APB1ENR1: RWRegister<u32>,
@@ -4313,7 +4313,7 @@ pub struct RegisterBlock {
     /// APB2ENR
     pub APB2ENR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// AHB1 peripheral clocks enable in Sleep and Stop modes register
     pub AHB1SMENR: RWRegister<u32>,
@@ -4324,7 +4324,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clocks enable in Sleep and Stop modes register
     pub AHB3SMENR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// APB1SMENR1
     pub APB1SMENR1: RWRegister<u32>,
@@ -4335,12 +4335,12 @@ pub struct RegisterBlock {
     /// APB2SMENR
     pub APB2SMENR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// CCIPR
     pub CCIPR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// BDCR
     pub BDCR: RWRegister<u32>,
@@ -4354,12 +4354,12 @@ pub struct RegisterBlock {
     /// Clock HSE register
     pub HSECR: RWRegister<u32>,
 
-    _reserved8: [u32; 26],
+    _reserved8: [u8; 104],
 
     /// Extended clock recovery register
     pub EXTCFGR: RWRegister<u32>,
 
-    _reserved9: [u32; 15],
+    _reserved9: [u8; 60],
 
     /// CPU2 AHB1 peripheral clock enable register
     pub C2AHB1ENR: RWRegister<u32>,
@@ -4370,7 +4370,7 @@ pub struct RegisterBlock {
     /// CPU2 AHB3 peripheral clock enable register
     pub C2AHB3ENR: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     /// CPU2 APB1ENR1
     pub C2APB1ENR1: RWRegister<u32>,
@@ -4393,7 +4393,7 @@ pub struct RegisterBlock {
     /// CPU2 AHB3 peripheral clocks enable in Sleep and Stop modes register
     pub C2AHB3SMENR: RWRegister<u32>,
 
-    _reserved11: [u32; 1],
+    _reserved11: [u8; 4],
 
     /// CPU2 APB1SMENR1
     pub C2APB1SMENR1: RWRegister<u32>,

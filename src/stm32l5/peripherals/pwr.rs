@@ -1726,7 +1726,7 @@ pub struct RegisterBlock {
     /// Power status clear register
     pub SCR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Power Port A pull-up control register
     pub PUCRA: RWRegister<u32>,
@@ -1776,12 +1776,12 @@ pub struct RegisterBlock {
     /// Power Port H pull-down control register
     pub PDCRH: RWRegister<u32>,
 
-    _reserved2: [u32; 6],
+    _reserved2: [u8; 24],
 
     /// Power secure configuration register
     pub SECCFGR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// Power privilege configuration register
     pub PRIVCFGR: RWRegister<u32>,

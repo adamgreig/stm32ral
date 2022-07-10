@@ -280,11 +280,11 @@ pub mod BCR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Write operations are performed in synchronous mode
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Write operations are always performed in asynchronous mode
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -301,11 +301,11 @@ pub mod BCR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: The FMC_CLK is only generated during the synchronous memory access (read/write transaction)
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: The FMC_CLK is generated continuously during asynchronous and synchronous access. The FMC_CLK clock is activated when the CCLKEN is set
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: The FMC_CLK is only generated during the synchronous memory access (read/write transaction)
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -539,11 +539,11 @@ pub mod BCR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: Write operations are performed in synchronous mode
-            pub const Enabled: u32 = 0b1;
-
             /// 0b0: Write operations are always performed in asynchronous mode
             pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Write operations are performed in synchronous mode
+            pub const Enabled: u32 = 0b1;
         }
     }
 
@@ -1096,12 +1096,8 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: FIFO not empty
             pub const NotEmpty: u32 = 0b0;
@@ -1109,6 +1105,10 @@ pub mod SR {
             /// 0b1: FIFO empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// IFEN
@@ -1549,7 +1549,7 @@ pub struct RegisterBlock {
     /// SRAM/NOR-Flash chip-select timing register 1
     pub BTR4: RWRegister<u32>,
 
-    _reserved1: [u32; 24],
+    _reserved1: [u8; 96],
 
     /// PC Card/NAND Flash control register 3
     pub PCR: RWRegister<u32>,
@@ -1563,27 +1563,27 @@ pub struct RegisterBlock {
     /// Attribute memory space timing register 3
     pub PATT: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// ECC result register 3
     pub ECCR: RORegister<u32>,
 
-    _reserved3: [u32; 27],
+    _reserved3: [u8; 108],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR1: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR2: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR3: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR4: RWRegister<u32>,

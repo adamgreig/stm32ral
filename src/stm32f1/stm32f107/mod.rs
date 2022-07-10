@@ -122,6 +122,7 @@ pub struct Peripherals {
     pub TIM10: tim10::Instance,
     pub TIM9: tim9::Instance,
     pub TIM12: tim12::Instance,
+    pub ADC3: adc3::Instance,
     pub TIM8: tim8::Instance,
     pub USB: usb::Instance,
     pub TIM13: tim13::Instance,
@@ -132,7 +133,6 @@ pub struct Peripherals {
     pub NVIC_STIR: nvic_stir::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
-    pub ADC3: adc3::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -199,6 +199,7 @@ impl Peripherals {
             TIM10: tim10::TIM10::steal(),
             TIM9: tim9::TIM9::steal(),
             TIM12: tim12::TIM12::steal(),
+            ADC3: adc3::ADC3::steal(),
             TIM8: tim8::TIM8::steal(),
             USB: usb::USB::steal(),
             TIM13: tim13::TIM13::steal(),
@@ -209,7 +210,6 @@ impl Peripherals {
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
-            ADC3: adc3::ADC3::steal(),
         }
     }
 }

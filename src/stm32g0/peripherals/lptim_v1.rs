@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Low power timer
 //!
-//! Used by: stm32g031, stm32g041, stm32g071, stm32g07x, stm32g081
+//! Used by: stm32g031, stm32g041, stm32g071, stm32g07x, stm32g081, stm32g0b1, stm32g0c1
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -685,7 +685,7 @@ pub struct RegisterBlock {
     /// Counter Register
     pub CNT: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// LPTIM configuration register 2
     pub CFGR2: RWRegister<u32>,

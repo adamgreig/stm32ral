@@ -96,21 +96,6 @@ pub mod CR {
             /// 0b000010: Modular exponentiation only (Montgomery parameter must be loaded first)
             pub const MontgomeryExp: u32 = 0b000010;
 
-            /// 0b100000: Montgomery parameter computation then ECC scalar multiplication
-            pub const MontgomeryCompScalar: u32 = 0b100000;
-
-            /// 0b100010: ECC scalar multiplication only (Montgomery parameter must be loaded first)
-            pub const MontgomeryScalar: u32 = 0b100010;
-
-            /// 0b100100: ECDSA sign
-            pub const ECDSASign: u32 = 0b100100;
-
-            /// 0b100110: ECDSA verification
-            pub const ECDSAVerif: u32 = 0b100110;
-
-            /// 0b101000: Point on elliptic curve Fp check
-            pub const Elliptic: u32 = 0b101000;
-
             /// 0b000111: RSA CRT exponentiation
             pub const RSA: u32 = 0b000111;
 
@@ -140,6 +125,21 @@ pub mod CR {
 
             /// 0b010000: Montgomery multiplication
             pub const ModularMul: u32 = 0b010000;
+
+            /// 0b100000: Montgomery parameter computation then ECC scalar multiplication
+            pub const MontgomeryCompScalar: u32 = 0b100000;
+
+            /// 0b100010: ECC scalar multiplication only (Montgomery parameter must be loaded first)
+            pub const MontgomeryScalar: u32 = 0b100010;
+
+            /// 0b100100: ECDSA sign
+            pub const ECDSASign: u32 = 0b100100;
+
+            /// 0b100110: ECDSA verification
+            pub const ECDSAVerif: u32 = 0b100110;
+
+            /// 0b101000: Point on elliptic curve Fp check
+            pub const Elliptic: u32 = 0b101000;
         }
     }
 
@@ -192,12 +192,8 @@ pub mod SR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No error
             pub const NoError: u32 = 0b0;
@@ -205,6 +201,10 @@ pub mod SR {
             /// 0b1: Address access is out of range (unmapped address)
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PKA RAM error flag
@@ -213,12 +213,8 @@ pub mod SR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No error
             pub const NoError: u32 = 0b0;
@@ -226,6 +222,10 @@ pub mod SR {
             /// 0b1: An AHB access to the PKA RAM occurred while the PKA core was computing and using its internal RAM (AHB PKA_RAM access are not allowed while PKA operation is in progress)
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PKA End of Operation flag
@@ -234,12 +234,8 @@ pub mod SR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Operation in progress
             pub const InProgress: u32 = 0b0;
@@ -247,6 +243,10 @@ pub mod SR {
             /// 0b1: PKA operation is completed - set when BUSY is deasserted
             pub const Completed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PKA operation is in progressThis bit is set to 1 whenever START bit in the PKA_CR is set. It is automatically cleared when the computation is complete, meaning that PKA RAM can be safely accessed and a new operation can be started.
@@ -255,12 +255,8 @@ pub mod SR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No operation in pgoress
             pub const Idle: u32 = 0b0;
@@ -268,6 +264,10 @@ pub mod SR {
             /// 0b1: Operation in progress
             pub const Busy: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -282,14 +282,14 @@ pub mod CLRFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear ADDRERRF flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear PKA RAM error flag
@@ -300,14 +300,14 @@ pub mod CLRFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear RAMERRF flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear PKA End of Operation flag
@@ -318,14 +318,14 @@ pub mod CLRFR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Clear PROCENDF flag
             pub const Clear: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]

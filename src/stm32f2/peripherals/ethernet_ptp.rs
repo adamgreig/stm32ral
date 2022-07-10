@@ -486,7 +486,7 @@ pub struct RegisterBlock {
     /// Ethernet PTP target time low register
     pub PTPTTLR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Ethernet PTP time stamp status register
     pub PTPTSSR: RORegister<u32>,

@@ -813,12 +813,12 @@ pub struct RegisterBlock {
     /// LPTIM counter register
     pub LPTIM_CNT: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// LPTIM configuration register 2
     pub LPTIM_CFGR2: RWRegister<u32>,
 
-    _reserved2: [u32; 242],
+    _reserved2: [u8; 968],
 
     /// LPTIM 1 peripheral hardware configuration register
     pub LPTIM1_HWCFGR: RORegister<u32>,

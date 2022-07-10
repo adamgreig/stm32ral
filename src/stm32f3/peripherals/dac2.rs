@@ -304,12 +304,12 @@ pub struct RegisterBlock {
     /// DAC channel1 8-bit right aligned data holding register
     pub DHR8R1: RWRegister<u32>,
 
-    _reserved1: [u32; 6],
+    _reserved1: [u8; 24],
 
     /// DAC channel1 data output register
     pub DOR1: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// DAC status register
     pub SR: RWRegister<u32>,

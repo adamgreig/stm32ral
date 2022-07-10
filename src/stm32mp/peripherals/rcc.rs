@@ -11319,7 +11319,7 @@ pub struct RegisterBlock {
     /// This register is used to switch the RCC into secure mode. This register can only be accessed in secure mode.
     pub RCC_TZCR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// This register is used to control the oscillators.Writing to this register has no effect, writing will set the corresponding bits. Reading will give the effective values of each bit.If TZEN = MCKPROT = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
     pub RCC_OCENSETR: RWRegister<u32>,
@@ -11327,7 +11327,7 @@ pub struct RegisterBlock {
     /// This register is used to control the oscillators.Writing to this register has no effect, writing will clear the corresponding bits. Reading will give the effective values of the enable bits.If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
     pub RCC_OCENCLRR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// This register is used to configure the HSI. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
     pub RCC_HSICFGR: RWRegister<u32>,
@@ -11350,7 +11350,7 @@ pub struct RegisterBlock {
     /// This register is used to control the AXI Matrix clock prescaler. Refer to Section: Sub-system clock generation for additional information. If TZEN = , this register can only be modified in secure mode.
     pub RCC_AXIDIVR: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// This register is used to control the APB4 clock divider. Refer to Section: Sub-system clock generation for additional information. If TZEN = , this register can only be modified in secure mode.
     pub RCC_APB4DIVR: RWRegister<u32>,
@@ -11364,7 +11364,7 @@ pub struct RegisterBlock {
     /// This register is used to select the clock source for the MCU sub-system, including the MCU itself. If TZEN = MCKPROT = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
     pub RCC_MSSCKSELR: RWRegister<u32>,
 
-    _reserved4: [u32; 13],
+    _reserved4: [u8; 52],
 
     /// This register is used to control the PLL1. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
     pub RCC_PLL1CR: RWRegister<u32>,
@@ -11396,7 +11396,7 @@ pub struct RegisterBlock {
     /// This register is used to configure the PLL2. It is not recommended to change the content of this register when the PLL2 is enabled (PLLON = ). Refer to Section: Using the PLLs in spread spectrum mode for details. If TZEN = , this register can only be modified in secure mode. Write access to this register is not allowed during the clock restore sequence. See Section: The clock restore sequence description for details.
     pub RCC_PLL2CSGR: RWRegister<u32>,
 
-    _reserved5: [u32; 6],
+    _reserved5: [u8; 24],
 
     /// This register is used to control the selection of the kernel clock for the I2C4 and I2C6. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to ensure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Refer to Section: Clock enabling delays. If TZEN = , this register can only be modified in secure mode.
     pub RCC_I2C46CKSELR: RWRegister<u32>,
@@ -11419,7 +11419,7 @@ pub struct RegisterBlock {
     /// This register is used to control the DDR interface, including the DDRC and DDRPHYC. If TZEN = , this register can only be modified in secure mode.
     pub RCC_DDRITFCR: RWRegister<u32>,
 
-    _reserved6: [u32; 9],
+    _reserved6: [u8; 36],
 
     /// This register is used to control the HOLD boot function when the system exits from Standby. Refer to Section: MCU HOLD_BOOT after processor reset. This register is reset when a system reset occurs, but not when the circuit exits from Standby (app_rst reset).If TZEN = , this register can only be modified in secure mode. This register can only be accessed by the MPU.
     pub RCC_MP_BOOTCR: RWRegister<u32>,
@@ -11439,7 +11439,7 @@ pub struct RegisterBlock {
     /// This register provides a status of the RDCTL. If TZEN = , this register can only be modified in secure mode.
     pub RCC_MP_APRSTSR: RORegister<u32>,
 
-    _reserved7: [u32; 10],
+    _reserved7: [u8; 40],
 
     /// This register is used to control the LSE function. Wait states are inserted in case of successive write accesses to this register. The number of wait states may be up to 7 cycles of AHB4 clock.After a system reset, the register RCC_BDCR is write-protected. In order to modify this register, the DBP bit in the PWR control register 1 (PWR_CR1) has to be set to . Bits of RCC_BDCR register are only reset after a backup domain reset: nreset_vsw (see Section10.3.6: Backup domain reset). Any other internal or external reset will not have any effect on these bits.This register is located into the VSW domain. If TZEN = , this register can only be modified in secure mode.
     pub RCC_BDCR: RWRegister<u32>,
@@ -11447,7 +11447,7 @@ pub struct RegisterBlock {
     /// This register is used to control the minimum NRST active duration and LSI function.0 to 7 wait states are inserted for word, half-word and byte accesses. Wait states are inserted in case of successive accesses to this register.This register is reset by the por_rst reset, and it is located into the VDD domain. If TZEN = , this register can only be modified in secure mode.
     pub RCC_RDLSICR: RWRegister<u32>,
 
-    _reserved8: [u32; 14],
+    _reserved8: [u8; 56],
 
     /// This register is used to activate the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a activates the reset of the corresponding peripheral.
     pub RCC_APB4RSTSETR: RWRegister<u32>,
@@ -11479,7 +11479,7 @@ pub struct RegisterBlock {
     /// This register is used to release the reset of the corresponding peripheral. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a releases the reset of the corresponding peripheral. If TZEN = , this register can only be modified in secure mode.
     pub RCC_TZAHB6RSTCLRR: RWRegister<u32>,
 
-    _reserved9: [u32; 22],
+    _reserved9: [u8; 88],
 
     /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .
     pub RCC_MP_APB4ENSETR: RWRegister<u32>,
@@ -11511,7 +11511,7 @@ pub struct RegisterBlock {
     /// This register is used to clear the peripheral clock enable bit of the corresponding peripheral. It shall be used to deallocate a peripheral from MPU. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to . If TZEN = , this register can only be modified in secure mode.
     pub RCC_MP_TZAHB6ENCLRR: RWRegister<u32>,
 
-    _reserved10: [u32; 22],
+    _reserved10: [u8; 88],
 
     /// This register is used to set the peripheral clock enable bit
     pub RCC_MC_APB4ENSETR: RWRegister<u32>,
@@ -11537,7 +11537,7 @@ pub struct RegisterBlock {
     /// This register is used to clear the peripheral clock enable bit
     pub RCC_MC_AHB6ENCLRR: RWRegister<u32>,
 
-    _reserved11: [u32; 24],
+    _reserved11: [u8; 96],
 
     /// This register is used by the MCU in order to clear the PERxLPEN bits
     pub RCC_MP_APB4LPENSETR: RWRegister<u32>,
@@ -11569,7 +11569,7 @@ pub struct RegisterBlock {
     /// This register is used by the MCU in order to clear the PERxLPEN bits If TZEN = , this register can only be modified in secure mode.
     pub RCC_MP_TZAHB6LPENCLRR: RWRegister<u32>,
 
-    _reserved12: [u32; 22],
+    _reserved12: [u8; 88],
 
     /// This register is used by the MCU in order to set the PERxLPEN bit.
     pub RCC_MC_APB4LPENSETR: RWRegister<u32>,
@@ -11595,7 +11595,7 @@ pub struct RegisterBlock {
     /// This register is used by the MCU in order to clear the PERxLPEN bit
     pub RCC_MC_AHB6LPENCLRR: RWRegister<u32>,
 
-    _reserved13: [u32; 24],
+    _reserved13: [u8; 96],
 
     /// This register is used by the BOOTROM to check the reset source. Writing has no effect, reading will return the effective values of the corresponding bits. Writing a clears the corresponding bit to . In order to identify the reset source, the MPU application must use RCC MPU Reset Status Clear Register (RCC_MP_RSTSCLRR), and the MCU application must use the RCC MCU Reset Status Clear Register (RCC_MC_RSTSCLRR). Refer to Section10.3.13: Reset source identification for details.This register except MPUP\[1:0\]RSTF flags is located into VDD domain, and is reset by por_rst reset. The MPUP\[1:0\]RSTF flags are located into VDDCORE and are reset by nreset. If TZEN = , this register can only be modified in secure mode.
     pub RCC_BR_RSTSCLRR: RWRegister<u32>,
@@ -11624,7 +11624,7 @@ pub struct RegisterBlock {
     /// This register is dedicated to the BOOTROM code in order to update the reset source. This register is updated by the BOOTROM code, after a power-on reset (por_rst), a system reset (nreset), or an exit from Standby or CStandby. The application software shall not use this register. In order to identify the reset source, the MPU application must use RCC MPU Reset Status Clear Register (RCC_MP_RSTSCLRR), and the MCU application must use the RCC MCU Reset Status Clear Register (RCC_MC_RSTSCLRR).Writing has no effect, reading will return the effective values of the corresponding bits. Writing a sets the corresponding bit to .Refer to Section10.3.13: Reset source identification for details.The register is located in VDDCORE.If TZEN = , this register can only be modified in secure mode.
     pub RCC_MP_RSTSSETR: RWRegister<u32>,
 
-    _reserved14: [u32; 247],
+    _reserved14: [u8; 988],
 
     /// This register is used to select the clock generated on MCO1 output.
     pub RCC_MCO1CFGR: RWRegister<u32>,
@@ -11638,7 +11638,7 @@ pub struct RegisterBlock {
     /// This is register contains the enable control of the debug and trace function, and the clock divider for the trace function.
     pub RCC_DBGCFGR: RWRegister<u32>,
 
-    _reserved15: [u32; 4],
+    _reserved15: [u8; 16],
 
     /// This register is used to select the reference clock for PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
     pub RCC_RCK3SELR: RWRegister<u32>,
@@ -11664,7 +11664,7 @@ pub struct RegisterBlock {
     /// This register is used to control the APB3 clock prescaler. Refer to Section: Sub-system clock generation for additional information.
     pub RCC_APB3DIVR: RWRegister<u32>,
 
-    _reserved16: [u32; 16],
+    _reserved16: [u8; 64],
 
     /// This register is used to control the PLL3. If TZEN = MCKPROT = , this register can only be modified in secure mode.
     pub RCC_PLL3CR: RWRegister<u32>,
@@ -11696,7 +11696,7 @@ pub struct RegisterBlock {
     /// This register is used to configure the PLL4.It is not recommended to change the content of this register when the PLL4 is enabled (PLLON = ). Refer to Section: Using the PLLs in spread spectrum mode for details. If TZEN = MCKPROT = , this register can only be modified in secure mode.
     pub RCC_PLL4CSGR: RWRegister<u32>,
 
-    _reserved17: [u32; 6],
+    _reserved17: [u8; 24],
 
     /// This register is used to control the selection of the kernel clock for the I2C1 and I2C2. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to ensure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Refer to Section: Clock enabling delays.
     pub RCC_I2C12CKSELR: RWRegister<u32>,
@@ -11752,12 +11752,12 @@ pub struct RegisterBlock {
     /// This register is used to control the selection of the kernel clock for the FMC block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to ensure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Refer to Section: Clock enabling delays.
     pub RCC_FMCCKSELR: RWRegister<u32>,
 
-    _reserved18: [u32; 1],
+    _reserved18: [u8; 4],
 
     /// This register is used to control the selection of the kernel clock for the FDCAN block. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to ensure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Refer to Section: Clock enabling delays.
     pub RCC_FDCANCKSELR: RWRegister<u32>,
 
-    _reserved19: [u32; 1],
+    _reserved19: [u8; 4],
 
     /// This register is used to control the selection of the kernel clock for the SPDIFRX. Note that changing the clock source on-the-fly is allowed, and will not generate any timing violation, however the user has to ensure that both the previous and the new clock sources are present during the switching, and for the whole transition time. Refer to Section: Clock enabling delays.
     pub RCC_SPDIFCKSELR: RWRegister<u32>,
@@ -11786,7 +11786,7 @@ pub struct RegisterBlock {
     /// This register is used to control the selection of the kernel clock for the LPTIM1 block.
     pub RCC_LPTIM1CKSELR: RWRegister<u32>,
 
-    _reserved20: [u32; 18],
+    _reserved20: [u8; 72],
 
     /// This register is used to activate the reset of the corresponding peripheral.
     pub RCC_APB1RSTSETR: RWRegister<u32>,
@@ -11824,7 +11824,7 @@ pub struct RegisterBlock {
     /// This register is used to release the reset of the corresponding peripheral.
     pub RCC_AHB4RSTCLRR: RWRegister<u32>,
 
-    _reserved21: [u32; 20],
+    _reserved21: [u8; 80],
 
     /// This register is used to set the peripheral clock enable bit
     pub RCC_MP_APB1ENSETR: RWRegister<u32>,
@@ -11862,7 +11862,7 @@ pub struct RegisterBlock {
     /// This register is used to clear the peripheral clock enable bit
     pub RCC_MP_AHB4ENCLRR: RWRegister<u32>,
 
-    _reserved22: [u32; 2],
+    _reserved22: [u8; 8],
 
     /// This register is used to set the peripheral clock enable bit
     pub RCC_MP_MLAHBENSETR: RWRegister<u32>,
@@ -11870,7 +11870,7 @@ pub struct RegisterBlock {
     /// This register is used to clear the peripheral clock enable bit.
     pub RCC_MP_MLAHBENCLRR: RWRegister<u32>,
 
-    _reserved23: [u32; 16],
+    _reserved23: [u8; 64],
 
     /// This register is used to set the peripheral clock enable bit of the corresponding peripheral to . It shall be used to allocate a peripheral to the MCU. Writing has no effect, reading will return . Writing a sets the corresponding bit to .
     pub RCC_MC_APB1ENSETR: RWRegister<u32>,
@@ -11920,7 +11920,7 @@ pub struct RegisterBlock {
     /// This register is used to clear the peripheral clock enable bit
     pub RCC_MC_MLAHBENCLRR: RWRegister<u32>,
 
-    _reserved24: [u32; 16],
+    _reserved24: [u8; 64],
 
     /// This register is used by the MCU in order to clear the PERxLPEN bits
     pub RCC_MP_APB1LPENSETR: RWRegister<u32>,
@@ -11970,7 +11970,7 @@ pub struct RegisterBlock {
     /// This register is used by the MPU in order to clear the PERxLPEN bit
     pub RCC_MP_MLAHBLPENCLRR: RWRegister<u32>,
 
-    _reserved25: [u32; 16],
+    _reserved25: [u8; 64],
 
     /// This register is used by the MCU in order to set the PERxLPEN bit.
     pub RCC_MC_APB1LPENSETR: RWRegister<u32>,
@@ -12020,12 +12020,12 @@ pub struct RegisterBlock {
     /// This register is used by the MCU in order to clear the PERxLPEN bit of the corresponding peripheral.
     pub RCC_MC_MLAHBLPENCLRR: RWRegister<u32>,
 
-    _reserved26: [u32; 16],
+    _reserved26: [u8; 64],
 
     /// This register is used by the MCU to check the reset source.
     pub RCC_MC_RSTSCLRR: RWRegister<u32>,
 
-    _reserved27: [u32; 4],
+    _reserved27: [u8; 16],
 
     /// This register shall be used by the MCU to control the interrupt source enable. Refer to Section10.5: RCC interrupts for more details.
     pub RCC_MC_CIER: RWRegister<u32>,
@@ -12033,7 +12033,7 @@ pub struct RegisterBlock {
     /// This register shall be used by the MCU in order to read and clear the interrupt flags.
     pub RCC_MC_CIFR: RWRegister<u32>,
 
-    _reserved28: [u32; 246],
+    _reserved28: [u8; 984],
 
     /// This register gives the IP version
     pub RCC_VERR: RORegister<u32>,

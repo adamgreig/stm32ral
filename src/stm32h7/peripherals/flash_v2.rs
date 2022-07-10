@@ -728,6 +728,97 @@ pub mod CRCDATAR {
     }
 }
 
+/// FLASH access control register
+pub mod ACR_ {
+    pub use super::ACR::LATENCY;
+    pub use super::ACR::WRHIGHFREQ;
+}
+
+/// FLASH option key register
+pub mod OPTKEYR_ {
+    pub use super::OPTKEYR::OPTKEYR;
+}
+
+/// FLASH option control register
+pub mod OPTCR_ {
+    pub use super::OPTCR::MER;
+    pub use super::OPTCR::OPTCHANGEERRIE;
+    pub use super::OPTCR::OPTLOCK;
+    pub use super::OPTCR::OPTSTART;
+    pub use super::OPTCR::SWAP_BANK;
+}
+
+/// FLASH option status register
+pub mod OPTSR_CUR_ {
+    pub use super::OPTSR_CUR::BOOT_CM4;
+    pub use super::OPTSR_CUR::BOOT_CM7;
+    pub use super::OPTSR_CUR::BOR_LEV;
+    pub use super::OPTSR_CUR::IO_HSLV;
+    pub use super::OPTSR_CUR::IWDG2_SW;
+    pub use super::OPTSR_CUR::IWDG_FZ_SDBY;
+    pub use super::OPTSR_CUR::IWDG_FZ_STOP;
+    pub use super::OPTSR_CUR::IWDG_SW;
+    pub use super::OPTSR_CUR::NRST_STBY_D2;
+    pub use super::OPTSR_CUR::NRST_STOP_D1;
+    pub use super::OPTSR_CUR::NRST_STOP_D2;
+    pub use super::OPTSR_CUR::OPTCHANGEERR;
+    pub use super::OPTSR_CUR::OPT_BUSY;
+    pub use super::OPTSR_CUR::RDP;
+    pub use super::OPTSR_CUR::RST_STDY_D1;
+    pub use super::OPTSR_CUR::SECURITY;
+    pub use super::OPTSR_CUR::ST_RAM_SIZE;
+    pub use super::OPTSR_CUR::SWAP_BANK_OPT;
+}
+
+/// FLASH option status register
+pub mod OPTSR_PRG_ {
+    pub use super::OPTSR_PRG::BOOT_CM4;
+    pub use super::OPTSR_PRG::BOOT_CM7;
+    pub use super::OPTSR_PRG::BOR_LEV;
+    pub use super::OPTSR_PRG::IO_HSLV;
+    pub use super::OPTSR_PRG::IWDG2_SW;
+    pub use super::OPTSR_PRG::IWDG_FZ_SDBY;
+    pub use super::OPTSR_PRG::IWDG_FZ_STOP;
+    pub use super::OPTSR_PRG::IWDG_SW;
+    pub use super::OPTSR_PRG::NRST_STBY_D2;
+    pub use super::OPTSR_PRG::NRST_STDY_D1;
+    pub use super::OPTSR_PRG::NRST_STOP_D1;
+    pub use super::OPTSR_PRG::NRST_STOP_D2;
+    pub use super::OPTSR_PRG::RDP;
+    pub use super::OPTSR_PRG::SECURITY;
+    pub use super::OPTSR_PRG::ST_RAM_SIZE;
+    pub use super::OPTSR_PRG::SWAP_BANK_OPT;
+}
+
+/// FLASH option clear control register
+pub mod OPTCCR_ {
+    pub use super::OPTCCR::CLR_OPTCHANGEERR;
+}
+
+/// FLASH register boot address for Arm Cortex-M7 core
+pub mod BOOT7_CURR_ {
+    pub use super::BOOT7_CURR::BOOT_CM7_ADD0;
+    pub use super::BOOT7_CURR::BOOT_CM7_ADD1;
+}
+
+/// FLASH register boot address for Arm Cortex-M7 core
+pub mod BOOT7_PRGR_ {
+    pub use super::BOOT7_CURR::BOOT_CM7_ADD0;
+    pub use super::BOOT7_CURR::BOOT_CM7_ADD1;
+}
+
+/// FLASH register boot address for Arm Cortex-M4 core
+pub mod BOOT4_CURR_ {
+    pub use super::BOOT4_CURR::BOOT_CM4_ADD0;
+    pub use super::BOOT4_CURR::BOOT_CM4_ADD1;
+}
+
+/// FLASH register boot address for Arm Cortex-M4 core
+pub mod BOOT4_PRGR_ {
+    pub use super::BOOT4_CURR::BOOT_CM4_ADD0;
+    pub use super::BOOT4_CURR::BOOT_CM4_ADD1;
+}
+
 /// FLASH key register for bank 1
 pub mod KEYR1 {
 
@@ -1950,12 +2041,16 @@ pub struct RegisterBlock {
     /// FLASH ECC fail address for bank 1
     pub FAR1: RWRegister<u32>,
 
-    _reserved1: [u32; 40],
+    _reserved1: [u8; 156],
+
+    /// FLASH access control register
+    pub ACR_: RWRegister<u32>,
 
     /// FLASH key register for bank 1
     pub KEYR2: WORegister<u32>,
 
-    _reserved2: [u32; 1],
+    /// FLASH option key register
+    pub OPTKEYR_: WORegister<u32>,
 
     /// FLASH control register for bank 1
     pub CR2: RWRegister<u32>,
@@ -1966,7 +2061,17 @@ pub struct RegisterBlock {
     /// FLASH clear control register for bank 1
     pub CCR2: RWRegister<u32>,
 
-    _reserved3: [u32; 4],
+    /// FLASH option control register
+    pub OPTCR_: RWRegister<u32>,
+
+    /// FLASH option status register
+    pub OPTSR_CUR_: RWRegister<u32>,
+
+    /// FLASH option status register
+    pub OPTSR_PRG_: RWRegister<u32>,
+
+    /// FLASH option clear control register
+    pub OPTCCR_: RWRegister<u32>,
 
     /// FLASH protection address for bank 1
     pub PRAR_CUR2: RWRegister<u32>,
@@ -1986,7 +2091,17 @@ pub struct RegisterBlock {
     /// FLASH write sector protection for bank 1
     pub WPSN_PRGR2: RWRegister<u32>,
 
-    _reserved4: [u32; 4],
+    /// FLASH register boot address for Arm Cortex-M7 core
+    pub BOOT7_CURR_: RWRegister<u32>,
+
+    /// FLASH register boot address for Arm Cortex-M7 core
+    pub BOOT7_PRGR_: RWRegister<u32>,
+
+    /// FLASH register boot address for Arm Cortex-M4 core
+    pub BOOT4_CURR_: RWRegister<u32>,
+
+    /// FLASH register boot address for Arm Cortex-M4 core
+    pub BOOT4_PRGR_: RWRegister<u32>,
 
     /// FLASH CRC control register for bank 1
     pub CRCCR2: RWRegister<u32>,
@@ -1997,7 +2112,7 @@ pub struct RegisterBlock {
     /// FLASH CRC end address register for bank 1
     pub CRCEADDR2: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// FLASH ECC fail address for bank 1
     pub FAR2: RWRegister<u32>,
@@ -2028,16 +2143,26 @@ pub struct ResetValues {
     pub CRCEADDR1: u32,
     pub CRCDATAR: u32,
     pub FAR1: u32,
+    pub ACR_: u32,
     pub KEYR2: u32,
+    pub OPTKEYR_: u32,
     pub CR2: u32,
     pub SR2: u32,
     pub CCR2: u32,
+    pub OPTCR_: u32,
+    pub OPTSR_CUR_: u32,
+    pub OPTSR_PRG_: u32,
+    pub OPTCCR_: u32,
     pub PRAR_CUR2: u32,
     pub PRAR_PRG2: u32,
     pub SCAR_CUR2: u32,
     pub SCAR_PRG2: u32,
     pub WPSN_CURR2: u32,
     pub WPSN_PRGR2: u32,
+    pub BOOT7_CURR_: u32,
+    pub BOOT7_PRGR_: u32,
+    pub BOOT4_CURR_: u32,
+    pub BOOT4_PRGR_: u32,
     pub CRCCR2: u32,
     pub CRCSADDR2: u32,
     pub CRCEADDR2: u32,

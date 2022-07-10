@@ -44,7 +44,7 @@ pub mod tim1;
 pub mod tim2;
 
 #[cfg(any(feature="doc", feature="stm32g431", feature="stm32g431", feature="stm32g441", feature="stm32g441", feature="stm32g471", feature="stm32g471", feature="stm32g473", feature="stm32g473", feature="stm32g474", feature="stm32g474", feature="stm32g483", feature="stm32g483", feature="stm32g484", feature="stm32g484", feature="stm32g491", feature="stm32g491", feature="stm32g4a1", feature="stm32g4a1"))]
-pub mod tim4;
+pub mod tim3;
 
 #[cfg(any(feature="doc", feature="stm32g431", feature="stm32g431", feature="stm32g441", feature="stm32g441", feature="stm32g471", feature="stm32g471", feature="stm32g473", feature="stm32g473", feature="stm32g474", feature="stm32g474", feature="stm32g483", feature="stm32g483", feature="stm32g484", feature="stm32g484", feature="stm32g491", feature="stm32g491", feature="stm32g4a1", feature="stm32g4a1"))]
 pub mod tim6;
@@ -100,8 +100,8 @@ pub mod fmac;
 #[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]
 pub mod cordic;
 
-#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484"))]
-pub mod sai_v1;
+#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]
+pub mod sai;
 
 #[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]
 pub mod tamp;
@@ -180,7 +180,4 @@ pub mod hrtim_common;
 
 #[cfg(any(feature="doc", feature="stm32g491", feature="stm32g4a1"))]
 pub mod opamp_v3;
-
-#[cfg(any(feature="doc", feature="stm32g491", feature="stm32g4a1"))]
-pub mod sai_v2;
 

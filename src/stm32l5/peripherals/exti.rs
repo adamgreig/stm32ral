@@ -4194,7 +4194,7 @@ pub struct RegisterBlock {
     /// EXTI privilege configuration register
     pub PRIVCFGR1: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// EXTI rising trigger selection register
     pub RTSR2: RWRegister<u32>,
@@ -4217,7 +4217,7 @@ pub struct RegisterBlock {
     /// EXTI security enable register
     pub SECCFGR2: RWRegister<u32>,
 
-    _reserved2: [u32; 9],
+    _reserved2: [u8; 36],
 
     /// EXTI external interrupt selection register
     pub EXTICR1: RWRegister<u32>,
@@ -4234,7 +4234,7 @@ pub struct RegisterBlock {
     /// EXTI lock register
     pub LOCKRG: RWRegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// EXTI CPU wakeup with interrupt mask register
     pub IMR1: RWRegister<u32>,
@@ -4242,7 +4242,7 @@ pub struct RegisterBlock {
     /// EXTI CPU wakeup with event mask register
     pub EMR1: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// EXTI CPUm wakeup with interrupt mask register
     pub IMR2: RWRegister<u32>,

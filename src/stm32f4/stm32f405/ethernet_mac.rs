@@ -1259,12 +1259,12 @@ pub struct RegisterBlock {
     /// Ethernet MAC VLAN tag register
     pub MACVLANTR: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// Ethernet MAC PMT control and status register
     pub MACPMTCSR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Ethernet MAC debug register
     pub MACDBGR: RORegister<u32>,

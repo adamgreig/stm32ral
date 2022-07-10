@@ -1068,7 +1068,7 @@ pub struct RegisterBlock {
     /// Ethernet DMA missed frame and buffer overflow counter register
     pub DMAMFBOCR: RORegister<u32>,
 
-    _reserved1: [u32; 9],
+    _reserved1: [u8; 36],
 
     /// Ethernet DMA current host transmit descriptor register
     pub DMACHTDR: RORegister<u32>,

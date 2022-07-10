@@ -5827,7 +5827,7 @@ pub struct RegisterBlock {
     /// FDCAN Core Release Register
     pub ENDN: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// FDCAN Data Bit Timing and Prescaler Register
     pub DBTP: RWRegister<u32>,
@@ -5856,7 +5856,7 @@ pub struct RegisterBlock {
     /// FDCAN Timeout Counter Value Register
     pub TOCV: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    _reserved2: [u8; 16],
 
     /// FDCAN Error Counter Register
     pub ECR: RWRegister<u32>,
@@ -5867,7 +5867,7 @@ pub struct RegisterBlock {
     /// FDCAN Transmitter Delay Compensation Register
     pub TDCR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// FDCAN Interrupt Register
     pub IR: RWRegister<u32>,
@@ -5881,7 +5881,7 @@ pub struct RegisterBlock {
     /// FDCAN Interrupt Line Enable Register
     pub ILE: RWRegister<u32>,
 
-    _reserved4: [u32; 8],
+    _reserved4: [u8; 32],
 
     /// FDCAN Global Filter Configuration Register
     pub GFC: RWRegister<u32>,
@@ -5892,7 +5892,7 @@ pub struct RegisterBlock {
     /// FDCAN Extended ID Filter Configuration Register
     pub XIDFC: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// FDCAN Extended ID and Mask Register
     pub XIDAM: RWRegister<u32>,
@@ -5960,7 +5960,7 @@ pub struct RegisterBlock {
     /// FDCAN Tx Buffer Cancellation Finished Interrupt Enable Register
     pub TXBCIE: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// FDCAN Tx Event FIFO Configuration Register
     pub TXEFC: RWRegister<u32>,
@@ -5971,7 +5971,7 @@ pub struct RegisterBlock {
     /// FDCAN Tx Event FIFO Acknowledge Register
     pub TXEFA: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// FDCAN TT Trigger Memory Configuration Register
     pub TTTMC: RWRegister<u32>,
@@ -6024,7 +6024,7 @@ pub struct RegisterBlock {
     /// FDCAN TT Cycle Sync Mark Register
     pub TTCSM: RORegister<u32>,
 
-    _reserved8: [u32; 111],
+    _reserved8: [u8; 444],
 
     /// FDCAN TT Trigger Select Register
     pub TTTS: RWRegister<u32>,

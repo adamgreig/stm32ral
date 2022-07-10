@@ -784,11 +784,11 @@ pub mod MACFCR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b1: In full duplex, initiate a Pause control frame. In half duplex, assert back pressure
-            pub const PauseOrBackPressure: u32 = 0b1;
-
             /// 0b0: In half duplex only, deasserts back pressure
             pub const DisableBackPressure: u32 = 0b0;
+
+            /// 0b1: In full duplex, initiate a Pause control frame. In half duplex, assert back pressure
+            pub const PauseOrBackPressure: u32 = 0b1;
         }
     }
 
@@ -1731,12 +1731,12 @@ pub struct RegisterBlock {
     /// Ethernet MAC VLAN tag register
     pub MACVLANTR: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// Ethernet MAC PMT control and status register
     pub MACPMTCSR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// Ethernet MAC debug register
     pub MACDBGR: RORegister<u32>,

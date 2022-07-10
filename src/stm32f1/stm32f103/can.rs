@@ -2359,12 +2359,8 @@ pub mod RIR0 {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Standard identifier
             pub const Standard: u32 = 0b0;
@@ -2372,6 +2368,10 @@ pub mod RIR0 {
             /// 0b1: Extended identifier
             pub const Extended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RTR
@@ -2380,12 +2380,8 @@ pub mod RIR0 {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Data frame
             pub const Data: u32 = 0b0;
@@ -2393,6 +2389,10 @@ pub mod RIR0 {
             /// 0b1: Remote frame
             pub const Remote: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2771,7 +2771,7 @@ pub struct RegisterBlock {
     /// CAN_BTR
     pub BTR: RWRegister<u32>,
 
-    _reserved1: [u32; 88],
+    _reserved1: [u8; 352],
 
     /// CAN_TI0R
     pub TIR0: RWRegister<u32>,
@@ -2833,7 +2833,7 @@ pub struct RegisterBlock {
     /// CAN_RDH0R
     pub RDHR1: RORegister<u32>,
 
-    _reserved2: [u32; 12],
+    _reserved2: [u8; 48],
 
     /// CAN_FMR
     pub FMR: RWRegister<u32>,
@@ -2841,22 +2841,22 @@ pub struct RegisterBlock {
     /// CAN_FM1R
     pub FM1R: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// CAN_FS1R
     pub FS1R: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// CAN_FFA1R
     pub FFA1R: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// CAN_FA1R
     pub FA1R: RWRegister<u32>,
 
-    _reserved6: [u32; 8],
+    _reserved6: [u8; 32],
 
     /// Filter bank 0 register 1
     pub FR10: RWRegister<u32>,

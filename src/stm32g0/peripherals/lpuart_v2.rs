@@ -1481,7 +1481,7 @@ pub struct RegisterBlock {
     /// Baud rate register
     pub BRR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Request register
     pub RQR: WORegister<u32>,
@@ -1501,7 +1501,7 @@ pub struct RegisterBlock {
     /// Prescaler register
     pub PRESC: RWRegister<u32>,
 
-    _reserved2: [u32; 239],
+    _reserved2: [u8; 956],
 
     /// LPUART Hardware Configuration register 2
     pub HWCFGR2: RWRegister<u32>,

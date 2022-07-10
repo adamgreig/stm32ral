@@ -2750,7 +2750,7 @@ pub mod AHB2SMENR {
     }
 
     /// Random Number Generator clock enable during sleep mode
-    pub mod RNGEN {
+    pub mod RNGSMEN {
         /// Offset (26 bits)
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
@@ -3975,7 +3975,7 @@ pub struct RegisterBlock {
     /// PLL configuration register
     pub PLLCFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// Clock interrupt enable register
     pub CIER: RWRegister<u32>,
@@ -3986,7 +3986,7 @@ pub struct RegisterBlock {
     /// Clock interrupt clear register
     pub CICR: WORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// AHB1 peripheral reset register
     pub AHB1RSTR: RWRegister<u32>,
@@ -3997,7 +3997,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral reset register
     pub AHB3RSTR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// APB1 peripheral reset register 1
     pub APB1RSTR1: RWRegister<u32>,
@@ -4008,7 +4008,7 @@ pub struct RegisterBlock {
     /// APB2 peripheral reset register
     pub APB2RSTR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// AHB1 peripheral clock enable register
     pub AHB1ENR: RWRegister<u32>,
@@ -4019,7 +4019,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clock enable register
     pub AHB3ENR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// APB1ENR1
     pub APB1ENR1: RWRegister<u32>,
@@ -4030,7 +4030,7 @@ pub struct RegisterBlock {
     /// APB2ENR
     pub APB2ENR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// AHB1 peripheral clocks enable in Sleep and Stop modes register
     pub AHB1SMENR: RWRegister<u32>,
@@ -4041,7 +4041,7 @@ pub struct RegisterBlock {
     /// AHB3 peripheral clocks enable in Sleep and Stop modes register
     pub AHB3SMENR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// APB1SMENR1
     pub APB1SMENR1: RWRegister<u32>,
@@ -4052,12 +4052,12 @@ pub struct RegisterBlock {
     /// APB2SMENR
     pub APB2SMENR: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// CCIPR
     pub CCIPR: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// BDCR
     pub BDCR: RWRegister<u32>,

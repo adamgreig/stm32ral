@@ -1041,7 +1041,7 @@ pub struct RegisterBlock {
     /// PSRAM chip select counter register
     pub PCSCNTR: RWRegister<u32>,
 
-    _reserved1: [u32; 23],
+    _reserved1: [u8; 92],
 
     /// PC Card/NAND Flash control register 3
     pub PCR: RWRegister<u32>,
@@ -1055,27 +1055,27 @@ pub struct RegisterBlock {
     /// Attribute memory space timing register 3
     pub PATT: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// ECC result register 3
     pub ECCR: RORegister<u32>,
 
-    _reserved3: [u32; 27],
+    _reserved3: [u8; 108],
 
     /// SRAM/NOR-Flash write timing registers 1
     pub BWTR1: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 2
     pub BWTR2: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 3
     pub BWTR3: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// SRAM/NOR-Flash write timing registers 4
     pub BWTR4: RWRegister<u32>,

@@ -1501,12 +1501,12 @@ pub struct RegisterBlock {
     /// mask register
     pub MASK: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// FIFO counter register
     pub FIFOCNT: RORegister<u32>,
 
-    _reserved2: [u32; 13],
+    _reserved2: [u8; 52],
 
     /// data FIFO register
     pub FIFO: RWRegister<u32>,

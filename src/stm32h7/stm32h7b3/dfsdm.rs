@@ -19,21 +19,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: SPI with rising edge to strobe data
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: SPI with falling edge to strobe data
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: Manchester coded input on DATINy pin: rising edge = logic 0, falling edge = logic 1
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: Manchester coded input on DATINy pin: rising edge = logic 1, falling edge = logic 0
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SPI clock select for channel y 2: clock coming from internal CKOUT - sampling point on each second CKOUT falling edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input rising edge). 3: clock coming from internal CKOUT output - sampling point on each second CKOUT rising edge. For connection to external Î£â modulator which divides its clock input (from CKOUT) by 2 to generate its output serial communication clock (and this output clock change is active on each clock input falling edge). This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -46,15 +33,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: clock coming from external CKINy input - sampling point according SITP\[1:0\]
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: clock coming from internal CKOUT output - sampling point according SITP\[1:0\]
-            pub const B_0x1: u32 = 0b01;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Short-circuit detector enable on channel y
@@ -67,15 +47,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Input channel y will not be guarded by the short-circuit detector
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Input channel y will be continuously guarded by the short-circuit detector
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock absence detector enable on channel y
@@ -88,15 +61,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Clock absence detector disabled on channel y
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Clock absence detector enabled on channel y
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Channel y enable If channel y is enabled, then serial data receiving is started according to the given channel setting.
@@ -109,15 +75,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Channel y disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Channel y enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Channel inputs selection This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -130,15 +89,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Channel inputs are taken from pins of the same channel y.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Channel inputs are taken from pins of the following channel (channel (y+1) modulo 8).
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Input data multiplexer for channel y 2: Data to channel y are taken from internal DFSDM_CHyDATINR register by direct CPU/DMA write. There can be written one or two 16-bit data samples according DATPACK\[1:0\] bit field setting. 3: Reserved This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -151,15 +103,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Data to channel y are taken from external serial inputs as 1-bit values. DFSDM_CHyDATINR register is write protected.
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: Data to channel y are taken from internal analog to digital converter ADCy+1 output register update as 16-bit values (if ADCy+1 is available). Data from ADCs are written into INDAT0\[15:0\] part of DFSDM_CHyDATINR register.
-            pub const B_0x1: u32 = 0b01;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data packing mode in DFSDM_CHyDATINR register. first sample in INDAT0\[15:0\] (assigned to channel y) second sample INDAT1\[15:0\] (assigned to channel y) To empty DFSDM_CHyDATINR register, two samples must be read by the digital filter from channel y (INDAT0\[15:0\] part is read as first sample and then INDAT1\[15:0\] part is read as next sample). 2: Dual: input data in DFSDM_CHyDATINR register are stored as two samples: first sample INDAT0\[15:0\] (assigned to channel y) second sample INDAT1\[15:0\] (assigned to channel y+1) To empty DFSDM_CHyDATINR register first sample must be read by the digital filter from channel y and second sample must be read by another digital filter from channel y+1. Dual mode is available only on even channel numbers (y = 0, 2, 4, 6), for odd channel numbers (y = 1, 3, 5, 7) DFSDM_CHyDATINR is write protected. If an even channel is set to dual mode then the following odd channel must be set into standard mode (DATPACK\[1:0\]=0) for correct cooperation with even channel. 3: Reserved This value can be modified only when CHEN=0 (in DFSDM_CHyCFGR1 register).
@@ -172,15 +117,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Standard: input data in DFSDM_CHyDATINR register are stored only in INDAT0\[15:0\]. To empty DFSDM_CHyDATINR register one sample must be read by the DFSDM filter from channel y.
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: Interleaved: input data in DFSDM_CHyDATINR register are stored as two samples:
-            pub const B_0x1: u32 = 0b01;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output serial clock divider Â 256 (Divider = CKOUTDIV+1). CKOUTDIV also defines the threshold for a clock absence detection. This value can only be modified when DFSDMEN=0 (in DFSDM_CH0CFGR1 register). If DFSDMEN=0 (in DFSDM_CH0CFGR1 register) then CKOUT signal is set to low state (setting is performed one DFSDM clock cycle after DFSDMEN=0). Note: CKOUTDIV is present only in DFSDM_CH0CFGR1 register (channel y=0) 1- 255: Defines the division of system clock for the serial clock output for CKOUT signal in range 2Â -
@@ -193,12 +131,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00000000: Output clock generation is disabled (CKOUT signal is set to low state)
-            pub const B_0x0: u32 = 0b00000000;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Output serial clock source selection This value can be modified only when DFSDMEN=0 (in DFSDM_CH0CFGR1 register). Note: CKOUTSRC is present only in DFSDM_CH0CFGR1 register (channel y=0)
@@ -211,15 +145,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Source for output clock is from system clock
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Source for output clock is from audio clock
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Global enable for DFSDM interface If DFSDM interface is enabled, then it is started to operate according to enabled y channels and enabled x filters settings (CHEN bit in DFSDM_CHyCFGR1 and DFEN bit in DFSDM_FLTxCR1). Data cleared by setting DFSDMEN=0: all registers DFSDM_FLTxISR are set to reset state (x = 0..7) all registers DFSDM_FLTxAWSR are set to reset state (x = 0..7) Note: DFSDMEN is present only in DFSDM_CH0CFGR1 register (channel y=0)
@@ -232,15 +159,8 @@ pub mod CFGR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DFSDM interface disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DFSDM interface enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -331,15 +251,8 @@ pub mod AWSCDR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: FastSinc filter type
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: Sinc1 filter type
-            pub const B_0x1: u32 = 0b01;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -739,15 +652,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: DFSDM_FLTx is disabled. All conversions of given DFSDM_FLTx are stopped immediately and all DFSDM_FLTx functions are stopped.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: DFSDM_FLTx is enabled. If DFSDM_FLTx is enabled, then DFSDM_FLTx starts operating according to its setting.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Start a conversion of the injected group of channels This bit is always read as '0â.
@@ -760,15 +666,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Writing '0â has no effect.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Writing '1â makes a request to convert the channels in the injected conversion group, causing JCIP to become '1â at the same time. If JCIP=1 already, then writing to JSWSTART has no effect. Writing '1â has no effect if JSYNC=1.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Launch an injected conversion synchronously with the DFSDM_FLT0 JSWSTART trigger This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1).
@@ -781,15 +680,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Do not launch an injected conversion synchronously with DFSDM_FLT0
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Launch an injected conversion in this DFSDM_FLTx at the very moment when an injected conversion is launched in DFSDM_FLT0 by its JSWSTART trigger
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Scanning conversion mode for injected conversions This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1). Writing JCHG if JSCAN=0 resets the channel selection to the lowest selected channel.
@@ -802,15 +694,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: One channel conversion is performed from the injected channel group and next the selected channel from this group is selected.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The series of conversions for the injected group channels is executed, starting over with the lowest selected channel.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA channel enabled to read data for the injected channel group This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1).
@@ -823,15 +708,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The DMA channel is not enabled to read injected data
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The DMA channel is enabled to read injected data
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Trigger signal selection for launching injected conversions This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1). Note: synchronous trigger has latency up to one fDFSDMCLK clock cycle (with deterministic jitter), asynchronous trigger has latency 2-3 fDFSDMCLK clock cycles (with jitter up to 1 cycle). DFSDM_FLTx 0x00 dfsdm_jtrg0 0x01 dfsdm_jtrg1 ... 0x1E dfsdm_jtrg30 0x1F dfsdm_jtrg31 Refer to . 0x0-0x1F: Trigger inputs selected by the following table (internal or external trigger).
@@ -858,21 +736,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b00: Trigger detection is disabled
-            pub const B_0x0: u32 = 0b00;
-
-            /// 0b01: Each rising edge on the selected trigger makes a request to launch an injected conversion
-            pub const B_0x1: u32 = 0b01;
-
-            /// 0b10: Each falling edge on the selected trigger makes a request to launch an injected conversion
-            pub const B_0x2: u32 = 0b10;
-
-            /// 0b11: Both rising edges and falling edges on the selected trigger make requests to launch injected conversions
-            pub const B_0x3: u32 = 0b11;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Software start of a conversion on the regular channel This bit is always read as '0â.
@@ -885,15 +750,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Writing '0â has no effect
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Writing '1â makes a request to start a conversion on the regular channel and causes RCIP to become '1â. If RCIP=1 already, writing to RSWSTART has no effect. Writing '1â has no effect if RSYNC=1.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Continuous mode selection for regular conversions Writing '0â to this bit while a continuous regular conversion is already in progress stops the continuous mode immediately.
@@ -906,15 +764,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The regular channel is converted just once for each conversion request
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The regular channel is converted repeatedly after each conversion request
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Launch regular conversion synchronously with DFSDM_FLT0 This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1).
@@ -927,15 +778,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Do not launch a regular conversion synchronously with DFSDM_FLT0
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Launch a regular conversion in this DFSDM_FLTx at the very moment when a regular conversion is launched in DFSDM_FLT0
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// DMA channel enabled to read data for the regular conversion This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1).
@@ -948,15 +792,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The DMA channel is not enabled to read regular data
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The DMA channel is enabled to read regular data
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular channel selection ... 7: Channel 7 is selected as the regular channel Writing these bits when RCIP=1 takes effect when the next regular conversion begins. This is especially useful in continuous mode (when RCONT=1). It also affects regular conversions which are pending (due to ongoing injected conversion).
@@ -969,15 +806,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: Channel 0 is selected as the regular channel
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: Channel 1 is selected as the regular channel
-            pub const B_0x1: u32 = 0b001;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Fast conversion mode selection for regular conversions When converting a regular conversion in continuous mode, having enabled the fast mode causes each conversion (except the first) to execute faster than in standard mode. This bit has no effect on conversions which are not continuous. This bit can be modified only when DFEN=0 (DFSDM_FLTxCR1). if FAST=0 (or first conversion in continuous mode if FAST=1): t = \[FOSR * (IOSR-1 + FORD) + FORD\] / fCKIN ..... for Sincx filters t = \[FOSR * (IOSR-1 + 4) + 2\] / fCKIN ..... for FastSinc filter if FAST=1 in continuous mode (except first conversion): t = \[FOSR * IOSR\] / fCKIN in case if FOSR = FOSR\[9:0\]+1 = 1 (filter bypassed, active only integrator): t = IOSR / fCKIN (... but CNVCNT=0) where: fCKIN is the channel input clock frequency (on given channel CKINy pin) or input data rate in case of parallel data input.
@@ -990,15 +820,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Fast conversion mode disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Fast conversion mode enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog fast mode select
@@ -1011,15 +834,8 @@ pub mod CR10 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Analog watchdog on data output value (after the digital filter). The comparison is done after offset correction and shift
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Analog watchdog on channel transceivers value (after watchdog filter)
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1036,15 +852,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Injected end of conversion interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Injected end of conversion interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular end of conversion interrupt enable Please see the explanation of REOCF in DFSDM_FLTxISR.
@@ -1057,15 +866,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Regular end of conversion interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Regular end of conversion interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected data overrun interrupt enable Please see the explanation of JOVRF in DFSDM_FLTxISR.
@@ -1078,15 +880,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Injected data overrun interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Injected data overrun interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular data overrun interrupt enable Please see the explanation of ROVRF in DFSDM_FLTxISR.
@@ -1099,15 +894,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Regular data overrun interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Regular data overrun interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog interrupt enable Please see the explanation of AWDF in DFSDM_FLTxISR.
@@ -1120,15 +908,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Analog watchdog interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Analog watchdog interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Short-circuit detector interrupt enable Please see the explanation of SCDF\[7:0\] in DFSDM_FLTxISR. Note: SCDIE is present only in DFSDM_FLT0CR2 register (filter x=0)
@@ -1141,15 +922,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: short-circuit detector interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: short-circuit detector interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock absence interrupt enable Please see the explanation of CKABF\[7:0\] in DFSDM_FLTxISR. Note: CKABIE is present only in DFSDM_FLT0CR2 register (filter x=0)
@@ -1162,15 +936,8 @@ pub mod CR20 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Detection of channel input clock absence interrupt is disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Detection of channel input clock absence interrupt is enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Extremes detector channel selection These bits select the input channels to be taken by the Extremes detector. EXCH\[y\] = 0: Extremes detector does not accept data from channel y EXCH\[y\] = 1: Extremes detector accepts data from channel y
@@ -1215,15 +982,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No injected conversion has completed
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: An injected conversion has completed and its data may be read
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of regular conversion flag This bit is set by hardware. It is cleared when the software or DMA reads DFSDM_FLTxRDATAR.
@@ -1236,15 +996,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No regular conversion has completed
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: A regular conversion has completed and its data may be read
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected conversion overrun flag This bit is set by hardware. It can be cleared by software using the CLRJOVRF bit in the DFSDM_FLTxICR register.
@@ -1257,15 +1010,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No injected conversion overrun has occurred
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: An injected conversion overrun has occurred, which means that an injected conversion finished while JEOCF was already '1â. JDATAR is not affected by overruns
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular conversion overrun flag This bit is set by hardware. It can be cleared by software using the CLRROVRF bit in the DFSDM_FLTxICR register.
@@ -1278,15 +1024,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No regular conversion overrun has occurred
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: A regular conversion overrun has occurred, which means that a regular conversion finished while REOCF was already '1â. RDATAR is not affected by overruns
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog This bit is set by hardware. It is cleared by software by clearing all source flag bits AWHTF\[7:0\] and AWLTF\[7:0\] in DFSDM_FLTxAWSR register (by writing '1â into the clear bits in DFSDM_FLTxAWCFR register).
@@ -1299,15 +1038,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No Analog watchdog event occurred
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The analog watchdog block detected voltage which crosses the value programmed in the DFSDM_FLTxAWLTR or DFSDM_FLTxAWHTR registers.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected conversion in progress status A request to start an injected conversion is ignored when JCIP=1.
@@ -1320,15 +1052,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No request to convert the injected channel group (neither by software nor by trigger) has been issued
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The conversion of the injected channel group is in progress or a request for a injected conversion is pending, due either to '1â being written to JSWSTART or to a trigger detection
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular conversion in progress status A request to start a regular conversion is ignored when RCIP=1.
@@ -1341,15 +1066,8 @@ pub mod ISR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No request to convert the regular channel has been issued
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The conversion of the regular channel is in progress or a request for a regular conversion is pending
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clock absence flag CKABF\[y\]=0: Clock signal on channel y is present. CKABF\[y\]=1: Clock signal on channel y is not present. Given y bit is set by hardware when clock absence is detected on channel y. It is held at CKABF\[y\]=1 state by hardware when CHEN=0 (see DFSDM_CHyCFGR1 register). It is held at CKABF\[y\]=1 state by hardware when the transceiver is not yet synchronized.It can be cleared by software using the corresponding CLRCKABF\[y\] bit in the DFSDM_FLTxICR register. Note: CKABF\[7:0\] is present only in DFSDM_FLT0ISR register (filter x=0)
@@ -1394,15 +1112,8 @@ pub mod ICR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Writing '0â has no effect
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Writing '1â clears the JOVRF bit in the DFSDM_FLTxISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear the regular conversion overrun flag
@@ -1415,15 +1126,8 @@ pub mod ICR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Writing '0â has no effect
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Writing '1â clears the ROVRF bit in the DFSDM_FLTxISR register
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Clear the clock absence flag CLRCKABF\[y\]=0: Writing '0â has no effect CLRCKABF\[y\]=1: Writing '1â to position y clears the corresponding CKABF\[y\] bit in the DFSDM_FLTxISR register. When the transceiver is not yet synchronized, the clock absence flag is set and cannot be cleared by CLRCKABF\[y\]. Note: CLRCKABF\[7:0\] is present only in DFSDM_FLT0ICR register (filter x=0)
@@ -1514,15 +1218,8 @@ pub mod FCR0 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000: FastSinc filter type
-            pub const B_0x0: u32 = 0b000;
-
-            /// 0b001: Sinc1 filter type
-            pub const B_0x1: u32 = 0b001;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2659,7 +2356,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR0: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR11: RWRegister<u32>,
@@ -2679,7 +2376,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR1: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR12: RWRegister<u32>,
@@ -2699,7 +2396,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR2: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR13: RWRegister<u32>,
@@ -2719,7 +2416,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR3: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR14: RWRegister<u32>,
@@ -2739,7 +2436,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR4: RWRegister<u32>,
 
-    _reserved5: [u32; 2],
+    _reserved5: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR15: RWRegister<u32>,
@@ -2759,7 +2456,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR5: RWRegister<u32>,
 
-    _reserved6: [u32; 2],
+    _reserved6: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR16: RWRegister<u32>,
@@ -2779,7 +2476,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR6: RWRegister<u32>,
 
-    _reserved7: [u32; 2],
+    _reserved7: [u8; 8],
 
     /// DFSDM channel 0 configuration register
     pub CFGR17: RWRegister<u32>,
@@ -2799,7 +2496,7 @@ pub struct RegisterBlock {
     ///
     pub DLYR7: RWRegister<u32>,
 
-    _reserved8: [u32; 2],
+    _reserved8: [u8; 8],
 
     ///
     pub CR10: RWRegister<u32>,
@@ -2846,7 +2543,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR0: RORegister<u32>,
 
-    _reserved9: [u32; 17],
+    _reserved9: [u8; 68],
 
     ///
     pub CR11: RWRegister<u32>,
@@ -2893,7 +2590,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR1: RORegister<u32>,
 
-    _reserved10: [u32; 17],
+    _reserved10: [u8; 68],
 
     ///
     pub CR12: RWRegister<u32>,
@@ -2940,7 +2637,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR2: RORegister<u32>,
 
-    _reserved11: [u32; 17],
+    _reserved11: [u8; 68],
 
     ///
     pub CR13: RWRegister<u32>,
@@ -2987,7 +2684,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR3: RORegister<u32>,
 
-    _reserved12: [u32; 17],
+    _reserved12: [u8; 68],
 
     ///
     pub CR14: RWRegister<u32>,
@@ -3034,7 +2731,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR4: RORegister<u32>,
 
-    _reserved13: [u32; 17],
+    _reserved13: [u8; 68],
 
     ///
     pub CR15: RWRegister<u32>,
@@ -3081,7 +2778,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR5: RORegister<u32>,
 
-    _reserved14: [u32; 17],
+    _reserved14: [u8; 68],
 
     ///
     pub CR16: RWRegister<u32>,
@@ -3128,7 +2825,7 @@ pub struct RegisterBlock {
     ///
     pub FLTCNVTIMR6: RORegister<u32>,
 
-    _reserved15: [u32; 17],
+    _reserved15: [u8; 68],
 
     ///
     pub CR17: RWRegister<u32>,

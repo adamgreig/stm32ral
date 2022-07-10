@@ -271,7 +271,7 @@ pub struct RegisterBlock {
     /// control register 2
     pub CR2: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// DMA/Interrupt enable register
     pub DIER: RWRegister<u32>,
@@ -282,7 +282,7 @@ pub struct RegisterBlock {
     /// event generation register
     pub EGR: WORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// counter
     pub CNT: RWRegister<u32>,

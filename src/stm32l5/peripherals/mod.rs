@@ -32,12 +32,6 @@ pub mod iwdg;
 pub mod lptim;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
-pub mod gtzc_mpcbb1;
-
-#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
-pub mod gtzc_mpcbb2;
-
-#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
 pub mod pwr;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
@@ -50,7 +44,10 @@ pub mod rtc;
 pub mod s;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
-pub mod dma;
+pub mod sec_gtzc_mpcbb1;
+
+#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
+pub mod sec_gtzc_mpcbb2;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
 pub mod spi;

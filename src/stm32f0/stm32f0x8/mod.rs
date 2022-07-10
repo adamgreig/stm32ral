@@ -23,6 +23,7 @@ pub use super::instances::syscfg;
 pub use super::instances::tim1;
 pub use super::instances::tim14;
 pub use super::instances::tim2;
+pub use super::instances::tim3;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::usart;
@@ -40,7 +41,6 @@ pub use super::instances::stk;
 pub use super::instances::tim15;
 pub use super::instances::tim16;
 pub use super::instances::tim17;
-pub use super::instances::tim3;
 pub use super::instances::tsc;
 pub use super::instances::usb;
 
@@ -63,6 +63,7 @@ pub struct Peripherals {
     pub WWDG: wwdg::Instance,
     pub TIM1: tim1::Instance,
     pub TIM2: tim2::Instance,
+    pub TIM3: tim3::Instance,
     pub TIM14: tim14::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
@@ -95,7 +96,6 @@ pub struct Peripherals {
     pub DAC: dac::Instance,
     pub SCB: scb::Instance,
     pub STK: stk::Instance,
-    pub TIM3: tim3::Instance,
     pub COMP: comp::Instance,
 }
 
@@ -123,6 +123,7 @@ impl Peripherals {
             WWDG: wwdg::WWDG::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM2: tim2::TIM2::steal(),
+            TIM3: tim3::TIM3::steal(),
             TIM14: tim14::TIM14::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
@@ -155,7 +156,6 @@ impl Peripherals {
             DAC: dac::DAC::steal(),
             SCB: scb::SCB::steal(),
             STK: stk::STK::steal(),
-            TIM3: tim3::TIM3::steal(),
             COMP: comp::COMP::steal(),
         }
     }

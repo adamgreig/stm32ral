@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// Comparator control/status register
-pub mod COMP_C1CSR {
+pub mod C1CSR {
 
     /// EN
     pub mod EN {
@@ -167,68 +167,68 @@ pub mod COMP_C1CSR {
 }
 
 /// Comparator control/status register
-pub mod COMP_C2CSR {
-    pub use super::COMP_C1CSR::BLANKSEL;
-    pub use super::COMP_C1CSR::BRGEN;
-    pub use super::COMP_C1CSR::COMP_DEGLITCH_EN;
-    pub use super::COMP_C1CSR::EN;
-    pub use super::COMP_C1CSR::HYST;
-    pub use super::COMP_C1CSR::INMSEL;
-    pub use super::COMP_C1CSR::INPSEL;
-    pub use super::COMP_C1CSR::LOCK;
-    pub use super::COMP_C1CSR::POL;
-    pub use super::COMP_C1CSR::SCALEN;
-    pub use super::COMP_C1CSR::VALUE;
+pub mod C2CSR {
+    pub use super::C1CSR::BLANKSEL;
+    pub use super::C1CSR::BRGEN;
+    pub use super::C1CSR::COMP_DEGLITCH_EN;
+    pub use super::C1CSR::EN;
+    pub use super::C1CSR::HYST;
+    pub use super::C1CSR::INMSEL;
+    pub use super::C1CSR::INPSEL;
+    pub use super::C1CSR::LOCK;
+    pub use super::C1CSR::POL;
+    pub use super::C1CSR::SCALEN;
+    pub use super::C1CSR::VALUE;
 }
 
 /// Comparator control/status register
-pub mod COMP_C3CSR {
-    pub use super::COMP_C1CSR::BLANKSEL;
-    pub use super::COMP_C1CSR::BRGEN;
-    pub use super::COMP_C1CSR::COMP_DEGLITCH_EN;
-    pub use super::COMP_C1CSR::EN;
-    pub use super::COMP_C1CSR::HYST;
-    pub use super::COMP_C1CSR::INMSEL;
-    pub use super::COMP_C1CSR::INPSEL;
-    pub use super::COMP_C1CSR::LOCK;
-    pub use super::COMP_C1CSR::POL;
-    pub use super::COMP_C1CSR::SCALEN;
-    pub use super::COMP_C1CSR::VALUE;
+pub mod C3CSR {
+    pub use super::C1CSR::BLANKSEL;
+    pub use super::C1CSR::BRGEN;
+    pub use super::C1CSR::COMP_DEGLITCH_EN;
+    pub use super::C1CSR::EN;
+    pub use super::C1CSR::HYST;
+    pub use super::C1CSR::INMSEL;
+    pub use super::C1CSR::INPSEL;
+    pub use super::C1CSR::LOCK;
+    pub use super::C1CSR::POL;
+    pub use super::C1CSR::SCALEN;
+    pub use super::C1CSR::VALUE;
 }
 
 /// Comparator control/status register
-pub mod COMP_C4CSR {
-    pub use super::COMP_C1CSR::BLANKSEL;
-    pub use super::COMP_C1CSR::BRGEN;
-    pub use super::COMP_C1CSR::COMP_DEGLITCH_EN;
-    pub use super::COMP_C1CSR::EN;
-    pub use super::COMP_C1CSR::HYST;
-    pub use super::COMP_C1CSR::INMSEL;
-    pub use super::COMP_C1CSR::INPSEL;
-    pub use super::COMP_C1CSR::LOCK;
-    pub use super::COMP_C1CSR::POL;
-    pub use super::COMP_C1CSR::SCALEN;
-    pub use super::COMP_C1CSR::VALUE;
+pub mod C4CSR {
+    pub use super::C1CSR::BLANKSEL;
+    pub use super::C1CSR::BRGEN;
+    pub use super::C1CSR::COMP_DEGLITCH_EN;
+    pub use super::C1CSR::EN;
+    pub use super::C1CSR::HYST;
+    pub use super::C1CSR::INMSEL;
+    pub use super::C1CSR::INPSEL;
+    pub use super::C1CSR::LOCK;
+    pub use super::C1CSR::POL;
+    pub use super::C1CSR::SCALEN;
+    pub use super::C1CSR::VALUE;
 }
 #[repr(C)]
 pub struct RegisterBlock {
     /// Comparator control/status register
-    pub COMP_C1CSR: RWRegister<u32>,
+    pub C1CSR: RWRegister<u32>,
 
     /// Comparator control/status register
-    pub COMP_C2CSR: RWRegister<u32>,
+    pub C2CSR: RWRegister<u32>,
 
     /// Comparator control/status register
-    pub COMP_C3CSR: RWRegister<u32>,
+    pub C3CSR: RWRegister<u32>,
 
     /// Comparator control/status register
-    pub COMP_C4CSR: RWRegister<u32>,
+    pub C4CSR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub COMP_C1CSR: u32,
-    pub COMP_C2CSR: u32,
-    pub COMP_C3CSR: u32,
-    pub COMP_C4CSR: u32,
+    pub C1CSR: u32,
+    pub C2CSR: u32,
+    pub C3CSR: u32,
+    pub C4CSR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

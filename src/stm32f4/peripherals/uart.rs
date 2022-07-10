@@ -759,6 +759,24 @@ pub mod CR3 {
         }
     }
 }
+
+/// Guard Time and Prescaler Register
+pub mod GTPR {
+
+    /// IrDA Low-Power pulse width peripheral clock prescaler
+    pub mod PSC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (8 bits: 0xff << 0)
+        pub const mask: u32 = 0xff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// Status register
@@ -778,6 +796,9 @@ pub struct RegisterBlock {
 
     /// Control register 3
     pub CR3: RWRegister<u32>,
+
+    /// Guard Time and Prescaler Register
+    pub GTPR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub SR: u32,
@@ -786,6 +807,7 @@ pub struct ResetValues {
     pub CR1: u32,
     pub CR2: u32,
     pub CR3: u32,
+    pub GTPR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

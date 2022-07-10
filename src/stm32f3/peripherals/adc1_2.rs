@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Analog-to-Digital Converter
 //!
-//! Used by: stm32f302, stm32f303, stm32f3x8
+//! Used by: stm32f302, stm32f303
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -31,12 +31,8 @@ pub mod CSR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: End of sampling phase no yet reached
             pub const NotEnded: u32 = 0b0;
@@ -44,6 +40,10 @@ pub mod CSR {
             /// 0b1: End of sampling phase reached
             pub const Ended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// EOC_MST
@@ -52,12 +52,8 @@ pub mod CSR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Regular conversion is not complete
             pub const NotComplete: u32 = 0b0;
@@ -65,6 +61,10 @@ pub mod CSR {
             /// 0b1: Regular conversion complete
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// EOS_MST
@@ -73,12 +73,8 @@ pub mod CSR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Regular sequence is not complete
             pub const NotComplete: u32 = 0b0;
@@ -86,6 +82,10 @@ pub mod CSR {
             /// 0b1: Regular sequence complete
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// OVR_MST
@@ -94,12 +94,8 @@ pub mod CSR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No overrun occurred
             pub const NoOverrun: u32 = 0b0;
@@ -107,6 +103,10 @@ pub mod CSR {
             /// 0b1: Overrun occurred
             pub const Overrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// JEOC_MST
@@ -115,12 +115,8 @@ pub mod CSR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Injected conversion is not complete
             pub const NotComplete: u32 = 0b0;
@@ -128,6 +124,10 @@ pub mod CSR {
             /// 0b1: Injected conversion complete
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// JEOS_MST
@@ -136,12 +136,8 @@ pub mod CSR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Injected sequence is not complete
             pub const NotComplete: u32 = 0b0;
@@ -149,6 +145,10 @@ pub mod CSR {
             /// 0b1: Injected sequence complete
             pub const Complete: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AWD1_MST
@@ -157,12 +157,8 @@ pub mod CSR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No analog watchdog event occurred
             pub const NoEvent: u32 = 0b0;
@@ -170,6 +166,10 @@ pub mod CSR {
             /// 0b1: Analog watchdog event occurred
             pub const Event: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AWD2_MST
@@ -178,11 +178,11 @@ pub mod CSR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::AWD1_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::AWD1_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AWD3_MST
@@ -191,11 +191,11 @@ pub mod CSR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::AWD1_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::AWD1_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// JQOVF_MST
@@ -204,12 +204,8 @@ pub mod CSR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No injected context queue overflow has occurred
             pub const NoOverflow: u32 = 0b0;
@@ -217,6 +213,10 @@ pub mod CSR {
             /// 0b1: Injected context queue overflow has occurred
             pub const Overflow: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ADRDY_SLV
@@ -225,12 +225,8 @@ pub mod CSR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: ADC is not ready to start conversion
             pub const NotReady: u32 = 0b0;
@@ -238,6 +234,10 @@ pub mod CSR {
             /// 0b1: ADC is ready to start conversion
             pub const Ready: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// EOSMP_SLV
@@ -246,11 +246,11 @@ pub mod CSR {
         pub const offset: u32 = 17;
         /// Mask (1 bit: 1 << 17)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::EOSMP_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EOSMP_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of regular conversion of the slave ADC
@@ -259,11 +259,11 @@ pub mod CSR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::EOC_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EOC_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of regular sequence flag of the slave ADC
@@ -272,11 +272,11 @@ pub mod CSR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::EOS_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::EOS_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun flag of the slave ADC
@@ -285,11 +285,11 @@ pub mod CSR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::OVR_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::OVR_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of injected conversion flag of the slave ADC
@@ -298,11 +298,11 @@ pub mod CSR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::JEOC_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::JEOC_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of injected sequence flag of the slave ADC
@@ -311,11 +311,11 @@ pub mod CSR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::JEOS_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::JEOS_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog 1 flag of the slave ADC
@@ -324,11 +324,11 @@ pub mod CSR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::AWD1_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::AWD1_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog 2 flag of the slave ADC
@@ -337,11 +337,11 @@ pub mod CSR {
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::AWD1_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::AWD1_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog 3 flag of the slave ADC
@@ -350,11 +350,11 @@ pub mod CSR {
         pub const offset: u32 = 25;
         /// Mask (1 bit: 1 << 25)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::AWD1_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::AWD1_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected Context Queue Overflow flag of the slave ADC
@@ -363,11 +363,11 @@ pub mod CSR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::JQOVF_MST::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::JQOVF_MST::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -599,7 +599,7 @@ pub struct RegisterBlock {
     /// ADC Common status register
     pub CSR: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// ADC common control register
     pub CCR: RWRegister<u32>,

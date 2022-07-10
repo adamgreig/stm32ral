@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Comparator
 //!
-//! Used by: stm32l412, stm32l4x1, stm32l4x2
+//! Used by: stm32l4r5, stm32l4r9
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]
@@ -57,8 +57,8 @@ pub mod COMP1_CSR {
     pub mod COMP1_INPSEL {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
-        /// Mask (2 bits: 0b11 << 7)
-        pub const mask: u32 = 0b11 << offset;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -129,20 +129,6 @@ pub mod COMP1_CSR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// comparator 1 input minus extended selection bits
-    pub mod COMP1_INMESEL {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (2 bits: 0b11 << 25)
-        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -229,8 +215,8 @@ pub mod COMP2_CSR {
     pub mod COMP2_INPSEL {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
-        /// Mask (2 bits: 0b11 << 7)
-        pub const mask: u32 = 0b11 << offset;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -315,20 +301,6 @@ pub mod COMP2_CSR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// comparator 2 input minus extended selection bits
-    pub mod COMP2_INMESEL {
-        /// Offset (25 bits)
-        pub const offset: u32 = 25;
-        /// Mask (2 bits: 0b11 << 25)
-        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

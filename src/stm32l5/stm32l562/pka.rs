@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// PKA control register
-pub mod PKA_CR {
+pub mod CR {
 
     /// PKA Enable
     pub mod EN {
@@ -95,7 +95,7 @@ pub mod PKA_CR {
 }
 
 /// PKA status register
-pub mod PKA_SR {
+pub mod SR {
 
     /// PKA operation in progress
     pub mod BUSY {
@@ -155,7 +155,7 @@ pub mod PKA_SR {
 }
 
 /// PKA clear flag register
-pub mod PKA_CLRFR {
+pub mod CLRFR {
 
     /// clear PKA end of operation flag
     pub mod PROCENDFC {
@@ -202,18 +202,18 @@ pub mod PKA_CLRFR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// PKA control register
-    pub PKA_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// PKA status register
-    pub PKA_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// PKA clear flag register
-    pub PKA_CLRFR: WORegister<u32>,
+    pub CLRFR: WORegister<u32>,
 }
 pub struct ResetValues {
-    pub PKA_CR: u32,
-    pub PKA_SR: u32,
-    pub PKA_CLRFR: u32,
+    pub CR: u32,
+    pub SR: u32,
+    pub CLRFR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -246,9 +246,9 @@ pub mod PKA {
 
     /// Reset values for each field in PKA
     pub const reset: ResetValues = ResetValues {
-        PKA_CR: 0x00000000,
-        PKA_SR: 0x00000000,
-        PKA_CLRFR: 0x00000000,
+        CR: 0x00000000,
+        SR: 0x00000000,
+        CLRFR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -339,9 +339,9 @@ pub mod SEC_PKA {
 
     /// Reset values for each field in SEC_PKA
     pub const reset: ResetValues = ResetValues {
-        PKA_CR: 0x00000000,
-        PKA_SR: 0x00000000,
-        PKA_CLRFR: 0x00000000,
+        CR: 0x00000000,
+        SR: 0x00000000,
+        CLRFR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

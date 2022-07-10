@@ -584,12 +584,8 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No tamper detected
             pub const Idle: u32 = 0b0;
@@ -597,6 +593,10 @@ pub mod SR {
             /// 0b1: Tamper detected
             pub const Tamper: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TAMP2F
@@ -605,11 +605,11 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TAMP1F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TAMP1F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TAMP3F
@@ -618,11 +618,11 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TAMP1F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TAMP1F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP3F
@@ -631,12 +631,8 @@ pub mod SR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No tamper detected
             pub const Idle: u32 = 0b0;
@@ -644,6 +640,10 @@ pub mod SR {
             /// 0b1: Internal tamper detected
             pub const Tamper: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP5F
@@ -652,11 +652,11 @@ pub mod SR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ITAMP3F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::ITAMP3F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP6F
@@ -665,11 +665,11 @@ pub mod SR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ITAMP3F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::ITAMP3F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP8F
@@ -678,11 +678,11 @@ pub mod SR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ITAMP3F::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::ITAMP3F::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -695,12 +695,8 @@ pub mod MISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No tamper detected - Masked
             pub const Idle: u32 = 0b0;
@@ -708,6 +704,10 @@ pub mod MISR {
             /// 0b1: Tamper detected - Masked
             pub const Tamper: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TAMP2MF
@@ -716,11 +716,11 @@ pub mod MISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TAMP1MF::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TAMP1MF::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TAMP3MF
@@ -729,11 +729,11 @@ pub mod MISR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::TAMP1MF::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::TAMP1MF::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP3MF
@@ -742,12 +742,8 @@ pub mod MISR {
         pub const offset: u32 = 18;
         /// Mask (1 bit: 1 << 18)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No tamper detected - Masked
             pub const Idle: u32 = 0b0;
@@ -755,6 +751,10 @@ pub mod MISR {
             /// 0b1: Internal tamper detected - Masked
             pub const Tamper: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP5MF
@@ -763,11 +763,11 @@ pub mod MISR {
         pub const offset: u32 = 20;
         /// Mask (1 bit: 1 << 20)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ITAMP3MF::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::ITAMP3MF::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP6MF
@@ -776,11 +776,11 @@ pub mod MISR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ITAMP3MF::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::ITAMP3MF::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// ITAMP8MF
@@ -789,11 +789,11 @@ pub mod MISR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::ITAMP3MF::R;
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::ITAMP3MF::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1041,7 +1041,7 @@ pub struct RegisterBlock {
     /// TAMP filter control register
     pub FLTCR: RWRegister<u32>,
 
-    _reserved1: [u32; 7],
+    _reserved1: [u8; 28],
 
     /// TAMP interrupt enable register
     pub IER: RWRegister<u32>,
@@ -1052,7 +1052,7 @@ pub struct RegisterBlock {
     /// TAMP masked interrupt status register
     pub MISR: RORegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// TAMP status clear register
     pub SCR: WORegister<u32>,
@@ -1060,7 +1060,7 @@ pub struct RegisterBlock {
     /// monotonic counter register
     pub COUNTR: RORegister<u32>,
 
-    _reserved3: [u32; 47],
+    _reserved3: [u8; 188],
 
     /// TAMP backup register
     pub BKP0R: RWRegister<u32>,
@@ -1091,8 +1091,6 @@ pub struct RegisterBlock {
 
     /// TAMP backup register
     pub BKP9R: RWRegister<u32>,
-
-    _reserved4: [u32; 6],
 
     /// TAMP backup register
     pub BKP10R: RWRegister<u32>,

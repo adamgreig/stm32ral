@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// RNG control register
-pub mod RNG_CR {
+pub mod CR {
 
     /// Random number generator enable
     pub mod RNGEN {
@@ -153,7 +153,7 @@ pub mod RNG_CR {
 }
 
 /// RNG status register
-pub mod RNG_SR {
+pub mod SR {
 
     /// Data ready Note: If IE=1 in RNG_CR, an interrupt is generated when DRDY=1. It can rise when the peripheral is disabled. When the output buffer becomes empty (after reading RNG_DR), this bit returns to 0 until a new random value is generated.
     pub mod DRDY {
@@ -227,7 +227,7 @@ pub mod RNG_SR {
 }
 
 /// The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
-pub mod RNG_DR {
+pub mod DR {
 
     /// Random data 32-bit random data which are valid when DRDY=1.
     pub mod RNDATA {
@@ -245,7 +245,7 @@ pub mod RNG_DR {
 }
 
 /// The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
-pub mod RNG_HTCR {
+pub mod HTCR {
 
     /// health test configuration
     pub mod HTCFG {
@@ -264,24 +264,24 @@ pub mod RNG_HTCR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// RNG control register
-    pub RNG_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// RNG status register
-    pub RNG_SR: RWRegister<u32>,
+    pub SR: RWRegister<u32>,
 
     /// The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
-    pub RNG_DR: RORegister<u32>,
+    pub DR: RORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// The RNG_DR register is a read-only register that delivers a 32-bit random value when read. The content of this register is valid when DRDY= 1, even if RNGEN=0.
-    pub RNG_HTCR: RWRegister<u32>,
+    pub HTCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub RNG_CR: u32,
-    pub RNG_SR: u32,
-    pub RNG_DR: u32,
-    pub RNG_HTCR: u32,
+    pub CR: u32,
+    pub SR: u32,
+    pub DR: u32,
+    pub HTCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -5040,17 +5040,17 @@ pub struct RegisterBlock {
     /// The Hash Table Register 1contains the last 32 bits of the Hash table (64 bits). For Hash filtering, the content of the destination address in the incoming packet is passed through the CRC logic and the upper six bits of the CRC register are used to index the content of the Hash table. The most significant bits determines the register to be used (Hash Table Register 0 or 1). The Hash value of the destination address is calculated in the following way: Calculate the 32-bit CRC for the DA (See IEEE 802.3, Section 3.2.8 for the steps to calculate CRC32). Perform bitwise reversal for the value obtained in Step 1. Take the upper 7 or 8 bits from the value obtained in Step 2. If the corresponding bit value of the register is 1, the packet is accepted. Otherwise, it is rejected. If the PM bit is set in ETH_MACPFR, all multicast packets are accepted regardless of the multicast Hash values. If the Hash Table register is configured to be double-synchronized to the GMII clock domain, the synchronization is triggered only when Bits\[31:24\] (in little-endian mode) or Bits\[7:0\] (in big-endian mode) of the Hash Table Register X registers are written.
     pub ETH_MACHT1R: RWRegister<u32>,
 
-    _reserved1: [u32; 14],
+    _reserved1: [u8; 56],
 
     /// The VLAN Tag register identifies the IEEE 802.1Q VLAN type packets.
     pub ETH_MACVTR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     /// When the ERSVLM bit of ETH_MACHT1R register is set, the 16-bit VLAN Hash Table register is used for group address filtering based on the VLAN tag. For Hash filtering, the content of the 16-bit VLAN tag or 12-bit VLAN ID (based on the ETV bit of ETH_MACVTR register) in the incoming packet is passed through the CRC logic. The upper four bits of the calculated CRC are used to index the contents of the VLAN Hash table. For example, a Hash value of 1000 selects Bit 8 of the VLAN Hash table. The Hash value of the destination address is calculated in the following way: Calculate the 32-bit CRC for the VLAN tag or ID (For steps to calculate CRC32, see Section 3.2.8 of IEEE 802.3). Perform bitwise reversal for the value obtained in step 1. Take the upper four bits from the value obtained in step 2. If the VLAN Hash Table register is configured to be double-synchronized to the GMII clock domain, the synchronization is triggered only when Bits\[15:8\] (in little-endian mode) or Bits\[7:0\] (in big-endian mode) of this register are written.
     pub ETH_MACVHTR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// The VLAN Tag Inclusion or Replacement register contains the VLAN tag for insertion or replacement in the Transmit packets. It also contains the VLAN tag insertion controls.
     pub ETH_MACVIR: RWRegister<u32>,
@@ -5058,22 +5058,22 @@ pub struct RegisterBlock {
     /// The Inner VLAN Tag Inclusion or Replacement register contains the inner VLAN tag to be inserted or replaced in the Transmit packet. It also contains the inner VLAN tag insertion controls.
     pub ETH_MACIVIR: RWRegister<u32>,
 
-    _reserved4: [u32; 2],
+    _reserved4: [u8; 8],
 
     /// The Flow Control register controls the generation and reception of the Control (Pause Command) packets by the Flow control module of the MAC. A Write to a register with the Busy bit set to 1 triggers the Flow Control block to generate a Pause packet. The fields of the control packet are selected as specified in the 802.3x specification, and the Pause Time value from this register is used in the Pause Time field of the control packet. The Busy bit remains set until the control packet is transferred onto the cable. The application must make sure that the Busy bit is cleared before writing to the register.
     pub ETH_MACQ0TxFCR: RWRegister<u32>,
 
-    _reserved5: [u32; 7],
+    _reserved5: [u8; 28],
 
     /// The Receive Flow Control register controls the pausing of MAC Transmit based on the received Pause packet.
     pub ETH_MACRxFCR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// The transmit queue priority mapping 0 register contains the priority values assigned to Tx queue 0 and tx queue 1.
     pub ETH_MACTxQPMR: RORegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// The Receive Queue Control 0 register controls the queue management in the MAC Receiver.
     pub ETH_MACRxQC0R: RWRegister<u32>,
@@ -5084,7 +5084,7 @@ pub struct RegisterBlock {
     /// This register controls the routing of tagged packets based on the USP (user priority) field of the received packets to the Rx queue 0 and 1.
     pub ETH_MACRxQC2R: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// The Interrupt Status register contains the status of interrupts.
     pub ETH_MACISR: RORegister<u32>,
@@ -5095,7 +5095,7 @@ pub struct RegisterBlock {
     /// The Receive Transmit Status register contains the Receive and Transmit Error status.
     pub ETH_MACRxTxSR: RORegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// The PMT Control and Status Register is present only when you select the PMT module in coreConsultant.
     pub ETH_MACPCSR: RWRegister<u32>,
@@ -5103,7 +5103,7 @@ pub struct RegisterBlock {
     /// The LPI Control and Status Register controls the LPI functions and provides the LPI interrupt status. The status bits are cleared when this register is read.
     pub ETH_MACRWKPFR: RWRegister<u32>,
 
-    _reserved10: [u32; 2],
+    _reserved10: [u8; 8],
 
     /// The LPI Control and Status Register controls the LPI functions and provides the LPI interrupt status. The status bits are cleared when this register is read.
     pub ETH_MACLCSR: RWRegister<u32>,
@@ -5117,12 +5117,12 @@ pub struct RegisterBlock {
     /// This register controls the generation of the Reference time (1-microsecond tick) for all the LPI timers. This timer has to be programmed by the software initially.
     pub ETH_MAC1USTCR: RWRegister<u32>,
 
-    _reserved11: [u32; 6],
+    _reserved11: [u8; 24],
 
     /// The PHY Interface Control and Status register indicates the status signals received by the, RGMII interface from the PHY.
     pub ETH_MACPHYCSR: RWRegister<u32>,
 
-    _reserved12: [u32; 5],
+    _reserved12: [u8; 20],
 
     /// The version register identifies the version of the Ethernet peripheral.
     pub ETH_MACVR: RORegister<u32>,
@@ -5130,7 +5130,7 @@ pub struct RegisterBlock {
     /// The Debug register provides the debug status of various MAC blocks.
     pub ETH_MACDR: RORegister<u32>,
 
-    _reserved13: [u32; 2],
+    _reserved13: [u8; 8],
 
     /// This register indicates the presence of second set of the optional features or functions of the Ethernet peripheral. The software driver can use this register to dynamically enable or disable the programs related to the optional blocks.
     pub ETH_MACHWF1R: RORegister<u32>,
@@ -5138,7 +5138,7 @@ pub struct RegisterBlock {
     /// This register indicates the presence of third set of the optional features or functions of the Ethernet peripheral. The software driver can use this register to dynamically enable or disable the programs related to the optional blocks.
     pub ETH_MACHWF2R: RORegister<u32>,
 
-    _reserved14: [u32; 54],
+    _reserved14: [u8; 216],
 
     /// The MDIO Address register controls the management cycles to external PHY through a management interface.
     pub ETH_MACMDIOAR: RWRegister<u32>,
@@ -5146,7 +5146,7 @@ pub struct RegisterBlock {
     /// The MDIO Data register stores the Write data to be written to the PHY register located at the address specified in ETH_MACMDIOAR. This register also stores the Read data from the PHY register located at the address specified by MDIO Address register.
     pub ETH_MACMDIODR: RWRegister<u32>,
 
-    _reserved15: [u32; 62],
+    _reserved15: [u8; 248],
 
     /// The MAC Address0 High register holds the upper 16 bits of the first 6-byte MAC address of the station. The first DA byte that is received on the GMII interface corresponds to the LS byte (Bits \[7:0\]) of the MAC Address Low register. For example, if 0x112233445566 is received (0x11 in lane 0 of the first column) on the GMII as the destination address, then the MacAddress0 Register \[47:0\] is compared with 0x665544332211. If the MAC address registers are configured to be double-synchronized to the GMII clock domains, then the synchronization is triggered only when Bits\[31:24\] (in little-endian mode) or Bits\[7:0\] (in big-endian mode) of the MAC Address0 Low Register are written. For proper synchronization updates, the consecutive writes to this Address Low Register should be performed after at least four clock cycles in the destination clock domain.
     pub ETH_MACA0HR: RWRegister<u32>,
@@ -5172,7 +5172,7 @@ pub struct RegisterBlock {
     /// The MAC Address x Low register holds the lower 32 bits of the 6-byte first MAC address of the station.
     pub ETH_MACA3LR: RWRegister<u32>,
 
-    _reserved16: [u32; 248],
+    _reserved16: [u8; 992],
 
     /// This register configures the MMC operating mode.
     pub MMC_CONTROL: RWRegister<u32>,
@@ -5189,7 +5189,7 @@ pub struct RegisterBlock {
     /// This register maintains the masks for interrupts generated from all Transmit statistics counters. The MMC Transmit Interrupt Mask register maintains the masks for the interrupts generated when the transmit statistic counters reach half of their maximum value or the maximum values. This register is 32 bit wide. This register is present only when any one of the MMC Transmit Counters is selected during core configuration.
     pub MMC_TX_INTERRUPT_MASK: RWRegister<u32>,
 
-    _reserved17: [u32; 14],
+    _reserved17: [u8; 56],
 
     /// This register provides the number of successfully transmitted packets by Ethernet peripheral after a single collision in the half-duplex mode.
     pub TX_SINGLE_COLLISION_GOOD_PACKETS: RORegister<u32>,
@@ -5197,12 +5197,12 @@ pub struct RegisterBlock {
     /// This register provides the number of successfully transmitted packets by Ethernet peripheral after multiple collisions in the half-duplex mode.
     pub TX_MULTIPLE_COLLISION_GOOD_PACKETS: RORegister<u32>,
 
-    _reserved18: [u32; 5],
+    _reserved18: [u8; 20],
 
     /// This register provides the number of good packets transmitted by Ethernet peripheral.
     pub TX_PACKET_COUNT_GOOD: RORegister<u32>,
 
-    _reserved19: [u32; 10],
+    _reserved19: [u8; 40],
 
     /// This register provides the number of packets received by Ethernet peripheral with CRC error.
     pub RX_CRC_ERROR_PACKETS: RORegister<u32>,
@@ -5210,12 +5210,12 @@ pub struct RegisterBlock {
     /// This register provides the number of packets received by Ethernet peripheral with alignment (dribble) error. It is valid only in 10/100 mode.
     pub RX_ALIGNMENT_ERROR_PACKETS: RORegister<u32>,
 
-    _reserved20: [u32; 10],
+    _reserved20: [u8; 40],
 
     /// This register provides the number of good unicast packets received by Ethernet peripheral.
     pub RX_UNICAST_PACKETS_GOOD: RORegister<u32>,
 
-    _reserved21: [u32; 9],
+    _reserved21: [u8; 36],
 
     /// This register provides the number of microseconds Tx LPI is asserted by Ethernet peripheral.
     pub TX_LPI_USEC_CNTR: RORegister<u32>,
@@ -5229,7 +5229,7 @@ pub struct RegisterBlock {
     /// This register provides the number of times Ethernet peripheral has entered Rx LPI.
     pub RX_LPI_TRAN_CNTR: RORegister<u32>,
 
-    _reserved22: [u32; 65],
+    _reserved22: [u8; 260],
 
     /// The Layer 3 and Layer 4 Control register controls the operations of filter 0 of Layer 3 and Layer 4. This register is reserved if the Layer 3 and Layer 4 Filtering feature is not selected during core configuration.
     pub ETH_MACL3L4C0R: RWRegister<u32>,
@@ -5237,7 +5237,7 @@ pub struct RegisterBlock {
     /// Layer4 address filter 0 register
     pub ETH_MACL4A0R: RWRegister<u32>,
 
-    _reserved23: [u32; 2],
+    _reserved23: [u8; 8],
 
     /// For IPv4 packets, the Layer 3 Address 0 Register 0 register contains the 32-bit IP Source Address field. For IPv6 packets, it contains Bits\[31:0\] of the 128-bit IP Source Address or Destination Address field.
     pub ETH_MACL3A00R: RWRegister<u32>,
@@ -5251,7 +5251,7 @@ pub struct RegisterBlock {
     /// The Layer 3 Address 3 Register 0 register is reserved for IPv4 packets. For IPv6 packets, it contains Bits\[127:96\] of 128-bit IP Source Address or Destination Address field.
     pub ETH_MACL3A30: RWRegister<u32>,
 
-    _reserved24: [u32; 4],
+    _reserved24: [u8; 16],
 
     /// The Layer 3 and Layer 4 Control register controls the operations of filter 0 of Layer 3 and Layer 4.
     pub ETH_MACL3L4C1R: RWRegister<u32>,
@@ -5259,7 +5259,7 @@ pub struct RegisterBlock {
     /// The Layer 4 Address 0 register and registers 580 through 667 are reserved (RO with default value) if Enable Layer 3 and Layer 4 Packet Filter option is not selected while configuring the core. You can configure the Layer 3 and Layer 4 Address Registers to be double-synchronized by selecting the Synchronize Layer 3 and Layer 4 Address Registers to Rx Clock Domain option while configuring the core. When you select this option, the synchronization is triggered only when Bits\[31:24\] (in little-endian mode) or Bits\[7:0\] (in big-endian mode) of the Layer 3 and Layer 4 Address Registers are written. For proper synchronization updates, you should perform consecutive writes to same Layer 3 and Layer 4 Address Registers after at least four clock cycles delay of the destination clock.
     pub ETH_MACL4A1R: RWRegister<u32>,
 
-    _reserved25: [u32; 2],
+    _reserved25: [u8; 8],
 
     /// For IPv4 packets, the Layer 3 Address 0 Register 0 register contains the 32-bit IP Source Address field. For IPv6 packets, it contains Bits\[31:0\] of the 128-bit IP Source Address or Destination Address field.
     pub ETH_MACL3A01R: RWRegister<u32>,
@@ -5273,12 +5273,12 @@ pub struct RegisterBlock {
     /// The Layer 3 Address 3 Register 0 register is reserved for IPv4 packets. For IPv6 packets, it contains Bits\[127:96\] of 128-bit IP Source Address or Destination Address field.
     pub ETH_MACL3A31R: RWRegister<u32>,
 
-    _reserved26: [u32; 100],
+    _reserved26: [u8; 400],
 
     /// The ARP Address register contains the IPv4 Destination Address of the MAC.
     pub ETH_MACARPAR: RWRegister<u32>,
 
-    _reserved27: [u32; 7],
+    _reserved27: [u8; 28],
 
     /// This register controls the operation of the System Time generator and processing of PTP packets for timestamping in the Receiver.
     pub ETH_MACTSCR: RWRegister<u32>,
@@ -5301,12 +5301,12 @@ pub struct RegisterBlock {
     /// The Timestamp Addend register is present only when the IEEE 1588 Timestamp feature is selected without external timestamp input. This register value is used only when the system time is configured for Fine Update mode (TSCFUPDT bit in the ETH_MACTSCR register). The content of this register is added to a 32-bit accumulator in every clock cycle (of HCLK) and the system time is updated whenever the accumulator overflows.
     pub ETH_MACTSAR: RWRegister<u32>,
 
-    _reserved28: [u32; 1],
+    _reserved28: [u8; 4],
 
     /// The Timestamp Status register is present only when the IEEE 1588 Timestamp feature is selected. All bits except Bits\[27:25\] gets cleared when the application reads this register.
     pub ETH_MACTSSR: RORegister<u32>,
 
-    _reserved29: [u32; 3],
+    _reserved29: [u8; 12],
 
     /// This register contains the nanosecond part of timestamp captured for Transmit packets when Tx status is disabled.
     pub ETH_MACTxTSSNR: RORegister<u32>,
@@ -5314,12 +5314,12 @@ pub struct RegisterBlock {
     /// The register contains the higher 32 bits of the timestamp (in seconds) captured when a PTP packet is transmitted.
     pub ETH_MACTxTSSSR: RORegister<u32>,
 
-    _reserved30: [u32; 2],
+    _reserved30: [u8; 8],
 
     /// The Auxiliary Timestamp Control register controls the Auxiliary Timestamp snapshot.
     pub ETH_MACACR: RWRegister<u32>,
 
-    _reserved31: [u32; 1],
+    _reserved31: [u8; 4],
 
     /// The Auxiliary Timestamp Nanoseconds register, along with ETH_MACATSSR, gives the 64-bit timestamp stored as auxiliary snapshot. These two registers form the read port of a 64-bit wide FIFO with a depth of 4 words. You can store multiple snapshots in this FIFO. Bits\[29:25\] in ETH_MACTSSR indicate the fill-level of the FIFO. The top of the FIFO is removed only when the last byte of MAC Register 91 (Auxiliary Timestamp - Seconds Register) is read. In the little-endian mode, this means when Bits\[31:24\] are read and in big-endian mode, Bits\[7:0\] are read.
     pub ETH_MACATSNR: RORegister<u32>,
@@ -5339,12 +5339,12 @@ pub struct RegisterBlock {
     /// This register contains the correction value in nanoseconds to be used with the captured timestamp value in the egress path.
     pub ETH_MACTSECNR: RWRegister<u32>,
 
-    _reserved32: [u32; 4],
+    _reserved32: [u8; 16],
 
     /// The PPS Control register is present only when the Timestamp feature is selected and External Timestamp is not enabled. Bits\[30:24\] of this register are valid only when four Flexible PPS outputs are selected. Bits\[22:16\] are valid only when three or more Flexible PPS outputs are selected. Bits\[14:8\] are valid only when two or more Flexible PPS outputs are selected. Bits\[6:4\] are valid only when Flexible PPS feature is selected.
     pub ETH_MACPPSCR: RWRegister<u32>,
 
-    _reserved33: [u32; 3],
+    _reserved33: [u8; 12],
 
     /// The PPS Target Time Seconds register, along with PPS Target Time Nanoseconds register, is used to schedule an interrupt event \[Bit 1 of ETH_MACTSSR\] when the system time exceeds the value programmed in these registers.
     pub ETH_MACPPSTTSR: RWRegister<u32>,
@@ -5358,7 +5358,7 @@ pub struct RegisterBlock {
     /// The PPS Width register contains the number of units of sub-second increment value between the rising and corresponding falling edges of PPS signal output (ptp_pps_o).
     pub ETH_MACPPSWR: RWRegister<u32>,
 
-    _reserved34: [u32; 12],
+    _reserved34: [u8; 48],
 
     /// This register controls the PTP Offload Engine operation. This register is available only when the Enable PTP Timestamp Offload feature is selected.
     pub ETH_MACPOCR: RWRegister<u32>,

@@ -21,15 +21,8 @@ pub mod CEC_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: CEC peripheral is off.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: CEC peripheral is on.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx start of message TXSOM is set by software to command transmission of the first byte of a CEC message. If the CEC message consists of only one byte, TXEOM must be set before of TXSOM. Start-bit is effectively started on the CEC line after SFT is counted. If TXSOM is set while a message reception is ongoing, transmission starts after the end of reception. TXSOM is cleared by hardware after the last byte of the message is sent with a positive acknowledge (TXEND = 1), in case of transmission underrun (TXUDR = 1), negative acknowledge (TXACKE = 1), and transmission error (TXERR = 1). It is also cleared by CECEN = 0. It is not cleared and transmission is automatically retried in case of arbitration lost (ARBLST = 1). TXSOM can be also used as a status bit informing application whether any transmission request is pending or under execution. The application can abort a transmission request at any time by clearing the CECEN bit. Note: TXSOM must be set when CECEN = 1. TXSOM must be set when transmission data is available into TXDR. HEADER first four bits containing own peripheral address are taken from TXDR\[7:4\], not from CEC_CFGR.OAR that is used only for reception.
@@ -42,15 +35,8 @@ pub mod CEC_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No CEC transmission is on-going
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: CEC transmission command
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx end of message The TXEOM bit is set by software to command transmission of the last byte of a CEC message. TXEOM is cleared by hardware at the same time and under the same conditions as for TXSOM. Note: TXEOM must be set when CECEN = 1. TXEOM must be set before writing transmission data to TXDR. If TXEOM is set when TXSOM = 0, transmitted message consists of 1 byte (HEADER) only (PING message).
@@ -63,15 +49,8 @@ pub mod CEC_CR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXDR data byte is transmitted with EOM = 0
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXDR data byte is transmitted with EOM = 1
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -88,30 +67,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b001: 0.5 nominal data bit periods
-            pub const B_0x1: u32 = 0b001;
-
-            /// 0b010: 1.5 nominal data bit periods
-            pub const B_0x2: u32 = 0b010;
-
-            /// 0b011: 2.5 nominal data bit periods
-            pub const B_0x3: u32 = 0b011;
-
-            /// 0b100: 3.5 nominal data bit periods
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: 4.5 nominal data bit periods
-            pub const B_0x5: u32 = 0b101;
-
-            /// 0b110: 5.5 nominal data bit periods
-            pub const B_0x6: u32 = 0b110;
-
-            /// 0b111: 6.5 nominal data bit periods
-            pub const B_0x7: u32 = 0b111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Rx-tolerance The RXTOL bit is set and cleared by software. Start-bit, +/- 200 µs rise, +/- 200 µs fall Data-bit: +/- 200 µs rise. +/- 350 µs fall Start-bit: +/- 400 µs rise, +/- 400 µs fall Data-bit: +/-300 µs rise, +/- 500 µs fall
@@ -124,15 +81,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: Standard tolerance margin:
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Extended tolerance
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Rx-stop on bit rising error The BRESTP bit is set and cleared by software.
@@ -145,15 +95,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: BRE detection does not stop reception of the CEC message. Data bit is sampled at 1.05 ms.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: BRE detection stops message reception.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Generate error-bit on bit rising error The BREGEN bit is set and cleared by software. Note: If BRDNOGEN = 0, an error-bit is generated upon BRE detection with BRESTP = 1 in broadcast even if BREGEN = 0.
@@ -166,15 +109,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: BRE detection does not generate an error-bit on the CEC line.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: BRE detection generates an error-bit on the CEC line (if BRESTP is set).
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Generate error-bit on long bit period error The LBPEGEN bit is set and cleared by software. Note: If BRDNOGEN = 0, an error-bit is generated upon LBPE detection in broadcast even if LBPEGEN = 0.
@@ -187,15 +123,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: LBPE detection does not generate an error-bit on the CEC line.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: LBPE detection generates an error-bit on the CEC line.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Avoid error-bit generation in broadcast The BRDNOGEN bit is set and cleared by software. error-bit on the CEC line. LBPE detection with LBPEGEN = 0 on a broadcast message generates an error-bit on the CEC line.
@@ -208,15 +137,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: BRE detection with BRESTP = 1 and BREGEN = 0 on a broadcast message generates an
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: Error-bit is not generated in the same condition as above. An error-bit is not generated even in case of an SBPE detection in a broadcast message if listen mode is set.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SFT option bit The SFTOPT bit is set and cleared by software.
@@ -229,15 +151,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: SFT timer starts when TXSOM is set by software.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: SFT timer starts automatically at the end of message transmission/reception.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Own addresses configuration The OAR bits are set by software to select which destination logical addresses has to be considered in receive mode. Each bit, when set, enables the CEC logical address identified by the given bit position. At the end of HEADER reception, the received destination address is compared with the enabled addresses. In case of matching address, the incoming message is acknowledged and received. In case of non-matching address, the incoming message is received only in listen mode (LSTN = 1), but without acknowledge sent. Broadcast messages are always received. Example: OAR = 0b000 0000 0010 0001 means that CEC acknowledges addresses 0x0 and 0x5. Consequently, each message directed to one of these addresses is received.
@@ -264,15 +179,8 @@ pub mod CEC_CFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: CEC peripheral receives only message addressed to its own address (OAR). Messages addressed to different destination are ignored. Broadcast messages are always received.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: CEC peripheral receives messages addressed to its own address (OAR) with positive acknowledge. Messages addressed to different destination are received, but without interfering with the CEC bus: no acknowledge sent.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -511,15 +419,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RXBR interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RXBR interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End of reception interrupt enable The RXENDIE bit is set and cleared by software.
@@ -532,15 +433,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RXEND interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RXEND interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Rx-buffer overrun interrupt enable The RXOVRIE bit is set and cleared by software.
@@ -553,15 +447,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RXOVR interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RXOVR interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Bit rising error interrupt enable The BREIE bit is set and cleared by software.
@@ -574,15 +461,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: BRE interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: BRE interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Short bit period error interrupt enable The SBPEIE bit is set and cleared by software.
@@ -595,15 +475,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: SBPE interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: SBPE interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Long bit period error interrupt enable The LBPEIE bit is set and cleared by software.
@@ -616,15 +489,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: LBPE interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: LBPE interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Rx-missing acknowledge error interrupt enable The RXACKIE bit is set and cleared by software.
@@ -637,15 +503,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: RXACKE interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: RXACKE interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Arbitration lost interrupt enable The ARBLSTIE bit is set and cleared by software.
@@ -658,15 +517,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: ARBLST interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: ARBLST interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx-byte request interrupt enable The TXBRIE bit is set and cleared by software.
@@ -679,15 +531,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXBR interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXBR interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx-end of message interrupt enable The TXENDIE bit is set and cleared by software.
@@ -700,15 +545,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXEND interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXEND interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx-underrun interrupt enable The TXUDRIE bit is set and cleared by software.
@@ -721,15 +559,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXUDR interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXUDR interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx-error interrupt enable The TXERRIE bit is set and cleared by software.
@@ -742,15 +573,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXERR interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXERR interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx-missing acknowledge error interrupt enable The TXACKEIE bit is set and cleared by software.
@@ -763,15 +587,8 @@ pub mod CEC_IER {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: TXACKE interrupt disabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: TXACKE interrupt enabled
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 #[repr(C)]

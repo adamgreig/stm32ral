@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Single Wire Protocol Master Interface
 //!
-//! Used by: stm32l412, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3
+//! Used by: stm32l412, stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -579,7 +579,7 @@ pub struct RegisterBlock {
     /// SWPMI Bitrate register
     pub BRR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// SWPMI Interrupt and Status register
     pub ISR: RORegister<u32>,

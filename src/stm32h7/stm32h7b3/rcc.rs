@@ -805,21 +805,8 @@ pub mod SRDCFGR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b100: rcc_pclk4 = rcc_hclk4 / 2
-            pub const B_0x4: u32 = 0b100;
-
-            /// 0b101: rcc_pclk4 = rcc_hclk4 / 4
-            pub const B_0x5: u32 = 0b101;
-
-            /// 0b110: rcc_pclk4 = rcc_hclk4 / 8
-            pub const B_0x6: u32 = 0b110;
-
-            /// 0b111: rcc_pclk4 = rcc_hclk4 / 16
-            pub const B_0x7: u32 = 0b111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1537,21 +1524,8 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b000000110: wrong configuration
-            pub const B_0x6: u32 = 0b000000110;
-
-            /// 0b000000111: DIVN3 = 8
-            pub const B_0x7: u32 = 0b000000111;
-
-            /// 0b010000000: DIVN3 = 129 (default after reset)
-            pub const B_0x80: u32 = 0b010000000;
-
-            /// 0b110100011: DIVN3 = 420
-            pub const B_0x1A3: u32 = 0b110100011;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL3 DIVP division factor Set and reset by software to control the frequency of the pll3_p_ck clock. These bits can be written only when the PLL3 is disabled (PLL3ON = PLL3RDY = 0). ...
@@ -1564,24 +1538,8 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0000000: pll3_p_ck = vco3_ck
-            pub const B_0x0: u32 = 0b0000000;
-
-            /// 0b0000001: pll3_p_ck = vco3_ck / 2 (default after reset)
-            pub const B_0x1: u32 = 0b0000001;
-
-            /// 0b0000010: pll3_p_ck = vco3_ck / 3
-            pub const B_0x2: u32 = 0b0000010;
-
-            /// 0b0000011: pll3_p_ck = vco3_ck / 4
-            pub const B_0x3: u32 = 0b0000011;
-
-            /// 0b1111111: pll3_p_ck = vco3_ck / 128
-            pub const B_0x7F: u32 = 0b1111111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL3 DIVQ division factor Set and reset by software to control the frequency of the pll3_q_ck clock. These bits can be written only when the PLL3 is disabled (PLL3ON = PLL3RDY = 0). ...
@@ -1594,24 +1552,8 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0000000: pll3_q_ck = vco3_ck
-            pub const B_0x0: u32 = 0b0000000;
-
-            /// 0b0000001: pll3_q_ck = vco3_ck / 2 (default after reset)
-            pub const B_0x1: u32 = 0b0000001;
-
-            /// 0b0000010: pll3_q_ck = vco3_ck / 3
-            pub const B_0x2: u32 = 0b0000010;
-
-            /// 0b0000011: pll3_q_ck = vco3_ck / 4
-            pub const B_0x3: u32 = 0b0000011;
-
-            /// 0b1111111: pll3_q_ck = vco3_ck / 128
-            pub const B_0x7F: u32 = 0b1111111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL3 DIVR division factor Set and reset by software to control the frequency of the pll3_r_ck clock. These bits can be written only when the PLL3 is disabled (PLL3ON = PLL3RDY = 0). ...
@@ -1624,24 +1566,8 @@ pub mod PLL3DIVR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0000000: pll3_r_ck = vco3_ck
-            pub const B_0x0: u32 = 0b0000000;
-
-            /// 0b0000001: pll3_r_ck = vco3_ck / 2 (default after reset)
-            pub const B_0x1: u32 = 0b0000001;
-
-            /// 0b0000010: pll3_r_ck = vco3_ck / 3
-            pub const B_0x2: u32 = 0b0000010;
-
-            /// 0b0000011: pll3_r_ck = vco3_ck / 4
-            pub const B_0x3: u32 = 0b0000011;
-
-            /// 0b1111111: pll3_r_ck = vco3_ck / 128
-            pub const B_0x7F: u32 = 0b1111111;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -2513,15 +2439,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by the LSI (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by the LSI
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LSE ready interrupt flag Reset by software by writing LSERDYC bit. Set by hardware when the LSE clock becomes stable and LSERDYIE is set.
@@ -2534,15 +2453,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by the LSE (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by the LSE
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSI ready interrupt flag Reset by software by writing HSIRDYC bit. Set by hardware when the HSI clock becomes stable and HSIRDYIE is set.
@@ -2555,15 +2467,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by the HSI (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by the HSI
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSE ready interrupt flag Reset by software by writing HSERDYC bit. Set by hardware when the HSE clock becomes stable and HSERDYIE is set.
@@ -2576,15 +2481,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by the HSE (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by the HSE
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CSI ready interrupt flag Reset by software by writing CSIRDYC bit. Set by hardware when the CSI clock becomes stable and CSIRDYIE is set.
@@ -2597,15 +2495,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by the CSI (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by the CSI
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSI48 ready interrupt flag Reset by software by writing HSI48RDYC bit. Set by hardware when the HSI48 clock becomes stable and HSI48RDYIE is set.
@@ -2618,15 +2509,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by the HSI48 oscillator (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by the HSI48 oscillator
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL1 ready interrupt flag Reset by software by writing PLL1RDYC bit. Set by hardware when the PLL1 locks and PLL1RDYIE is set.
@@ -2639,15 +2523,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by PLL1 lock (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by PLL1 lock
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL2 ready interrupt flag Reset by software by writing PLL2RDYC bit. Set by hardware when the PLL2 locks and PLL2RDYIE is set.
@@ -2660,15 +2537,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by PLL2 lock (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by PLL2 lock
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PLL3 ready interrupt flag Reset by software by writing PLL3RDYC bit. Set by hardware when the PLL3 locks and PLL3RDYIE is set.
@@ -2681,15 +2551,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock ready interrupt caused by PLL3 lock (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock ready interrupt caused by PLL3 lock
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// LSE clock security system interrupt flag Reset by software by writing LSECSSC bit. Set by hardware when a failure is detected on the external 32 kHz oscillator and LSECSSIE is set.
@@ -2702,15 +2565,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no failure detected on the external 32 kHz oscillator (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: failure detected on the external 32 kHz oscillator
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// HSE clock security system interrupt flag Reset by software by writing HSECSSC bit. Set by hardware in case of HSE clock failure.
@@ -2723,15 +2579,8 @@ pub mod CIFR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: no clock security interrupt caused by HSE clock failure (default after reset)
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: clock security interrupt caused by HSE clock failure
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -4633,15 +4482,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI interconnect matrix clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master AHB clock gating This bit is set and reset by software.
@@ -4654,15 +4496,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master AHB clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master CPU clock gating This bit is set and reset by software.
@@ -4675,15 +4510,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master CPU clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master SDMMC clock gating This bit is set and reset by software.
@@ -4696,15 +4524,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master SDMMC clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master MDMA clock gating This bit is set and reset by software.
@@ -4717,15 +4538,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master MDMA clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master DMA2D clock gating This bit is set and reset by software.
@@ -4738,15 +4552,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master DMA2D clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master LTDC clock gating This bit is set and reset by software.
@@ -4759,15 +4566,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master LTDC clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI master GFXMMU clock gating This bit is set and reset by software.
@@ -4780,15 +4580,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix master GFXMMU clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave AHB12 clock gating This bit is set and reset by software.
@@ -4801,15 +4594,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave AHB12 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave AHB34 clock gating This bit is set and reset by software.
@@ -4822,15 +4608,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave AHB34 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave Flash interface (FLIFT) clock gating This bit is set and reset by software.
@@ -4843,15 +4622,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave FLIFT clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave OCTOSPI2 clock gating This bit is set and reset by software.
@@ -4864,15 +4636,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave OCTOSPI2 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave FMC clock gating This bit is set and reset by software.
@@ -4885,15 +4650,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave FMC clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave OCTOSPI1 clock gating This bit is set and reset by software.
@@ -4906,15 +4664,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave OCTOSPI1 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI slave SRAM1 clock gating This bit is set and reset by software.
@@ -4927,15 +4678,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave SRAM1 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI matrix slave SRAM2 clock gating This bit is set and reset by software.
@@ -4948,15 +4692,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave SRAM2 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI matrix slave SRAM3 clock gating This bit is set and reset by software.
@@ -4969,15 +4706,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave SRAM3 clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// AXI matrix slave GFXMMU clock gating This bit is set and reset by software.
@@ -4990,15 +4720,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The AXI matrix slave GFXMMU clock is enabled on bus transaction request.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RAM error code correction (ECC) clock gating This bit is set and reset by software.
@@ -5011,15 +4734,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The ECC clock is enabled only during a RAM access.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// EXTI clock gating This bit is set and reset by software.
@@ -5032,15 +4748,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The clock is enabled after an event detection and stopped again when the event flag is cleared.
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// JTAG automatic clock gating This bit is set and reset by software.
@@ -5053,15 +4762,8 @@ pub mod CKGAENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: The clock gating is disabled. The clock is always enabled.
-            pub const B_0x0: u32 = 0b0;
-
-            /// 0b1: The clock gating is enabled. The clock is disabled except if a JTAG connection has been detected
-            pub const B_0x1: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -5078,8 +4780,15 @@ pub mod RSR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Not clearing the the reset flags
+            pub const NotActive: u32 = 0b0;
+
+            /// 0b1: Clear the reset flags
+            pub const Clear: u32 = 0b1;
+        }
     }
 
     /// CPU domain power-switch reset flag Reset by software by writing the RMVF bit. Set by hardware when a the CPU domain exits from DStop or after of power-on reset. Set also when the CPU domain exists DStop2 but only when a pad reset has occurred during DStop2 (PINRST bit also set by hardware)
@@ -5088,8 +4797,15 @@ pub mod RSR {
         pub const offset: u32 = 19;
         /// Mask (1 bit: 1 << 19)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: No reset occoured for block
+            pub const NoResetOccoured: u32 = 0b0;
+
+            /// 0b1: Reset occoured for block
+            pub const ResetOccourred: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5102,8 +4818,7 @@ pub mod RSR {
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5116,8 +4831,7 @@ pub mod RSR {
         pub const offset: u32 = 22;
         /// Mask (1 bit: 1 << 22)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5130,8 +4844,7 @@ pub mod RSR {
         pub const offset: u32 = 23;
         /// Mask (1 bit: 1 << 23)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5144,8 +4857,7 @@ pub mod RSR {
         pub const offset: u32 = 24;
         /// Mask (1 bit: 1 << 24)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5158,8 +4870,7 @@ pub mod RSR {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5172,8 +4883,7 @@ pub mod RSR {
         pub const offset: u32 = 28;
         /// Mask (1 bit: 1 << 28)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5186,8 +4896,7 @@ pub mod RSR {
         pub const offset: u32 = 30;
         /// Mask (1 bit: 1 << 30)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        pub use super::CDRSTF::R;
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)
@@ -5359,8 +5068,7 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MDMAEN::RW;
     }
 
     /// D1 DTCM2 block enable
@@ -5373,8 +5081,7 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MDMAEN::RW;
     }
 
     /// D1 ITCM block enable
@@ -5387,8 +5094,7 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MDMAEN::RW;
     }
 
     /// AXISRAM block enable
@@ -5401,8 +5107,7 @@ pub mod AHB3ENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::MDMAEN::RW;
     }
 }
 
@@ -6701,7 +6406,8 @@ pub mod AHB3LPENR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        pub use super::MDMALPEN::RW;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// FMC peripheral clocks enable during CSleep mode Set and reset by software. The peripheral clocks of the FMC are the kernel clock selected by FMCSEL and provided to fmc_ker_ck input, and the rcc_hclk3 bus interface clock.
@@ -8142,7 +7848,7 @@ pub struct RegisterBlock {
     ///
     pub CFGR: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     ///
     pub CDCFGR1: RWRegister<u32>,
@@ -8153,7 +7859,7 @@ pub struct RegisterBlock {
     ///
     pub SRDCFGR: RWRegister<u32>,
 
-    _reserved2: [u32; 1],
+    _reserved2: [u8; 4],
 
     ///
     pub PLLCKSELR: RWRegister<u32>,
@@ -8179,7 +7885,7 @@ pub struct RegisterBlock {
     ///
     pub PLL3FRACR: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// RCC CPU domain kernel clock configuration register
     pub CDCCIPR: RWRegister<u32>,
@@ -8193,7 +7899,7 @@ pub struct RegisterBlock {
     /// RCC SmartRun domain kernel clock configuration register
     pub SRDCCIPR: RWRegister<u32>,
 
-    _reserved4: [u32; 1],
+    _reserved4: [u8; 4],
 
     ///
     pub CIER: RWRegister<u32>,
@@ -8204,7 +7910,7 @@ pub struct RegisterBlock {
     ///
     pub CICR: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// RCC Backup domain control register
     pub BDCR: RWRegister<u32>,
@@ -8212,7 +7918,7 @@ pub struct RegisterBlock {
     /// RCC clock control and status register
     pub CSR: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     ///
     pub AHB3RSTR: RWRegister<u32>,
@@ -8244,17 +7950,17 @@ pub struct RegisterBlock {
     /// Global Control Register
     pub GCR: RWRegister<u32>,
 
-    _reserved7: [u32; 1],
+    _reserved7: [u8; 4],
 
     /// RCC SmartRun domain Autonomous mode register
     pub SRDAMR: RWRegister<u32>,
 
-    _reserved8: [u32; 1],
+    _reserved8: [u8; 4],
 
     /// RCC AXI clocks gating enable register
     pub CKGAENR: RWRegister<u32>,
 
-    _reserved9: [u32; 31],
+    _reserved9: [u8; 124],
 
     /// RCC reset status register
     pub RSR: RWRegister<u32>,
@@ -8286,7 +7992,7 @@ pub struct RegisterBlock {
     ///
     pub APB4ENR: RWRegister<u32>,
 
-    _reserved10: [u32; 1],
+    _reserved10: [u8; 4],
 
     ///
     pub AHB3LPENR: RWRegister<u32>,

@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// TZSC control register
-pub mod TZSC_CR {
+pub mod CR {
 
     /// LCK
     pub mod LCK {
@@ -27,7 +27,7 @@ pub mod TZSC_CR {
 }
 
 /// TZSC secure configuration register 1
-pub mod TZSC_SECCFGR1 {
+pub mod SECCFGR1 {
 
     /// TIM2SEC
     pub mod TIM2SEC {
@@ -479,7 +479,7 @@ pub mod TZSC_SECCFGR1 {
 }
 
 /// TZSC secure configuration register 2
-pub mod TZSC_SECCFGR2 {
+pub mod SECCFGR2 {
 
     /// TIM8SEC
     pub mod TIM8SEC {
@@ -749,7 +749,7 @@ pub mod TZSC_SECCFGR2 {
 }
 
 /// TZSC privilege configuration register 1
-pub mod TZSC_PRIVCFGR1 {
+pub mod PRIVCFGR1 {
 
     /// TIM2PRIV
     pub mod TIM2PRIV {
@@ -1201,7 +1201,7 @@ pub mod TZSC_PRIVCFGR1 {
 }
 
 /// TZSC privilege configuration register 2
-pub mod TZSC_PRIVCFGR2 {
+pub mod PRIVCFGR2 {
 
     /// TIM8PRIV
     pub mod TIM8PRIV {
@@ -1471,7 +1471,7 @@ pub mod TZSC_PRIVCFGR2 {
 }
 
 /// TZSC external memory non-secure watermark register 1
-pub mod TZSC_MPCWM1_NSWMR1 {
+pub mod MPCWM1_NSWMR1 {
 
     /// NSWM1STRT
     pub mod NSWM1STRT {
@@ -1503,7 +1503,7 @@ pub mod TZSC_MPCWM1_NSWMR1 {
 }
 
 /// TZSC external memory non-secure watermark register 1
-pub mod TZSC_MPCWM1_NSWMR2 {
+pub mod MPCWM1_NSWMR2 {
 
     /// NSWM2STRT
     pub mod NSWM2STRT {
@@ -1535,71 +1535,71 @@ pub mod TZSC_MPCWM1_NSWMR2 {
 }
 
 /// TZSC external memory non-secure watermark register 1
-pub mod TZSC_MPCWM2_NSWMR1 {
-    pub use super::TZSC_MPCWM1_NSWMR1::NSWM1LGTH;
-    pub use super::TZSC_MPCWM1_NSWMR1::NSWM1STRT;
+pub mod MPCWM2_NSWMR1 {
+    pub use super::MPCWM1_NSWMR1::NSWM1LGTH;
+    pub use super::MPCWM1_NSWMR1::NSWM1STRT;
 }
 
 /// TZSC external memory non-secure watermark register 2
-pub mod TZSC_MPCWM3_NSWMR1 {
-    pub use super::TZSC_MPCWM1_NSWMR2::NSWM2LGTH;
-    pub use super::TZSC_MPCWM1_NSWMR2::NSWM2STRT;
+pub mod MPCWM3_NSWMR1 {
+    pub use super::MPCWM1_NSWMR2::NSWM2LGTH;
+    pub use super::MPCWM1_NSWMR2::NSWM2STRT;
 }
 
 /// TZSC external memory non-secure watermark register 2
-pub mod TZSC_MPCWM2_NSWMR2 {
-    pub use super::TZSC_MPCWM1_NSWMR2::NSWM2LGTH;
-    pub use super::TZSC_MPCWM1_NSWMR2::NSWM2STRT;
+pub mod MPCWM2_NSWMR2 {
+    pub use super::MPCWM1_NSWMR2::NSWM2LGTH;
+    pub use super::MPCWM1_NSWMR2::NSWM2STRT;
 }
 #[repr(C)]
 pub struct RegisterBlock {
     /// TZSC control register
-    pub TZSC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
-    _reserved1: [u32; 3],
+    _reserved1: [u8; 12],
 
     /// TZSC secure configuration register 1
-    pub TZSC_SECCFGR1: RWRegister<u32>,
+    pub SECCFGR1: RWRegister<u32>,
 
     /// TZSC secure configuration register 2
-    pub TZSC_SECCFGR2: RWRegister<u32>,
+    pub SECCFGR2: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// TZSC privilege configuration register 1
-    pub TZSC_PRIVCFGR1: RWRegister<u32>,
+    pub PRIVCFGR1: RWRegister<u32>,
 
     /// TZSC privilege configuration register 2
-    pub TZSC_PRIVCFGR2: RWRegister<u32>,
+    pub PRIVCFGR2: RWRegister<u32>,
 
-    _reserved3: [u32; 2],
-
-    /// TZSC external memory non-secure watermark register 1
-    pub TZSC_MPCWM1_NSWMR1: RWRegister<u32>,
+    _reserved3: [u8; 8],
 
     /// TZSC external memory non-secure watermark register 1
-    pub TZSC_MPCWM1_NSWMR2: RWRegister<u32>,
+    pub MPCWM1_NSWMR1: RWRegister<u32>,
 
     /// TZSC external memory non-secure watermark register 1
-    pub TZSC_MPCWM2_NSWMR1: RWRegister<u32>,
+    pub MPCWM1_NSWMR2: RWRegister<u32>,
+
+    /// TZSC external memory non-secure watermark register 1
+    pub MPCWM2_NSWMR1: RWRegister<u32>,
 
     /// TZSC external memory non-secure watermark register 2
-    pub TZSC_MPCWM2_NSWMR2: RWRegister<u32>,
+    pub MPCWM2_NSWMR2: RWRegister<u32>,
 
     /// TZSC external memory non-secure watermark register 2
-    pub TZSC_MPCWM3_NSWMR1: RWRegister<u32>,
+    pub MPCWM3_NSWMR1: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub TZSC_CR: u32,
-    pub TZSC_SECCFGR1: u32,
-    pub TZSC_SECCFGR2: u32,
-    pub TZSC_PRIVCFGR1: u32,
-    pub TZSC_PRIVCFGR2: u32,
-    pub TZSC_MPCWM1_NSWMR1: u32,
-    pub TZSC_MPCWM1_NSWMR2: u32,
-    pub TZSC_MPCWM2_NSWMR1: u32,
-    pub TZSC_MPCWM2_NSWMR2: u32,
-    pub TZSC_MPCWM3_NSWMR1: u32,
+    pub CR: u32,
+    pub SECCFGR1: u32,
+    pub SECCFGR2: u32,
+    pub PRIVCFGR1: u32,
+    pub PRIVCFGR2: u32,
+    pub MPCWM1_NSWMR1: u32,
+    pub MPCWM1_NSWMR2: u32,
+    pub MPCWM2_NSWMR1: u32,
+    pub MPCWM2_NSWMR2: u32,
+    pub MPCWM3_NSWMR1: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

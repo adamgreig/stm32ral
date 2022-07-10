@@ -971,14 +971,14 @@ pub mod EGR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Write-only values
+        pub mod W {
 
             /// 0b1: Re-initializes the timer counter and generates an update of the registers.
             pub const Update: u32 = 0b1;
         }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1808,17 +1808,17 @@ pub mod OR {
         /// Read-write values
         pub mod RW {
 
-            /// 0b111: TIM2 ETR input is connected to COMP1_OUT
-            pub const COMP1_OUT: u32 = 0b111;
-
-            /// 0b110: TIM2 ETR input is connected to COMP2_OUT
-            pub const COMP2_OUT: u32 = 0b110;
+            /// 0b011: TIM2 ETR input is connected to HSI16 when HSI16OUTEN bit is set
+            pub const HSI: u32 = 0b011;
 
             /// 0b101: TIM2 ETR input is connected to LSE
             pub const LSE: u32 = 0b101;
 
-            /// 0b011: TIM2 ETR input is connected to HSI16 when HSI16OUTEN bit is set
-            pub const HSI: u32 = 0b011;
+            /// 0b110: TIM2 ETR input is connected to COMP2_OUT
+            pub const COMP2_OUT: u32 = 0b110;
+
+            /// 0b111: TIM2 ETR input is connected to COMP1_OUT
+            pub const COMP1_OUT: u32 = 0b111;
         }
     }
 
@@ -1948,7 +1948,7 @@ pub struct RegisterBlock {
     /// TIMx counter
     pub CNT: RWRegister<u16>,
 
-    _reserved1: [u16; 1],
+    _reserved1: [u8; 2],
 
     /// prescaler
     pub PSC: RWRegister<u32>,
@@ -1956,29 +1956,27 @@ pub struct RegisterBlock {
     /// TIMx auto-reload register
     pub ARR: RWRegister<u16>,
 
-    _reserved2: [u32; 1],
-    _reserved3: [u16; 1],
+    _reserved2: [u8; 6],
 
     /// capture/compare register
     pub CCR1: RWRegister<u16>,
 
-    _reserved4: [u16; 1],
+    _reserved3: [u8; 2],
 
     /// capture/compare register
     pub CCR2: RWRegister<u16>,
 
-    _reserved5: [u16; 1],
+    _reserved4: [u8; 2],
 
     /// capture/compare register
     pub CCR3: RWRegister<u16>,
 
-    _reserved6: [u16; 1],
+    _reserved5: [u8; 2],
 
     /// capture/compare register
     pub CCR4: RWRegister<u16>,
 
-    _reserved7: [u32; 1],
-    _reserved8: [u16; 1],
+    _reserved6: [u8; 6],
 
     /// DMA control register
     pub DCR: RWRegister<u32>,

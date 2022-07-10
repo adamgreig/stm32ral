@@ -576,12 +576,12 @@ pub mod INI6_FN_MOD {
 }
 #[repr(C)]
 pub struct RegisterBlock {
-    _reserved1: [u32; 2036],
+    _reserved1: [u8; 8144],
 
     /// AXI interconnect - peripheral ID4 register
     pub PERIPH_ID_4: RORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// AXI interconnect - peripheral ID0 register
     pub PERIPH_ID_0: RORegister<u32>,
@@ -607,82 +607,82 @@ pub struct RegisterBlock {
     /// AXI interconnect - component ID3 register
     pub COMP_ID_3: RORegister<u32>,
 
-    _reserved3: [u32; 2],
+    _reserved3: [u8; 8],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG1_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved4: [u32; 6],
+    _reserved4: [u8; 24],
 
     /// AXI interconnect - TARG x bus matrix functionality 2 register
     pub TARG1_FN_MOD2: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// AXI interconnect - TARG x long burst functionality modification
     pub TARG1_FN_MOD_LB: RWRegister<u32>,
 
-    _reserved6: [u32; 54],
+    _reserved6: [u8; 216],
 
     /// AXI interconnect - TARG x long burst functionality modification
     pub TARG1_FN_MOD: RWRegister<u32>,
 
-    _reserved7: [u32; 959],
+    _reserved7: [u8; 3836],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG2_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved8: [u32; 6],
+    _reserved8: [u8; 24],
 
     /// AXI interconnect - TARG x bus matrix functionality 2 register
     pub TARG2_FN_MOD2: RWRegister<u32>,
 
-    _reserved9: [u32; 1],
+    _reserved9: [u8; 4],
 
     /// AXI interconnect - TARG x long burst functionality modification
     pub TARG2_FN_MOD_LB: RWRegister<u32>,
 
-    _reserved10: [u32; 54],
+    _reserved10: [u8; 216],
 
     /// AXI interconnect - TARG x long burst functionality modification
     pub TARG2_FN_MOD: RWRegister<u32>,
 
-    _reserved11: [u32; 959],
+    _reserved11: [u8; 3836],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG3_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved12: [u32; 1023],
+    _reserved12: [u8; 4092],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG4_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved13: [u32; 1023],
+    _reserved13: [u8; 4092],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG5_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved14: [u32; 1023],
+    _reserved14: [u8; 4092],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG6_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved15: [u32; 1024],
+    _reserved15: [u8; 4096],
 
     /// AXI interconnect - TARG x bus matrix issuing functionality register
     pub TARG7_FN_MOD_ISS_BM: RWRegister<u32>,
 
-    _reserved16: [u32; 5],
+    _reserved16: [u8; 20],
 
     /// AXI interconnect - TARG x bus matrix functionality 2 register
     pub TARG7_FN_MOD2: RWRegister<u32>,
 
-    _reserved17: [u32; 56],
+    _reserved17: [u8; 224],
 
     /// AXI interconnect - TARG x long burst functionality modification
     pub TARG7_FN_MOD: RWRegister<u32>,
 
-    _reserved18: [u32; 59334],
+    _reserved18: [u8; 237336],
 
     /// AXI interconnect - INI x functionality modification 2 register
     pub INI1_FN_MOD2: RWRegister<u32>,
@@ -690,7 +690,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x AHB functionality modification register
     pub INI1_FN_MOD_AHB: RWRegister<u32>,
 
-    _reserved19: [u32; 53],
+    _reserved19: [u8; 212],
 
     /// AXI interconnect - INI x read QoS register
     pub INI1_READ_QOS: RWRegister<u32>,
@@ -701,7 +701,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x issuing functionality modification register
     pub INI1_FN_MOD: RWRegister<u32>,
 
-    _reserved20: [u32; 1021],
+    _reserved20: [u8; 4084],
 
     /// AXI interconnect - INI x read QoS register
     pub INI2_READ_QOS: RWRegister<u32>,
@@ -712,7 +712,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x issuing functionality modification register
     pub INI2_FN_MOD: RWRegister<u32>,
 
-    _reserved21: [u32; 966],
+    _reserved21: [u8; 3864],
 
     /// AXI interconnect - INI x functionality modification 2 register
     pub INI3_FN_MOD2: RWRegister<u32>,
@@ -720,7 +720,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x AHB functionality modification register
     pub INI3_FN_MOD_AHB: RWRegister<u32>,
 
-    _reserved22: [u32; 53],
+    _reserved22: [u8; 212],
 
     /// AXI interconnect - INI x read QoS register
     pub INI3_READ_QOS: RWRegister<u32>,
@@ -731,7 +731,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x issuing functionality modification register
     pub INI3_FN_MOD: RWRegister<u32>,
 
-    _reserved23: [u32; 1021],
+    _reserved23: [u8; 4084],
 
     /// AXI interconnect - INI x read QoS register
     pub INI4_READ_QOS: RWRegister<u32>,
@@ -742,7 +742,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x issuing functionality modification register
     pub INI4_FN_MOD: RWRegister<u32>,
 
-    _reserved24: [u32; 1021],
+    _reserved24: [u8; 4084],
 
     /// AXI interconnect - INI x read QoS register
     pub INI5_READ_QOS: RWRegister<u32>,
@@ -753,7 +753,7 @@ pub struct RegisterBlock {
     /// AXI interconnect - INI x issuing functionality modification register
     pub INI5_FN_MOD: RWRegister<u32>,
 
-    _reserved25: [u32; 1021],
+    _reserved25: [u8; 4084],
 
     /// AXI interconnect - INI x read QoS register
     pub INI6_READ_QOS: RWRegister<u32>,

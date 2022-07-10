@@ -861,7 +861,7 @@ pub struct RegisterBlock {
     /// Master Timer Compare 1 Register
     pub MCMP1R: RWRegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Master Timer Compare 2 Register
     pub MCMP2R: RWRegister<u32>,

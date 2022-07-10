@@ -1214,7 +1214,7 @@ pub mod GINTMSK {
 
 /// GRXSTSR_Device and GRXSTSR_Host
 /// GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
-/// GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
+/// GRXSTSR_Host: OTG status debug read (host mode)
 pub mod GRXSTSR {
 
     /// Endpoint number
@@ -1278,6 +1278,20 @@ pub mod GRXSTSR {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (4 bits: 0b1111 << 21)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Channel number
+    pub mod CHNUM {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
         pub const mask: u32 = 0b1111 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -1472,6 +1486,20 @@ pub mod GCCFG {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Vbus sensing disable option
+    pub mod NOVBUSSENS {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// core ID register
@@ -1524,7 +1552,7 @@ pub mod HPTXFSIZ {
     }
 }
 
-/// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+/// OTF_FS device IN endpoint transmit FIFO size register
 pub mod DIEPTXF1 {
 
     /// IN endpoint FIFO2 transmit RAM start address
@@ -1556,13 +1584,13 @@ pub mod DIEPTXF1 {
     }
 }
 
-/// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+/// OTF_FS device IN endpoint transmit FIFO size register
 pub mod DIEPTXF2 {
     pub use super::DIEPTXF1::INEPTXFD;
     pub use super::DIEPTXF1::INEPTXSA;
 }
 
-/// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+/// OTF_FS device IN endpoint transmit FIFO size register
 pub mod DIEPTXF3 {
     pub use super::DIEPTXF1::INEPTXFD;
     pub use super::DIEPTXF1::INEPTXSA;
@@ -1572,20 +1600,6 @@ pub mod DIEPTXF3 {
 /// GRXSTSP_Device: OTG status read and pop (device mode)
 /// GRXSTSP_Host: OTG status read and pop (host mode)
 pub mod GRXSTSP {
-
-    /// Status phase start
-    pub mod STSPHST {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
 
     /// Frame number
     pub mod FRMNUM {
@@ -1696,7 +1710,7 @@ pub struct RegisterBlock {
 
     /// GRXSTSR_Device and GRXSTSR_Host
     /// GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
-    /// GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
+    /// GRXSTSR_Host: OTG status debug read (host mode)
     pub GRXSTSR: RWRegister<u32>,
 
     /// GRXSTSP_Device and GRXSTSP_Host
@@ -1715,7 +1729,7 @@ pub struct RegisterBlock {
     /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
     pub GNPTXSTS: RORegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// OTG_FS general core configuration register (OTG_FS_GCCFG)
     pub GCCFG: RWRegister<u32>,
@@ -1723,18 +1737,18 @@ pub struct RegisterBlock {
     /// core ID register
     pub CID: RWRegister<u32>,
 
-    _reserved2: [u32; 48],
+    _reserved2: [u8; 192],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
     pub HPTXFSIZ: RWRegister<u32>,
 
-    /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+    /// OTF_FS device IN endpoint transmit FIFO size register
     pub DIEPTXF1: RWRegister<u32>,
 
-    /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+    /// OTF_FS device IN endpoint transmit FIFO size register
     pub DIEPTXF2: RWRegister<u32>,
 
-    /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
+    /// OTF_FS device IN endpoint transmit FIFO size register
     pub DIEPTXF3: RWRegister<u32>,
 }
 pub struct ResetValues {

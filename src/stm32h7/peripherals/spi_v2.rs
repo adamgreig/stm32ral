@@ -1047,12 +1047,8 @@ pub mod SR {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Less than 32-bit data frame received
             pub const LessThan32: u32 = 0b0;
@@ -1060,6 +1056,10 @@ pub mod SR {
             /// 0b1: At least 32-bit data frame received
             pub const AtLeast32: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RxFIFO Packing LeVeL
@@ -1068,12 +1068,8 @@ pub mod SR {
         pub const offset: u32 = 13;
         /// Mask (2 bits: 0b11 << 13)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b00: Zero frames beyond packing ratio available
             pub const ZeroFrames: u32 = 0b00;
@@ -1087,6 +1083,10 @@ pub mod SR {
             /// 0b11: Three frame beyond packing ratio available
             pub const ThreeFrames: u32 = 0b11;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TxFIFO transmission complete
@@ -1095,12 +1095,8 @@ pub mod SR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmission ongoing
             pub const Ongoing: u32 = 0b0;
@@ -1108,6 +1104,10 @@ pub mod SR {
             /// 0b1: Transmission completed
             pub const Completed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// SUSPend
@@ -1116,12 +1116,8 @@ pub mod SR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Master not suspended
             pub const NotSuspended: u32 = 0b0;
@@ -1129,6 +1125,10 @@ pub mod SR {
             /// 0b1: Master suspended
             pub const Suspended: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Additional number of SPI data to be transacted was reload
@@ -1137,12 +1137,8 @@ pub mod SR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Additional number of SPI data to be transacted not yet loaded
             pub const NotLoaded: u32 = 0b0;
@@ -1150,6 +1146,10 @@ pub mod SR {
             /// 0b1: Additional number of SPI data to be transacted was reloaded
             pub const Loaded: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Mode Fault
@@ -1158,12 +1158,8 @@ pub mod SR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No mode fault detected
             pub const NoFault: u32 = 0b0;
@@ -1171,6 +1167,10 @@ pub mod SR {
             /// 0b1: Mode fault detected
             pub const Fault: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TI frame format error
@@ -1179,12 +1179,8 @@ pub mod SR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: TI frame format error detected
             pub const NoError: u32 = 0b0;
@@ -1192,6 +1188,10 @@ pub mod SR {
             /// 0b1: TI frame format error detected
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// CRC Error
@@ -1200,12 +1200,8 @@ pub mod SR {
         pub const offset: u32 = 7;
         /// Mask (1 bit: 1 << 7)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No CRC error detected
             pub const NoError: u32 = 0b0;
@@ -1213,6 +1209,10 @@ pub mod SR {
             /// 0b1: CRC error detected
             pub const Error: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun
@@ -1221,12 +1221,8 @@ pub mod SR {
         pub const offset: u32 = 6;
         /// Mask (1 bit: 1 << 6)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No overrun occurred
             pub const NoOverrun: u32 = 0b0;
@@ -1234,6 +1230,10 @@ pub mod SR {
             /// 0b1: Overrun occurred
             pub const Overrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Underrun at slave transmission mode
@@ -1242,12 +1242,8 @@ pub mod SR {
         pub const offset: u32 = 5;
         /// Mask (1 bit: 1 << 5)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No underrun occurred
             pub const NoUnderrun: u32 = 0b0;
@@ -1255,6 +1251,10 @@ pub mod SR {
             /// 0b1: Underrun occurred
             pub const Underrun: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmission Transfer Filled
@@ -1263,12 +1263,8 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transmission buffer incomplete
             pub const NotCompleted: u32 = 0b0;
@@ -1276,6 +1272,10 @@ pub mod SR {
             /// 0b1: Transmission buffer filled with at least one transfer
             pub const Completed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// End Of Transfer
@@ -1284,12 +1284,8 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Transfer ongoing or not started
             pub const NotCompleted: u32 = 0b0;
@@ -1297,6 +1293,10 @@ pub mod SR {
             /// 0b1: Transfer complete
             pub const Completed: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Duplex Packet
@@ -1305,12 +1305,8 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Duplex packet unavailable: no space for transmission and/or no data received
             pub const Unavailable: u32 = 0b0;
@@ -1318,6 +1314,10 @@ pub mod SR {
             /// 0b1: Duplex packet available: space for transmission and data received
             pub const Available: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Tx-Packet space available
@@ -1326,12 +1326,8 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Tx buffer full
             pub const Full: u32 = 0b0;
@@ -1339,6 +1335,10 @@ pub mod SR {
             /// 0b1: Tx buffer not full
             pub const NotFull: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Rx-Packet available
@@ -1347,12 +1347,8 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Rx buffer empty
             pub const Empty: u32 = 0b0;
@@ -1360,6 +1356,10 @@ pub mod SR {
             /// 0b1: Rx buffer not empty
             pub const NotEmpty: u32 = 0b1;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -1910,17 +1910,17 @@ pub struct RegisterBlock {
     /// Interrupt/Status Flags Clear Register
     pub IFCR: WORegister<u32>,
 
-    _reserved1: [u32; 1],
+    _reserved1: [u8; 4],
 
     /// Transmit Data Register
     pub TXDR: WORegister<u32>,
 
-    _reserved2: [u32; 3],
+    _reserved2: [u8; 12],
 
     /// Receive Data Register
     pub RXDR: RORegister<u32>,
 
-    _reserved3: [u32; 3],
+    _reserved3: [u8; 12],
 
     /// Polynomial Register
     pub CRCPOLY: RWRegister<u32>,

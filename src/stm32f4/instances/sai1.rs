@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32f405, stm32f407
+//! Used by: stm32f405, stm32f407, stm32f427
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::sai1::Instance;
@@ -28,7 +28,7 @@ pub mod SAI1 {
     /// Reset values for each field in SAI1
     pub const reset: ResetValues = ResetValues {
         CR1A: 0x00000040,
-        CR2A: 0x00000040,
+        CR2A: 0x00000000,
         FRCRA: 0x00000007,
         SLOTRA: 0x00000000,
         IMA: 0x00000000,
@@ -36,7 +36,7 @@ pub mod SAI1 {
         CLRFRA: 0x00000000,
         DRA: 0x00000000,
         CR1B: 0x00000040,
-        CR2B: 0x00000040,
+        CR2B: 0x00000000,
         FRCRB: 0x00000007,
         SLOTRB: 0x00000000,
         IMB: 0x00000000,

@@ -7,7 +7,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// ADC interrupt and status register
-pub mod ADC_ISR {
+pub mod ISR {
 
     /// ADRDY
     pub mod ADRDY {
@@ -151,7 +151,7 @@ pub mod ADC_ISR {
 }
 
 /// ADC interrupt enable register
-pub mod ADC_IER {
+pub mod IER {
 
     /// ADRDYIE
     pub mod ADRDYIE {
@@ -295,7 +295,7 @@ pub mod ADC_IER {
 }
 
 /// ADC control register
-pub mod ADC_CR {
+pub mod CR {
 
     /// ADEN
     pub mod ADEN {
@@ -383,7 +383,7 @@ pub mod ADC_CR {
 }
 
 /// ADC configuration register 1
-pub mod ADC_CFGR1 {
+pub mod CFGR1 {
 
     /// DMAEN
     pub mod DMAEN {
@@ -611,7 +611,7 @@ pub mod ADC_CFGR1 {
 }
 
 /// ADC configuration register 2
-pub mod ADC_CFGR2 {
+pub mod CFGR2 {
 
     /// OVSE
     pub mod OVSE {
@@ -769,7 +769,7 @@ pub mod ADC_CFGR2 {
 }
 
 /// ADC sampling time register
-pub mod ADC_SMPR {
+pub mod SMPR {
 
     /// SMP1
     pub mod SMP1 {
@@ -815,7 +815,7 @@ pub mod ADC_SMPR {
 }
 
 /// ADC watchdog threshold register
-pub mod ADC_AWD1TR {
+pub mod AWD1TR {
 
     /// LT1
     pub mod LT1 {
@@ -847,7 +847,7 @@ pub mod ADC_AWD1TR {
 }
 
 /// ADC watchdog threshold register
-pub mod ADC_AWD2TR {
+pub mod AWD2TR {
 
     /// LT2
     pub mod LT2 {
@@ -878,10 +878,10 @@ pub mod ADC_AWD2TR {
     }
 }
 
-/// ADC_CHSELR0 and ADC_CHSELR1
-/// ADC_CHSELR0: channel selection register
-/// ADC_CHSELR1: channel selection register
-pub mod ADC_CHSELR {
+/// CHSELR0 and CHSELR1
+/// CHSELR0: channel selection register
+/// CHSELR1: channel selection register
+pub mod CHSELR {
 
     /// CHSEL
     pub mod CHSEL {
@@ -1011,7 +1011,7 @@ pub mod ADC_CHSELR {
 }
 
 /// ADC watchdog threshold register
-pub mod ADC_AWD3TR {
+pub mod AWD3TR {
 
     /// LT3
     pub mod LT3 {
@@ -1043,7 +1043,7 @@ pub mod ADC_AWD3TR {
 }
 
 /// ADC data register
-pub mod ADC_DR {
+pub mod DR {
 
     /// DATA
     pub mod DATA {
@@ -1061,7 +1061,7 @@ pub mod ADC_DR {
 }
 
 /// ADC Analog Watchdog 2 Configuration register
-pub mod ADC_AWD2CR {
+pub mod AWD2CR {
 
     /// AWD2CH
     pub mod AWD2CH {
@@ -1079,7 +1079,7 @@ pub mod ADC_AWD2CR {
 }
 
 /// ADC Analog Watchdog 3 Configuration register
-pub mod ADC_AWD3CR {
+pub mod AWD3CR {
 
     /// AWD3CH
     pub mod AWD3CH {
@@ -1097,7 +1097,7 @@ pub mod ADC_AWD3CR {
 }
 
 /// ADC Calibration factor
-pub mod ADC_CALFACT {
+pub mod CALFACT {
 
     /// CALFACT
     pub mod CALFACT {
@@ -1115,7 +1115,7 @@ pub mod ADC_CALFACT {
 }
 
 /// ADC common configuration register
-pub mod ADC_CCR {
+pub mod CCR {
 
     /// PRESC0
     pub mod PRESC0 {
@@ -1218,78 +1218,78 @@ pub mod ADC_CCR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// ADC interrupt and status register
-    pub ADC_ISR: RWRegister<u32>,
+    pub ISR: RWRegister<u32>,
 
     /// ADC interrupt enable register
-    pub ADC_IER: RWRegister<u32>,
+    pub IER: RWRegister<u32>,
 
     /// ADC control register
-    pub ADC_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// ADC configuration register 1
-    pub ADC_CFGR1: RWRegister<u32>,
+    pub CFGR1: RWRegister<u32>,
 
     /// ADC configuration register 2
-    pub ADC_CFGR2: RWRegister<u32>,
+    pub CFGR2: RWRegister<u32>,
 
     /// ADC sampling time register
-    pub ADC_SMPR: RWRegister<u32>,
+    pub SMPR: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
-
-    /// ADC watchdog threshold register
-    pub ADC_AWD1TR: RWRegister<u32>,
+    _reserved1: [u8; 8],
 
     /// ADC watchdog threshold register
-    pub ADC_AWD2TR: RWRegister<u32>,
-
-    /// ADC_CHSELR0 and ADC_CHSELR1
-    /// ADC_CHSELR0: channel selection register
-    /// ADC_CHSELR1: channel selection register
-    pub ADC_CHSELR: RWRegister<u32>,
+    pub AWD1TR: RWRegister<u32>,
 
     /// ADC watchdog threshold register
-    pub ADC_AWD3TR: RWRegister<u32>,
+    pub AWD2TR: RWRegister<u32>,
 
-    _reserved2: [u32; 4],
+    /// CHSELR0 and CHSELR1
+    /// CHSELR0: channel selection register
+    /// CHSELR1: channel selection register
+    pub CHSELR: RWRegister<u32>,
+
+    /// ADC watchdog threshold register
+    pub AWD3TR: RWRegister<u32>,
+
+    _reserved2: [u8; 16],
 
     /// ADC data register
-    pub ADC_DR: RORegister<u32>,
+    pub DR: RORegister<u32>,
 
-    _reserved3: [u32; 23],
+    _reserved3: [u8; 92],
 
     /// ADC Analog Watchdog 2 Configuration register
-    pub ADC_AWD2CR: RWRegister<u32>,
+    pub AWD2CR: RWRegister<u32>,
 
     /// ADC Analog Watchdog 3 Configuration register
-    pub ADC_AWD3CR: RWRegister<u32>,
+    pub AWD3CR: RWRegister<u32>,
 
-    _reserved4: [u32; 3],
+    _reserved4: [u8; 12],
 
     /// ADC Calibration factor
-    pub ADC_CALFACT: RWRegister<u32>,
+    pub CALFACT: RWRegister<u32>,
 
-    _reserved5: [u32; 148],
+    _reserved5: [u8; 592],
 
     /// ADC common configuration register
-    pub ADC_CCR: RWRegister<u32>,
+    pub CCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub ADC_ISR: u32,
-    pub ADC_IER: u32,
-    pub ADC_CR: u32,
-    pub ADC_CFGR1: u32,
-    pub ADC_CFGR2: u32,
-    pub ADC_SMPR: u32,
-    pub ADC_AWD1TR: u32,
-    pub ADC_AWD2TR: u32,
-    pub ADC_CHSELR: u32,
-    pub ADC_AWD3TR: u32,
-    pub ADC_DR: u32,
-    pub ADC_AWD2CR: u32,
-    pub ADC_AWD3CR: u32,
-    pub ADC_CALFACT: u32,
-    pub ADC_CCR: u32,
+    pub ISR: u32,
+    pub IER: u32,
+    pub CR: u32,
+    pub CFGR1: u32,
+    pub CFGR2: u32,
+    pub SMPR: u32,
+    pub AWD1TR: u32,
+    pub AWD2TR: u32,
+    pub CHSELR: u32,
+    pub AWD3TR: u32,
+    pub DR: u32,
+    pub AWD2CR: u32,
+    pub AWD3CR: u32,
+    pub CALFACT: u32,
+    pub CCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {
@@ -1322,21 +1322,21 @@ pub mod ADC {
 
     /// Reset values for each field in ADC
     pub const reset: ResetValues = ResetValues {
-        ADC_ISR: 0x00000000,
-        ADC_IER: 0x00000000,
-        ADC_CR: 0x00000000,
-        ADC_CFGR1: 0x00000000,
-        ADC_CFGR2: 0x00000000,
-        ADC_SMPR: 0x00000000,
-        ADC_AWD1TR: 0x0FFF0000,
-        ADC_AWD2TR: 0x00000000,
-        ADC_CHSELR: 0x00000000,
-        ADC_AWD3TR: 0x0FFF0000,
-        ADC_DR: 0x00000000,
-        ADC_AWD2CR: 0x00000000,
-        ADC_AWD3CR: 0x00000000,
-        ADC_CALFACT: 0x00000000,
-        ADC_CCR: 0x00000000,
+        ISR: 0x00000000,
+        IER: 0x00000000,
+        CR: 0x00000000,
+        CFGR1: 0x00000000,
+        CFGR2: 0x00000000,
+        SMPR: 0x00000000,
+        AWD1TR: 0x0FFF0000,
+        AWD2TR: 0x00000000,
+        CHSELR: 0x00000000,
+        AWD3TR: 0x0FFF0000,
+        DR: 0x00000000,
+        AWD2CR: 0x00000000,
+        AWD3CR: 0x00000000,
+        CALFACT: 0x00000000,
+        CCR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

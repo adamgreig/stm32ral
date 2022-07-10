@@ -2,12 +2,12 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32f413, stm32f429
+//! Used by: stm32f413, stm32f429, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::sai::Instance;
-pub use crate::stm32f4::peripherals::sai::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::sai::{
+pub use crate::stm32f4::peripherals::sai1::Instance;
+pub use crate::stm32f4::peripherals::sai1::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::sai1::{
     CLRFRA, CLRFRB, CR1A, CR1B, CR2A, CR2B, DRA, DRB, FRCRA, FRCRB, IMA, IMB, SLOTRA, SLOTRB, SRA,
     SRB,
 };
@@ -32,7 +32,7 @@ pub mod SAI {
         FRCRA: 0x00000007,
         SLOTRA: 0x00000000,
         IMA: 0x00000000,
-        SRA: 0x00000000,
+        SRA: 0x00000008,
         CLRFRA: 0x00000000,
         DRA: 0x00000000,
         CR1B: 0x00000040,
@@ -40,7 +40,7 @@ pub mod SAI {
         FRCRB: 0x00000007,
         SLOTRB: 0x00000000,
         IMB: 0x00000000,
-        SRB: 0x00000000,
+        SRB: 0x00000008,
         CLRFRB: 0x00000000,
         DRB: 0x00000000,
     };

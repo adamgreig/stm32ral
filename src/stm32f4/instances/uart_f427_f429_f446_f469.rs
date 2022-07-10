@@ -7,7 +7,7 @@
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f4::peripherals::uart::Instance;
 pub use crate::stm32f4::peripherals::uart::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::uart::{BRR, CR1, CR2, CR3, DR, SR};
+pub use crate::stm32f4::peripherals::uart::{BRR, CR1, CR2, CR3, DR, GTPR, SR};
 
 /// Access functions for the UART4 peripheral instance
 pub mod UART4 {
@@ -30,6 +30,7 @@ pub mod UART4 {
         CR1: 0x00000000,
         CR2: 0x00000000,
         CR3: 0x00000000,
+        GTPR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -126,6 +127,7 @@ pub mod UART5 {
         CR1: 0x00000000,
         CR2: 0x00000000,
         CR3: 0x00000000,
+        GTPR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

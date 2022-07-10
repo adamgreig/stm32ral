@@ -4167,7 +4167,7 @@ pub struct RegisterBlock {
     /// EXTI D3 pending clear selection register high
     pub D3PCR1H: RWRegister<u32>,
 
-    _reserved1: [u32; 2],
+    _reserved1: [u8; 8],
 
     /// EXTI rising trigger selection register
     pub RTSR2: RWRegister<u32>,
@@ -4187,7 +4187,7 @@ pub struct RegisterBlock {
     /// EXTI D3 pending clear selection register high
     pub D3PCR2H: RWRegister<u32>,
 
-    _reserved2: [u32; 2],
+    _reserved2: [u8; 8],
 
     /// EXTI rising trigger selection register
     pub RTSR3: RWRegister<u32>,
@@ -4201,12 +4201,12 @@ pub struct RegisterBlock {
     /// EXTI D3 pending mask register
     pub D3PMR3: RWRegister<u32>,
 
-    _reserved3: [u32; 1],
+    _reserved3: [u8; 4],
 
     /// EXTI D3 pending clear selection register high
     pub D3PCR3H: RWRegister<u32>,
 
-    _reserved4: [u32; 10],
+    _reserved4: [u8; 40],
 
     /// EXTI interrupt mask register
     pub CPUIMR1: RWRegister<u32>,
@@ -4217,7 +4217,7 @@ pub struct RegisterBlock {
     /// EXTI pending register
     pub CPUPR1: RWRegister<u32>,
 
-    _reserved5: [u32; 1],
+    _reserved5: [u8; 4],
 
     /// EXTI interrupt mask register
     pub CPUIMR2: RWRegister<u32>,
@@ -4228,7 +4228,7 @@ pub struct RegisterBlock {
     /// EXTI pending register
     pub CPUPR2: RWRegister<u32>,
 
-    _reserved6: [u32; 1],
+    _reserved6: [u8; 4],
 
     /// EXTI interrupt mask register
     pub CPUIMR3: RWRegister<u32>,
